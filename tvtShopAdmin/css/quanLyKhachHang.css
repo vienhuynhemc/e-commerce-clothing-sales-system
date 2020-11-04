@@ -97,6 +97,11 @@ p.qlblContentTitle {
   padding: 15px 15px;
 }
 
+.gh th,
+.gh td {
+  padding: 15px 11px;
+}
+
 .qlbl-content-table tbody tr:nth-of-type(even) {
   background-color: #f4f4f4;
 }
@@ -362,15 +367,17 @@ p.qlblContentTitle {
   margin-top: 50px;
 }
 
-.qlblRemove:hover, .qlblEdit:hover, .qlblEditt:hover {
-    background-color: #232020;
+.qlblRemove:hover,
+.qlblEdit:hover,
+.qlblEditt:hover {
+  background-color: #232020;
 }
 .qlblEditt {
-    padding: 10px 17px;
-    font-size: 20px;
-    margin-left: -5px;
-    background-color: #ff7315;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
+  padding: 10px 17px;
+  font-size: 20px;
+  margin-left: -5px;
+  background-color: #ff7315;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }
