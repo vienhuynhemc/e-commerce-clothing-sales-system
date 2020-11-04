@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <!-- http://api.jqueryui.com/datepicker/ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- https:/  /getbootstrap.com/ -->
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/information-product.css">
+    <script src="js/information-product.js"></script>
+    <!--
+	Product Admin CSS Template
+	https://templatemo.com/tm-524-product-admin
+	-->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl">
+        <div class="container h-100">
+            <a class="navbar-brand" href="index.html">
+                <div class="box-icon-android">
+                    <i class="fa fa-android"></i>
+                </div>
+                <h1 class="tm-site-title mb-0"><span style="color:#ff7315">TVT</span>SHOP <span
+                        style="color:#ff7315">A</span>DMIN</h1>
+            </a>
+            <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars tm-nav-icon"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto h-100">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-pie-chart"></i>
+                            Thống kê
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-braille"></i>
+                            <span>
+                                Quản lý Shop<i class="fas fa-angle-down" style="margin-left: 3px;"></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i> Quản lý khách
+                                hàng</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Quản lý đơn hàng</a>
+                            <a class="dropdown-item active" href="products.html"><i class="fa fa-shopping-bag"></i>
+                                Quản lý
+                                sản
+                                phẩm</a>
+                            <a class="dropdown-item " href="quanLyBinhLuan.html"><i class="fa fa-comment"></i> Quản
+                                lý bình
+                                luận</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            Nhập hàng
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">
+                            <i class="far fa-user"></i>
+                            Tài khoản
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link d-block" href="login.html">
+                            Admin, <b>Đăng xuất</b>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="navbar-fixed-header"></div>
+    <div class="container tm-mt-big tm-mb-big">
+        <div class="qlblHeader">
+            <div>
+                <p class="qlblTitle">Xem thông tin <span style="color:#ff7315">sản phẩm</span></p>
+                <p class="qlblContentTitle">Xem chi tiết sản phẩm</p>
+            </div>
+            <input id="goback" type="button" value="Trở lại" onclick="goback()">
+        </div>
+        <div class="qlblLine"></div>
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Thông <span style="color:#ff7315">tin</span> sản
+                                phẩm</h2>
+                        </div>
+                    </div>
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <form action="" class="tm-edit-product-form">
+                                <div class="form-group mb-3">
+                                    <p for="msp">Mã sản phẩm
+                                    </p>
+                                    <p>MBA100</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="name">Tên sản phẩm
+                                    </p>
+                                    <p>Áo thun MB</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="hsx">Hãng sản xuất
+                                    </p>
+                                    <p>SHOPAOAMAZON</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="chb">Cửa hàng
+                                    </p>
+                                    <p>Shop Việt</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="hsx">Size
+                                    </p>
+                                    <p>S M L</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="description">Mô tả</p>
+                                    <p>Áo có màu trắng thanh khiết như quý tộc, giá khá đắt, chỉ được bán ở trên shop
+                                        này!</p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <p for="category">Danh mục</p>
+                                    <p>Áo thun quý tộc</p>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                        <p for="expire_date">Ngày tạo
+                                        </p>
+                                        <p>2020-11-04</p>
+                                    </div>
+                                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                        <p for="stock">Giá
+                                        </p>
+                                        <p>500.00</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                        <p for="clr">Màu
+                                        </p>
+                                        <p>Đỏ</p>
+                                    </div>
+                                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                        <p>Giới tính</p>
+                                        <p>Nam</p>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                            <div class="tm-product-img-dummy mx-auto" id="slide-add-products">
+                                <div class="list-img" id="list-img">
+                                    <img src="img/slide1.jpg" alt="" id="img1">
+                                    <img src="img/slide2.jpg" alt="" id="img1">
+                                    <img src="img/slide3.jpg" alt="" id="img1">
+                                    <img src="img/slide4.jpg" alt="" id="img1">
+                                </div>
+                                <span class="left-list-img" onclick="leftslide()"><i
+                                        class="fa fa-angle-left"></i></span>
+                                <span class="right-list-img" onclick="rightslide()"><i
+                                        class="fa fa-angle-right"></i></span>
+                            </div>
+                            <div class="layout-img" id="layout-img">
+                                <div id="box1">
+                                    <img src="img/slide1.jpg" alt="">
+                                </div>
+                                <div id="box1">
+                                    <img src="img/slide2.jpg" alt="">
+                                </div>
+                                <div id="box1">
+                                    <img src="img/slide3.jpg" alt="">
+                                </div>
+                                <div id="box1">
+                                    <img src="img/slide4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer id="aa-footer">
+        <!-- footer bottom -->
+        <div class="aa-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-top-area">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
+                                        <ul class="aa-footer-nav">
+                                            <li><a href="#">Giới thiệu</a></li>
+                                            <li><a href="#">Tuyển dụng</a></li>
+                                            <li><a href="#">Tạp chí</a></li>
+                                            <li><a href="#">Hợp tác</a></li>
+
+                                        </ul>
+                                        <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Hướng dẫn chọn size</a></li>
+                                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                                <li><a href="#">Chính sách thành viên</a></li>
+                                                <li><a href="#">Chính sách đổi trả</a></li>
+                                                <li><a href="#">Chính sách bảo hành</a></li>
+                                                <li><a href="#">Câu hỏi thường gặp</a></li>
+                                                <li><a href="#">Tra cứu đơn hàng</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
+                                            <ul class="aa-footer-nav giaohang">
+                                                <li><img src="img/giaohangnhanh.webp" alt=""></li>
+                                                <li><img src="img/giaohangtietkiem.webp" alt=""></li>
+                                                <li><img src="img/grap.webp" alt=""></li>
+
+                                            </ul>
+                                            <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                                            <ul class="aa-footer-nav giaohang">
+                                                <li><img src="img/vnpay.webp" alt=""></li>
+                                                <li><img src="img/momo.webp" alt=""></li>
+                                                <li><img src="img/cash.webp" alt=""></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Contact Us</h3>
+                                            <address>
+                                                <p> Đại học Nông Lâm</p>
+                                                <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
+                                                <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
+                                            </address>
+                                            <div class="aa-footer-social">
+                                                <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                                <a href="#"><i class="fab fa-google"></i></a>
+                                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom -->
+        <div class="aa-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-bottom-area">
+                            <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
+                            <a href=""> Terms & Conditions</a>
+                            <a href="">Safety and Security</a>
+                        </div>
+                        <button onclick="topFunction()" id="movetop" title="Go to top">
+                            <span class="fa fa-angle-double-up"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / footer -->
+    </div>
+
+    <!---->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script src="js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            console.log(document.getElementById('movetop'))
+            $('html,body').animate({ scrollTop: 0 }, 'slow');
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+</body>
+
+</html>

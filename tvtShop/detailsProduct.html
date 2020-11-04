@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../tvtShop/js/Truong/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="../tvtShop/js/Truong/jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../tvtShop/js/Truong/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="../tvtShop/css/detailsProduct.css">
+    <link rel="stylesheet" href="../tvtShop/js/Truong/fonta/css/all.css">
+    <script src="../tvtShop/js/detailsProduct.js"></script>
+
+
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Start header section -->
+    <header id="aa-header">
+        <!-- start header top  -->
+        <div class="aa-header-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-top-area">
+                            <!-- start header top left -->
+                            <div class="aa-header-top-left">
+                                <!-- start language -->
+
+                                <!-- / language -->
+                                <span id="qc">Free ship với đơn hàng từ 499,000đ</span>
+                                <!-- start currency -->
+                                <!-- / currency -->
+                                <!-- start cellphone -->
+
+                                <!-- / cellphone -->
+                            </div>
+                            <!-- / header top left -->
+                            <div class="aa-header-top-right">
+                                <ul class="aa-head-top-nav-right">
+                                    <li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                    <li class="hidden-xs"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
+                                    <li class="hidden-xs"><a href="cart.html">My Cart
+                                            <span class="fa fa-shopping-cart"></span></a></li>
+                                    <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                                    <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
+                                    <li class="hidden-xs">
+                                        <div class="aa-language">
+                                            <div class="dropdown">
+                                                <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <img class="country" src="img/flag/english.jpg"
+                                                        alt="english flag">ENGLISH
+                                                    <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu menucountry" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#"><img class="country" src="img/flag/french.jpg"
+                                                                alt="">FRENCH</a></li>
+                                                    <li><a href="#"><img class="country" src="img/flag/english.jpg"
+                                                                alt="">ENGLISH</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="hidden-xs">
+                                        <div class="cellphone hidden-xs">
+                                            <p id="phone"><span class="fa fa-phone"></span>09-3223-23</p>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / header top  -->
+
+        <!-- start header bottom  -->
+        <div class="aa-header-bottom">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-bottom-area">
+                            <!-- logo  -->
+                            <div class="aa-logo">
+                                <!-- Text based logo -->
+                                <a href="index.html">
+                                    <span class="fa fa-shopping-cart"></span>
+                                    <p>TVT<strong>Shop</strong> <span>Your Shopping Partner</span></p>
+                                </a>
+                                <!-- img based logo -->
+                                <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            </div>
+                            <!-- / logo  -->
+                            <section id="menu">
+                                <div class="container">
+                                    <div class="menu-area">
+                                        <!-- Navbar -->
+                                        <div class="navbar navbar-default" role="navigation">
+                                            <div class="navbar-header">
+                                                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                                    data-target=".navbar-collapse">
+                                                    <span class="sr-only">Toggle navigation</span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                    <span class="icon-bar"></span>
+                                                </button>
+                                            </div>
+                                            <div class="navbar-collapse collapse">
+                                                <!-- Left nav -->
+                                                <ul class="nav navbar-nav">
+                                                    <li><a href="index.html">Home</a></li>
+                                                    <li><a href="#">Men <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Casual</a></li>
+                                                            <li><a href="#">Sports</a></li>
+                                                            <li><a href="#">Formal</a></li>
+                                                            <li><a href="#">Standard</a></li>
+                                                            <li><a href="#">T-Shirts</a></li>
+                                                            <li><a href="#">Shirts</a></li>
+                                                            <li><a href="#">Jeans</a></li>
+                                                            <li><a href="#">Trousers</a></li>
+                                                            <li><a href="#">And more.. <span class="caret"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="#">Sleep Wear</a></li>
+                                                                    <li><a href="#">Sandals</a></li>
+                                                                    <li><a href="#">Loafers</a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Women <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Kurta & Kurti</a></li>
+                                                            <li><a href="#">Trousers</a></li>
+                                                            <li><a href="#">Casual</a></li>
+                                                            <li><a href="#">Sports</a></li>
+                                                            <li><a href="#">Formal</a></li>
+                                                            <li><a href="#">Sarees</a></li>
+                                                            <li><a href="#">Shoes</a></li>
+                                                            <li><a href="#">And more.. <span class="caret"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="#">Sleep Wear</a></li>
+                                                                    <li><a href="#">Sandals</a></li>
+                                                                    <li><a href="#">Loafers</a></li>
+                                                                    <li><a href="#">And more.. <span
+                                                                                class="caret"></span></a>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="#">Rings</a></li>
+                                                                            <li><a href="#">Earrings</a></li>
+                                                                            <li><a href="#">Jewellery Sets</a></li>
+                                                                            <li><a href="#">Lockets</a></li>
+                                                                            <li class="disabled"><a class="disabled"
+                                                                                    href="#">Disabled item</a></li>
+                                                                            <li><a href="#">Jeans</a></li>
+                                                                            <li><a href="#">Polo T-Shirts</a></li>
+                                                                            <li><a href="#">SKirts</a></li>
+                                                                            <li><a href="#">Jackets</a></li>
+                                                                            <li><a href="#">Tops</a></li>
+                                                                            <li><a href="#">Make Up</a></li>
+                                                                            <li><a href="#">Hair Care</a></li>
+                                                                            <li><a href="#">Perfumes</a></li>
+                                                                            <li><a href="#">Skin Care</a></li>
+                                                                            <li><a href="#">Hand Bags</a></li>
+                                                                            <li><a href="#">Single Bags</a></li>
+                                                                            <li><a href="#">Travel Bags</a></li>
+                                                                            <li><a href="#">Wallets & Belts</a></li>
+                                                                            <li><a href="#">Sunglases</a></li>
+                                                                            <li><a href="#">Nail</a></li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="blog-archive.html">Blog Style 1</a></li>
+                                                            <li><a href="blog-archive-2.html">Blog Style 2</a></li>
+                                                            <li><a href="blog-single.html">Blog Single</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="contact.html">Contact</a></li>
+                                                    <li><a href="#">Pages <span class="caret"></span></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="product.html">Shop Page</a></li>
+                                                            <li><a href="product-detail.html">Shop Single</a></li>
+                                                            <li><a href="404.html">404 Page</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!--/.nav-collapse -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- cart box -->
+                            <div class="aa-cartbox">
+                                <a class="aa-cart-link" href="#">
+                                    <span class="fa fa-shopping-basket"></span>
+                                    <span class="aa-cart-title">SHOPPING CART</span>
+                                    <span class="aa-cart-notify">2</span>
+                                </a>
+                                <div class="aa-cartbox-summary">
+                                    <ul>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"
+                                                    alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x $250</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg"
+                                                    alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">Product Name</a></h4>
+                                                <p>1 x $250</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                        </li>
+                                        <li>
+                                            <span class="aa-cartbox-total-title">
+                                                Total
+                                            </span>
+                                            <span class="aa-cartbox-total-price">
+                                                $500
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                                </div>
+                            </div>
+                            <!-- / cart box -->
+                            <!-- search box -->
+                            <div class="aa-search-box">
+                                <form action="">
+                                    <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                                    <button type="submit"><span class="fa fa-search"></span></button>
+                                </form>
+                            </div>
+                            <!-- / search box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / header bottom  -->
+    </header>
+
+    <!-- / header section -->
+    <div class="main">
+        <div class="container">
+            <div class="top_elements">
+                <!-- các hình ảnh sản phẩm và slide -->
+                <div class="product_slide">
+                    <div class="each_product">
+                        <div><img src="../tvtShop/img/slide1.jpg" alt=""></div>
+                        <div><img src="../tvtShop/img/slide2.jpg" alt=""></div>
+                        <div><img src="../tvtShop/img/slide3.jpg" alt=""></div>
+                        <div><img src="../tvtShop/img/slide4.jpg" alt=""></div>
+                    </div>
+                    <div class="slide_pd">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="../tvtShop/img/slide1.jpg" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="../tvtShop/img/slide2.jpg" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="../tvtShop/img/slide3.jpg" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="../tvtShop/img/slide4.jpg" alt="Fourth slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- nội dung chi tiết của sản phẩm -->
+                <div class="product_content">
+                    <p class="name_product text_content font_size">ÁO SWEATER NAM STAY TOGETHER RẰN RI MSW 1006</p>
+                    <div class="price_product text_content font_size"><b>379,000 VND</b></div>
+                    <div class="color_img_pd text_content">
+                        <div class="color_pd">
+                            <span class="min_text">Màu sắc</span>
+                            <b><span> Rêu</span></b>
+                        </div>
+                        <div class="img_each_pd">
+                            <label class="img_color1"><input type="radio" name="type_pd" id="cl1"
+                                    checked></input></label>
+                            <label class="img_color2"><input type="radio" name="type_pd" id="cl2"></input></label>
+                        </div>
+                    </div>
+                    <div class="sex_pd text_content">
+                        <span class="min_text">Giới tính</span>
+                        <div class="male"><span>Men</span></div>
+                    </div>
+                    <div class="size_pd text_content">
+                        <span class="min_text size_text">Kích thước</span>
+                        <a href="" class="min_text tutorial_size"><u>Hướng dẫn chọn size</u></a>
+                        <div class="choose_size">
+                            <label class="m_size size_pro" data-toogle="buttons">
+                                <input type="radio" value="M" name="size" checked id="m_size">M
+                            </label>
+                            <label class="l_size size_pro">L
+                                <input type="radio" value="L" name="size" id="l_size">
+                            </label>
+                            <label class="xl_size size_pro">XL
+                                <input type="radio" value="XL" name="size" id="xl_size">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="number_product_choose text_content">
+                        <span class="min_text">Số lượng</span>
+                        <div class="btn_choose_pd">
+                            <div onclick="sub()" class="sub_btn btn_choose" id="sub">
+                                <span>-</span>
+                            </div>
+                            <div class="index_number_text btn_input">
+                                <input type="text" value="1" id="value">
+                            </div>
+                            <div onclick="add()" class="add_btn btn_choose" id="add">
+                                <span>+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_add_cart">
+                        <div class="cart_a">Thêm vào giỏ hàng</div>
+                        <div class="layer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_elements">
+                <div class="describe_pd">
+                    <div class="title_describe_tittle text_title rate_title" id="des">
+                        <i class="fas fa-chevron-right arrow" id="arrow"></i>
+                        <span><b>Mô tả sản phẩm</b></span>
+                    </div>
+                    <div class="content_describe_pd" id="describe">
+                        <b>Áo sweater nam Stay Together rằn ri MSW 1006</b> Couple TX là item được yêu thích và sử dụng
+                        phổ biến trong giới trẻ, mang hơi hướng thời trang đường phổ trẻ trung và hiện đại. Áo được
+                        thiết kế với form oversize rộng rãi, phù hợp với mọi dáng người cùng họa tiết rằn ri tạo điểm
+                        nhấn.
+                        <ul class="list_describe">
+                            <li>Chất liệu cotton dày dặn. </li>
+                            <li>Form oversize cá tính. </li>
+                            <li>Thông điệp “Friends travel stay together” với họa tiết rằn ri tạo điểm nhấn. </li>
+                            <li>Bộ 2 màu cam đất & rêu.</li>
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+                <div class="rate_pd">
+                    <div class="rate_title text_title" id="rate_pd">
+                        <i class="fas fa-chevron-right arrow" id="arrows"></i>
+                        <span style="margin-right: 15px;"><b>Đánh giá sản phẩm</b></span>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(0 đánh giá)</span>
+                    </div>
+                    <!-- form đánh giá -->
+                    <div class="btn_rate_form" id="write_vote">
+                        <div class="btn_rate write_rate">
+                            <div class="write_vote">Viết đánh giá</div>
+
+                            <div class="layer">
+
+                            </div>
+                        </div>
+                        <div class="form_rate_button" id="form_vote">
+                            <div class="form_rate_pd">
+                                <div class="form_name">
+                                    <p>Tên</p>
+                                    <input class="rate_text" type="text" value=""
+                                        placeholder="Tên của bạn (>3 kí tự và <30 kí tự)">
+                                </div>
+                                <div class="form_mail">
+                                    <p>Email</p>
+                                    <input class="rate_text" type="text" placeholder="abc@example.com">
+                                </div>
+                                <div class="form_rateText">
+                                    <p>Đánh giá</p>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <!-- <i class="fas fa-star"></i> -->
+                                </div>
+                                <div class="form_rate_tittle">
+                                    <p>Tiêu đề</p>
+                                    <input class="rate_text" type="text" placeholder="Hãy chọn một tiêu đề">
+                                </div>
+                                <div class="form_rate_content">
+                                    <p>Nội dung (0/1000)</p>
+
+                                    <textarea name="" id="" cols="30" rows="10"
+                                        placeholder="Viết một đánh giá ở đây"></textarea>
+                                </div>
+                                <div class="subbmit_rate write_rate">
+                                    <div class="sent"> Gửi đánh giá</div>
+                                    <div class="layer">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <!-- footer -->
+    <footer id="aa-footer">
+        <!-- footer bottom -->
+        <div class="aa-footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-top-area">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
+                                        <ul class="aa-footer-nav">
+                                            <li><a href="#">Giới thiệu</a></li>
+                                            <li><a href="#">Tuyển dụng</a></li>
+                                            <li><a href="#">Tạp chí</a></li>
+                                            <li><a href="#">Hợp tác</a></li>
+
+                                        </ul>
+                                        <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Hướng dẫn chọn size</a></li>
+                                                <li><a href="#">Hướng dẫn mua hàng</a></li>
+                                                <li><a href="#">Chính sách thành viên</a></li>
+                                                <li><a href="#">Chính sách đổi trả</a></li>
+                                                <li><a href="#">Chính sách bảo hành</a></li>
+                                                <li><a href="#">Câu hỏi thường gặp</a></li>
+                                                <li><a href="#">Tra cứu đơn hàng</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
+                                            <ul class="aa-footer-nav giaohang">
+                                                <li><img src="img/giaohangnhanh.webp" alt=""></li>
+                                                <li><img src="img/giaohangtietkiem.webp" alt=""></li>
+                                                <li><img src="img/grap.webp" alt=""></li>
+
+                                            </ul>
+                                            <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                                            <ul class="aa-footer-nav giaohang">
+                                                <li><img src="img/vnpay.webp" alt=""></li>
+                                                <li><img src="img/momo.webp" alt=""></li>
+                                                <li><img src="img/cash.webp" alt=""></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Contact Us</h3>
+                                            <address>
+                                                <p> Đại học Nông Lâm</p>
+                                                <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
+                                                <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
+                                            </address>
+                                            <div class="aa-footer-social">
+                                                <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                                <a href="#"><i class="fab fa-google"></i></a>
+                                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom -->
+        <div class="aa-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-bottom-area">
+                            <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
+                            <a href=""> Terms & Conditions</a>
+                            <a href="">Safety and Security</a>
+                        </div>
+                        <button onclick="topFunction()" id="movetop" title="Go to top">
+                            <span class="fa fa-angle-double-up"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / footer -->
+    <script language="javascript">
+        var check = 0;
+        var des = document.getElementById('des');
+        var a = document.getElementById('describe');
+        var icon = document.getElementById('arrow');
+        var icon1 = document.getElementById('arrows');
+        des.onclick = function () {
+            if (check == 0) {
+                a.style.display = "block";
+                icon.style.transform = "rotate(90deg)";
+                icon.style.transition = "0.3s";
+                check = 1;
+            }
+            else if (check == 1) {
+                a.style.display = "none";
+                icon.style.transform = "rotate(-90deg)";
+                icon.style.transition = "0.3s";
+                check = 0;
+            }
+        }
+        // danh gia san pham
+        var check1 = 0;
+        var check2 = 0;
+        var icon1 = document.getElementById('arrows');
+        var rate_pd = document.getElementById('rate_pd');
+        var write_vote = document.getElementById('write_vote');
+        var form_vote = document.getElementById('form_vote');
+        rate_pd.onclick = function () {
+            if (check1 == 0) {
+                write_vote.style.display = "block";
+                write_vote.onclick = function () {
+                    if (check2 == 0) {
+                        form_vote.style.display = "block";
+                        check2 = 1;
+                    }
+                    else if (check2 == 1) {
+                        form_vote.style.display = "none";
+                        check2 = 0;
+                    }
+                }
+                icon1.style.transform = "rotate(90deg)";
+                icon1.style.transition = "0.3s";
+                check1 = 1;
+            }
+            else if (check1 == 1) {
+                write_vote.style.display = "none";
+                icon1.style.transform = "rotate(-90deg)";
+                icon1.style.transition = "0.3s";
+                check1 = 0;
+            }
+        }
+        //chon mau ao
+        var c1 = document.getElementById('cl1');
+        var c2 = document.getElementById('cl2');
+        var lb1 = document.getElementsByClassName('img_color1')[0];
+        var lb2 = document.getElementsByClassName('img_color2')[0];
+        c1.onclick = function () {
+            lb1.style.border = "3px solid #f5b505";
+            lb2.style.border = "3px solid #d5cece";
+            console.log(5);
+        }
+        c2.onclick = function () {
+            lb2.style.border = "3px solid #f5b505";
+            lb1.style.border = "3px solid #d5cece";
+            console.log(4);
+        }
+        //chon kich thuoc
+        var m = document.getElementById('m_size');
+        var l = document.getElementById('l_size');
+        var xl = document.getElementById('xl_size');
+        var m_size = document.getElementsByClassName('m_size')[0];
+        var l_size = document.getElementsByClassName('l_size')[0];
+        var xl_size = document.getElementsByClassName('xl_size')[0];
+        m.onclick = function () {
+            m_size.style.border = "3px solid #f5b505";
+            l_size.style.border = "3px solid #d5cece";
+            xl_size.style.border = "3px solid #d5cece";
+        }
+        l.onclick = function () {
+            l_size.style.border = "3px solid #f5b505";
+            m_size.style.border = "3px solid #d5cece";
+            xl_size.style.border = "3px solid #d5cece";
+        }
+        xl.onclick = function () {
+            xl_size.style.border = "3px solid #f5b505";
+            l_size.style.border = "3px solid #d5cece";
+            m_size.style.border = "3px solid #d5cece";
+        }
+    </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+    <!-- Product view slider -->
+    <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+    <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="js/nouislider.js"></script>
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
