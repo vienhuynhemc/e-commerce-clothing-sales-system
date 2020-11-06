@@ -262,8 +262,6 @@ p.qlblContentTitle {
   margin: auto;
   margin-top: 20px;
 }
-
-
 #form-information-kh div:nth-child(10) {
   margin-left: 550px;
   margin-top: -10px;
@@ -325,7 +323,7 @@ p.qlblContentTitle {
   background-color: #ff7315;
 }
 
-.form-edit-qlbl div:nth-child(9) input:hover{
+.form-edit-qlbl div:nth-child(9) input:hover {
   background-color: #232020;
 }
 
