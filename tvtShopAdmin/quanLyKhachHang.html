@@ -38,26 +38,129 @@
             </div>
         </div>
         <div class="form-edit-qlbl" id="form-edit-qlbl">
-            <h1>Thay đổi nội dung <span style="color:#ff7315">bình</span> luận</h1>
+            <h1>Thay đổi thông tin <span style="color:#ff7315">khách</span> hàng</h1>
+            <div>
+                <label for="makhqlkh">Mã khách hàng</label>
+                <input type="text" id="makhqlkh" value="KH1140">
+            </div>
+            <div>
+                <label for="nameqlkh">Tên khách hàng</label>
+                <input type="text" id="nameqlkh" value="Nguyễn Thị Hoa Hồng">
+            </div>
+            <div>
+                <label for="acqlkh">Tài khoản</label>
+                <input type="text" id="acqlkh" value="hongcute123">
+            </div>
+            <div>
+                <label for="passqlkh">Mật khẩu</label>
+                <input type="text" id="passqlkh" value="iamarose">
+            </div>
+            <div>
+                <label for="dateqlkh">Ngày tạo</label>
+                <input type="date" id="dateqlkh" value=2020-11-05>
+            </div>
+            <div>
+                <label for="emailqlkh">Email</label>
+                <input type="email" id="emailqlkh" value="hongcute123@gmail.com">
+            </div>
+            <div>
+                <label for="sdtqlkh">Số điện thoại</label>
+                <input type="text" id="sdtqlkh" value="0923454521">
+            </div>
+            <div>
+                <label for="trangthaiedit">Trạng thái kích hoạt</label>
+                <input type="checkbox" id="trangthaiedit" checked>
+            </div>
+            <div class="editsubmit">
+                <span onclick="hiddenDiv()">Trở về</span>
+                <span onclick="hiddenDiv()">Lưu</span>
+            </div>
+        </div>
+        <div class="form-edit-qlbl" id="form-add-kh">
+            <h1>Thêm một <span style="color:#ff7315">khách</span> hàng mới</h1>
+            <div>
+                <label for="makhqlkha">Mã khách hàng</label>
+                <input type="text" id="makhqlkha" placeholder="VD: KH10000">
+            </div>
+            <div>
+                <label for="nameqlkha">Tên khách hàng</label>
+                <input type="text" id="nameqlkha" placeholder="VD: Nguyễn Thị Hoa Hồng">
+            </div>
+            <div>
+                <label for="acqlkha">Tài khoản</label>
+                <input type="text" id="acqlkha" placeholder="VD: hongcute123">
+            </div>
+            <div>
+                <label for="passqlkha">Mật khẩu</label>
+                <input type="text" id="passqlkha" placeholder="VD Hong04022k">
+            </div>
+            <div>
+                <label for="dateqlkha">Ngày tạo</label>
+                <input type="date" id="dateqlkha">
+                <script>
+                    function today() {
+                        let d = new Date();
+                        let currDate = d.getDate();
+                        let currMonth = d.getMonth() + 1;
+                        let currYear = d.getFullYear();
+                        return currYear + "-" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "-" + ((currDate < 10) ? '0' + currDate : currDate);
+                    }
+                    document.getElementById('dateqlkha').value = today();
+                </script>
+            </div>
+            <div>
+                <label for="emailqlkha">Email</label>
+                <input type="email" id="emailqlkha" placeholder="Nên sài email thật để kích hoạt tài khoản">
+            </div>
+            <div>
+                <label for="sdtqlkha">Số điện thoại</label>
+                <input type="text" id="sdtqlkha" placeholder="Nên điền tiện cho việc liên lạc">
+            </div>
+            <div>
+                <label for="trangthaiadd">Trạng thái kích hoạt</label>
+                <input type="checkbox" id="trangthaiadd">
+            </div>
+            <div class="editsubmit">
+                <span onclick="hiddenDiv()">Trở về</span>
+                <span onclick="hiddenDiv()">Lưu</span>
+            </div>
+        </div>
+        <div class="form-edit-qlbl" id="form-information-kh">
+            <h1>Thông tin chi tiết <span style="color:#ff7315">khách</span> hàng</h1>
+            <div>
+                <p>Mã khách hàng</p>
+                <p>KH1140</p>
+            </div>
             <div>
                 <p>Tên khách hàng</p>
                 <p>Nguyễn Thị Hoa Hồng</p>
             </div>
             <div>
-                <p>Ngày bình luận</p>
-                <p>2020-10-19</p>
+                <p>Tài khoản</p>
+                <p>hongcute123</p>
             </div>
             <div>
-                <p>Nội dung</p>
-                <p>Trời ơi, tại sao hết hàng rồi?</p>
+                <p>Mật khẩu</p>
+                <p>iamarose</p>
             </div>
             <div>
-                <textarea name="newContent" id="newContent" cols="30" rows="10" placeholder="Nội dung mới"></textarea>
-                <label for="newContent">Nội dung mới</label>
+                <p>Ngày tạo</p>
+                <p>2020-11-5</p>
             </div>
             <div>
+                <p>Email</p>
+                <p>hongcute123@gmail.com</p>
+            </div>
+            <div>
+                <p>Số điện thoại</p>
+                <p>0923454521</p>
+            </div>
+            <div>
+                <p>Trạng thái kích hoạt</p>
+                <p>Đã kích hoạt</p>
+            </div>
+            <div class="editsubmit">
                 <span onclick="hiddenDiv()">Trở về</span>
-                <span onclick="hiddenDiv()">Lưu</span>
             </div>
         </div>
     </div>
@@ -145,387 +248,385 @@
                     <input type="text" id="qlblSearch" placeholder="Tìm kiếm tài khoản">
                     <label for="qlblSearch">Tìm kiếm</label>
                 </div>
-                <p class="title"><span style="color:#ff7315">K</span>hách hàng</p>
-                <div class="line"></div>
-                <table class="qlbl-content-table">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Mã khách hàng</th>
-                            <th>Tên khách hàng</th>
-                            <th>Tài khoản</th>
-                            <th>Mật khẩu</th>
-                            <th>Ngày tạo</th>
-                            <th>Email</th>
-                            <th>Số điện thoại</th>
-                            <th>Xóa</th>
-                            <th>Sửa</th>
-                            <th>Thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>KH1140</td>
-                            <td>Nguyễn Thị Hoa Hồng</td>
-                            <td>hongcute123</td>
-                            <td>iamarose</td>
-                            <td>2020-11-05</td>
-                            <td>hongcute123@gmail.com</td>
-                            <td>0923454521</td>
-                            <td><i class="fa fa-trash-o qlblRemove" onclick="removeKH()"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit" onclick="editGH()"></i></td>
-                            <td><i class="fa fa-info qlblEditt" onclick="informationGH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>KH1139</td>
-                            <td>Nguyễn Văn Khá</td>
-                            <td>iamagoodboy</td>
-                            <td>123456</td>
-                            <td>2020-10-19</td>
-                            <td>khakha@gmail.com</td>
-                            <td>0987564392</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>KH1138</td>
-                            <td>Nguyễn Thị Cục Thơ</td>
-                            <td>anhtho97</td>
-                            <td>01470147</td>
-                            <td>2020-10-18</td>
-                            <td>thoanh97@gmail.com</td>
-                            <td>0338720376</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>KH1137</td>
-                            <td>Võ Đỗ Thánh</td>
-                            <td>vodichthienha</td>
-                            <td>vankiepbatphuc</td>
-                            <td>2020-10-17</td>
-                            <td>luudanhmuondoi@gmail.com</td>
-                            <td>0331256475</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>KH1136</td>
-                            <td>Trần Phàm</td>
-                            <td>trongsinhdothi</td>
-                            <td>tutienngannam</td>
-                            <td>2020-10-16</td>
-                            <td>diettoc@gmail.com</td>
-                            <td>0945321687</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>KH1135</td>
-                            <td>Lý Bạnh</td>
-                            <td>thithanh</td>
-                            <td>thithanhlybach</td>
-                            <td>2020-10-15</td>
-                            <td>vodichtrungquoc@gmail.com</td>
-                            <td>0333652154</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>KH1134</td>
-                            <td>Nhị Cẩu Tử</td>
-                            <td>dauhuthui123</td>
-                            <td>bonthanton</td>
-                            <td>2020-10-12</td>
-                            <td>bonthanton9kiep@gmail.com</td>
-                            <td>0971212457</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="movepage-next">
-                    <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
-                    <ul>
-                        <li><a href="">Trở về</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">Tiếp tục</a></li>
-                    </ul>
+                <div class="bar-qlkh">
+                    <p class="title bar-value1" id="bar-value1" onclick="contentKH()"><span
+                            style="color:#ff7315">K</span>hách hàng</p>
+                    <p class="title bar-value2" id="bar-value2" onclick="contentGH()"><span
+                            style="color:#ff7315">Nhân</span> viên giao hàng</p>
+                    <p class="title bar-value3" id="bar-value3" onclick="contentKK()"><span
+                            style="color:#ff7315">Nhân</span> viên kho</p>
                 </div>
-                <p class="title"><span style="color:#ff7315">Nhân</span> viên giao hàng</p>
                 <div class="line"></div>
-                <table class="qlbl-content-table gh">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Mã nhân viên</th>
-                            <th>Tên nhân viên</th>
-                            <th>Tài khoản</th>
-                            <th>Mật khẩu</th>
-                            <th>Ngày vào làm</th>
-                            <th>Số điện thoại</th>
-                            <th>Lương</th>
-                            <th>Email</th>
-                            <th>Xóa</th>
-                            <th>Sửa</th>
-                            <th>Thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>GH220</td>
-                            <td>Nguyễn Cao Đại</td>
-                            <td>ghcaodai</td>
-                            <td>dai123</td>
-                            <td>2020-01-03</td>
-                            <td>0965321563</td>
-                            <td>10.000.000</td>
-                            <td>caodainguyen@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove" onclick="removeGH()"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit" onclick="editGH()"></i></td>
-                            <td><i class="fa fa-info qlblEditt" onclick="informationGH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>GH219</td>
-                            <td>Huỳnh Lập</td>
-                            <td>ghlappro</td>
-                            <td>lapprovip</td>
-                            <td>2020-01-02</td>
-                            <td>0331537562</td>
-                            <td>9.000.000</td>
-                            <td>lapprovip123@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>GH218</td>
-                            <td>Hồ Hữu Nghĩa</td>
-                            <td>ghhuunghia</td>
-                            <td>huunghiagh</td>
-                            <td>2020-01-01</td>
-                            <td>0968523156</td>
-                            <td>11.000.000</td>
-                            <td>huunghia@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>GH217</td>
-                            <td>Hồ Quốc Huy</td>
-                            <td>ghquochuy</td>
-                            <td>giaohang123</td>
-                            <td>2019-12-20</td>
-                            <td>0332154345</td>
-                            <td>6.000.000</td>
-                            <td>hoquochuy@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>GH216</td>
-                            <td>Nguyễn Minh Châu</td>
-                            <td>ghminhchau</td>
-                            <td>minhchau123</td>
-                            <td>2019-12-10</td>
-                            <td>0965321245</td>
-                            <td>13.000.000</td>
-                            <td>minhchaunguyen@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>GH215</td>
-                            <td>Trình Minh Huy</td>
-                            <td>ghminhhuy</td>
-                            <td>daicakhongsoma</td>
-                            <td>2019-12-9</td>
-                            <td>0984566521</td>
-                            <td>11.500.000</td>
-                            <td>trinhminhhuy@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>GH214</td>
-                            <td>Nguyễn Thị Bá Sang</td>
-                            <td>ghbasang</td>
-                            <td>basang</td>
-                            <td>2019-12-4</td>
-                            <td>0997253456</td>
-                            <td>12.500.000</td>
-                            <td>basang@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="movepage-next">
-                    <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
-                    <ul>
-                        <li><a href="">Trở về</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">Tiếp tục</a></li>
-                    </ul>
-                </div>
-                <p class="title"><span style="color:#ff7315">Nhân</span> viên kho</p>
-                <div class="line"></div>
-                <table class="qlbl-content-table gh">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Mã nhân viên</th>
-                            <th>Tên nhân viên</th>
-                            <th>Tài khoản</th>
-                            <th>Mật khẩu</th>
-                            <th>Ngày vào làm</th>
-                            <th>Số điện thoại</th>
-                            <th>Lương</th>
-                            <th>Email</th>
-                            <th>Xóa</th>
-                            <th>Sửa</th>
-                            <th>Thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>KK220</td>
-                            <td>Nguyễn Cao Đại</td>
-                            <td>ghcaodai</td>
-                            <td>dai123</td>
-                            <td>2020-01-03</td>
-                            <td>0965321563</td>
-                            <td>10.000.000</td>
-                            <td>caodainguyen@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove" onclick="removeGH()"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit" onclick="editGH()"></i></td>
-                            <td><i class="fa fa-info qlblEditt" onclick="informationGH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>KK219</td>
-                            <td>Huỳnh Lập</td>
-                            <td>ghlappro</td>
-                            <td>lapprovip</td>
-                            <td>2020-01-02</td>
-                            <td>0331537562</td>
-                            <td>9.000.000</td>
-                            <td>lapprovip123@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>KK218</td>
-                            <td>Hồ Hữu Nghĩa</td>
-                            <td>ghhuunghia</td>
-                            <td>huunghiagh</td>
-                            <td>2020-01-01</td>
-                            <td>0968523156</td>
-                            <td>11.000.000</td>
-                            <td>huunghia@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>KK217</td>
-                            <td>Hồ Quốc Huy</td>
-                            <td>ghquochuy</td>
-                            <td>giaohang123</td>
-                            <td>2019-12-20</td>
-                            <td>0332154345</td>
-                            <td>6.000.000</td>
-                            <td>hoquochuy@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>KK216</td>
-                            <td>Nguyễn Minh Châu</td>
-                            <td>ghminhchau</td>
-                            <td>minhchau123</td>
-                            <td>2019-12-10</td>
-                            <td>0965321245</td>
-                            <td>13.000.000</td>
-                            <td>minhchaunguyen@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>KK215</td>
-                            <td>Trình Minh Huy</td>
-                            <td>ghminhhuy</td>
-                            <td>daicakhongsoma</td>
-                            <td>2019-12-9</td>
-                            <td>0984566521</td>
-                            <td>11.500.000</td>
-                            <td>trinhminhhuy@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>KK214</td>
-                            <td>Nguyễn Thị Bá Sang</td>
-                            <td>ghbasang</td>
-                            <td>basang</td>
-                            <td>2019-12-4</td>
-                            <td>0997253456</td>
-                            <td>12.500.000</td>
-                            <td>basang@gmail.com</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
-                            <td><i class="fa fa-info qlblEditt"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="movepage-next">
-                    <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
-                    <ul>
-                        <li><a href="">Trở về</a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">Tiếp tục</a></li>
-                    </ul>
+                <div class="mainQl">
+                    <div class="ql1" id="ql1">
+                        <p class="buttonAddQLKH" onclick="addKH()">Thêm khách hàng mới</p>
+                        <table class="qlbl-content-table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã khách hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Tài khoản</th>
+                                    <th>Mật khẩu</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Xóa</th>
+                                    <th>Sửa</th>
+                                    <th>Thông tin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>KH1140</td>
+                                    <td>Nguyễn Thị Hoa Hồng</td>
+                                    <td>hongcute123</td>
+                                    <td>iamarose</td>
+                                    <td>2020-11-05</td>
+                                    <td>hongcute123@gmail.com</td>
+                                    <td>0923454521</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="removeKH()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="editKH()"></i></td>
+                                    <td><i class="fa fa-info qlblEditt" onclick="informationKH()"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>KH1139</td>
+                                    <td>Nguyễn Văn Khá</td>
+                                    <td>iamagoodboy</td>
+                                    <td>123456</td>
+                                    <td>2020-10-19</td>
+                                    <td>khakha@gmail.com</td>
+                                    <td>0987564392</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>KH1138</td>
+                                    <td>Nguyễn Thị Cục Thơ</td>
+                                    <td>anhtho97</td>
+                                    <td>01470147</td>
+                                    <td>2020-10-18</td>
+                                    <td>thoanh97@gmail.com</td>
+                                    <td>0338720376</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>KH1137</td>
+                                    <td>Võ Đỗ Thánh</td>
+                                    <td>vodichthienha</td>
+                                    <td>vankiepbatphuc</td>
+                                    <td>2020-10-17</td>
+                                    <td>luudanhmuondoi@gmail.com</td>
+                                    <td>0331256475</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>KH1136</td>
+                                    <td>Trần Phàm</td>
+                                    <td>trongsinhdothi</td>
+                                    <td>tutienngannam</td>
+                                    <td>2020-10-16</td>
+                                    <td>diettoc@gmail.com</td>
+                                    <td>0945321687</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>KH1135</td>
+                                    <td>Lý Bạnh</td>
+                                    <td>thithanh</td>
+                                    <td>thithanhlybach</td>
+                                    <td>2020-10-15</td>
+                                    <td>vodichtrungquoc@gmail.com</td>
+                                    <td>0333652154</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>KH1134</td>
+                                    <td>Nhị Cẩu Tử</td>
+                                    <td>dauhuthui123</td>
+                                    <td>bonthanton</td>
+                                    <td>2020-10-12</td>
+                                    <td>bonthanton9kiep@gmail.com</td>
+                                    <td>0971212457</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="movepage-next">
+                            <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
+                            <ul>
+                                <li><a href="">Trở về</a></li>
+                                <li><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">Tiếp tục</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ql2" id="ql2">
+                        <p class="buttonAddQLKH">Thêm nhân viên giao hàng mới</p>
+                        <table class="qlbl-content-table gh">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Avatar</th>
+                                    <th>Ngày vào làm</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Lương</th>
+                                    <th>Email</th>
+                                    <th>Xóa</th>
+                                    <th>Sửa</th>
+                                    <th>Thông tin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>GH220</td>
+                                    <td>Nguyễn Cao Đại</td>
+                                    <td><img src="img/avatar1.jpg" alt=""></td>
+                                    <td>2020-01-03</td>
+                                    <td>0965321563</td>
+                                    <td>10.000.000</td>
+                                    <td>caodainguyen@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="removeGH()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="editGH()"></i></td>
+                                    <td><i class="fa fa-info qlblEditt" onclick="informationGH()"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>GH219</td>
+                                    <td>Huỳnh Lập</td>
+                                    <td><img src="img/avatar2.jpg" alt=""></td>
+                                    <td>2020-01-02</td>
+                                    <td>0331537562</td>
+                                    <td>9.000.000</td>
+                                    <td>lapprovip123@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>GH218</td>
+                                    <td>Hồ Hữu Nghĩa</td>
+                                    <td><img src="img/avatar3.jpg" alt=""></td>
+                                    <td>2020-01-01</td>
+                                    <td>0968523156</td>
+                                    <td>11.000.000</td>
+                                    <td>huunghia@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>GH217</td>
+                                    <td>Hồ Quốc Huy</td>
+                                    <td><img src="img/avatar4.jpg" alt=""></td>
+                                    <td>2019-12-20</td>
+                                    <td>0332154345</td>
+                                    <td>6.000.000</td>
+                                    <td>hoquochuy@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>GH216</td>
+                                    <td>Nguyễn Minh Châu</td>
+                                    <td><img src="img/avatar5.jpg" alt=""></td>
+                                    <td>2019-12-10</td>
+                                    <td>0965321245</td>
+                                    <td>13.000.000</td>
+                                    <td>minhchaunguyen@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>GH215</td>
+                                    <td>Trình Minh Huy</td>
+                                    <td><img src="img/avatar6.jpg" alt=""></td>
+                                    <td>2019-12-9</td>
+                                    <td>0984566521</td>
+                                    <td>11.500.000</td>
+                                    <td>trinhminhhuy@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>GH214</td>
+                                    <td>Nguyễn Thị Bá Sang</td>
+                                    <td><img src="img/avatar7.jpg" alt=""></td>
+                                    <td>2019-12-4</td>
+                                    <td>0997253456</td>
+                                    <td>12.500.000</td>
+                                    <td>basang@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="movepage-next">
+                            <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
+                            <ul>
+                                <li><a href="">Trở về</a></li>
+                                <li><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">Tiếp tục</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ql3" id="ql3">
+                        <p class="buttonAddQLKH">Thêm nhân viên kho mới</p>
+                        <table class="qlbl-content-table gh">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Tên nhân viên</th>
+                                    <th>Avatar</th>
+                                    <th>Ngày vào làm</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Lương</th>
+                                    <th>Email</th>
+                                    <th>Xóa</th>
+                                    <th>Sửa</th>
+                                    <th>Thông tin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>KK220</td>
+                                    <td>Nguyễn Cao Đại</td>
+                                    <td><img src="img/avatar8.jpg" alt=""></td>
+                                    <td>2020-01-03</td>
+                                    <td>0965321563</td>
+                                    <td>10.000.000</td>
+                                    <td>caodainguyen@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="removeKK()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="editKK()"></i></td>
+                                    <td><i class="fa fa-info qlblEditt" onclick="informationKK()"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>KK219</td>
+                                    <td>Huỳnh Lập</td>
+                                    <td><img src="img/avatar9.jpg" alt=""></td>
+                                    <td>2020-01-02</td>
+                                    <td>0331537562</td>
+                                    <td>9.000.000</td>
+                                    <td>lapprovip123@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>KK218</td>
+                                    <td>Hồ Hữu Nghĩa</td>
+                                    <td><img src="img/avatar10.jpg" alt=""></td>
+                                    <td>2020-01-01</td>
+                                    <td>0968523156</td>
+                                    <td>11.000.000</td>
+                                    <td>huunghia@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>KK217</td>
+                                    <td>Hồ Quốc Huy</td>
+                                    <td><img src="img/avatar11.jpg" alt=""></td>
+                                    <td>2019-12-20</td>
+                                    <td>0332154345</td>
+                                    <td>6.000.000</td>
+                                    <td>hoquochuy@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>KK216</td>
+                                    <td>Nguyễn Minh Châu</td>
+                                    <td><img src="img/avatar12.jpg" alt=""></td>
+                                    <td>2019-12-10</td>
+                                    <td>0965321245</td>
+                                    <td>13.000.000</td>
+                                    <td>minhchaunguyen@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>KK215</td>
+                                    <td>Trình Minh Huy</td>
+                                    <td><img src="img/avatar13.jpg" alt=""></td>
+                                    <td>2019-12-9</td>
+                                    <td>0984566521</td>
+                                    <td>11.500.000</td>
+                                    <td>trinhminhhuy@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>KK214</td>
+                                    <td>Nguyễn Thị Bá Sang</td>
+                                    <td><img src="img/avatar14.jpg" alt=""></td>
+                                    <td>2019-12-4</td>
+                                    <td>0997253456</td>
+                                    <td>12.500.000</td>
+                                    <td>basang@gmail.com</td>
+                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
+                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="movepage-next">
+                            <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
+                            <ul>
+                                <li><a href="">Trở về</a></li>
+                                <li><a href="">1</a></li>
+                                <li><a href="">2</a></li>
+                                <li><a href="">3</a></li>
+                                <li><a href="">Tiếp tục</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
