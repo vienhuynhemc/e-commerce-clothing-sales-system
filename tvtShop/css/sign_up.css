@@ -173,4 +173,62 @@
 .mainLogin{
     height: 500px;
 }
+/* Trang quen mat khau */
+.title_forgot{
+    margin-bottom: 20px;
+    float: left;
+    margin-left: 75px;
+}
+.mainForgot{
+    height: 400px !important;
+    margin-top: 100px !important;
+    margin-bottom: 50px;
+}
+.send_again{
+    /* float: right!important;
+    margin: 10px 0 0px 105px; */
+    float: right;
+    margin-top: 25px;
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-right: 65px;
+    opacity: 0;
+}
+.btn_send_code{
+    float: left;
+    margin-top: 25px;
+    width: 140px;
+    height: 30px;
+    background-color: #f60;
+    line-height: 30px;
+    color: white;
+    cursor: pointer;
+    margin-left: 75px;
+}
+.title_confirm{
+    margin-bottom: 20px;
+    float: left;
+    margin-left: 75px;
+}
+.confirm_code{
+    display: none;
+    transition: 0.3s;
+}
+#confirm_sdt{
 
+    transition: 0.3s;
+}
+.btn_continue2{
+   display: none;
+}
+/* thiet lap mk moi */
+.mainNewPass{
+    height: 400px;
+    margin-top: 100px;
+}
+#continue2 a{
+    text-decoration: none;
+    color: white;
+}
