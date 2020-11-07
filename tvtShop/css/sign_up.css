@@ -2,144 +2,169 @@
     margin: 0;
     padding: 0;
 }
-.main{
+.main1{
     width: 100%; 
     height: 100%;
     /* background-color: yellow; */
     /* width: 1920px;
     height: 900px; */
 }
-.container{
-    max-width: 550px;
+.container1{
+    max-width: 750px;
     height: 600px;
     /* background-color: greenyellow; */
     margin: auto;
     position: relative;
 }
-.main .container .text{
+.main1 .container1 .text{
     color: black;
     text-align: center;
     margin-bottom: 20px;
 }
-.main .container .content {
+.main1 .container1 .content {
     /* background-color: purple; */
     width: 100%;
     height: 400px;
-    margin-top: 100px;
+    margin-top: 30px;
     position: absolute;
 }
-.main .container .content .texts {
+.main1 .container1 .content .texts {
     font-size: 30px;
     text-align: center;
     display: block;
     margin-bottom: 20px;
     color: black;
 }
-.main .container .input input{
+.main1 .container1 .input input{
     outline: none;
     border: 1px solid #c5c5c5;
-    width: 350px;
-    height: 25px;
+    /* width: 350px;
+    height: 25px; */
     padding-left: 10px;
     color: grey;
     margin-left: 10px;
     padding-top: 1px;
+    height: 50px;
+    width: 600px;
 }
 .sdt{
-    width: 71%;
+    width: 635px;
     height: 28px;
     /* background-color: blue; */
-    margin: auto;
-    display: flex;
+    margin: auto!important;
+    margin-bottom: 45px!important;
 }
 .sdt i{
    margin-right: 5px;
-   line-height: 25px;
+   line-height: 51px;
 }
 .sdt .send_code{
     background-color:  #d7d7d7;
-    width: 150px;
-    line-height: 28px;
+    width: 510px;
+    line-height: 50px;
     text-align: center;
     cursor: pointer;
+    margin-right: 3px;
+    transition: 0.3s;
  }
 .phone_nb{
-    width : 200px !important;
-    margin-right: 5px;
+    /* width : 200px !important; */
+    margin-right: 15px;
     
 }
-.main .container .text_checkBox{
+.sdt_confirm{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin: auto;
+}
+.send_code:hover{
+    background-color: #bebebe;
+    transition: 0.3s;
+    color: white;
+}
+.main1 .container1 .text_checkBox{
     margin-bottom: 60px;
 }
-.main .container .text_checkBox .remember{
+.main1 .container1 .text_checkBox .remember{
     float: left;
     margin-left: 80px;
 }
-.main .container .text_checkBox .forgot{
+.main1 .container1 .text_checkBox .forgot{
     float: right;
     margin-right: 80px;
 }
-.main .container .login_choose{
-    width: 71%;
-    height: 35px;
-    background-color: #F23968;
-    margin: auto;
-    cursor: pointer;
-    transition: 0.2s;
+.main1 .container1 .login_choose{
+        width: 84%;
+        height: 35px;
+        background-color: #e7e7e7;
+        margin: auto;
+        cursor: pointer;
+        transition: 0.2s;
+        background: #f60;
+        height: 50px;
+        line-height: 50px;
+        margin-bottom: 20px;
 }
-.main .container .login_choose span{
+.main1 .container1 .login_choose span{
     line-height: 35px;
     margin-bottom: 30px;
 }
-.main .container .orr{
+.main1 .container1 .orr{
     width: 30px;
     height: 30px;
     margin: auto;
     background-color: #F23968;
     border-radius: 50%;
 }
-.main .container .orr span{
+.main1 .container1 .orr span{
     line-height: 30px;
 }
-.main .container .or{
+.main1 .container1 .or{
     margin-top: 20px;
     cursor: pointer;
 }
-.main .container .text_white{
+.main1 .container1 .text_white{
     color: white;
 }
-.main .container .social{
-    width: 71%;
-    height: 35px;
-    margin: auto;
-    display: flex;
+.main1 .container1 .social{
+
+        width: 84%;
+        height: 50px;
+        margin: auto;
+        display: flex;
 }
-.main .container .social .facebook{
+.main1 .container1 .social .facebook{
     height: 100%;
     width: 100%;
-    line-height: 35px;
+    line-height: 50px;
     background-color: #3B62A3;
-    margin-right: 40px;
+    margin-right: 25px;
     cursor: pointer;
     transition: 0.2s;
 }
-.main .container .social .facebook:hover{
+.main1 .container1 .social .facebook:hover{
     background-color: #264a86;
     transition: 0.2s;
 }
-.main .container .login_choose:hover{
-    background-color: #c11641;
+.main1 .container1 .login_choose:hover{
+    background-color: rgb(214, 86, 0);
     transition: 0.2s;
 }
-.main .container .social .google{
+.main1 .container1 .social .google{
     height: 100%;
     width: 100%;
-    line-height: 35px;
-    background-color: orange;
+    line-height: 50px;
+    background-color: rgb(0, 202, 34);
     cursor: pointer;
     transition: 0.2s;
+   
 }
-.main .container .social .google:hover{
-    background-color: #e09203;
+.main1 .container1 .social .google span{
+  text-align: center;
+    
+}
+.main1 .container1 .social .google:hover{
+    background-color: #c11641;
 }
 
