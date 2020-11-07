@@ -100,3 +100,28 @@ function informationGH() {
 function editGH() {
     window.location.href = '../tvtShopAdmin/editNhanVienGiaoHang.html';
 }
+
+function addNhanVienKK() {
+    window.location.href = '../tvtShopAdmin/themNhanVienKho.html';
+}
+
+function removeKK() {
+    document.getElementById('hidden-div-help').style.transform = 'scaleY(1)';
+    document.getElementById('yes-no-question').style.transform = 'scaleY(1)';
+    document.getElementById('yes-no-question').style.transition = 'all 0.5s ease 0.6s'
+}
+
+function editKK() {
+    window.location.href = '../tvtShopAdmin/editNhanVienKho.html';
+}
+
+function informationKK() {
+    window.location.href = '../tvtShopAdmin/informationNhanVienKho.html';
+}
+
+function loadIMG(event) {
+    if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+        document.getElementById('informationAvatarUser').src = src;
+    }
+}

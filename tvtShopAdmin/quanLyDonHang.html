@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản lý bình luận</title>
+    <title>Quản lý đơn hàng</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -20,9 +20,9 @@
 	https://templatemo.com/tm-524-product-admin
     -->
 
-    <script src="js/quanLyBinhLuan.js"></script>
+    <script src="js/quanLyDonHang.js"></script>
 
-    <link rel="stylesheet" href="css/quanLyBinhLuan.css">
+    <link rel="stylesheet" href="css/quanLyDonHang.css">
 </head>
 
 
@@ -99,12 +99,12 @@
                                 <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i>
                                     Quản lý khách
                                     hàng</a>
-                                <a class="dropdown-item" href="quanLyDonHang.html"><i class="fa fa-pencil"></i> Quản lý
-                                    đơn hàng</a>
+                                <a class="dropdown-item  active" href="#"><i class="fa fa-pencil"></i> Quản lý đơn
+                                    hàng</a>
                                 <a class="dropdown-item" href="products.html"><i class="fa fa-shopping-bag"></i> Quản lý
                                     sản
                                     phẩm</a>
-                                <a class="dropdown-item  active" href="#"><i class="fa fa-comment"></i> Quản lý bình
+                                <a class="dropdown-item " href="quanLyBinhLuan.html"><i class="fa fa-comment"></i> Quản lý bình
                                     luận</a>
                             </div>
                         </li>
@@ -137,96 +137,99 @@
             <div>
                 <div class="qlblHeader">
                     <div>
-                        <p class="qlblTitle">Quản lý bình <span style="color:#ff7315">luận</span></p>
-                        <p class="qlblContentTitle">Sửa xóa bình luận</p>
+                        <p class="qlblTitle">Quản lý đơn <span style="color:#ff7315">hàng</span></p>
+                        <p class="qlblContentTitle">Xem thông tin và duyệt đơn hàng</p>
                     </div>
                     <input id="week" type="week">
                 </div>
                 <div class="qlblLine"></div>
-                <div class="headerTable-button">
-                    <div class="divButton">
-                        <p class="buttonAddQLKH">Xóa các mục đã chọn</p>
-                    </div>
-                    <div class="div-search-qlbl">
-                        <input type="text" id="qlblSearch" placeholder="Tìm kiếm bình luận">
-                        <label for="qlblSearch">Tìm kiếm</label>
-                    </div>
+                <div class="div-search-qlbl">
+                    <input type="text" id="qlblSearch" placeholder="Tìm kiếm đon hàng">
+                    <label for="qlblSearch">Tìm kiếm</label>
                 </div>
                 <table class="qlbl-content-table">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" name="" id="" class="checkTable"></th>
                             <th>STT</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Mã khách hàng</th>
                             <th>Tên khách hàng</th>
-                            <th>Ngày bình luận</th>
-                            <th>Nội dung</th>
-                            <th>Xóa</th>
-                            <th>Sửa</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tổng tiền</th>
+                            <th>Địa chỉ giao hàng</th>
+                            <th>Duyệt đơn hàng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>1</td>
-                            <td>Nguyễn Thị Hoa Hồng</td>
-                            <td>2020-10-21</td>
-                            <td>Trời ơi, tại sao hết hàng rồi?</td>
-                            <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
+                            <td>DH201</td>
+                            <td>KH2140</td>
+                            <td>Nguyễn Văn A</td>
+                            <td>2020-10-10</td>
+                            <td>4.800.000</td>
+                            <td>TP Hồ Chí Minh</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>2</td>
-                            <td>Nguyễn Văn Khá</td>
-                            <td>2020-10-19</td>
-                            <td>Tại hạ đến sớm quá ư? Cắm mắt :v</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH200</td>
+                            <td>KH4121</td>
+                            <td>Nguyễn Văn B</td>
+                            <td>2020-10-9</td>
+                            <td>2.200.000</td>
+                            <td>Hà nội</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>3</td>
-                            <td>Nguyễn Thị Cục Thơ</td>
-                            <td>2020-10-18</td>
-                            <td>Đồ gì xấu quắc :3</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH199</td>
+                            <td>KH2122</td>
+                            <td>Nguyễn Văn C</td>
+                            <td>2020-10-8</td>
+                            <td>3.000.000</td>
+                            <td>Đà Nẵng</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>4</td>
-                            <td>Võ Đỗ Thánh</td>
-                            <td>2020-10-17</td>
-                            <td>Đồ này giống đồ TU TIÊN, ta mua! :></td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH198</td>
+                            <td>KH1209</td>
+                            <td>Nguyễn Văn D</td>
+                            <td>2020-10-4</td>
+                            <td>400.000</td>
+                            <td>TP Hồ Chí Minh</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>5</td>
-                            <td>Trần Phàm</td>
-                            <td>2020-10-16</td>
-                            <td>Mạo phạm mắt ta, payy shop</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH197</td>
+                            <td>KH1102</td>
+                            <td>Nguyễn Văn E</td>
+                            <td>2020-10-3</td>
+                            <td>950.000</td>
+                            <td>Phú Yên</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>6</td>
-                            <td>Lý Bạnh</td>
-                            <td>2020-10-15</td>
-                            <td>Một mảnh tình ta với ta....</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH196</td>
+                            <td>KH1502</td>
+                            <td>Nguyễn Văn F</td>
+                            <td>2020-10-1</td>
+                            <td>5.100.000</td>
+                            <td>TP Hồ Chí Minh</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="" id="" class="checkTable"></td>
                             <td>7</td>
-                            <td>Nhị Cẩu Tử</td>
-                            <td>2020-10-12</td>
-                            <td>@Từ Khuyết - thiếu niên lang mua cho ta cái này đi</td>
-                            <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                            <td><i class="fa fa-pencil qlblEdit"></i></td>
+                            <td>DH195</td>
+                            <td>KH1201</td>
+                            <td>Nguyễn Văn G</td>
+                            <td>2020-09-25</td>
+                            <td>1.300.000</td>
+                            <td>Hà Nội</td>
+                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
                         </tr>
                     </tbody>
                 </table>

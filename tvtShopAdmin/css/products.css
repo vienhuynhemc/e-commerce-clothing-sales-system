@@ -119,9 +119,13 @@ p.qlblContentTitle {
   background-color: white;
 }
 
+.table-2 span.addCata:nth-child(2) {
+  color: #6b778d;
+}
+
 .table-2 .addCata {
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 20px;
   width: 100%;
   text-align: center;
 }
@@ -163,10 +167,6 @@ p.qlblContentTitle {
 
 .qlbl-content-table tbody tr:hover {
   color: #ff7315;
-}
-
-.group-table .table-2 .ql2 th {
-  padding: 15px !important;
 }
 
 .qlblRemove,
@@ -657,8 +657,43 @@ p.qlblContentTitle {
 .table-1 .addSanPham {
   display: inline-block;
   margin-top: 50px;
-  width: 50%;
+  width: 47%;
   text-align: center;
+}
+
+.table-1 .deleteAll {
+  display: inline-block;
+  margin-top: 50px;
+  width: 47%;
+  text-align: center;
+  color: #6b778d;
+  background-color: #f4f4f4;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0.5em 1em -0.125em rgb(0 0 0), 0 0 0 1px rgb(255 255 255);
+  cursor: pointer;
+  text-align: center;
+}
+
+.checkTable {
+  background-color: #ff7315 !important;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.qlbl-content-table th:nth-child(1),
+.qlbl-content-table td:nth-child(1) {
+  padding: 15px 0px;
+}
+
+.table-2 .checkTable {
+  background-color: #232020 !important;
+}
+
+.headerTable1-button {
+  display: flex;
+  justify-content: space-between;
 }
 
 .table-1 th {
@@ -683,3 +718,26 @@ p.qlblContentTitle {
 .table-1 .qlbl-content-table td:nth-child(5) {
   width: 140px;
 }
+
+.table-2 .qlbl-content-table th,
+.table-2 .qlbl-content-table td {
+  padding: 15px 9px !important;
+}
+
+
+table th {
+  border-left: 1px solid white;
+}
+
+table tr td {
+  border-left: 1px solid #f4f4f4;
+}
+
+table tr:nth-of-type(even) td {
+  border-left: 1px solid white;
+}
+
+table{
+  text-align: center;
+}
+

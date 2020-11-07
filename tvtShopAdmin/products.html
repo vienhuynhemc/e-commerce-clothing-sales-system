@@ -156,7 +156,7 @@
                                 <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i>
                                     Quản lý khách
                                     hàng</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Quản lý đơn hàng</a>
+                                <a class="dropdown-item" href="quanLyDonHang.html"><i class="fa fa-pencil"></i> Quản lý đơn hàng</a>
                                 <a class="dropdown-item active" href="products.html"><i class="fa fa-shopping-bag"></i>
                                     Quản lý
                                     sản
@@ -198,7 +198,7 @@
                         <p class="qlblTitle">Quản lý <span style="color:#ff7315">sản phẩm</span></p>
                         <p class="qlblContentTitle">Thêm, sửa, xóa sản phẩm</p>
                     </div>
-                    <input id="week" type="week" value="2020-W45">
+                    <input id="week" type="week" >
                 </div>
                 <div class="qlblLine"></div>
                 <div class="div-search-qlbl">
@@ -209,10 +209,14 @@
                     <div class="table-1">
                         <p class="title"><span style="color:#ff7315">S</span>ản phẩm</p>
                         <div class="line"></div>
-                        <span onclick="taoSanPham()" class="addSanPham">Thêm sản phẩm</span>
+                        <div class="headerTable1-button">
+                            <span onclick="taoSanPham()" class="addSanPham">Thêm sản phẩm</span>
+                            <span class="deleteAll">Xóa các mục đã chọn</span>
+                        </div>
                         <table class="qlbl-content-table">
                             <thead>
                                 <tr>
+                                    <th><input type="checkbox" name="" id="" class="checkTable"></th>
                                     <th>STT</th>
                                     <th>Mã sản phẩm</th>
                                     <th>Tên sản phẩm</th>
@@ -226,6 +230,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>1</td>
                                     <td>MBA100</td>
                                     <td>Áo thun MB</td>
@@ -237,6 +242,7 @@
                                     <td><i class="fa fa-info qlblEditt" onclick="informationSanPham()"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>2</td>
                                     <td>MBA200</td>
                                     <td>Áo sơ mi cam</td>
@@ -248,6 +254,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>3</td>
                                     <td>MBA204</td>
                                     <td>Áo sơ mi trắng</td>
@@ -259,6 +266,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>4</td>
                                     <td>MBA300</td>
                                     <td>Quần jean bó nữ</td>
@@ -270,6 +278,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>5</td>
                                     <td>MBA304</td>
                                     <td>Quần jean nam</td>
@@ -281,6 +290,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>6</td>
                                     <td>MBA400</td>
                                     <td>Quần kaki nâu nữ</td>
@@ -292,6 +302,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>7</td>
                                     <td>MBA404</td>
                                     <td>Quần tây đen</td>
@@ -320,10 +331,12 @@
                         <div class="line"></div>
                         <div>
                             <span onclick="taoDanhMuc()" class="addCata">Thêm danh mục</span>
+                            <span class="addCata">Xóa các mục đã chọn</span>
                         </div>
                         <table class="qlbl-content-table ql2">
                             <thead>
                                 <tr>
+                                    <th><input type="checkbox" name="" id="" class="checkTable"></th>
                                     <th>STT</th>
                                     <th>Mã danh mục</th>
                                     <th>Xóa</th>
@@ -333,6 +346,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>1</td>
                                     <td>AC123</td>
                                     <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
@@ -340,6 +354,7 @@
                                     <td><i class="fa fa-info qlblEditt" onclick="information()"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>2</td>
                                     <td>AC245</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>
@@ -347,6 +362,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>3</td>
                                     <td>AC344</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>
@@ -354,6 +370,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>4</td>
                                     <td>AC500</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>
@@ -361,6 +378,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>5</td>
                                     <td>Q003</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>
@@ -368,6 +386,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>6</td>
                                     <td>Q010</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>
@@ -375,6 +394,7 @@
                                     <td><i class="fa fa-info qlblEditt"></i></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>7</td>
                                     <td>Q445</td>
                                     <td><i class="fa fa-trash-o qlblRemove"></i></td>

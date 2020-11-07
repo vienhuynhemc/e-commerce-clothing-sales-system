@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Sửa nhân viên giao hàng</title>
+  <title>Thông tin nhân viên kho</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
   <!-- https://fonts.google.com/specimen/Roboto -->
   <link rel="stylesheet" href="css/fontawesome.min.css" />
@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="css/account.css">
   <script src="js/account.js"></script>
+  <link rel="stylesheet" href="css/informationNhanVienGiaoHang.css">
   <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -98,8 +99,8 @@
       <!-- row -->
       <div class="headerGoBack">
         <div>
-          <p class="qlblTitle">Thay đổi thông tin nhân viên giao <span style="color:#ff7315">hàng</span></p>
-          <p class="qlblContentTitle">Điền thông tin nhân viên giao hàng</p>
+          <p class="qlblTitle">Thông tin nhân viên <span style="color:#ff7315">kho</span></p>
+          <p class="qlblContentTitle">Xem thông tin nhân viên kho</p>
         </div>
         <input id="goback" type="button" value="Trở lại" onclick="goback2()">
       </div>
@@ -107,69 +108,60 @@
       <div class="row tm-content-row">
         <div class="tm-block-col tm-col-avatar">
           <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-            <h2 class="tm-block-title"><span style="color:#ff7315">Thay </span>đổi ảnh đại diện</h2>
+            <h2 class="tm-block-title"><span style="color:#ff7315">Ảnh </span> đại diện</h2>
             <div class="tm-avatar-container">
-              <img src="img/avatar1.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar" />
+              <img src="img/avatar11.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar" />
               <a href="#" class="tm-avatar-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
               </a>
             </div>
             <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)" />
-            <button class="btn btn-primary btn-block text-uppercase"
-              onclick="document.getElementById('fileInput').click();">
-              Tải lên hình mới
-            </button>
           </div>
         </div>
         <div class="tm-block-col tm-col-account-settings">
           <div class="tm-bg-primary-dark tm-block tm-block-settings">
-            <h2 class="tm-block-title">Thiết lập thông tin tài khoản <span style="color:#ff7315"> nhân viên giao hàng
+            <h2 class="tm-block-title">Thiết lập thông tin tài khoản <span style="color:#ff7315"> nhân viên kho
               </span></h2>
             <form action="" class="tm-signup-form row">
               <div class="form-group col-lg-6">
                 <label for="mnv">Mã nhân viên</label>
-                <input value="GH220" id="mnv" name="name" type="text" class="form-control validate" />
+                <p>GH220</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="namenv">Tên nhân viên</label>
-                <input value="Nguyễn Cao Đại" id="namenv" name="name" type="text" class="form-control validate" />
+                <p>Nguyễn Cao Đại</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="name">Tên tài khoản</label>
-                <input value="hongcute123" id="name" name="name" type="text" class="form-control validate" />
+                <p>hongcute123</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="password">Mật khẩu</label>
-                <input value="iamarose" id="password" name="password" type="text" class="form-control validate" />
+                <p>iamarose</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="email">Địa chỉ Email</label>
-                <input value="hongcute123@gmail.com" id="email" name="email" type="email" class="form-control validate" />
+                <p>hongcute123@gmail.com</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="password2">Địa chỉ</label>
-                <input value="KP6. Phường Linh Trung -Thủ Đức- Việt Nam" id="password2" name="password2" type="text" class="form-control validate" />
+                <p>KP6. Phường Linh Trung -Thủ Đức- Việt Nam</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="phone">Số điện thoại</label>
-                <input value="0965321563" id="phone" name="phone" type="tel" class="form-control validate" />
+                <p>0965321563</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="nvl">Ngày vào làm</label>
-                <input id="nvl" name="nvl" value="2020-01-03" type="date" class="form-control validate" />
+                <p>2020-01-03</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="luong">Lương</label>
-                <input value="10.000.000" id="luong" name="luong" type="text" class="form-control validate" />
+                <p>10.00.00</p>
               </div>
               <div class="form-group col-lg-6">
                 <label for="gioithieu">Giới thiệu</label>
-                <input id="gioithieu" value="Hoạt bát siêng năng" name="gioithieu" type="text" class="form-control validate" />
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">
-                  Lưu thông tin
-                </button>
+                <p>Hoạt bát siêng năng</p>
               </div>
             </form>
           </div>

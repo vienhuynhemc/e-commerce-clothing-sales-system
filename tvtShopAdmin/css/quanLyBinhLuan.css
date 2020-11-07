@@ -344,3 +344,60 @@ p.qlblContentTitle {
   background-color: #ff7315;
 }
 
+.checkTable {
+  background-color: #ff7315 !important;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.qlbl-content-table th:nth-child(1),
+.qlbl-content-table td:nth-child(1) {
+  padding: 15px 10px;
+}
+
+.divButton {
+  display: flex;
+}
+
+.divButton p {
+  margin-right: 20px;
+}
+
+.divButton p:nth-child(1) {
+  background-color: #f4f4f4;
+  color: #6b778d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0.5em 1em -0.125em rgb(0 0 0), 0 0 0 1px rgb(255 255 255);
+  cursor: pointer;
+  margin-top: 50px;
+  text-align: center;
+  width: 300px;
+}
+
+.headerTable-button{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+table th {
+  border-left: 1px solid white;
+}
+
+table tr td {
+  border-left: 1px solid #f4f4f4;
+}
+
+table tr:nth-of-type(even) td {
+  border-left: 1px solid white;
+}
+
+table{
+  text-align: center;
+}
+
+
+

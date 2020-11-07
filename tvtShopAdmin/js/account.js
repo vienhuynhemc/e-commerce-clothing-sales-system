@@ -6,7 +6,7 @@ function loadIMG(event) {
 }
 
 function goback2() {
-    window.location.href = '../tvtShopAdmin/quanLyKhachHang.html';
+    window.history.back()
 }
 
 function goback3() {
