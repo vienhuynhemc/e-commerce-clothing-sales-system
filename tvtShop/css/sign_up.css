@@ -28,6 +28,9 @@
     margin-top: 30px;
     position: absolute;
 }
+.mainLogin{
+    margin-top: 50px;
+}
 .main1 .container1 .content .texts {
     font-size: 30px;
     text-align: center;
@@ -84,15 +87,15 @@
     color: white;
 }
 .main1 .container1 .text_checkBox{
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
 }
 .main1 .container1 .text_checkBox .remember{
     float: left;
-    margin-left: 80px;
+    margin-left: -70px;
 }
 .main1 .container1 .text_checkBox .forgot{
     float: right;
-    margin-right: 80px;
+    margin-right: -68px;
 }
 .main1 .container1 .login_choose{
         width: 84%;
@@ -166,5 +169,8 @@
 }
 .main1 .container1 .social .google:hover{
     background-color: #c11641;
+}
+.mainLogin{
+    height: 500px;
 }
 
