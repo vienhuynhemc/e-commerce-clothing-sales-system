@@ -59,26 +59,37 @@ p.qlblContentTitle {
   font-family: "Lato", sans-serif;
 }
 
-.form-group{
-    margin-top: 20px;
+.form-group {
+  margin-top: 20px;
 }
 
-.mt-4 .btn{
-    margin-top: 60px;
+.mt-4 .btn {
+  margin-top: 60px;
 }
 
 .navbar-brand {
-    display: flex;
-    align-items: center;
-    margin: auto;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 .navbar-toggler {
-    border-color: #ffffff;
-    background: white;
-    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 1px 2px;
-    border-radius: 0.25rem;
-    padding: 0.5rem 0.65rem;
-    transition: all 0.2s ease;
-    display: none;
+  border-color: #ffffff;
+  background: white;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 1px 2px;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.65rem;
+  transition: all 0.2s ease;
+  display: none;
+}
+
+.error{
+  position: absolute;
+  color:#ff3e3e;
+  left:30%;
+  display: none;
+}
+
+.qmk{
+  margin-top: 20px !important;
 }

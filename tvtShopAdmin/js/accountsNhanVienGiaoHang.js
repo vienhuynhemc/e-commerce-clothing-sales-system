@@ -8,11 +8,3 @@ function loadIMG(event) {
 function removeAvatar(){
     document.getElementById('avatar').src = "../../tvtShopAdmin/img/whiteAvatar.png";
 }
-
-function goback2() {
-    window.history.back()
-}
-
-function goback3() {
-    window.location.href = '../tvtShopAdmin/quanLyKhachHang.html';
-}

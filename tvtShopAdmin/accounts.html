@@ -69,7 +69,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="products.html">
+              <a class="nav-link" href="nhapHang.html">
                 <i class="fas fa-shopping-cart"></i>
                 Nhập hàng
               </a>
@@ -85,7 +85,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link d-block" href="login.html">
-                Admin, <b>Đăng xuất</b>
+                TVT Admin, <b>Đăng xuất</b>
               </a>
             </li>
           </ul>
@@ -105,10 +105,10 @@
           <div class="tm-bg-primary-dark tm-block tm-block-avatar">
             <h2 class="tm-block-title"><span style="color:#ff7315">Thay </span>đổi ảnh đại diện</h2>
             <div class="tm-avatar-container">
-              <img src="img/girl.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar"/>
-              <a href="#" class="tm-avatar-delete-link">
+              <img src="img/girl.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar" />
+              <p onclick="removeAvatar()" class="tm-avatar-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
-              </a>
+              </p>
             </div>
             <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)" />
             <button class="btn btn-primary btn-block text-uppercase"
@@ -121,6 +121,10 @@
           <div class="tm-bg-primary-dark tm-block tm-block-settings">
             <h2 class="tm-block-title">Thiết lập thông tin tài khoản <span style="color:#ff7315"> ADMIN </span></h2>
             <form action="" class="tm-signup-form row">
+              <div class="form-group col-lg-6">
+                <label for="phone">Họ tên</label>
+                <input value="TVT Admin" id="phone" name="phone" type="text" class="form-control validate" />
+              </div>
               <div class="form-group col-lg-6">
                 <label for="name">Tên tài khoản</label>
                 <input value="admin" id="name" name="name" type="text" class="form-control validate" />
@@ -141,10 +145,6 @@
               <div class="form-group col-lg-6">
                 <label for="phone">Số điện thoại</label>
                 <input value="0224322221" id="phone" name="phone" type="tel" class="form-control validate" />
-              </div>
-              <div class="form-group col-lg-6">
-                <label for="phone">Giới thiệu</label>
-                <input value="..............." id="phone" name="phone" type="text" class="form-control validate" />
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">

@@ -70,7 +70,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="products.html">
+              <a class="nav-link" href="nhapHang.html">
                 <i class="fas fa-shopping-cart"></i>
                 Nhập hàng
               </a>
@@ -86,7 +86,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link d-block" href="login.html">
-                Admin, <b>Đăng xuất</b>
+                TVT Admin, <b>Đăng xuất</b>
               </a>
             </li>
           </ul>
@@ -110,9 +110,9 @@
             <h2 class="tm-block-title"><span style="color:#ff7315">Thay </span>đổi ảnh đại diện</h2>
             <div class="tm-avatar-container">
               <img src="img/whiteAvatar.png" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar" />
-              <a href="#" class="tm-avatar-delete-link">
+              <p onclick="removeAvatar()" class="tm-avatar-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
-              </a>
+              </p>
             </div>
             <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)" />
             <button class="btn btn-primary btn-block text-uppercase"

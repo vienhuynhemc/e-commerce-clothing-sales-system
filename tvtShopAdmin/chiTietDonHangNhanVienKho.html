@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản lý đơn hàng</title>
+    <title>Chi tiết đơn hàng</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -20,9 +20,12 @@
 	https://templatemo.com/tm-524-product-admin
     -->
 
-    <script src="js/quanLyDonHang.js"></script>
+    <script src="js/chiTietDonHangNhanVienKho.js"></script>
 
     <link rel="stylesheet" href="css/quanLyDonHang.css">
+    <link rel="stylesheet" href="css/chiTietDonHang.css">
+    <link rel="stylesheet" href="css/chiTietDonHangNhanVienGiaoHang.css">
+    <link rel="stylesheet" href="css/chiTietDonHangNhanVienKho.css">
 </head>
 
 
@@ -64,7 +67,7 @@
     <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="trangChuNhanVienKho.html">
                     <div class="box-icon-android">
                         <i class="fa fa-android"></i>
                     </div>
@@ -78,45 +81,23 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto h-100">
+                    <ul class="navbar-nav navbar-navfirst mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="trangChuNhanVienKho.html">
                                 <i class="fas fa-pie-chart"></i>
                                 Thống kê
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-
-                            <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-braille"></i>
-                                <span>
-                                    Quản lý Shop<i class="fas fa-angle-down" style="margin-left: 3px;"></i>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i>
-                                    Quản lý khách
-                                    hàng</a>
-                                <a class="dropdown-item  active" href="#"><i class="fa fa-pencil"></i> Quản lý đơn
-                                    hàng</a>
-                                <a class="dropdown-item" href="products.html"><i class="fa fa-shopping-bag"></i> Quản lý
-                                    sản
-                                    phẩm</a>
-                                <a class="dropdown-item " href="quanLyBinhLuan.html"><i class="fa fa-comment"></i> Quản lý bình
-                                    luận</a>
-                            </div>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nhapHang.html">
-                                <i class="fas fa-shopping-cart"></i>
-                                Nhập hàng
+                            <a class="nav-link  active" href="quanLyDonHangNhanVienKho.html">
+                                <i class="fas fa-cubes"></i>
+                                Thông tin đơn hàng
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="accounts.html">
+                            <a class="nav-link " href="accountsNhanVienKho.html">
                                 <i class="far fa-user"></i>
                                 Tài khoản
                             </a>
@@ -125,7 +106,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link d-block" href="login.html">
-                                TVT Admin, <b>Đăng xuất</b>
+                                Nguyễn Cao Đại, <b>Đăng xuất</b>
                             </a>
                         </li>
                     </ul>
@@ -140,110 +121,68 @@
                         <p class="qlblTitle">Quản lý đơn <span style="color:#ff7315">hàng</span></p>
                         <p class="qlblContentTitle">Xem thông tin và duyệt đơn hàng</p>
                     </div>
-                    <input id="week" type="week">
                 </div>
                 <div class="qlblLine"></div>
                 <div class="div-search-qlbl">
-                    <input type="text" id="qlblSearch" placeholder="Tìm kiếm đơn hàng">
-                    <label for="qlblSearch">Tìm kiếm</label>
+                    <div>
+                        <input type="text" id="qlblSearch" placeholder="Tìm kiếm sản phẩm">
+                        <label for="qlblSearch">Tìm kiếm</label>
+                    </div>
                 </div>
                 <table class="qlbl-content-table">
                     <thead>
                         <tr>
                             <th>STT</th>
                             <th>Mã đơn hàng</th>
-                            <th>Mã khách hàng</th>
-                            <th>Tên khách hàng</th>
-                            <th>Ngày đặt hàng</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Hình sản phẩm</th>
+                            <th>Số lượng</th>
                             <th>Tổng tiền</th>
-                            <th>Số điện thoại</th>
-                            <th>Địa chỉ giao hàng</th>
-                            <th>Duyệt đơn hàng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
                             <td>DH201</td>
-                            <td>KH2140</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>2020-10-10</td>
-                            <td>4.800.000</td>
-                            <td>0971235941</td>
-                            <td>TP Hồ Chí Minh</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
+                            <td>MBA100</td>
+                            <td>Áo thun MB</td>
+                            <td><img src="img/aothunmb.jpg" alt=""></td>
+                            <td>2</td>
+                            <td>1.000.000</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>DH200</td>
-                            <td>KH4121</td>
-                            <td>Nguyễn Văn B</td>
-                            <td>2020-10-9</td>
-                            <td>2.200.000</td>
-                            <td>0971235941</td>
-                            <td>Hà nội</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
+                            <td>DH201</td>
+                            <td>MBA200</td>
+                            <td>Áo sơ mi cam</td>
+                            <td><img src="img/aosomi1.jpg" alt=""></td>
+                            <td>3</td>
+                            <td>990.000</td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>DH199</td>
-                            <td>KH2122</td>
-                            <td>Nguyễn Văn C</td>
-                            <td>2020-10-8</td>
-                            <td>3.000.000</td>
-                            <td>0971235941</td>
-                            <td>Đà Nẵng</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
+                            <td>DH201</td>
+                            <td>MBA204</td>
+                            <td>Áo sơ mi trắng</td>
+                            <td><img src="img/aosomi2.jpg" alt=""></td>
+                            <td>1</td>
+                            <td>340.000</td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>DH198</td>
-                            <td>KH1209</td>
-                            <td>Nguyễn Văn D</td>
-                            <td>2020-10-4</td>
-                            <td>400.000</td>
-                            <td>0971235941</td>
-                            <td>TP Hồ Chí Minh</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>DH197</td>
-                            <td>KH1102</td>
-                            <td>Nguyễn Văn E</td>
-                            <td>2020-10-3</td>
-                            <td>950.000</td>
-                            <td>0971235941</td>
-                            <td>Phú Yên</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>DH196</td>
-                            <td>KH1502</td>
-                            <td>Nguyễn Văn F</td>
-                            <td>2020-10-1</td>
-                            <td>5.100.000</td>
-                            <td>0971235941</td>
-                            <td>TP Hồ Chí Minh</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>DH195</td>
-                            <td>KH1201</td>
-                            <td>Nguyễn Văn G</td>
-                            <td>2020-09-25</td>
-                            <td>1.300.000</td>
-                            <td>0971235941</td>
-                            <td>Hà Nội</td>
-                            <td><i class="fa fa-cubes qlblEdit" onclick="duyetDH()"></i></td>
+                            <td>DH201</td>
+                            <td>MBA304</td>
+                            <td>Quần jean nam</td>
+                            <td><img src="img/quanjean2.jpg" alt=""></td>
+                            <td>1</td>
+                            <td>350.000</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="movepage-next">
-                    <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
-                    <ul>
+                    <p>Hiển thị từ 1 đến 4 của 4 phần tử</p>
+                    <ul class="barMove">
                         <li><a href="">Trở về</a></li>
                         <li><a href="">1</a></li>
                         <li><a href="">2</a></li>
@@ -251,6 +190,35 @@
                         <li><a href="">Tiếp tục</a></li>
                     </ul>
                 </div>
+                <div class="line">
+                </div>
+                <div class="footerHD">
+                    <div class="dateGH">
+                        <label for="dategh">Ngày hoàn thành</label>
+                        <input type="date" name="dategh" id="dategh">
+                        <script>
+                            function today() {
+                                let d = new Date();
+                                let currDate = d.getDate();
+                                let currMonth = d.getMonth() + 1;
+                                let currYear = d.getFullYear();
+                                return currYear + "-" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "-" + ((currDate < 10) ? '0' + currDate : currDate);
+                            }
+                            document.getElementById('dategh').value = today();
+                        </script>
+                    </div>
+                    <div>
+                        <select name="nhanviengh" id="nhanviengh">
+                            <option value="default" disabled selected>Lựa chọn trạng thái</option>
+                            <option value="default">Thành công</option>
+                            <option value="default">Không thành công</option>
+                        </select>
+                        <i class="fa fa-arrow-right left"></i>
+                        <button> <i class="fa fa-calendar-check-o"> Duyệt </i> </button>
+                        <button onclick="goback()">Trở về</button>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- footer -->

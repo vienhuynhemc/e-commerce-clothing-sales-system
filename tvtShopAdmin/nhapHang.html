@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản lý sản phẩm</title>
+    <title>Nhập hàng</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -15,14 +15,12 @@
     <link rel="stylesheet" href="css/templatemo-style.css">
 
     <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="js/products.js"></script>
     <!--    
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
     -->
-
-
-    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/nhapHang.css">
+    <script src="js/nhapHang.js"></script>
 </head>
 
 
@@ -38,83 +36,26 @@
             </div>
         </div>
         <div class="form-edit-qlbl" id="form-edit-qlbl">
-            <h1>Thay đổi thông tin <span style="color:#ff7315">danh mục</span></h1>
+            <h1>Thay đổi nội dung <span style="color:#ff7315">bình</span> luận</h1>
             <div>
-                <input type="text" id="products-madanhmuc" value="AC123">
-                <label for="products-madanhmuc">Mã danh mục</label>
+                <p>Tên khách hàng</p>
+                <p>Nguyễn Thị Hoa Hồng</p>
             </div>
             <div>
-                <input type="text" id="products-tendanhmuc" value="Áo thun quý tộc">
-                <label for="products-tendanhmuc">Tên danh mục</label>
+                <p>Ngày bình luận</p>
+                <p>2020-10-19</p>
             </div>
             <div>
-                <input type="date" id="products-ngaytao" value=2020-10-12>
-                <label for="products-ngaytao">Ngày tạo danh mục</label>
+                <p>Nội dung</p>
+                <p>Trời ơi, tại sao hết hàng rồi?</p>
             </div>
             <div>
-                <textarea name="products-thongtinthem" id="products-thongtinthem" cols="30"
-                    rows="10">Đây là dòng áo cao cấp dành cho quý tộc, mạnh mẽ, trẻ trung và trên hết là rất đắc</textarea>
-                <label for="products-thongtinthem">Thông tin thêm</label>
+                <textarea name="newContent" id="newContent" cols="30" rows="10" placeholder="Nội dung mới"></textarea>
+                <label for="newContent">Nội dung mới</label>
             </div>
             <div>
                 <span onclick="hiddenDiv()">Trở về</span>
                 <span onclick="hiddenDiv()">Lưu</span>
-            </div>
-        </div>
-        <div class="form-edit-qlbl" id="form-add-qlbl">
-            <h1>Thêm một <span style="color:#ff7315">danh mục</span> mới</h1>
-            <div>
-                <input type="text" id="products-madanhmuc-add" placeholder="VD:ABC">
-                <label for="products-madanhmuc-add">Mã danh mục</label>
-            </div>
-            <div>
-                <input type="text" id="products-tendanhmuc-add" placeholder="VD: Váy ngắn"">
-                <label for=" products-tendanhmuc-add">Tên danh mục</label>
-            </div>
-            <div>
-                <input type="date" id="products-ngaytao-add">
-                <label for="products-ngaytao-add">Ngày tạo danh mục</label>
-                <script>
-                    function today() {
-                        let d = new Date();
-                        let currDate = d.getDate();
-                        let currMonth = d.getMonth() + 1;
-                        let currYear = d.getFullYear();
-                        return currYear + "-" + ((currMonth < 10) ? '0' + currMonth : currMonth) + "-" + ((currDate < 10) ? '0' + currDate : currDate);
-                    }
-                    document.getElementById('products-ngaytao-add').value = today();
-                </script>
-            </div>
-            <div>
-                <textarea name="products-thongtinthem-add" id="products-thongtinthem-add" cols="30" rows="10"
-                    placeholder="Mô tả danh mục...."></textarea>
-                <label for="products-thongtinthem-add">Thông tin thêm</label>
-            </div>
-            <div>
-                <span onclick="hiddenDiv()">Trở về</span>
-                <span onclick="hiddenDiv()">Tạo</span>
-            </div>
-        </div>
-        <div class="form-inf-qlbl" id="form-inf-qlbl">
-            <h1>Thông tin <span style="color:#ff7315">danh mục</span></h1>
-            <div>
-                <p>Mã danh mục</p>
-                <p>AC123</p>
-            </div>
-            <div>
-                <p>Tên danh mục</p>
-                <p>Áo thun quý tộc</p>
-            </div>
-            <div>
-                <p>Ngày tạo danh mục</p>
-                <p>21-10-2020</p>
-            </div>
-            <div>
-                <p>Thông tin thêm</p>
-                <p>Đây là dòng áo cao cấp dành cho quý tộc, mạnh mẽ, trẻ trung và trên hết là rất đắc</p>
-            </div>
-            <div>
-                <span onclick="hiddenDiv()">Trở về</span>
             </div>
         </div>
     </div>
@@ -145,7 +86,7 @@
                         </li>
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link  active dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-braille"></i>
                                 <span>
@@ -156,9 +97,9 @@
                                 <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i>
                                     Quản lý khách
                                     hàng</a>
-                                <a class="dropdown-item" href="quanLyDonHang.html"><i class="fa fa-pencil"></i> Quản lý đơn hàng</a>
-                                <a class="dropdown-item active" href="products.html"><i class="fa fa-shopping-bag"></i>
-                                    Quản lý
+                                <a class="dropdown-item" href="quanLyDonHang.html"><i class="fa fa-pencil"></i> Quản lý
+                                    đơn hàng</a>
+                                <a class="dropdown-item" href="products.html"><i class="fa fa-shopping-bag"></i> Quản lý
                                     sản
                                     phẩm</a>
                                 <a class="dropdown-item " href="quanLyBinhLuan.html"><i class="fa fa-comment"></i> Quản
@@ -167,7 +108,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="nhapHang.html">
+                            <a class="nav-link  active" href="#">
                                 <i class="fas fa-shopping-cart"></i>
                                 Nhập hàng
                             </a>
@@ -183,7 +124,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link d-block" href="login.html">
-                               TVT Admin, <b>Đăng xuất</b>
+                                TVT Admin, <b>Đăng xuất</b>
                             </a>
                         </li>
                     </ul>
@@ -192,126 +133,156 @@
         </nav>
         <div class="navbar-fixed-header"></div>
         <div class="container containerQLBL">
-            <div>
+            <div class="allNH">
                 <div class="qlblHeader">
                     <div>
-                        <p class="qlblTitle">Quản lý <span style="color:#ff7315">sản phẩm</span></p>
-                        <p class="qlblContentTitle">Thêm, sửa, xóa sản phẩm</p>
+                        <p class="qlblTitle">Nhập <span style="color:#ff7315">hàng</span></p>
+                        <p class="qlblContentTitle">Nhập thêm sản phẩm cho shop từ các hãng sản xuất</p>
                     </div>
-                    <input id="week" type="week" >
+                    <input id="week" type="week">
                 </div>
                 <div class="qlblLine"></div>
-                <div class="div-search-qlbl">
-                    <input type="text" id="qlblSearch" placeholder="Tìm kiếm sản phẩm, danh mục">
-                    <label for="qlblSearch">Tìm kiếm</label>
+                <div class="headerTable-button" id="headerTable-button">
+                    <div>
+                        <button class="nhapHang" id="nhapHang" onclick="nhapHang()">Nhập hàng</button>
+                        <button class="lsNhapHang" id="lsNhapHang" onclick="lsNhapHang()">Lịch sử nhập hàng</button>
+                    </div>
+                    <div class="div-search-qlbl" id="div-search-qlbl">
+                        <input type="text" id="qlblSearch" placeholder="Tìm kiếm phiếu nhập">
+                        <label for="qlblSearch">Tìm kiếm</label>
+                    </div>
                 </div>
-                <div class="group-table">
-                    <div class="table-1">
-                        <p class="title"><span style="color:#ff7315">S</span>ản phẩm</p>
-                        <div class="line"></div>
-                        <div class="headerTable1-button">
-                            <span onclick="taoSanPham()" class="addSanPham">Thêm sản phẩm</span>
-                            <span class="deleteAll">Xóa các mục đã chọn</span>
+                <i class="fa fa-long-arrow-up user" id="user"></i>
+                <div class="line"></div>
+                <div class="mainPhieuNhap" id="mainPhieuNhap">
+                    <div class="input">
+                        <p class="buttonAddQLKH">Xóa các mục đã chọn</p>
+                        <label for="mpn">Mã phiếu nhập</label>
+                        <input type="text" id="mpn" value="PN350" disabled>
+                        <label for="dsnsx">Hãng sản xuất</label>
+                        <select name="dsnsx" id="dsnsx">
+                            <option value="" selected disabled>Chọn hãng sản xuất</option>
+                            <option value="">SHOPAOAMAZON</option>
+                            <option value="">SHOP Quần Hoa Hùng</option>
+                            <option value="">SHOP Áo Quận 7</option>
+                        </select>
+                        <label for="dssp">Sản phẩm</label>
+                        <select name="dssp" id="dssp">
+                            <option value="" selected disabled>Chọn sản phẩm</option>
+                            <option value="">Áo thun quý tộc</option>
+                            <option value="">Áo sơ mi trắng</option>
+                            <option value="">Áo sơ mi cam</option>
+                        </select>
+                        <label for="sl">Số lượng</label>
+                        <input type="text" id="sl">
+                        <button>Thêm vào phiếu nhập</button>
+                        <div class="line">
                         </div>
+                        <p>Tổng tiền: 424.475.000 VNĐ</p>
+                        <div class="line">
+                        </div>
+                        <button>Nhập hàng</button>
+                    </div>
+                    <div class="display">
                         <table class="qlbl-content-table">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" name="" id="" class="checkTable"></th>
                                     <th>STT</th>
+                                    <th>Hãng sản xuất</th>
                                     <th>Mã sản phẩm</th>
                                     <th>Tên sản phẩm</th>
-                                    <th>Hình ảnh</th>
-                                    <th>Ngày tạo</th>
+                                    <th>Hình sản phẩm</th>
                                     <th>Số lượng</th>
+                                    <th>Tổng tiền</th>
                                     <th>Xóa</th>
                                     <th>Sửa</th>
-                                    <th>Thông tin</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>1</td>
+                                    <td>SHOPAOAMAZON</td>
                                     <td>MBA100</td>
                                     <td>Áo thun MB</td>
                                     <td><img src="img/aothunmb.jpg" alt=""></td>
-                                    <td>2020-11-3</td>
-                                    <td>412</td>
-                                    <td><i class="fa fa-trash-o qlblRemove" onclick="removeSanPham()"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit" onclick="editSanPham()"></i></td>
-                                    <td><i class="fa fa-info qlblEditt" onclick="informationSanPham()"></i></td>
+                                    <td>40</td>
+                                    <td>20.000.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>2</td>
+                                    <td>SHOPAOAMAZON</td>
                                     <td>MBA200</td>
                                     <td>Áo sơ mi cam</td>
                                     <td><img src="img/aosomi1.jpg" alt=""></td>
-                                    <td>2020-11-1</td>
-                                    <td>45</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>25</td>
+                                    <td>12.000.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>3</td>
-                                    <td>MBA204</td>
+                                    <td>SHOPAOAMAZON</td>
+                                    <td>MBA201</td>
                                     <td>Áo sơ mi trắng</td>
                                     <td><img src="img/aosomi2.jpg" alt=""></td>
-                                    <td>2020-10-29</td>
-                                    <td>124</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>80</td>
+                                    <td>40.000.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>4</td>
+                                    <td>SHOP Quần Hoa Hùng</td>
                                     <td>MBA300</td>
-                                    <td>Quần jean bó nữ</td>
+                                    <td>Quần Jean bó nữ</td>
                                     <td><img src="img/quanjean1.jpg" alt=""></td>
-                                    <td>2020-10-25</td>
-                                    <td>23</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>20</td>
+                                    <td>9.600.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>5</td>
+                                    <td>SHOP Quần Hoa Hùng</td>
                                     <td>MBA304</td>
-                                    <td>Quần jean nam</td>
+                                    <td>Quần Jean Nam</td>
                                     <td><img src="img/quanjean2.jpg" alt=""></td>
-                                    <td>2020-10-21</td>
-                                    <td>356</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>100</td>
+                                    <td>58.000.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>6</td>
-                                    <td>MBA400</td>
-                                    <td>Quần kaki nâu nữ</td>
-                                    <td><img src="img/quankaki.jpg" alt=""></td>
-                                    <td>2020-10-20</td>
-                                    <td>18</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA404</td>
+                                    <td>Quần tây đen</td>
+                                    <td><img src="img/quantay.jpg" alt=""></td>
+                                    <td>200</td>
+                                    <td>120.000.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>7</td>
-                                    <td>MBA404</td>
-                                    <td>Quần tây đen</td>
-                                    <td><img src="img/quantay.jpg" alt=""></td>
-                                    <td>2020-10-14</td>
-                                    <td>98</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA400</td>
+                                    <td>Quần kaki nâu nữ</td>
+                                    <td><img src="img/quankaki.jpg" alt=""></td>
+                                    <td>60</td>
+                                    <td>32.400.000</td>
+                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -326,80 +297,200 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="table-2">
-                        <p class="title"><span style="color:#ff7315">D</span>anh mục</p>
-                        <div class="line"></div>
-                        <div>
-                            <span onclick="taoDanhMuc()" class="addCata">Thêm danh mục</span>
-                            <span class="addCata">Xóa các mục đã chọn</span>
-                        </div>
-                        <table class="qlbl-content-table ql2">
+                </div>
+                <div class="mainLSPhieuNhap" id="mainLSPhieuNhap">
+                    <button class="buttonAddQLKH">Xóa các mục đã chọn</button>
+                    <table class="qlbl-content-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="" id="" class="checkTable"></th>
+                                <th>STT</th>
+                                <th>Mã phiếu nhập</th>
+                                <th>Ngày nhập</th>
+                                <th>Số lượng hàng hóa nhập</th>
+                                <th>Số loại hàng hóa nhập</th>
+                                <th>Tổng tiền</th>
+                                <th>Xóa</th>
+                                <th>Thông tin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>1</td>
+                                <td>PN304</td>
+                                <td>2020-10-29</td>
+                                <td>950</td>
+                                <td>16</td>
+                                <td>480.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>2</td>
+                                <td>PN303</td>
+                                <td>2020-10-20</td>
+                                <td>720</td>
+                                <td>12</td>
+                                <td>321.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>3</td>
+                                <td>PN302</td>
+                                <td>2020-10-17</td>
+                                <td>210</td>
+                                <td>5</td>
+                                <td>113.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>4</td>
+                                <td>PN301</td>
+                                <td>2020-10-14</td>
+                                <td>1150</td>
+                                <td>24</td>
+                                <td>660.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>5</td>
+                                <td>PN300</td>
+                                <td>2020-10-05</td>
+                                <td>1220</td>
+                                <td>34</td>
+                                <td>740.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>6</td>
+                                <td>PN299</td>
+                                <td>2020-09-29</td>
+                                <td>920</td>
+                                <td>19</td>
+                                <td>490.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id="" class="checkTable"></td>
+                                <td>7</td>
+                                <td>PN298</td>
+                                <td>2020-09-20</td>
+                                <td>1950</td>
+                                <td>54</td>
+                                <td>1.340.000.000</td>
+                                <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
+                                <td><i class="fa fa-cubes qlblEdit" onclick="information()"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="movepage-next">
+                        <p>Hiển thị từ 1 đến 7 của 16 phần tử</p>
+                        <ul>
+                            <li><a href="">Trở về</a></li>
+                            <li><a href="">1</a></li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">Tiếp tục</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mainInformationLS" id="mainInformationLS">
+                    <button class="buttonAddQLKH" onclick="goback()">Trở lại</button>
+                    <div class="display">
+                        <table class="qlbl-content-table">
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" name="" id="" class="checkTable"></th>
                                     <th>STT</th>
-                                    <th>Mã danh mục</th>
-                                    <th>Xóa</th>
-                                    <th>Sửa</th>
-                                    <th>Thông tin</th>
+                                    <th>Hãng sản xuất</th>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Hình sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng tiền</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>1</td>
-                                    <td>AC123</td>
-                                    <td><i class="fa fa-trash-o qlblRemove" onclick="remove()"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit" onclick="edit()"></i></td>
-                                    <td><i class="fa fa-info qlblEditt" onclick="information()"></i></td>
+                                    <td>SHOPAOAMAZON</td>
+                                    <td>MBA100</td>
+                                    <td>Áo thun MB</td>
+                                    <td><img src="img/aothunmb.jpg" alt=""></td>
+                                    <td>40</td>
+                                    <td>20.000.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>2</td>
-                                    <td>AC245</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOPAOAMAZON</td>
+                                    <td>MBA200</td>
+                                    <td>Áo sơ mi cam</td>
+                                    <td><img src="img/aosomi1.jpg" alt=""></td>
+                                    <td>25</td>
+                                    <td>12.000.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>3</td>
-                                    <td>AC344</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOPAOAMAZON</td>
+                                    <td>MBA201</td>
+                                    <td>Áo sơ mi trắng</td>
+                                    <td><img src="img/aosomi2.jpg" alt=""></td>
+                                    <td>80</td>
+                                    <td>40.000.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>4</td>
-                                    <td>AC500</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA300</td>
+                                    <td>Quần Jean bó nữ</td>
+                                    <td><img src="img/quanjean1.jpg" alt=""></td>
+                                    <td>20</td>
+                                    <td>9.600.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>5</td>
-                                    <td>Q003</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA304</td>
+                                    <td>Quần Jean Nam</td>
+                                    <td><img src="img/quanjean2.jpg" alt=""></td>
+                                    <td>100</td>
+                                    <td>58.000.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>6</td>
-                                    <td>Q010</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA404</td>
+                                    <td>Quần tây đen</td>
+                                    <td><img src="img/quantay.jpg" alt=""></td>
+                                    <td>200</td>
+                                    <td>120.000.000</td>
                                 </tr>
                                 <tr>
                                     <td><input type="checkbox" name="" id="" class="checkTable"></td>
                                     <td>7</td>
-                                    <td>Q445</td>
-                                    <td><i class="fa fa-trash-o qlblRemove"></i></td>
-                                    <td><i class="fa fa-pencil qlblEdit"></i></td>
-                                    <td><i class="fa fa-info qlblEditt"></i></td>
+                                    <td>SHOP Quần Hoa Hùng</td>
+                                    <td>MBA400</td>
+                                    <td>Quần kaki nâu nữ</td>
+                                    <td><img src="img/quankaki.jpg" alt=""></td>
+                                    <td>60</td>
+                                    <td>32.400.000</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -410,14 +501,11 @@
                                 <li><a href="">1</a></li>
                                 <li><a href="">2</a></li>
                                 <li><a href="">3</a></li>
-                                <li><a href="" style="
-                                    padding-right: 38px;
-                                ">Tiếp tục</a></li>
+                                <li><a href="">Tiếp tục</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- footer -->
@@ -550,7 +638,6 @@
 
         // When the user clicks on the button, scroll to the top of the document
         function topFunction() {
-            console.log(document.getElementById('movetop'))
             $('html,body').animate({ scrollTop: 0 }, 'slow');
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;

@@ -100,3 +100,7 @@ p.qlblContentTitle {
 .table tbody tr:nth-of-type(even) {
   background-color: #f4f4f4;
 }
+
+.navbar-navfirst{
+  transform: translateX(8px);
+}
