@@ -404,10 +404,14 @@ table {
 }
 
 .input {
-  width: 19%;
+  padding: 10px;
+  width: 21%;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+  background-color: #232020;
+  border-radius: 5px;
+  height: 710px;
 }
 
 .display {
@@ -465,15 +469,26 @@ table img {
   font-weight: bold;
   color: #232020;
   margin-top: 20px;
+  color: white;
 }
 
 .input input,
 .input select {
   border: none;
-  box-shadow: 3px 4px 7px 1px #b7b6b6;
   border-radius: 5px;
   padding: 10px 20px;
   outline: none;
+}
+
+#mpn {
+  background-color: #f4f4f4 !important;
+  color: #6b778d;
+}
+
+.result {
+  margin-top: 40px;
+  font-weight: bold;
+  color:white;
 }
 
 .input button {
@@ -489,17 +504,13 @@ table img {
   border: none;
   margin-top: 20px;
   color: white;
-  background-color: #232020;
+  background-color: #ff7315;
   cursor: pointer;
 }
 
 .input button:hover {
-  background-color: #ff7315;
-}
-
-.input p {
-  margin-top: 40px;
-  font-weight: bold;
+  background-color: white;
+  color: #232020;
 }
 
 .buttonAddQLKH {
