@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Tài khoản - ADMIN</title>
+  <title>Sửa nhân viên giao hàng</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
   <!-- https://fonts.google.com/specimen/Roboto -->
   <link rel="stylesheet" href="css/fontawesome.min.css" />
@@ -51,15 +51,16 @@
             </li>
             <li class="nav-item dropdown">
 
-              <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link  dropdown-toggle  active" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-braille"></i>
                 <span>
                   Quản lý Shop<i class="fas fa-angle-down" style="margin-left: 3px;"></i>
                 </span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i> Quản lý khách
+                <a class="dropdown-item  active" href="quanLyKhachHang.html"> <i class="fa fa-briefcase"></i> Quản lý
+                  khách
                   hàng</a>
                 <a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Quản lý đơn hàng</a>
                 <a class="dropdown-item" href="add-product.html"><i class="fa fa-shopping-bag"></i> Quản lý sản
@@ -76,7 +77,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link  active" href="accounts.html">
+              <a class="nav-link " href="accounts.html">
                 <i class="far fa-user"></i>
                 Tài khoản
               </a>
@@ -95,9 +96,12 @@
     <div class="navbar-fixed-header"></div>
     <div class="container mt-5">
       <!-- row -->
-      <div>
-        <p class="qlblTitle">Thay đổi thông tin <span style="color:#ff7315">ADMIN</span></p>
-        <p class="qlblContentTitle">Cập nhập thông tin admin</p>
+      <div class="headerGoBack">
+        <div>
+          <p class="qlblTitle">Thay đổi thông tin nhân viên giao <span style="color:#ff7315">hàng</span></p>
+          <p class="qlblContentTitle">Điền thông tin nhân viên giao hàng</p>
+        </div>
+        <input id="goback" type="button" value="Trở lại" onclick="goback2()">
       </div>
       <div class="qlblLine"></div>
       <div class="row tm-content-row">
@@ -105,7 +109,7 @@
           <div class="tm-bg-primary-dark tm-block tm-block-avatar">
             <h2 class="tm-block-title"><span style="color:#ff7315">Thay </span>đổi ảnh đại diện</h2>
             <div class="tm-avatar-container">
-              <img src="img/girl.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar"/>
+              <img src="img/avatar1.jpg" alt="Avatar" class="tm-avatar img-fluid mb-4" id="avatar" />
               <a href="#" class="tm-avatar-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
               </a>
@@ -119,32 +123,48 @@
         </div>
         <div class="tm-block-col tm-col-account-settings">
           <div class="tm-bg-primary-dark tm-block tm-block-settings">
-            <h2 class="tm-block-title">Thiết lập thông tin tài khoản <span style="color:#ff7315"> ADMIN </span></h2>
+            <h2 class="tm-block-title">Thiết lập thông tin tài khoản <span style="color:#ff7315"> nhân viên giao hàng
+              </span></h2>
             <form action="" class="tm-signup-form row">
               <div class="form-group col-lg-6">
-                <label for="name">Tên tài khoản</label>
-                <input value="admin" id="name" name="name" type="text" class="form-control validate" />
+                <label for="mnv">Mã nhân viên</label>
+                <input value="GH220" id="mnv" name="name" type="text" class="form-control validate" />
               </div>
               <div class="form-group col-lg-6">
-                <label for="email">Địa chỉ Email</label>
-                <input value="tvtShop@gmail.com" id="email" name="email" type="email" class="form-control validate" />
+                <label for="namenv">Tên nhân viên</label>
+                <input value="Nguyễn Cao Đại" id="namenv" name="name" type="text" class="form-control validate" />
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="name">Tên tài khoản</label>
+                <input value="hongcute123" id="name" name="name" type="text" class="form-control validate" />
               </div>
               <div class="form-group col-lg-6">
                 <label for="password">Mật khẩu</label>
-                <input id="password" name="password" type="text" value="123456" class="form-control validate" />
+                <input value="iamarose" id="password" name="password" type="text" class="form-control validate" />
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="email">Địa chỉ Email</label>
+                <input value="hongcute123@gmail.com" id="email" name="email" type="email" class="form-control validate" />
               </div>
               <div class="form-group col-lg-6">
                 <label for="password2">Địa chỉ</label>
-                <input id="password2" name="password2" type="text" value="TP Hồ Chí Minh"
-                  class="form-control validate" />
+                <input value="KP6. Phường Linh Trung -Thủ Đức- Việt Nam" id="password2" name="password2" type="text" class="form-control validate" />
               </div>
               <div class="form-group col-lg-6">
                 <label for="phone">Số điện thoại</label>
-                <input value="0224322221" id="phone" name="phone" type="tel" class="form-control validate" />
+                <input value="0965321563" id="phone" name="phone" type="tel" class="form-control validate" />
               </div>
               <div class="form-group col-lg-6">
-                <label for="phone">Giới thiệu</label>
-                <input value="..............." id="phone" name="phone" type="text" class="form-control validate" />
+                <label for="nvl">Ngày vào làm</label>
+                <input id="nvl" name="nvl" value="2020-01-03" type="date" class="form-control validate" />
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="luong">Lương</label>
+                <input value="10.000.000" id="luong" name="luong" type="text" class="form-control validate" />
+              </div>
+              <div class="form-group col-lg-6">
+                <label for="gioithieu">Giới thiệu</label>
+                <input id="gioithieu" value="Hoạt bát siêng năng" name="gioithieu" type="text" class="form-control validate" />
               </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">

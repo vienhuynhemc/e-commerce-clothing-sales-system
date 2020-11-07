@@ -70,3 +70,25 @@ p.qlblContentTitle {
   color: #6b778d;
   font-family: "Lato", sans-serif;
 }
+
+#goback:hover {
+  background-color: #ff7315;
+}
+#goback {
+  width: 200px;
+  height: 50px;
+  margin-top: 5px;
+  color: white;
+  background-color: #232020;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0.5em 1em -0.125em rgb(0 0 0), 0 0 0 1px rgb(255 255 255);
+  outline: none;
+}
+
+.headerGoBack{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

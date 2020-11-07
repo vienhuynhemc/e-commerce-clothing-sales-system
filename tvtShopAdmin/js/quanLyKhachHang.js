@@ -63,6 +63,12 @@ function removeKH() {
     document.getElementById('yes-no-question').style.transition = 'all 0.5s ease 0.6s'
 }
 
+function removeGH() {
+    document.getElementById('hidden-div-help').style.transform = 'scaleY(1)';
+    document.getElementById('yes-no-question').style.transform = 'scaleY(1)';
+    document.getElementById('yes-no-question').style.transition = 'all 0.5s ease 0.6s'
+}
+
 function hiddenDiv() {
     document.getElementById('hidden-div-help').style.transform = 'scaleY(0)';
     document.getElementById('yes-no-question').style.transform = 'scaleY(0)';
@@ -71,14 +77,26 @@ function hiddenDiv() {
     document.getElementById('form-add-kh').style.transform = 'scaleY(0)';
 }
 
-function informationKH(){
+function informationKH() {
     document.getElementById('hidden-div-help').style.transform = 'scaleY(1)';
     document.getElementById('form-information-kh').style.transform = 'scaleY(1)';
     document.getElementById('form-information-kh').style.transition = 'all 0.5s ease 0.6s'
 }
 
-function addKH(){
+function addKH() {
     document.getElementById('hidden-div-help').style.transform = 'scaleY(1)';
     document.getElementById('form-add-kh').style.transform = 'scaleY(1)';
     document.getElementById('form-add-kh').style.transition = 'all 0.5s ease 0.6s'
+}
+
+function addNhanVienGH() {
+    window.location.href = '../tvtShopAdmin/themNhanVienGiaoHang.html';
+}
+
+function informationGH() {
+    window.location.href = '../tvtShopAdmin/informationNhanVienGiaoHang.html';
+}
+
+function editGH() {
+    window.location.href = '../tvtShopAdmin/editNhanVienGiaoHang.html';
 }

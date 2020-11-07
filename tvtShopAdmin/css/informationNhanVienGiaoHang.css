@@ -1,0 +1,21 @@
+.tm-bg-primary-dark {
+  background-color: rgb(255 255 255);
+  border-radius: 5px;
+}
+
+.tm-block-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #232020;
+  margin-bottom: 30px;
+}
+
+p {
+  color: #6b778d;
+}
+
+.form-group label {
+    color:#232020;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

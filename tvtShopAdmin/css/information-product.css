@@ -100,6 +100,7 @@ p.qlblContentTitle {
   background: rgb(255 255 255);
   border-radius: 5px;
   overflow: hidden;
+  transition: all 1s ease-out;
 }
 
 .btn-primary {
@@ -202,7 +203,7 @@ p.qlblContentTitle {
 }
 
 .tm-bg-primary-dark {
-  background-color: #f4f4f4;
+  background-color: white;
   border-radius: 5px;
   width: 106%;
   margin: auto;
@@ -267,5 +268,6 @@ p.qlblContentTitle {
   -ms-flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  transition: all 1s ease;
 }
 
