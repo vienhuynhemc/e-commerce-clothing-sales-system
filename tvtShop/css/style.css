@@ -232,7 +232,7 @@ img {
   width: 100%;
   position: fixed;
   z-index: 999;
-  background: #2320209e;
+  background: rgba(16, 16, 16, 0.470588);
 }
 header#aa-header:after {
   content: "";
@@ -5863,4 +5863,133 @@ span.fa.fa-cart-arrow-down {
   color: #ff7315;
   font-size: 34px;
   transform: translateX(-2px);
+}
+
+.contentslider{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  width: 100%;
+  height: 730px;
+  overflow: hidden;
+}
+
+.sliderleft{
+width: 100%;
+  height: 100%;
+  position: relative;
+  overflow:hidden;
+}
+
+.sliderleft .mainslider{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template: repeat(1,1fr)/repeat(4,100%);
+  position: relative;
+  transition: all 1s ease-in-out;
+  left:0%;
+}
+
+.mainslider img{
+  position: absolute;
+}
+
+.sliderright{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sliderright img{
+  width: 140%;
+  height: 100%;
+}
+
+.fatherimg{
+  position: relative;
+}
+
+.hiddendivslider{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 16, 16, 0.470588);
+  z-index:2;
+}
+
+.noidungslider{
+  position: relative;
+    font-family: 'Oswald', sans-serif;
+    color:white;
+    z-index:3;
+    top:45%;
+    left:12%;
+}
+
+.noidungslider p{
+  line-height: 68px;
+  font-size: 48px;
+}
+
+.shopnow:hover{
+  background: #ff7315;
+  color: #fff;
+}
+.shopnow{
+  display: inline-block;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  padding: 10px 26px;
+  font-size: 16px;
+  background-color: #fff;
+  margin-top: 30px;
+  color: #232020;
+  border-radius: 25px;
+}
+
+.islml{
+  position: absolute;
+  z-index:4;
+  color:white;
+  top:48%;
+  left:2%;
+  background-color: rgba(255, 255, 255, 0);
+  border:none;
+  cursor: pointer;
+  outline: none;
+}
+
+.islml i{
+  font-size: 33px;
+  font-weight: bold;
+}
+
+
+.islmr{
+  position: absolute;
+  z-index:4;
+  color:white;
+  top:48%;
+  left:95%;
+  background-color: rgba(255, 255, 255, 0);
+  border:none;
+  cursor: pointer;
+  outline: none;
+}
+
+.islmr i{
+  font-size: 33px;
+  font-weight: bold;
+}
+
+.sliderright div{
+  position: absolute;
+  color:white;
+  z-index: 5;
+top:45%;
+left:10%;
+line-height: 68px;
+    font-size: 48px;
 }
