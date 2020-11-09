@@ -5818,7 +5818,7 @@ span.fa.fa-credit-card {
 .choiselanguage li{
   display: inline-block;
     text-align: right;
-    background-color: rgba(255, 255, 255, 0.141);
+    background-color: #232020 !important;
     border-radius: 35px;
     /* height: 32px; */
     /* margin-bottom: 3px; */
@@ -5831,7 +5831,7 @@ span.fa.fa-credit-card {
 }
 
 .choiselanguage li:hover{
-  background-color: #ff7315;
+  background-color: #ff7315 !important;
 }
 
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-logo a > span {
