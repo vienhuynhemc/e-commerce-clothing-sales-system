@@ -9,12 +9,22 @@
     /* width: 1920px;
     height: 900px; */
 }
+body{
+    background: #FFAD0F !important;
+
+}
 .container1{
     max-width: 750px;
-    height: 600px;
-    /* background-color: greenyellow; */
-    margin: auto;
+    height: 620px;
+    background-color: white;
+    margin-top: 100px;
     position: relative;
+    margin-bottom: 150px;
+    margin-left: 50px;
+    -webkit-box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.43); 
+    box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.43);
+    border-radius: 10px;
+
 }
 .main1 .container1 .text{
     color: black;
@@ -22,14 +32,16 @@
     margin-bottom: 20px;
 }
 .main1 .container1 .content {
-    /* background-color: purple; */
+   /* background-color: yellowgreen; */
     width: 100%;
-    height: 400px;
-    margin-top: 30px;
+    height: 100%;
     position: absolute;
+    padding-top: 30px;
+   
 }
 .mainLogin{
-    margin-top: 50px;
+    margin-top: 130px;
+    height: 450px !important;
 }
 .main1 .container1 .content .texts {
     font-size: 30px;
@@ -231,4 +243,12 @@
 #continue2 a{
     text-decoration: none;
     color: white;
+}
+/* sign_up */
+.sign_up_link {
+    margin: -50px 61px 20px 0px;
+    float: right;
+}
+.sign_up_link i{
+    margin-right: 5px;
 }
