@@ -832,7 +832,7 @@ header#aa-header:after {
 }
 #menu .menu-area .navbar-default .navbar-nav .dropdown-menu li a:hover,
 #menu .menu-area .navbar-default .navbar-nav .dropdown-menu li a:focus {
-  color: #fff;
+  color: #fff !important;
 }
 #menu .menu-area .navbar-default .navbar-nav .dropdown-menu .dropdown-header {
   color: #555;
