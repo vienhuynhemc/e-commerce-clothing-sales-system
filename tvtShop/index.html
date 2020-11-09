@@ -7,11 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Daily Shop | Home</title>
 
-  <!-- Font awesome -->
-  <link href="css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-    integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <link href="css/bootstrap.css" rel="stylesheet">
   <!-- SmartMenus jQuery Bootstrap Addon CSS -->
   <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
@@ -33,7 +30,6 @@
   <!-- Google Font -->
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,12 +48,9 @@
       <span>Loading</span>
     </div>
   </div> -->
-<!--vien dep trai-->
-<!--thanh dep trai-->
-<!-- hahaa -->
-<!--vien be de-->
+
   <!-- SCROLL TOP BUTTON -->
-  <a class="scrollToTop movetop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <a class="scrollToTop movetop" href="#"><i class="fa fa-angle-double-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
   <!-- Start header section -->
@@ -73,7 +66,8 @@
                 <!-- start language -->
 
                 <!-- / language -->
-                <span id="qc">Free ship với đơn hàng từ 499,000đ</span>
+                <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span> hàng từ <span
+                    style="color:#ff7315; font-weight:bold">499,000đ</span></span>
                 <!-- start currency -->
                 <!-- / currency -->
                 <!-- start cellphone -->
@@ -83,30 +77,31 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                  <li class="hidden-xs"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
-                  <li class="hidden-xs"><a href="cart.html">My Cart
+                  <li class="iconRound"><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                  <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                  <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
                       <span class="fa fa-shopping-cart"></span></a></li>
-                  <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                  <li class="hidden-xs iconRoundLenght"><a href="checkout.html">Checkout <span
+                        class="fa fa-credit-card"></span></a></li>
                   <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
-                  <li class="hidden-xs">
+                  <li class="hidden-xs iconRoundLenghtt">
                     <div class="aa-language">
                       <div class="dropdown">
                         <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="true">
-                          <img class="country" src="img/flag/english.jpg" alt="english flag">ENGLISH
+                          <img class="country" src="img/vietnam.png" alt="english flag">Việt Nam
                           <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu menucountry" aria-labelledby="dropdownMenu1">
-                          <li><a href="#"><img class="country" src="img/flag/french.jpg" alt="">FRENCH</a></li>
-                          <li><a href="#"><img class="country" src="img/flag/english.jpg" alt="">ENGLISH</a></li>
+                        <ul class="dropdown-menu menucountry choiselanguage" aria-labelledby="dropdownMenu1">
+                          <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt Nam</a></li>
+                          <li><a href="#"><img class="country" src="img/language.png" alt="">English</a></li>
                         </ul>
                       </div>
                     </div>
                   </li>
-                  <li class="hidden-xs">
+                  <li class="hidden-xs iconRoundLenghtt iconPhone">
                     <div class="cellphone hidden-xs">
-                      <p id="phone"><span class="fa fa-phone"></span>09-3223-23</p>
+                      <p id="phone"><span class="fa fa-phone"></span>09-7112-209</p>
                     </div>
                   </li>
 
@@ -130,7 +125,7 @@
                 <!-- Text based logo -->
                 <a href="index.html">
                   <span class="fa fa-shopping-cart"></span>
-                  <p>TVT<strong>Shop</strong> <span>Your Shopping Partner</span></p>
+                  <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                 </a>
                 <!-- img based logo -->
                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -150,86 +145,50 @@
                           <span class="icon-bar"></span>
                         </button>
                       </div>
-                      <div class="navbar-collapse collapse">
+                      <div class="navbar-collapse collapse menuselect">
                         <!-- Left nav -->
-                        <ul class="nav navbar-nav">
-                          <li><a href="index.html">Home</a></li>
-                          <li><a href="#">Men <span class="caret"></span></a>
+                        <ul class="nav navbar-nav leftnav">
+                          <li><a href="index.html" class="active">Trang chủ</a></li>
+                          <li><a href="#">Đồ cho nam<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Casual</a></li>
-                              <li><a href="#">Sports</a></li>
-                              <li><a href="#">Formal</a></li>
-                              <li><a href="#">Standard</a></li>
-                              <li><a href="#">T-Shirts</a></li>
-                              <li><a href="#">Shirts</a></li>
-                              <li><a href="#">Jeans</a></li>
-                              <li><a href="#">Trousers</a></li>
-                              <li><a href="#">And more.. <span class="caret"></span></a>
+                              <li><a href="#">Áo nam <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="#">Sleep Wear</a></li>
-                                  <li><a href="#">Sandals</a></li>
-                                  <li><a href="#">Loafers</a></li>
+                                  <li><a href="#">Áo khoác</a></li>
+                                  <li><a href="#">Áo thun</a></li>
+                                  <li><a href="#">Áo sơ mi</a></li>
+                                  <li><a href="#">Áo polo</a></li>
+                                </ul>
+                              </li>
+                              <li><a href="#">Quần nam<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Quần ngắn</a></li>
+                                  <li><a href="#">Quần dài</a></li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
-                          <li><a href="#">Women <span class="caret"></span></a>
+                          <li><a href="#">Đồ cho nữ<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                              <li><a href="#">Kurta & Kurti</a></li>
-                              <li><a href="#">Trousers</a></li>
-                              <li><a href="#">Casual</a></li>
-                              <li><a href="#">Sports</a></li>
-                              <li><a href="#">Formal</a></li>
-                              <li><a href="#">Sarees</a></li>
-                              <li><a href="#">Shoes</a></li>
-                              <li><a href="#">And more.. <span class="caret"></span></a>
+                              <li><a href="#">Áo nữ<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                  <li><a href="#">Sleep Wear</a></li>
-                                  <li><a href="#">Sandals</a></li>
-                                  <li><a href="#">Loafers</a></li>
-                                  <li><a href="#">And more.. <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                      <li><a href="#">Rings</a></li>
-                                      <li><a href="#">Earrings</a></li>
-                                      <li><a href="#">Jewellery Sets</a></li>
-                                      <li><a href="#">Lockets</a></li>
-                                      <li class="disabled"><a class="disabled" href="#">Disabled item</a></li>
-                                      <li><a href="#">Jeans</a></li>
-                                      <li><a href="#">Polo T-Shirts</a></li>
-                                      <li><a href="#">SKirts</a></li>
-                                      <li><a href="#">Jackets</a></li>
-                                      <li><a href="#">Tops</a></li>
-                                      <li><a href="#">Make Up</a></li>
-                                      <li><a href="#">Hair Care</a></li>
-                                      <li><a href="#">Perfumes</a></li>
-                                      <li><a href="#">Skin Care</a></li>
-                                      <li><a href="#">Hand Bags</a></li>
-                                      <li><a href="#">Single Bags</a></li>
-                                      <li><a href="#">Travel Bags</a></li>
-                                      <li><a href="#">Wallets & Belts</a></li>
-                                      <li><a href="#">Sunglases</a></li>
-                                      <li><a href="#">Nail</a></li>
-                                    </ul>
-                                  </li>
+                                  <li><a href="#">Áo khoác</a></li>
+                                  <li><a href="#">Áo thun</a></li>
+                                  <li><a href="#">Áo sơ mi</a></li>
+                                  <li><a href="#">Áo polo</a></li>
+                                </ul>
+                              </li>
+                              <li><a href="#">Quần / Váy nữ<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><a href="#">Váy</a></li>
+                                  <li><a href="#">Đầm</a></li>
+                                  <li><a href="#">Quần ngắn</a></li>
+                                  <li><a href="#">Quần dài</a></li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
-                          <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="blog-archive.html">Blog Style 1</a></li>
-                              <li><a href="blog-archive-2.html">Blog Style 2</a></li>
-                              <li><a href="blog-single.html">Blog Single</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="contact.html">Contact</a></li>
-                          <li><a href="#">Pages <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="product.html">Shop Page</a></li>
-                              <li><a href="product-detail.html">Shop Single</a></li>
-                              <li><a href="404.html">404 Page</a></li>
-                            </ul>
-                          </li>
+                          <li><a href="contact.html">Liên hệ</a></li>
+                          <li><a href="../tvtShopAdmin/login.html">ADMIN</a> </li>
                         </ul>
                       </div>
                       <!--/.nav-collapse -->
@@ -240,8 +199,8 @@
               <!-- cart box -->
               <div class="aa-cartbox">
                 <a class="aa-cart-link" href="#">
-                  <span class="fa fa-shopping-basket"></span>
-                  <span class="aa-cart-title">SHOPPING CART</span>
+                  <span class="fa fa-cart-arrow-down"></span>
+                  <span class="aa-cart-title">Giỏ hàng</span>
                   <span class="aa-cart-notify">2</span>
                 </a>
                 <div class="aa-cartbox-summary">
@@ -278,7 +237,7 @@
               <!-- search box -->
               <div class="aa-search-box">
                 <form action="">
-                  <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                  <input type="text" name="" id="" placeholder="Tìm kiếm ở đây">
                   <button type="submit"><span class="fa fa-search"></span></button>
                 </form>
               </div>
@@ -295,81 +254,7 @@
 
   <!-- / menu -->
   <!-- Start slider -->
-  <section id="aa-slider">
-    <div class="aa-slider-area">
-      <div id="sequence" class="seq">
-        <div class="seq-screen">
-          <ul class="seq-canvas">
-            <!-- single slide item -->
-            <li>
-              <div class="seq-model">
-                <img data-seq src="img/slider/1.webp" alt="Men slide img" />
-              </div>
-              <div class="seq-title">
-                <span data-seq>Save Up to 75% Off</span>
-                <h2 data-seq>Men Collection</h2>
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-              </div>
-            </li>
-            <!-- single slide item -->
-            <li>
-              <div class="seq-model">
-                <img data-seq src="img/slider/2.webp" alt="Wristwatch slide img" />
-              </div>
-              <div class="seq-title">
-                <span data-seq>Save Up to 40% Off</span>
-                <h2 data-seq>Wristwatch Collection</h2>
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-              </div>
-            </li>
-            <!-- single slide item -->
-            <li>
-              <div class="seq-model">
-                <img data-seq src="img/slider/3.webp" alt="Women Jeans slide img" />
-              </div>
-              <div class="seq-title">
-                <span data-seq>Save Up to 75% Off</span>
-                <h2 data-seq>Jeans Collection</h2>
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-              </div>
-            </li>
-            <!-- single slide item -->
-            <li>
-              <div class="seq-model">
-                <img data-seq src="img/slider/4.webp" alt="Shoes slide img" />
-              </div>
-              <div class="seq-title">
-                <span data-seq>Save Up to 75% Off</span>
-                <h2 data-seq>Exclusive Shoes</h2>
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-              </div>
-            </li>
-            <!-- single slide item -->
-            <li>
-              <div class="seq-model">
-                <img data-seq src="img/slider/5.webp" alt="Male Female slide img" />
-              </div>
-              <div class="seq-title">
-                <span data-seq>Save Up to 50% Off</span>
-                <h2 data-seq>Best Collection</h2>
-                <p data-seq>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.</p>
-                <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- slider navigation btn -->
-        <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-          <a type="button" class="seq-prev" aria-label="Previous"><span class="fa fa-angle-left"></span></a>
-          <a type="button" class="seq-next" aria-label="Next"><span class="fa fa-angle-right"></span></a>
-        </fieldset>
-      </div>
-    </div>
-  </section>
+
   <!-- / slider -->
   <!-- Start Promo section -->
   <section id="aa-promo">
