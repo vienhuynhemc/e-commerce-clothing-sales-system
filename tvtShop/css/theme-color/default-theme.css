@@ -18,14 +18,6 @@ h2 {
 .aa-secondary-btn:focus {
   background-color: #ff6666;
 }
-.aa-browse-btn {
-  background-color: #ff6666;
-  border: 1px solid #ff6666;
-}
-.aa-browse-btn:hover,
-.aa-browse-btn:focus {
-  color: #ff6666;
-}
 .aa-add-to-cart-btn:hover,
 .aa-add-to-cart-btn:focus {
   color: #ff6666;
@@ -133,18 +125,20 @@ h2 {
   border-bottom: 1px solid #ff6666;
 }
 .aa-product-catg li figure .aa-add-card-btn:hover {
-  color: #ff6666;
+  color: white;
+  background-color: #ff7315;
 }
 .aa-product-catg li .aa-product-title a:hover,
 .aa-product-catg li .aa-product-title a:focus {
-  color: #ff6666;
+  color: #ff7315;
 }
 .aa-product-catg li .aa-product-price {
   color: #ff6666;
 }
 .aa-product-catg li .aa-product-hvr-content a:hover,
 .aa-product-catg li .aa-product-hvr-content a:focus {
-  color: #ff6666;
+  color: white;
+  background-color: #ff7315;
 }
 #quick-view-modal .modal-content button.close:hover {
   color: #ff6666;

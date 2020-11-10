@@ -132,14 +132,14 @@ img {
 .aa-browse-btn {
   display: inline-block;
   font-size: 16px;
-  padding: 12px 18px;
-  color: #fff;
+  color: #232020;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .aa-browse-btn span {
   margin-left: 5px;
 }
@@ -1241,7 +1241,6 @@ ul.dropdown-menu.menucountry {
   display: inline;
   float: left;
   width: 100%;
-  background-image: -webkit-linear-gradient(#fbe4e8 10%, pink 90%);
 }
 #aa-product .aa-product-area {
   display: inline;
@@ -1300,7 +1299,7 @@ ul.dropdown-menu.menucountry {
   display: block;
   text-align: center;
   border: none;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .aa-products-tab li {
   border: none;
@@ -1320,10 +1319,12 @@ ul.dropdown-menu.menucountry {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  color:#232020;
+  font-weight: bold;
 }
 .aa-products-tab li a:hover,
 .aa-products-tab li a:focus {
-  color: #333;
+  color:#232020;
   background-color: inherit;
 }
 .aa-products-tab li.active a {
@@ -1378,9 +1379,12 @@ ul.dropdown-menu.menucountry {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  overflow: hidden;
+  width: 250px;
+  height: 300px;
 }
 .aa-product-catg li figure .aa-add-card-btn {
-  background: #000 none repeat scroll 0 0;
+  background-color: #232020;
   bottom: 0;
   color: #fff;
   font-size: 16px;
@@ -1389,7 +1393,6 @@ ul.dropdown-menu.menucountry {
   padding: 12px 10px;
   position: absolute;
   right: 0;
-  text-transform: uppercase;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -1417,9 +1420,9 @@ ul.dropdown-menu.menucountry {
   transition: all 0.5s;
 }
 .aa-product-catg li .aa-product-price {
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  font-size: 16px;
+  color: #6b778d;
+  font-weight: 400;
+  margin-right: 6px;
 }
 .aa-product-catg li .aa-product-price del {
   margin-left: 5px;
@@ -1446,7 +1449,9 @@ ul.dropdown-menu.menucountry {
   background: #fff none repeat scroll 0 0;
   display: inline-block;
   margin: 0 5px;
-  padding: 5px 10px;
+  padding: 9px 15px;
+  border-radius: 50%;
+  font-size: 22px;
 }
 .aa-product-catg li .aa-badge {
   position: absolute;
