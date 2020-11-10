@@ -1747,7 +1747,6 @@ ul.dropdown-menu.menucountry {
 }
 #aa-testimonial:after {
   content: "";
-  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   left: 0;
   right: 0;
@@ -6013,3 +6012,87 @@ line-height: 68px;
     font-size: 48px;
 }
 
+.subscribediv{
+  width: 100%;
+  display: flex;
+}
+
+.subscribediv >div{
+  width: 50%;
+}
+
+.subscribediv>div img{
+  width: 100%;
+}
+
+.subscribedivchild{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.subscribedivchild h3{    font-size: 36px;
+  line-height: 46px;    color: rgb(35, 32, 32);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  font-weight: 700;    font-family: Oswald, sans-serif;
+  width: 531px;
+
+}
+
+.subscribedivchild p{
+  line-height: 1.5;
+  font-size: 16px;
+  color: rgb(107, 119, 141);    font-family: Lato, sans-serif;    margin-bottom: 1rem;
+}
+
+.subscribedivchild input{
+  width: 100%;
+  font-size: 16px;
+  color: rgb(35, 32, 32);
+  height: 53px;
+  text-align: left;
+  appearance: none;
+  background: rgb(241, 238, 238);
+  outline: none;
+  padding: 0px 15px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 25px 0px 0px 25px;
+  width: 390px;
+}
+
+.subscribedivchild button:hover{
+  background-color: #232020 ;
+}
+
+.subscribedivchild button{
+  cursor: pointer;
+  line-height: 30px;
+  appearance: none;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  height: 53px;
+  width: 100%;
+  text-decoration: none;
+  background: rgb(255, 115, 21);
+  transition: all 0.3s ease 0s;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  border-radius: 0px 25px 25px 0px;
+  width: 160px;
+}
+
+.form-action-sr{
+  display: flex;
+  margin-top: 50px;
+}
