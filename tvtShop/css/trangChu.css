@@ -1,0 +1,98 @@
+body{
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.divsecondindex {
+  width: 100%;
+  height: 528px;
+  text-align: center;
+}
+
+.divsecondindextitle {
+  margin-top: 130px;
+}
+
+.divsecondindextitle h3 {
+  font-size: 36px;
+  line-height: 46px;
+  color: #232020;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+}
+
+.divsecondindextitle p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #6b778d;
+}
+
+.divsiitem {
+  position: relative;
+  transition: all 0.2s ease-out 0s;
+  text-align: center;
+}
+
+.divsiitem a {
+  font-family: "Lato", sans-serif;
+  color: #232222;
+  text-decoration: none;
+  background-color: transparent;
+  position: relative;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  transition: all 0.5s ease;
+}
+
+.divsiitem a:hover h3 {
+  transform:scaleX(1);
+}
+
+.divsiitem img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+.divsiitem a h3 {
+  position: absolute;
+  top: 0%;
+  left: 0px;
+  margin-top: -47px;
+  margin-left: 26px;
+  padding: 48px 20px;
+  background-color: #232020b5;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  transform:  scaleX(0);
+  transition: all 0.5s ease;
+  font-family: 'Oswald', sans-serif;
+}
+
+.divsiitem a h3:hover {
+  color: #ff7315;
+}
+
+.divsiitem h4{
+    font-size: 18px;
+    line-height: 30px;
+    color: #232020;
+    display: block;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    margin-top: 20px;
+}
+
+.divsecondindexcontent {
+    display: flex;
+    width: 88%;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 93px;
+}
