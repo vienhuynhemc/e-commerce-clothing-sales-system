@@ -10,7 +10,9 @@
     height: 900px; */
 }
 body{
-    background: #FFAD0F !important;
+    /* background: #FFAD0F !important; */
+    background-image: url("../img/sign_up_bg.jpg");
+    
 
 }
 .container1{
@@ -39,9 +41,24 @@ body{
     padding-top: 30px;
    
 }
+.main1 .container1 .content_pass {
+    /* background-color: yellowgreen; */
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     padding-top: 30px;
+    
+ }
+ .content_pass{
+     height: 300px !important;
+ }
 .mainLogin{
     margin-top: 130px;
     height: 450px !important;
+}
+.content_pass{
+    margin-top: 130px;
+    height: 400px !important;
 }
 .main1 .container1 .content .texts {
     font-size: 30px;
@@ -175,6 +192,10 @@ body{
     transition: 0.2s;
    
 }
+.google i, .facebook i{
+    margin-right: 5px;
+
+}
 .main1 .container1 .social .google span{
   text-align: center;
     
@@ -195,6 +216,9 @@ body{
     height: 400px !important;
     margin-top: 100px !important;
     margin-bottom: 50px;
+}
+.mainForgot1{
+    height: 305px !important;
 }
 .send_again{
     /* float: right!important;

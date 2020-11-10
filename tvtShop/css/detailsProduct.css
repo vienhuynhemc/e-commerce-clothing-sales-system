@@ -545,3 +545,9 @@ hr{
 .slick-prev, .slick-next {
     background-color: #f60!important;
 }
+.active{
+    color: black !important;
+}
+.product_content{
+    color: black !important;
+}
