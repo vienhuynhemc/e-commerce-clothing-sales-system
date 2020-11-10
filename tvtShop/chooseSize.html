@@ -3,92 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <!-- link css -->
-    <link rel="stylesheet" href="../tvtShop/css/sign_up.css">
-    <!-- using boostrap 4 -->
-    <!-- <link rel="stylesheet" href="./bootstrap/bootstrap.css"> -->
-    <!-- font awesome -->
-   
+    <title>Hướng dẫn chọn size</title>
+    
 
-     <!-- Font awesome -->
-     <link href="css/font-awesome.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-     <!-- Bootstrap -->
-     <link href="css/bootstrap.css" rel="stylesheet">
-     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-     <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-     <!-- Product view slider -->
-     <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
-     <!-- slick slider -->
-     <link rel="stylesheet" type="text/css" href="css/slick.css">
-     <!-- price picker slider -->
-     <link rel="stylesheet" type="text/css" href="css/nouislider.css">
-     <!-- Theme color -->
-     <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
-     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
-     <!-- Top Slider CSS -->
-     <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
- 
-     <!-- Main style sheet -->
-     <link href="css/style.css" rel="stylesheet">
- 
-     <!-- Google Font -->
-     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-     <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
-     <link rel="stylesheet" href="../tvtShop/js/Truong/fonta/css/all.css">
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
+    <!-- Top Slider CSS -->
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/chooseSize.css">
 </head>
 <body>
-    <div class="main1">
-        <div class="container1 mainLogin">
-         <div class="content">
-            <p class="texts">Đăng nhập</p>
-            <div class="sign_up_link">
-             <a href="sign_up.html">  <span><i class="fas fa-sign-in-alt"></i></span> Đăng ký tài khoản</a>
+    <div class="container">
+        <div class="main">
+            <p class="title">Hướng dẫn chọn size</p>
+            <div class="form_size">
+                <div class="height">Nhập chiều cao: <input type="text" name="" id="" placeholder="Ví dụ 1.78"></div>
+                <div class="weight">Nhập cân nặng: <input type="text" name="" id="" placeholder="Ví dụ 65"></div>
+                <div class="male"><input type="radio" name="gt">Nam</div>
+                <div class="female"><input type="radio" name="gt">Nữ</div>
+                <label for="btn" class="btn"><input type="submit" id="btn"> <i class="fas fa-check"></i></label>
+                <div class="result">Kết quả: <input type="text" disabled></div>
             </div>
-            <div class="row text input">
-                <div class="col-sm-12 col-md-12">
-                    <i class="fas fa-user-alt"></i>
-                    <input type="text" name="" value="" placeholder="Tên đăng nhập">
-                </div>
+            <div class="title1"><p >Dành cho nam</p></div>
+            
+            <div class="img1">
+                <img src="./img/size1.jpg" alt="">
             </div>
-            <div class="row text input">
-                <div class="col-sm-12 col-md-12">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" name="" value="" placeholder="Mật khẩu">
-                </div>
+            <div class="img2">
+                <img src="./img/size2.jpg" alt="">
             </div>
-            <div class="row text text_checkBox">
-                <div class="col-sm-12 col-md-12 ">
-                    <div class="col-sm-6 col-md-6 remember">
-                        <input type="checkbox" name="" value="">
-                        <span>Lưu mật khẩu</span>
-                    </div>
-                    <div class="col-sm-6 col-md-6 forgot">
-                        <a href=""><span>Quên mật khẩu?</span></a>
-                    </div>
-                </div>
+           <div class="title1"> <p>Dành cho nữ</p></div>
+            <div class="img3">
+                <img src="./img/size3.jpg" alt="">
             </div>
-            <div class="row text login_choose text_white">
-                <div class="col-sm-12 col-md-12">
-                    <span>Đăng nhập</span>
-                </div>
+            <div class="img4">
+                <img src="./img/size4.jpg" alt="">
             </div>
-            <div class="row text social text_white">
-                    <div class="col-sm-6 col-md-6 facebook ">
-                        <i class="fab fa-facebook"></i>
-                        <span>Facebook</span>
-                    </div>
-                    <div class="col-sm-6 col-md-6 google">
-                        <i class="fab fa-google"></i>
-                        <span>Google</span>
-                     </div>
-            </div>
-         </div>
+        </div>
     </div>
-    </div>
+    <!-- footer -->
     <footer id="aa-footer">
         <!-- footer bottom -->
         <div class="aa-footer-top">
@@ -156,7 +132,7 @@
                                                 <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                             </address>
                                             <div class="aa-footer-social">
-                                                <a href="#"><i class="fab fa-facebook-f"></i></span></a>
+                                                <a href="#"><i class="fa fa-facebook"></i></span></a>
                                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                                 <a href="#"><i class="fab fa-google"></i></a>
                                                 <a href="#"><i class="fab fa-youtube"></i></a>
@@ -188,22 +164,24 @@
             </div>
         </div>
     </footer>
-     <!-- jQuery library -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <!-- Include all compiled plugins (below), or include individual files as needed -->
-     <script src="js/bootstrap.js"></script>
-     <!-- SmartMenus jQuery plugin -->
-     <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
-     <!-- SmartMenus jQuery Bootstrap Addon -->
-     <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
-     <!-- Product view slider -->
-     <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-     <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
-     <!-- slick slider -->
-     <script type="text/javascript" src="js/slick.js"></script>
-     <!-- Price picker slider -->
-     <script type="text/javascript" src="js/nouislider.js"></script>
-     <!-- Custom js -->
-     <script src="js/custom.js"></script>
+    <!-- / footer -->
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.js"></script>
+    <!-- SmartMenus jQuery plugin -->
+    <script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+    <!-- SmartMenus jQuery Bootstrap Addon -->
+    <script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+    <!-- Product view slider -->
+    <script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+    <script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+    <!-- slick slider -->
+    <script type="text/javascript" src="js/slick.js"></script>
+    <!-- Price picker slider -->
+    <script type="text/javascript" src="js/nouislider.js"></script>
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
 </body>
 </html>
