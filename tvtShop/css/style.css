@@ -1639,7 +1639,6 @@ ul.dropdown-menu.menucountry {
   display: inline;
   float: left;
   width: 100%;
-  padding: 25px 0px;
   background-color: #f4f4f4;
 }
 #aa-banner .aa-banner-area {
@@ -1661,9 +1660,8 @@ ul.dropdown-menu.menucountry {
 #aa-popular-category {
   display: inline;
   float: left;
-  padding: 25px 0;
   width: 100%;
-  background-image: -webkit-linear-gradient(#fbe4e8 10%, pink 90%);
+  padding-bottom: 35px;
 }
 #aa-popular-category .aa-popular-category-area {
   display: inline;
