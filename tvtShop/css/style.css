@@ -1455,20 +1455,36 @@ ul.dropdown-menu.menucountry {
 }
 .aa-product-catg li .aa-badge {
   position: absolute;
-  top: 5%;
-  left: 0;
-  padding: 5px 10px;
+  top: 0%;
+  left: 187px;
   color: #fff;
   font-size: 15px;
+  font-weight: bold;
+  font-family: sans-serif; display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -9px;
 }
 .aa-product-catg li .aa-sale {
-  background-color: #008000;
+ background-image: url('../img/noti2.png');
+ width: 47px;
+ height: 60px;
+ text-align: center; display: flex;
+ align-items: center;
+ justify-content: center;
 }
 .aa-product-catg li .aa-sold-out {
-  background-color: #ff0000;
+  background-image: url('../img/noti1.png');
+  width: 47px;
+  height: 60px; text-align: center;
 }
 .aa-product-catg li .aa-hot {
-  background-color: #ff6600;
+  background-image: url('../img/noti3.png');
+ width: 47px;
+ height: 60px; text-align: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 /*=== modal window ===*/
