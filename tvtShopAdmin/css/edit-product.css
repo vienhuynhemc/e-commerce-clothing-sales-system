@@ -175,8 +175,9 @@ p.qlblContentTitle {
   height: 100%;
   display: grid;
   grid-template: repeat(1, 1fr) / repeat(100, 100%);
-  transition: all 0.5s ease;
+  transition: all 1s ease-out;
   position: relative;
+  left: 0%;
 }
 
 .list-img img {
@@ -215,7 +216,7 @@ p.qlblContentTitle {
 
 .checkboxsize input {
   background-color: white;
-  margin-right:  10px;
+  margin-right: 10px;
   margin-bottom: -5px;
 }
 

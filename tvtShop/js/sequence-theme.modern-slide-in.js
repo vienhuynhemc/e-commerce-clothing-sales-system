@@ -31,4 +31,3 @@ var options = {
 }
 
 // Launch Sequence on the element, and with the options we specified above
-var mySequence = sequence(sequenceElement, options);
