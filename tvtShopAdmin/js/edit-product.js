@@ -46,7 +46,7 @@ function removeDiv(box, img2) {
 function checkSlide() {
     let date = new Date();
     let time = date.getTime();
-    if (time - lastTime > 500) {
+    if (time - lastTime > 1000) {
         slide = false;
         lastTime = time;
     }
