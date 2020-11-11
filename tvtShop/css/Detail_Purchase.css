@@ -4892,6 +4892,8 @@ span.dg {
 }
 .title h3 {
   padding-top: 399px;
+  font-size: 26px;
+  font-weight: bold;
 }
 .order-detail-page__delivery__header__title {
   color: rgba(0,0,0,.8);
