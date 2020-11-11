@@ -1331,15 +1331,6 @@ ul.dropdown-menu.menucountry {
   color: #fff;
   font-size: 15px;
 }
-.aa-product-catg li .aa-sale {
-  background-color: #008000;
-}
-.aa-product-catg li .aa-sold-out {
-  background-color: #FF0000;
-}
-.aa-product-catg li .aa-hot {
-  background-color: #ff6600;
-}
 
 /*=== modal window ===*/
 

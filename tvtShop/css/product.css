@@ -1351,19 +1351,16 @@ ul.dropdown-menu.menucountry {
   font-size: 15px;
 }
 .aa-product-catg li .aa-sale {
-  background-color: #008000;
   position: absolute;
   left: -61px;
   transition: cubic-bezier(.29,-0.34,.65,2.8) 0.4s;
 }
 .aa-product-catg li .aa-sold-out {
-  background-color: #FF0000;
   position: absolute;
   left: -84px;
   transition: cubic-bezier(.29,-0.34,.65,2.8) 0.4s;
 }
 .aa-product-catg li .aa-hot {
-  background-color: #ff6600;
   position: absolute;
   left: -57px;
   transition: cubic-bezier(.29,-0.34,.65,2.8) 0.4s;
