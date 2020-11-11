@@ -41,15 +41,25 @@
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-    
 
 
     <title>Document</title>
 </head>
 
 <body>
+    <!-- wpf loader Two -->
+    <div id="wpf-loader-two">
+        <div class="wpf-loader-two-inner">
+            <span style="color:#ff7315">Loading</span>
+        </div>
+    </div>
+
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop movetop" href="#"><i class="fa fa-angle-double-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+
     <!-- Start header section -->
     <header id="aa-header">
         <!-- start header top  -->
@@ -63,7 +73,8 @@
                                 <!-- start language -->
 
                                 <!-- / language -->
-                                <span id="qc">Free ship với đơn hàng từ 499,000đ</span>
+                                <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span>
+                                    hàng từ <span style="color:#ff7315; font-weight:bold">499,000đ</span></span>
                                 <!-- start currency -->
                                 <!-- / currency -->
                                 <!-- start cellphone -->
@@ -73,33 +84,37 @@
                             <!-- / header top left -->
                             <div class="aa-header-top-right">
                                 <ul class="aa-head-top-nav-right">
-                                    <li><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                                    <li class="hidden-xs"><a href="wishlist.html"><i class="fas fa-heart"></i></a></li>
-                                    <li class="hidden-xs"><a href="cart.html">My Cart
+                                    <li class="iconRound"><a href="account.html"><i class="fa fa-user"
+                                                aria-hidden="true"></i></a></li>
+                                    <li class="hidden-xs iconRound"><a href="wishlist.html"><i
+                                                class="fa fa-heart"></i></a></li>
+                                    <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
                                             <span class="fa fa-shopping-cart"></span></a></li>
-                                    <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                                    <li class="hidden-xs iconRoundLenght"><a href="checkout.html">Checkout <span
+                                                class="fa fa-credit-card"></span></a></li>
                                     <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
-                                    <li class="hidden-xs">
+                                    <li class="hidden-xs iconRoundLenghtt">
                                         <div class="aa-language">
                                             <div class="dropdown">
                                                 <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    <img class="country" src="img/flag/english.jpg"
-                                                        alt="english flag">ENGLISH
+                                                    <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                    Nam
                                                     <span class="caret"></span>
                                                 </a>
-                                                <ul class="dropdown-menu menucountry" aria-labelledby="dropdownMenu1">
-                                                    <li><a href="#"><img class="country" src="img/flag/french.jpg"
-                                                                alt="">FRENCH</a></li>
-                                                    <li><a href="#"><img class="country" src="img/flag/english.jpg"
-                                                                alt="">ENGLISH</a></li>
+                                                <ul class="dropdown-menu menucountry choiselanguage"
+                                                    aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#"><img class="country" src="img/vietnam.png"
+                                                                alt="">Việt Nam</a></li>
+                                                    <li><a href="#"><img class="country" src="img/language.png"
+                                                                alt="">English</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="hidden-xs">
+                                    <li class="hidden-xs iconRoundLenghtt iconPhone">
                                         <div class="cellphone hidden-xs">
-                                            <p id="phone"><span class="fa fa-phone"></span>09-3223-23</p>
+                                            <p id="phone"><span class="fa fa-phone"></span>09-7112-209</p>
                                         </div>
                                     </li>
 
@@ -123,7 +138,8 @@
                                 <!-- Text based logo -->
                                 <a href="index.html">
                                     <span class="fa fa-shopping-cart"></span>
-                                    <p>TVT<strong>Shop</strong> <span>Your Shopping Partner</span></p>
+                                    <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span>
+                                    </p>
                                 </a>
                                 <!-- img based logo -->
                                 <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -143,88 +159,50 @@
                                                     <span class="icon-bar"></span>
                                                 </button>
                                             </div>
-                                            <div class="navbar-collapse collapse">
+                                            <div class="navbar-collapse collapse menuselect">
                                                 <!-- Left nav -->
-                                                <ul class="nav navbar-nav">
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="#">Men <span class="caret"></span></a>
+                                                <ul class="nav navbar-nav leftnav">
+                                                    <li><a href="index.html" class="activeee">Trang chủ</a></li>
+                                                    <li><a href="#">Đồ cho nam<span class="caret"></span></a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="#">Casual</a></li>
-                                                            <li><a href="#">Sports</a></li>
-                                                            <li><a href="#">Formal</a></li>
-                                                            <li><a href="#">Standard</a></li>
-                                                            <li><a href="#">T-Shirts</a></li>
-                                                            <li><a href="#">Shirts</a></li>
-                                                            <li><a href="#">Jeans</a></li>
-                                                            <li><a href="#">Trousers</a></li>
-                                                            <li><a href="#">And more.. <span class="caret"></span></a>
+                                                            <li><a href="#">Áo nam <span class="caret"></span></a>
                                                                 <ul class="dropdown-menu">
-                                                                    <li><a href="#">Sleep Wear</a></li>
-                                                                    <li><a href="#">Sandals</a></li>
-                                                                    <li><a href="#">Loafers</a></li>
+                                                                    <li><a href="#">Áo khoác</a></li>
+                                                                    <li><a href="#">Áo thun</a></li>
+                                                                    <li><a href="#">Áo sơ mi</a></li>
+                                                                    <li><a href="#">Áo polo</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#">Quần nam<span class="caret"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="#">Quần ngắn</a></li>
+                                                                    <li><a href="#">Quần dài</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="#">Women <span class="caret"></span></a>
+                                                    <li><a href="#">Đồ cho nữ<span class="caret"></span></a>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="#">Kurta & Kurti</a></li>
-                                                            <li><a href="#">Trousers</a></li>
-                                                            <li><a href="#">Casual</a></li>
-                                                            <li><a href="#">Sports</a></li>
-                                                            <li><a href="#">Formal</a></li>
-                                                            <li><a href="#">Sarees</a></li>
-                                                            <li><a href="#">Shoes</a></li>
-                                                            <li><a href="#">And more.. <span class="caret"></span></a>
+                                                            <li><a href="#">Áo nữ<span class="caret"></span></a>
                                                                 <ul class="dropdown-menu">
-                                                                    <li><a href="#">Sleep Wear</a></li>
-                                                                    <li><a href="#">Sandals</a></li>
-                                                                    <li><a href="#">Loafers</a></li>
-                                                                    <li><a href="#">And more.. <span
-                                                                                class="caret"></span></a>
-                                                                        <ul class="dropdown-menu">
-                                                                            <li><a href="#">Rings</a></li>
-                                                                            <li><a href="#">Earrings</a></li>
-                                                                            <li><a href="#">Jewellery Sets</a></li>
-                                                                            <li><a href="#">Lockets</a></li>
-                                                                            <li class="disabled"><a class="disabled"
-                                                                                    href="#">Disabled item</a></li>
-                                                                            <li><a href="#">Jeans</a></li>
-                                                                            <li><a href="#">Polo T-Shirts</a></li>
-                                                                            <li><a href="#">SKirts</a></li>
-                                                                            <li><a href="#">Jackets</a></li>
-                                                                            <li><a href="#">Tops</a></li>
-                                                                            <li><a href="#">Make Up</a></li>
-                                                                            <li><a href="#">Hair Care</a></li>
-                                                                            <li><a href="#">Perfumes</a></li>
-                                                                            <li><a href="#">Skin Care</a></li>
-                                                                            <li><a href="#">Hand Bags</a></li>
-                                                                            <li><a href="#">Single Bags</a></li>
-                                                                            <li><a href="#">Travel Bags</a></li>
-                                                                            <li><a href="#">Wallets & Belts</a></li>
-                                                                            <li><a href="#">Sunglases</a></li>
-                                                                            <li><a href="#">Nail</a></li>
-                                                                        </ul>
-                                                                    </li>
+                                                                    <li><a href="#">Áo khoác</a></li>
+                                                                    <li><a href="#">Áo thun</a></li>
+                                                                    <li><a href="#">Áo sơ mi</a></li>
+                                                                    <li><a href="#">Áo polo</a></li>
+                                                                </ul>
+                                                            </li>
+                                                            <li><a href="#">Quần / Váy nữ<span class="caret"></span></a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="#">Váy</a></li>
+                                                                    <li><a href="#">Đầm</a></li>
+                                                                    <li><a href="#">Quần ngắn</a></li>
+                                                                    <li><a href="#">Quần dài</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="blog-archive.html">Blog <span class="caret"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="blog-archive.html">Blog Style 1</a></li>
-                                                            <li><a href="blog-archive-2.html">Blog Style 2</a></li>
-                                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="#">Pages <span class="caret"></span></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="product.html">Shop Page</a></li>
-                                                            <li><a href="product-detail.html">Shop Single</a></li>
-                                                            <li><a href="404.html">404 Page</a></li>
-                                                        </ul>
-                                                    </li>
+                                                    <li><a href="contact.html">Liên hệ</a></li>
+                                                    <li><a href="../tvtShopAdmin/login.html">ADMIN</a> </li>
                                                 </ul>
                                             </div>
                                             <!--/.nav-collapse -->
@@ -235,47 +213,48 @@
                             <!-- cart box -->
                             <div class="aa-cartbox">
                                 <a class="aa-cart-link" href="#">
-                                    <span class="fa fa-shopping-basket"></span>
-                                    <span class="aa-cart-title">SHOPPING CART</span>
+                                    <span class="fa fa-cart-arrow-down"></span>
+                                    <span class="aa-cart-title">Giỏ hàng</span>
                                     <span class="aa-cart-notify">2</span>
                                 </a>
-                                <div class="aa-cartbox-summary">
+                                <div class="aa-cartbox-summary  xemnhanhgiohang">
                                     <ul>
                                         <li>
-                                            <a class="aa-cartbox-img" href="#"><img src="img/woman-small-2.jpg"
+                                            <a class="aa-cartbox-img" href="#"><img src="img/do/nu/12.jpg"
                                                     alt="img"></a>
                                             <div class="aa-cartbox-info">
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p>1 x $250</p>
+                                                <h4><a href="#">Áo thun MST 1002</a></h4>
+                                                <p>2 x 299,000 VND</p>
                                             </div>
                                             <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                         </li>
                                         <li>
-                                            <a class="aa-cartbox-img" href="#"><img src="img/woman-small-1.jpg"
+                                            <a class="aa-cartbox-img" href="#"><img src="img/do/nu/13.jpg"
                                                     alt="img"></a>
                                             <div class="aa-cartbox-info">
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p>1 x $250</p>
+                                                <h4><a href="#">Áo thun kéo ASF 1209</a></h4>
+                                                <p>3 x 129,000 VND</p>
                                             </div>
                                             <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                         </li>
                                         <li>
                                             <span class="aa-cartbox-total-title">
-                                                Total
+                                                Tổng tiền
                                             </span>
                                             <span class="aa-cartbox-total-price">
-                                                $500
+                                                985,000 VND
                                             </span>
                                         </li>
                                     </ul>
-                                    <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                                    <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="checkout.html">Thanh
+                                        toán</a>
                                 </div>
                             </div>
                             <!-- / cart box -->
                             <!-- search box -->
                             <div class="aa-search-box">
                                 <form action="">
-                                    <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                                    <input type="text" name="" id="" placeholder="Tìm kiếm ở đây">
                                     <button type="submit"><span class="fa fa-search"></span></button>
                                 </form>
                             </div>
@@ -287,7 +266,7 @@
         </div>
         <!-- / header bottom  -->
     </header>
-
+    <!-- / header section -->
     <!-- / header section -->
     <div class="main">
         <div class="container">
@@ -303,17 +282,18 @@
                         <div onclick="choose3()"><img class="slide3" src="../tvtShop/img/slide3.jpg" alt=""></div>
                         <div onclick="choose14()"><img class="slide4" src="../tvtShop/img/slide4.jpg" alt=""></div> -->
                         <ol class="carousel-indicatorss choose_img">
-                            <li class="sl1" data-target="#carouselExampleIndicators" data-slide-to="0" class="active" id="l1">
+                            <li class="sl1" data-target="#carouselExampleIndicators" data-slide-to="0" class="active"
+                                id="l1">
                                 <div><img id="slide1" src="../tvtShop/img/slide1.jpg" alt=""></div>
                             </li>
                             <li class="sl1" data-target="#carouselExampleIndicators" data-slide-to="1" id="l2">
                                 <div><img id="slide2" src="../tvtShop/img/slide2.jpg" alt=""></div>
                             </li>
                             <li class="sl1" data-target="#carouselExampleIndicators" data-slide-to="2" id="l3">
-                                <div ><img id="slide3" src="../tvtShop/img/slide3.jpg" alt=""></div>
+                                <div><img id="slide3" src="../tvtShop/img/slide3.jpg" alt=""></div>
                             </li>
                             <li class="sl1" data-target="#carouselExampleIndicators" data-slide-to="3" id="l4">
-                                <div ><img id="slide4" src="../tvtShop/img/slide4.jpg" alt=""></div>
+                                <div><img id="slide4" src="../tvtShop/img/slide4.jpg" alt=""></div>
                             </li>
                         </ol>
 
@@ -336,19 +316,19 @@
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="3" ></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                             </ol>
-                            <div class="carousel-inner" >
+                            <div class="carousel-inner">
                                 <div class="carousel-item active" id="l1">
                                     <img class="d-block w-100" src="../tvtShop/img/slide1.jpg" alt="First slide">
                                 </div>
-                                <div class="carousel-item"id="l2">
+                                <div class="carousel-item" id="l2">
                                     <img class="d-block w-100" src="../tvtShop/img/slide2.jpg" alt="Second slide">
                                 </div>
-                                <div class="carousel-item"id="l3">
+                                <div class="carousel-item" id="l3">
                                     <img class="d-block w-100" src="../tvtShop/img/slide3.jpg" alt="Third slide">
                                 </div>
-                                <div class="carousel-item"id="l4">
+                                <div class="carousel-item" id="l4">
                                     <img class="d-block w-100" src="../tvtShop/img/slide4.jpg" alt="Fourth slide">
                                 </div>
                             </div>
@@ -361,7 +341,7 @@
                                 data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
-                                
+
                             </a>
                         </div>
                     </div>
@@ -377,9 +357,9 @@
                             <b><span>Rêu</span></b>
                         </div>
                         <div class="img_each_pd ">
-                            <label class="img_color1" ><input type="radio" name="type_pd" id="cl1"
+                            <label class="img_color1"><input type="radio" name="type_pd" id="cl1"
                                     checked></input></label>
-                            <label class="img_color2" ><input type="radio" name="type_pd" id="cl2"></input></label>
+                            <label class="img_color2"><input type="radio" name="type_pd" id="cl2"></input></label>
                         </div>
                     </div>
                     <div class="sex_pd text_content">
@@ -423,337 +403,407 @@
                     </div>
                 </div>
             </div>
-             <!-- mo ta san pham line 388 -->
-             <div class="aa-product-details-bottom">
+            <!-- mo ta san pham line 388 -->
+            <div class="aa-product-details-bottom">
                 <ul class="nav nav-tabs" id="myTab2">
-                  <li><a href="#description" data-toggle="tab">Mô tả sản phẩm</a></li>
-                  <li><a href="#review" data-toggle="tab">Đánh giá</a></li>                
+                    <li><a href="#description" data-toggle="tab">Mô tả sản phẩm</a></li>
+                    <li><a href="#review" data-toggle="tab">Đánh giá</a></li>
                 </ul>
-                
+
                 <!-- Tab panes -->
                 <div class="tab-content">
-                  <div class="tab-pane fade in active" id="description">
-                    <div class="content_describe_pd" id="describe">
-                        <b>Áo sweater nam Stay Together rằn ri MSW 1006</b> Couple TX là item được yêu thích và sử dụng phổ biến trong giới trẻ, mang hơi hướng thời trang đường phổ trẻ trung và hiện đại. Áo được thiết kế với form oversize rộng rãi, phù hợp với mọi dáng người cùng họa tiết rằn ri tạo điểm nhấn.
-                        <ul class="list_describe">
-                            <li>Chất liệu cotton dày dặn. </li>
-                            <li>Form oversize cá tính. </li>
-                            <li>Thông điệp “Friends travel stay together” với họa tiết rằn ri tạo điểm nhấn. </li>
-                            <li>Bộ 2 màu cam đất & rêu.</li>
-                        </ul>
-                        <hr>
+                    <div class="tab-pane fade in active" id="description">
+                        <div class="content_describe_pd" id="describe">
+                            <b>Áo sweater nam Stay Together rằn ri MSW 1006</b> Couple TX là item được yêu thích và sử
+                            dụng phổ biến trong giới trẻ, mang hơi hướng thời trang đường phổ trẻ trung và hiện đại. Áo
+                            được thiết kế với form oversize rộng rãi, phù hợp với mọi dáng người cùng họa tiết rằn ri
+                            tạo điểm nhấn.
+                            <ul class="list_describe">
+                                <li>Chất liệu cotton dày dặn. </li>
+                                <li>Form oversize cá tính. </li>
+                                <li>Thông điệp “Friends travel stay together” với họa tiết rằn ri tạo điểm nhấn. </li>
+                                <li>Bộ 2 màu cam đất & rêu.</li>
+                            </ul>
+                            <hr>
+                        </div>
                     </div>
-                  </div>
-                  <div class="tab-pane fade " id="review">
-                   <div class="aa-product-review-area">
-                     <h4 class="h4">2 đánh giá về sản phẩm</h4> 
-                     <ul class="aa-review-nav">
-                       <li>
-                          <div class="media">
-                            <div class="media-left">
-                              <a href="#">
-                                <img class="media-object" src="img/testimonial-img-3.jpg" alt="girl image">
-                              </a>
+                    <div class="tab-pane fade " id="review">
+                        <div class="aa-product-review-area">
+                            <h4 class="h4">2 đánh giá về sản phẩm</h4>
+                            <ul class="aa-review-nav">
+                                <li>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="img/testimonial-img-3.jpg"
+                                                    alt="girl image">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><strong>Nguyen Lan Anh</strong> - <span>26 tháng
+                                                    3, 2016</span></h4>
+                                            <div class="aa-product-rating">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="far fa-star"></span>
+                                            </div>
+                                            <p>Vải mịn, sản phẩm tuyệt vời, sẽ tiếp tục ủng hộ shop.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" src="img/testimonial-img-3.jpg"
+                                                    alt="girl image">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><strong>Le Van Nguyen</strong> - <span>26 tháng 3,
+                                                    2016</span></h4>
+                                            <div class="aa-product-rating">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="far fa-star"></span>
+                                            </div>
+                                            <p>Chất lượng sán phẩm ngoài mong đợi.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr>
+                            <h4 class="h4">Đánh giá sản phẩm</h4>
+                            <div class="aa-your-rating">
+                                <p>Đánh giá</p>
+                                <a href="#"> <span class="far fa-star"></span></a>
+                                <a href="#"> <span class="far fa-star"></span></a>
+                                <a href="#"> <span class="far fa-star"></span></a>
+                                <a href="#"> <span class="far fa-star"></span></a>
+                                <a href="#"> <span class="far fa-star"></span></a>
                             </div>
-                            <div class="media-body">
-                              <h4 class="media-heading"><strong>Nguyen Lan Anh</strong> - <span>26 tháng 3, 2016</span></h4>
-                              <div class="aa-product-rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="far fa-star"></span>
-                              </div>
-                              <p>Vải mịn, sản phẩm tuyệt vời, sẽ tiếp tục ủng hộ shop.</p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="media">
-                            <div class="media-left">
-                              <a href="#">
-                                <img class="media-object" src="img/testimonial-img-3.jpg" alt="girl image">
-                              </a>
-                            </div>
-                            <div class="media-body">
-                              <h4 class="media-heading"><strong>Le Van Nguyen</strong> - <span>26 tháng 3, 2016</span></h4>
-                              <div class="aa-product-rating">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="far fa-star"></span>
-                              </div>
-                              <p>Chất lượng sán phẩm ngoài mong đợi.</p>
-                            </div>
-                          </div>
-                        </li>
-                     </ul>
-                     <hr>
-                     <h4 class="h4">Đánh giá sản phẩm</h4>
-                     <div class="aa-your-rating">
-                       <p>Đánh giá</p>
-                       <a href="#"> <span class="far fa-star"></span></a>
-                       <a href="#"> <span class="far fa-star"></span></a>
-                       <a href="#"> <span class="far fa-star"></span></a>
-                       <a href="#"> <span class="far fa-star"></span></a>
-                       <a href="#"> <span class="far fa-star"></span></a>
-                     </div>
-                     <!-- review form -->
-                     <form action="" class="aa-review-form">
-                        <div class="form-group">
-                          <label for="message">Viết đánh giá</label>
-                          <textarea class="form-control" rows="3" id="message"></textarea>
+                            <!-- review form -->
+                            <form action="" class="aa-review-form">
+                                <div class="form-group">
+                                    <label for="message">Viết đánh giá</label>
+                                    <textarea class="form-control" rows="3" id="message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Tên</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Nguyen Van Anh">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
+                                </div>
+
+                                <button type="submit" class="btn btn-default aa-review-submit">Gửi đánh giá</button>
+                            </form>
                         </div>
-                        <div class="form-group">
-                          <label for="name">Tên</label>
-                          <input type="text" class="form-control" id="name" placeholder="Nguyen Van Anh">
-                        </div>  
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="example@gmail.com">
-                        </div>
-  
-                        <button type="submit" class="btn btn-default aa-review-submit">Gửi đánh giá</button>
-                     </form>
-                   </div>
-                  </div>            
+                    </div>
                 </div>
-              </div>
-              <!-- Related product -->
-              <div class="aa-product-related-item">
+            </div>
+            <!-- Related product -->
+            <div class="aa-product-related-item">
                 <h3 class="h3">Sản phẩm liên quan</h3>
                 <ul class="aa-product-catg aa-related-item-slider">
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img " href="#"><img src="img/other_sp.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                       <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1012</a></h4>
-                        <span class="aa-product-price">344.000 VND</span><span class="aa-product-price"> <del>430.000 VND</del></span>
-                        
-                      </figcaption>
-                    </figure>                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                    <!-- product badge -->
-                    <span class="aa-badge aa-sale sale_rate" href="#">Giảm 20%</span>
-                  </li>
-                   <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp1.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                      <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Len Nam Basic MOS 1001</a></h4>
-                        <span class="aa-product-price">340.000 VND</span>
-                      </figcaption>
-                    </figure>                      
-                    <div class="aa-product-hvr-content btn_quickview">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                    <!-- product badge -->
-                     <span class="aa-badge aa-sold-out sale_rate" href="#">Hết hàng!</span>
-                  </li>
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                        <a class="aa-product-img" href="#"><img src="img/other_sp2.webp" alt="polo shirt img"></a>
-                        <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                        <figcaption>
-                          <h4 class="aa-product-title"><a href="#">Áo Sơ Mi Nam Khaki MSH 1001</a></h4>
-                          <span class="aa-product-price">340.000 VND</span>
-                        </figcaption>
-                      </figure>             
-                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                    <!-- product badge -->
-                     <span class="aa-badge aa-hot sale_rate" href="#">HOT!</span>
-                  </li>
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp3.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                       <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Sweater Logo Sài Gòn MSW 1003</a></h4>
-                        <span class="aa-product-price">360.000 VND</span><span class="aa-product-price">
-                      </figcaption>
-                    </figure>                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                        <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                        <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                  </li>
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp4.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                      <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1013</a></h4>
-                        <span class="aa-product-price">320.000 VND</span><span class="aa-product-price">
-                      </figcaption>
-                    </figure>                      
-                    <div class="aa-product-hvr-content btn_quickview">
-                      <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                      <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                  </li>
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp5.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                      <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Sweater Nam Basic MSW 1004</a></h4>
-                        <span class="aa-product-price">360.000 VND</span><span class="aa-product-price">
-                      </figcaption>
-                    </figure>                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                      <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                      <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                    <!-- product badge -->
-                    <span class="aa-badge aa-sold-out sale_rate" href="#">Hết hàng</span>
-                  </li>    
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp6.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                       <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1001</a></h4>
-                        <span class="aa-product-price">352.000 VND</span><span class="aa-product-price">
-                      </figcaption>
-                    </figure>                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                      <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                      
-                      <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                    </div>
-                    <!-- product badge -->
-                    <span class="aa-badge aa-hot sale_rate" href="#">HOT!</span>
-                  </li> 
-                  <!-- start single product item -->
-                  <li>
-                    <figure>
-                      <a class="aa-product-img" href="#"><img src="img/other_sp7.webp" alt="polo shirt img"></a>
-                      <a class="aa-add-card-btn btn_add_cart1"href="#"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                       <figcaption>
-                        <h4 class="aa-product-title"><a href="#">Áo Thun Cổ Trụ MTS 3086</a></h4>
-                        <span class="aa-product-price">320.000 VND</span><span class="aa-product-price"><del>400.000 VND</del></span>
-                      </figcaption>
-                    </figure>                     
-                    <div class="aa-product-hvr-content btn_quickview">
-                      <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i class="fas fa-heart"></i>
-                     
-                      <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>                            
-                    </div>
-                    <!-- product badge -->
-                    <span class="aa-badge aa-sale sale_rate" href="#">Giảm giá 20%</span>
-                  </li>                                                                                   
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img " href="#"><img src="img/other_sp.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1012</a></h4>
+                                <span class="aa-product-price">344.000 VND</span><span class="aa-product-price">
+                                    <del>430.000 VND</del></span>
+
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-sale sale_rate" href="#">Giảm 20%</span>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp1.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Len Nam Basic MOS 1001</a></h4>
+                                <span class="aa-product-price">340.000 VND</span>
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-sold-out sale_rate" href="#">Hết hàng!</span>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp2.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Sơ Mi Nam Khaki MSH 1001</a></h4>
+                                <span class="aa-product-price">340.000 VND</span>
+                            </figcaption>
+                        </figure>
+
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-hot sale_rate" href="#">HOT!</span>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp3.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Sweater Logo Sài Gòn MSW 1003</a></h4>
+                                <span class="aa-product-price">360.000 VND</span><span class="aa-product-price">
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp4.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1013</a></h4>
+                                <span class="aa-product-price">320.000 VND</span><span class="aa-product-price">
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp5.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Sweater Nam Basic MSW 1004</a></h4>
+                                <span class="aa-product-price">360.000 VND</span><span class="aa-product-price">
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-sold-out sale_rate" href="#">Hết hàng</span>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp6.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Thun MTS 1001</a></h4>
+                                <span class="aa-product-price">352.000 VND</span><span class="aa-product-price">
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-hot sale_rate" href="#">HOT!</span>
+                    </li>
+                    <!-- start single product item -->
+                    <li>
+                        <figure>
+                            <a class="aa-product-img" href="#"><img src="img/other_sp7.webp" alt="polo shirt img"></a>
+                            <a class="aa-add-card-btn btn_add_cart1" href="#"><span
+                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                            <figcaption>
+                                <h4 class="aa-product-title"><a href="#">Áo Thun Cổ Trụ MTS 3086</a></h4>
+                                <span class="aa-product-price">320.000 VND</span><span
+                                    class="aa-product-price"><del>400.000 VND</del></span>
+                            </figcaption>
+                        </figure>
+                        <div class="aa-product-hvr-content btn_quickview">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Thêm vào yêu thích"><i
+                                    class="fas fa-heart"></i>
+
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                    data-toggle="modal" data-target="#quick-view-modal"><span
+                                        class="fa fa-search"></span></a>
+                        </div>
+                        <!-- product badge -->
+                        <span class="aa-badge aa-sale sale_rate" href="#">Giảm giá 20%</span>
+                    </li>
                 </ul>
-                <!-- quick view modal -->                  
-                <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">                      
-                      <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <div class="row">
-                          <!-- Modal view slider -->
-                          <div class="col-md-6 col-sm-6 col-xs-12">                              
-                            <div class="aa-product-view-slider">                                
-                              <div class="simpleLens-gallery-container" id="demo-1">
-                                <div class="simpleLens-container">
-                                    <div class="simpleLens-big-image-container">
-                                        <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                            <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
-                                        </a>
+                <!-- quick view modal -->
+                <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                                <div class="row">
+                                    <!-- Modal view slider -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="aa-product-view-slider">
+                                            <div class="simpleLens-gallery-container" id="demo-1">
+                                                <div class="simpleLens-container">
+                                                    <div class="simpleLens-big-image-container">
+                                                        <a class="simpleLens-lens-image"
+                                                            data-lens-image="img/view-slider/large/polo-shirt-1.png">
+                                                            <img src="img/view-slider/medium/polo-shirt-1.png"
+                                                                class="simpleLens-big-image">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="simpleLens-thumbnails-container">
+                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                        data-lens-image="img/view-slider/large/polo-shirt-1.png"
+                                                        data-big-image="img/view-slider/medium/polo-shirt-1.png">
+                                                        <img src="img/view-slider/thumbnail/polo-shirt-1.png">
+                                                    </a>
+                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                        data-lens-image="img/view-slider/large/polo-shirt-3.png"
+                                                        data-big-image="img/view-slider/medium/polo-shirt-3.png">
+                                                        <img src="img/view-slider/thumbnail/polo-shirt-3.png">
+                                                    </a>
+
+                                                    <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                        data-lens-image="img/view-slider/large/polo-shirt-4.png"
+                                                        data-big-image="img/view-slider/medium/polo-shirt-4.png">
+                                                        <img src="img/view-slider/thumbnail/polo-shirt-4.png">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal view content -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="aa-product-view-content">
+                                            <h3>T-Shirt</h3>
+                                            <div class="aa-price-block">
+                                                <span class="aa-product-view-price">$34.99</span>
+                                                <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi,
+                                                veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!
+                                            </p>
+                                            <h4>Size</h4>
+                                            <div class="aa-prod-view-size">
+                                                <a href="#">S</a>
+                                                <a href="#">M</a>
+                                                <a href="#">L</a>
+                                                <a href="#">XL</a>
+                                            </div>
+                                            <div class="aa-prod-quantity">
+                                                <form action="">
+                                                    <select name="" id="">
+                                                        <option value="0" selected="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="2">3</option>
+                                                        <option value="3">4</option>
+                                                        <option value="4">5</option>
+                                                        <option value="5">6</option>
+                                                    </select>
+                                                </form>
+                                                <p class="aa-prod-category">
+                                                    Category: <a href="#">Polo T-Shirt</a>
+                                                </p>
+                                            </div>
+                                            <div class="aa-prod-view-bottom">
+                                                <a href="#" class="aa-add-to-cart-btn"><span
+                                                        class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="simpleLens-thumbnails-container">
-                                    <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/view-slider/large/polo-shirt-1.png"
-                                       data-big-image="img/view-slider/medium/polo-shirt-1.png">
-                                        <img src="img/view-slider/thumbnail/polo-shirt-1.png">
-                                    </a>                                    
-                                    <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/view-slider/large/polo-shirt-3.png"
-                                       data-big-image="img/view-slider/medium/polo-shirt-3.png">
-                                        <img src="img/view-slider/thumbnail/polo-shirt-3.png">
-                                    </a>
-  
-                                    <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/view-slider/large/polo-shirt-4.png"
-                                       data-big-image="img/view-slider/medium/polo-shirt-4.png">
-                                        <img src="img/view-slider/thumbnail/polo-shirt-4.png">
-                                    </a>
-                                </div>
-                              </div>
                             </div>
-                          </div>
-                          <!-- Modal view content -->
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="aa-product-view-content">
-                              <h3>T-Shirt</h3>
-                              <div class="aa-price-block">
-                                <span class="aa-product-view-price">$34.99</span>
-                                <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
-                              <h4>Size</h4>
-                              <div class="aa-prod-view-size">
-                                <a href="#">S</a>
-                                <a href="#">M</a>
-                                <a href="#">L</a>
-                                <a href="#">XL</a>
-                              </div>
-                              <div class="aa-prod-quantity">
-                                <form action="">
-                                  <select name="" id="">
-                                    <option value="0" selected="1">1</option>
-                                    <option value="1">2</option>
-                                    <option value="2">3</option>
-                                    <option value="3">4</option>
-                                    <option value="4">5</option>
-                                    <option value="5">6</option>
-                                  </select>
-                                </form>
-                                <p class="aa-prod-category">
-                                  Category: <a href="#">Polo T-Shirt</a>
-                                </p>
-                              </div>
-                              <div class="aa-prod-view-bottom">
-                                <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                                <a href="#" class="aa-add-to-cart-btn">View Details</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>                        
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
                 </div>
-                <!-- / quick view modal -->   
-              </div>  
+                <!-- / quick view modal -->
+            </div>
 
         </div>
     </div>
     </div>
+
+    <!-- Subscribe section -->
+    <section id="aa-subscribe">
+        <div class="subscribediv">
+            <div class="subscribedivchild">
+                <h3>THAM GIA VỚI CHÚNG TÔI ĐỂ NHẬN NHỮNG <span style="color:#ff7315">EMAIL THÔNG TIN SỚM NHẤT</span>
+                </h3>
+                <p>
+                    Đăng ký và nhận thông báo về bản cập nhật và ưu đãi mới nhất trước tất cả!</p>
+                <form action="">
+                    <div class="form-action-sr">
+                        <input type="text" placeholder="Nhập email bạn ở đây">
+                        <button>Tham gia</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <img src="img/subrai.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- / Subscribe section -->
     <!-- footer -->
     <footer id="aa-footer">
         <!-- footer bottom -->
@@ -823,9 +873,9 @@
                                             </address>
                                             <div class="aa-footer-social">
                                                 <a href="#"><i class="fa fa-facebook"></i></span></a>
-                                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                                <a href="#"><i class="fab fa-google"></i></a>
-                                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                <a href="#"><i class="fa fa-google"></i></a>
+                                                <a href="#"><i class="fa fa-youtube"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -846,14 +896,12 @@
                             <a href=""> Terms & Conditions</a>
                             <a href="">Safety and Security</a>
                         </div>
-                        <button onclick="topFunction()" id="movetop" title="Go to top">
-                            <span class="fa fa-angle-double-up"></span>
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <!-- / footer -->
     <!-- / footer -->
 
     <!-- jQuery library -->
@@ -884,20 +932,20 @@
         var slide2 = document.getElementById('slide2');
         var slide3 = document.getElementById('slide3');
         var slide4 = document.getElementById('slide4');
-        l2.onclick = function(){
-    
-               slide2.style.border = "border: 3px solid #f60";
-          
-               slide1.style.border = "border: 3px solid #d6cfcf";
-          
-               slide3.style.border = "border: 3px solid #d6cfcf";
-     
-               slide4.style.border = "border: 3px solid #d6cfcf";
-           
-               console.log("dghdfghdfg");
-        
-             
-         }
+        l2.onclick = function () {
+
+            slide2.style.border = "border: 3px solid #f60";
+
+            slide1.style.border = "border: 3px solid #d6cfcf";
+
+            slide3.style.border = "border: 3px solid #d6cfcf";
+
+            slide4.style.border = "border: 3px solid #d6cfcf";
+
+            console.log("dghdfghdfg");
+
+
+        }
         //chon mau ao
         var c1 = document.getElementById('cl1');
         var c2 = document.getElementById('cl2');
@@ -935,10 +983,10 @@
             l_size.style.border = "3px solid #d5cece";
             m_size.style.border = "3px solid #d5cece";
         }
-        
 
-       
-        
+
+
+
 
         // l1.onclick = function(){
         //     slide1.style.border = "border: 3px solid #f60";
