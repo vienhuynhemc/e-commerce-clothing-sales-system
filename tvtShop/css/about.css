@@ -1447,16 +1447,7 @@ body {
     background-size: cover;
     background-image: url(../img/about/bg1.jpg);
   }
-  #aa-catg-head-banner .aa-catg-head-banner-area {
-    background-color: rgba(0, 0, 0, 0.5);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
-    width: 100%;
-  }
+ 
   #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 {
     display: inline-block;
     float: left;

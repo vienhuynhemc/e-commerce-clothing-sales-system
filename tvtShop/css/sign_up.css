@@ -143,6 +143,11 @@ body{
 .main1 .container1 .login_choose span{
     line-height: 35px;
     margin-bottom: 30px;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    font-family: sans-serif;
 }
 .main1 .container1 .orr{
     width: 30px;

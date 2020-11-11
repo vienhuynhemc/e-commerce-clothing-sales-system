@@ -20,3 +20,23 @@
   .breadcrumb li a, .breadcrumb li{
     font-size:20px;
   }
+  #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 {
+    display: inline-block;
+    float: left;
+    padding: 17% 0;
+    text-align: center;
+    width: 100%;
+  }
+  #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 h2 {
+    font-size: 42px;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Oswald', sans-serif;
+  }
+  #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 .breadcrumb {
+    border-radius: 0;
+    background-color: transparent;
+  }
+  #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 .breadcrumb a {
+    color: white;
+  }
