@@ -50,11 +50,14 @@ span{
     margin-top: 25px;
 }
 .info_transport_standard{
-    width: 40%;
+    width: 42%;
     /* background-color: darkcyan; */
     margin-right: 5px;
     padding-left: 10px;
     margin-top: 25px;
+    font-weight: bold;
+    color: #f60;
+    margin-left: 10px;
 }
 .hr{
     position: absolute;
