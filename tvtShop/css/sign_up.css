@@ -28,6 +28,8 @@ body{
     border-radius: 10px;
 
 }
+
+
 .main1 .container1 .text{
     color: black;
     text-align: center;
@@ -218,7 +220,7 @@ body{
     margin-bottom: 50px;
 }
 .mainForgot1{
-    height: 305px !important;
+    height: 360px !important;
 }
 .send_again{
     /* float: right!important;
@@ -261,7 +263,7 @@ body{
 }
 /* thiet lap mk moi */
 .mainNewPass{
-    height: 400px;
+    height: 400px !important;
     margin-top: 100px;
 }
 #continue2 a{
@@ -275,4 +277,7 @@ body{
 }
 .sign_up_link i{
     margin-right: 5px;
+}
+.newpass{
+    height: 330px !important;
 }

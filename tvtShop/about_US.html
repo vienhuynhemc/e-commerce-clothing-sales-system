@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Daily Shop | Checkout Page</title>
+    <title>TVT Shop | About Page</title>
     
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style-starter.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">   
@@ -25,7 +27,8 @@
     <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link href="css/checkout.css" rel="stylesheet">    
+    
+    <link rel="stylesheet" href="css/about.css">  
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -290,14 +293,14 @@
  
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-    <img src="img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+ 
     <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
-        <h2>Checkout Page</h2>
+        <h2>About Page</h2>
         <ol class="breadcrumb">
           <li><a href="index.html">Home</a></li>                   
-          <li class="active">Checkout</li>
+          <li class="active">About</li>
         </ol>
       </div>
      </div>
@@ -306,488 +309,245 @@
   <!-- / catg header banner section -->
 
  <!-- Cart view section -->
- <section id="checkout">
-   <div class="container">
-     <div class="row">
-       <div class="col-sm-6">
-         <h3 class="title">
-          <span class="red">Thông tin </span> giao hàng
-         </h3>
-         <div class="addressed field">
-            <label for="chosess_address" class="sec">Địa chỉ đã lưu trữ</label>
-            <select name="" id="chosess_address" class="input_sec">
-               <option value="">Đại học nông lâm</option>
-                <option value="">Đại học sưu phạm kỹ thuật</option>
-                <option value="">Đại học kinh tế - luật</option>
-            </select>
-         </div>
-         <div class="name field">
-          <input type="text" name="" class="input_text" id="" placeholder="Họ và tên">
-         </div>
-         <div class="phone field">
-          <label for="tel_num" class="sec">Số điện thoại</label>
-          <input type="tel" name="" id="tel_num" class="input_sec">
-       </div>
-       <div class="address field">
-        <input type="text" name="" class="input_text" id="" placeholder="Địa chỉ">
-       </div>
-       <div class="chosess_address">
-         <form action="">
-          <div class="province field_chose field">
-            <select class="field-input input_text" id="customer_shipping_province" name="customer_shipping_province">
-              <option data-code="null" value="null" selected="">  Chọn tỉnh / thành </option>
-              
-                
-                  
-                    <option data-code="HC" value="50">Hồ Chí Minh</option>
-                  
-                
-                  
-                    <option data-code="HI" value="1">Hà Nội</option>
-                  
-                
-                  
-                    <option data-code="DA" value="32">Đà Nẵng</option>
-                  
-                
-                  
-                    <option data-code="AG" value="57">An Giang</option>
-                  
-                
-                  
-                    <option data-code="BV" value="49">Bà Rịa - Vũng Tàu</option>
-                  
-                
-                  
-                    <option data-code="BG" value="15">Bắc Giang</option>
-                  
-                
-                  
-                    <option data-code="BK" value="4">Bắc Kạn</option>
-                  
-                
-                  
-                    <option data-code="BL" value="62">Bạc Liêu</option>
-                  
-                
-                  
-                    <option data-code="BN" value="18">Bắc Ninh</option>
-                  
-                
-                  
-                    <option data-code="BT" value="53">Bến Tre</option>
-                  
-                
-                  
-                    <option data-code="BD" value="35">Bình Định</option>
-                  
-                
-                  
-                    <option data-code="BI" value="47">Bình Dương</option>
-                  
-                
-                  
-                    <option data-code="BP" value="45">Bình Phước</option>
-                  
-                
-                  
-                    <option data-code="BU" value="39">Bình Thuận</option>
-                  
-                
-                  
-                    <option data-code="CM" value="63">Cà Mau</option>
-                  
-                
-                  
-                    <option data-code="CN" value="59">Cần Thơ</option>
-                  
-                
-                  
-                    <option data-code="CB" value="3">Cao Bằng</option>
-                  
-                
-                  
-                    <option data-code="DC" value="42">Đắk Lắk</option>
-                  
-                
-                  
-                    <option data-code="DO" value="43">Đắk Nông</option>
-                  
-                
-                  
-                    <option data-code="DB" value="7">Điện Biên</option>
-                  
-                
-                  
-                    <option data-code="DN" value="48">Đồng Nai</option>
-                  
-                
-                  
-                    <option data-code="DT" value="56">Đồng Tháp</option>
-                  
-                
-                  
-                    <option data-code="GL" value="41">Gia Lai</option>
-                  
-                
-                  
-                    <option data-code="HG" value="2">Hà Giang</option>
-                  
-                
-                  
-                    <option data-code="HM" value="23">Hà Nam</option>
-                  
-                
-                  
-                    <option data-code="HT" value="28">Hà Tĩnh</option>
-                  
-                
-                  
-                    <option data-code="HD" value="19">Hải Dương</option>
-                  
-                
-                  
-                    <option data-code="HP" value="20">Hải Phòng</option>
-                  
-                
-                  
-                    <option data-code="HU" value="60">Hậu Giang</option>
-                  
-                
-                  
-                    <option data-code="HO" value="11">Hòa Bình</option>
-                  
-                
-                  
-                    <option data-code="HY" value="21">Hưng Yên</option>
-                  
-                
-                  
-                    <option data-code="KH" value="37">Khánh Hòa</option>
-                  
-                
-                  
-                    <option data-code="KG" value="58">Kiên Giang</option>
-                  
-                
-                  
-                    <option data-code="KT" value="40">Kon Tum</option>
-                  
-                
-                  
-                    <option data-code="LI" value="8">Lai Châu</option>
-                  
-                
-                  
-                    <option data-code="LD" value="44">Lâm Đồng</option>
-                  
-                
-                  
-                    <option data-code="LS" value="13">Lạng Sơn</option>
-                  
-                
-                  
-                    <option data-code="LO" value="6">Lào Cai</option>
-                  
-                
-                  
-                    <option data-code="LA" value="51">Long An</option>
-                  
-                
-                  
-                    <option data-code="ND" value="24">Nam Định</option>
-                  
-                
-                  
-                    <option data-code="NA" value="27">Nghệ An</option>
-                  
-                
-                  
-                    <option data-code="NB" value="25">Ninh Bình</option>
-                  
-                
-                  
-                    <option data-code="NT" value="38">Ninh Thuận</option>
-                  
-                
-                  
-                    <option data-code="PT" value="16">Phú Thọ</option>
-                  
-                
-                  
-                    <option data-code="PY" value="36">Phú Yên</option>
-                  
-                
-                  
-                    <option data-code="QB" value="29">Quảng Bình</option>
-                  
-                
-                  
-                    <option data-code="QM" value="33">Quảng Nam</option>
-                  
-                
-                  
-                    <option data-code="QG" value="34">Quảng Ngãi</option>
-                  
-                
-                  
-                    <option data-code="QN" value="14">Quảng Ninh</option>
-                  
-                
-                  
-                    <option data-code="QT" value="30">Quảng Trị</option>
-                  
-                
-                  
-                    <option data-code="ST" value="61">Sóc Trăng</option>
-                  
-                
-                  
-                    <option data-code="SL" value="9">Sơn La</option>
-                  
-                
-                  
-                    <option data-code="TN" value="46">Tây Ninh</option>
-                  
-                
-                  
-                    <option data-code="TB" value="22">Thái Bình</option>
-                  
-                
-                  
-                    <option data-code="TY" value="12">Thái Nguyên</option>
-                  
-                
-                  
-                    <option data-code="TH" value="26">Thanh Hóa</option>
-                  
-                
-                  
-                    <option data-code="TT" value="31">Thừa Thiên Huế</option>
-                  
-                
-                  
-                    <option data-code="TG" value="52">Tiền Giang</option>
-                  
-                
-                  
-                    <option data-code="TV" value="54">Trà Vinh</option>
-         
-                    <option data-code="TQ" value="5">Tuyên Quang</option>
-                    <option data-code="VL" value="55">Vĩnh Long</option>      
-                    <option data-code="VT" value="17">Vĩnh Phúc</option>
-
-                    <option data-code="YB" value="10">Yên Bái</option>
-
-            </select>
-          </div>
-          <div class="district field_chose field">
-            <select class="field-input input_text " id="customer_shipping_district" name="customer_shipping_district">
-              <option data-code="null" value="null" selected="">Chọn quận / huyện</option>
-              
-            </select>
-          </div>
-          <div class="commune field_chose field">
-            <select class="field-input input_text" id="customer_shipping_ward" name="customer_shipping_ward">
-              <option data-code="null" value="null" selected="">Chọn phường / xã</option>
-              
-            </select>
-          </div>
-
-         </form>
-       </div>
-       <div id="change_pick_location_or_shipping">                                               
-        <div id="section-shipping-rate">
-            <div class="section-header">
-                <h3 class="title"><span class="red">Phương thức</span> vận chuyển</h3>
-            </div>
-            <div class="section-content">
-                
-                <div class="content-box  blank-slate">
-                    <i class="blank-slate-icon icon icon-closed-box "></i>
-                    <p>Vui lòng chọn tỉnh / thành để có danh sách phương thức vận chuyển.</p>
-                </div>
-                
-            </div>
-        </div>
-    
-    <div id="section-payment-method" class="section">
-        <div class="section-header">
-          <h3 class="title"><span class="red">Phương thức</span> thanh toán</h3>
-        </div>
-        <div class="section-content">
-            <div class="content-box">
-                
-                
-                <div class="radio-wrapper content-box-row">
-                    <label class="radio-label" for="payment_method_id_509146">
-                        <div class="radio-input">
-                            <input id="payment_method_id_509146" class="input-radio" name="payment_method_id" type="radio" value="509146" checked="">
-                        </div>
-                        <span class="radio-label-primary">Thanh toán khi giao hàng (COD)</span>
-                    </label>
-                </div>
-                
-                
-                <div class="radio-wrapper content-box-row">
-                    <label class="radio-label" for="payment_method_id_1002465170">
-                        <div class="radio-input">
-                            <input id="payment_method_id_1002465170" class="input-radio" name="payment_method_id" type="radio" value="1002465170">
-                        </div>
-                        <span class="radio-label-primary">Thanh toán online qua cổng VNPay (ATM/Visa/MasterCard/JCB/QR Pay trên Mobile Banking)</span>
-                    </label>
-                </div>
-                
-                
-                <div class="radio-wrapper content-box-row">
-                    <label class="radio-label" for="payment_method_id_1002465220">
-                        <div class="radio-input">
-                            <input id="payment_method_id_1002465220" class="input-radio" name="payment_method_id" type="radio" value="1002465220">
-                        </div>
-                        <span class="radio-label-primary">Thanh toán online qua ví MoMo</span>
-                    </label>
-                </div>
-                
-                
-                
-            </div>
-        </div>
-    </div>
-
-        </div>
-
-        <div class="step-footer">
-          <a class="step-footer-previous-link" href="/cart">
-            <svg class="previous-link-icon icon-chevron icon" xmlns="http://www.w3.org/2000/svg" width="6.7" height="11.3" viewBox="0 0 6.7 11.3"><path d="M6.7 1.1l-1-1.1-4.6 4.6-1.1 1.1 1.1 1 4.6 4.6 1-1-4.6-4.6z"></path></svg>
-            Giỏ hàng
-        </a>                        
-          <form id="form_next_step" accept-charset="UTF-8" method="post">
-              <input name="utf8" type="hidden" value="✓">
-              <button type="submit" class="step-footer-continue-btn btn btn-outline-dark btn-block ">
-                  <span class="btn-content">Hoàn tất đơn hàng</span>
-                  <i class="btn-spinner icon icon-button-spinner"></i>
-              </button>
-          </form>
-         
-      
-</div>
-
-       </div>
-       <div class="col-sm-6">
-         <div class="back_slide">
-          <div class="sidebar">
-            <div class="sidebar-content">
-              <div class="order-summary order-summary-is-collapsed">
-                <div class="order-summary-sections">
-                  <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
-                    <table class="product-table">
-                     
-                      <tbody>
-                        
-                          <tr class="product" data-product-id="1028117041" data-variant-id="1061331209">
-                            <td class="product-image">
-                              <div class="product-thumbnail">
-                                <div class="product-thumbnail-wrapper">
-                                  <img class="product-thumbnail-image" alt="ÁO SWEATER NAM STAY TOGETHER RẰN RI MSW 1006" src="img/pro2.webp">
-                                </div>
-                                <span class="product-thumbnail-quantity" aria-hidden="true">2</span>
-                              </div>
-                            </td>
-                            <td class="product-description">
-                              <span class="product-description-name order-summary-emphasis">ÁO SWEATER NAM STAY TOGETHER RẰN RI MSW 1006</span>
-                              
-                                <span class="product-description-variant order-summary-small-text">
-                                  Rêu / Men / M
-                                </span>
-                              
-                            </td>
-                            
-                            <td class="product-price">
-                              <span class="order-summary-emphasis">798,000 VND</span>
-                            </td>
-                          </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                  <hr>
-                    <div class="order-summary-section order-summary-section-discount" data-order-summary-section="discount">
-                      <form id="form_discount_add" accept-charset="UTF-8" method="post">
-                        <input name="utf8" type="hidden" value="✓">
-                        <div class="fieldset">
-                          <div class="field  ">
-                            <div class="field-input-btn-wrapper">
-                              <div class="field-input-wrapper">
-                                <label class="field-label" for="discount.code"></label>
-                                <input placeholder="Mã giảm giá" class="field-input"  autocomplete="off" size="30" type="text" id="discount_code" name="discount.code" value="">
-                              </div>
-                              <button type="submit" class="field-input-btn btn btn-default btn-disabled">
-                                <span class="btn-content">Sử dụng</span>
-                                <i class="btn-spinner icon icon-button-spinner"></i>
-                              </button>
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </form>
-                    <div class="note_discount">Bạn có mã giảm giá? Vui lòng nhập tại đây!</div></div>
-                    
-                   
-                    <hr>
-                  
-                  <div class="order-summary-section order-summary-section-total-lines payment-lines" data-order-summary-section="payment-lines">
-                    <table class="total-line-table">
-                     
-              
-                      <tbody>
-                        <tr class="total-line total-line-subtotal">
-                          <td class="total-line-name">Tạm tính</td>
-                          <td class="total-line-price">
-                            <span class="order-summary-emphasis" data-checkout-subtotal-price-target="79800000">
-                              798,000 VND
-                            </span>
-                          </td>
-                        </tr>
-                        
-                        <tr class="total-line total-line-shipping">
-                          <td class="total-line-name">Phí vận chuyển</td>
-                          <td class="total-line-price">
-                            <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
-                              
-                                —
-                              
-                            </span>
-                          </td>
-                        </tr>
-                       
-                      </tbody>
-                      <tfoot class="total-line-table-footer">
-                        <tr class="total-line">
-                          <td class="total-line-name payment-due-label">
-                            <span class="payment-due-label-total">Tổng cộng</span>
-                          </td>
-                          <td class="total-line-name payment-due">
-                            <span class="payment-due-currency">VND</span>
-                            <span class="payment-due-price" data-checkout-payment-due-target="79800000">
-                              798,000 VND
-                            </span>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                    <hr>
-                  <div class="notenew"><i><span class="red">TVT</span> Shop sẽ xác nhận đơn hàng bằng email hoặc gọi điện. Bạn vui lòng kiểm tra email hoặc nghe máy sau khi đặt hàng thành công.</i></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-         </div>
-       
-       </div>
-     </div>
-   </div>
- </section>
+ <section class="w3l-wecome-content-6">
+	<!-- /content-6-section -->
+	  <div class="ab-content-6-mian py-5">
+			 <div class="container py-lg-5">
+					<div class="welcome-grids row">
+							<div class="col-lg-6 mb-lg-0 mb-5">
+									<h3 class="hny-title">
+											GIỚI THIỆU VỀ TVT<span> Shop</span></h3>
+								<p class="my-4">Ra mắt năm 2020, nền tảng thương mại TVT Shop được xây dựng nhằm
+                                     cung cấp cho người sử dùng những trải nghiệm dễ dàng, an toàn và nhanh chóng 
+                                     khi mua sắm trực tuyến thông qua hệ thống hỗ trợ thanh toán và vận hành vững mạnh.</p>
+								<p class="mb-4">Chúng tôi có niềm tin mạnh mẽ rằng trải nghiệm mua sắm trực tuyến phải đơn giản, dễ dàng và mang đến cảm xúc vui thích.
+                                     Niềm tin này truyền cảm hứng và thúc đẩy chúng tôi mỗi ngày tại TVT Shop.</p>
+								<div class="read">
+									<a href="#" class="read-more btn">Shop Now</a>
+								</div>	
+							</div>
+							<div class="col-lg-6 welcome-image">
+								<img src="img/about/2.jpg" class="img-fluid" alt="">
+							</div>	
+							
+						</div>	
+				 
+				 </div>
+			 </div>
+	 </section>
  <!-- / Cart view section -->
+ <section class="w3l-specification-6">
+	<!-- /specification-6-->
+	  <div class="specification-6-mian py-5">
+			 <div class="container py-lg-5">
+					<div class="row story-6-grids text-left">
+							<div class="col-lg-5 story-gd">
+									<img src="img/about/left2.jpg" class="img-fluid" alt="/">
+								</div>
+							<div class="col-lg-7 story-gd pl-lg-4">
+								<h3 class="hny-title">GIÁ TRỊ CỦA <span>CHÚNG TÔI</span></h3>
+								<p>Để định nghĩa chúng tôi là ai - thông qua lời nói hay cách ứng xử trong nhiều trường hợp khác nhau - 
+                                    thì thực chất, chúng tôi Gần gũi, Vui vẻ và Đồng lòng.
+                                    Đây là những đặc tính chính và nổi bật trong từng bước đường phát triển của TVT Shop..</p>
+			
+								<div class="row story-info-content mt-md-5 mt-4">
+
+									<div class="col-md-6 story-info">
+										<h5> <a href="#">01. Chúng tôi phục vụ</a></h5>	
+									<p>Khách hàng luôn đúng. Cung cấp những giá trị vượt xa sự mong đợi của khách hàng.</p>
+												
+										
+									</div>
+									<div class="col-md-6 story-info">
+											<h5> <a href="#">02. Chúng tôi chuyển đổi</a></h5>	
+											<p>Dự đoán những thay đổi và lập kế hoạch trước. Chấp nhận những thay đổi không lường trước và chủ động trong việc thực thi.</p>
+									</div>
+									<div class="col-md-6 story-info">
+											<h5> <a href="#">03. Chúng tôi cam kết</a></h5>	
+											<p>Đáng tin cậy, làm những gì đã nói.
+                                                Nâng cao các tiêu chuẩn; không đi đường tắt ngay cả khi không có ai đang quan sát.
+                                                Chủ động tìm cách phát triển tổ chức.</p>
+									</div>
+									<div class="col-md-6 story-info">
+											<h5> <a href="#">04. Chúng tôi luôn phát triển</a></h5>	
+											<p>Tự định hướng để phát triển, không cần ai thúc đẩy.
+                                                Luôn khẩn trương hoàn thành công việc.</p>
+									</div>
+								</div>
+							
+							</div>
+						
+			
+			
+						</div>
+				 </div>
+			 </div>
+	 </section>
+  <!-- //specification-6-->
+  
+  <section class="w3l-services-6">
+	<!-- /content-6-section -->
+	<div class="services-grids-6 py-5">
+		<div class="container py-lg-5">
+				<div class="row w3-icon-grid-gap1">
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-codepen" aria-hidden="true"></span>
+							<h3>Hãy để giày dép của bạn nói chuyện</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>Chọn một đôi giày tốt không có nghĩa là bạn chắc chắn có hướng đi đúng hay chuyến đi an toàn.
+                             Nhưng cố gắng lựa chọn đúng nhất ngay lúc này, khi bạn có quyền lựa chọn.</p>
+					</div>
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-mobile" aria-hidden="true"></span>
+							<h3>Bộ sưu tập của người nổi tiếng</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>"Tôi muốn tưởng tượng điều xảy ra nếu quá khứ tìm tới chúng ta",
+                             Nicolas Ghesquière nói về ý tưởng bộ sưu tập mùa này.
+                              </p>
+					</div>
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-hourglass" aria-hidden="true"></span>
+							<h3>Hiệu ứng</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>Cảm hứng ‘Animated Logo’: Logo hoạt ảnh đầy cuốn hút từ các thương hiệu nổi tiếng</p>
+					</div>
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-modx" aria-hidden="true"></span>
+							<h3>Bộ sưu tập giày thể thao phong phú</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>Phù hợp với tất cả các phong cách từ năng đông đến nhẹ nhàng , không kén trọn đồ nên sneaker luôn là lựa chọn hàng đầu của các bạn gái. </p>
+					</div>
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-bar-chart" aria-hidden="true"></span>
+							<h3>Bộ sưu tập được thiết kế độc đáo</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>Trong nền văn hóa truyền thống, khi cuộc sống trở nên sung túc hơn thì con người thường chú trọng đến lễ nghĩa, tâm linh. Những năm gần đây, các vật phẩm mang yếu tố may mắn, phong thủy của VietinBank Gold & Jewellery phân phối rất được thị trường ưa chuộng.</p>
+					</div>
+					<div class="col-md-6 w3-icon-grid1">
+						<a href="#link">
+							<span class="fa fa-shopping-bag" aria-hidden="true"></span>
+							<h3>Giày dép chất lượng cao</h3>
+							<div class="clearfix"></div>
+						</a>
+						<p>Các nhà phân tích thị trường đã ước tính rằng thị trường giày dép sẽ đạt doanh thu gần 353 tỷ đô la vào năm 2022. Trong đó, nổi bật lên là hãng giày Adidas, ASICS, Nike với các dịch vụ cực kỳ sáng tạo.</p>
+					</div>
+					
+					
+				</div>
+		</div>
+	</div>
+</section>
+<!-- //content-6-section -->
+
+<!-- features-4 -->
+<section class="features-4">
+	<div class="features4-block py-5">
+		<div class="container py-lg-5">
+			<h6>Chúng tôi là tốt nhất</h6>
+			<h3 class="hny-title text-center">Chúng tôi <span>cung cấp</span></h3>
+			
+			<div class="features4-grids text-center row mt-5">
+				<div class="col-lg-3 col-md-6 features4-grid">
+					<div class="features4-grid-inn">
+						<span class="fa fa-bullhorn icon-fea4" aria-hidden="true"></span>
+						<h5><a href="#URL">Gọi cho chúng tôi bất cứ lúc nào</a></h5>
+						<p>Bất cứ lúc nào chúng tôi cũng luôn phục vụ bạn.</p>
+
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 features4-grid sec-features4-grid">
+						<div class="features4-grid-inn">
+							<span class="fa fa-truck icon-fea4" aria-hidden="true"></span>
+							<h5><a href="#URL">Miễn phí vận chuyển</a></h5>
+							<p> Bạn phải sử dụng mã miễn phí vận chuyển TVT Shop vào trong đơn hàng của mình.</p>
+	
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 features4-grid">
+							<div class="features4-grid-inn">
+								<span class="fa fa-recycle icon-fea4" aria-hidden="true"></span>
+								<h5><a href="#URL">Trả hàng miễn phí</a></h5>
+								<p>Áp dụng chính sách TRẢ HÀNG VÀ HOÀN TIỀN khi đầy đủ điều kiện.</p>
+		
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 features4-grid">
+								<div class="features4-grid-inn">
+									<span class="fa fa-money icon-fea4" aria-hidden="true"></span>
+									<h5><a href="#URL">Thanh toán đảm bảo</a></h5>
+									<p>Đảm bảo thanh toán an toàn và tiện lợi nhất cho người dùng.</p>
+			
+								</div>
+							</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- features-4 -->
+
+<section class="w3l-team-main">
+    <div class="team py-5">
+        <div class="container py-lg-5">
+                <h3 class="hny-title text-center">
+                    Meet the  <span>Team</span></h3>
+                <div class="row team-row mt-5">
+                    <div class="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative">
+                        <a href="#"><img src="img/about/team1.jpg" class="team_member img-fluid" alt="Team Member"></a>
+                        <div class="team_info mt-3 position-absolute">
+                            <h3><a href="#" class="team_name">Suzan Lois</a></h3>
+                            <span class="team_role">Founder &amp; CEO</span>
+                            <ul class="team-social mt-3">
+                                <li><a href="#"><span class="fa fa-facebook icon_facebook"></span></a></li>
+                                <li><a href="#"><span class="fa fa-twitter icon_twitter"></span></a></li>
+                                <li><a href="#"><span class="fa fa-linkedin icon_linkedin"></span></a></li>
+                                <li><a href="#"><span class="fa fa-google-plus icon_google-plus"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                        <!-- end team member -->
+            
+                        <div class="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative">
+                            <a href="#"><img src="img/about/team2.jpg" class="team_member img-fluid" alt="Team Member"></a>
+                            <div class="team_info mt-3 position-absolute">
+                                <h3><a href="#" class="team_name">Suzan Kin</a></h3>
+                                <span class="team_role">Designer</span>
+                                <ul class="team-social mt-3">
+                                    <li><a href="#"><span class="fa fa-facebook icon_facebook"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-twitter icon_twitter"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-linkedin icon_linkedin"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-google-plus icon_google-plus"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end team member -->
+                        <div class="col-lg-4 col-sm-6 team-wrapper position-relative">
+                            <a href="#"><img src="img/about/team3.jpg" class="team_member img-fluid" alt="Team Member"></a>
+                            <div class="team_info mt-3 position-absolute">
+                                <h3><a href="#" class="team_name">Kin Lois</a></h3>
+                                <span class="team_role">Marketing</span>
+                                <ul class="team-social mt-3">
+                                    <li><a href="#"><span class="fa fa-facebook icon_facebook"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-twitter icon_twitter"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-linkedin icon_linkedin"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-google-plus icon_google-plus"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end team member -->
+            </div>
+        </div>
+</div></section>
+
 
   <!-- footer -->  
   <footer id="aa-footer">
