@@ -28,11 +28,6 @@ input {
   font-family: 'Lato', sans-serif;
 }
 
-body p {
-  line-height: 1.5;
-  font-size: 16px;
-  color: #6b778d;
-}
 
 ol,
 ul,
@@ -52,9 +47,7 @@ body a:hover {
   transition: 0.3s ease;
 }
 
-body input {
-  border-radius: 6px;
-}
+
 
 body img {
   border-radius: 6px;
@@ -11408,16 +11401,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
 }
 
-.dropdown-toggle::after {
-  display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
-  content: "";
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
-}
+
 
 .dropdown-toggle:empty::after {
   margin-left: 0;

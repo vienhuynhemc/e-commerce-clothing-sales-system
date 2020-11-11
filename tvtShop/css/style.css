@@ -6263,3 +6263,6 @@ line-height: 68px;
 .addTocardViewQuick:hover{
   background-color: #232020;;
 }
+span.red{
+  color: #ff7315;
+}

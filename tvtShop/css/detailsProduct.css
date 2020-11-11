@@ -54,6 +54,15 @@
   width: 100%;
   /* background-color: darkcyan; */
   display: flex;
+  padding-top: 10px;
+}
+h3.title {
+  color: #333333;
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: 600;
+  padding: -47px 0px;
+  padding-top: 280px;
 }
 
 
@@ -103,7 +112,7 @@
 .text_content {
   margin-bottom: 20px;
 }
-/* chọn màu sắc */
+/* chá»n mÃ u sáº¯c */
 .main .container .top_elements .product_content .color_img_pd .img_each_pd {
   display: flex;
   margin-top: 5px;
@@ -154,7 +163,7 @@
 .size_pd .choose_size .m_size {
   border: 3px solid #f60;
 }
-/* số lượng */
+/* sá»‘ lÆ°á»£ng */
 .number_product_choose .btn_choose_pd {
   display: flex;
 }
@@ -191,7 +200,7 @@
   text-decoration: none;
   color: black;
 }
-/* nút giỏ hàng */
+/* nÃºt giá» hÃ ng */
 .btn_add_cart {
   max-width: 240px;
   height: 60px;
@@ -221,6 +230,7 @@
   position: absolute;
   left: 50px;
   z-index: 5;
+  color: white;
 }
 
 /* bottom elements */
