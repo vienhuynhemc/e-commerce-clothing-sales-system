@@ -36,26 +36,40 @@
             </div>
         </div>
         <div class="form-edit-qlbl" id="form-edit-qlbl">
-            <h1>Thay đổi nội dung <span style="color:#ff7315">bình</span> luận</h1>
+            <h1>Thay đổi thông tin <span style="color:#ff7315">nhập</span> hàng</h1>
             <div>
-                <p>Tên khách hàng</p>
-                <p>Nguyễn Thị Hoa Hồng</p>
+                <label for="dsnsxedit">Hãng sản xuất</label>
+                <select name="dsnsxedit" id="dsnsxedit">
+                    <option value="" disabled>Chọn hãng sản xuất</option>
+                    <option value="" selected>SHOPAOAMAZON</option>
+                    <option value="">SHOP Quần Hoa Hùng</option>
+                    <option value="">SHOP Áo Quận 7</option>
+                </select>
             </div>
             <div>
-                <p>Ngày bình luận</p>
-                <p>2020-10-19</p>
+                <label for="dsspedit">Sản phẩm</label>
+                <select name="dsspedit" id="dssp">
+                    <option value="" disabled>Chọn sản phẩm</option>
+                    <option value="" selected>Áo thun quý tộc</option>
+                    <option value="">Áo sơ mi trắng</option>
+                    <option value="">Áo sơ mi cam</option>
+                </select>
             </div>
             <div>
-                <p>Nội dung</p>
-                <p>Trời ơi, tại sao hết hàng rồi?</p>
+                <label for="maspedit">Mã sản phẩm</label>
+                <input type="text" id="maspedit" value="MBA100" disabled>
             </div>
             <div>
-                <textarea name="newContent" id="newContent" cols="30" rows="10" placeholder="Nội dung mới"></textarea>
-                <label for="newContent">Nội dung mới</label>
+                <label for="sledit">Số lượng</label>
+                <input type="text" id="sledit" value="40">
             </div>
             <div>
                 <span onclick="hiddenDiv()">Trở về</span>
                 <span onclick="hiddenDiv()">Lưu</span>
+            </div>
+            <div class="hinhdaidienedit">
+                <img src="img/aothunmb.jpg" alt="">
+                <p>Hình minh họa</p>
             </div>
         </div>
     </div>

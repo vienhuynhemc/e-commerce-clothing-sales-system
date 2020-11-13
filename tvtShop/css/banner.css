@@ -18,6 +18,11 @@
   text-transform: none;
 }
 
+.active{
+  color: #ff7315 !important;
+  font-size: 26px !important;
+}
+
 .breadcrumb li a, .breadcrumb li{
   font-size:20px;
 }

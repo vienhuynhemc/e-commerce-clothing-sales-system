@@ -290,28 +290,9 @@ p.qlblContentTitle {
 
 .form-edit-qlbl div:nth-child(5) {
   display: flex;
-  flex-direction: row-reverse;
   width: 80%;
   margin: auto;
   margin-top: 20px;
-}
-
-.form-edit-qlbl div:nth-child(5) label {
-  font-weight: bold;
-  width: 270px;
-  text-align: left;
-}
-
-.form-edit-qlbl div:nth-child(5) textarea {
-  width: 600px;
-  height: 60px;
-  box-shadow: 0 0.5em 1em -0.125em rgb(39 39 39), 0 0 0 1px rgb(255 255 255);
-  outline: none;
-  border: none;
-  margin-top: -20px;
-  display: flex;
-  border-radius: 5px;
-  padding: 18px;
 }
 
 .form-edit-qlbl div p:nth-child(1) {
@@ -326,9 +307,36 @@ p.qlblContentTitle {
 
 .form-edit-qlbl div:nth-child(6) {
   font-display: flex;
-  margin-top: 70px;
+  margin-top: 30px;
   width: 60%;
   float: right;
+}
+
+.form-edit-qlbl div label {
+  font-weight: bold;
+  width: 200px;
+  text-align: left;
+}
+
+.form-edit-qlbl div input,
+.form-edit-qlbl div select {
+  box-shadow: 0 0.5em 1em -0.125em rgb(39 39 39), 0 0 0 1px rgb(255 255 255);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 220px;
+  height: 50px;
+  padding: 5px 20px;
+  transform: translateY(-17px);
+}
+
+.form-edit-qlbl div:nth-child(7) {
+  position: absolute;left:69%;
+  top:25%;
+}
+.form-edit-qlbl div:nth-child(7) img {
+  width: 200px;
+  height: 200px;
 }
 
 .form-edit-qlbl div:nth-child(6) span {
@@ -488,7 +496,7 @@ table img {
 .result {
   margin-top: 40px;
   font-weight: bold;
-  color:white;
+  color: white;
 }
 
 .input button {
