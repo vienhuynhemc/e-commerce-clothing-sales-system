@@ -84,7 +84,7 @@
                   <!-- / header top left -->
                   <div class="aa-header-top-right">
                     <ul class="aa-head-top-nav-right">
-                      <li class="iconRound"><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                      <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                       <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                       <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
                           <span class="fa fa-shopping-cart"></span></a></li>
@@ -829,102 +829,141 @@
     </section>
     <!-- / Subscribe section -->
     <!-- footer -->
-    <footer id="aa-footer">
+    <div class="chatbox">
+        <div class="iconchatbox" onclick="actionchatbox()">
+          <i class="fa fa-connectdevelop"></i>
+        </div>
+    
+        <div class="contentchatbox" id="contentchatbox">
+          <div class="chatboxheader">
+            <div>
+              <i class="fa fa-times" onclick="actionchatbox()"></i>
+            </div>
+            <div>
+              <h3><span style="color:#ff7315">TVT</span> Shop</h3>
+              <p>Thuờng trả lời tin nhắn sau 1 giờ</p>
+            </div>
+          </div>
+    
+          <div class="midchatbox">
+            <p class="timechat">12:00 PM</p>
+            <p class="tvtchat">Xin chào!</p>
+            <div class="iconTS"><span style="color:#ff7315">T</span>S</div>
+            <p class="tvtchat">Tôi có thể giúp gì cho bạn ?</p>
+            <p class="userchat">Xin chào!</p>
+          </div>
+          <div class="chatboxfooter">
+            <p>Nhập tin nhắn ở đây...</p>
+            <i class="fa fa-thumbs-o-up"></i>
+          </div>
+    
+          <script>
+            function actionchatbox() {
+              let element = document.getElementById("contentchatbox");
+              if (element.classList.contains("actionchatbox")) element.classList.remove("actionchatbox");
+              else element.classList.add("actionchatbox");
+            }
+          </script>
+        </div>
+      </div>
+    
+      <!-- footer -->
+      <footer id="aa-footer">
         <!-- footer bottom -->
         <div class="aa-footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="aa-footer-top-area">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="aa-footer-widget">
-                                        <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
-                                        <ul class="aa-footer-nav">
-                                            <li><a href="#">Giới thiệu</a></li>
-                                            <li><a href="#">Tuyển dụng</a></li>
-                                            <li><a href="#">Tạp chí</a></li>
-                                            <li><a href="#">Hợp tác</a></li>
-
-                                        </ul>
-                                        <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="aa-footer-widget">
-                                        <div class="aa-footer-widget">
-                                            <h3>HỖ TRỢ KHÁCH HÀNG</h3>
-                                            <ul class="aa-footer-nav">
-                                                <li><a href="#">Hướng dẫn chọn size</a></li>
-                                                <li><a href="#">Hướng dẫn mua hàng</a></li>
-                                                <li><a href="#">Chính sách thành viên</a></li>
-                                                <li><a href="#">Chính sách đổi trả</a></li>
-                                                <li><a href="#">Chính sách bảo hành</a></li>
-                                                <li><a href="#">Câu hỏi thường gặp</a></li>
-                                                <li><a href="#">Tra cứu đơn hàng</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="aa-footer-widget">
-                                        <div class="aa-footer-widget">
-                                            <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
-                                            <ul class="aa-footer-nav giaohang">
-                                                <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                                <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                                <li><img src="img/grap.webp" alt=""></li>
-
-                                            </ul>
-                                            <h3>PHƯƠNG THỨC THANH TOÁN</h3>
-                                            <ul class="aa-footer-nav giaohang">
-                                                <li><img src="img/vnpay.webp" alt=""></li>
-                                                <li><img src="img/momo.webp" alt=""></li>
-                                                <li><img src="img/cash.webp" alt=""></li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="aa-footer-widget">
-                                        <div class="aa-footer-widget">
-                                            <h3>Contact Us</h3>
-                                            <address>
-                                                <p> Đại học Nông Lâm</p>
-                                                <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                                                <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
-                                            </address>
-                                            <div class="aa-footer-social">
-                                                <a href="#"><i class="fa fa-facebook"></i></span></a>
-                                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                                <a href="#"><i class="fa fa-google"></i></a>
-                                                <a href="#"><i class="fa fa-youtube"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="aa-footer-top-area">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                      <div class="aa-footer-widget">
+                        <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
+                        <ul class="aa-footer-nav">
+                          <li><a href="#">Giới thiệu</a></li>
+                          <li><a href="#">Tuyển dụng</a></li>
+                          <li><a href="#">Tạp chí</a></li>
+                          <li><a href="#">Hợp tác</a></li>
+    
+                        </ul>
+                        <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                      </div>
                     </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="aa-footer-widget">
+                        <div class="aa-footer-widget">
+                          <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                          <ul class="aa-footer-nav">
+                            <li><a href="chooseSize.html">Hướng dẫn chọn size</a></li>
+                            <li><a href="shopping_guide.html">Hướng dẫn mua hàng</a></li>
+                            <li><a href="membership_policy.html">Chính sách thành viên</a></li>
+                            <li><a href="payment_policy.html">Chính sách đổi trả</a></li>
+                            <li><a href="guarantee.html">Chính sách bảo hành</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="check_orders.html">Tra cứu đơn hàng</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="aa-footer-widget">
+                        <div class="aa-footer-widget">
+                          <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
+                          <ul class="aa-footer-nav giaohang">
+                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
+                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
+                            <li><img src="img/grap.webp" alt=""></li>
+    
+                          </ul>
+                          <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                          <ul class="aa-footer-nav giaohang">
+                            <li><img src="img/vnpay.webp" alt=""></li>
+                            <li><img src="img/momo.webp" alt=""></li>
+                            <li><img src="img/cash.webp" alt=""></li>
+    
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="aa-footer-widget">
+                        <div class="aa-footer-widget">
+                          <h3>Contact Us</h3>
+                          <address>
+                            <p> Đại học Nông Lâm</p>
+                            <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
+                            <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
+                          </address>
+                          <div class="aa-footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
         <!-- footer-bottom -->
         <div class="aa-footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="aa-footer-bottom-area">
-                            <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
-                            <a href=""> Terms & Conditions</a>
-                            <a href="">Safety and Security</a>
-                        </div>
-                    </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="aa-footer-bottom-area">
+                  <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
+                  <a href=""> Terms & Conditions</a>
+                  <a href="">Safety and Security</a>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </footer>
     <!-- / footer -->
     <!-- / footer -->
 
