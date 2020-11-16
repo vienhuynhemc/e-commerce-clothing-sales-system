@@ -112,7 +112,7 @@ h3.title {
 .text_content {
   margin-bottom: 20px;
 }
-/* chá»n mÃ u sáº¯c */
+/* chÃ¡Â»Ân mÃƒÂ u sÃ¡ÂºÂ¯c */
 .main .container .top_elements .product_content .color_img_pd .img_each_pd {
   display: flex;
   margin-top: 5px;
@@ -126,6 +126,7 @@ h3.title {
   margin-right: 5px;
   background-size: cover;
   border: 3px solid #f60;
+  cursor: pointer;
 }
 .img_color2 {
   background-image: url("../img/min2.jpg");
@@ -134,6 +135,7 @@ h3.title {
   background-position: center;
   border: 3px solid #d5cece;
   background-size: cover;
+  cursor: pointer;
 }
 .sex_pd .male {
   width: 50px;
@@ -159,11 +161,13 @@ h3.title {
   text-align: center;
   line-height: 44px;
   margin-top: 5px;
+  cursor: pointer;
 }
 .size_pd .choose_size .m_size {
   border: 3px solid #f60;
+  cursor: pointer;
 }
-/* sá»‘ lÆ°á»£ng */
+/* sÃ¡Â»â€˜ lÃ†Â°Ã¡Â»Â£ng */
 .number_product_choose .btn_choose_pd {
   display: flex;
 }
@@ -200,7 +204,7 @@ h3.title {
   text-decoration: none;
   color: black;
 }
-/* nÃºt giá» hÃ ng */
+/* nÃƒÂºt giÃ¡Â»Â hÃƒÂ ng */
 .btn_add_cart {
   max-width: 240px;
   height: 60px;

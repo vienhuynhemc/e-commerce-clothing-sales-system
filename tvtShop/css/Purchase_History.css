@@ -4381,7 +4381,7 @@ font-size: 12px;
 .text_content{
   margin-bottom: 20px;
 }
-/* chÃƒÂ¡Ã‚Â»Ã‚Ân mÃƒÆ’Ã‚Â u sÃƒÂ¡Ã‚ÂºÃ‚Â¯c */
+/* chÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Ân mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â u sÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚ÂºÃƒâ€šÃ‚Â¯c */
 .main .container .top_elements .product_content .color_img_pd .img_each_pd{
   display: flex;
   margin-top: 5px;
@@ -4433,7 +4433,7 @@ font-size: 12px;
 .size_pd .choose_size .m_size{
   border: 3px solid #f60;
 }
-/* sÃƒÂ¡Ã‚Â»Ã¢â‚¬Ëœ lÃƒâ€ Ã‚Â°ÃƒÂ¡Ã‚Â»Ã‚Â£ng */
+/* sÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“ lÃƒÆ’Ã¢â‚¬Â Ãƒâ€šÃ‚Â°ÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â£ng */
 .number_product_choose .btn_choose_pd  {
   display: flex;
 }
@@ -4470,7 +4470,7 @@ font-size: 12px;
   text-decoration: none;
   color: black;
 }
-/* nÃƒÆ’Ã‚Âºt giÃƒÂ¡Ã‚Â»Ã‚Â hÃƒÆ’Ã‚Â ng */
+/* nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºt giÃƒÆ’Ã‚Â¡Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â ng */
 .btn_add_cart{
   max-width: 240px;
   height: 60px;
@@ -4721,7 +4721,7 @@ background-color: #cccccc;
   display: block;
   margin-bottom: 23px;
   /* transform: translateY(60px); */
-  margin-top: 999px;
+  margin-top: 1060px;
   font-family: 'Oswald', sans-serif;
   font-size: 24px;
   font-weight: 700;
