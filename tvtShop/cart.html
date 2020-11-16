@@ -80,7 +80,7 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li class="iconRound"><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                  <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                   <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                   <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
                       <span class="fa fa-shopping-cart"></span></a></li>
@@ -390,6 +390,7 @@
  <!-- / Cart view section -->
 
 
+ <!-- Subscribe section -->
  <section id="aa-subscribe">
   <div class="subscribediv">
     <div class="subscribedivchild">
@@ -409,6 +410,44 @@
   </div>
 </section>
 <!-- / Subscribe section -->
+
+<div class="chatbox">
+  <div class="iconchatbox" onclick="actionchatbox()">
+    <i class="fa fa-connectdevelop"></i>
+  </div>
+
+  <div class="contentchatbox" id="contentchatbox">
+    <div class="chatboxheader">
+      <div>
+        <i class="fa fa-times" onclick="actionchatbox()"></i>
+      </div>
+      <div>
+        <h3><span style="color:#ff7315">TVT</span> Shop</h3>
+        <p>Thuờng trả lời tin nhắn sau 1 giờ</p>
+      </div>
+    </div>
+
+    <div class="midchatbox">
+      <p class="timechat">12:00 PM</p>
+      <p class="tvtchat">Xin chào!</p>
+      <div class="iconTS"><span style="color:#ff7315">T</span>S</div>
+      <p class="tvtchat">Tôi có thể giúp gì cho bạn ?</p>
+      <p class="userchat">Xin chào!</p>
+    </div>
+    <div class="chatboxfooter">
+      <p>Nhập tin nhắn ở đây...</p>
+      <i class="fa fa-thumbs-o-up"></i>
+    </div>
+
+    <script>
+      function actionchatbox() {
+        let element = document.getElementById("contentchatbox");
+        if (element.classList.contains("actionchatbox")) element.classList.remove("actionchatbox");
+        else element.classList.add("actionchatbox");
+      }
+    </script>
+  </div>
+</div>
 
 <!-- footer -->
 <footer id="aa-footer">
@@ -437,13 +476,13 @@
                   <div class="aa-footer-widget">
                     <h3>HỖ TRỢ KHÁCH HÀNG</h3>
                     <ul class="aa-footer-nav">
-                      <li><a href="#">Hướng dẫn chọn size</a></li>
-                      <li><a href="#">Hướng dẫn mua hàng</a></li>
-                      <li><a href="#">Chính sách thành viên</a></li>
-                      <li><a href="#">Chính sách đổi trả</a></li>
-                      <li><a href="#">Chính sách bảo hành</a></li>
+                      <li><a href="chooseSize.html">Hướng dẫn chọn size</a></li>
+                      <li><a href="shopping_guide.html">Hướng dẫn mua hàng</a></li>
+                      <li><a href="membership_policy.html">Chính sách thành viên</a></li>
+                      <li><a href="payment_policy.html">Chính sách đổi trả</a></li>
+                      <li><a href="guarantee.html">Chính sách bảo hành</a></li>
                       <li><a href="#">Câu hỏi thường gặp</a></li>
-                      <li><a href="#">Tra cứu đơn hàng</a></li>
+                      <li><a href="check_orders.html">Tra cứu đơn hàng</a></li>
                     </ul>
                   </div>
                 </div>
@@ -507,6 +546,7 @@
     </div>
   </div>
 </footer>
+<!-- / footer -->
   <!-- Login Modal -->  
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

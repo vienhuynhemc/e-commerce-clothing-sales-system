@@ -45,10 +45,24 @@
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
 
+  <style>
+    .row.top-map {
+      padding-top: 90px;
+      padding-bottom: 76px;
+    }
+
+    .form {
+      margin-top: -14px;
+      padding: 63px;
+    }
+
+    button.btn {
+      color: white;
+    }
+  </style>
 
 
-
-  <title>Document</title>
+  <title>Liên hệ</title>
 </head>
 
 <body>
@@ -88,7 +102,7 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li class="iconRound"><a href="account.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                  <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                   <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                   <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
                       <span class="fa fa-shopping-cart"></span></a></li>
@@ -268,16 +282,53 @@
     <div class="aa-catg-head-banner-area">
       <div class="container">
         <div class="aa-catg-head-banner-content1">
-          <h2>Trang Liên lạc</h2>
+          <h2>Liên hệ</h2>
           <ol class="breadcrumb">
             <li><a href="index.html">Trang chủ</a></li>
-            <li class="active">Liên lạc</li>
+            <li class="active">Liên hệ</li>
           </ol>
         </div>
       </div>
     </div>
   </section>
   <!-- / catg header banner section -->
+  <div class="chatbox">
+    <div class="iconchatbox" onclick="actionchatbox()">
+      <i class="fa fa-connectdevelop"></i>
+    </div>
+
+    <div class="contentchatbox" id="contentchatbox">
+      <div class="chatboxheader">
+        <div>
+          <i class="fa fa-times" onclick="actionchatbox()"></i>
+        </div>
+        <div>
+          <h3><span style="color:#ff7315">TVT</span> Shop</h3>
+          <p>Thuờng trả lời tin nhắn sau 1 giờ</p>
+        </div>
+      </div>
+
+      <div class="midchatbox">
+        <p class="timechat">12:00 PM</p>
+        <p class="tvtchat">Xin chào!</p>
+        <div class="iconTS"><span style="color:#ff7315">T</span>S</div>
+        <p class="tvtchat">Tôi có thể giúp gì cho bạn ?</p>
+        <p class="userchat">Xin chào!</p>
+      </div>
+      <div class="chatboxfooter">
+        <p>Nhập tin nhắn ở đây...</p>
+        <i class="fa fa-thumbs-o-up"></i>
+      </div>
+
+      <script>
+        function actionchatbox() {
+          let element = document.getElementById("contentchatbox");
+          if (element.classList.contains("actionchatbox")) element.classList.remove("actionchatbox");
+          else element.classList.add("actionchatbox");
+        }
+      </script>
+    </div>
+  </div>
 
   <!-- contacts -->
   <section class="w3l-contacts-8">
@@ -339,24 +390,46 @@
       </div>
     </div>
   </section>
-  <section id="aa-subscribe">
-    <div class="subscribediv">
-      <div class="subscribedivchild">
-        <h3>THAM GIA VỚI CHÚNG TÔI ĐỂ NHẬN NHỮNG <span style="color:#ff7315">EMAIL THÔNG TIN SỚM NHẤT</span></h3>
-        <p>
-          Đăng ký và nhận thông báo về bản cập nhật và ưu đãi mới nhất trước tất cả!</p>
-        <form action="">
-          <div class="form-action-sr">
-            <input type="text" placeholder="Nhập email bạn ở đây">
-            <button>Tham gia</button>
-          </div>
-        </form>
-      </div>
-      <div>
-        <img src="img/subrai.jpg" alt="">
-      </div>
+
+  <!-- footer -->
+  <div class="chatbox">
+    <div class="iconchatbox" onclick="actionchatbox()">
+      <i class="fa fa-connectdevelop"></i>
     </div>
-  </section>
+
+    <div class="contentchatbox" id="contentchatbox">
+      <div class="chatboxheader">
+        <div>
+          <i class="fa fa-times" onclick="actionchatbox()"></i>
+        </div>
+        <div>
+          <h3><span style="color:#ff7315">TVT</span> Shop</h3>
+          <p>Thuờng trả lời tin nhắn sau 1 giờ</p>
+        </div>
+      </div>
+
+      <div class="midchatbox">
+        <p class="timechat">12:00 PM</p>
+        <p class="tvtchat">Xin chào!</p>
+        <div class="iconTS"><span style="color:#ff7315">T</span>S</div>
+        <p class="tvtchat">Tôi có thể giúp gì cho bạn ?</p>
+        <p class="userchat">Xin chào!</p>
+      </div>
+      <div class="chatboxfooter">
+        <p>Nhập tin nhắn ở đây...</p>
+        <i class="fa fa-thumbs-o-up"></i>
+      </div>
+
+      <script>
+        function actionchatbox() {
+          let element = document.getElementById("contentchatbox");
+          if (element.classList.contains("actionchatbox")) element.classList.remove("actionchatbox");
+          else element.classList.add("actionchatbox");
+        }
+      </script>
+    </div>
+  </div>
+
   <!-- footer -->
   <footer id="aa-footer">
     <!-- footer bottom -->
@@ -384,13 +457,13 @@
                     <div class="aa-footer-widget">
                       <h3>HỖ TRỢ KHÁCH HÀNG</h3>
                       <ul class="aa-footer-nav">
-                        <li><a href="#">Hướng dẫn chọn size</a></li>
-                        <li><a href="#">Hướng dẫn mua hàng</a></li>
-                        <li><a href="#">Chính sách thành viên</a></li>
-                        <li><a href="#">Chính sách đổi trả</a></li>
-                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="chooseSize.html">Hướng dẫn chọn size</a></li>
+                        <li><a href="shopping_guide.html">Hướng dẫn mua hàng</a></li>
+                        <li><a href="membership_policy.html">Chính sách thành viên</a></li>
+                        <li><a href="payment_policy.html">Chính sách đổi trả</a></li>
+                        <li><a href="guarantee.html">Chính sách bảo hành</a></li>
                         <li><a href="#">Câu hỏi thường gặp</a></li>
-                        <li><a href="#">Tra cứu đơn hàng</a></li>
+                        <li><a href="check_orders.html">Tra cứu đơn hàng</a></li>
                       </ul>
                     </div>
                   </div>
@@ -454,6 +527,7 @@
       </div>
     </div>
   </footer>
+  <!-- / footer -->
   <!-- / footer -->
 
   <!-- jQuery library -->

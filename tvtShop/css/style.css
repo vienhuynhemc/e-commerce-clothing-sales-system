@@ -6266,3 +6266,174 @@ line-height: 68px;
 span.red{
   color: #ff7315;
 }
+
+.chatbox{
+  position: fixed;
+  z-index: 20;
+  z-index: 100;
+}
+
+.iconchatbox{
+  position: fixed;
+  bottom: 83px;
+  right: 5px;
+  z-index: 99;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 38px;
+  transition: 0.5s ease-out;
+  border-radius: 50%;
+  box-shadow: 0 0.5em 1em -0.125em rgb(255 117 25), 0 0 20px 3px rgb(255 118 26);
+  display: flex;
+  width: 65px;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 100;
+}
+
+.iconchatbox i{
+  color:#ff7315;
+    font-size: 50px;
+    z-index: 100;
+}
+
+  .contentchatbox {
+    position: fixed;
+    width: 300px;
+    min-height: 340px;
+    background-color: white;
+    z-index: 100;
+    border-radius: 20px;
+    bottom: 167px;
+    right: 12px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(255 117 25), 0 0 20px 3px rgb(255 118 26);
+    overflow: hidden;
+}
+
+.chatboxheader{
+  display: flex;
+  height: 50px;
+  box-shadow: 0 0 7px #bec2c9;
+}
+
+.chatboxheader div:nth-child(1){
+  width:20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatboxheader div:nth-child(1) i{
+  background: #efefef;
+  padding: 5px 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.chatboxheader div:nth-child(1) i:hover{
+  background-color: #ff7315;
+  color:white;
+}
+
+.chatboxheader div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.chatboxheader div:nth-child(2) h3{
+  font-size: 18px;
+  padding: 0px;
+  font-weight: bold;
+  margin: 0px;
+  font-family: sans-serif;
+  margin-top: 13px;
+}
+
+.chatboxheader div:nth-child(2) P{
+  color: #bec2c9;;
+  font-size: 13px;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+
+.midchatbox{
+  min-height: 232px;
+}
+
+.timechat{
+  color: #bec2c9;
+  font-size: 13px;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 128px;
+  margin-top: 14px;
+}
+
+.tvtchat{
+  display: inline-block;
+background-color: #efefef;
+width: auto;
+border-radius: 20px;
+padding:5px 10px;
+margin-left: 45px;
+}
+
+.userchat{
+  display: inline-block;
+  background-color: #ff7315;
+  color: white;
+  width: auto;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-left: 204px;
+}
+
+.iconTS{
+  position: absolute;
+  background: #232020;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 7px;
+  left: 7px;
+  margin-top: -1px;
+}
+
+.chatboxfooter{
+  height: 50px;
+  box-shadow: 0 0 7px #bec2c9;
+  display: flex;
+  align-items: center;
+}
+
+.chatboxfooter p{
+  color: #bec2c9;
+  margin: 0px;
+  margin-left: 16px;
+}
+
+.chatboxfooter i{
+  color: #ff7315;
+  font-size: 24px;
+  margin-left: 96px;
+  cursor: pointer;
+}
+
+.contentchatbox{
+  transition: all 0.2s ease-out;
+  transform-origin: 50% 100%;
+ transform: scaleY(0);
+}
+
+.actionchatbox{
+  transform: scaleY(1);
+}
