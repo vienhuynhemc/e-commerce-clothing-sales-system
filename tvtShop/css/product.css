@@ -808,6 +808,7 @@ ul.dropdown-menu.menucountry {
   left: 0;
   padding: 12px 10px;
   position: absolute;
+  width: 93%;
   right: 0;
   text-transform: uppercase;
   -webkit-transition: all 0.5s;
