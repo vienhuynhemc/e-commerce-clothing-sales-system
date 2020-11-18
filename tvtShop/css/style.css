@@ -6286,7 +6286,7 @@ span.red{
   line-height: 38px;
   transition: 0.5s ease-out;
   border-radius: 50%;
-  box-shadow: 0 0.5em 1em -0.125em rgb(255 117 25), 0 0 20px 3px rgb(255 118 26);
+  box-shadow: 0 0.5em 1em -0.125em rgb(245 198 167), 0 0 20px 3px rgb(255 230 213);
   display: flex;
   width: 65px;
   height: 65px;

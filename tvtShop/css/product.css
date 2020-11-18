@@ -315,25 +315,6 @@ ul.dropdown-menu.menucountry {
 }
 /* ALL SECTION */
 /*scrol to top*/
-.scrollToTop {
-  bottom: 60px;
-  color: #fff;
-  display: none;
-  font-size: 23px;
-  height: 50px;
-  line-height: 45px;
-  position: fixed;
-  right: 20px;
-  text-align: center;
-  text-decoration: none;
-  -webkit-transition: all 0.5s ease 0s;
-  -moz-transition: all 0.5s ease 0s;
-  -ms-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
-  width: 50px;
-  z-index: 999;
-}
 
 .scrollToTop:hover,
 .scrollToTop:focus {
@@ -827,6 +808,7 @@ ul.dropdown-menu.menucountry {
   left: 0;
   padding: 12px 10px;
   position: absolute;
+  width: 93%;
   right: 0;
   text-transform: uppercase;
   -webkit-transition: all 0.5s;
