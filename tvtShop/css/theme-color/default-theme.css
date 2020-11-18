@@ -214,7 +214,6 @@ h2 {
 }
 #aa-product-category .aa-sidebar .aa-sidebar-widget h3 {
   color: #ff6666;
-  border-bottom: 1px solid #ff6666;
 }
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-catg-nav li a:hover,
 #aa-product-category .aa-sidebar .aa-sidebar-widget .aa-catg-nav li a:focus {
@@ -268,8 +267,11 @@ h2 {
   .pagination
   li
   span:hover {
-  color: #ff6666;
+  background-color: #ff7315 !important;
+  color: white;
 }
+
+
 #aa-product-category
   .aa-product-catg-content
   .aa-product-catg-pagination
