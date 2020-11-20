@@ -125,7 +125,12 @@ a.read-more-btn2.btn:hover {
   h3.hny-title.two {
     font-size: 36px;
     line-height: 46px;
+    font-family: sans-serif;
   }
+}
+
+div#map {
+  padding-top:12px;
 }
 
 @media (max-width: 1199px) {
@@ -7706,9 +7711,10 @@ iframe {
 .w3l-contacts-8 .cont-details p {
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   margin-top: 10px;
+  color:#6b778d;
 }
 
 .w3l-contacts-8 .cont-details p a {
@@ -7768,6 +7774,7 @@ iframe {
   font-size: 20px;
   line-height: 25px;
   margin-bottom: 10px;
+  font-family: sans-serif;
 }
 
 .w3l-contacts-8 .hours p {
@@ -16662,7 +16669,7 @@ button.bg-dark:focus {
 
 .pb-5,
 .py-5 {
-  padding-bottom: 3rem !important;
+  padding-bottom: 0rem !important;
 }
 
 .pl-5,

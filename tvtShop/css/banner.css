@@ -1,5 +1,4 @@
 #aa-catg-head-banner {
-
   display: inline;
   float: left;
   position: relative;
@@ -38,6 +37,7 @@
   color: #fff;
   font-weight: 600;
   font-family: 'Oswald', sans-serif;
+  margin-top:30px;
 }
 #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 .breadcrumb {
   border-radius: 0;
@@ -49,4 +49,22 @@
 }
 #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content1 .breadcrumb a {
   color: white;
+}
+
+.breadcrumbb{
+  display: flex;
+  color:white;
+  justify-content: center;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+.breadcrumbb li a{
+  color:white;
+}
+
+.breadcrumbb li i{
+  color:white;
+  margin-left: 10px;
+  margin-right: 10px;
 }

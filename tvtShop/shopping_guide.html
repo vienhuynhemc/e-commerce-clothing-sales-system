@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="css/trangChu.css">
   <link rel="stylesheet" href="css/shopping-guide.css">
   <script src="js/trangChu.js"></script>
+  <script src="js/shopgui.js"></script>
   <script src="js/index.js"></script>
 
   <!-- Google Font -->
@@ -252,7 +253,7 @@
                       </span>
                     </li>
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="checkout.html">Thanh toán</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="checkout.html">Kiểm tra giỏ hàng</a>
                 </div>
               </div>
               <!-- / cart box -->
@@ -278,11 +279,11 @@
     <div class="aa-catg-head-banner-area">
       <div class="container">
         <div class="aa-catg-head-banner-content1">
-          <h2>Trang Hướng Dẫn Mua Hàng</h2>
-          <ol class="breadcrumb">
-            <li><a href="index.html">Trang chủ</a></li>
-            <li class="active">Hướng dẫn</li>
-          </ol>
+          <h2>Hướng dẫn mua hàng</h2>
+          <ul class="breadcrumbb">
+            <li><a href="index.html">Trang chủ</a> <i class="fa fa-angle-double-right"></i></li>
+            <li>Hướng dẫn mua hàng</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -318,28 +319,32 @@
           <div class="c1_note">Đặt hàng trên Website theo 5 bước nhẹ nhàng: </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="stepitem1">
         <div class="col-sm-12">
           <div class="boxstep">
             <div class="boxstepmain">
               <div class="step">
                 <div class="line1step w20"></div>
                 <div class="line2step w100"></div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem1()">
                   <i class="fa fa-circle"></i>
                   <p class="contentstep c0">Chọn sản phẩm</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem2()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c25 contentsteplow">Chọn màu sắc và size</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem3()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c50 contentsteplow">Thêm vào giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem4()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c75 contentsteplow">Kiểm tra giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow"onclick="stepitem5()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c100 contentsteplow">Thanh toán</p>
                 </div>
               </div>
             </div>
@@ -351,31 +356,34 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-sm-12divgui" class="hd"><img class="hd" src="img/b1.png" alt=""></div>
+        <div class="col-sm-12 col-sm-12divgui endrowgui" class="hd"><img class="hd" src="img/b1.png" alt=""></div>
       </div>
-      <div class="row">
+      <div class="row" id="stepitem2">
         <div class="col-sm-12">
           <div class="boxstep">
             <div class="boxstepmain">
               <div class="step">
                 <div class="line1step w25"></div>
                 <div class="line2step w100"></div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem1()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c0">Chọn sản phẩm</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem2()">
                   <i class="fa fa-circle"></i>
                   <p class="contentstep c25">Chọn màu sắc và size</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem3()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c50 contentsteplow">Thêm vào giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem4()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c75 contentsteplow">Kiểm tra giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow"onclick="stepitem5()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c100 contentsteplow">Thanh toán</p>
                 </div>
               </div>
             </div>
@@ -387,32 +395,34 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-sm-12divgui"><img class="hd" src="img/b1.png" alt=""></div>
+        <div class="col-sm-12 col-sm-12divgui endrowgui"><img class="hd" src="img/b2.png" alt=""></div>
       </div>
-      <div class="row">
+      <div class="row" id="stepitem3">
         <div class="col-sm-12">
           <div class="boxstep">
             <div class="boxstepmain">
               <div class="step">
                 <div class="line1step w50"></div>
                 <div class="line2step w100"></div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem1()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c0">Chọn sản phẩm</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem2()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c25">Chọn màu sắc và size</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem3()">
                   <i class="fa fa-circle"></i>
-                  <p class="contentstep c50">Kiểm tra giỏ hàng</p>
+                  <p class="contentstep c50">Thêm vào giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow" onclick="stepitem4()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c75 contentsteplow">Kiểm tra giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow"onclick="stepitem5()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c100 contentsteplow">Thanh toán</p>
                 </div>
               </div>
             </div>
@@ -424,33 +434,34 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-sm-12divgui"><img class="hd" src="img/b1.png" alt=""></div>
+        <div class="col-sm-12 col-sm-12divgui endrowgui"><img class="hd" src="img/b3.png" alt=""></div>
       </div>
-      <div class="row">
+      <div class="row" id="stepitem4">
         <div class="col-sm-12">
           <div class="boxstep">
             <div class="boxstepmain">
               <div class="step">
                 <div class="line1step w75"></div>
                 <div class="line2step w100"></div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem1()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c0">Chọn sản phẩm</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem2()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c25">Chọn màu sắc và size</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem3()">
                   <i class="fa fa-check"></i>
-                  <p class="contentstep c50">Kiểm tra giỏ hàng</p>
+                  <p class="contentstep c50">Thêm vào giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem4()">
                   <i class="fa fa-circle"></i>
-                  <p class="contentstep c75">Thanh toán</p>
+                  <p class="contentstep c75">Kiểm tra giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem stepitemlow"onclick="stepitem5()">
                   <i class="fa fa-circle"></i>
+                  <p class="contentstep c100 contentsteplow">Thanh toán</p>
                 </div>
               </div>
             </div>
@@ -462,34 +473,34 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-sm-12divgui"><img class="hd" src="img/b1.png" alt=""></div>
+        <div class="col-sm-12 col-sm-12divgui endrowgui"><img class="hd" src="img/b4.png" alt=""></div>
       </div>
-      <div class="row">
+      <div class="row" id="stepitem5">
         <div class="col-sm-12 ">
           <div class="boxstep">
             <div class="boxstepmain">
               <div class="step">
                 <div class="line1step w100"></div>
                 <div class="line2step w100"></div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem1()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c0">Chọn sản phẩm</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem2()">
                   <i class="fa fa-check"></i>
                   <p class="contentstep c25">Chọn màu sắc và size</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem3()">
                   <i class="fa fa-check"></i>
-                  <p class="contentstep c50">Kiểm tra giỏ hàng</p>
+                  <p class="contentstep c50">Thêm vào giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem4()">
                   <i class="fa fa-check"></i>
-                  <p class="contentstep c75">Thanh toán</p>
+                  <p class="contentstep c75">Kiểm tra giỏ hàng</p>
                 </div>
-                <div class="stepitem">
+                <div class="stepitem" onclick="stepitem5()">
                   <i class="fa fa-circle"></i>
-                  <p class="contentstep c100">Đặt hàng thành công</p>
+                  <p class="contentstep c100">Thanh toán</p>
                 </div>
               </div>
             </div>
@@ -501,8 +512,7 @@
             </div>
           </div>
           </div>
-        </div>
-        <div class="col-sm-12  endrowgui"><img class="hd" src="img/b1.png" alt=""></div>
+        <div class="col-sm-12  endrowgui"><img class="hd" src="img/b5.png" alt=""></div>
       </div>
     </div>
   </main>
