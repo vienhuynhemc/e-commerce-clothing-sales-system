@@ -67,7 +67,6 @@ img.hd {
   padding-bottom: 100px;
 }
 
-
 .boxstep {
   height: 200px;
   position: relative;
@@ -79,7 +78,8 @@ img.hd {
   width: 80%;
   height: 101px;
   margin: auto;
-  box-shadow: rgb(216 192 176) 0px 0.5em 5em -0.125em, rgb(255, 230, 213) 0px 0px 20px 3px;
+  box-shadow: rgb(216 192 176) 0px 0.5em 5em -0.125em,
+    rgb(255, 230, 213) 0px 0px 20px 3px;
   border-radius: 30px;
   align-items: center;
   display: flex;
@@ -87,44 +87,44 @@ img.hd {
   z-index: 6;
 }
 
-.boxstepmainsub1{
-    background-color: white;
-    width: 70%;
-    height: 101px;
-    margin: auto;
-    box-shadow: rgb(234, 108, 24) 0px 0.5em 1em -0.125em,
-      rgb(255, 230, 213) 0px 0px 20px 3px;
-    border-radius: 30px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top:50%;
-    margin-top: -50px;
-    left:15%;
-    transform: rotate(-5deg);
-    z-index: 5;
-    opacity: 0.2;
+.boxstepmainsub1 {
+  background-color: white;
+  width: 70%;
+  height: 101px;
+  margin: auto;
+  box-shadow: rgb(234, 108, 24) 0px 0.5em 1em -0.125em,
+    rgb(255, 230, 213) 0px 0px 20px 3px;
+  border-radius: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 15%;
+  transform: rotate(-5deg);
+  z-index: 5;
+  opacity: 0.2;
 }
 
-.boxstepmainsub2{
-    background-color: white;
-    width: 70%;
-    height: 101px;
-    margin: auto;
-    box-shadow: rgb(234, 108, 24) 0px 0.5em 1em -0.125em,
-      rgb(255, 230, 213) 0px 0px 20px 3px;
-    border-radius: 30px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top:50%;
-    margin-top: -50px;
-    left:15%;
-    transform: rotate(5deg);
-    z-index: 5;
-    opacity: 0.2;
+.boxstepmainsub2 {
+  background-color: white;
+  width: 70%;
+  height: 101px;
+  margin: auto;
+  box-shadow: rgb(234, 108, 24) 0px 0.5em 1em -0.125em,
+    rgb(255, 230, 213) 0px 0px 20px 3px;
+  border-radius: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 15%;
+  transform: rotate(5deg);
+  z-index: 5;
+  opacity: 0.2;
 }
 
 .step {
@@ -182,34 +182,44 @@ img.hd {
   width: 100%;
 }
 
-.c25{
-    left:15%;
+.c25 {
+  left: 15%;
 }
 
-.c50{
-    left:41%;
+.c50 {
+  left: 41%;
 }
 
-.c75{
-    left:65%;
+.c75 {
+  left: 65%;
 }
 
-.c100{
-    left:92%;
+.c100 {
+  left: 92%;
 }
 
-.c0{
-    left:-6%;
+.c0 {
+  left: -6%;
 }
 
-.contentstep{
-    color:#ff7315;
-    position: absolute;
-    width: 200px;
-    top:110%;
+.contentstep {
+  color: #ff7315;
+  position: absolute;
+  width: 200px;
+  top: 110%;
 }
 
-
-#stepitem2,#stepitem3,#stepitem4,#stepitem5{
+#stepitem2,
+#stepitem3,
+#stepitem4,
+#stepitem5 {
   display: none;
+}
+
+.stepitemlow {
+  background-color: #bbbbbb;
+}
+
+.contentsteplow {
+  color: #bbbbbb;
 }
