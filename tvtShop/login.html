@@ -282,10 +282,10 @@
                     <p class="wellcome">Chào mừng bạn trở lại, vui lòng đăng nhập vào tài khoản của mình</p>
                     <div class="loginwith">
                         <div class="loginwithitem"> <i class="fa fa-facebook-f"></i>
-                            <p>Đăng nhập bằng facebook</p>
+                            <p onclick="toAccount()">Đăng nhập bằng facebook</p>
                         </div>
                         <div class="loginwithitem"> <i class="fa fa-google"></i>
-                            <p>Đăng nhập bằng google</p>
+                            <p onclick="toAccount()">Đăng nhập bằng google</p>
                         </div>
                     </div>
                     <p class="or">- Hoặc -</p>
@@ -315,7 +315,7 @@
                         </div>
 
                         <div class="divsubmit">
-                            <button>Đăng nhập</button>
+                            <button onclick="toAccount()">Đăng nhập</button>
                             <button onclick="dangky()">Đăng ký</button>
                         </div>
 
@@ -409,7 +409,7 @@
     <!--notification-->
     <div class="success" id="success">
         <div class="helponclick" onclick="completesuccess()"></div>
-        <div class="contentsuccess"  id="notifi1">
+        <div class="contentsuccess" id="notifi1">
             <h3>Đăng ký thành công!</h3>
             <p>Hệ thống đã gửi <span>liên kết kích hoạt tài khoản</span> đến <span>email</span> của bạn. Đề nghị bạn hãy
                 kiểm tra <span>email</span> và <span>mở liên kết

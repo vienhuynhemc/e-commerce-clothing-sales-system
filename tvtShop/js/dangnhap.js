@@ -138,3 +138,7 @@ function gotochange() {
     document.getElementById('left3divpassword').style.opacity = '1';
     document.getElementById('left3divpassword').style.zIndex = '2';
 }
+
+function toAccount(){
+    window.location = '../../tvtShop/changeInforCustomer.html';
+}

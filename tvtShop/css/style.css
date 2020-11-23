@@ -6442,3 +6442,7 @@ margin-left: 45px;
   display: flex;
   justify-content: space-around;
 }
+
+.activeeeicon{
+  background-color: #ff7315 !important;
+}
