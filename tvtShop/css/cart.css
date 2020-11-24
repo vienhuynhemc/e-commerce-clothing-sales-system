@@ -223,6 +223,7 @@ body {
   font-family: sans-serif;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .cartleftfooter a:hover,.cartleftfooter a:hover i{
@@ -360,6 +361,8 @@ body {
   width: 70%;
   margin-top: 15px;
   outline: none;
+  font-size:14px;
+  padding:10px;
 }
 
 .submit {

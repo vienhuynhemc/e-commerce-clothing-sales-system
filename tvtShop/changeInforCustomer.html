@@ -18,6 +18,7 @@
   <script src="js/index.js"></script>
   <link rel="stylesheet" href="css/banner.css">
   <link rel="stylesheet" href="css/informationCustomer.css">
+  <link rel="stylesheet" href="css/cart.css">
 
   <script src="js/informationCustomer.js"></script>
 
@@ -60,7 +61,7 @@
               <!-- / header top left -->
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user"
+                  <li class="iconRound activeeeicon"><a href="changeInforCustomer.html"><i class="fa fa-user"
                         aria-hidden="true"></i></a></li>
                   <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                   <li class="hidden-xs iconRoundLenght"><a href="cart.html">My Cart
@@ -262,11 +263,11 @@
     <div class="contentAccount">
       <div class="left">
         <p class="titleleft"> <i class="fa fa-address-card-o"></i> TVTShop</p>
-        <div class="leftitemselect activeeselect">
+        <div class="leftitemselect activeeselect" onclick="trangthai()" id="buttontrangthai">
           <p><i class="fa fa-tasks"></i> Trạng thái</p>
           <i class="fa fa-chevron-right"></i>
         </div>
-        <div class="leftitemselect">
+        <div class="leftitemselect" onclick="lichsumua()" id="buttonlsm">
           <p><i class="fa fa-history"></i>Lịch sử mua</p>
           <i class="fa fa-chevron-right"></i>
         </div>
@@ -315,7 +316,7 @@
 
       <div class="rightaccount">
 
-        <div class="status">
+        <div class="status" id="status">
           <p class="statustitle">Tài khoản</p>
           <p class="statusavatar">Ảnh đại diện</p>
           <div class="divavatar">
@@ -419,6 +420,147 @@
           <button class="savestatus">Lưu thay đổi</button>
         </div>
 
+        <div class="historyorder" id="historyorder">
+          <div class="historyheader">
+            <p class="historytitle">Lịch sử mua hàng</p>
+            <input type="text" placeholder="Tìm kiếm mã đơn hàng">
+          </div>
+          <div class="historycontent">
+
+            <div class="historyleft">
+              <div class="contentheader">
+                <p class="ma">Mã đơn hàng</p>
+                <p class="soloai">Số loại</p>
+                <p class="sosanpham">Số sản phẩm</p>
+                <p class="gia">Tổng giá</p>
+                <p class="trangthai">Trạng thái</p>
+              </div>
+
+              <div class="linehistory"></div>
+
+              <div class="contenthistorymain">
+                <div class="historyitem activehistoryitem">
+                  <p class="ma">DH402</p>
+                  <p class="soloai">5</p>
+                  <p class="sosanpham">14</p>
+                  <p class="gia">4,359,00 VND</p>
+                  <p class="trangthai xuly"><i class="fa fa-circle"></i>Đang xử lý: 3/5</p>
+                </div>
+                <div class="historyitem">
+                  <p class="ma">DH394</p>
+                  <p class="soloai">2</p>
+                  <p class="sosanpham">4</p>
+                  <p class="gia">750,00 VND</p>
+                  <p class="trangthai"><i class="fa fa-circle"></i>Hoàn thành</p>
+                </div>
+                <div class="historyitem">
+                  <p class="ma">DH320</p>
+                  <p class="soloai">4</p>
+                  <p class="sosanpham">7</p>
+                  <p class="gia">1,239,00 VND</p>
+                  <p class="trangthai"><i class="fa fa-circle"></i>Hoàn thành</p>
+                </div>
+                <div class="historyitem">
+                  <p class="ma">DH303</p>
+                  <p class="soloai">1</p>
+                  <p class="sosanpham">2</p>
+                  <p class="gia">498,00 VND</p>
+                  <p class="trangthai"><i class="fa fa-circle"></i>Hoàn thành</p>
+                </div>
+                <div class="historyitem">
+                  <p class="ma">DH255</p>
+                  <p class="soloai">2</p>
+                  <p class="sosanpham">2</p>
+                  <p class="gia">440,00 VND</p>
+                  <p class="trangthai"><i class="fa fa-circle"></i>Hoàn thành</p>
+                </div>
+                <div class="historyitem">
+                  <p class="ma">DH102</p>
+                  <p class="soloai">1</p>
+                  <p class="sosanpham">1</p>
+                  <p class="gia">299,00 VND</p>
+                  <p class="trangthai"> <i class="fa fa-circle"></i>Hoàn thành</p>
+                </div>
+              </div>
+
+              <div class="footerleft">
+                <ul>
+                  <li><i class="fa fa-angle-double-left"></i></li>
+                  <li class="activeli">1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li><i class="fa fa-angle-double-right"></i></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="linedoc"></div>
+
+            <div class="historyright">
+              <div class="historyrightheader">
+                <p>Đơn hàng #DH402</p>
+                <p> <i class="fa fa-circle"></i>Đang xử lý 3/5</p>
+              </div>
+              <div class="divhinh">
+                <div class="listhinh" id="listhinh">
+                  <div>
+                    <div>
+                      <img src="img/product/pro11.webp" alt="">
+                    </div>
+                    <p>MST 1010</p>
+                  </div>
+                  <div>
+                    <div>
+                      <img src="img/product/pro1.webp" alt="">
+                    </div>
+                    <p>MSW 1006</p>
+                  </div>
+                  <div>
+                    <div>
+                      <img src="img/product/pro4.webp" alt="">
+                    </div>
+                    <p>MSW1003</p>
+                  </div>
+                  <div>
+                    <div>
+                      <img src="img/product/pro10.webp" alt="">
+                    </div>
+                    <p>MTS 1008</p>
+                  </div>
+                  <div>
+                    <div>
+                      <img src="img/product/pro12.webp" alt="">
+                    </div>
+                    <p>MTS1010</p>
+                  </div>
+                </div>
+              </div>
+              <span class="fa fa-chevron-left scrollleft" onclick="left()"></span>
+              <span class="fa fa-chevron-right scrollright" onclick="right()"></span>
+
+              <div class="tongketright">
+                <div>
+                  <p>Tổng tiền sản phẩm:</p>
+                  <p>4,289,000 VND</p>
+                </div>
+                <div>
+                  <p>Phí vận chuyển:</p>
+                  <p>70,000 VND</p>
+                </div>
+                <div class="line"></div>
+                <div>
+                  <p>Tổng tiền:</p>
+                  <p>4,359,000 VND</p>
+                </div>
+              </div>
+
+              <button class="buttonxemchitiet" onclick="xemchitiet()">Xem chi tiết</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -437,14 +579,200 @@
         <input type="password" id="input1" placeholder="Xác nhận mật khẩu mới của bạn">
         <button onclick="gotosuccesspassword()">Thay đổi mật khẩu</button>
       </div>
-      <div class="changepasswordsuccess" id="changepasswordsuccess"> 
+      <div class="changepasswordsuccess" id="changepasswordsuccess">
         <p>Thay đổi mật khẩu thành công</p>
-        <p>Từ bây giờ, bạn có thể sử dụng mật khẩu mới của mình để đăng nhập vào tài khoản của bạn <img src="img/raising-hands-emoji-218129.png" alt=""></p>
+        <p>Từ bây giờ, bạn có thể sử dụng mật khẩu mới của mình để đăng nhập vào tài khoản của bạn <img
+            src="img/raising-hands-emoji-218129.png" alt=""></p>
         <button onclick="gobackpassword()">Trở về tài khoản</button>
       </div>
     </div>
   </div>
 
+  <!--cart-->
+  <div class="inforcart" id="inforcart">
+    <div class="hiddencart" onclick="trovetaikhoan()"></div>
+    <div class="informationinforcart">
+      <section class="contentcart" id="contentcart">
+        <div class="cart">
+          <div class="cartleft">
+            <div class="cartleftheader">
+              <h3> T<span style="color:#ff7315">V</span>T</h3>
+              <h5>|</h5>
+              <p>Đơn hàng #DH402</p>
+            </div>
+            <div class="scrollmain">
+              <div class="cartleftmain">
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro10.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Thun MTS 1011</p>
+                        <h6>Áo thun</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Trắng</p>
+                    <div class="cartleftmainitemsl">
+                      <p>2</p>
+                    </div>
+                    <p class="cartleftmainitemprice">798,000 VND</p>
+                  </div>
+                </div>
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro11.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Thun MTS 1010</p>
+                        <h6>Áo thun</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Đen</p>
+                    <div class="cartleftmainitemsl">
+                      <p>3</p>
+                    </div>
+                    <p class="cartleftmainitemprice">597,000 VND</p>
+                  </div>
+                </div>
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro12.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Thun Nam Raglan Tay Dài MTS 1008</p>
+                        <h6>Áo thun tay dài</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Xanh</p>
+                    <div class="cartleftmainitemsl">
+                      <p>1</p>
+                    </div>
+                    <p class="cartleftmainitemprice">399,000 VND</p>
+                  </div>
+                </div>
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro4.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
+                        <h6>Áo thun tay dài</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Vàng</p>
+                    <div class="cartleftmainitemsl">
+                      <p>4</p>
+                    </div>
+                    <p class="cartleftmainitemprice">1,196,000 VND</p>
+                  </div>
+                </div>
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro1.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Sweater Nam Stay Together MSW 1006</p>
+                        <h6>Áo len</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Đỏ đô</p>
+                    <div class="cartleftmainitemsl">
+                      <p>3</p>
+                    </div>
+                    <p class="cartleftmainitemprice">900,000 VND</p>
+                  </div>
+                </div>
+                <div class="cartleftmainitem">
+                  <div class="cartleftmainitemleft">
+                    <a href="" class="cartleftmainimg"> <img src="img/product/pro9.webp" alt=""></a>
+                    <a href="">
+                      <div class="cartleftmainiteminfor">
+                        <p>Áo Thun MTS 1012</p>
+                        <h6>Áo thun</h6>
+                      </div>
+                    </a>
+                    <p class="cartleftmainitemcolor">Trắng</p>
+                    <div class="cartleftmainitemsl">
+                      <p>1</p>
+                    </div>
+                    <p class="cartleftmainitemprice">399,000 VND</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cartleftfooter">
+              <a onclick="trovetaikhoan()">
+                <i class="fa fa-long-arrow-left"></i> Trở về tài khoản
+              </a>
+              <div class="footertongtien">
+                <p>Tổng tiền sản phẩm:</p>
+                <p>4,289,000 VND</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="cartright">
+            <div class="closecartright" onclick="trovetaikhoan()"><i class="fa fa-power-off"></i></div>
+            <h3>Thông tin đơn hàng</h3>
+            <div class="pricecr">
+              <div class="pricedivright">
+                <p>Phí vận chuyển: </p>
+                <p>70,000 VND</p>
+              </div>
+              <div class="pricedivright">
+                <p>Tổng tiền: </p>
+                <p>4,359,000 VND</p>
+              </div>
+            </div>
+            <div class="linecr"></div>
+            <div class="pricecr">
+              <div class="pricedivright">
+                <p>Số loại:</p>
+                <p>5</p>
+              </div>
+              <div class="pricedivright">
+                <p>Số lượng</p>
+                <p>14</p>
+              </div>
+            </div>
+            <div class="linecr"></div>
+            <div class="pricecr">
+              <div class="pricedivrightinfor">
+                <div>
+                  <i class="fa fa-clock-o"></i>
+                  <p>Thời gian giao hàng từ 1-5 ngày tùy khu vực</p>
+                </div>
+                <div>
+                  <i class="fa fa-truck"></i>
+                  <p>Free ship cho đơn hàng từ 499k trở lên</p>
+                </div>
+              </div>
+            </div>
+            <div class="linecr"></div>
+            <div class="note">
+              <p>Ghi chú đơn hàng</p>
+              <textarea name="" id="" cols="30"
+                rows="10">Tui rất hài lòng với các món đồ này, bạn giao nhẹ tay nha!</textarea>
+            </div>
+            <a href="checkout.html" class="submit">
+              Kiểm tra tiến trình giao hàng
+            </a>
+
+            <!-- Lam dep -->>
+            <div class="box1">
+            </div>
+            <div class="box2">
+              <div></div>
+              <div style="background-color: #ff7315;"></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
   <!--End main-->
 
   <div class="chatbox">
