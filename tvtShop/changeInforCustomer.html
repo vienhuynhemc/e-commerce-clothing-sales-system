@@ -415,10 +415,32 @@
           </div>
 
           <div class="linestatus"></div>
-       
+
           <button class="savestatus">Lưu thay đổi</button>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <div class="changepassword" id="changepassword">
+    <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+    <div class="mainchangepassword">
+      <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+      <div class="changepassworddiv" id="changepassworddiv">
+        <p>Đổi mật khẩu của bạn</p>
+        <label for="input1">Mật khẩu cũ</label>
+        <input type="password" id="input1" placeholder="Nhập mật khẩu cũ">
+        <label for="input1">Mật khẩu mới</label>
+        <input type="password" id="input1" placeholder="Nhập mật khẩu mới">
+        <label for="input1">Xác nhận mật khẩu mới</label>
+        <input type="password" id="input1" placeholder="Xác nhận mật khẩu mới của bạn">
+        <button onclick="gotosuccesspassword()">Thay đổi mật khẩu</button>
+      </div>
+      <div class="changepasswordsuccess" id="changepasswordsuccess"> 
+        <p>Thay đổi mật khẩu thành công</p>
+        <p>Từ bây giờ, bạn có thể sử dụng mật khẩu mới của mình để đăng nhập vào tài khoản của bạn <img src="img/raising-hands-emoji-218129.png" alt=""></p>
+        <button onclick="gobackpassword()">Trở về tài khoản</button>
       </div>
     </div>
   </div>
