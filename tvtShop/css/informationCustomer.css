@@ -6,7 +6,6 @@
 
 .contentAccount {
   width: 90%;
-  background-color: white;
   display: flex;
   margin: 100px auto;
   position: relative;
@@ -25,6 +24,7 @@
   border-radius: 40px;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 .titleleft {
@@ -157,7 +157,7 @@
 
 .changeimg {
   border: none;
-  background-color:#ff7315;
+  background-color: #ff7315;
   color: white;
   font-weight: bold;
   font-family: sans-serif;
@@ -232,6 +232,11 @@
   left: 20%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
+  background-color: white;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  box-shadow: 0 0 40px 7px #dad7d7;
 }
 .statustitle {
   color: #36363f;
@@ -933,7 +938,7 @@ input[disabled] {
   z-index: 1000;
   top: 0px;
   transition: all 0.3s ease-in-out;
-  transform: scaleY(0)
+  transform: scaleY(0);
 }
 
 .hiddencart {
@@ -953,7 +958,7 @@ input[disabled] {
   overflow: scroll;
 }
 
-.contentcart{
+.contentcart {
   position: absolute;
   height: 1500px;
   top: -225px;
@@ -964,11 +969,11 @@ input[disabled] {
   box-shadow: 0 0 20px black !important;
 }
 
-.cartright{
+.cartright {
   position: relative;
 }
 
-.closecartright{
+.closecartright {
   justify-content: center;
   position: absolute;
   width: 30px;
@@ -982,4 +987,3 @@ input[disabled] {
   right: 10px;
   cursor: pointer;
 }
-

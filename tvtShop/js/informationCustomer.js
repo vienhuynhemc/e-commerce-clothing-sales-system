@@ -96,6 +96,9 @@ setInterval(() => {
 }, 2000);
 
 function trangthai() {
+    document.getElementById('leftaccount').style.height = '1225px';
+    document.getElementById('rightaccount').style.height = '1125px';
+    document.getElementById('contentaccount').style.height = '1325px';
     document.getElementById('historyorder').style.top = '100%';
     document.getElementById('status').style.top = '0%';
     document.getElementById('buttontrangthai').classList.add('activeeselect');
@@ -103,17 +106,21 @@ function trangthai() {
 }
 
 function lichsumua() {
+    document.getElementById('leftaccount').style.height = '940px';
+    document.getElementById('rightaccount').style.height = '720px';
+    document.getElementById('contentaccount').style.height = '1040px';
     document.getElementById('historyorder').style.top = '0%';
     document.getElementById('status').style.top = '100%';
     document.getElementById('buttontrangthai').classList.remove('activeeselect');
     document.getElementById('buttonlsm').classList.add('activeeselect');
+
 }
 
 function trovetaikhoan() {
     document.getElementById('inforcart').style.transform = 'scaleY(0)';
 }
 
-function xemchitiet(){
+function xemchitiet() {
     document.getElementById('inforcart').style.transform = 'scaleY(1)';
 }
 
