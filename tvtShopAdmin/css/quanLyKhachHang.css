@@ -384,9 +384,14 @@ p.qlblContentTitle {
   cursor: pointer;
 }
 
-table img {
+table td .boximg{
   width: 100px;
   height: 100px;
+  overflow: hidden;
+}
+
+table td img {
+  width: 100px;
 }
 
 .bar-qlkh {
