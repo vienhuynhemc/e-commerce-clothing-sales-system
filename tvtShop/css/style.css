@@ -424,6 +424,14 @@ header#aa-header:after {
   font-size: 16px;
   font-weight: 600;
   font-family: "Lato", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn .caret {
+  margin-left: 6px;
+  transform: translateY(2px);
 }
 #aa-header .aa-header-bottom {
   float: left;

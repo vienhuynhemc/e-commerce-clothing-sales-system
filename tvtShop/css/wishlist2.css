@@ -276,6 +276,31 @@
   position: absolute;
   right: 0px;
   top: -7px;
+  display: flex;
+}
+
+.titletable > div ul{
+  display: flex;
+}
+
+.titletable > div ul li{
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size:14px;
+  font-family: sans-serif;
+}
+
+.titletable > div ul li:nth-child(1){
+  background-color: #ff9751;
+  color:white;
 }
 
 .selectbutton button i {

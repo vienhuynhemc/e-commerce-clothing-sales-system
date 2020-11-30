@@ -5578,7 +5578,7 @@ ul.aa-catg-nav li {
 }
 
 .aa-product-catg-head-right a:nth-child(3) {
-  color: #d4d4d4 !important;
+  color: #3e3f43 !important;
 }
 
 .aa-sort-form {
@@ -5609,11 +5609,11 @@ ul.aa-catg-nav li {
 }
 
 .aa-sort-form select option {
-  color: #232020;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 16px;
   margin-top: -2px;
+  color: #ff7315;
 }
 
 .aa-show-form {
@@ -5644,7 +5644,7 @@ ul.aa-catg-nav li {
 }
 
 .aa-show-form select option {
-  color: #232020;
+  color: #ff7315;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 16px;
