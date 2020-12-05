@@ -33,10 +33,10 @@ jQuery(function ($) {
   /* ----------------------------------------------------------- */
 
   jQuery(".aa-cartbox").hover(function () {
-    jQuery(this).find(".aa-cartbox-summary").fadeIn(500);
+    jQuery(this).find(".aa-cartbox-summary").fadeIn(0);
   }
     , function () {
-      jQuery(this).find(".aa-cartbox-summary").fadeOut(500);
+      jQuery(this).find(".aa-cartbox-summary").fadeOut(0);
     }
   );
 
@@ -270,7 +270,7 @@ jQuery(function ($) {
         let newValue = '';
         if (valuee.length > 3) {
           let count = 0;
-          for (let i = valuee.length-1; i > 0; i--) {
+          for (let i = valuee.length - 1; i > 0; i--) {
             newValue = valuee[i] + newValue;
             count++;
             if (count == 3) {
@@ -326,10 +326,20 @@ jQuery(function ($) {
   jQuery("#list-catg").click(function (e) {
     e.preventDefault(e);
     jQuery(".aa-product-catg").addClass("list");
+    document.getElementById('list-catg').classList.remove('color2li');
+    document.getElementById('list-catg').classList.add('color1li');
+    document.getElementById('grid-catg').classList.remove('color1li');
+    document.getElementById('grid-catg').classList.add('color2li');
+
   });
   jQuery("#grid-catg").click(function (e) {
     e.preventDefault(e);
     jQuery(".aa-product-catg").removeClass("list");
+    document.getElementById('list-catg').classList.remove('color1li');
+    document.getElementById('list-catg').classList.add('color2li');
+    document.getElementById('grid-catg').classList.remove('color2li');
+    document.getElementById('grid-catg').classList.add('color1li');
+
   });
 
 

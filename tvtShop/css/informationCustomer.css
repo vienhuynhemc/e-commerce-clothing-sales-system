@@ -877,19 +877,31 @@ input[disabled] {
 
 .footerleft ul {
   display: flex;
-  justify-content: space-between;
   margin-left: 40px;
   width: 90%;
-  margin-top: 30px;
+  margin-top: 50px;
+  justify-content: center;
 }
 
 .footerleft ul li {
-  padding: 14px 20px;
+  width: 43px;
+  height: 43px;
   box-shadow: 1px 6px 11px 0px #9e9c9c;
   border-radius: 50% !important;
   margin-left: 5px;
   margin-right: 14px;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.none{
+  box-shadow: none !important;
+  font-size: 20px !important;
+  margin: 0px !important;
+  margin-right: 10px !important;
 }
 
 .activeli {

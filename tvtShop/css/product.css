@@ -2007,7 +2007,7 @@ ul.dropdown-menu.menucountry {
   a {
   color: #fff;
   display: inline-block;
-  font-size: 20px;
+  font-size: 15px;
   margin-left: 5px;
   margin-top: 3px;
   padding: 0;
@@ -5572,14 +5572,11 @@ ul.aa-catg-nav li {
 }
 
 .aa-product-catg-head-right a {
-  color: rgb(62 63 67 / 1) !important;
-  margin-left: 20px !important;
+  color: rgb(62 63 67 / 1);
+  margin-left: 11px !important;
   margin-top: -2px !important;
 }
 
-.aa-product-catg-head-right a:nth-child(3) {
-  color: #3e3f43 !important;
-}
 
 .aa-sort-form {
   display: flex;
@@ -5597,23 +5594,25 @@ ul.aa-catg-nav li {
 }
 
 .aa-sort-form select {
-  color: rgb(255, 115, 21);
+  color: rgb(245 153 91);
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 13px;
   margin-top: -2px;
   outline: none !important;
   border: none !important;
-  width: 161px !important;
+  width: 141px !important;
   text-align: center;
+  font-family: sans-serif;
 }
 
 .aa-sort-form select option {
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 13px;
   margin-top: -2px;
-  color: #ff7315;
+  color: rgb(245 153 91);
+  font-family: sans-serif;
 }
 
 .aa-show-form {
@@ -5632,23 +5631,25 @@ ul.aa-catg-nav li {
 }
 
 .aa-show-form select {
-  color: rgb(255, 115, 21);
+  color: rgb(245 153 91);
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 13px;
   margin-top: -2px;
   outline: none !important;
   border: none !important;
   width: 45px !important;
   text-align: center;
+  font-family: sans-serif;
 }
 
 .aa-show-form select option {
-  color: #ff7315;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 13px;
   margin-top: -2px;
+  color: rgb(245 153 91);
+  font-family: sans-serif;
 }
 
 #aa-product-category .aa-product-catg-content .aa-product-catg-head {
@@ -5664,11 +5665,24 @@ ul.aa-catg-nav li {
 }
 
 .pagination li a {
-  padding: 14px 20px;
+  width: 43px;
+  height: 43px;
   box-shadow: 1px 6px 11px 0px #9e9c9c;
   border-radius: 50% !important;
   margin-left: 5px;
   margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.none {
+  box-shadow: none !important;
+  font-size: 20px !important;
+  margin: 0px !important;
+  margin-right: 10px !important;
 }
 
 .activenextbar {
@@ -5676,7 +5690,26 @@ ul.aa-catg-nav li {
   background-color: #9e9c9c !important;
 }
 
-.pagination li a:hover .nextprebar{
+.pagination li a:hover .nextprebar {
   color: white !important;
 }
 
+ul.pagination {
+  margin: 60px 0px;
+}
+
+.headerproduct label {
+  font-size: 13px;
+}
+
+.headerproduct p {
+  font-size: 13px;
+}
+
+.color1li {
+  color: rgb(245 153 91) !important;
+}
+
+.color2li {
+  color: #bfc3cd !important;
+}

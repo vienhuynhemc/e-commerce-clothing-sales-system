@@ -1,6 +1,6 @@
 .mainlove {
   display: flex;
-  background-color: #f9f6f4;
+  background-color: #f6f7f8;
   width: 100%;
   flex-direction: column;
   padding-bottom: 100px;
@@ -9,10 +9,11 @@
 .item {
   background-color: white;
   width: 90%;
-  margin: 10px auto;
+  margin: 15px auto;
   border-radius: 5px;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 17px 0px #cacaca;
   height: 130px;
 }
 
@@ -196,13 +197,14 @@
 .header {
   width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   background-color: white;
   display: flex;
   align-items: center;
   height: 60px;
   border-radius: 5px;
+  box-shadow: 0 0 17px 0px #cacaca;
 }
 
 .header > button {
@@ -279,11 +281,11 @@
   display: flex;
 }
 
-.titletable > div ul{
+.titletable > div ul {
   display: flex;
 }
 
-.titletable > div ul li{
+.titletable > div ul li {
   background-color: white;
   border: none;
   border-radius: 5px;
@@ -294,13 +296,13 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size:14px;
+  font-size: 14px;
   font-family: sans-serif;
 }
 
-.titletable > div ul li:nth-child(1){
+.titletable > div ul li:nth-child(1) {
   background-color: #ff9751;
-  color:white;
+  color: white;
 }
 
 .selectbutton button i {
