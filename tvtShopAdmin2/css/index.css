@@ -30,7 +30,7 @@ a {
   position: relative;
   display: flex;
   margin-left: auto;
-  margin-top: -5px;
+  margin-top: 2px;
   margin-right: 10px;
 }
 
@@ -51,7 +51,7 @@ a {
 }
 
 .indexleftselect {
-  margin-top: 35px;
+  margin-top: 40px;
 }
 
 .indexleftselectitem > i {
@@ -130,20 +130,20 @@ a {
 
 .indextop {
   position: fixed;
-  height: 6%;
+  height: 8%;
   background-color: white;
   top: 0px;
   width: 100%;
   display: flex;
   font-family: sans-serif;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .indextop h3 {
   display: flex;
   margin: auto 0;
-  color:#4162fb;
+  color: #4162fb;
   font-size: 25px;
   font-weight: 700;
   font-family: "Oswald", sans-serif;
@@ -151,12 +151,13 @@ a {
 }
 
 .backgroundindexmain {
-  height: 94%;
+  height: 92%;
   width: 100%;
   border-top-left-radius: 15px;
   background-color: #f5f5fa;
   position: fixed;
   z-index: 1;
+  top:8%;
 }
 
 .indexmain {
@@ -284,13 +285,13 @@ a {
 }
 
 .indextopbellinfor > div {
-    width: 250px;
-    height: 310px;
-    box-shadow: 17px 20px 14px 4px #dbdae4;
-    background-color: white;
-    margin-top: -10px;
-    border-radius: 5px;
-    margin-left: 100px;
+  width: 250px;
+  height: 310px;
+  box-shadow: 17px 20px 14px 4px #dbdae4;
+  background-color: white;
+  margin-top: -10px;
+  border-radius: 5px;
+  margin-left: 100px;
 }
 
 .indextopbellinfor > div h3 {
