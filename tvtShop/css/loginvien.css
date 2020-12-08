@@ -10,6 +10,7 @@
   margin: 100px auto;
   width: 80%;
   box-shadow: 0 0.5em 4em -0.125em rgb(162 160 160), 0 0 0 1px white;
+  border-radius: 10px;
 }
 
 .left {
@@ -39,6 +40,8 @@
   background: linear-gradient(to right, #ffd698, #fd9a46, #ff5c00);
   position: absolute;
   opacity: 0.5;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .contentleft {
@@ -352,10 +355,14 @@
 
 .left {
   transition: all 1s ease-in-out;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .right {
   transition: all 1s ease-in-out;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .agree {

@@ -13,7 +13,7 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  box-shadow: 0 0 17px 0px #cacaca;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
   height: 130px;
 }
 
@@ -204,7 +204,7 @@
   align-items: center;
   height: 60px;
   border-radius: 5px;
-  box-shadow: 0 0 17px 0px #cacaca;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .header > button {
@@ -272,6 +272,7 @@
   width: 30px;
   height: 30px;
   margin-left: 5px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .titletable > div {
@@ -298,6 +299,7 @@
   cursor: pointer;
   font-size: 14px;
   font-family: sans-serif;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .titletable > div ul li:nth-child(1) {
@@ -360,6 +362,7 @@
   border-radius: 5px;
   padding: 5px;
   width: 100px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 .search {
   margin-top: 37px;
@@ -372,6 +375,7 @@
   border-radius: 5px;
   font-size: 14px;
   outline: none;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .search input::placeholder {
