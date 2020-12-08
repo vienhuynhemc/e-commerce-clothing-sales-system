@@ -166,3 +166,7 @@ function toAccount() {
     document.getElementById("error").innerText = "Bạn nhập sai mật khẩu"
     document.getElementById("error").style.display = "block";
 }
+
+function toPublic() {
+    window.location = "/tvtShop/index.html";
+}

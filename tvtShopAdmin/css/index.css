@@ -335,6 +335,8 @@ a {
 }
 .indextopbellinforcontentitem > div:nth-child(2) {
   margin-left: 10px;
+  width: 227px;
+  margin-right: 2px;
 }
 .indextopbellinforcontentitem > div:nth-child(2) p:nth-child(1) {
   color: #2a2935;
