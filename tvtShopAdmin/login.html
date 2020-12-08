@@ -2,227 +2,216 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Đăng nhập</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
-  <!-- https://fonts.google.com/specimen/Open+Sans -->
-  <link rel="stylesheet" href="css/fontawesome.min.css" />
-  <!-- https://fontawesome.com/ -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <!-- https://getbootstrap.com/ -->
-  <link rel="stylesheet" href="css/templatemo-style.css">
-  <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/login.css">
-  <script src="js/login.js"></script>
-  <!--
-	Product Admin CSS Template
-	https://templatemo.com/tm-524-product-admin
-	-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVT SHOP | Đăng nhập</title>
+
+    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/loginvien.css">
+
+    <script src="js/dangnhap.js"></script>
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-xl">
-    <div class="container h-100">
-      <a class="navbar-brand" href="#">
-        <div class="box-icon-android">
-          <i class="fa fa-android"></i>
-        </div>
-        <h1 class="tm-site-title mb-0"><span style="color:#ff7315">TVT</span>SHOP <span
-            style="color:#ff7315">A</span>DMIN</h1>
-      </a>
-      <a href="../tvtShop/index.html" class="gobackhome"> <i class="fa fa-long-arrow-left"></i>
-        <h1>Trở lại trang <span style="color:#ff7315"> mua </span>sắm</h1>
-      </a>
-      <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars tm-nav-icon"></i>
-      </button>
-    </div>
-  </nav>
-  <div class="navbar-fixed-header"></div>
 
-  <div class="container tm-mt-big tm-mb-big">
-    <div>
-      <p class="qlblTitle"> <span style="color:#ff7315">Đ</span>ăng nhập</p>
-      <p class="qlblContentTitle">Đăng nhập vào trang quản trị</p>
-    </div>
-    <div class="qlblLine"></div>
-    <div class="row">
-      <div class="col-12 mx-auto tm-login-col">
-        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h2 class="tm-block-title mb-4"><span style="color:#ff7315">Chào mừng</span> đến với trang quản trị</h2>
-            </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-12">
-              <!--   <form action="index.html" method="post" class="tm-login-form"> -->
-              <form action="index.html" method="post" class="tm-login-form">
-                <div class="form-group">
-                  <label for="username">Tài khoản</label>
-                  <input name="username" id="username" type="text" class="form-control validate" id="username" value=""
-                    required />
-                </div>
-                <div class="form-group mt-3">
-                  <label for="password">Mật khẩu</label>
-                  <input name="password" id="password" type="password" class="form-control validate" id="password"
-                    value="" required />
-                </div>
-                <p class="error" id="error">Bạn nhập sai mật khẩu</p>
-                <div class="form-group mt-4">
-                  <!--   <button type="submit" class="btn btn-primary btn-block text-uppercase" >
-                    Login
-                  </button>-->
-                  <p onclick="login()" class="btn btn-primary btn-block text-uppercase"> Đăng nhập</p>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- footer -->
-  <footer id="aa-footer">
-    <!-- footer bottom -->
-    <div class="aa-footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-footer-top-area">
-              <div class="row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
-                    <ul class="aa-footer-nav">
-                      <li><a href="#">Giới thiệu</a></li>
-                      <li><a href="#">Tuyển dụng</a></li>
-                      <li><a href="#">Tạp chí</a></li>
-                      <li><a href="#">Hợp tác</a></li>
 
-                    </ul>
-                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <div class="aa-footer-widget">
-                      <h3>HỖ TRỢ KHÁCH HÀNG</h3>
-                      <ul class="aa-footer-nav">
-                        <li><a href="#">Hướng dẫn chọn size</a></li>
-                        <li><a href="#">Hướng dẫn mua hàng</a></li>
-                        <li><a href="#">Chính sách thành viên</a></li>
-                        <li><a href="#">Chính sách đổi trả</a></li>
-                        <li><a href="#">Chính sách bảo hành</a></li>
-                        <li><a href="#">Câu hỏi thường gặp</a></li>
-                        <li><a href="#">Tra cứu đơn hàng</a></li>
-                      </ul>
+    <!-- main-->
+    <div class="mainlogin">
+        <div class="login">
+
+            <div class="left" id="left">
+                <div class="contentleft loginpage" id="loginpage">
+                    <div class="headerleft">
+                        <a><i class=" fa fa-modx"></i></a>
+                        <a>
+                            <p>TVT Shop Admin</p>
+                        </a>
                     </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <div class="aa-footer-widget">
-                      <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
-                      <ul class="aa-footer-nav giaohang">
-                        <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                        <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                        <li><img src="img/grap.webp" alt=""></li>
+                    <p class="wellcome">Chào mừng bạn trở lại, vui lòng đăng nhập vào tài khoản của mình</p>
 
-                      </ul>
-                      <h3>PHƯƠNG THỨC THANH TOÁN</h3>
-                      <ul class="aa-footer-nav giaohang">
-                        <li><img src="img/vnpay.webp" alt=""></li>
-                        <li><img src="img/momo.webp" alt=""></li>
-                        <li><img src="img/cash.webp" alt=""></li>
+                    <div class="form">
+                        <div class="tk">
+                            <p class="titletk">Tài khoản</p>
+                            <input type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
+                                style="font-family:Arial, FontAwesome">
+                            <div class="lineinput1"></div>
+                        </div>
+                        <div class="mk">
+                            <p class="titletk">Mật khẩu</p>
+                            <input type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
+                                style="font-family:Arial, FontAwesome">
+                            <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                            <div class="lineinput2"></div>
+                        </div>
 
-                      </ul>
+                        <div class="helpLogin">
+                            <div>
+                                <input type="checkbox" name="" id="remember">
+                                <label for="remember">Nhớ mật khẩu</label>
+                            </div>
+
+                            <button onclick="displaydivpassword()">Quên mật khẩu</button>
+                        </div>
+
+                        <div class="divsubmit">
+                            <button onclick="toAccount()">Đăng nhập</button>
+                        </div>
+
+                        <div class="dkcsbm">
+                            <p>Bằng cách đăng nhập, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> & <a
+                                    href="">chính sách bảo mật</a> của
+                                chúng tôi</p>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="aa-footer-widget">
-                    <div class="aa-footer-widget">
-                      <h3>Contact Us</h3>
-                      <address>
-                        <p> Đại học Nông Lâm</p>
-                        <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                        <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
-                      </address>
-                      <div class="aa-footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></span></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-google"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                      </div>
+            </div>
+
+            <div class="right" id="right">
+                <div class="hiddenright"></div>
+            </div>
+
+            <div class="contentright" id="contentright">
+                <p>Chào mừng trở lại!</p>
+                <p>Hãy duy trì kết nối với chúng tôi bằng cách đăng nhập tài khoản của bạn</p>
+            </div>
+        </div>
+    </div>
+
+    <!--notification-->
+    <div class="success" id="success">
+        <div class="helponclick" onclick="completesuccess()"></div>
+        <div class="contentsuccess" id="notifi1">
+            <h3>Đăng ký thành công!</h3>
+            <p>Hệ thống đã gửi <span>liên kết kích hoạt tài khoản</span> đến <span>email</span> của bạn. Đề nghị bạn hãy
+                kiểm tra <span>email</span> và <span>mở liên kết
+                    kích hoạt tài khoản</span> để hoàn tất việc đăng ký.</p>
+            <img src="../tvtShop/img/Daco_287580.png" class="logosuccess" alt="">
+            <button onclick="completesuccess()">Đăng nhập</button>
+            <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
+        </div>
+        <div class="contentsuccess" id="notifi2">
+            <h3>Lấy lại mật khẩu thành công!</h3>
+            <p>Chúc mừng bạn đã lấy lại mật khẩu thành công, bây giờ hãy đăng nhập và cùng mua sắm với chung tôi nào</p>
+            <img src="../tvtShop/img/Daco_287580.png" class="logosuccess" alt="">
+            <button onclick="completesuccess()">Đăng nhập</button>
+            <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
+        </div>
+    </div>
+
+    <!--forgotpassword-->
+    <div class="success" id="divpassword">
+        <div class="helponclick" onclick="hiddendivpassword()"></div>
+        <div class="contentsuccess">
+            <div class="left1divpassword" id="left1divpassword">
+                <h3>Quên mật khẩu</h3>
+                <p>Hãy chọn cách mà chúng tôi sẽ sử dụng để đặt lại mật khẩu của bạn:</p>
+
+                <div class="boxdivpassword" onclick="sdt()">
+                    <i class="fa fa-mobile"></i>
+                    <p>Đặt lại mật khẩu bằng số điện thoại</p>
+                </div>
+                <div class="boxdivpassword" onclick="email()">
+                    <i class="fa fa-envelope-o"></i>
+                    <p>Đặt lại mật khẩu bằng email</p>
+                </div>
+                <button onclick="hiddendivpassword()">Trở lại</button>
+                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
+            </div>
+            <div class="left2divpassword1" id="left2divpassword1">
+                <div class="left2divpassword" id="left2divpassword11">
+                    <h3>Bằng email</h3>
+                    <p>Nhập email của bạn dưới đây để đặt lại mật khẩu</p>
+                    <div class="tk">
+                        <input type="text" placeholder="&#xf003;    Nhập email của bạn ở đây"
+                            style="font-family:Arial, FontAwesome">
+                        <div class="lineinput1"></div>
                     </div>
-                  </div>
+                    <div class="divbutton">
+                        <button onclick="veryemail()">Đặt lại mật khẩu</button>
+                        <button onclick="hiddendivpasswordBack1()">Trở lại</button>
+                    </div>
+                    <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
                 </div>
-              </div>
+                <div class="left2divpassword" id="left2divpassword12">
+                    <h3>Bằng số điện thoại</h3>
+                    <p>Nhập số điện thoại của bạn dưới đây để đặt lại mật khẩu</p>
+                    <div class="tk">
+                        <input type="text" placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
+                            style="font-family:Arial, FontAwesome">
+                        <div class="lineinput1"></div>
+                    </div>
+                    <div class="divbutton">
+                        <button onclick="verysdt()">Đặt lại mật khẩu</button>
+                        <button onclick="hiddendivpasswordBack1()">Trở lại</button>
+                    </div>
+                    <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- footer-bottom -->
-    <div class="aa-footer-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-footer-bottom-area">
-              <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
-              <a href=""> Terms & Conditions</a>
-              <a href="">Safety and Security</a>
+            <div class="left2divpassword1" id="left2divpassword2">
+                <div class="left2divpassword" id="left2divpassword21">
+                    <h3>Xác nhận email</h3>
+                    <p>Vui lòng nhập mã gồm 4 chữ số được gửi tới email của bạn</p>
+                    <div class="tk">
+                        <input type="text" placeholder="&#xf13e;   Nhập mã 4 chữ số của bạn ở đây"
+                            style="font-family:Arial, FontAwesome" maxlength="4">
+                        <div class="lineinput1"></div>
+                    </div>
+                    <div class="divbutton">
+                        <div class="divalink">
+                            <button class="alink">Gởi lại mã</button>
+                            <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi email</button>
+                        </div>
+                        <button onclick="gotochange()">Đặt lại mật khẩu</button>
+                    </div>
+                    <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
+                </div>
+                <div class="left2divpassword" id="left2divpassword22">
+                    <h3>Xác nhận số điện thoại</h3>
+                    <p>Vui lòng nhập mã gồm 4 chữ số được gửi tới số điện thoại của bạn</p>
+                    <div class="tk">
+                        <input type="text" placeholder="&#xf13e;   Nhập mã 4 chữ số của bạn ở đây"
+                            style="font-family:Arial, FontAwesome" maxlength="4">
+                        <div class="lineinput1"></div>
+                    </div>
+                    <div class="divbutton">
+                        <div class="divalink">
+                            <button class="alink">Gởi lại mã</button>
+                            <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi số điện thoại</button>
+                        </div>
+                        <button onclick="gotochange()">Đặt lại mật khẩu</button>
+                    </div>
+                    <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
+                </div>
             </div>
-            <button onclick="topFunction()" id="movetop" title="Go to top">
-              <span class="fa fa-angle-double-up"></span>
-            </button>
-          </div>
+            <div class="left2divpassword1" id="left3divpassword">
+                <div class="left2divpassword" id="left2divpassword21">
+                    <h3>Mật khẩu mới</h3>
+                    <p>Chúc mừng bạn đã tới giai đoạn này, bây giờ hãy nhập mật khẩu mới và hoàn tất công việc lấy lại
+                        mật khẩu</p>
+                    <div class="tk">
+                        <input type="password" placeholder="&#xf13e;   Nhập mật khẩu mới bạn ở đây"
+                            style="font-family:Arial, FontAwesome">
+                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                        <div class="lineinput1"></div>
+                    </div>
+                    <div class="tk">
+                        <input type="password" placeholder="&#xf13e;   Nhập lại mật khẩu"
+                            style="font-family:Arial, FontAwesome">
+                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                        <div class="lineinput1"></div>
+                    </div>
+                    <div class="divbutton">
+                        <button onclick="gotocomplete()">Đặt lại mật khẩu</button>
+                    </div>
+                    <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </footer>
-  <!-- / footer -->
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <!-- https://jquery.com/download/ -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- https://getbootstrap.com/ -->
-  <!---->
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <!-- https://jquery.com/download/ -->
-  <script src="js/moment.min.js"></script>
-  <!-- https://momentjs.com/ -->
-  <script src="js/Chart.min.js"></script>
-  <!-- http://www.chartjs.org/docs/latest/ -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- https://getbootstrap.com/ -->
+    <!--End main-->
 
-  <script>
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () {
-      scrollFunction()
-    };
 
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("movetop").style.display = "block";
-      } else {
-        document.getElementById("movetop").style.display = "none";
-      }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-      $('html,body').animate({ scrollTop: 0 }, 'slow');
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  </script>
-  <!-- /move top -->
 </body>
 
 </html>

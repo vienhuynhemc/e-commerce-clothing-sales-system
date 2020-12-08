@@ -1,0 +1,106 @@
+.btn-primary {
+  color: #fff;
+  background-color: #ff7315;
+  border: 2px solid #ff7315;
+  font-size: 90%;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: 5px 1em 1em -0.125em rgb(0 0 0), 0 0 0 1px rgb(10 10 10);
+}
+.btn-primary:active,
+.btn-primary:hover {
+  color: #ff7315;
+  background-color: white;
+  border: 2px solid #ff7315;
+}
+.form-control {
+  background-color: #ffffff;
+  color: #232020;
+  border: 0;
+  border-radius: 5px;
+}
+
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.navbar-fixed-header {
+  width: 100%;
+  height: 149px;
+}
+
+.tm-content-row{
+   margin-bottom: 50px;
+}
+
+.qlblHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.qlblTitle {
+  color: #232020;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+
+.qlblLine {
+  width: 100%;
+  border-bottom: 1px solid #232020;
+  margin-bottom: 50px;
+}
+
+p.qlblContentTitle {
+  font-size: 15px;
+  color: #6b778d;
+  font-family: "Lato", sans-serif;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+.mt-4 .btn {
+  margin-top: 60px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.navbar-toggler {
+  border-color: #ffffff;
+  background: white;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 1px 2px;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.65rem;
+  transition: all 0.2s ease;
+  display: none;
+}
+
+.table td, .table th {
+  border: none;
+  padding: 15px 25px;
+  vertical-align: middle;
+}
+
+.table thead,.table tbody{
+  border-radius: 5px !important;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f4f4f4;
+}
+
+.navbar-navfirst{
+  transform: translateX(8px);
+}
