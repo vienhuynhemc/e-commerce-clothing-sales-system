@@ -9,11 +9,10 @@
 .item {
   background-color: white;
   width: 90%;
-  margin: 15px auto;
+  margin: 3px auto;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
   height: 130px;
 }
 
@@ -228,6 +227,7 @@
   width: 90%;
   margin: auto;
   position: relative;
+  margin-bottom: 24px;
 }
 
 .titletable p {
