@@ -1,7 +1,7 @@
 .mainlogin {
   display: flex;
   width: 101%;
-  background-color: #f4f4f4;
+  background-color: #f5f5fa;
   font-family: sans-serif;
   margin: -8px;
   padding-left: 3px;
@@ -673,4 +673,15 @@ a {
 #notifi1 .contentsuccess h3,
 #notifi2 .contentsuccess h3 {
   margin-top: -20px;
+}
+
+#error {
+  position: absolute;
+  color: #ec3650;
+  top: 203px;
+  left: 99px;
+  z-index: 100;
+  font-weight: bold;
+  font-size: 14px;
+  display: none;
 }

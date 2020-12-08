@@ -140,5 +140,29 @@ function gotochange() {
 }
 
 function toAccount() {
+    let taikhoan = document.getElementById("taikhoan").value;
+    let matkhau = document.getElementById("matkhau").value;
+    if (taikhoan == "admin") {
+        if (matkhau == "admin") {
+            window.location = "/tvtShopAdmin/index.html";
+            return;
+        }
+    } else if (taikhoan == "nvk") {
+        if (matkhau == "nvk") {
+            window.location = "/tvtShopAdmin/indexNVK.html";
+            return;
+        }
+    } else if (taikhoan == "nvgh") {
+        if (matkhau == "nvgh") {
+            window.location = "/tvtShopAdmin/indexNVGH.html";
+            return;
+        }
+    } else {
+        document.getElementById("error").innerText = "Bạn nhập sai tài khoản"
+        document.getElementById("error").style.display = "block";
+        return;
+    }
 
+    document.getElementById("error").innerText = "Bạn nhập sai mật khẩu"
+    document.getElementById("error").style.display = "block";
 }
