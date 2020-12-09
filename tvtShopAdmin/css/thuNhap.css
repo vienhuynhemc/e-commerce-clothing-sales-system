@@ -462,3 +462,7 @@
   margin: auto;
   margin-top: 50px;
 }
+
+#div1{
+  display: none;
+}
