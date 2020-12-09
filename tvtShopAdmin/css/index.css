@@ -361,3 +361,16 @@ a {
 .dontindextopbellinfor div:nth-child(3) {
   display: none;
 }
+
+.indexleftselect {
+  overflow: hidden;
+  margin-top: 0px;
+  height: 570px;
+}
+
+.indexleftselect > div {
+  overflow: scroll;
+  padding-top: 40px;
+  height: 547px;
+  width:222px
+}
