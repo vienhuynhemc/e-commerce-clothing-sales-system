@@ -305,7 +305,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #2ca62d;
+  background-color: #92ab92;
 }
 
 .tableitemicon div:nth-child(2) > i {
@@ -322,13 +322,13 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #f9cdd4;
+  background-color: #ffedef;
 }
 
 .tableitemicon div:nth-child(3) > i {
-  color: #ec3650;
+  color: #d88490;
   font-size: 15px;
-  transform: translateY(-0.5px) translateX(0px);
+  transform: translateY(-1px) translateX(-0.5px);
 }
 
 .tableitemicon div:nth-child(1) {
@@ -487,7 +487,7 @@ p.itemphone {
 }
 
 .tableitemicon div:nth-child(2) > i {
-  color: rgb(227, 248, 227);
+  color: rgb(246 255 246);
   font-size: 21px;
   transform: translateY(-0.5px) translateX(0px);
 }
