@@ -558,7 +558,7 @@ p.itemphone {
 .div11 > button:nth-child(4) {
   background-color: #4162fb;
   color: white;
-  border-radius: 1px solid #4162fb;
+  border: 1px solid #4162fb;
   margin-top: 50px;
 }
 
@@ -712,6 +712,6 @@ p.itemphone {
   margin-left: -20px;
 }
 
-select option{
-  color:black;  
+select option {
+  color: black;
 }
