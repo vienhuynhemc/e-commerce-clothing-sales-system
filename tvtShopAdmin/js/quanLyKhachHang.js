@@ -177,7 +177,8 @@ function loadIMG(event) {
         var src = URL.createObjectURL(event.target.files[0]);
 
         let listItem = document.getElementById("div1").children;
-        let list = listItem[0].children;
+        let l = listItem[0].children;
+        let list = l[0].children;
         let list2 = list[2].children;
         let list3 = list2[0].children;
         list3[0].src = src;
@@ -186,11 +187,36 @@ function loadIMG(event) {
 
 function removeImg() {
     let listItem = document.getElementById("div1").children;
-    let list = listItem[0].children;
+    let l = listItem[0].children;
+    let list = l[0].children;
     let list2 = list[2].children;
     let list3 = list2[0].children;
     list3[0].src = "/tvtShop/img/user.jpg";
 }
+
+function loadIMG2(event) {
+    if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+
+        let listItem = document.getElementById("div3").children;
+        let l = listItem[0].children;
+        let list = l[0].children;
+        let list2 = list[2].children;
+        let list3 = list2[0].children;
+        list3[0].src = src;
+    }
+}
+
+function removeIMG2() {
+    let listItem = document.getElementById("div3").children;
+    let l = listItem[0].children;
+    let list = l[0].children;
+    let list2 = list[2].children;
+    let list3 = list2[0].children;
+    list3[0].src = "/tvtShop/img/user.jpg";
+}
+
+
 
 function themkhachhang() {
     document.getElementById("div1").style.display = "flex";
