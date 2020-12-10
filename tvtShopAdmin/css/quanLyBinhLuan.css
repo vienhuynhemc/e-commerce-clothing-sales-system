@@ -489,6 +489,9 @@
   left: 417px;
   top: 3px;
   box-shadow: 14px 15px 35px 3px #2141d65e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header > button > i {

@@ -86,6 +86,7 @@ a {
 .active {
   background-color: #4162fb;
   box-shadow: 0 0 20px 1px #b1bfff;
+  color:white !important;
 }
 
 .active > p,
@@ -372,5 +373,15 @@ a {
   overflow: scroll;
   padding-top: 40px;
   height: 547px;
-  width:222px
+  width: 222px;
 }
+
+.activelv2 {
+  background: #4162fb;
+  color: white !important;
+}
+
+.activelv2 > a {
+  color: white !important;
+}
+

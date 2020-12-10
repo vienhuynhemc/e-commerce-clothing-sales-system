@@ -16,6 +16,13 @@
   width: 35%;
 }
 
+#div1 > button > i {
+  margin-right: 5px;
+}
+.header > button > i {
+  margin-right: 5px;
+}
+
 .leftheader > select {
   border: none;
   outline: none;
@@ -390,8 +397,8 @@
 }
 
 .nonebutton {
-  background-color: #dedede !important;
-  color: white !important;
+  background-color: #fafafa !important;
+  color: #c5cbd5!important;
   box-shadow: none !important;
   cursor: auto !important;
 }
@@ -463,6 +470,6 @@
   margin-top: 50px;
 }
 
-#div1{
+#div1 {
   display: none;
 }
