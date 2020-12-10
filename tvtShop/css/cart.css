@@ -90,7 +90,7 @@ body {
 }
 
 .cartleftmainitemleft img {
-  width: 80px;
+  width: 90px;
   /* height: 90px; */
   transition: all 0.2s ease-in;
 }
@@ -107,7 +107,7 @@ body {
 }
 
 .cartleftmainiteminfor {
-  margin-left: 50px;
+  margin-left: 25px;
 }
 
 .cartleftmainiteminfor p {
@@ -135,7 +135,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  margin-left: 50px;
+  margin-left: 30px;
   font-weight: bold;
   font-size: 14px;
   width: 70px;

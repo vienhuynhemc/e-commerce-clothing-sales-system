@@ -31,7 +31,6 @@ function hiddensearch2(item) {
 
 function changesort2(item) {
     let list = item.children;
-    console.log(list)
     if (list[2].checked == false) {
         list[2].checked = true;
         list[0].style.display = "none";
@@ -85,7 +84,6 @@ function showselect(item) {
 function removekhachhang(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
-        console.log("a")
         let list = listItem[i].children;
         let list2 = list[9].children;
         let list3 = list2[4].children;
@@ -153,7 +151,55 @@ function allselect() {
     }
 }
 
-function themkhachhang(){
-    document.getElementById("div1").style.display = "block";
+function editkhachhang(item) {
+
+    if (document.getElementById("div3").children.length > 0) {
+        document.getElementById("div3").removeChild(document.getElementById("div3").children[0]);
+    }
+
+    let listItem = document.getElementById("maindiv2").children;
+    for (let i = 1; i < listItem.length; i++) {
+        let list = listItem[i].children;
+        let list2 = list[9].children;
+        let list3 = list2[4].children;
+        if (list3[0] == item) {
+            document.getElementById("div3").appendChild(list[10].cloneNode(true));
+            document.getElementById("div3").style.display = "block";
+            document.getElementById("div1").style.display = "none";
+            document.getElementById("div2").style.display = "none";
+            return;
+        }
+    }
+}
+
+function loadIMG(event) {
+    if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+
+        let listItem = document.getElementById("div1").children;
+        let list = listItem[0].children;
+        let list2 = list[2].children;
+        let list3 = list2[0].children;
+        list3[0].src = src;
+    }
+}
+
+function removeImg() {
+    let listItem = document.getElementById("div1").children;
+    let list = listItem[0].children;
+    let list2 = list[2].children;
+    let list3 = list2[0].children;
+    list3[0].src = "/tvtShop/img/user.jpg";
+}
+
+function themkhachhang() {
+    document.getElementById("div1").style.display = "flex";
     document.getElementById("div2").style.display = "none";
+    document.getElementById("div3").style.display = "none";
+}
+
+function trove() {
+    document.getElementById("div2").style.display = "flex";
+    document.getElementById("div1").style.display = "none";
+    document.getElementById("div3").style.display = "none";
 }
