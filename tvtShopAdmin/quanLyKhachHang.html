@@ -11,7 +11,7 @@
     <script src="js/index.js"></script>
 
     <link rel="stylesheet" href="css/quanLyKhachHang.css">
-    <script src="js/quanLyKhachHang.js"></script>
+
 
 </head>
 
@@ -335,12 +335,12 @@
                             </ul>
                             <button><i class="fa fa-caret-right"></i></button>
                         </div>
-                        <button><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
-                        <button><i class="fa fa-trash-o"></i>Xóa mục đã chọn</button>
+                        <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
+                        <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                     </div>
-                    <div class="maindiv2">
+                    <div class="maindiv2" id="maindiv2">
                         <div class="maindiv2header">
-                            <button>+</button>
+                            <button onclick="allselect()">+</button>
                             <p>Họ và tên</p>
                             <p>Email</p>
                             <p>Số điện thoại</p>
@@ -351,8 +351,8 @@
                         </div>
 
                         <div class="item">
-                            <label for="">
-                                <input type="checkbox" name="" id="">
+                            <label for="c1">
+                                <input type="checkbox" name="" id="c1">
                             </label>
                             <div class="itemhdd">
                                 <img src="/tvtShop/img/user.jpg" alt="">
@@ -366,7 +366,7 @@
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0971-122-209
                             </p>
 
                             <p class="itemtk">
@@ -406,8 +406,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -432,7 +432,7 @@
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                dieudangmuado
                             </p>
 
                             <div class="tableitemicon hoanthanh">
@@ -468,8 +468,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -479,25 +479,25 @@
                                 <input type="checkbox" name="" id="">
                             </label>
                             <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
+                                <img src="/tvtShop/img/product/avatar3.jpg" alt="">
                             </div>
                             <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
+                                Cao Mỹ Duyên
                             </p>
 
                             <p class="itememail">
-                                nguyenthihoahong@gmail.com
+                                duyencaomy@gmail.com
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0838-478-838
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                mua20conga
                             </p>
 
-                            <div class="tableitemicon hoanthanh">
+                            <div class="tableitemicon khonghoanthanh">
                                 <div>
                                     <i class="fa fa-clock-o"></i>
                                 </div>
@@ -530,8 +530,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -541,22 +541,145 @@
                                 <input type="checkbox" name="" id="">
                             </label>
                             <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
+                                <img src="/tvtShop/img/product/avatar2.jpg" alt="">
                             </div>
                             <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
+                                Nguyễn Văn A
                             </p>
 
                             <p class="itememail">
-                                nguyenthihoahong@gmail.com
+                                nguyenvana@gmail.com
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0376-120-879
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                tuidimuadonva
+                            </p>
+
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+
+                            <p class="itemdate">
+                                19 Tháng Hai 2020
+                            </p>
+
+                            <div class="itemsubmit" onclick="showselect(this)">
+                                <input type="text" style="display: none;">
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <div>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <label for="">
+                                <input type="checkbox" name="" id="">
+                            </label>
+                            <div class="itemhdd">
+                                <img src="/tvtShop/img/product/avatar4.jpg" alt="">
+                            </div>
+                            <p class="itemname">
+                                Lưu Văn An
+                            </p>
+
+                            <p class="itememail">
+                                anvanluu@gmail.com
+                            </p>
+
+                            <p class="itemphone">
+                                0326-101-079
+                            </p>
+
+                            <p class="itemtk">
+                                tuilaanhehe
+                            </p>
+
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+
+                            <p class="itemdate">
+                                18 Tháng Hai 2020
+                            </p>
+
+                            <div class="itemsubmit" onclick="showselect(this)">
+                                <input type="text" style="display: none;">
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <div>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <label for="">
+                                <input type="checkbox" name="" id="">
+                            </label>
+                            <div class="itemhdd">
+                                <img src="/tvtShop/img/product/avatar5.jpg" alt="">
+                            </div>
+                            <p class="itemname">
+                                Khương Hồng Nhan
+                            </p>
+
+                            <p class="itememail">
+                                khuonghongnhan@gmail.com
+                            </p>
+
+                            <p class="itemphone">
+                                0823-692-678
+                            </p>
+
+                            <p class="itemtk">
+                                tukhuyetlacuata
                             </p>
 
                             <div class="tableitemicon hoanthanh">
@@ -583,7 +706,7 @@
                             </div>
 
                             <p class="itemdate">
-                                20 Tháng Hai 2020
+                                18 Tháng Hai 2020
                             </p>
 
                             <div class="itemsubmit" onclick="showselect(this)">
@@ -592,8 +715,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -603,22 +726,22 @@
                                 <input type="checkbox" name="" id="">
                             </label>
                             <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
+                                <img src="/tvtShop/img/product/avatar6.jpg" alt="">
                             </div>
                             <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
+                                Trần Phương Trang
                             </p>
 
                             <p class="itememail">
-                                nguyenthihoahong@gmail.com
+                                trangtranxinhgai@gmail.com
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0829-183-279
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                trangtranxinhgai
                             </p>
 
                             <div class="tableitemicon hoanthanh">
@@ -645,7 +768,7 @@
                             </div>
 
                             <p class="itemdate">
-                                20 Tháng Hai 2020
+                                18 Tháng Hai 2020
                             </p>
 
                             <div class="itemsubmit" onclick="showselect(this)">
@@ -654,8 +777,70 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item">
+                            <label for="">
+                                <input type="checkbox" name="" id="">
+                            </label>
+                            <div class="itemhdd">
+                                <img src="/tvtShop/img/khbl1.jpg" alt="">
+                            </div>
+                            <p class="itemname">
+                                Nguyễn Văn Huấn
+                            </p>
+
+                            <p class="itememail">
+                                huanhoahongrose@gmail.com
+                            </p>
+
+                            <p class="itemphone">
+                                0855-337-179
+                            </p>
+
+                            <p class="itemtk">
+                                iamahuanrose123
+                            </p>
+
+                            <div class="tableitemicon khonghoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+
+                            <p class="itemdate">
+                                18 Tháng Hai 2020
+                            </p>
+
+                            <div class="itemsubmit" onclick="showselect(this)">
+                                <input type="text" style="display: none;">
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <div>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -668,19 +853,19 @@
                                 <img src="/tvtShop/img/user.jpg" alt="">
                             </div>
                             <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
+                                Lê Mỹ Duyên
                             </p>
 
                             <p class="itememail">
-                                nguyenthihoahong@gmail.com
+                                myduyenlelele@gmail.com
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0827-269-179
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                tuilamyduyenok
                             </p>
 
                             <div class="tableitemicon hoanthanh">
@@ -694,7 +879,7 @@
                                     <i class="fa fa-close"></i>
                                 </div>
                             </div>
-                            <div class="tableitemicon khonghoanthanh">
+                            <div class="tableitemicon hoanthanh">
                                 <div>
                                     <i class="fa fa-clock-o"></i>
                                 </div>
@@ -707,7 +892,7 @@
                             </div>
 
                             <p class="itemdate">
-                                20 Tháng Hai 2020
+                                17 Tháng Hai 2020
                             </p>
 
                             <div class="itemsubmit" onclick="showselect(this)">
@@ -716,8 +901,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
@@ -727,22 +912,85 @@
                                 <input type="checkbox" name="" id="">
                             </label>
                             <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
+                                <img src="/tvtShop/img/khbl2.jpg" alt="">
                             </div>
                             <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
+                                Nguyễn Hữu Đa
                             </p>
 
                             <p class="itememail">
-                                nguyenthihoahong@gmail.com
+                                onepuchman@gmail.com
                             </p>
 
                             <p class="itemphone">
-                                0971122209
+                                0886-798-339
                             </p>
 
                             <p class="itemtk">
-                                iamarose258
+                                damcathegioi
+                            </p>
+
+                            <div class="tableitemicon khonghoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+                            <div class="tableitemicon hoanthanh">
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <i class="fa fa-close"></i>
+                                </div>
+                            </div>
+
+                            <p class="itemdate">
+                                17 Tháng Hai 2020
+                            </p>
+
+                            <div class="itemsubmit" onclick="showselect(this)">
+                                <input type="text" style="display: none;">
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <div>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="item">
+                            <label for="">
+                                <input type="checkbox" name="" id="">
+                            </label>
+                            <div class="itemhdd">
+                                <img src="/tvtShop/img/khbl3.jpg" alt="">
+                            </div>
+                            <p class="itemname">
+                                Nguyễn Văn B
+                            </p>
+
+                            <p class="itememail">
+                                nguyenvanb@gmail.com
+                            </p>
+
+                            <p class="itemphone">
+                                0916-841-378
+                            </p>
+
+                            <p class="itemtk">
+                                abcheyboyvip
                             </p>
 
                             <div class="tableitemicon hoanthanh">
@@ -756,57 +1004,6 @@
                                     <i class="fa fa-close"></i>
                                 </div>
                             </div>
-                            <div class="tableitemicon khonghoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
-
-                            <p class="itemdate">
-                                20 Tháng Hai 2020
-                            </p>
-
-                            <div class="itemsubmit" onclick="showselect(this)">
-                                <input type="text" style="display: none;">
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                            </label>
-                            <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
-                            </div>
-                            <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
-                            </p>
-
-                            <p class="itememail">
-                                nguyenthihoahong@gmail.com
-                            </p>
-
-                            <p class="itemphone">
-                                0971122209
-                            </p>
-
-                            <p class="itemtk">
-                                iamarose258
-                            </p>
-
                             <div class="tableitemicon hoanthanh">
                                 <div>
                                     <i class="fa fa-clock-o"></i>
@@ -818,20 +1015,9 @@
                                     <i class="fa fa-close"></i>
                                 </div>
                             </div>
-                            <div class="tableitemicon khonghoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
 
                             <p class="itemdate">
-                                20 Tháng Hai 2020
+                                16 Tháng Hai 2020
                             </p>
 
                             <div class="itemsubmit" onclick="showselect(this)">
@@ -840,138 +1026,18 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                            </label>
-                            <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
-                            </div>
-                            <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
-                            </p>
-
-                            <p class="itememail">
-                                nguyenthihoahong@gmail.com
-                            </p>
-
-                            <p class="itemphone">
-                                0971122209
-                            </p>
-
-                            <p class="itemtk">
-                                iamarose258
-                            </p>
-
-                            <div class="tableitemicon hoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
-                            <div class="tableitemicon khonghoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
-
-                            <p class="itemdate">
-                                20 Tháng Hai 2020
-                            </p>
-
-                            <div class="itemsubmit" onclick="showselect(this)">
-                                <input type="text" style="display: none;">
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="item">
-                            <label for="">
-                                <input type="checkbox" name="" id="">
-                            </label>
-                            <div class="itemhdd">
-                                <img src="/tvtShop/img/user.jpg" alt="">
-                            </div>
-                            <p class="itemname">
-                                Nguyễn Thị Hoa Hồng
-                            </p>
-
-                            <p class="itememail">
-                                nguyenthihoahong@gmail.com
-                            </p>
-
-                            <p class="itemphone">
-                                0971122209
-                            </p>
-
-                            <p class="itemtk">
-                                iamarose258
-                            </p>
-
-                            <div class="tableitemicon hoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
-                            <div class="tableitemicon khonghoanthanh">
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div>
-                                    <i class="fa fa-close"></i>
-                                </div>
-                            </div>
-
-                            <p class="itemdate">
-                                20 Tháng Hai 2020
-                            </p>
-
-                            <div class="itemsubmit" onclick="showselect(this)">
-                                <input type="text" style="display: none;">
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <i class="fa fa-circle"></i>
-                                <div>
-                                    <button><i class="fa fa-pencil"></i>Sửa</button>
-                                    <button><i class="fa fa-trash"></i>Xóa</button>
+                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div id="div1">
+                
             </div>
         </div>
 
@@ -981,3 +1047,5 @@
 </body>
 
 </html>
+
+<script src="js/quanLyKhachHang.js"></script>

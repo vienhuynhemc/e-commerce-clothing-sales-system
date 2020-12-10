@@ -483,3 +483,7 @@ p.itemphone {
   font-size: 21px;
   transform: translateY(-0.5px) translateX(0px);
 }
+
+#div1{
+  display: none;
+}
