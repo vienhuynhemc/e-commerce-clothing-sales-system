@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Thu nhập</title>
+    <title>TVTSHOP ADMIN | Quản lý sản phẩm</title>
     <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/index.css">
     <script src="js/index.js"></script>
 
-    <link rel="stylesheet" href="css/thuNhap.css">
-    <script src="js/thuNhap.js"></script>
+    <link rel="stylesheet" href="css/quanLySanPham.css">
+
 
 </head>
 
@@ -31,7 +31,7 @@
                     </div>
                 </a>
                 <a href="thuNhap.html" class="indexleftselectitem  ">
-                    <div class="active">
+                    <div>
                         <i class="fa fa-money"></i>
                         <p>Thu nhập</p>
                     </div>
@@ -48,7 +48,8 @@
                     <ul>
                         <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
                         <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                        <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a></li>
+                        <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
+                        </li>
                     </ul>
                     <input type="checkbox" style="display: none;">
                 </div>
@@ -79,8 +80,7 @@
                     </ul>
                     <input type="checkbox" style="display: none;">
                 </div>
-                <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                    onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
                     <div class="indexleftselectitem">
                         <div>
                             <i class="fa fa-wpforms"></i>
@@ -89,10 +89,11 @@
                         <i class="fa fa-angle-right"></i>
                     </div>
                     <ul>
-                        <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                        <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                        <li class="activelv2"><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
+                        <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
+                                mục</a></li>
                     </ul>
-                    <input type="checkbox" style="display: none;">
+                    <input type="checkbox" style="display: none;" checked>
                 </div>
                 <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
                     onclick="indexleftselectitemlv2(this)">
@@ -299,12 +300,10 @@
                     <div class="header">
                         <div class="leftheader">
                             <select name="" id="">
-                                <option value="" selected>Ngày thanh toán</option>
-                                <option value="">Giá</option>
-                                <option value="">Chi</option>
-                                <option value="">Thu</option>
-                                <option value="">Số loại</option>
-                                <option value="">Số lượng</option>
+                                <option value="" selected>Ngày tạo</option>
+                                <option value="">Tên danh mục</option>
+                                <option value="">Mã danh mục</option>
+                                <option value="">Số lượng sản phẩm</option>
                             </select>
                             <div>
                                 <div class="leftheadersort" onclick="changesort2(this)">
@@ -322,7 +321,7 @@
                             </div>
                         </div>
                         <div class="leftnextpage">
-                            <p>Hiển thị <strong> 10 </strong> trên tổng 95 đơn thu nhập</p>
+                            <p>Hiển thị <strong> 13 </strong> trên tổng 135 danh mục</p>
                             <button><i class="fa fa-caret-left"></i></button>
                             <ul>
                                 <li>1</li>
@@ -335,311 +334,77 @@
                             </ul>
                             <button><i class="fa fa-caret-right"></i></button>
                         </div>
-                        <button onclick="xemthunhap()"><i class="fa fa-pie-chart"></i> Xem thu nhập</button>
+                        <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm danh mục mới</button>
+                        <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                     </div>
-                    <div class="maindiv2">
+                    <div class="maindiv2" id="maindiv2">
                         <div class="maindiv2header">
-                            <p>Mã đơn hàng/ Phiếu nhập</p>
-                            <p>Hình ảnh sản phẩm</p>
-                            <p>Số loại</p>
-                            <p>Số lượng</p>
-                            <p>Thu nhập</p>
-                            <p>Ngày thanh toán</p>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH4004</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/product/pro5.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro2.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro3.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro3.webp" alt="">
-                                </div>
-                                <div class="otherdiv">
-                                    <div></div>
-                                    <p>+5</p>
-                                    <img src="/tvtShop/img/product/pro14.webp" alt="">
-                                </div>
-                            </div>
-                            <p>10</p>
-                            <p>14</p>
-                            <p class="thu">+ 1,499,000 VND</p>
-                            <p>24 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="chi">#PH1004</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/product/pro7.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro8.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro9.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro10.webp" alt="">
-                                </div>
-                                <div class="otherdiv">
-                                    <div></div>
-                                    <p>+7</p>
-                                    <img src="/tvtShop/img/product/pro13.webp" alt="">
-                                </div>
-                            </div>
-                            <p>11</p>
-                            <p>400</p>
-                            <p class="chi">- 20,200,000 VND</p>
-                            <p>24 Tháng Bảy 2020</p>
-                            <div class="eye">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH4003</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/nu/spn1.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/nu/spn2.webp" alt="">
-                                </div>
-                            </div>
-                            <p>2</p>
-                            <p>4</p>
-                            <p class="thu">+ 360,000 VND</p>
-                            <p>23 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH4002</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/nu/spn15.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/nu/spn14.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/nu/spn13.webp" alt="">
-                                </div>
-                            </div>
-                            <p>3</p>
-                            <p>3</p>
-                            <p class="thu">+ 600,000 VND</p>
-                            <p>22 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="chi">#PH1003</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/1.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/2.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/3.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/4.jpg" alt="">
-                                </div>
-                                <div class="otherdiv">
-                                    <div></div>
-                                    <p>+3</p>
-                                    <img src="/tvtShop/img/do/nam/5.jpg" alt="">
-                                </div>
-                            </div>
-                            <p>7</p>
-                            <p>50</p>
-                            <p class="chi">- 25,000,000 VND</p>
-                            <p>22 Tháng Bảy 2020</p>
-                            <div class="eye">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="chi">#PH1002</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/6.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nam/7.jpg" alt="">
-                                </div>
-                            </div>
-                            <p>2</p>
-                            <p>20</p>
-                            <p class="chi">- 7,600,000 VND</p>
-                            <p>22 Tháng Bảy 2020</p>
-                            <div class="eye">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH4001</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/product/pro7.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro1.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro10.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro12.webp" alt="">
-                                </div>
-                            </div>
-                            <p>4</p>
-                            <p>10</p>
-                            <p class="thu">+ 3,320,000 VND</p>
-                            <p>22 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH4000</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/product/pro13.webp" alt="">
-                                </div>
-                            </div>
-                            <p>1</p>
-                            <p>1</p>
-                            <p class="thu">+ 120,000 VND</p>
-                            <p>21 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="thu">#DH3999</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/11.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/13.jpg" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/do/nu/8.jpg" alt="">
-                                </div>
-                            </div>
-                            <p>3</p>
-                            <p>6</p>
-                            <p class="thu">+ 990,000 VND</p>
-                            <p>21 Tháng Bảy 2020</p>
-                            <div class="eye" onclick="xemthongtindonhang()">
-                                <i class="fa fa-eye"></i>
-                            </div>
-                        </div>
-                        <div class="itemdiv2">
-                            <p class="chi">#PH1001</p>
-                            <div class="hinhanh">
-                                <div>
-                                    <img src="/tvtShop/img/product/pro5.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro2.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro3.webp" alt="">
-                                </div>
-                                <div>
-                                    <img src="/tvtShop/img/product/pro3.webp" alt="">
-                                </div>
-                                <div class="otherdiv">
-                                    <div></div>
-                                    <p>+2</p>
-                                    <img src="/tvtShop/img/product/pro14.webp" alt="">
-                                </div>
-                            </div>
-                            <p>6</p>
-                            <p>100</p>
-                            <p class="chi">- 49,000,000 VND</p>
-                            <p>20 Tháng Bảy 2020</p>
-                            <div class="eye">
-                                <i class="fa fa-eye"></i>
-                            </div>
+                            <button onclick="allselect()">+</button>
+                            <p>Mã danh mục</p>
+                            <p>Tên danh mục</p>
+                            <p>Số sản phẩm</p>
+                            <p>Ngày tạo</p>
                         </div>
 
+                        <div class="item">
+                            <label for="c1">
+                                <input type="checkbox" name="" id="c1">
+                            </label>
+                            <p>
+                                #DM1043
+                            </p>
+                            <p>
+                                Áo thun tay dài
+                            </p>
+
+                            <p>
+                                24
+                            </p>
+
+                            <p>
+                                20 Tháng Tám 2020
+                            </p>
+
+                            <div class="itemsubmit" onclick="showselect(this)">
+                                <input type="text" style="display: none;">
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <i class="fa fa-circle"></i>
+                                <div>
+                                    <button onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="div11">
+                                </div>
+
+                                <div class="div12">
+                                    <h3>Điền thông tin danh mục</h3>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">* Tên danh mục</label>
+                                        <input type="text" placeholder="Nhập tên danh mục ở đây"
+                                            value="Áo thun tay dài">
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <button> <i class="fa fa-save"></i>Lưu</button>
+                                    <button onclick="trove()"> <i class="fa fa-arrow-left"></i> Trở về quản lý</button>
+                                </div>
+                                <div class="div13">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="div1">
-                <div class="div11">
-                    <div>
-                        <p>Chọn năm: </p>
-                        <select name="" id="">
-                            <option value="">2020</option>
-                            <option value="">2019</option>
-                            <option value="">2018</option>
-                        </select>
-                    </div>
-                    <button class="nonebutton">Tháng 1</button>
-                    <button class="nonebutton">Tháng 2</button>
-                    <button>Tháng 3</button>
-                    <button>Tháng 4</button>
-                    <button>Tháng 5</button>
-                    <button class="nonebutton">Tháng 6</button>
-                    <button class="activebutton">Tháng 7</button>
-                    <button>Tháng 8</button>
-                    <button>Tháng 9</button>
-                    <button>Tháng 10</button>
-                    <button>Tháng 11</button>
-                    <button class="nonebutton">Tháng 12</button>
-                    <button>Tất cả</button>
+                <div>
                 </div>
+            </div>
 
-                <div class="div12">
-                    <div class="div12item">
-                        <div>
-                            <img src="img/icon-5.png" alt="">
-                            <p>Thu nhập từ bán hàng</p>
-                        </div>
-                        <h3 class="thu">+ 93,495,000 VND</h3>
-                        <img src="img/bd1.png" alt="">
-                    </div>
-
-                    <div class="div12item">
-                        <div>
-                            <img src="img/icon-6.png" alt="">
-                            <p>Chi tiêu nhập hàng</p>
-                        </div>
-                        <h3 class="chi">- 82,500,000 VND</h3>
-                        <img src="img/bd2.png" alt="">
-                    </div>
-
-                    <div class="div12item">
-                        <div>
-                            <img src="img/icon-8.png" alt="">
-                            <p>Lợi nhuận</p>
-                        </div>
-                        <h3 class="thu">+ 10,995,000 VND</h3>
-                        <img src="img/bd3.png" alt="">
-                    </div>
-                </div>
-
-                <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở lại
-                    thu nhập</button>
+            <div id="div3">
             </div>
         </div>
 
@@ -649,3 +414,5 @@
 </body>
 
 </html>
+
+<script src="js/quanLySanPham.js"></script>
