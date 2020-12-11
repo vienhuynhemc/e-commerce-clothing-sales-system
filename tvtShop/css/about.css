@@ -9845,7 +9845,7 @@ iframe {
 
 .w3l-team-main .team_info {
   text-align: center;
-  bottom: 30px;
+  bottom: 198px;
   left: 40px;
   right: 40px;
   background: #fff;
@@ -9871,8 +9871,11 @@ iframe {
   margin-right: 6px;
 }
 
-.w3l-team-main .team-wrapper img {
+.w3l-team-main .team-wrapper img.thanh {
   width: 100%;
+  height: 540px;
+  /* object-fit: scale-down; */
+  object-position: 0 -190px;
 }
 
 .w3l-wecome-content-6 .ab-content-6-mian {
