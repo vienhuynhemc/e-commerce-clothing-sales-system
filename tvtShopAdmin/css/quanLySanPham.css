@@ -601,7 +601,7 @@ select:focus {
 .gioitinh > div > button {
   border: none;
   width: 150px;
-  height: 40px;
+  height: 28px;
   background: #f4f8ff none repeat scroll 0 0;
   color: #333;
   font-size: 13px;
@@ -633,18 +633,20 @@ button:focus {
 .div11submit button {
   border: none;
   outline: none;
-  padding: 12px 0px;
-  width: 151px;
-  border-radius: 36px;
+  padding: 7px 0px;
+  width: 128px;
+  border-radius: 20px;
   font-family: sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: white;
   cursor: pointer;
   background-color: #4162fb;
   color: white;
-  box-shadow: 14px 15px 35px 3px #6c82e45e;
-  margin-left: 8px;
-  margin-top: 10px;
+  box-shadow: 14px 15px 35px 3px #2141d65e;
+  display: inline;
+  justify-content: center;
+  margin: auto;
+  margin-left: 35px;
 }
 
 .div11submit {
@@ -660,6 +662,7 @@ button:focus {
   box-shadow: 14px 15px 35px 3px #d3d3d3d6;
   background-color: #fafafa !important;
   color: #c5cbd5 !important;
+  margin-left: 3px;
 }
 
 .div12 {
@@ -698,19 +701,21 @@ button:focus {
 }
 
 .buttonthemmau {
-  display: block;
   border: none;
   outline: none;
-  padding: 12px 0px;
-  width: 200px;
-  border-radius: 36px;
+  padding: 7px 0px;
+  width: 170px;
+  border-radius: 20px;
   font-family: sans-serif;
   font-size: 13px;
   color: white;
   cursor: pointer;
   background-color: #4162fb;
   color: white;
-  margin-top: -10px;
+  box-shadow: 14px 15px 35px 3px #2141d65e;
+  display: flex;
+  justify-content: center;
+  margin-left: 5px;
 }
 
 .buttonthemmau i {
@@ -761,19 +766,21 @@ button:focus {
 }
 
 .div13 button:nth-child(5) {
-  margin: auto;
-  display: block;
   border: none;
   outline: none;
-  padding: 12px 0px;
-  width: 80%;
-  border-radius: 36px;
+  padding: 7px 0px;
+  width: 170px;
+  border-radius: 20px;
   font-family: sans-serif;
   font-size: 13px;
   color: white;
   cursor: pointer;
   background-color: #4162fb;
   color: white;
+  box-shadow: 14px 15px 35px 3px #2141d65e;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .div13 button i {
