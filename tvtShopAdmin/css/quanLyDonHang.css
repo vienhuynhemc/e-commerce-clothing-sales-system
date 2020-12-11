@@ -738,3 +738,28 @@
 .xulynvgh > div:nth-child(3) {
   display: flex;
 }
+
+.atrove {
+  border: none;
+  outline: none;
+  width: 200px;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: white;
+  cursor: pointer;
+  background-color: #4162fb;
+  color: white;
+  box-shadow: 14px 15px 35px 3px #2141d65e;
+  font-family: sans-serif;
+  padding:10px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 79%;
+  margin-top: 20px;
+}
+
+.atrove > i {
+  margin-right: 5px;
+}

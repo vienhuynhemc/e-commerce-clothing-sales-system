@@ -52,3 +52,7 @@ function trove() {
     document.getElementById("div2").style.display = "flex";
     document.getElementById("div1").style.display = "none";
 }
+
+function xemthongtindonhang(){
+    window.location.href = "/tvtShopAdmin/thongTinDonHangThuNhap.html";
+}
