@@ -329,12 +329,12 @@ select option {
 
 p.itemname {
   margin-left: 10px;
-  width: 270px;
+  width: 231px;
 }
 
 p.itemgianhap {
-  margin-left: 30px;
-  width: 130px;
+  margin-left: 10px;
+  width: 100px;
 }
 
 input.itemsoluong {
@@ -346,8 +346,18 @@ input.itemsoluong {
 }
 
 p.itemtongia {
-  margin-left: 58px;
+  margin-left: 25px;
   width: 100px;
+}
+
+p.itemsize {
+  margin-left: 10px;
+  width: 40px;
+}
+
+p.itemmau {
+  margin-left: 10px;
+  width: 60px;
 }
 
 .maindiv2header > p:nth-child(2) {
@@ -355,15 +365,23 @@ p.itemtongia {
 }
 
 .maindiv2header > p:nth-child(3) {
-  margin-left: 214px;
+  margin-left: 152px;
 }
 
 .maindiv2header > p:nth-child(4) {
-  margin-left: 72px;
+  margin-left: 27px;
 }
 
 .maindiv2header > p:nth-child(5) {
   margin-left: 42px;
+}
+
+.maindiv2header > p:nth-child(6) {
+  margin-left: 42px;
+}
+
+.maindiv2header > p:nth-child(7) {
+  margin-left: 10px;
 }
 
 #div1 {
@@ -381,7 +399,7 @@ p.itemtongia {
   flex-direction: column;
   margin: auto;
   width: 80%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .div12inputlv2 > label {
@@ -398,7 +416,7 @@ p.itemtongia {
   border-radius: 20px;
   padding: 5px 20px;
   color: #e0e5e9;
-  margin-top: 20px;
+  margin-top: 7px;
 }
 
 .div12inputlv2 > select {
@@ -406,7 +424,7 @@ p.itemtongia {
   border-radius: 20px;
   padding: 5px 20px;
   color: #e0e5e9;
-  margin-top: 20px;
+  margin-top: 7px;
 }
 
 .linediv12 {
@@ -449,7 +467,7 @@ p.itemtongia {
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
 .submitnhaphang i {

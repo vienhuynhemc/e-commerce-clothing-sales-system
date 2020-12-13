@@ -51,7 +51,7 @@ function showselect(item) {
     let list = document.getElementById("maindiv2").children;
     for (let i = 1; i < list.length; i++) {
         list2 = list[i].children;
-        if (list2[6] == item) {
+        if (list2[8] == item) {
             index = i;
             break;
         }
@@ -85,7 +85,7 @@ function removekhachhang(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
         let list = listItem[i].children;
-        let list2 = list[6].children;
+        let list2 = list[8].children;
         let list3 = list2[4].children;
         if (list3[0] == item) {
             document.getElementById("maindiv2").removeChild(listItem[i]);
@@ -172,6 +172,16 @@ function nhaphang() {
     p.innerText = "Áo Thun MTS 1011";
     p.classList.add("itemname");
     div1.appendChild(p);
+
+    let pp1 = document.createElement("p");
+    pp1.innerHTML = "M";
+    pp1.classList.add("itemsize");
+
+    let pp2 = document.createElement("p");
+    pp2.innerHTML = "Đỏ";
+    pp2.classList.add("itemmau")
+    div1.appendChild(pp1);
+    div1.appendChild(pp2);
 
     let p1 = document.createElement("p");
     p1.innerText = "360,000 VND";
