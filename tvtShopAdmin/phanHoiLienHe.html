@@ -103,8 +103,9 @@
                         <i class="fa fa-angle-right"></i>
                     </div>
                     <ul>
-                        <li ><a href=""> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                        <li class="activelv2"><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
+                        <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
+                        <li class="activelv2"><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a>
+                        </li>
                     </ul>
                     <input type="checkbox" style="display: none;" checked>
                 </div>
@@ -327,281 +328,685 @@
                     </div>
                     <div>
                         <div id="listleftitem">
-                            <div class="leftitem" onclick="changerightdonhang(this)" id="item0">
-
-                                <div>
-                                    <img src="img/icon-mail.png" alt="">
-                                </div>
-
-                                <div>
-                                    <p>Viết thông báo mới</p>
-                                    <div class="khonghoanthanh">
-                                        <i class="fa fa-circle"></i>
-                                        <p>TB1063</p>
-                                    </div>
-                                </div>
-
-                                <div>
-                                </div>
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
-                                            <div>
-                                                <img src="/tvtShop/img/product/avatar7.jpg" alt="">
-                                            </div>
-                                        </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Thị Hoa Hồng</p>
-                                            <p>Tới tất cả</p>
-                                        </div>
-            
-                                        <div class="rightend">
-                                        </div>
-            
-                                    </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <textarea name="" id="" cols="30" rows="10" placeholder="Nhập nội dung ở đây"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="rightsubmit">
-                                        <button>GỬI</button>
-                                    </div>
-                                </div>
-                              
-
-                            </div>
                             <div class="leftitem" onclick="changerightdonhang(this)" id="item1">
 
                                 <div>
-                                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                                    <img src="../tvtShop/img/user.jpg" alt="">
                                 </div>
 
                                 <div>
-                                    <p>Nguyễn Thị Hoa Hồng</p>
+                                    <p>An</p>
                                     <div class="hoanthanh">
                                         <i class="fa fa-circle"></i>
-                                        <p>TB1062</p>
+                                        <p>LH3132</p>
                                     </div>
                                 </div>
+                                <div></div>
 
                                 <div>
-                                </div>
-
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
                                             <div>
-                                                <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item1'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
                                             </div>
                                         </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Thị Hoa Hồng</p>
-                                            <p>Tới tất cả</p>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
                                         </div>
-            
-                                        <div class="rightend">
-                                            <p>25 Tháng Tám, 2018, 11:18 AM</p>
-                                            <i class="fa fa-trash" onclick="removeitem(document.getElementById('item1'))"></i>
-                                        </div>
-            
                                     </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                                mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                             <div class="leftitem" onclick="changerightdonhang(this)" id="item2">
 
                                 <div>
-                                    <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                    <img src="../tvtShop/img/user.jpg" alt="">
                                 </div>
 
                                 <div>
-                                    <p>Nguyễn Văn A</p>
+                                    <p>An</p>
                                     <div class="hoanthanh">
                                         <i class="fa fa-circle"></i>
-                                        <p>TB1061</p>
+                                        <p>LH3131</p>
                                     </div>
                                 </div>
+                                <div></div>
 
                                 <div>
-                                </div>
-
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
                                             <div>
-                                                <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item2'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
                                             </div>
                                         </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Văn A</p>
-                                            <p>Tới tất cả</p>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
                                         </div>
-            
-                                        <div class="rightend">
-                                            <p>24 Tháng Tám, 2018, 11:18 AM</p>
-                                            <i class="fa fa-trash" onclick="removeitem(document.getElementById('item2'))"></i>
-                                        </div>
-            
                                     </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                                mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                             <div class="leftitem" onclick="changerightdonhang(this)" id="item3">
 
                                 <div>
-                                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                                    <img src="../tvtShop/img/user.jpg" alt="">
                                 </div>
 
                                 <div>
-                                    <p>Nguyễn Thị Hoa Hồng</p>
+                                    <p>An</p>
                                     <div class="hoanthanh">
                                         <i class="fa fa-circle"></i>
-                                        <p>TB1060</p>
+                                        <p>LH3131</p>
                                     </div>
                                 </div>
+                                <div></div>
 
                                 <div>
-                                </div>
-
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
                                             <div>
-                                                <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item3'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
                                             </div>
                                         </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Thị Hoa Hồng</p>
-                                            <p>Tới tất cả</p>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
                                         </div>
-            
-                                        <div class="rightend">
-                                            <p>23 Tháng Tám, 2018, 11:18 AM</p>
-                                            <i class="fa fa-trash" onclick="removeitem(document.getElementById('item3'))"></i>
-                                        </div>
-            
                                     </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                                mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                             <div class="leftitem" onclick="changerightdonhang(this)" id="item4">
 
                                 <div>
-                                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                                    <img src="../tvtShop/img/user.jpg" alt="">
                                 </div>
 
                                 <div>
-                                    <p>Nguyễn Thị Hoa Hồng</p>
+                                    <p>An</p>
                                     <div class="hoanthanh">
                                         <i class="fa fa-circle"></i>
-                                        <p>TB1059</p>
+                                        <p>LH3131</p>
                                     </div>
                                 </div>
+                                <div></div>
 
                                 <div>
-                                </div>
-
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
                                             <div>
-                                                <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item4'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
                                             </div>
                                         </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Thị Hoa Hồng</p>
-                                            <p>Tới tất cả</p>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
                                         </div>
-            
-                                        <div class="rightend">
-                                            <p>22 Tháng Tám, 2018, 11:18 AM</p>
-                                            <i class="fa fa-trash" onclick="removeitem(document.getElementById('item4'))"></i>
-                                        </div>
-            
                                     </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                                mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                             <div class="leftitem" onclick="changerightdonhang(this)" id="item5">
 
                                 <div>
-                                    <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                    <img src="../tvtShop/img/user.jpg" alt="">
                                 </div>
 
                                 <div>
-                                    <p>Nguyễn Văn A</p>
+                                    <p>An</p>
                                     <div class="hoanthanh">
                                         <i class="fa fa-circle"></i>
-                                        <p>TB1058</p>
+                                        <p>LH3131</p>
                                     </div>
                                 </div>
+                                <div></div>
 
                                 <div>
-                                </div>
-
-                                <div>
-                                    <div class="rightheader">
-                                        <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
                                             <div>
-                                                <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item5'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
                                             </div>
                                         </div>
-            
-                                        <div class="rightinfor">
-                                            <p>Nguyễn Văn A</p>
-                                            <p>Tới tất cả</p>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
                                         </div>
-            
-                                        <div class="rightend">
-                                            <p>20 Tháng Tám, 2018, 11:18 AM</p>
-                                            <i class="fa fa-trash" onclick="removeitem(document.getElementById('item5'))"></i>
-                                        </div>
-            
                                     </div>
-                                    <div class="rightcontent">
-                                        <div>
-                                            <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                                mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
+                            </div>
+                            <div class="leftitem" onclick="changerightdonhang(this)" id="item6">
+
+                                <div>
+                                    <img src="../tvtShop/img/user.jpg" alt="">
+                                </div>
+
+                                <div>
+                                    <p>An</p>
+                                    <div class="hoanthanh">
+                                        <i class="fa fa-circle"></i>
+                                        <p>LH3131</p>
+                                    </div>
+                                </div>
+                                <div></div>
+
+                                <div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/user.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>An</p>
+                                                <p>nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash"
+                                                    onclick="removeitem(document.getElementById('item6'))"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào shop, <br><br> Vui lòng cho tôi biết thêm về dịch vụ giao
+                                                    hàng tận tay
+                                                    của bạn.</p>
+                                            </div>
+                                        </div>
+                                        <div class="phanhoi">
+                                            <button onclick="phanHoi(this)">
+                                                <i class="fa fa-reply"></i>Phản hồi
+                                            </button>
+                                            <input type="checkbox" style="display: none;">
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;">
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar7.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Thị Hoa Hồng</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>26 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Chúng tôi sẽ nhận tiền khi nào hàng tới tay bạn
+                                                    nhé.<br><br> Admin,<br>-Nguyễn Thị Hoa Hồng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="rightitem" onclick="mora(this)">
+                                        <input type="checkbox" style="display: none;" checked>
+                                        <div class="rightheader">
+                                            <div>
+                                                <div>
+                                                    <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                                </div>
+                                            </div>
+
+                                            <div class="rightinfor">
+                                                <p>Nguyễn Văn A</p>
+                                                <p>Tới nguyenvanan@gmail.com</p>
+                                            </div>
+
+                                            <div class="rightend">
+                                                <p>27 Tháng Tám, 2018, 11:18 AM</p>
+                                                <i class="fa fa-trash" onclick="removeitemm(this)"></i>
+                                            </div>
+
+                                        </div>
+                                        <div class="rightcontent">
+                                            <div>
+                                                <p>Xin chào An, <br><br> Bạn có thể từ chối đơn hàng nếu kiếm tra hàng
+                                                    có điều gì đó
+                                                    bất thường. Chúng tôi cảm kích vì điều đó !<br><br>
+                                                    Admin,<br>-Nguyễn Văn A</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="right" id="right">
+
                 </div>
             </div>
         </div>

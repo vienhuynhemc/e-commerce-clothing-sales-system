@@ -129,6 +129,15 @@ a {
   height: 0px;
 }
 
+.indexleftselectitemlv2 > div:nth-child(1) > i{
+  transform: rotate(90deg);
+}
+
+.dontactiveindexleftselectitemlv2 > div:nth-child(1) > i{
+  transform: rotate(0deg);
+}
+
+
 .indextop {
   position: fixed;
   height: 8%;
