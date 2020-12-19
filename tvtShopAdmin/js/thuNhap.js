@@ -54,9 +54,9 @@ function trove() {
 }
 
 function xemthongtindonhang(){
-    window.location.href = "/tvtShopAdmin/thongTinDonHangThuNhap.html";
+    window.location.href = "../../admin/home/thongTinDonHangThuNhap.html";
 }
 
 function xemthongtinnhaphang(){
-    window.location.href = "/tvtShopAdmin/thongTinLichSuNhapHangThuNhap.html";
+    window.location.href = "../../admin/home/thongTinLichSuNhapHangThuNhap.html";
 }
