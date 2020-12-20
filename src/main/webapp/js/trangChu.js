@@ -30,7 +30,6 @@ setInterval(() => {
 }, 3000);
 
 
-
 function leftslide() {
     checkSlide();
     if (!slide) {
@@ -62,7 +61,6 @@ function rightslide() {
         document.getElementById('mainslider').style.left = `-${now}%`;
     }
 }
-
 
 
 ////////////////////////////////////////////

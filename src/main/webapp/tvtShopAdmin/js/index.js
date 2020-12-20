@@ -36,7 +36,9 @@ function addViecCanLam() {
         let iconDiv1 = document.createElement("i");
         iconDiv1.classList.add("fa");
         iconDiv1.classList.add("fa-close");
-        iconDiv1.onclick = function () { removevieccanlam(iconDiv1) };
+        iconDiv1.onclick = function () {
+            removevieccanlam(iconDiv1)
+        };
         let pDiv1 = document.createElement("p");
         pDiv1.innerText = value;
 
@@ -68,6 +70,9 @@ function removevieccanlam(item) {
         let divcon = itemlv3[0];
         let itemlv4 = divcon.children;
         let icondiv = itemlv4[1];
-        if (icondiv == item) { document.getElementById("vieccanlam").removeChild(list[i]); break; }
+        if (icondiv == item) {
+            document.getElementById("vieccanlam").removeChild(list[i]);
+            break;
+        }
     }
 }

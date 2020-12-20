@@ -201,7 +201,9 @@ function nhaphang() {
 
     let div3 = document.createElement("div");
     div3.classList.add("itemsubmit");
-    div3.onclick = function () { showselect(div3) };
+    div3.onclick = function () {
+        showselect(div3)
+    };
     let input3 = document.createElement("input");
     input3.type = "text";
     input3.style.display = "none";
@@ -220,7 +222,9 @@ function nhaphang() {
     div3.append(i3);
     let div4 = document.createElement("div");
     let button = document.createElement("button");
-    button.onclick = function () { removekhachhang(button) };
+    button.onclick = function () {
+        removekhachhang(button)
+    };
     let i4 = document.createElement("i");
     i4.classList.add("fa");
     i4.classList.add("fa-trash");

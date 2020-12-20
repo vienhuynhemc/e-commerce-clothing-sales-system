@@ -1,4 +1,3 @@
-
 function woman() {
     document.getElementById('size1').style.display = 'none';
     document.getElementById('size2').style.display = 'none';

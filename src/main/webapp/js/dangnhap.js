@@ -37,9 +37,9 @@ function displayNoti() {
     document.getElementById('success').style.transform = 'scaleY(1)';
 }
 
-function gotocomplete(){
+function gotocomplete() {
 
-   hiddendivpassword();
+    hiddendivpassword();
 
     document.getElementById('notifi2').style.display = 'flex';
     document.getElementById('notifi1').style.display = 'none';
@@ -139,6 +139,6 @@ function gotochange() {
     document.getElementById('left3divpassword').style.zIndex = '2';
 }
 
-function toAccount(){
+function toAccount() {
     window.location = '../home/changeInforCustomer.html';
 }

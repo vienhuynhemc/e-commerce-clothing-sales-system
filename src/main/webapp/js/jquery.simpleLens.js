@@ -29,12 +29,12 @@
 
                 this.calc_image_limits();
             },
-            calc_image_limits: function(){
+            calc_image_limits: function () {
                 this.limits = {
-                    x_left : (this.position.left),
-                    x_right : (this.position.left + this.width),
-                    y_top : (this.position.top),
-                    y_bottom : (this.position.top + this.height)
+                    x_left: (this.position.left),
+                    x_right: (this.position.left + this.width),
+                    y_top: (this.position.top),
+                    y_bottom: (this.position.top + this.height)
                 }
             },
             calc_view_position: function (e) {
@@ -46,7 +46,7 @@
         };
 
         var cursor = {
-            init: function(parent_anchor, lens_container, ratio, position){
+            init: function (parent_anchor, lens_container, ratio, position) {
                 this.parent_anchor = parent_anchor;
                 this.lens_container = lens_container;
                 this.ratio = ratio;
@@ -59,7 +59,7 @@
                 this.calc_cursor_size();
                 this.insert_cursor(position.org_x, position.org_y);
             },
-            destroy: function(){
+            destroy: function () {
                 $('.' + opts.cursor_class).remove();
             },
             calc_cursor_size: function () {
@@ -111,7 +111,7 @@
         };
 
         var lens = {
-            init: function(parent_anchor){
+            init: function (parent_anchor) {
                 this.parent_anchor = parent_anchor;
                 this.parent_div = parent_anchor.parent(opts.parent_class);
                 this.lens_image_url = parent_anchor.attr(opts.lens_image_attr);
@@ -132,7 +132,7 @@
                     'left': position.left
                 });
             },
-            calc_lens_position: function(cursor_position){
+            calc_lens_position: function (cursor_position) {
                 return {
                     left: (cursor_position.center_left * this.ratio.x - this.container.width) * -1,
                     top: (cursor_position.center_top * this.ratio.y - this.container.height) * -1
@@ -148,20 +148,20 @@
 
                 this.parent_anchor.mousemove(mouse_callback);
             },
-            lens_event_unbind: function(){
-                if(this.parent_anchor !== undefined){
+            lens_event_unbind: function () {
+                if (this.parent_anchor !== undefined) {
                     this.parent_anchor.unbind('mousemove');
                 }
             },
-            destroy: function(){
+            destroy: function () {
                 cursor.destroy();
 
-                if(this.lens_container !== undefined && this.lens_container.length > 0){
+                if (this.lens_container !== undefined && this.lens_container.length > 0) {
                     $('.' + opts.lens_class).remove();
                     this.lens_event_unbind();
                 }
             },
-            load: function(e){
+            load: function (e) {
                 var that = this;
 
                 this.lens_container.appendTo(this.parent_div);
@@ -199,7 +199,7 @@
         };
 
         var init = function (e) {
-            var parent_anchor =  $(this);
+            var parent_anchor = $(this);
 
             lens.init(parent_anchor);
             lens.load(e);
@@ -214,7 +214,9 @@
 
     };
 
-    $.fn.simpleLens.ver = function () { return ver; };
+    $.fn.simpleLens.ver = function () {
+        return ver;
+    };
 
     $.fn.simpleLens.defaults = {
         anchor_parent_class: '.simpleLens-lens-image',
@@ -227,4 +229,4 @@
         open_lens_event: 'mouseenter'
     };
 
-})( jQuery );
+})(jQuery);

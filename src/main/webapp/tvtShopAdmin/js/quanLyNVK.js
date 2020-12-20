@@ -217,7 +217,6 @@ function removeIMG2() {
 }
 
 
-
 function themkhachhang() {
     document.getElementById("div1").style.display = "flex";
     document.getElementById("div2").style.display = "none";

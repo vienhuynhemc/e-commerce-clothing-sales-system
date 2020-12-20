@@ -53,10 +53,10 @@ function trove() {
     document.getElementById("div1").style.display = "none";
 }
 
-function xemthongtindonhang(){
+function xemthongtindonhang() {
     window.location.href = "../../admin/home/thongTinDonHangThuNhap.html";
 }
 
-function xemthongtinnhaphang(){
+function xemthongtinnhaphang() {
     window.location.href = "../../admin/home/thongTinLichSuNhapHangThuNhap.html";
 }

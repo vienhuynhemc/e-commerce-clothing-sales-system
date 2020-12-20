@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ltw_thayLong_group5" />
+        <module name="ltw_thayLong_group5_ver2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ltw_thayLong_group5" target="1.8" />
+      <module name="ltw_thayLong_group5_ver2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

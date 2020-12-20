@@ -45,6 +45,6 @@ function changerightdonhang(item) {
 
 function removeitem(item) {
     item.style.display = "none";
-    let list =  document.getElementById("right").children;
+    let list = document.getElementById("right").children;
     document.getElementById("right").removeChild(list[0]);
 }

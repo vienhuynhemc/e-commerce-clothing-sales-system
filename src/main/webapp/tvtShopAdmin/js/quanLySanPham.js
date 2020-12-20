@@ -457,7 +457,9 @@ function themsize(item) {
             i2.classList.add("fa");
             i2.classList.add("fa-trash");
             button.appendChild(i2);
-            button.onclick = function () { removeSize(button) };
+            button.onclick = function () {
+                removeSize(button)
+            };
             div.appendChild(button);
 
             list6[1].appendChild(div);
@@ -513,7 +515,9 @@ function themsize2(item) {
             i2.classList.add("fa");
             i2.classList.add("fa-trash");
             button.appendChild(i2);
-            button.onclick = function () { removeSize2(button) };
+            button.onclick = function () {
+                removeSize2(button)
+            };
             div.appendChild(button);
 
             list6[1].appendChild(div);
@@ -844,7 +848,9 @@ function loadIMG(event, item) {
                 let i1 = document.createElement("i");
                 i1.classList.add("fa");
                 i1.classList.add("fa-close");
-                i1.onclick = function () { removehinhitem(i1) };
+                i1.onclick = function () {
+                    removehinhitem(i1)
+                };
                 let img = document.createElement("img");
                 img.src = src;
                 div1.appendChild(img);
@@ -882,7 +888,9 @@ function loadIMG2(event, item) {
                 let i1 = document.createElement("i");
                 i1.classList.add("fa");
                 i1.classList.add("fa-close");
-                i1.onclick = function () { removehinhitem2(i1) };
+                i1.onclick = function () {
+                    removehinhitem2(i1)
+                };
                 let img = document.createElement("img");
                 img.src = src;
                 div1.appendChild(img);
@@ -944,11 +952,15 @@ function themmau(item) {
             let i2 = document.createElement("i");
             i2.classList.add("fa");
             i2.classList.add("fa-angle-left");
-            i2.onclick = function () { movehinhleft(i2) };
+            i2.onclick = function () {
+                movehinhleft(i2)
+            };
             let i3 = document.createElement("i");
             i3.classList.add("fa");
             i3.classList.add("fa-angle-right");
-            i3.onclick = function () { movehinhright(i3) };
+            i3.onclick = function () {
+                movehinhright(i3)
+            };
             let input1 = document.createElement("input");
             input1.value = "0";
             input1.type = "number";
@@ -973,12 +985,18 @@ function themmau(item) {
             i5.classList.add("fa-trash");
             button1.appendChild(i4);
             button2.appendChild(i5);
-            button1.onclick = function () { themhinh(this) };
-            button2.onclick = function () { removecolor(this) };
+            button1.onclick = function () {
+                themhinh(this)
+            };
+            button2.onclick = function () {
+                removecolor(this)
+            };
             let input2 = document.createElement("input");
             input2.type = "file";
             input2.style.display = "none";
-            input2.onchange = function () { loadIMG(event, input2) };
+            input2.onchange = function () {
+                loadIMG(event, input2)
+            };
             div3.appendChild(button1);
             div3.appendChild(button2);
             div3.appendChild(input2);
@@ -1039,11 +1057,15 @@ function themmau2(item) {
             let i2 = document.createElement("i");
             i2.classList.add("fa");
             i2.classList.add("fa-angle-left");
-            i2.onclick = function () { movehinhleft2(i2) };
+            i2.onclick = function () {
+                movehinhleft2(i2)
+            };
             let i3 = document.createElement("i");
             i3.classList.add("fa");
             i3.classList.add("fa-angle-right");
-            i3.onclick = function () { movehinhright2(i3) };
+            i3.onclick = function () {
+                movehinhright2(i3)
+            };
             let input1 = document.createElement("input");
             input1.value = "0";
             input1.type = "number";
@@ -1068,12 +1090,18 @@ function themmau2(item) {
             i5.classList.add("fa-trash");
             button1.appendChild(i4);
             button2.appendChild(i5);
-            button1.onclick = function () { themhinh2(this) };
-            button2.onclick = function () { removecolor2(this) };
+            button1.onclick = function () {
+                themhinh2(this)
+            };
+            button2.onclick = function () {
+                removecolor2(this)
+            };
             let input2 = document.createElement("input");
             input2.type = "file";
             input2.style.display = "none";
-            input2.onchange = function () { loadIMG2(event, input2) };
+            input2.onchange = function () {
+                loadIMG2(event, input2)
+            };
             div3.appendChild(button1);
             div3.appendChild(button2);
             div3.appendChild(input2);

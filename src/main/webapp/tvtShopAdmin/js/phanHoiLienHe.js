@@ -119,7 +119,7 @@ function phanHoi(item) {
             let div2 = document.createElement("div");
             div2.classList.add("rightheader");
 
-            let div21 =document.createElement("div");
+            let div21 = document.createElement("div");
             let i21 = document.createElement("i");
             i21.classList.add("fa");
             i21.classList.add("fa-reply");
@@ -142,7 +142,9 @@ function phanHoi(item) {
             let i23 = document.createElement("i");
             i23.classList.add("fa");
             i23.classList.add("fa-trash");
-            i23.onclick = function(){removeitemmm(i23)};
+            i23.onclick = function () {
+                removeitemmm(i23)
+            };
             div23.appendChild(p23);
             div23.appendChild(i23);
             div2.appendChild(div23);
@@ -160,7 +162,7 @@ function phanHoi(item) {
             let div4 = document.createElement("div");
             div4.classList.add("rightsubmit");
             let button41 = document.createElement("button");
-            button41.innerText= "GỬI";
+            button41.innerText = "GỬI";
             div4.appendChild(button41);
             div1.appendChild(div4);
 
