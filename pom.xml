@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>ltw_thayLong_group5_ver2</artifactId>
+    <artifactId>ltw_thayLong_group5</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ltw_thayLong_group5_ver2</name>
+    <name>ltw_thayLong_group5</name>
     <packaging>war</packaging>
 
     <properties>
