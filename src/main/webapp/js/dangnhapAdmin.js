@@ -144,17 +144,17 @@ function toAccount() {
     let matkhau = document.getElementById("matkhau").value;
     if (taikhoan == "admin") {
         if (matkhau == "admin") {
-            window.location = "/tvtShopAdmin/index.html";
+            window.location = "../index.html";
             return;
         }
     } else if (taikhoan == "nvk") {
         if (matkhau == "nvk") {
-            window.location = "../../admin/home/indexNVK.html";
+            window.location = "../admin/home/indexNVK.html";
             return;
         }
     } else if (taikhoan == "nvgh") {
         if (matkhau == "nvgh") {
-            window.location = "../../admin/home/indexNVGH.html";
+            window.location = "../admin/home/indexNVGH.html";
             return;
         }
     } else {
@@ -168,5 +168,5 @@ function toAccount() {
 }
 
 function toPublic() {
-    window.location = "../../index.html";
+    window.location = "../index.html";
 }

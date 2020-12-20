@@ -27,7 +27,71 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="add my sql  and test projectmaven" />
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/ConnectionDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/HelloWorld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/guiEmailThongBao.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/guiEmailThongBao.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVGH.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVGH.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVK.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVK.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/lichSuNhapHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/lichSuNhapHang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/nhapHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/nhapHang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/phanHoiLienHe.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/phanHoiLienHe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVK.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVK.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLySanPham.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLySanPham.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinDonHangThuNhap.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinDonHangThuNhap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinLichSuNhapHangThuNhap.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinLichSuNhapHangThuNhap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVGH.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVGH.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVK.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVK.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/guiEmailThongBao.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/guiEmailThongBaoAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/indexAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/lichSuNhapHang.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/lichSuNhapHangAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/loginvien.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/loginvienAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/nhapHang.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/nhapHangAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/phanHoiLienHe.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/phanHoiLienHeAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyBinhLuan.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyBinhLuanAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyDanhMuc.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyDanhMucAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyDonHang.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyDonHangAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyKhachHang.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyKhachHangAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyNVGH.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyNVGHAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLyNVK.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyNVKAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/quanLySanPham.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLySanPhamAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/thongTinTaiKhoanAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanAdminAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/thongTinTaiKhoanNVGH.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanNVGHAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/thongTinTaiKhoanNVK.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanNVKAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/thuNhap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thuNhapAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/css/trangchu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/trangchuAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/dangnhapAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/dangnhapAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/guiEmailThongBaoAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/guiEmailThongBaoAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/indexAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/lichSuNhapHang.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/lichSuNhapHangAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/nhapHang.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/nhapHangAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/phanHoiLienHe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/phanHoiLienHeAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyBinhLuan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyBinhLuanAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyDanhMuc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyDanhMucAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyDonHang.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyDonHangAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyKhachHang.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyKhachHangAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyNVGH.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyNVGHAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLyNVK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLyNVKAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/quanLySanPham.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/quanLySanPhamAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/thongTinTaiKhoanAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/thongTinTaiKhoanAdminAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/thongTinTaiKhoanNVGH.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/thongTinTaiKhoanNVGHAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/thongTinTaiKhoanNVK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/thongTinTaiKhoanNVKAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tvtShopAdmin/js/thuNhap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/thuNhapAdmin.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +103,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -60,6 +127,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="1lu9bSyqW0odQkztWvf5zuBMeox" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -73,9 +141,39 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\css" />
+      <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ConnectionDatabase">
+    <configuration name="ConnectionDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="database.ConnectionDatabase" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.391" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.391" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ltw_thayLong_group5_war_exploded/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -149,6 +247,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ConnectionDatabase" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -159,6 +262,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608435124405</updated>
       <workItem from="1608435125648" duration="1018000" />
+      <workItem from="1608436191830" duration="242000" />
+      <workItem from="1608468013140" duration="3582000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -174,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608436040507</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="rút ngắn project">
+      <created>1608436400514</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608436400514</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,11 +302,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="github oke" />
     <MESSAGE value="add my sql maven and test project" />
-    <option name="LAST_COMMIT_MESSAGE" value="add my sql maven and test project" />
+    <MESSAGE value="rút ngắn project" />
+    <option name="LAST_COMMIT_MESSAGE" value="rút ngắn project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
@@ -209,22 +323,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="905" height="182" key="GridCell.Tab.0.bottom" timestamp="1608436162788">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608471984647">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608436162788" />
-    <state width="905" height="182" key="GridCell.Tab.0.center" timestamp="1608436162788">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608471984647" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608471984647">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608436162788" />
-    <state width="905" height="182" key="GridCell.Tab.0.left" timestamp="1608436162788">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608471984647" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608471984647">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608436162788" />
-    <state width="905" height="182" key="GridCell.Tab.0.right" timestamp="1608436162788">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608471984647" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608471984647">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608436162788" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608471984647" />
     <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608436162789">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -257,13 +371,13 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608436162790" />
-    <state x="184" y="13" key="SettingsEditor" timestamp="1608435553098">
+    <state x="184" y="13" key="SettingsEditor" timestamp="1608469739814">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608435553098" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608436113712">
+    <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608436413957">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608436113712" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608436413957" />
   </component>
 </project>
