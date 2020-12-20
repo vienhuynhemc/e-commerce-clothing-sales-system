@@ -13,6 +13,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ltw_thayLong_group5" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.49" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/ltw_thayLong_group5-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
