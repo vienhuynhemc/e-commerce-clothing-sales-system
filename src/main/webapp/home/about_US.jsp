@@ -111,15 +111,15 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -234,7 +234,7 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="img/do/nu/12.jpg"
+                                        <a class="aa-cartbox-img" href="#"><img src="../img/do/nu/12.jpg"
                                                                                 alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="#">Áo thun MST 1002</a></h4>
@@ -243,7 +243,7 @@
                                         <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="img/do/nu/13.jpg"
+                                        <a class="aa-cartbox-img" href="#"><img src="../img/do/nu/13.jpg"
                                                                                 alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="#">Áo thun kéo ASF 1209</a></h4>
@@ -325,15 +325,15 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -452,7 +452,7 @@
                                 <ul>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/12.jpg"
+                                                src="../img/do/nu/12.jpg"
                                                 alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
@@ -463,7 +463,7 @@
                                     </li>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/13.jpg"
+                                                src="../img/do/nu/13.jpg"
                                                 alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
@@ -540,7 +540,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 welcome-image">
-                    <img src="img/about/2.jpg" class="img-fluid" alt="">
+                    <img src="../img/about/2.jpg" class="img-fluid" alt="">
                 </div>
 
             </div>
@@ -555,7 +555,7 @@
         <div class="container py-lg-5">
             <div class="row story-6-grids text-left">
                 <div class="col-lg-5 story-gd">
-                    <img src="img/about/left2.jpg" class="img-fluid" alt="/">
+                    <img src="../img/about/left2.jpg" class="img-fluid" alt="/">
                 </div>
                 <div class="col-lg-7 story-gd pl-lg-4">
                     <h3 class="hny-title">GIÁ TRỊ CỦA <span>CHÚNG TÔI</span></h3>
@@ -731,7 +731,7 @@
                 Nhóm <span>Chúng Tôi</span></h3>
             <div class="row team-row mt-5">
                 <div class="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative">
-                    <a href="#"><img src="img/imgDeveloper/vien.jpg" class="team_member img-fluid"
+                    <a href="#"><img src="../img/imgDeveloper/vien.jpg" class="team_member img-fluid"
                                      alt="Team Member"></a>
                     <div class="team_info mt-3 position-absolute">
                         <h3><a href="#" class="team_name">Huỳnh Văn Viên</a></h3>
@@ -747,7 +747,7 @@
                 <!-- end team member -->
 
                 <div class="col-lg-4 col-sm-6 mb-lg-0 mb-4 team-wrapper position-relative">
-                    <a href="#"><img src="img/imgDeveloper/thanh.jpg" class="team_member img-fluid thanh"
+                    <a href="#"><img src="../img/imgDeveloper/thanh.jpg" class="team_member img-fluid thanh"
                                      alt="Team Member"></a>
                     <div class="team_info mt-3 position-absolute">
                         <h3><a href="#" class="team_name">Nguyễn Văn Thành</a></h3>
@@ -762,7 +762,7 @@
                 </div>
                 <!-- end team member -->
                 <div class="col-lg-4 col-sm-6 team-wrapper position-relative">
-                    <a href="#"><img src="img/imgDeveloper/truong.jpg" class="team_member img-fluid"
+                    <a href="#"><img src="../img/imgDeveloper/truong.jpg" class="team_member img-fluid"
                                      alt="Team Member"></a>
                     <div class="team_info mt-3 position-absolute">
                         <h3><a href="#" class="team_name">Nuỳnh Nhật Trường</a></h3>
@@ -838,7 +838,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -861,16 +861,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>

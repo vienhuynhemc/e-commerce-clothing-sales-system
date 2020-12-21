@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 21/12/2020
+  Time: 8:50 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVT SHOP | Tài khoản khách hàng</title>
 
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/trangChu.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/trangChu.css">
     <script src="../js"></script>
-    <link rel="stylesheet" href="css/banner.css">
-    <link rel="stylesheet" href="css/informationCustomer.css">
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/informationCustomer.css">
+    <link rel="stylesheet" href="../css/cart.css">
 
-    <script src="js/informationCustomer.js"></script>
+    <script src="../js/informationCustomer.js"></script>
 
 </head>
 
@@ -77,15 +84,15 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -121,7 +128,7 @@
                                 </p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -203,7 +210,7 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/12.jpg"
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/12.jpg"
                                                                                                   alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
@@ -213,7 +220,7 @@
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/13.jpg"
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/13.jpg"
                                                                                                   alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
@@ -291,7 +298,7 @@
 
             <div class="customer">
                 <div class="imguser">
-                    <img id="avatar" src="img/about/c1.jpg" alt="">
+                    <img id="avatar" src="../img/about/c1.jpg" alt="">
                 </div>
                 <p class="titleuser">Gia Cát Lượng<i class="fa fa-circle"></i></p>
                 <p class="gmailuser">nguoidung.dz@gmail.com</p>
@@ -334,7 +341,7 @@
                 <p class="statusavatar">Ảnh đại diện</p>
                 <div class="divavatar">
                     <div class="avatar">
-                        <img id="avatar2" src="img/about/c1.jpg" alt="">
+                        <img id="avatar2" src="../img/about/c1.jpg" alt="">
                     </div>
                     <button onclick="document.getElementById('fileInput').click()">Thay đổi</button>
                     <button onclick="removeAvatar()">Xóa</button>
@@ -412,7 +419,7 @@
                     <p>Liên kết tài khoản</p>
                     <p>Chúng tôi sử dụng nó để cho phép bạn đăng nhập và hoàn thiện thông tin của bạn</p>
                     <div>
-                        <div><img src="img/google.jpg" alt="">
+                        <div><img src="../img/google.jpg" alt="">
                             <p>Đăng nhập với Google</p>
                         </div>
                         <button>Kết nối</button>
@@ -521,31 +528,31 @@
                             <div class="listhinh" id="listhinh">
                                 <div>
                                     <div>
-                                        <img src="img/product/pro11.webp" alt="">
+                                        <img src="../img/product/pro11.webp" alt="">
                                     </div>
                                     <p>MST 1010</p>
                                 </div>
                                 <div>
                                     <div>
-                                        <img src="img/product/pro1.webp" alt="">
+                                        <img src="../img/product/pro1.webp" alt="">
                                     </div>
                                     <p>MSW 1006</p>
                                 </div>
                                 <div>
                                     <div>
-                                        <img src="img/product/pro4.webp" alt="">
+                                        <img src="../img/product/pro4.webp" alt="">
                                     </div>
                                     <p>MSW1003</p>
                                 </div>
                                 <div>
                                     <div>
-                                        <img src="img/product/pro10.webp" alt="">
+                                        <img src="../img/product/pro10.webp" alt="">
                                     </div>
                                     <p>MTS 1008</p>
                                 </div>
                                 <div>
                                     <div>
-                                        <img src="img/product/pro12.webp" alt="">
+                                        <img src="../img/product/pro12.webp" alt="">
                                     </div>
                                     <p>MTS1010</p>
                                 </div>
@@ -596,7 +603,7 @@
         <div class="changepasswordsuccess" id="changepasswordsuccess">
             <p>Thay đổi mật khẩu thành công</p>
             <p>Từ bây giờ, bạn có thể sử dụng mật khẩu mới của mình để đăng nhập vào tài khoản của bạn <img
-                    src="img/raising-hands-emoji-218129.png" alt=""></p>
+                    src="../img/raising-hands-emoji-218129.png" alt=""></p>
             <button onclick="gobackpassword()">Trở về tài khoản</button>
         </div>
     </div>
@@ -618,7 +625,7 @@
                         <div class="cartleftmain">
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro10.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro10.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Thun MTS 1011</p>
@@ -634,7 +641,7 @@
                             </div>
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro11.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro11.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Thun MTS 1010</p>
@@ -650,7 +657,7 @@
                             </div>
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro12.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro12.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Thun Nam Raglan Tay Dài MTS 1008</p>
@@ -666,7 +673,7 @@
                             </div>
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro4.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro4.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
@@ -682,7 +689,7 @@
                             </div>
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro1.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro1.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Sweater Nam Stay Together MSW 1006</p>
@@ -698,7 +705,7 @@
                             </div>
                             <div class="cartleftmainitem">
                                 <div class="cartleftmainitemleft">
-                                    <a href="" class="cartleftmainimg"> <img src="img/product/pro9.webp" alt=""></a>
+                                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro9.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
                                             <p>Áo Thun MTS 1012</p>
@@ -767,7 +774,7 @@
                     <div class="linecr"></div>
                     <div class="note">
                         <p>Ghi chú đơn hàng</p>
-                        <textarea  cols="30"
+                        <textarea cols="30"
                                   rows="10">Tui rất hài lòng với các món đồ này, bạn giao nhẹ tay nha!</textarea>
                     </div>
                     <a href="informationOrder.html" class="submit">
@@ -846,7 +853,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -869,16 +876,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -894,7 +901,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -933,23 +940,23 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script src="../js/sequence.js"></script>
+<script src="../js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
 
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -958,66 +965,67 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
-
+<!--
 <script>
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    var firebaseConfig = {
-        apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
-        authDomain: "ecommerce-b6c08.firebaseapp.com",
-        databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
-        projectId: "ecommerce-b6c08",
-        storageBucket: "ecommerce-b6c08.appspot.com",
-        messagingSenderId: "390576423583",
-        appId: "1:390576423583:web:efcf73909008a68dcd18aa",
-        measurementId: "G-LR0V7PWKZN"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+authDomain: "ecommerce-b6c08.firebaseapp.com",
+databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+projectId: "ecommerce-b6c08",
+storageBucket: "ecommerce-b6c08.appspot.com",
+messagingSenderId: "390576423583",
+appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+measurementId: "G-LR0V7PWKZN"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
-    function loadIMG(event) {
-        if (event.target.files.length > 0) {
+function loadIMG(event) {
+if (event.target.files.length > 0) {
 
-            const ref = firebase.storage().ref();
-            const file = event.target.files[0];
-            const name = file.name;
-            let link;
-            let nameData = name.split('.')[0];
-            const folder = "ProductNam/" + nameData;
-            const metadata = {contentType: file.type};
-            const task = ref.child(folder).put(file, metadata);
-            task
-                .then(snapshot => snapshot.ref.getDownloadURL())
-                .then(url => {
-                    alert("Thanh cong");
-                    document.getElementById('avatar').src = url;
-                    document.getElementById('avatar2').src = url;
-                    link = url;
-                    firebase.database().ref(folder).set({
-                        Name: nameData,
-                        Link: link
-                    })
-                });
+const ref = firebase.storage().ref();
+const file = event.target.files[0];
+const name = file.name;
+let link;
+let nameData = name.split('.')[0];
+const folder = "ProductNam/" + nameData;
+const metadata = {contentType: file.type};
+const task = ref.child(folder).put(file, metadata);
+task
+.then(snapshot => snapshot.ref.getDownloadURL())
+.then(url => {
+alert("Thanh cong");
+document.getElementById('avatar').src = url;
+document.getElementById('avatar2').src = url;
+link = url;
+firebase.database().ref(folder).set({
+Name: nameData,
+Link: link
+})
+});
 
-            // Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
-            // firebase.database().ref("ProductNam/index").on('value', function (snapshot) {
-            //   document.getElementById('avatar').src = snapshot.val().Link;
-            // })
-        }
-    }
+// Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
+// firebase.database().ref("ProductNam/index").on('value', function (snapshot) {
+// document.getElementById('avatar').src = snapshot.val().Link;
+// })
+}
+}
 
-    function removeAvatar() {
-        document.getElementById('avatar').src = 'img/user.jpg';
-        document.getElementById('avatar2').src = 'img/user.jpg';
+function removeAvatar() {
+document.getElementById('avatar').src = '../img/user.jpg';
+document.getElementById('avatar2').src = '../img/user.jpg';
 
-        // xoá thì truyền link vào
-        //database
-        // firebase.database().ref('ProductNam/index').remove();
-        // img
-        // firebase.storage().ref('ProductNam/index').delete();
-    }
+// xoá thì truyền link vào
+//database
+// firebase.database().ref('ProductNam/index').remove();
+// img
+// firebase.storage().ref('ProductNam/index').delete();
+}
 
 </script>
+-->

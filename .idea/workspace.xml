@@ -27,14 +27,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="connection pool step1 create databaseConfiguration">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="update project">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectionDatabase/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionDatabase/ConnectionPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/about.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/about_US.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/about_US.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ltw_thayLong_group5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ltw_thayLong_group5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectionDatabase/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionDatabase/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/Mycard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/Mycard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/about_US.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/about_US.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/cart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/check_orders.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/checkout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/db.drawio" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,6 +91,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="E:/apache-tomcat-9.0.39/lib" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -90,11 +99,49 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\home" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\css" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MailModel">
+    <configuration name="DataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="connectionDatabase.DataSource" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="connectionDatabase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mail.MailModel" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.391" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.391" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ltw_thayLong_group5_war_exploded/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -168,6 +215,12 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MailModel" />
+        <item itemvalue="Application.DataSource" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -183,7 +236,8 @@
       <workItem from="1608478350561" duration="4267000" />
       <workItem from="1608522688087" duration="6805000" />
       <workItem from="1608547749286" duration="6312000" />
-      <workItem from="1608554184359" duration="836000" />
+      <workItem from="1608554184359" duration="998000" />
+      <workItem from="1608556884004" duration="10511000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -234,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608550989626</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update project">
+      <created>1608555177915</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608555177915</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +321,8 @@
     <MESSAGE value="connection pool step1 create databaseConfiguration" />
     <MESSAGE value="connectionPool class" />
     <MESSAGE value="Hoàn thành connection pool - đã test 100%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hoàn thành connection pool - đã test 100%" />
+    <MESSAGE value="update project" />
+    <option name="LAST_COMMIT_MESSAGE" value="update project" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
@@ -271,6 +333,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1608550718762" />
+    <state x="488" y="75" key="#com.intellij.ide.util.MemberChooser" timestamp="1608565225420">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="488" y="75" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1608565225420" />
     <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608552674798">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -279,65 +345,69 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="905" height="182" key="GridCell.Tab.0.bottom" timestamp="1608554891135">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608567524959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608554891135" />
-    <state width="905" height="182" key="GridCell.Tab.0.center" timestamp="1608554891135">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608567524959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608554891135" />
-    <state width="905" height="182" key="GridCell.Tab.0.left" timestamp="1608554891135">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608567524959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608554891135" />
-    <state width="905" height="182" key="GridCell.Tab.0.right" timestamp="1608554891135">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608567524959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608554891135" />
-    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608554890713">
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
+    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608559344778">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
+    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608559344762">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
+    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608559344762">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
+    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608559344762">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
+    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608559344778">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
+    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608559344778">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
+    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608559344778">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
-    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608554890713">
+    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
+    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608559344778">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608554890713" />
+    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
     <state x="184" y="13" key="SettingsEditor" timestamp="1608469739814">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608550998926">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608555183039">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608550998926" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608555183039" />
     <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="499" y="146" key="chooseDestDirectoryDialog/0.0.1366.738@0.0.1366.738" timestamp="1608478213489" />
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1608564569940">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1608564569940" />
   </component>
 </project>

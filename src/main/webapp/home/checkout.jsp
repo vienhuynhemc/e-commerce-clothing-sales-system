@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 21/12/2020
+  Time: 9:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVT SHOP | Thanh toán</title>
 
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/trangChu.css">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/trangChu.css">
     <script src="../js"></script>
-    <link rel="stylesheet" href="css/banner.css">
-    <link rel="stylesheet" href="css/checkout2.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/checkout2.css">
 
 
 </head>
@@ -74,15 +81,15 @@
                                         <div class="dropdown">
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png"
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png"
                                                                      alt="">Việt Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png"
+                                                <li><a href="#"><img class="country" src="../img/language.png"
                                                                      alt="">English</a></li>
                                             </ul>
                                         </div>
@@ -118,7 +125,7 @@
                                 </p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -202,7 +209,7 @@
                                 <ul>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/12.jpg" alt="img"></a>
+                                                src="../img/do/nu/12.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -212,7 +219,7 @@
                                     </li>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/13.jpg" alt="img"></a>
+                                                src="../img/do/nu/13.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -411,7 +418,7 @@
                     <input type="radio" id="rd3" name="tt">
                     <label for="rd1" class="lbtt1">
                         <div class="ptttdiv">
-                            <img src="img/thanhtoan/tttructiep.png" alt="">
+                            <img src="../img/thanhtoan/tttructiep.png" alt="">
                             <p>Thanh toán khi giao hàng</p>
                             <div class="checkpttt">
                                 <i class="fa fa-check"></i>
@@ -420,7 +427,7 @@
                     </label>
                     <label for="rd2" class="lbtt2">
                         <div class="ptttdiv">
-                            <img src="img/thanhtoan/ttthe.png" alt="">
+                            <img src="../img/thanhtoan/ttthe.png" alt="">
                             <p>Thanh toán online</p>
                             <div class="checkpttt">
                                 <i class="fa fa-check"></i>
@@ -429,7 +436,7 @@
                     </label>
                     <label for="rd3" class="lbtt3">
                         <div class="ptttdiv">
-                            <img src="img/thanhtoan/ttmomo.png" alt="">
+                            <img src="../img/thanhtoan/ttmomo.png" alt="">
                             <p>Thanh toán bằnng ví momo</p>
                             <div class="checkpttt">
                                 <i class="fa fa-check"></i>
@@ -456,7 +463,7 @@
             <div class="danhsachsanpham">
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro10.webp" alt="">
+                        <img src="../img/product/pro10.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>2</p>
@@ -469,7 +476,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro11.webp" alt="">
+                        <img src="../img/product/pro11.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>3</p>
@@ -482,7 +489,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro12.webp" alt="">
+                        <img src="../img/product/pro12.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>1</p>
@@ -495,7 +502,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro4.webp" alt="">
+                        <img src="../img/product/pro4.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>4</p>
@@ -508,7 +515,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro1.webp" alt="">
+                        <img src="../img/product/pro1.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>3</p>
@@ -521,7 +528,7 @@
                 </div>
                 <div class="item">
                     <div class="img">
-                        <img src="img/product/pro9.webp" alt="">
+                        <img src="../img/product/pro9.webp" alt="">
                     </div>
                     <div class="sl">
                         <p>1</p>
@@ -629,7 +636,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -652,16 +659,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -677,7 +684,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -716,20 +723,20 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script src="../js/sequence.js"></script>
+<script src="../js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
