@@ -957,7 +957,6 @@ img.country {
     transform: translateY(-1px);
 }
 
-}
 span.fa.fa-search {
     display: inline-block;
     text-rendering: auto;
@@ -5218,14 +5217,12 @@ a:focus {
 .aa-footer-widget
 .aa-footer-social
 a {
-    display: inline-block;
     color: #fff;
     font-size: 18px;
     margin-right: 8px;
     width: 36px !important;
     height: 36px !important;
     text-align: center;
-    padding-top: 6px;
     border-radius: 50%;
     background-color: #3a3535;
     -webkit-transition: all 0.5s;
@@ -5233,6 +5230,13 @@ a {
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aa-footer-social {
+    display: flex;
 }
 
 #aa-footer
@@ -6446,6 +6450,10 @@ span.fa.fa-credit-card {
 
 .menuselect {
     margin-top: 5px;
+}
+
+.movetop > i{
+    margin-top: 10px;
 }
 
 .leftnav li:hover a {

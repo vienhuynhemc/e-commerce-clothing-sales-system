@@ -197,7 +197,7 @@ public class ConnectionPool {
                 //  Nếu không ở trạng thái close thì ta thêm nó vào availableConnection
                 availableConnections.add(connection);
 
-                //  Xóa nso khỏi busyConnections
+                //  Xóa nó khỏi busyConnections
                 busyConnections.remove(connection);
 
                 //  Đánh thức các client đang wait(), cho chúng biết đã có connecteion sẵn sàng
