@@ -27,17 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="hoàn thành cấu trúc thư mục, chưa cập nhập link">
-      <change afterPath="$PROJECT_DIR$/src/main/java/connectionDatabase/DatabaseConfiguration.java" afterDir="false" />
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="connection pool step1 create databaseConfiguration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/ConnectionDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionDatabase/ConnectionDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/fonts/font-awesome-4.7.0/less/icons.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/fonts/font-awesome-4.7.0/less/icons.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/fonts/font-awesome-4.7.0/less/variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/fonts/font-awesome-4.7.0/less/variables.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/less/_icons.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/less/_icons.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/less/_variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/less/_variables.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/sprites/solid.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/sprites/solid.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/Truong/fonta/webfonts/fa-solid-900.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connectionDatabase/ConnectionDatabase.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +88,7 @@
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DatabaseConfiguration">
+  <component name="RunManager" selected="Application.ConnectionDatabase">
     <configuration name="ConnectionDatabase" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="connectionDatabase.ConnectionDatabase" />
       <module name="ltw_thayLong_group5" />
@@ -123,15 +115,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,8 +201,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DatabaseConfiguration" />
         <item itemvalue="Application.ConnectionDatabase" />
+        <item itemvalue="Application.DatabaseConfiguration" />
       </list>
     </recent_temporary>
   </component>
@@ -227,7 +217,8 @@
       <workItem from="1608435125648" duration="1018000" />
       <workItem from="1608436191830" duration="242000" />
       <workItem from="1608468013140" duration="4837000" />
-      <workItem from="1608478350561" duration="3825000" />
+      <workItem from="1608478350561" duration="4267000" />
+      <workItem from="1608522688087" duration="6408000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -257,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608472160311</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="connection pool step1 create databaseConfiguration">
+      <created>1608482967136</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608482967136</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +278,8 @@
     <MESSAGE value="add my sql maven and test project" />
     <MESSAGE value="rút ngắn project" />
     <MESSAGE value="hoàn thành cấu trúc thư mục, chưa cập nhập link" />
-    <option name="LAST_COMMIT_MESSAGE" value="hoàn thành cấu trúc thư mục, chưa cập nhập link" />
+    <MESSAGE value="connection pool step1 create databaseConfiguration" />
+    <option name="LAST_COMMIT_MESSAGE" value="connection pool step1 create databaseConfiguration" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
@@ -295,22 +294,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608482119286">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608524143746">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608482119286" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608482119286">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608524143746" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608524143746">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608482119286" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608482119286">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608524143746" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608524143745">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608482119286" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608482119286">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608524143745" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608524143746">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608482119286" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608524143746" />
     <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608436162789">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -347,10 +346,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608472180933">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608482983995">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608472180933" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608482983995" />
     <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
