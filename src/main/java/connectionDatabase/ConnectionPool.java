@@ -136,7 +136,15 @@ public class ConnectionPool {
      */
     public synchronized Connection getConnection() {
 
-        //  Trước tiên xem thử còn kết nối đang rãnh không
+        //  Trước tiên xem thử có còn kết nối vào rãnh không và các kết nối đang bận có bé hơn max connection
+        if (availableConnections.size() == 0 && busyConnections.size() < maxConnection) {
+
+            //  Nếu thõa thì ta tạo 1 kết nối mới
+            createNewConnection();
+
+        }
+
+        //  Tiếp theo xem thử còn kết nối nào rãnh không
         while (availableConnections.size() == 0) {
 
             //  Nếu không còn kết nối nào cả thì
@@ -144,15 +152,6 @@ public class ConnectionPool {
 
                 //  Ta bắt nó đợi cho đến khi nào có lời gọi nó dậy  ( notifyAll() sẽ làm điều đó )
                 wait();
-
-                /*
-                 *  Ta thử gọi hàm createNewConnection(), hàm này sẽ xem các connection đã được tạo ra có bé hơn
-                 *  maxConnection hay không, nếu bé hơn thì nó sẽ tạo một connection mới và đánh thức các thằng client
-                 *  đang wait(), mà lỡ đâu đánh thức tất cả mà chỉ có 1 connection được tạo ra trong khi 4 thằng đang
-                 *  chờ, vì vậy phương thức này phải đặt ở trạng thái synchronized, thằng nào chờ trc thì thằng đó hưởng.
-                 *  Nếu connection hiện có đã bằng maxConnetion thì hàm này không xảy ra gì cả
-                 */
-                createNewConnection();
 
             } catch (InterruptedException e) {
 
@@ -209,7 +208,7 @@ public class ConnectionPool {
 
             //  Lỗi thì in ra màn hình cho biết lỗi là gì và địa chỉ của class để dễ dàng fix
             System.out.println("Không thể tạo nối đến cơ sở dữ liệu");
-            System.out.println("Địa chỉ lỗi: connectionDatabase/ConnectionPool line 191");
+            System.out.println("Địa chỉ lỗi: connectionDatabase/ConnectionPool line 190");
             e.printStackTrace();
 
         }
