@@ -1,16 +1,23 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 9:10 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Quản lý khách hàng</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>TVTSHOP ADMIN | Quản lý nhân viên giao hàng</title>
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
 
-    <link rel="stylesheet" href="../../css/quanLyKhachHangAdmin.css">
+    <link rel="stylesheet" href="../../css/quanLyNVGHAdmin.css">
 
 
 </head>
@@ -45,9 +52,10 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li class="activelv2"><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao
+                        hàng</a></li>
                     <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li class="activelv2"><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
+                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
                     </li>
                 </ul>
                 <input type="checkbox" style="display: none;" checked>
@@ -152,7 +160,7 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -162,7 +170,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -172,7 +180,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../../img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -182,7 +190,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -192,7 +200,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../../img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -202,7 +210,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../../img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -212,7 +220,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -222,7 +230,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -232,7 +240,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../../img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -242,7 +250,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -252,7 +260,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../../img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -262,7 +270,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../../img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -278,7 +286,7 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                    <img src="../../img/product/avatar7.jpg" alt="">
                 </div>
                 <div>
                     <h3>Nguyễn Thị Hoa Hồng</h3>
@@ -302,6 +310,7 @@
                             <option value="" selected>Ngày tạo</option>
                             <option value="">Họ và tên</option>
                             <option value="">Tài khoản</option>
+                            <option value="">Lương</option>
                             <option value="">Kích hoạt</option>
                             <option value="">Đánh giá</option>
                         </select>
@@ -321,7 +330,7 @@
                         </div>
                     </div>
                     <div class="leftnextpage">
-                        <p>Hiển thị <strong> 10 </strong> trên tổng 95 khách hàng</p>
+                        <p>Hiển thị <strong> 10 </strong> trên tổng 93 nhân viên</p>
                         <button><i class="fa fa-caret-left"></i></button>
                         <ul>
                             <li>1</li>
@@ -334,7 +343,7 @@
                         </ul>
                         <button><i class="fa fa-caret-right"></i></button>
                     </div>
-                    <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
+                    <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm nhân viên mới</button>
                     <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                 </div>
                 <div class="maindiv2" id="maindiv2">
@@ -344,8 +353,7 @@
                         <p>Email</p>
                         <p>Số điện thoại</p>
                         <p>Tài khoản</p>
-                        <p>Kích hoạt</p>
-                        <p>Đánh giá</p>
+                        <p>Lương</p>
                         <p>Ngày tạo</p>
                     </div>
 
@@ -354,7 +362,7 @@
                             <input type="checkbox" name="" id="c1">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/user.jpg" alt="">
+                            <img src="../../img/user.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Nguyễn Thị Hoa Hồng
@@ -372,28 +380,8 @@
                             iamarose258
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">10,000,000 VND</p>
 
                         <p class="itemdate">
                             20 Tháng Hai 2020
@@ -418,7 +406,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
                                     <div>
-                                        <img src="/tvtShop/img/user.jpg" alt="">
+                                        <img src="../../img/user.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -455,17 +443,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Hưng Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Quận Đại Nam</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Góm Đỏ</option>
                                         </select>
                                     </div>
                                 </div>
@@ -486,6 +481,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="10,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Thiên hạ tồn vong, đóng gói cũng như thế">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -499,7 +505,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar1.jpg" alt="">
+                            <img src="../../img/product/avatar1.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Diệu Đặng
@@ -517,28 +523,8 @@
                             dieudangmuado
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">10,500,000 VND</p>
 
                         <p class="itemdate">
                             20 Tháng Hai 2020
@@ -562,7 +548,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput2').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -598,17 +584,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="" selected>Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Đa Lộc</option>
                                         </select>
                                     </div>
                                 </div>
@@ -629,6 +622,16 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="10,500,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây" value="Xin chào!">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -642,7 +645,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar3.jpg" alt="">
+                            <img src="../../img/product/avatar3.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Cao Mỹ Duyên
@@ -660,28 +663,8 @@
                             mua20conga
                         </p>
 
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">11,000,000 VND</p>
 
                         <p class="itemdate">
                             20 Tháng Hai 2020
@@ -705,7 +688,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput3').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../../img/product/avatar3.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -741,17 +724,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="" selected>Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Xuân Lãnh</option>
                                         </select>
                                     </div>
                                 </div>
@@ -772,6 +762,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="11,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Yêu công việc và gia đình">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -785,7 +786,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                            <img src="../../img/product/avatar2.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Nguyễn Văn A
@@ -803,28 +804,8 @@
                             tuidimuadonva
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">9,000,000 VND</p>
 
                         <p class="itemdate">
                             19 Tháng Hai 2020
@@ -849,7 +830,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput4').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -885,17 +866,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Sông Cầu</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Bắc Nam</option>
                                         </select>
                                     </div>
                                 </div>
@@ -916,6 +904,16 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="9,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -929,7 +927,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar4.jpg" alt="">
+                            <img src="../../img/product/avatar4.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Lưu Văn An
@@ -947,28 +945,8 @@
                             tuilaanhehe
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">6,000,000 VND</p>
 
                         <p class="itemdate">
                             18 Tháng Hai 2020
@@ -993,7 +971,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput5').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1029,17 +1007,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Thị Trấn La Hai</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1060,6 +1045,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="6,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Bình lặng giữa đời">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1072,7 +1068,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar5.jpg" alt="">
+                            <img src="../../img/product/avatar5.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Khương Hồng Nhan
@@ -1090,28 +1086,8 @@
                             tukhuyetlacuata
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">7,000,000 VND</p>
 
                         <p class="itemdate">
                             18 Tháng Hai 2020
@@ -1136,7 +1112,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput6').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../../img/product/avatar5.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1172,17 +1148,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>TP Hồ Chí Minh</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="" selected>Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Quận Thủ Đức</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Phường Linh trung</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1203,6 +1186,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="7,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Xinh đẹp như tên">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1216,7 +1210,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/product/avatar6.jpg" alt="">
+                            <img src="../../img/product/avatar6.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Trần Phương Trang
@@ -1234,28 +1228,8 @@
                             trangtranxinhgai
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">8,000,000 VND</p>
 
                         <p class="itemdate">
                             18 Tháng Hai 2020
@@ -1280,7 +1254,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput7').click()">
                                     <div>
-                                        <img src="/tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../../img/product/avatar6.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1317,17 +1291,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Vĩnh Long</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="" selected>Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Sa Đét</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Đồng Cau</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1348,6 +1329,16 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="8,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1361,7 +1352,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/khbl1.jpg" alt="">
+                            <img src="../../img/khbl1.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Nguyễn Văn Huấn
@@ -1379,28 +1370,8 @@
                             iamahuanrose123
                         </p>
 
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">8,500,000 VND</p>
 
                         <p class="itemdate">
                             18 Tháng Hai 2020
@@ -1425,7 +1396,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput8').click()">
                                     <div>
-                                        <img src="/tvtShop/img/khbl1.jpg" alt="">
+                                        <img src="../../img/khbl1.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1461,17 +1432,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="" selected>Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Phú Mỡ</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1492,6 +1470,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="8,500,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Có làm mới có ăn">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1505,7 +1494,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/user.jpg" alt="">
+                            <img src="../../img/user.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Lê Mỹ Duyên
@@ -1523,28 +1512,8 @@
                             tuilamyduyenok
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">9,300,000 VND</p>
 
                         <p class="itemdate">
                             17 Tháng Hai 2020
@@ -1569,7 +1538,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput9').click()">
                                     <div>
-                                        <img src="/tvtShop/img/user.jpg" alt="">
+                                        <img src="../../img/user.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1605,17 +1574,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Kì Lộ</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1636,6 +1612,16 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="9,300,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1649,7 +1635,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/khbl2.jpg" alt="">
+                            <img src="../../img/khbl2.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Nguyễn Hữu Đa
@@ -1667,28 +1653,8 @@
                             damcathegioi
                         </p>
 
-                        <div class="tableitemicon khonghoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">9,000,000 VND</p>
 
                         <p class="itemdate">
                             17 Tháng Hai 2020
@@ -1713,7 +1679,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput10').click()">
                                     <div>
-                                        <img src="/tvtShop/img/khbl2.jpg" alt="">
+                                        <img src="../../img/khbl2.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1750,17 +1716,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="" selected>Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyệt Đồng Xuân</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>TP Tuy Hòa</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1781,6 +1754,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="9,000,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Phải tôi, tôi đấm cho mấy phát">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1794,7 +1778,7 @@
                             <input type="checkbox" name="" id="">
                         </label>
                         <div class="itemhdd">
-                            <img src="/tvtShop/img/khbl3.jpg" alt="">
+                            <img src="../../img/khbl3.jpg" alt="">
                         </div>
                         <p class="itemname">
                             Nguyễn Văn B
@@ -1812,28 +1796,8 @@
                             abcheyboyvip
                         </p>
 
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+                        <div></div>
+                        <p class="luong">10,300,000 VND</p>
 
                         <p class="itemdate">
                             16 Tháng Hai 2020
@@ -1858,7 +1822,7 @@
                                        onchange="loadIMG2(event,this)"/>
                                 <div class="div11daidien" onclick="document.getElementById('fileInput11').click()">
                                     <div>
-                                        <img src="/tvtShop/img/khbl3.jpg" alt="">
+                                        <img src="../../img/khbl3.jpg" alt="">
                                     </div>
                                 </div>
 
@@ -1894,17 +1858,24 @@
                                 <div class="linediv12"></div>
                                 <div class="trangthai">
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
+                                        <label for="">Tỉnh / Thành</label>
                                         <select name="" id="">
-                                            <option value="">Đã kích hoạt</option>
-                                            <option value="">Chưa kích hoạt</option>
+                                            <option value="">Chọn tỉnh / thành</option>
+                                            <option value="" selected>Phú Yên</option>
                                         </select>
                                     </div>
                                     <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
+                                        <label for="">Quận / huyện</label>
                                         <select name="" id="">
-                                            <option value="">Cho phép đánh giá</option>
-                                            <option value="">Cấm đánh giá</option>
+                                            <option value="">Chọn quận / huyện</option>
+                                            <option value="" selected>Huyện Tuy An</option>
+                                        </select>
+                                    </div>
+                                    <div class="div12inputlv2">
+                                        <label for="">Phường / xã</label>
+                                        <select name="" id="">
+                                            <option value="">Chọn phường / xã</option>
+                                            <option value="" selected>Xã Lưu Ly</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1925,6 +1896,17 @@
                             </div>
 
                             <div class="div13">
+                                <div class="div12input">
+                                    <label for="">* Lương</label>
+                                    <input type="text" placeholder="Nhập lương ở đây" value="10,300,000">
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">Giới thiệu</label>
+                                    <input type="text" placeholder="Nhập số giới thiệu ở đây"
+                                           value="Xin chào, tôi là Nguyễn Văn B">
+                                </div>
+                                <div class="linediv12"></div>
                                 <button><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
@@ -1944,7 +1926,7 @@
                     <input id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event,this)"/>
                     <div class="div11daidien" onclick="document.getElementById('fileInput12').click()">
                         <div>
-                            <img src="/tvtShop/img/user.jpg" alt="">
+                            <img src="../../img/user.jpg" alt="">
                         </div>
                     </div>
 
@@ -1977,17 +1959,21 @@
                     <div class="linediv12"></div>
                     <div class="trangthai">
                         <div class="div12inputlv2">
-                            <label for="">Trạng thái kích hoạt</label>
+                            <label for="">Tỉnh / Thành</label>
                             <select name="" id="">
-                                <option value="">Đã kích hoạt</option>
-                                <option value="">Chưa kích hoạt</option>
+                                <option value="">Chọn tỉnh / thành</option>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Trạng thái đánh giá</label>
+                            <label for="">Quận / huyện</label>
                             <select name="" id="">
-                                <option value="">Cho phép đánh giá</option>
-                                <option value="">Cấm đánh giá</option>
+                                <option value="">Chọn quận / huyện</option>
+                            </select>
+                        </div>
+                        <div class="div12inputlv2">
+                            <label for="">Phường / xã</label>
+                            <select name="" id="">
+                                <option value="">Chọn phường / xã</option>
                             </select>
                         </div>
                     </div>
@@ -2007,7 +1993,17 @@
                 </div>
 
                 <div class="div13">
-                    <button><i class="fa fa-plus"></i>Thêm khách hàng</button>
+                    <div class="div12input">
+                        <label for="">* Lương</label>
+                        <input type="text" placeholder="Nhập lương ở đây">
+                    </div>
+                    <div class="linediv12"></div>
+                    <div class="div12input">
+                        <label for="">Giới thiệu</label>
+                        <input type="text" placeholder="Nhập số giới thiệu ở đây">
+                    </div>
+                    <div class="linediv12"></div>
+                    <button><i class="fa fa-plus"></i>Thêm nhân viên</button>
                     <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                 </div>
             </div>
@@ -2024,4 +2020,4 @@
 
 </html>
 
-<script src="../../js/quanLyKhachHangAdmin.js"></script>
+<script src="../../js/quanLyNVGHAdmin.js"></script>

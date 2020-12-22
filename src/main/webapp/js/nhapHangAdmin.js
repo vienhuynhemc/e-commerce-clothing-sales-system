@@ -163,7 +163,7 @@ function nhaphang() {
     div1.appendChild(label);
     let div2 = document.createElement("div");
     let img = document.createElement("img");
-    img.src = "/tvtShop/img/product/pro10.webp";
+    img.src = "../img/product/pro6.webp";
     div2.classList.add("hinhsanpham");
     div2.appendChild(img);
     div1.appendChild(div2);

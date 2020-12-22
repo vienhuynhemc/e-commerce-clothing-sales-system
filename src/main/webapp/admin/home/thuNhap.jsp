@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 9:11 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Thu nhập</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../..//fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
@@ -152,7 +159,7 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../..//img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -162,7 +169,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../..//img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -172,7 +179,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../..//img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -182,7 +189,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../..//img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -192,7 +199,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../..//img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -202,7 +209,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../..//img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -212,7 +219,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../..//img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -222,7 +229,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../..//img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -232,7 +239,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../..//img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -242,7 +249,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../..//img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -252,7 +259,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../..//img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -262,7 +269,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../..//img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -278,7 +285,7 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                    <img src="../..//img/product/avatar7.jpg" alt="">
                 </div>
                 <div>
                     <h3>Nguyễn Thị Hoa Hồng</h3>
@@ -350,21 +357,21 @@
                         <p class="thu">#DH4004</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/product/pro5.webp" alt="">
+                                <img src="../../img/product/pro5.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro2.webp" alt="">
+                                <img src="../../img/product/pro2.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro3.webp" alt="">
+                                <img src="../../img/product/pro3.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro3.webp" alt="">
+                                <img src="../../img/product/pro3.webp" alt="">
                             </div>
                             <div class="otherdiv">
                                 <div></div>
                                 <p>+5</p>
-                                <img src="/tvtShop/img/product/pro14.webp" alt="">
+                                <img src="../../img/product/pro14.webp" alt="">
                             </div>
                         </div>
                         <p>10</p>
@@ -379,21 +386,21 @@
                         <p class="chi">#PH1004</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/product/pro7.webp" alt="">
+                                <img src="../../img/product/pro7.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro8.webp" alt="">
+                                <img src="../../img/product/pro8.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro9.webp" alt="">
+                                <img src="../../img/product/pro9.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro10.webp" alt="">
+                                <img src="../../img/product/pro10.webp" alt="">
                             </div>
                             <div class="otherdiv">
                                 <div></div>
                                 <p>+7</p>
-                                <img src="/tvtShop/img/product/pro13.webp" alt="">
+                                <img src="../../img/product/pro13.webp" alt="">
                             </div>
                         </div>
                         <p>11</p>
@@ -408,10 +415,10 @@
                         <p class="thu">#DH4003</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/do/nu/nu/spn1.webp" alt="">
+                                <img src="../../img/do/nu/nu/spn1.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nu/nu/spn2.webp" alt="">
+                                <img src="../../img/do/nu/nu/spn2.webp" alt="">
                             </div>
                         </div>
                         <p>2</p>
@@ -426,13 +433,13 @@
                         <p class="thu">#DH4002</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/do/nu/nu/spn15.webp" alt="">
+                                <img src="../../img/do/nu/nu/spn15.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nu/nu/spn14.webp" alt="">
+                                <img src="../../img/do/nu/nu/spn14.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nu/nu/spn13.webp" alt="">
+                                <img src="../../img/do/nu/nu/spn13.webp" alt="">
                             </div>
                         </div>
                         <p>3</p>
@@ -447,21 +454,21 @@
                         <p class="chi">#PH1003</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/do/nam/1.jpg" alt="">
+                                <img src="../../img/do/nam/1.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nam/2.jpg" alt="">
+                                <img src="../../img/do/nam/2.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nam/3.jpg" alt="">
+                                <img src="../../img/do/nam/3.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nam/4.jpg" alt="">
+                                <img src="../../img/do/nam/4.jpg" alt="">
                             </div>
                             <div class="otherdiv">
                                 <div></div>
                                 <p>+3</p>
-                                <img src="/tvtShop/img/do/nam/5.jpg" alt="">
+                                <img src="../../img/do/nam/5.jpg" alt="">
                             </div>
                         </div>
                         <p>7</p>
@@ -476,10 +483,10 @@
                         <p class="chi">#PH1002</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/do/nam/6.jpg" alt="">
+                                <img src="../../img/do/nam/6.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nam/7.jpg" alt="">
+                                <img src="../../img/do/nam/7.jpg" alt="">
                             </div>
                         </div>
                         <p>2</p>
@@ -494,16 +501,16 @@
                         <p class="thu">#DH4001</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/product/pro7.webp" alt="">
+                                <img src="../../img/product/pro7.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro1.webp" alt="">
+                                <img src="../../img/product/pro1.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro10.webp" alt="">
+                                <img src="../../img/product/pro10.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro12.webp" alt="">
+                                <img src="../../img/product/pro12.webp" alt="">
                             </div>
                         </div>
                         <p>4</p>
@@ -518,7 +525,7 @@
                         <p class="thu">#DH4000</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/product/pro13.webp" alt="">
+                                <img src="../../img/product/pro13.webp" alt="">
                             </div>
                         </div>
                         <p>1</p>
@@ -533,13 +540,13 @@
                         <p class="thu">#DH3999</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/do/nu/11.jpg" alt="">
+                                <img src="../../img/do/nu/11.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nu/13.jpg" alt="">
+                                <img src="../../img/do/nu/13.jpg" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/do/nu/8.jpg" alt="">
+                                <img src="../../img/do/nu/8.jpg" alt="">
                             </div>
                         </div>
                         <p>3</p>
@@ -554,21 +561,21 @@
                         <p class="chi">#PH1001</p>
                         <div class="hinhanh">
                             <div>
-                                <img src="/tvtShop/img/product/pro5.webp" alt="">
+                                <img src="../../img/product/pro5.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro2.webp" alt="">
+                                <img src="../../img/product/pro2.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro3.webp" alt="">
+                                <img src="../../img/product/pro3.webp" alt="">
                             </div>
                             <div>
-                                <img src="/tvtShop/img/product/pro3.webp" alt="">
+                                <img src="../../img/product/pro3.webp" alt="">
                             </div>
                             <div class="otherdiv">
                                 <div></div>
                                 <p>+2</p>
-                                <img src="/tvtShop/img/product/pro14.webp" alt="">
+                                <img src="../../img/product/pro14.webp" alt="">
                             </div>
                         </div>
                         <p>6</p>
@@ -612,29 +619,29 @@
             <div class="div12">
                 <div class="div12item">
                     <div>
-                        <img src="img/icon-5.png" alt="">
+                        <img src="../img/icon-5.png" alt="">
                         <p>Thu nhập từ bán hàng</p>
                     </div>
                     <h3 class="thu">+ 93,495,000 VND</h3>
-                    <img src="img/bd1.png" alt="">
+                    <img src="../img/bd1.png" alt="">
                 </div>
 
                 <div class="div12item">
                     <div>
-                        <img src="img/icon-6.png" alt="">
+                        <img src="../img/icon-6.png" alt="">
                         <p>Chi tiêu nhập hàng</p>
                     </div>
                     <h3 class="chi">- 82,500,000 VND</h3>
-                    <img src="img/bd2.png" alt="">
+                    <img src="../img/bd2.png" alt="">
                 </div>
 
                 <div class="div12item">
                     <div>
-                        <img src="img/icon-8.png" alt="">
+                        <img src="../img/icon-8.png" alt="">
                         <p>Lợi nhuận</p>
                     </div>
                     <h3 class="thu">+ 10,995,000 VND</h3>
-                    <img src="img/bd3.png" alt="">
+                    <img src="../img/bd3.png" alt="">
                 </div>
             </div>
 

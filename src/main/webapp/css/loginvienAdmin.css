@@ -40,7 +40,7 @@ button {
     width: 40%;
     height: 100%;
     left: 60%;
-    background-image: url("../../tvtShop/img/qc2.jpg");
+    background-image: url("../img/qc2.jpg");
     background-size: cover;
     z-index: 3;
 }

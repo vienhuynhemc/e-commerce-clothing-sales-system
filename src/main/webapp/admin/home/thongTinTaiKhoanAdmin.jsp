@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 9:11 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Tài khoản nhân viên giao hàng</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>TVTSHOP ADMIN | Tài khoản Admin</title>
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
 
-    <link rel="stylesheet" href="../../css/thongTinTaiKhoanNVGHAdmin.css">
-    <script src="../../js/thongTinTaiKhoanNVGHAdmin.js"></script>
+    <link rel="stylesheet" href="../../css/thongTinTaiKhoanAdminAdmin.css">
+    <script src="../../js/thongTinTaiKhoanAdminAdmin.js"></script>
 
 </head>
 
@@ -24,19 +31,92 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="indexNVGH.html" class="indexleftselectitem  ">
+            <a href="../index.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
                 </div>
             </a>
-            <a href="quanLyDonHangNVGH.html" class="indexleftselectitem  ">
+            <a href="thuNhap.html" class="indexleftselectitem  ">
+                <div>
+                    <i class="fa fa-money"></i>
+                    <p>Thu nhập</p>
+                </div>
+            </a>
+            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                 onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitem">
+                    <div>
+                        <i class="fa fa-user-o"></i>
+                        <p>Quản lý tài khoản</p>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul>
+                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a></li>
+                </ul>
+                <input type="checkbox" style="display: none;">
+            </div>
+            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
+                <div>
+                    <i class="fa fa-comment-o"></i>
+                    <p>Quản lý đánh giá</p>
+                </div>
+            </a>
+            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-file-text-o"></i>
                     <p>Quản lý đơn hàng</p>
                 </div>
             </a>
-            <a href="thongTinTaiKhoanNVGH.html" class="indexleftselectitem  ">
+            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                 onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitem">
+                    <div>
+                        <i class="fa fa-object-group"></i>
+                        <p>Nhập hàng</p>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul>
+                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
+                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
+                </ul>
+                <input type="checkbox" style="display: none;">
+            </div>
+            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                 onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitem">
+                    <div>
+                        <i class="fa fa-wpforms"></i>
+                        <p>Quản lý sản phẩm</p>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul>
+                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
+                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                </ul>
+                <input type="checkbox" style="display: none;">
+            </div>
+            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                 onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitem">
+                    <div>
+                        <i class="fa fa-envelope-o"></i>
+                        <p>Liên hệ</p>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <ul>
+                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
+                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
+                </ul>
+                <input type="checkbox" style="display: none;">
+            </div>
+            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
                 <div class="active">
                     <i class="fa fa-user-circle-o"></i>
                     <p>Thông tin tài khoản</p>
@@ -79,27 +159,124 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1022
-                                        </p>
+                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
                                         <p>14:32 - 12/10/2020</p>
                                     </div>
                                 </a>
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1015
-                                        </p>
+                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
                                         <p>14:32 - 12/10/2020</p>
                                     </div>
                                 </a>
                                 <div class="lineindextopbellinforcontentitem"></div>
-
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar3.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar4.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar5.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar6.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar1.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar2.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar3.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar4.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar5.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
+                                <a class="indextopbellinforcontentitem">
+                                    <div>
+                                        <img src="../../img/product/avatar6.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
+                                        <p>14:32 - 12/10/2020</p>
+                                    </div>
+                                </a>
+                                <div class="lineindextopbellinforcontentitem"></div>
                             </div>
                         </div>
                     </div>
@@ -108,11 +285,11 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                    <img src="../../img/product/avatar7.jpg" alt="">
                 </div>
                 <div>
-                    <h3>Nguyễn Đại Sơn</h3>
-                    <p>Nhân viên giao hàng</p>
+                    <h3>Nguyễn Thị Hoa Hồng</h3>
+                    <p>Admin</p>
                 </div>
             </a>
         </div>
@@ -129,8 +306,8 @@
             <div class="div1">
                 <div>
                     <div>
-                        <p>Nguyễn Đại Sơn</p>
-                        <p>Nhân viên giao hàng</p>
+                        <p>Nguyễn Thị Hoa Hồng</p>
+                        <p>Admin</p>
                     </div>
                 </div>
 
@@ -147,7 +324,7 @@
                 </div>
                 <div class="hinhdaidien">
                     <div>
-                        <img src="/tvtShop/img/product/avatar3.jpg" alt="">
+                        <img src="../../img/product/avatar7.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -155,35 +332,47 @@
                 <div class="div121" id="div121">
                     <div>
                         <h3>Giới thiệu: </h3>
-                        <p>Xin chào, tui là một người giao hàng thân thiện đẹp trai provjp :V"</p>
+                        <p>Phải tôi đôi order thêm mấy món, hehe giỡn thôi.<br>Được đảm nhận công việc này tôi cảm
+                            thấy
+                            tôi là một người rất may mắn khi được giao đúng công việc mình yêu thích sau một thời
+                            gian
+                            dài đóng gói và vận chuyển :((</p>
                     </div>
                     <div>
                         <div>
-                            <p>84</p>
+                            <p>370</p>
                             <p>Thao tác đơn hàng</p>
+                        </div>
+                        <div>
+                            <p>42</p>
+                            <p>Số lần nhập hàng</p>
+                        </div>
+                        <div>
+                            <p>4200</p>
+                            <p>Số sản phẩm nhập</p>
                         </div>
                     </div>
                 </div>
                 <div class="div122" id="div122">
                     <div class="div122item">
                         <p>Họ và tên: </p>
-                        <p>Nguyễn Đại Sơn</p>
+                        <p>Nguyễn Thị Hồng</p>
                     </div>
                     <div class="div122item">
                         <p>Email: </p>
-                        <p>daison@gmail.com</p>
+                        <p>nguyenthihoahong@gmail.com</p>
                     </div>
                     <div class="div122item">
                         <p>Số điện thoại: </p>
-                        <p>0833-369-146</p>
+                        <p>0971-122-209</p>
                     </div>
                     <div class="div122item">
                         <p>Tên hiển thị: </p>
-                        <p>Đại Sơn</p>
+                        <p></p>
                     </div>
                     <div class="div122item">
                         <p>Tài khoản: </p>
-                        <p>daisongh</p>
+                        <p>adminhong</p>
                     </div>
                     <div class="div122item">
                         <p>Mật khẩu: </p>
@@ -195,7 +384,7 @@
                     </div>
                     <div class="div122item">
                         <p>Lương: </p>
-                        <p>9,000,000 VND</p>
+                        <p>20,000,000 VND</p>
                     </div>
                 </div>
             </div>
@@ -217,7 +406,7 @@
                                 <div>
                                     <p>5 giây trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1003</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH1003</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
                                     </p>
                                 </div>
                             </div>
@@ -229,7 +418,7 @@
                                 <div>
                                     <p>24 giây trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1002</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH1002</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
                                     </p>
                                 </div>
                             </div>
@@ -241,7 +430,7 @@
                                 <div>
                                     <p>58 giây trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1001</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH1001</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
                                     </p>
                                 </div>
                             </div>
@@ -253,7 +442,7 @@
                                 <div>
                                     <p>1 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1000</strong> có trạng thái <strong>Không Thành Công</strong>
+                                        <strong>DH1000</strong> cho nhân viên kho <strong>Nguyễn Văn B</strong>
                                     </p>
                                 </div>
                             </div>
@@ -265,7 +454,7 @@
                                 <div>
                                     <p>3 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0999</strong> có trạng thái <strong>Không Thành Công</strong>
+                                        <strong>DH0999</strong> cho nhân viên kho <strong>Nguyễn Văn C</strong>
                                     </p>
                                 </div>
                             </div>
@@ -277,7 +466,7 @@
                                 <div>
                                     <p>12 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0998</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0998</strong> cho nhân viên kho <strong>Nguyễn Văn D</strong>
                                     </p>
                                 </div>
                             </div>
@@ -289,7 +478,7 @@
                                 <div>
                                     <p>14 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0997</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0997</strong> cho nhân viên kho <strong>Nguyễn Văn E</strong>
                                     </p>
                                 </div>
                             </div>
@@ -301,7 +490,7 @@
                                 <div>
                                     <p>17 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0996</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0996</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
                                     </p>
                                 </div>
                             </div>
@@ -313,7 +502,7 @@
                                 <div>
                                     <p>22 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0995</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0995</strong> cho nhân viên kho <strong>Nguyễn Văn B</strong>
                                     </p>
                                 </div>
                             </div>
@@ -325,7 +514,7 @@
                                 <div>
                                     <p>42 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0994</strong> có trạng thái <strong>Không Thành Công</strong>
+                                        <strong>DH0994</strong> cho nhân viên kho <strong>Nguyễn Văn E</strong>
                                     </p>
                                 </div>
                             </div>
@@ -337,7 +526,7 @@
                                 <div>
                                     <p>58 phút trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0993</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0993</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
                                     </p>
                                 </div>
                             </div>
@@ -349,7 +538,7 @@
                                 <div>
                                     <p>1 giờ trước</p>
                                     <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0992</strong> có trạng thái <strong>Thành Công</strong>
+                                        <strong>DH0992</strong> cho nhân viên kho <strong>Nguyễn Văn D</strong>
                                     </p>
                                 </div>
                             </div>
@@ -366,7 +555,7 @@
                     <input id="fileInput1" type="file" style="display:none;" onchange="loadIMG2(event,this)"/>
                     <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
                         <div>
-                            <img src="/tvtShop/img/product/avatar3.jpg" alt="">
+                            <img src="../../img/product/avatar7.jpg" alt="">
                         </div>
                     </div>
 
@@ -383,19 +572,20 @@
                     <div class="linediv12"></div>
                     <div class="div12input">
                         <label for="">* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây" value="Nguyễn Đại Sơn">
+                        <input type="text" placeholder="Nhập họ và tên ở đây" value="Nguyễn Thị Hoa Hồng">
                     </div>
                     <div class="div12input">
                         <label for="">Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="Đại Sơn">
+                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="">
                     </div>
                     <div class="div12input">
                         <label for="">* Email</label>
-                        <input type="text" placeholder="Nhập email ở đây" value="daison@gmail.com" disabled>
+                        <input type="text" placeholder="Nhập email ở đây" value="nguyenthihoahong@gmail.com"
+                               disabled>
                     </div>
                     <div class="div12input">
                         <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0833-369-146" disabled>
+                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209" disabled>
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
@@ -424,7 +614,7 @@
                     <div class="linediv12"></div>
                     <div class="div12input">
                         <label for="">* Tài khoản</label>
-                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="daisongh" disabled>
+                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="adminhong" disabled>
                     </div>
                     <div class="div12input">
                         <label for="">* Mật khẩu</label>
@@ -439,13 +629,14 @@
                 <div class="div13">
                     <div class="div12input">
                         <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây" value="9,000,000">
+                        <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12input">
                         <label for="">Giới thiệu</label>
                         <input type="text" placeholder="Nhập số giới thiệu ở đây"
-                               value="Xin chào, tui là một người giao hàng thân thiện đẹp trai provjp :V">
+                               value="Phải tôi đôi order thêm mấy món, hehe giỡn thôi.
+                                Được đảm nhận công việc này tôi cảm thấy tôi là một người rất may mắn khi được giao đúng công việc mình yêu thích sau một thời gian dài đóng gói và vận chuyển :((">
                     </div>
                     <div class="linediv12"></div>
                     <button><i class="fa fa-save"></i>Lưu</button>

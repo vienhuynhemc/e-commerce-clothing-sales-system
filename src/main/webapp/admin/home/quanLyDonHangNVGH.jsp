@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 9:01 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý đơn hàng - NVGH</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
@@ -79,7 +86,7 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1022
@@ -90,7 +97,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1015
@@ -108,7 +115,7 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                    <img src="../../img/product/avatar3.jpg" alt="">
                 </div>
                 <div>
                     <h3>Nguyễn Đại Sơn</h3>
@@ -166,7 +173,7 @@
                     <div id="listleftitem">
                         <div class="leftitem" onclick="changerightdonhang(this)">
                             <div>
-                                <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                <img src="../../img/product/avatar2.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn A</p>
@@ -215,7 +222,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro2.webp" alt="">
+                                                        <img src="../../img/product/pro2.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -266,7 +273,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro3.webp" alt="">
+                                                        <img src="../../img/product/pro3.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -317,7 +324,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro5.webp" alt="">
+                                                        <img src="../../img/product/pro5.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -368,7 +375,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro4.webp" alt="">
+                                                        <img src="../../img/product/pro4.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -424,7 +431,7 @@
                                 <div class="nguoimua">
                                     <h3>Người đặt</h3>
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <p>Nguyễn Văn A</p>
                                     <p><strong>Email: </strong>nguyena@gmail.com</p>
@@ -435,7 +442,7 @@
                                 <div class="nguoimua">
                                     <h3>Người đóng gói</h3>
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <p>Nguyễn Văn Đa</p>
                                     <p><strong>Email: </strong>danguyen@gmail.com</p>
@@ -446,7 +453,7 @@
                                 <div class="nguoimua">
                                     <h3>Người giao hàng</h3>
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <p>Xuân Thanh</p>
                                     <p><strong>Email: </strong>xuanthanh@gmail.com</p>
@@ -485,7 +492,7 @@
                         </div>
                         <div class="leftitem" onclick="changerightdonhang(this)">
                             <div>
-                                <img src="../tvtShop/img/user.jpg" alt="">
+                                <img src="../../img/user.jpg" alt="">
                             </div>
                             <div>
                                 <p>Từ Khuyết</p>
@@ -534,7 +541,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro2.webp" alt="">
+                                                        <img src="../../img/product/pro2.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -585,7 +592,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro3.webp" alt="">
+                                                        <img src="../../img/product/pro3.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -636,7 +643,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro5.webp" alt="">
+                                                        <img src="../../img/product/pro5.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -687,7 +694,7 @@
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../tvtShop/img/product/pro4.webp" alt="">
+                                                        <img src="../../img/product/pro4.webp" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
@@ -743,7 +750,7 @@
                                 <div class="nguoimua">
                                     <h3>Người đặt</h3>
                                     <div>
-                                        <img src="../tvtShop/img/user.jpg" alt="">
+                                        <img src="../../img/user.jpg" alt="">
                                     </div>
                                     <p>Từ Khuyết</p>
                                     <p><strong>Email: </strong>nguyena@gmail.com</p>
@@ -754,7 +761,7 @@
                                 <div class="nguoimua">
                                     <h3>Người đóng gói</h3>
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <p>Nguyễn Văn Đa</p>
                                     <p><strong>Email: </strong>danguyen@gmail.com</p>
@@ -765,7 +772,7 @@
                                 <div class="nguoimua">
                                     <h3>Người giao hàng</h3>
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <p>Xuân Thanh</p>
                                     <p><strong>Email: </strong>xuanthanh@gmail.com</p>

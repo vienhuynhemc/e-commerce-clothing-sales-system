@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 8:36 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Trang chủ nhân viên giao hàng</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>TVTSHOP ADMIN | Trang chủ nhân viên kho</title>
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <link rel="stylesheet" href="../../css/trangchuAdmin.css">
@@ -22,19 +29,19 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="indexNVGH.html" class="indexleftselectitem  ">
+            <a href="indexNVK.html" class="indexleftselectitem  ">
                 <div class="active">
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
                 </div>
             </a>
-            <a href="quanLyDonHangNVGH.html" class="indexleftselectitem  ">
+            <a href="quanLyDonHangNVK.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-file-text-o"></i>
                     <p>Quản lý đơn hàng</p>
                 </div>
             </a>
-            <a href="thongTinTaiKhoanNVGH.html" class="indexleftselectitem  ">
+            <a href="thongTinTaiKhoanNVK.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-user-circle-o"></i>
                     <p>Thông tin tài khoản</p>
@@ -77,10 +84,10 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar7.jpg" alt="">
                                     </div>
                                     <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1022
+                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1021
                                         </p>
                                         <p>14:32 - 12/10/2020</p>
                                     </div>
@@ -88,16 +95,15 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar7.jpg" alt="">
                                     </div>
                                     <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1015
+                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1014
                                         </p>
                                         <p>14:32 - 12/10/2020</p>
                                     </div>
                                 </a>
                                 <div class="lineindextopbellinforcontentitem"></div>
-
                             </div>
                         </div>
                     </div>
@@ -106,11 +112,11 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                    <img src="../../img/product/avatar2.jpg" alt="">
                 </div>
                 <div>
-                    <h3>Nguyễn Đại Sơn</h3>
-                    <p>Nhân viên giao hàng</p>
+                    <h3>Nguyễn Hữu Đa</h3>
+                    <p>Nhân viên kho</p>
                 </div>
             </a>
         </div>
@@ -214,7 +220,7 @@
                     <div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                <img src="../../img/product/avatar1.jpg" alt="">
                             </div>
                             <div>
                                 <p>Diệu Đặng</p>
@@ -226,7 +232,7 @@
                         <div class="div22line"></div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                <img src="../../img/product/avatar2.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn A</p>
@@ -238,7 +244,7 @@
                         <div class="div22line"></div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                <img src="../../img/product/avatar3.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn B</p>
@@ -250,7 +256,7 @@
                         <div class="div22line"></div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                <img src="../../img/product/avatar4.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn D</p>
@@ -262,7 +268,7 @@
                         <div class="div22line"></div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                <img src="../../img/product/avatar5.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn E</p>
@@ -274,7 +280,7 @@
                         <div class="div22line"></div>
                         <div class="div22item">
                             <div>
-                                <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                <img src="../../img/product/avatar6.jpg" alt="">
                             </div>
                             <div>
                                 <p>Nguyễn Văn F</p>

@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 8:38 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVT SHOP ADMIN | Đăng nhập</title>
 
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/loginvienAdmin.css">
 
     <script src="../../js/dangnhapAdmin.js"></script>
@@ -90,14 +97,14 @@
         <p>Hệ thống đã gửi <span>liên kết kích hoạt tài khoản</span> đến <span>email</span> của bạn. Đề nghị bạn hãy
             kiểm tra <span>email</span> và <span>mở liên kết
                     kích hoạt tài khoản</span> để hoàn tất việc đăng ký.</p>
-        <img src="../tvtShop/img/Daco_287580.png" class="logosuccess" alt="">
+        <img src="../../img/Daco_287580.png" class="logosuccess" alt="">
         <button onclick="completesuccess()">Đăng nhập</button>
         <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
     </div>
     <div class="contentsuccess" id="notifi2">
         <h3>Lấy lại mật khẩu thành công!</h3>
         <p>Chúc mừng bạn đã lấy lại mật khẩu thành công, bây giờ hãy đăng nhập và cùng mua sắm với chung tôi nào</p>
-        <img src="../tvtShop/img/Daco_287580.png" class="logosuccess" alt="">
+        <img src="../../img/Daco_287580.png" class="logosuccess" alt="">
         <button onclick="completesuccess()">Đăng nhập</button>
         <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
     </div>

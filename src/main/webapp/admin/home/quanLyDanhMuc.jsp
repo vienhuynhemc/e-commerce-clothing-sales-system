@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 9:00 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý danh mục</title>
-    <link rel="stylesheet" href="../tvtShop/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
@@ -153,7 +161,7 @@
                             <div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -163,7 +171,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -173,7 +181,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../../img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -183,7 +191,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -193,7 +201,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../../img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -203,7 +211,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../../img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -213,7 +221,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar1.jpg" alt="">
+                                        <img src="../../img/product/avatar1.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
@@ -223,7 +231,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar2.jpg" alt="">
+                                        <img src="../../img/product/avatar2.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
@@ -233,7 +241,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar3.jpg" alt="">
+                                        <img src="../../img/product/avatar3.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
@@ -243,7 +251,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar4.jpg" alt="">
+                                        <img src="../../img/product/avatar4.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
@@ -253,7 +261,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar5.jpg" alt="">
+                                        <img src="../../img/product/avatar5.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
@@ -263,7 +271,7 @@
                                 <div class="lineindextopbellinforcontentitem"></div>
                                 <a class="indextopbellinforcontentitem">
                                     <div>
-                                        <img src="../tvtShop/img/product/avatar6.jpg" alt="">
+                                        <img src="../../img/product/avatar6.jpg" alt="">
                                     </div>
                                     <div>
                                         <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
@@ -279,7 +287,7 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../tvtShop/img/product/avatar7.jpg" alt="">
+                    <img src="../../img/product/avatar7.jpg" alt="">
                 </div>
                 <div>
                     <h3>Nguyễn Thị Hoa Hồng</h3>

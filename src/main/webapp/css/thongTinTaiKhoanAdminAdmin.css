@@ -16,7 +16,7 @@
 .div1 > div:nth-child(1) {
     width: 344px;
     height: 200px;
-    background-image: url("../img/profile-bg.jpg");
+    background-image: url("../admin/img/profile-bg.jpg");
     background-size: cover;
 }
 

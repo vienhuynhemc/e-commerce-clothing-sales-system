@@ -27,26 +27,35 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Mail pool + check mail index, contact. Đã test 100%">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Index html -&gt; jsp">
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/payment_policy.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/payment_policy.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/shopping-guide.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/shopping-guide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/chooseSize.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/contact.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/detailsProduct.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/guarantee.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/informationOrder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/membership_policy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/payment_policy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/product.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/product2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/shopping_guide.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/chitietsanpham.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/chitietsanpham.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/shopgui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/shopgui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/guiEmailThongBao.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVGH.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/lichSuNhapHang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/nhapHang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/phanHoiLienHe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLySanPham.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinDonHangThuNhap.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinLichSuNhapHangThuNhap.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVGH.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/loginvienAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/loginvienAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanAdminAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanAdminAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/nhapHangAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/nhapHangAdmin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,15 +118,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -215,7 +222,8 @@
       <workItem from="1608606906954" duration="5099000" />
       <workItem from="1608612232250" duration="331000" />
       <workItem from="1608621828972" duration="3960000" />
-      <workItem from="1608636509338" duration="3070000" />
+      <workItem from="1608636509338" duration="7631000" />
+      <workItem from="1608648468637" duration="703000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -294,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608612472186</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Index html -&gt; jsp">
+      <created>1608639766501</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608639766501</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +339,8 @@
     <MESSAGE value="Email singleton" />
     <MESSAGE value="Mail pool + check mail" />
     <MESSAGE value="Mail pool + check mail index, contact. Đã test 100%" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mail pool + check mail index, contact. Đã test 100%" />
+    <MESSAGE value="Index html -&gt; jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Index html -&gt; jsp" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
@@ -351,62 +367,62 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="905" height="182" key="GridCell.Tab.0.bottom" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.0.bottom" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.0.center" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.0.center" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.0.left" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.0.left" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.0.right" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.0.right" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
-    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608639626606">
+    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
+    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608646396069">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608639626606" />
+    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
     <state x="184" y="13" key="SettingsEditor" timestamp="1608469739814">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608612550693">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608639772923">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608612550693" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608639772923" />
     <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
