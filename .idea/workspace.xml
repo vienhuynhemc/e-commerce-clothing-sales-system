@@ -27,22 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="update project">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Email singleton">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ltw_thayLong_group5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ltw_thayLong_group5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connectionDatabase/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connectionDatabase/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/Mycard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/Mycard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/about_US.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/about_US.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/cart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/check_orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/checkout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/db.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,13 +91,26 @@
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MailModel">
+  <component name="RunManager" selected="Application.MailDataSource">
     <configuration name="DataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="connectionDatabase.DataSource" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="connectionDatabase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailDataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mail.MailDataSource" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mail.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,13 +131,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -217,6 +219,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MailDataSource" />
         <item itemvalue="Application.MailModel" />
         <item itemvalue="Application.DataSource" />
       </list>
@@ -237,7 +240,8 @@
       <workItem from="1608522688087" duration="6805000" />
       <workItem from="1608547749286" duration="6312000" />
       <workItem from="1608554184359" duration="998000" />
-      <workItem from="1608556884004" duration="10511000" />
+      <workItem from="1608556884004" duration="10847000" />
+      <workItem from="1608606906954" duration="4955000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -295,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608555177915</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Email singleton">
+      <created>1608567655671</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608567655671</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,13 +333,18 @@
     <MESSAGE value="connectionPool class" />
     <MESSAGE value="Hoàn thành connection pool - đã test 100%" />
     <MESSAGE value="update project" />
-    <option name="LAST_COMMIT_MESSAGE" value="update project" />
+    <MESSAGE value="Email singleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email singleton" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="#Project_Structure/0.0.1366.738@0.0.1366.738" timestamp="1608435840263" />
+    <state x="72" y="210" key="#SQL_Dialects" timestamp="1608608288581">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="72" y="210" key="#SQL_Dialects/0.0.1366.738@0.0.1366.738" timestamp="1608608288581" />
     <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608550718762">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -345,62 +361,62 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608567524959">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608611863271">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608567524959">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608611863271" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608611863270">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608567524959">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608611863270">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608567524959">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608611863270">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608567524959" />
-    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608559344778">
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
+    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
-    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608559344762">
+    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
-    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608559344762">
+    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
-    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608559344762">
+    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608559344762" />
-    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608559344778">
+    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608567870733">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
-    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608559344778">
+    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608567870733" />
+    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
-    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608559344778">
+    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
-    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608559344778">
+    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608567870732" />
+    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608567870733">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608559344778" />
+    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608567870733" />
     <state x="184" y="13" key="SettingsEditor" timestamp="1608469739814">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608555183039">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608567665770">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608555183039" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608567665770" />
     <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -409,5 +425,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1608564569940" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1608607813297">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1608607813297" />
   </component>
 </project>
