@@ -25,13 +25,13 @@ function damXanh() {
     document.getElementById("colordpdx").style.display = "block";
     document.getElementById("colordpxn").style.display = "none";
 
-    document.getElementById("doiHinhChinh1").src = "img/product/dp1.webp";
-    document.getElementById("doiHinhChinh2").src = "img/product/dp2.webp";
-    document.getElementById("doiHinhChinh3").src = "img/product/dp3.webp";
-    document.getElementById("doiHinhChinh4").src = "img/product/dp4.webp";
+    document.getElementById("doiHinhChinh1").src = "../img/product/dp1.webp";
+    document.getElementById("doiHinhChinh2").src = "../img/product/dp2.webp";
+    document.getElementById("doiHinhChinh3").src = "../img/product/dp3.webp";
+    document.getElementById("doiHinhChinh4").src = "../img/product/dp4.webp";
 
-    document.getElementById("img1").src = "img/product/dp1.webp";
-    document.getElementById("img2").src = "img/product/dp1.webp";
+    document.getElementById("img1").src = "../img/product/dp1.webp";
+    document.getElementById("img2").src = "../img/product/dp1.webp";
 }
 
 function xanhNhat() {

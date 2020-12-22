@@ -1,61 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 2:25 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TVT Shop | Chính sách đổi trả</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVTShop | Hướng dẫn chọn size</title>
+
 
     <!-- Font awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
     <!-- Top Slider CSS -->
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/trangChu.css">
+    <link rel="stylesheet" href="../css/banner.css">
 
-
-    <link rel="stylesheet" href="css/about.css">
-    <!-- <link rel="stylesheet" href="css/header.css"> -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/banner.css">
-    <link rel="stylesheet" href="css/trangChu.css">
-    <link rel="stylesheet" href="css/payment_policy.css">
-    <script src="js/trangChu.js"></script>
-    <script src="../js"></script>
+    <script src="../js/chooseSize.js"></script>
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-
-
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/chooseSize.css">
 </head>
 
 <body>
-<!-- wpf loader Two -->
 <!-- wpf loader Two -->
 <div id="wpf-loader-two">
     <div class="wpf-loader-two-inner">
@@ -66,12 +58,6 @@
 <!-- SCROLL TOP BUTTON -->
 <a class="scrollToTop movetop" href="#"><i class="fa fa-angle-double-up"></i></a>
 <!-- END SCROLL TOP BUTTON -->
-
-<!-- Start header section -->
-<!-- / header section -->
-<!-- menu -->
-
-<!-- / menu -->
 
 <!-- Start header section -->
 <header id="aa-header">
@@ -113,14 +99,15 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt Nam
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
+                                                Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -155,7 +142,7 @@
                                 <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -175,7 +162,7 @@
                                         <div class="navbar-collapse collapse menuselect">
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
-                                                <li><a href="../index.html" class="">Trang chủ</a></li>
+                                                <li><a href="../index.html">Trang chủ</a></li>
                                                 <li><a href="product.html">Nam<span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="product.html">Áo nam <span
@@ -237,8 +224,9 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/12.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/12.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -247,8 +235,9 @@
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/13.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/13.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -286,15 +275,17 @@
 </header>
 <!-- / header section -->
 
+
+<!-- catg header banner section -->
 <section id="aa-catg-head-banner">
 
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content1">
-                <h2>Chính sách đổi trả</h2>
+                <h2>Hướng dẫn chọn size</h2>
                 <ul class="breadcrumbb">
                     <li><a href="../index.html">Trang chủ</a> <i class="fa fa-angle-double-right"></i></li>
-                    <li>Chính sách đổi trả</li>
+                    <li>Hướng dẫn chọn size</li>
                 </ul>
             </div>
         </div>
@@ -302,15 +293,61 @@
 </section>
 <!-- / catg header banner section -->
 
-<!-- Cart view section -->
 <div class="col-sm-12 divtitle">
-    <h3 class="title titlemain"><span class="red">Chính sách</span> đổi trả</h3>
-    <p class="titilesub">Chúng tôi nhận đổi trả sản phẩm với các quy định sau </p>
-    <img src="img/chinhsachdoitra.jpg" class="img_policy" alt="">
+    <h3 class="title titlemain"><span class="red">Hướng dẫn</span> chọn size</h3>
+    <p class="titilesub">Ở đây bạn khỏi lo vấn đề đồ có vừa với mình hay không</p>
+
+    <div class="selectdiv">
+        <div class="men" id="men" onclick="man()">Dành cho nam</div>
+        <div class="woman" id="woman" onclick="woman()">Dành cho nữ</div>
+    </div>
+
+    <img id="size1" src="../img/size1.jpg" class="img_policy" alt="">
+    <img id="size2" src="../img/size2.jpg" class="img_policy" alt="">
+    <img id="size3" src="../img/size3.jpg" class="img_policy" alt="">
+    <img id="size4" src="../img/size4.jpg" class="img_policy" alt="">
 </div>
 
 
-<!-- Subscribe section -->
+<!-- footer -->
+<div class="chatbox">
+    <div class="iconchatbox" onclick="actionchatbox()">
+        <i class="fa fa-connectdevelop"></i>
+    </div>
+
+    <div class="contentchatbox" id="contentchatbox">
+        <div class="chatboxheader">
+            <div>
+                <i class="fa fa-times" onclick="actionchatbox()"></i>
+            </div>
+            <div>
+                <h3><span style="color:#ff7315">TVT</span> Shop</h3>
+                <p>Thuờng trả lời tin nhắn sau 1 giờ</p>
+            </div>
+        </div>
+
+        <div class="midchatbox">
+            <p class="timechat">12:00 PM</p>
+            <p class="tvtchat">Xin chào!</p>
+            <div class="iconTS"><span style="color:#ff7315">T</span>S</div>
+            <p class="tvtchat">Tôi có thể giúp gì cho bạn ?</p>
+            <p class="userchat">Xin chào!</p>
+        </div>
+        <div class="chatboxfooter">
+            <p>Nhập tin nhắn ở đây...</p>
+            <i class="fa fa-thumbs-o-up"></i>
+        </div>
+
+        <script>
+            function actionchatbox() {
+                let element = document.getElementById("contentchatbox");
+                if (element.classList.contains("actionchatbox")) element.classList.remove("actionchatbox");
+                else element.classList.add("actionchatbox");
+            }
+        </script>
+    </div>
+</div>
+
 <!-- footer -->
 <footer id="aa-footer">
     <!-- footer bottom -->
@@ -330,7 +367,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -353,16 +390,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -378,7 +415,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -408,54 +445,24 @@
     </div>
 </footer>
 <!-- / footer -->
-<!-- Login Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Login or Register</h4>
-                <form class="aa-login-form" action="">
-                    <label for="">Username or Email address<span>*</span></label>
-                    <input type="text" placeholder="Username or email">
-                    <label for="">Password<span>*</span></label>
-                    <input type="password" placeholder="Password">
-                    <button class="aa-browse-btn" type="submit">Login</button>
-                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me
-                    </label>
-                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                    <div class="aa-register-now">
-                        Don't have an account?<a href="account.html">Register now!</a>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
-<!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
-
+<script src="../js/custom.js"></script>
 </body>
 
 </html>

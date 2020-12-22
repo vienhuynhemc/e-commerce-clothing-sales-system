@@ -1,30 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 3:46 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVT SHOP | Đăng nhập</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TVT Shop | Chính sách bảo hành</title>
 
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/trangChu.css">
+    <!-- Font awesome -->
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Top Slider CSS -->
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <!-- Main style sheet -->
+
+
+    <link rel="stylesheet" href="../css/about.css">
+    <!-- <link rel="stylesheet" href="css/header.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/trangChu.css">
+    <link rel="stylesheet" href="../css/payment_policy.css">
+    <script src="../js/trangChu.js"></script>
     <script src="../js"></script>
-    <link rel="stylesheet" href="css/banner.css">
-    <link rel="stylesheet" href="css/loginvien.css">
 
-    <script src="js/dangnhap.js"></script>
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 
 </head>
 
 <body>
-
+<!-- wpf loader Two -->
 <!-- wpf loader Two -->
 <div id="wpf-loader-two">
     <div class="wpf-loader-two-inner">
@@ -35,6 +73,12 @@
 <!-- SCROLL TOP BUTTON -->
 <a class="scrollToTop movetop" href="#"><i class="fa fa-angle-double-up"></i></a>
 <!-- END SCROLL TOP BUTTON -->
+
+<!-- Start header section -->
+<!-- / header section -->
+<!-- menu -->
+
+<!-- / menu -->
 
 <!-- Start header section -->
 <header id="aa-header">
@@ -49,8 +93,8 @@
                             <!-- start language -->
 
                             <!-- / language -->
-                            <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span>
-                                    hàng từ <span style="color:#ff7315; font-weight:bold">499,000đ</span></span>
+                            <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span> hàng từ <span
+                                    style="color:#ff7315; font-weight:bold">499,000đ</span></span>
                             <!-- start currency -->
                             <!-- / currency -->
                             <!-- start cellphone -->
@@ -60,11 +104,11 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound activeeeicon"><a href="changeInforCustomer.html"><i
-                                        class="fa fa-user"
-                                        aria-hidden="true"></i></a></li>
-                                <li class="hidden-xs iconRound"><a href="wishlist.html"><i
-                                        class="fa fa-heart"></i></a></li>
+                                <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user"
+                                                                                            aria-hidden="true"></i></a>
+                                </li>
+                                <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a>
+                                </li>
                                 <li class="hidden-xs iconRoundLenght"><a href="cart.html">Giỏ hàng
                                     <span class="fa fa-shopping-cart"></span></a></li>
                                 <li class="hidden-xs iconRoundLenght"><a href="checkout.html">Thanh toán <span
@@ -74,17 +118,18 @@
                                     <div class="aa-language">
                                         <div class="dropdown">
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
-                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                               data-toggle="dropdown"
+                                               aria-haspopup="true" aria-expanded="true">
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png"
-                                                                     alt="">Việt Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png"
-                                                                     alt="">English</a></li>
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
+                                                    Nam</a></li>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -115,11 +160,10 @@
                             <!-- Text based logo -->
                             <a href="../index.html">
                                 <span class="fa fa-shopping-cart"></span>
-                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span>
-                                </p>
+                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -162,8 +206,7 @@
                                                 </li>
                                                 <li><a href="product2.html">Nữ<span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="product.html">Áo nữ<span
-                                                                class="caret"></span></a>
+                                                        <li><a href="product.html">Áo nữ<span class="caret"></span></a>
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="product.html">Áo khoác</a></li>
                                                                 <li><a href="product.html">Áo thun</a></li>
@@ -203,7 +246,8 @@
                                 <ul>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/12.jpg" alt="img"></a>
+                                                src="../img/do/nu/12.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -213,7 +257,8 @@
                                     </li>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/13.jpg" alt="img"></a>
+                                                src="../img/do/nu/13.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -221,12 +266,12 @@
                                         <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                            <span class="aa-cartbox-total-title">
-                                                Tổng tiền
-                                            </span>
+                      <span class="aa-cartbox-total-title">
+                        Tổng tiền
+                      </span>
                                         <span class="aa-cartbox-total-price">
-                                                985,000 VND
-                                            </span>
+                        985,000 VND
+                      </span>
                                     </li>
                                 </ul>
                                 <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="checkout.html">Thanh
@@ -251,16 +296,15 @@
 </header>
 <!-- / header section -->
 
-<!-- catg header banner section -->
 <section id="aa-catg-head-banner">
 
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content1">
-                <h2>Đăng nhập</h2>
+                <h2>Chính sách bảo hành</h2>
                 <ul class="breadcrumbb">
                     <li><a href="../index.html">Trang chủ</a> <i class="fa fa-angle-double-right"></i></li>
-                    <li>Đăng nhập</li>
+                    <li>Chính sách bảo hành</li>
                 </ul>
             </div>
         </div>
@@ -268,278 +312,16 @@
 </section>
 <!-- / catg header banner section -->
 
-<!-- main-->
-<div class="mainlogin">
-    <div class="login">
-
-        <div class="left" id="left">
-            <div class="contentleft loginpage" id="loginpage">
-                <div class="headerleft">
-                    <a href="../index.html"><i class=" fa fa-modx"></i></a>
-                    <a href="../index.html">
-                        <p>TVT Shop</p>
-                    </a>
-                </div>
-                <p class="wellcome">Chào mừng bạn trở lại, vui lòng đăng nhập vào tài khoản của mình</p>
-                <div class="loginwith">
-                    <div class="loginwithitem"><i class="fa fa-facebook-f"></i>
-                        <p onclick="toAccount()">Đăng nhập bằng facebook</p>
-                    </div>
-                    <div class="loginwithitem"><i class="fa fa-google"></i>
-                        <p onclick="toAccount()">Đăng nhập bằng google</p>
-                    </div>
-                </div>
-                <p class="or">- Hoặc -</p>
-
-                <div class="form">
-                    <div class="tk">
-                        <p class="titletk">Tài khoản</p>
-                        <input type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="mk">
-                        <p class="titletk">Mật khẩu</p>
-                        <input type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                        <div class="lineinput2"></div>
-                    </div>
-
-                    <div class="helpLogin">
-                        <div>
-                            <input type="checkbox" name="" id="remember">
-                            <label for="remember">Nhớ mật khẩu</label>
-                        </div>
-
-                        <button onclick="displaydivpassword()">Quên mật khẩu</button>
-                    </div>
-
-                    <div class="divsubmit">
-                        <button onclick="toAccount()">Đăng nhập</button>
-                        <button onclick="dangky()">Đăng ký</button>
-                    </div>
-
-                    <div class="dkcsbm">
-                        <p>Bằng cách đăng ký, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> & <a
-                                href="">chính sách bảo mật</a> của
-                            chúng tôi</p>
-                    </div>
-                </div>
-            </div>
-            <div class="contentleft signuppage" id="signuppage">
-                <div class="headerleft">
-                    <a href="../index.html"><i class=" fa fa-modx"></i></a>
-                    <a href="../index.html">
-                        <p>TVT Shop</p>
-                    </a>
-                </div>
-
-                <p class="title">Đăng ký</p>
-                <p class="info">Cung cấp cho chúng tôi một số thông tin của bạn để có quyền truy cập vào trang và
-                    mua sắm</p>
-
-                <div class="form">
-                    <div class="tk">
-                        <p class="titletk">Tài khoản</p>
-                        <input type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="mk">
-                        <p class="titletk">Mật khẩu</p>
-                        <input type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Họ và tên</p>
-                        <input type="text" placeholder="&#xf2bc;    Nhập họ và tên của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Số điện thoại</p>
-                        <input type="text" placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Email</p>
-                        <input type="text" placeholder="&#xf003;    Nhập email của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="dkcsbm agree">
-                        <input type="checkbox" id="checkagree">
-                        <label for="checkagree">
-                            <p>Bằng cách tạo tài khoản, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> &
-                                <a href="">chính sách bảo mật</a> của
-                                chúng tôi</p>
-                        </label>
-                    </div>
-                    <div class="divsubmit">
-                        <button onclick="displayNoti()">Đăng ký</button>
-                        <p>Bạn đã có tài khoản? <span onclick="dangnhapAdmin()">Đăng nhập</span></p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="right" id="right">
-            <div class="hiddenright"></div>
-        </div>
-
-        <div class="contentright" id="contentright">
-            <p>Xin chào, bạn của tôi!</p>
-            <p>Đăng ký tài khoản dành riêng cho bạn và bắt đầu hành trình mua sắm với chúng tôi</p>
-            <button onclick="dangky()">ĐĂNG KÝ</button>
-        </div>
-
-        <div class="contentright ctl" id="ctl">
-            <p>Chào mừng trở lại!</p>
-            <p>Hãy duy trì kết nối với chúng tôi bằng cách đăng nhập tài khoản của bạn</p>
-            <button onclick="dangnhapAdmin()">ĐĂNG NHẬP</button>
-        </div>
-
-    </div>
+<!-- Cart view section -->
+<div class="col-sm-12 divtitle">
+    <h3 class="title titlemain"><span class="red">Chính sách</span> bảo hành</h3>
+    <p class="titilesub">Chúng tôi có những quy định về việc bảo hành và sửa chữa sản phẩm </p>
+    <img src="../img/baohanh.png" class="img_policy" alt="">
 </div>
 
-<!--notification-->
-<div class="success" id="success">
-    <div class="helponclick" onclick="completesuccess()"></div>
-    <div class="contentsuccess" id="notifi1">
-        <h3>Đăng ký thành công!</h3>
-        <p>Hệ thống đã gửi <span>liên kết kích hoạt tài khoản</span> đến <span>email</span> của bạn. Đề nghị bạn hãy
-            kiểm tra <span>email</span> và <span>mở liên kết
-                    kích hoạt tài khoản</span> để hoàn tất việc đăng ký.</p>
-        <img src="img/Daco_287580.png" class="logosuccess" alt="">
-        <button onclick="completesuccess()">Đăng nhập</button>
-        <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
-    </div>
-    <div class="contentsuccess" id="notifi2">
-        <h3>Lấy lại mật khẩu thành công!</h3>
-        <p>Chúc mừng bạn đã lấy lại mật khẩu thành công, bây giờ hãy đăng nhập và cùng mua sắm với chung tôi nào</p>
-        <img src="img/Daco_287580.png" class="logosuccess" alt="">
-        <button onclick="completesuccess()">Đăng nhập</button>
-        <i class=" fa fa-times closesuccess" onclick="completesuccess()"> </i>
-    </div>
-</div>
 
-<!--forgotpassword-->
-<div class="success" id="divpassword">
-    <div class="helponclick" onclick="hiddendivpassword()"></div>
-    <div class="contentsuccess">
-        <div class="left1divpassword" id="left1divpassword">
-            <h3>Quên mật khẩu</h3>
-            <p>Hãy chọn cách mà chúng tôi sẽ sử dụng để đặt lại mật khẩu của bạn:</p>
-
-            <div class="boxdivpassword" onclick="sdt()">
-                <i class="fa fa-mobile"></i>
-                <p>Đặt lại mật khẩu bằng số điện thoại</p>
-            </div>
-            <div class="boxdivpassword" onclick="email()">
-                <i class="fa fa-envelope-o"></i>
-                <p>Đặt lại mật khẩu bằng email</p>
-            </div>
-            <button onclick="hiddendivpassword()">Trở lại</button>
-            <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-        </div>
-        <div class="left2divpassword1" id="left2divpassword1">
-            <div class="left2divpassword" id="left2divpassword11">
-                <h3>Bằng email</h3>
-                <p>Nhập email của bạn dưới đây để đặt lại mật khẩu</p>
-                <div class="tk">
-                    <input type="text" placeholder="&#xf003;    Nhập email của bạn ở đây"
-                           style="font-family:Arial, FontAwesome">
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="divbutton">
-                    <button onclick="veryemail()">Đặt lại mật khẩu</button>
-                    <button onclick="hiddendivpasswordBack1()">Trở lại</button>
-                </div>
-                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
-            <div class="left2divpassword" id="left2divpassword12">
-                <h3>Bằng số điện thoại</h3>
-                <p>Nhập số điện thoại của bạn dưới đây để đặt lại mật khẩu</p>
-                <div class="tk">
-                    <input type="text" placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
-                           style="font-family:Arial, FontAwesome">
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="divbutton">
-                    <button onclick="verysdt()">Đặt lại mật khẩu</button>
-                    <button onclick="hiddendivpasswordBack1()">Trở lại</button>
-                </div>
-                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
-        </div>
-        <div class="left2divpassword1" id="left2divpassword2">
-            <div class="left2divpassword" id="left2divpassword21">
-                <h3>Xác nhận email</h3>
-                <p>Vui lòng nhập mã gồm 4 chữ số được gửi tới email của bạn</p>
-                <div class="tk">
-                    <input type="text" placeholder="&#xf13e;   Nhập mã 4 chữ số của bạn ở đây"
-                           style="font-family:Arial, FontAwesome" maxlength="4">
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="divbutton">
-                    <div class="divalink">
-                        <button class="alink">Gởi lại mã</button>
-                        <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi email</button>
-                    </div>
-                    <button onclick="gotochange()">Đặt lại mật khẩu</button>
-                </div>
-                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
-            <div class="left2divpassword" id="left2divpassword22">
-                <h3>Xác nhận số điện thoại</h3>
-                <p>Vui lòng nhập mã gồm 4 chữ số được gửi tới số điện thoại của bạn</p>
-                <div class="tk">
-                    <input type="text" placeholder="&#xf13e;   Nhập mã 4 chữ số của bạn ở đây"
-                           style="font-family:Arial, FontAwesome" maxlength="4">
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="divbutton">
-                    <div class="divalink">
-                        <button class="alink">Gởi lại mã</button>
-                        <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi số điện thoại</button>
-                    </div>
-                    <button onclick="gotochange()">Đặt lại mật khẩu</button>
-                </div>
-                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
-        </div>
-        <div class="left2divpassword1" id="left3divpassword">
-            <div class="left2divpassword" id="left2divpassword21">
-                <h3>Mật khẩu mới</h3>
-                <p>Chúc mừng bạn đã tới giai đoạn này, bây giờ hãy nhập mật khẩu mới và hoàn tất công việc lấy lại
-                    mật khẩu</p>
-                <div class="tk">
-                    <input type="password" placeholder="&#xf13e;   Nhập mật khẩu mới bạn ở đây"
-                           style="font-family:Arial, FontAwesome">
-                    <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="tk">
-                    <input type="password" placeholder="&#xf13e;   Nhập lại mật khẩu"
-                           style="font-family:Arial, FontAwesome">
-                    <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                    <div class="lineinput1"></div>
-                </div>
-                <div class="divbutton">
-                    <button onclick="gotocomplete()">Đặt lại mật khẩu</button>
-                </div>
-                <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End main-->
-
+<!-- Subscribe section -->
+<!-- footer -->
 <div class="chatbox">
     <div class="iconchatbox" onclick="actionchatbox()">
         <i class="fa fa-connectdevelop"></i>
@@ -597,7 +379,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -620,16 +402,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -645,7 +427,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -675,29 +457,54 @@
     </div>
 </footer>
 <!-- / footer -->
-
-</body>
-
-</html>
+<!-- Login Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Login or Register</h4>
+                <form class="aa-login-form" action="">
+                    <label for="">Username or Email address<span>*</span></label>
+                    <input type="text" placeholder="Username or email">
+                    <label for="">Password<span>*</span></label>
+                    <input type="password" placeholder="Password">
+                    <button class="aa-browse-btn" type="submit">Login</button>
+                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me
+                    </label>
+                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                    <div class="aa-register-now">
+                        Don't have an account?<a href="account.html">Register now!</a>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script src="../js/sequence.js"></script>
+<script src="../js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
+
+</body>
+
+</html>

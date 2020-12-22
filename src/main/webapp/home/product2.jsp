@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 7:10 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -8,27 +15,27 @@
     <title>TVT Shop | Danh sách sản phẩm</title>
 
     <!-- Font awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
     <!-- Top Slider CSS -->
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link rel="stylesheet" href="css/style.css">
-    <link href="css/product.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/trangChu.css">
-    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../css/product.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/trangChu.css">
+    <link rel="stylesheet" href="../css/banner.css">
     <script src="../js"></script>
 
     <!-- Google Font -->
@@ -39,9 +46,9 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <!-- !Important notice -->
@@ -99,14 +106,14 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt Nam
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -141,7 +148,7 @@
                                 <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -162,8 +169,7 @@
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
                                                 <li><a href="../index.html">Trang chủ</a></li>
-                                                <li><a href="product.html" class="activeee">Nam<span
-                                                        class="caret"></span></a>
+                                                <li><a href="product.html">Nam<span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="product.html">Áo nam <span
                                                                 class="caret"></span></a>
@@ -183,7 +189,8 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="product2.html">Nữ<span class="caret"></span></a>
+                                                <li><a href="product2.html" class="activeee">Nữ<span
+                                                        class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="product.html">Áo nữ<span class="caret"></span></a>
                                                             <ul class="dropdown-menu">
@@ -224,7 +231,7 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/12.jpg"
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/12.jpg"
                                                                                                   alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
@@ -234,7 +241,7 @@
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/13.jpg"
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/13.jpg"
                                                                                                   alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
@@ -331,25 +338,24 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro1.webp"
+                                            src="../img/do/nu/nu/spn2.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Stay
-                                            Together MSW
-                                            1006</a></h4>
-                                        <span class="aa-product-price sprice">300,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Croptop Nữ
+                                            WTS 2036</a></h4>
+                                        <span class="aa-product-price sprice">239,000 VND</span><span
+                                            class="aa-product-price"><del>259,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo sweater nam Stay Together rằn ri MSW 1006
-                                            Couple TX là item được
-                                            yêu thích và sử dụng phổ biến trong giới trẻ, mang hơi hướng thời trang
-                                            đường phổ trẻ trung và
-                                            hiện đại. Áo được thiết kế với form oversize rộng rãi, phù hợp với mọi dáng
-                                            người cùng họa tiết
-                                            rằn ri tạo điểm nhấn.</p>
+                                        <p class="aa-product-descrip">Áo Thun Croptop Nữ WTS 2036, loại áo thun croptop
+                                            ba lỗ sành điệu,
+                                            cá tính, trẻ trung.
+                                            Là item không thể thiếu của các bạn nữ. Đây là kiểu áo croptop ba lỗ phổ
+                                            biến và được ưa chuộng
+                                            nhất của
+                                            những ngôi sao.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -368,23 +374,21 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro2.webp"
+                                            src="../img/do/nu/nu/spn1.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Stay
-                                            Together Cánh Đồng
-                                            MSW 1005</a></h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span>
-                                        <p class="aa-product-descrip">Áo sweater nam Stay Together Cánh đồng MSW 1005
-                                            Couple TX là item
-                                            được yêu thích và sử dụng phổ biến trong giới trẻ, mang hơi hướng thời trang
-                                            đường phổ trẻ trung
-                                            và hiện đại. Áo được thiết kế với form oversize rộng rãi, phù hợp với mọi
-                                            dáng người cùng họa
-                                            tiết cánh đồng tạo điểm nhấn.</p>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Croptop Nữ
+                                            WTS 2037</a></h4>
+                                        <span class="aa-product-price sprice">239,000 VND</span>
+                                        <p class="aa-product-descrip">Áo Thun Croptop Nữ WTS 2037 loại áo croptop cỗ
+                                            vuông lạ mắt, là một
+                                            chiếc áo tương đối ngắn,
+                                            được thiết kế theo kiểu ôm để lộ phần eo của người mặc nhằm tôn lên vẻ gợi
+                                            cảm, quyến rũ của
+                                            phái nữ.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -403,25 +407,22 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro3.webp"
+                                            src="../img/do/nu/nu/spn3.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Basic
-                                            MSW 1004</a></h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo kiểu Nữ Croptop Nữ
+                                            WSH 2009</a></h4>
+                                        <span class="aa-product-price sprice">299,000 VND</span><span
+                                            class="aa-product-price"><del>359,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sweater Nam Basic MSW 1004 Couple TX chắc chắn
-                                            là sản phẩm phải
-                                            có trong tủ đồ của các chàng trai năng động, cá tính. Form áo oversize đơn
-                                            giản nhưng cá tính,
-                                            có thể dể dàng kết hợp với quần, giày,... mà ko sợ bị rối mắt. Chất liệu
-                                            cotton 100% giúp Áo
-                                            Sweater Nam Basic MSW 1004 luôn mềm mại, mang lại cảm giác dễ chịu khi
-                                            mặc.</p>
+                                        <p class="aa-product-descrip">Áo kiểu nữ Croptop chất liệu kaki form mỏng WSH
+                                            2009 kết hợp cùng
+                                            tay phồng nữ tính, nhẹ nhàng, màu sắc tươi trẻ.
+                                            Là một trong những item không thể thiếu trong tủ quần áo của bất cứ cô nàng
+                                            nào.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -438,7 +439,7 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro4.webp"
+                                            src="../img/do/nu/nu/spn4.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
@@ -447,7 +448,7 @@
                                         <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Logo Sài
                                             Gòn MSW 1003</a>
                                         </h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span><span
+                                        <span class="aa-product-price sprice">279,000 VND</span><span
                                             class="aa-product-price"><del>300,000
                           VND</del></span>
                                         <p class="aa-product-descrip">Áo Sweater Logo Sài Gòn MSW 1003 là item không thể
@@ -475,22 +476,20 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro5.webp"
+                                            src="../img/do/nu/nu/spn5.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1011</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span>
-                                        <p class="aa-product-descrip">THÔNG TIN SẢN PHẨM
-                                            Áo Thun Nam MTS 1010 dành cho mọi vóc dáng
-
-                                            Màu sắc: Đen, trắng, vàng
-                                            Chất liệu: cotton
-                                            Kiểu dáng: Regular
-                                            Thông điệp COOL FACE cá tính.</p>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
+                                            WSH 2008</a></h4>
+                                        <span class="aa-product-price sprice">299,000 VND</span>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2008 kết hợp cùng tay
+                                            phồng nữ tính, nhẹ
+                                            nhàng, màu sắc tươi trẻ.
+                                            Là một trong những item không thể thiếu trong tủ quần áo của bất cứ cô nàng
+                                            nào.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -507,25 +506,21 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro6.webp"
+                                            src="../img/do/nu/nu/spn6.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1035</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>599,000
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
+                                            WSH 2007</a></h4>
+                                        <span class="aa-product-price sprice">299,000 VND</span><span
+                                            class="aa-product-price"><del>329,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1035
-
-                                            Màu sắc: Đen, rêu, vàng, trắng, cam.
-                                            Chất liệu: cotton thoáng mát.
-                                            Kiểu dáng: Form slim có độ ôm vừa phải, giúp khoe ưu điểm trên cơ thể.
-                                            Cổ tròn dễ mặc, phù hợp mọi vóc dáng.
-                                            Sản xuất: Việt Nam
-                                            PHÙ HỢP </p>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2007 croptop tay áo rút
+                                            dây điệu đà cho bạn
+                                            nữ, lạ mắt khiến ai cũng phải ngỡ ngàng.
+                                            Một chút trẻ trung nhưng lại hết sức quyến rũ.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -542,24 +537,24 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro7.webp"
+                                            src="../img/do/nu/nu/spn7.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1014</a>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop caro
+                                            Nữ WSH 2005</a>
                                         </h4>
-                                        <span class="aa-product-price sprice">199,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
+                                        <span class="aa-product-price sprice">349,000 VND</span><span
+                                            class="aa-product-price"><del>429,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1014 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Rêu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam </p>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop caro Nữ WSH 2005 tay phồng thời
+                                            trang, nếu đã quá
+                                            quen thuộc với các kiểu áo sơ mi cổ điển thì
+                                            kiểu dáng cách điệu trễ vai này chắc chắn sẽ mang đến cho bạn vẻ ngoài vô
+                                            cùng trẻ trung và sành
+                                            điệu. </p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -578,22 +573,23 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro8.webp"
+                                            src="../img/do/nu/nu/spn8.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo thun thun in tấm
-                                            MTS 1013</a></h4>
-                                        <span class="aa-product-price sprice">99,000 VND</span>
-                                        <p class="aa-product-descrip">Áo thun Nam in tấm MTS 1013, áo nam form relax cá
-                                            tính.
-                                            Màu sắc: Vàng Chất liệu: Cotton
-                                            Kiểu dáng: Regular.
-                                            Sản xuất: Việt Nam Hình ảnh cánh đồng lúa chín vàng nhìn từ trên cao in cách
-                                            điệu, phối 3 màu
-                                            trắng, vàng, xám.</p>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Crop Top Tay
+                                            Phồng Nữ WSH
+                                            2004</a></h4>
+                                        <span class="aa-product-price sprice">349,000 VND</span>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Crop Top Tay Phồng Nữ WSH 2004 Áo sơ mi
+                                            croptop ngày nay
+                                            đang dần trở nên phổ biến
+                                            và khẳng định sức hút của mình đối với các tín đồ thời trang hiện đại. Dễ
+                                            mặc,
+                                            dễ mix còn cực tôn dáng, sơ mi crop top đúng là item mà hội mi nhon không
+                                            thể bỏ qua.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -612,23 +608,21 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro9.webp"
+                                            src="../img/do/nu/nu/spn9.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="wishlist.html">Áo Thun MTS 1012</a></h4>
+                                        <h4 class="aa-product-title"><a href="wishlist.html">Áo Sơ Mi Nữ WSH 2003</a>
+                                        </h4>
                                         <span class="aa-product-price sprice">399,000 VND</span><span
                                             class="aa-product-price"><del>499,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1012 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Vàng, trắng, xám
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam .</p>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Nữ WSH 2003 áo kiểu tay nhún tay phồng,
+                                            được thiết kế mới
+                                            lạ phá cách đem lại vẻ đẹp
+                                            quyến rũ đằm thắm cho các cô nàng.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -647,24 +641,19 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro10.webp"
+                                            src="../img/do/nu/nu/spn10.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1011</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">799,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1011 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Trắng, đen, vàng
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Thông điệp: “Sapa Terraced Fields” cùng hình ảnh ruộng bậc thang 2D nổi bật
-                                            giữa ngực áo.
-                                            Sản xuất: Việt Nam </p>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
+                                            WSH 2001</a></h4>
+                                        <span class="aa-product-price sprice">279,000 VND</span>
+                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2001 tay cánh dơi thời
+                                            trang lạ mắt, đem lại
+                                            vẻ ngoài tươi trẻ,
+                                            năng động cho bạn gái. Áo có thể mặc 2 mặt tiện lợi.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -683,24 +672,22 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro11.webp"
+                                            src="../img/do/nu/nu/spn11.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1010</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">199,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Nữ WTS
+                                            2035</a></h4>
+                                        <span class="aa-product-price sprice">139,000 VND</span><span
+                                            class="aa-product-price"><del>219,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1010 dành cho mọi vóc dáng
-
-                                            Màu sắc: Đen, trắng, vàng
-                                            Chất liệu: cotton
-                                            Kiểu dáng: Regular
-                                            Thông điệp COOL FACE cá tính.
-                                            .</p>
+                                        <p class="aa-product-descrip">Áo Thun Nữ WTS 2035 có thiết kế trơn đơn giản với
+                                            màu sắc tươi mới,
+                                            thích hợp cho những bạn trẻ năng động, cá tính. Chất liệu vải cotton
+                                            mang đến sự thoải mái khi mặc, từng mối chỉ đường kim được gia công kỹ lưỡng
+                                            chắc chắn.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -717,25 +704,24 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro12.webp"
+                                            src="../img/do/nu/nu/spn12.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Nam Raglan
-                                            Tay Dài MTS 1008</a>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Quần Kaki Ngắn Nữ WSR
+                                            2002</a>
                                         </h4>
                                         <span class="aa-product-price sprice">399,000 VND</span><span
                                             class="aa-product-price"><del>499,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo thun Nam raglan tay dài MTS 1008 Couple TX với
-                                            thiết kế cổ tròn,
-                                            form suông, tay dài, tay áo raglan tạo điểm nhấn nhá nổi bật.
-                                            Màu sắc: Xanh, vàng.
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Regular
-                                            Sản xuất: Việt Nam</p>
+                                        <p class="aa-product-descrip">Quần Kaki Ngắn Nữ WSR 2002 với chiêc quần cạp cao
+                                            để các bạn nữ thỏa
+                                            mái khoe đôi chân của mình.
+                                            Đây là kiểu quần được nhiều bạn nữ ưa chuộng nhất trong tất cả các loại quần
+                                            short nữ đẹp nhất
+                                        </p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -754,22 +740,18 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro13.webp"
+                                            src="../img/do/nu/nu/spn13.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1009</a>
-                                        </h4>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Khoác Thun Nữ WOK
+                                            2002</a></h4>
                                         <span class="aa-product-price sprice">399,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1009 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Trắng, đen, nâu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam </p>
+                                        <p class="aa-product-descrip">Áo Khoác Thun Nữ WOK 2002 nằm trong bộ sưu tập
+                                            "Vietnam from above"
+                                            mang đến cho bạn nữ phong cách thời trang trẻ trung, ấn tượng.</p>
                                     </figcaption>
                                 </figure>
 
@@ -787,25 +769,21 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro14.webp"
+                                            src="../img/do/nu/nu/spn14.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Regular Cổ
-                                            Thêu X MTS 1007</a>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Quần Jeans Dài Ống
+                                            Rộng WJE 2002</a>
                                         </h4>
                                         <span class="aa-product-price sprice">399,000 VND</span><span
                                             class="aa-product-price"><del>599,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam Regular Cổ Thêu X MTS 1007 chất liệu
-                                            thun cotton thấm
-                                            hút mồ hôi, thoáng mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Đen, trắng, cam, rêu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam</p>
+                                        <p class="aa-product-descrip">Quần Jeans Dài Ống Rộng WJE 2002 - Item không thể
+                                            thiếu của các bạn
+                                            nữ năng động với kiểu dáng hiện đại, trẻ trung.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -822,23 +800,21 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="img/product/pro15.webp"
+                                            src="../img/do/nu/nu/spn15.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Len Nam Phối Màu
-                                            Zigzag MOS 1002</a>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Khoác Dù Nữ WOP
+                                            2004</a>
                                         </h4>
                                         <span class="aa-product-price sprice">529,000 VND</span><span
                                             class="aa-product-price"><del>699,000
                           VND</del></span>
-                                        <p class="aa-product-descrip">Áo len nam phối màu Ziczag MOS 1002 Couple TX có
-                                            form suông dễ mặc
-                                            và phù hợp với mọi dáng người. Áo len thường được các bạn nam ưu ái chọn kết
-                                            hợp với quần jeans
-                                            hoặc quần short cho những hoạt động ngày thường vào mùa thu đông.</p>
+                                        <p class="aa-product-descrip">Áo Khoác Dù Nữ WOP 2004 với thiết kế trẻ trung,
+                                            phóng khoáng hứa hẹn
+                                            sẽ đem đến cho bạn gái phong cách thời trang năng động, cá tính.</p>
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
@@ -871,28 +847,28 @@
                                                         <div class="simpleLens-container">
                                                             <div class="simpleLens-big-image-container viewnhanhcol">
                                                                 <a class="simpleLens-lens-image"
-                                                                   data-lens-image="img/modal1.png">
-                                                                    <img src="img/modal1.png"
+                                                                   data-lens-image="../img/modal1.png">
+                                                                    <img src="../img/modal1.png"
                                                                          class="simpleLens-big-image">
                                                                 </a>
                                                             </div>
                                                         </div>
                                                         <div class="simpleLens-thumbnails-container div2scl">
                                                             <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="img/modal1.png"
-                                                               data-big-image="img/modal1.png">
-                                                                <img src="img/modal1.png">
+                                                               data-lens-image="../img/modal1.png"
+                                                               data-big-image="../img/modal1.png">
+                                                                <img src="../img/modal1.png">
                                                             </a>
                                                             <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="img/modal2.png"
-                                                               data-big-image="img/modal2.png">
-                                                                <img src="img/modal2.png">
+                                                               data-lens-image="../img/modal2.png"
+                                                               data-big-image="../img/modal2.png">
+                                                                <img src="../img/modal2.png">
                                                             </a>
 
                                                             <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="img/modal4.png"
-                                                               data-big-image="img/modal4.png">
-                                                                <img src="img/modal4.png">
+                                                               data-lens-image="../img/modal4.png"
+                                                               data-big-image="../img/modal4.png">
+                                                                <img src="../img/modal4.png">
                                                             </a>
                                                         </div>
                                                     </div>
@@ -1064,12 +1040,12 @@
                                     <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
                                     <div class="aa-cartbox-info">
                                         <div class="imggddiv">
-                                            <img class="imggd" src="img/product/pro1.webp" alt="">
+                                            <img class="imggd" src="../img/do/nu/nu/spn15.webp" alt="">
                                         </div>
-                                        <h4><a href="detailsProduct.html">Áo Len Nam Basic MOS 1001</a></h4>
+                                        <h4><a href="detailsProduct.html">Áo Khoác Dù Nữ WOP 2004</a></h4>
                                         <div class="gdprice">
-                                            <p>249,000 VND</p>
-                                            <del>399,000
+                                            <p>529,000 VND</p>
+                                            <del>609,000
                                                 VND
                                             </del>
                                         </div>
@@ -1079,26 +1055,26 @@
                                     <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
                                     <div class="aa-cartbox-info">
                                         <div class="imggddiv">
-                                            <img class="imggd" src="img/product/pro9.webp" alt="">
+                                            <img class="imggd" src="../img/do/nu/nu/spn3.webp" alt="">
                                         </div>
-                                        <h4><a href="detailsProduct.html">Áo Thun MTS 1012</a></h4>
+                                        <h4><a href="detailsProduct.html">Áo kiểu Nữ Croptop Nữ WSH 2009</a></h4>
+                                        <div class="gdprice">
+                                            <p>299,000 VND</p>
+                                            <del>359,000
+                                                VND
+                                            </del>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
+                                    <div class="aa-cartbox-info">
+                                        <div class="imggddiv">
+                                            <img class="imggd" src="../img/do/nu/nu/spn9.webp" alt="">
+                                        </div>
+                                        <h4><a href="detailsProduct.html"></a></h4>
                                         <div class="gdprice">
                                             <p>399,000 VND</p>
-                                            <del>499,000
-                                                VND
-                                            </del>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
-                                    <div class="aa-cartbox-info">
-                                        <div class="imggddiv">
-                                            <img class="imggd" src="img/product/pro11.webp" alt="">
-                                        </div>
-                                        <h4><a href="detailsProduct.html">Áo Thun MTS 1010</a></h4>
-                                        <div class="gdprice">
-                                            <p>199,000 VND</p>
                                         </div>
                                     </div>
                                 </li>
@@ -1171,7 +1147,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -1194,16 +1170,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -1219,7 +1195,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -1278,23 +1254,23 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script src="../js/sequence.js"></script>
+<script src="../js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
 
 
 </body>

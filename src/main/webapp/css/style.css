@@ -1595,15 +1595,20 @@ ul.dropdown-menu.menucountry {
     -ms-transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
+    display: flex;
+    justify-content: center;
 }
 
 .aa-product-catg li .aa-product-hvr-content a {
     background: #fff none repeat scroll 0 0;
-    display: inline-block;
+    display: flex;
     margin: 0 5px;
-    padding: 9px 15px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     font-size: 22px;
+    justify-content: center;
+    align-items: center;
 }
 
 .aa-product-catg li .aa-badge {

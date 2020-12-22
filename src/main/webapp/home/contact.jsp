@@ -1,48 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 2:32 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../tvtShop/js/Truong/bootstrap/bootstrap.css">
-    <script type="text/javascript" src="../tvtShop/js/Truong/jquery/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../tvtShop/js/Truong/bootstrap/bootstrap.js"></script>
-    <link rel="stylesheet" href="../tvtShop/css/detailsProduct.css">
-    <link rel="stylesheet" href="../tvtShop/js/Truong/fonta/css/all.css">
-    <link rel="stylesheet" href="tvtShop\css\style.css">
-    <script src="../tvtShop/js/detailsProduct.js"></script>
-    <link rel="stylesheet" href="./css/style-starter.css">
+    <link rel="stylesheet" type="text/css" href="../js/Truong/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="../js/Truong/jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../js/Truong/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="../css/detailsProduct.css">
+    <link rel="stylesheet" href="../js/Truong/fonta/css/all.css">
+    <script src="../js/detailsProduct.js"></script>
+    <link rel="stylesheet" href="../css/style-starter.css">
     <title>TVTShop | Liên hệ</title>
 
 
     <!-- Font awesome -->
-    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"> -->
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
     <!-- Top Slider CSS -->
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/banner.css">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/banner.css">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
 
     <style>
         .row.top-map {
@@ -117,14 +122,15 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt Nam
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
+                                                Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -154,12 +160,12 @@
                         <!-- logo  -->
                         <div class="aa-logo">
                             <!-- Text based logo -->
-                            <a href="../index.html">
+                            <a href="index.html">
                                 <span class="fa fa-shopping-cart"></span>
                                 <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -179,7 +185,7 @@
                                         <div class="navbar-collapse collapse menuselect">
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
-                                                <li><a href="../index.html" ">Trang chủ</a></li>
+                                                <li><a href="index.html">Trang chủ</a></li>
                                                 <li><a href="product.html">Nam<span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="product.html">Áo nam <span
@@ -223,7 +229,7 @@
                                                 </li>
                                                 <li><a href="contact.html" class="activeee">Liên hệ</a></li>
                                                 <li><a href="about_US.html">Về chúng tôi</a></li>
-                                                <li><a href="../admin/home/login.html">ADMIN</a></li>
+                                                <li><a href="../tvtShopAdmin/login.html">ADMIN</a></li>
                                             </ul>
                                         </div>
                                         <!--/.nav-collapse -->
@@ -241,8 +247,9 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/12.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/12.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -251,8 +258,9 @@
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="img/do/nu/13.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/13.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -297,7 +305,7 @@
             <div class="aa-catg-head-banner-content1">
                 <h2>Liên hệ</h2>
                 <ul class="breadcrumbb">
-                    <li><a href="../index.html">Trang chủ</a> <i class="fa fa-angle-double-right"></i></li>
+                    <li><a href="index.html">Trang chủ</a> <i class="fa fa-angle-double-right"></i></li>
                     <li>Liên hệ</li>
                 </ul>
             </div>
@@ -350,26 +358,26 @@
             <div class="row top-map">
                 <div class="col-lg-6 partners">
                     <div class="cont-details">
-                        <h3 class="hny-title mb-0">Liên lạc với <span>chúng tôi</span></h5>
-                            <p class="mb-5">Chúng tôi sẵn sàng phục vụ khách hàng một cách chu đáo và tận tâm nhất. Hãy
-                                xây dựng
-                                shop ngày càng hoàn hiện hơn bằng các góp ý, nhận xét của các bạn.</p>
-                            <p class="margin-top"><span class="texthny">Điện thoại</span> : </span> <a
-                                    href="tel:+(84) 255 999 8899">+(84)
-                                255 999 8899</a></p>
-                            <p><span class="texthny">Email : </span> <a href="mailto:tvtshop@gmail.com">
-                                tvtshop@gmail.com</a></p>
-                            <p class="margin-top"> Khu phố 6, phường Linh Trung, quận Thủ Đức, tp.HCM </p>
+                        <h5 class="hny-title mb-0">Liên lạc với <span>chúng tôi</span></h5>
+                        <p class="mb-5">Chúng tôi sẵn sàng phục vụ khách hàng một cách chu đáo và tận tâm nhất. Hãy
+                            xây dựng
+                            shop ngày càng hoàn hiện hơn bằng các góp ý, nhận xét của các bạn.</p>
+                        <p class="margin-top"><span class="texthny">Điện thoại</span> : </span> <a
+                                href="tel:+(84) 255 999 8899">+(84)
+                            255 999 8899</a></p>
+                        <p><span class="texthny">Email : </span> <a href="mailto:tvtshop@gmail.com">
+                            tvtshop@gmail.com</a></p>
+                        <p class="margin-top"> Khu phố 6, phường Linh Trung, quận Thủ Đức, tp.HCM </p>
                     </div>
                     <div class="hours">
-                        <h3 class="hny-title">Giờ <span>Làm Việc</span></h5>
-                            <h6>Giờ kinh doanh:</h6>
-                            <p> Thứ hai đến thứ 6 từ 7.00 am - 6.00 pm</p>
-                            <p> Thứ bảy và chủ nhật từ 7.00 am - 5.00 pm</p>
-                            <h6 class="margin-top">Hỗ trợ khách hàng:</h6>
-                            <p> Thứ hai đến thứ sáu từ 8.00 am - 6.00 pm</p>
-                            <p> Thứ 7 từ 10.00 am - 4.00 pm</p>
-                            <p> Chủ nhật - Đóng cửa</p>
+                        <h5 class="hny-title">Giờ <span>Làm Việc</span></h5>
+                        <h6>Giờ kinh doanh:</h6>
+                        <p> Thứ hai đến thứ 6 từ 7.00 am - 6.00 pm</p>
+                        <p> Thứ bảy và chủ nhật từ 7.00 am - 5.00 pm</p>
+                        <h6 class="margin-top">Hỗ trợ khách hàng:</h6>
+                        <p> Thứ hai đến thứ sáu từ 8.00 am - 6.00 pm</p>
+                        <p> Thứ 7 từ 10.00 am - 4.00 pm</p>
+                        <p> Chủ nhật - Đóng cửa</p>
                     </div>
                 </div>
                 <div class="col-lg-6 map" id="map">
@@ -464,7 +472,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -487,16 +495,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -512,7 +520,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -547,20 +555,20 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
 <script language="javascript">
     //chon anh
     var l1 = document.getElementById('l1');

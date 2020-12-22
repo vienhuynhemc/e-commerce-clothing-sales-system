@@ -1,3 +1,5 @@
+stepitem1();
+
 function stepitem1() {
     document.getElementById('stepitem1').style.display = 'block';
     document.getElementById('stepitem2').style.display = 'none';

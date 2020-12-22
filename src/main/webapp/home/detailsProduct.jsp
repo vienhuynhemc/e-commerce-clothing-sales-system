@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 22/12/2020
+  Time: 3:42 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -7,24 +14,24 @@
     <title>TVT SHOP | Chi tiết sản phẩm</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="../css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <link rel="stylesheet" type="text/css" href="../css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
     <!-- Top Slider CSS -->
-    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -33,15 +40,15 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="css/trangChu.css">
-    <script src="../js"></script>
+    <link rel="stylesheet" href="../css/trangChu.css">
+    <script src="../js/index.js"></script>
 
 
-    <link rel="stylesheet" href="css/banner.css">
-    <link rel="stylesheet" href="css/chitietsanpham.css">
+    <link rel="stylesheet" href="../css/banner.css">
+    <link rel="stylesheet" href="../css/chitietsanpham.css">
 </head>
 
 <body>
@@ -96,15 +103,15 @@
                                         <div class="dropdown">
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt
+                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt
                                                 Nam
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png"
+                                                <li><a href="#"><img class="country" src="../img/vietnam.png"
                                                                      alt="">Việt Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png"
+                                                <li><a href="#"><img class="country" src="../img/language.png"
                                                                      alt="">English</a></li>
                                             </ul>
                                         </div>
@@ -140,7 +147,7 @@
                                 </p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -224,7 +231,7 @@
                                 <ul>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/12.jpg" alt="img"></a>
+                                                src="../img/do/nu/12.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -234,7 +241,7 @@
                                     </li>
                                     <li>
                                         <a class="aa-cartbox-img" href="detailsProduct.html"><img
-                                                src="img/do/nu/13.jpg" alt="img"></a>
+                                                src="../img/do/nu/13.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -303,24 +310,24 @@
                             <div class="simpleLens-gallery-container viewnhanhcol contentviewnhanh" id="demo-1">
                                 <div class="simpleLens-container">
                                     <div class="simpleLens-big-image-container viewnhanhcol">
-                                        <a class="simpleLens-lens-image" data-lens-image="img/modal1.png">
-                                            <img src="img/modal1.png" class="simpleLens-big-image">
+                                        <a class="simpleLens-lens-image" data-lens-image="../img/modal1.png">
+                                            <img src="../img/modal1.png" class="simpleLens-big-image">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="simpleLens-thumbnails-container div2scl">
                                     <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/modal1.png" data-big-image="img/modal1.png">
-                                        <img src="img/modal1.png">
+                                       data-lens-image="../img/modal1.png" data-big-image="../img/modal1.png">
+                                        <img src="../img/modal1.png">
                                     </a>
                                     <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/modal2.png" data-big-image="img/modal2.png">
-                                        <img src="img/modal2.png">
+                                       data-lens-image="../img/modal2.png" data-big-image="../img/modal2.png">
+                                        <img src="../img/modal2.png">
                                     </a>
 
                                     <a href="#" class="simpleLens-thumbnail-wrapper"
-                                       data-lens-image="img/modal4.png" data-big-image="img/modal4.png">
-                                        <img src="img/modal4.png">
+                                       data-lens-image="../img/modal4.png" data-big-image="../img/modal4.png">
+                                        <img src="../img/modal4.png">
                                     </a>
                                 </div>
                             </div>
@@ -399,36 +406,36 @@
             <div class="dpleft">
                 <div class="dpmainimg">
                     <div>
-                        <img src="img/product/dp1.webp" alt="" id="img1">
+                        <img src="../img/product/dp1.webp" alt="" id="img1">
                         <p>Mã sản phẩm: SP1753419</p>
                     </div>
-                    <img src="img/product/dp1.webp" alt="" id="img2">
+                    <img src="../img/product/dp1.webp" alt="" id="img2">
                 </div>
                 <div>
                     <div class="dplistitem" id="dplistitem">
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="img/product/dp1.webp" alt="" id="doiHinhChinh1">
+                                <img src="../img/product/dp1.webp" alt="" id="doiHinhChinh1">
                             </div>
-                            <img src="img/product/dp1.webp" alt="">
+                            <img src="../img/product/dp1.webp" alt="">
                         </div>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="img/product/dp2.webp" alt="" id="doiHinhChinh2">
+                                <img src="../img/product/dp2.webp" alt="" id="doiHinhChinh2">
                             </div>
-                            <img src="img/product/dp2.webp" alt="">
+                            <img src="../img/product/dp2.webp" alt="">
                         </div>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="img/product/dp3.webp" alt="" id="doiHinhChinh3">
+                                <img src="../img/product/dp3.webp" alt="" id="doiHinhChinh3">
                             </div>
-                            <img src="img/product/dp3.webp" alt="">
+                            <img src="../img/product/dp3.webp" alt="">
                         </div>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="img/product/dp4.webp" alt="" id="doiHinhChinh4">
+                                <img src="../img/product/dp4.webp" alt="" id="doiHinhChinh4">
                             </div>
-                            <img src="img/product/dp4.webp" alt="">
+                            <img src="../img/product/dp4.webp" alt="">
                         </div>
                     </div>
                 </div>
@@ -461,10 +468,10 @@
                     <input type="radio" name="color" id="color1" style="display: none;" checked>
                     <input type="radio" name="color" id="color2" style="display: none;">
                     <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><img src="img/product/damxanh.webp" alt=""></div>
+                        <div><img src="../img/product/damxanh.webp" alt=""></div>
                     </label>
                     <label for="color2" class="labelcolor2" onclick="xanhNhat()">
-                        <div><img src="img/product/xanhnhat.webp" alt=""></div>
+                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>
                     </label>
                 </div>
                 <div class="guidesize">
@@ -545,7 +552,7 @@
                 <div class="danhgia2infor">
                     <div>
                         <div>
-                            <img src="img/product/avatar7.jpg" alt="">
+                            <img src="../img/product/avatar7.jpg" alt="">
                         </div>
                         <div class="danhgia2infor2">
                             <p>Nguyễn Thị Hoa Hồng</p>
@@ -665,7 +672,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar1.jpg" alt="">
+                        <img src="../img/product/avatar1.jpg" alt="">
                     </div>
                     <p>Diệu Đặng</p>
                 </div>
@@ -706,7 +713,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar2.jpg" alt="">
+                        <img src="../img/product/avatar2.jpg" alt="">
                     </div>
                     <p>Cao Anh</p>
                 </div>
@@ -750,7 +757,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar3.jpg" alt="">
+                        <img src="../img/product/avatar3.jpg" alt="">
                     </div>
                     <p>Nguyễn Minh Châu</p>
                 </div>
@@ -793,7 +800,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar4.jpg" alt="">
+                        <img src="../img/product/avatar4.jpg" alt="">
                     </div>
                     <p>Lưu Thị Ánh</p>
                 </div>
@@ -837,7 +844,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar5.jpg" alt="">
+                        <img src="../img/product/avatar5.jpg" alt="">
                     </div>
                     <p>Khương Hồng Nhan</p>
                 </div>
@@ -884,7 +891,7 @@
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="img/product/avatar6.jpg" alt="">
+                        <img src="../img/product/avatar6.jpg" alt="">
                     </div>
                     <p>Tran Trần Xinh Gái</p>
                 </div>
@@ -960,7 +967,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/16.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/16.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -985,7 +992,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/15.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/15.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1009,7 +1016,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/14.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/14.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                         </figure>
@@ -1032,7 +1039,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/13.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/13.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1058,7 +1065,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/12.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/12.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1084,7 +1091,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/11.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/11.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1110,7 +1117,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/10.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/10.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1138,7 +1145,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/9.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/9.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1171,7 +1178,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/17.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/17.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1198,7 +1205,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/18.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/18.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1223,7 +1230,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/19.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/19.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                         </figure>
@@ -1248,7 +1255,7 @@
                                     <li>
                                         <figure>
                                             <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="img/do/nu/20.jpg" alt="polo shirt img"></a>
+                                                    src="../img/do/nu/20.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="cart.html"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
                                             <figcaption>
@@ -1272,7 +1279,7 @@
                                     <!-- start single product item -->
                                     <li>
                                         <figure>
-                                            <a class="aa-product-img" href="#"><img src="img/do/nu/21.jpg"
+                                            <a class="aa-product-img" href="#"><img src="../img/do/nu/21.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
@@ -1296,7 +1303,7 @@
                                     <!-- start single product item -->
                                     <li>
                                         <figure>
-                                            <a class="aa-product-img" href="#"><img src="img/do/nu/22.jpg"
+                                            <a class="aa-product-img" href="#"><img src="../img/do/nu/22.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
@@ -1322,7 +1329,7 @@
                                     <!-- start single product item -->
                                     <li>
                                         <figure>
-                                            <a class="aa-product-img" href="#"><img src="img/do/nu/23.jpg"
+                                            <a class="aa-product-img" href="#"><img src="../img/do/nu/23.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
@@ -1348,7 +1355,7 @@
                                     <!-- start single product item -->
                                     <li>
                                         <figure>
-                                            <a class="aa-product-img" href="#"><img src="img/do/nu/24.jpg"
+                                            <a class="aa-product-img" href="#"><img src="../img/do/nu/24.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
                                                     class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
@@ -1397,7 +1404,7 @@
         <div style="background: white;">
             <div class="contentformvietdanhgia">
                 <div>
-                    <img src="img/product/avatar7.jpg" alt="">
+                    <img src="../img/product/avatar7.jpg" alt="">
                 </div>
                 <div>
                     <h3>Nguyễn Thị Hoa Hồng</h3>
@@ -1481,7 +1488,7 @@
                                         <li><a href="#">Hợp tác</a></li>
 
                                     </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
+                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
@@ -1504,16 +1511,16 @@
                                     <div class="aa-footer-widget">
                                         <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
+                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
+                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
+                                            <li><img src="../img/grap.webp" alt=""></li>
 
                                         </ul>
                                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                                         <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
+                                            <li><img src="../img/vnpay.webp" alt=""></li>
+                                            <li><img src="../img/momo.webp" alt=""></li>
+                                            <li><img src="../img/cash.webp" alt=""></li>
 
                                         </ul>
                                     </div>
@@ -1529,7 +1536,7 @@
                                             <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></span></a>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
                                             <a href="#"><i class="fa fa-twitter"></i></a>
                                             <a href="#"><i class="fa fa-google"></i></a>
                                             <a href="#"><i class="fa fa-youtube"></i></a>
@@ -1568,22 +1575,22 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="js/sequence.js"></script>
-<script src="js/sequence-theme.modern-slide-in.js"></script>
+<script src="../js/sequence.js"></script>
+<script src="../js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="js/slick.js"></script>
+<script type="text/javascript" src="../js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="js/nouislider.js"></script>
+<script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="js/custom.js"></script>
+<script src="../js/custom.js"></script>
 
-<script src="js/chitietsanpham.js"></script>
+<script src="../js/chitietsanpham.js"></script>
