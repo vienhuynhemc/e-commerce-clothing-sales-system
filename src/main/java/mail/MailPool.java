@@ -12,20 +12,16 @@ public class MailPool {
     //  Constructor thì khởi tạo mailModel
     public MailPool() {
 
+        //  Khởi tạo mailPool
         mailModel = new MailModel();
+
+        //  Đặt trạng thái hoạt động ban đầu là false
+        isActive = false;
 
     }
 
     //  Lấy thể hiện của lớp, để ở trạng thái synchronized
     public synchronized MailModel getMailModel() {
-
-        //  Xem thử thể hiện đã được khởi tạo chưa, chưa thì khởi tạo
-        if (mailModel == null) {
-
-            // Bằng null thì ta khởi tạo
-            mailModel = new MailModel();
-
-        }
 
         //  Xem thử nó có đang được hoạt động hay không, đang hoạt động thì bắt client yêu cầu chờ
         while (isActive) {
@@ -41,6 +37,7 @@ public class MailPool {
 
         }
 
+        //  Xuống tới đây có nghĩa là đã được đánh thức
         //  Cho trạng thái thành true
         isActive = true;
 

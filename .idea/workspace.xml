@@ -27,9 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Email singleton">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Mail pool + check mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,59 +91,7 @@
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MailDataSource">
-    <configuration name="DataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="connectionDatabase.DataSource" />
-      <module name="ltw_thayLong_group5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="connectionDatabase.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MailDataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mail.MailDataSource" />
-      <module name="ltw_thayLong_group5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="mail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MailModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mail.MailModel" />
-      <module name="ltw_thayLong_group5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="mail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Tomcat 9.0.391" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.391" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ltw_thayLong_group5_war_exploded/" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -217,13 +165,6 @@
         </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MailDataSource" />
-        <item itemvalue="Application.MailModel" />
-        <item itemvalue="Application.DataSource" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -241,7 +182,8 @@
       <workItem from="1608547749286" duration="6312000" />
       <workItem from="1608554184359" duration="998000" />
       <workItem from="1608556884004" duration="10847000" />
-      <workItem from="1608606906954" duration="4955000" />
+      <workItem from="1608606906954" duration="5099000" />
+      <workItem from="1608612232250" duration="230000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -306,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608567655671</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mail pool + check mail">
+      <created>1608612029936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608612029936</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +283,8 @@
     <MESSAGE value="Hoàn thành connection pool - đã test 100%" />
     <MESSAGE value="update project" />
     <MESSAGE value="Email singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Email singleton" />
+    <MESSAGE value="Mail pool + check mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mail pool + check mail" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
@@ -345,10 +295,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="72" y="210" key="#SQL_Dialects/0.0.1366.738@0.0.1366.738" timestamp="1608608288581" />
-    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608550718762">
+    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608612414829">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1608550718762" />
+    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1608612414829" />
     <state x="488" y="75" key="#com.intellij.ide.util.MemberChooser" timestamp="1608565225420">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -361,22 +311,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608611863271">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1608612059795">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608611863271" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608611863270">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608612059795" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1608612059794">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608611863270">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608612059794" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1608612059794">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608611863270">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608612059794" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1608612059795">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608611863270" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608612059795" />
     <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608567870732">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -413,10 +363,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608567665770">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608612036459">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608567665770" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608612036459" />
     <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
