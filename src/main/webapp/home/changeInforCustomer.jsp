@@ -210,8 +210,9 @@
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/12.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/12.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
@@ -220,8 +221,9 @@
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/13.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img
+                                                src="../img/do/nu/13.jpg"
+                                                alt="img"></a>
                                         <div class="aa-cartbox-info">
                                             <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
@@ -967,65 +969,64 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
 https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
-<!--
+
 <script>
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
-authDomain: "ecommerce-b6c08.firebaseapp.com",
-databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
-projectId: "ecommerce-b6c08",
-storageBucket: "ecommerce-b6c08.appspot.com",
-messagingSenderId: "390576423583",
-appId: "1:390576423583:web:efcf73909008a68dcd18aa",
-measurementId: "G-LR0V7PWKZN"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+        authDomain: "ecommerce-b6c08.firebaseapp.com",
+        databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+        projectId: "ecommerce-b6c08",
+        storageBucket: "ecommerce-b6c08.appspot.com",
+        messagingSenderId: "390576423583",
+        appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+        measurementId: "G-LR0V7PWKZN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
 
-function loadIMG(event) {
-if (event.target.files.length > 0) {
+    function loadIMG(event) {
+        if (event.target.files.length > 0) {
 
-const ref = firebase.storage().ref();
-const file = event.target.files[0];
-const name = file.name;
-let link;
-let nameData = name.split('.')[0];
-const folder = "ProductNam/" + nameData;
-const metadata = {contentType: file.type};
-const task = ref.child(folder).put(file, metadata);
-task
-.then(snapshot => snapshot.ref.getDownloadURL())
-.then(url => {
-alert("Thanh cong");
-document.getElementById('avatar').src = url;
-document.getElementById('avatar2').src = url;
-link = url;
-firebase.database().ref(folder).set({
-Name: nameData,
-Link: link
-})
-});
+            const ref = firebase.storage().ref();
+            const file = event.target.files[0];
+            const name = file.name;
+            let link;
+            let nameData = name.split('.')[0];
+            const folder = "ProductNam/" + nameData;
+            const metadata = {contentType: file.type};
+            const task = ref.child(folder).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    alert("Thanh cong");
+                    document.getElementById('avatar').src = url;
+                    document.getElementById('avatar2').src = url;
+                    link = url;
+                    firebase.database().ref(folder).set({
+                        Name: nameData,
+                        Link: link
+                    })
+                });
 
-// Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
-// firebase.database().ref("ProductNam/index").on('value', function (snapshot) {
-// document.getElementById('avatar').src = snapshot.val().Link;
-// })
-}
-}
+//Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
+            firebase.database().ref("ProductNam/index").on('value', function (snapshot) {
+                document.getElementById('avatar').src = snapshot.val().Link;
+            })
+        }
+    }
 
-function removeAvatar() {
-document.getElementById('avatar').src = '../img/user.jpg';
-document.getElementById('avatar2').src = '../img/user.jpg';
+    function removeAvatar() {
+        document.getElementById('avatar').src = '../img/user.jpg';
+        document.getElementById('avatar2').src = '../img/user.jpg';
 
 // xoá thì truyền link vào
 //database
-// firebase.database().ref('ProductNam/index').remove();
-// img
-// firebase.storage().ref('ProductNam/index').delete();
-}
+        firebase.database().ref('ProductNam/map').remove();
+        // img
+        firebase.storage().ref('ProductNam/map').delete();
+    }
 
 </script>
--->

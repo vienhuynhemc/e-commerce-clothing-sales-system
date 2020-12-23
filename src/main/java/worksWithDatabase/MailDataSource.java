@@ -1,11 +1,11 @@
-package mail;
+package worksWithDatabase;
 
 public class MailDataSource {
 
     /*
      *  Ở đây chúng ta sẽ áp dụng mẫu singleton, có 2 nhiệm vụ có thể thực hiện khi getInstance ở đây
-     *      1. Lấy mailmodel
-     *      2. Trả mailmodel
+     *      1. Lấy EmailWorksWithDatabase
+     *      2. Trả EmailWorksWithDatabase
      */
 
     //  Khai báo mailpool
@@ -35,19 +35,19 @@ public class MailDataSource {
 
     }
 
-    //  Phương thúc lấy mailModel
-    public MailModel getMailModel() {
+    //  Phương thúc lấy EmailWorksWithDatabase
+    public EmailWorksWithDatabase getEmailWorksWithDatabase() {
 
-        //  Lấy mailModel từ mailPool
-        return mailPool.getMailModel();
+        //  Lấy EmailWorksWithDatabase từ mailPool
+        return mailPool.getEmailWorksWithDatabase();
 
     }
 
-    //  Phương thức trả mailModel cho mailPool
-    public void releaseMailModel(MailModel mailModel) {
+    //  Phương thức trả EmailWorksWithDatabase cho mailPool
+    public void releaseMailModel(EmailWorksWithDatabase emailWorksWithDatabase) {
 
-        //  Trả mailModel về cho mailPool
-        mailPool.releaseMailModel(mailModel);
+        //  Trả EmailWorksWithDatabase về cho mailPool
+        mailPool.releaseEmailWorksWithDatabase(emailWorksWithDatabase);
 
     }
 

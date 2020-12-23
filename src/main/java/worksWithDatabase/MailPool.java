@@ -1,19 +1,19 @@
-package mail;
+package worksWithDatabase;
 
 public class MailPool {
 
     //---------------------------------Pool ---------------------------------
 
-    private MailModel mailModel;
+    private EmailWorksWithDatabase emailWorksWithDatabase;
     private boolean isActive;
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo mailModel
+    //  Constructor thì khởi tạo email works with database
     public MailPool() {
 
         //  Khởi tạo mailPool
-        mailModel = new MailModel();
+        emailWorksWithDatabase = new EmailWorksWithDatabase();
 
         //  Đặt trạng thái hoạt động ban đầu là false
         isActive = false;
@@ -21,7 +21,7 @@ public class MailPool {
     }
 
     //  Lấy thể hiện của lớp, để ở trạng thái synchronized
-    public synchronized MailModel getMailModel() {
+    public synchronized EmailWorksWithDatabase getEmailWorksWithDatabase() {
 
         //  Xem thử nó có đang được hoạt động hay không, đang hoạt động thì bắt client yêu cầu chờ
         while (isActive) {
@@ -42,15 +42,15 @@ public class MailPool {
         isActive = true;
 
         //  Trả về thể hiện
-        return mailModel;
+        return emailWorksWithDatabase;
 
     }
 
     //  Phương thứct trả về mailmodel
-    public synchronized void releaseMailModel(MailModel mailModel) {
+    public synchronized void releaseEmailWorksWithDatabase(EmailWorksWithDatabase emailWorksWithDatabase) {
 
         //  Kiểm tra mail nhận vào có đúng là mail cửa lớp này hay không
-        if (this.mailModel == mailModel) {
+        if (this.emailWorksWithDatabase == emailWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false
             isActive = false;

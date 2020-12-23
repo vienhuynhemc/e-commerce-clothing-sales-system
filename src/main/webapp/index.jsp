@@ -57,8 +57,8 @@
     </div>
 </div>
 
-<!-- SCROLL TOP BUTTON -->
 <a class="scrollToTop movetop" href="#"><i class="fa fa-angle-double-up"></i></a>
+<!-- SCROLL TOP BUTTON -->
 <!-- END SCROLL TOP BUTTON -->
 
 <!-- Start header section -->
@@ -1623,6 +1623,24 @@
 
 <!-- / Client Brand -->
 
+<!---------------MAIL LIÊN HỆ------------------>
+<a href="#aa-subscribe" id="movetosubscribe" style="display: none"></a>
+<%
+    if (request.getAttribute("pageAddress") != null) {
+        String address = (String) request.getAttribute("pageAddress");
+%>
+
+<jsp:include page="<%=address%>" />
+
+<script>
+    document.getElementById("movetosubscribe").click();
+</script>
+
+<%
+    }
+%>
+<!------------------------------------------------>
+
 <!-- Subscribe section -->
 <section id="aa-subscribe">
     <div class="subscribediv">
@@ -1630,9 +1648,11 @@
             <h3>THAM GIA VỚI CHÚNG TÔI ĐỂ NHẬN NHỮNG <span style="color:#ff7315">EMAIL THÔNG TIN SỚM NHẤT</span></h3>
             <p>
                 Đăng ký và nhận thông báo về bản cập nhật và ưu đãi mới nhất trước tất cả!</p>
-            <form action="">
+            <form action="MailController" method="post">
                 <div class="form-action-sr">
-                    <input type="text" placeholder="Nhập email bạn ở đây">
+                    <input type="text" name="email"
+                           value=""
+                           placeholder="Nhập email bạn ở đây">
                     <button>Tham gia</button>
                 </div>
             </form>

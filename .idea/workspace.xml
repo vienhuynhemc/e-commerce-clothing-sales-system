@@ -27,35 +27,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Index html -&gt; jsp">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/guiEmailThongBao.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVGH.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/indexNVK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/lichSuNhapHang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/nhapHang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/phanHoiLienHe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLySanPham.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinDonHangThuNhap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinLichSuNhapHangThuNhap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVGH.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanNVK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/loginvienAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/loginvienAdmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanAdminAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/thongTinTaiKhoanAdminAdmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/nhapHangAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/nhapHangAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailDataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -86,13 +65,6 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1lu9bSyqW0odQkztWvf5zuBMeox" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -100,24 +72,54 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/apache-tomcat-9.0.39/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/popupMailNotice" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\popupMailNotice" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\home" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\css" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.391">
+    <configuration name="CategoryDataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.CategoryDataSource" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worksWithDatabase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mail.Main" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -202,6 +204,12 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CategoryDataSource" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -223,7 +231,17 @@
       <workItem from="1608612232250" duration="331000" />
       <workItem from="1608621828972" duration="3960000" />
       <workItem from="1608636509338" duration="7631000" />
-      <workItem from="1608648468637" duration="703000" />
+      <workItem from="1608648468637" duration="1640000" />
+      <workItem from="1608650162210" duration="4905000" />
+      <workItem from="1608689522686" duration="2163000" />
+      <workItem from="1608701627811" duration="78000" />
+      <workItem from="1608701869976" duration="5019000" />
+      <workItem from="1608709319215" duration="5033000" />
+      <workItem from="1608724241012" duration="149000" />
+      <workItem from="1608724568691" duration="233000" />
+      <workItem from="1608725015343" duration="182000" />
+      <workItem from="1608725227521" duration="89000" />
+      <workItem from="1608725343716" duration="5288000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -309,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608639766501</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="admin html -&gt; jsp">
+      <created>1608649416116</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608649416116</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,100 +365,7 @@
     <MESSAGE value="Mail pool + check mail" />
     <MESSAGE value="Mail pool + check mail index, contact. Đã test 100%" />
     <MESSAGE value="Index html -&gt; jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Index html -&gt; jsp" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="163" y="0" key="#Project_Structure" timestamp="1608435840263">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="163" y="0" key="#Project_Structure/0.0.1366.738@0.0.1366.738" timestamp="1608435840263" />
-    <state x="72" y="210" key="#SQL_Dialects" timestamp="1608608288581">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="72" y="210" key="#SQL_Dialects/0.0.1366.738@0.0.1366.738" timestamp="1608608288581" />
-    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608612414829">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="137" y="0" width="1092" height="738" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1608612414829" />
-    <state x="488" y="75" key="#com.intellij.ide.util.MemberChooser" timestamp="1608565225420">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="488" y="75" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1608565225420" />
-    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608552674798">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.738@0.0.1366.738" timestamp="1608552674798" />
-    <state x="389" y="110" key="FileChooserDialogImpl" timestamp="1608435834061">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="389" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1608435834061" />
-    <state width="905" height="182" key="GridCell.Tab.0.bottom" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.0.center" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.0.left" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.0.right" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.1.bottom" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.1.center" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.1.left" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.1.right" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.2.bottom" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.2.bottom/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.2.center" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.2.center/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.2.left" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.2.left/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state width="905" height="182" key="GridCell.Tab.2.right" timestamp="1608646396069">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="905" height="182" key="GridCell.Tab.2.right/0.0.1366.738@0.0.1366.738" timestamp="1608646396069" />
-    <state x="184" y="13" key="SettingsEditor" timestamp="1608469739814">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1608469739814" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1608639772923">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1608639772923" />
-    <state x="499" y="146" key="chooseDestDirectoryDialog" timestamp="1608478213489">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="499" y="146" key="chooseDestDirectoryDialog/0.0.1366.738@0.0.1366.738" timestamp="1608478213489" />
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup" timestamp="1608564569940">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="339" y="165" width="672" height="677" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1608564569940" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1608607813297">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1608607813297" />
+    <MESSAGE value="admin html -&gt; jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin html -&gt; jsp" />
   </component>
 </project>
