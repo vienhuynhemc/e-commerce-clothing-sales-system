@@ -27,15 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="23/12/2020 :v" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,13 +112,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,7 +235,7 @@
       <workItem from="1608724568691" duration="233000" />
       <workItem from="1608725015343" duration="182000" />
       <workItem from="1608725227521" duration="89000" />
-      <workItem from="1608725343716" duration="5288000" />
+      <workItem from="1608725343716" duration="5434000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -334,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608649416116</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="23/12/2020 :v">
+      <created>1608731623802</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608731623802</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,6 +367,7 @@
     <MESSAGE value="Mail pool + check mail index, contact. Đã test 100%" />
     <MESSAGE value="Index html -&gt; jsp" />
     <MESSAGE value="admin html -&gt; jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin html -&gt; jsp" />
+    <MESSAGE value="23/12/2020 :v" />
+    <option name="LAST_COMMIT_MESSAGE" value="23/12/2020 :v" />
   </component>
 </project>
