@@ -443,7 +443,6 @@ img {
 #aa-header .aa-header-top .aa-header-top-right .aa-head-top-nav-right li {
     display: inline-block;
     text-align: right;
-    background-color: rgba(255, 255, 255, 0.141);
     border-radius: 35px;
     /* height: 32px; */
     /* margin-bottom: 3px; */
@@ -564,8 +563,8 @@ input[type="text"]::placeholder {
     color: #fff;
     height: 100%;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -8px;
+    top: -8px;
     width: 50px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -589,7 +588,7 @@ button:hover {
     text-align: center;
     position: relative;
     padding-bottom: 4px;
-    margin: 19px 24px 9px 0px;
+    margin:9px 24px 9px 0px;
     /* width: 140px; */
     /* height: 56px; */
 }
@@ -615,7 +614,7 @@ button:hover {
     font-size: 14px;
     /* padding: 0px 8px; */
     font-weight: 600;
-    margin-top: -7px;
+    margin-top: 2px;
     font-family: "Lato", sans-serif;
 }
 
@@ -6321,6 +6320,7 @@ ul.aa-footer-nav.giaohang li img {
     font-size: 15px;
     font-family: "Lato";
     color: #a09292;
+    font-family: sans-serif;
 }
 
 #aa-footer .aa-footer-bottom .aa-footer-bottom-area a:hover {
@@ -6425,10 +6425,14 @@ span.fa.fa-credit-card {
     border-radius: 5px;
 }
 
+.activengonngu {
+    background-color: #ff7315 !important;
+}
+
 .choiselanguage li {
     display: inline-block;
     text-align: right;
-    background-color: #232020 !important;
+    background-color: #232020;
     border-radius: 35px;
     /* height: 32px; */
     /* margin-bottom: 3px; */
@@ -6457,7 +6461,7 @@ span.fa.fa-credit-card {
     margin-top: 5px;
 }
 
-.movetop > i{
+.movetop > i {
     margin-top: 10px;
 }
 
@@ -6647,6 +6651,8 @@ span.fa.fa-cart-arrow-down {
     color: rgb(107, 119, 141);
     font-family: Lato, sans-serif;
     margin-bottom: 1rem;
+    margin-right: auto;
+    margin-left: 72px;
 }
 
 .subscribedivchild input {
