@@ -20,7 +20,6 @@ public class MailModel {
     public static final int CONTACT_CONTACT = 1;
 
 
-
     //--------------------------------- Khai báo thuộc tính cần thiết để gửi email ---------------------------------
     //  Properties để thiết lập server
     private Properties properties;

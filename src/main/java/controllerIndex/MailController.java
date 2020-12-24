@@ -24,7 +24,7 @@ public class MailController extends HttpServlet {
         String pageAddress = JoinUsModel.getInstance().action(email);
 
         //  Set attribute pageAdress vào request
-        request.setAttribute("pageAddress",pageAddress);
+        request.setAttribute("pageAddress", pageAddress);
 
         //  Forward lại trang index
         request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -100,10 +100,4 @@ public class CategoryWorksWithDatabase {
         return false;
     }
 
-    public static void main(String[] args) {
-        //System.out.println(addCategory("Quần short"));
-        //System.out.println(removeCategory("DM004"));
-        //System.out.println(updateCategory("DM2","Áo sơ mi nam"));
-    }
-
 }

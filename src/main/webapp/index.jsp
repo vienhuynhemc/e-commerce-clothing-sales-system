@@ -1705,7 +1705,7 @@
                 <%=lang.get("69")%></p>
             <form action="MailController" method="post">
                 <div class="form-action-sr">
-                    <input type="email" name="email" required
+                    <input type="text" name="email" required
                            value=""
                            placeholder="<%=lang.get("70")%>">
                     <button><%=lang.get("71")%></button>

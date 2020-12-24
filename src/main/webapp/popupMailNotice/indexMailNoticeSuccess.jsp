@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.IndexMailNoticeLanguageModel" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 23/12/2020
@@ -139,17 +140,30 @@
 </head>
 
 <body>
+
+<%
+    //  Lấy ra ngôn ngữ hiện tại của session
+    String language = (String) session.getAttribute("lang");
+
+    //  Nếu session chưa có thì có nghĩa index mới đc mở lần đầu, cho mặc định là tiếng việt
+    if (language == null) language = "vietnamese";
+
+    //  Xong rồi lấy list ngôn ngữ từ model ra, vì trang này làm include nên ko gọi tới controller serverlet được
+    Map<String, String> lang = IndexMailNoticeLanguageModel.getInstance().getList(language);
+
+%>
+
 <div class="changepassword" id="changepassword">
     <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
     <div class="mainchangepassword">
         <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
         <div class="changepasswordsuccess" id="changepasswordsuccess">
-            <p>Tham gia thành công
+            <p><%=lang.get("5")%>
             </p>
-            <p>Cảm ơn bạn đã tham gia với TVTSHOP chúng tôi, ngay từ lúc này mỗi khi có thông báo mới bạn sẽ là người
-                biết đầu tiên!<img
-                        src="img/raising-hands-emoji-218129.png" alt=""></p>
-            <button onclick="gobackpassword()">Trở về</button>
+            <p><%=lang.get("6")%><img
+                    src="img/raising-hands-emoji-218129.png" alt=""></p>
+            <button onclick="gobackpassword()"><%=lang.get("3")%>
+            </button>
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@ public class MailPool {
     //  Constructor thì khởi tạo email works with database
     public MailPool() {
 
-        //  Khởi tạo mailPool
+        //  Khởi tạo  email works with database
         emailWorksWithDatabase = new EmailWorksWithDatabase();
 
         //  Đặt trạng thái hoạt động ban đầu là false
@@ -46,7 +46,7 @@ public class MailPool {
 
     }
 
-    //  Phương thứct trả về mailmodel
+    //  Phương thứct trả về EmailWorksWithDatabase
     public synchronized void releaseEmailWorksWithDatabase(EmailWorksWithDatabase emailWorksWithDatabase) {
 
         //  Kiểm tra mail nhận vào có đúng là mail cửa lớp này hay không
