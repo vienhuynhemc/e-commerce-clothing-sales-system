@@ -27,11 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="23/12/2020 :v">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Test chức năng ngôn ngữ">
+      <change afterPath="$PROJECT_DIR$/src/main/java/beans/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/trangChu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/trangChu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,15 +115,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -244,7 +240,8 @@
       <workItem from="1608731856839" duration="938000" />
       <workItem from="1608732865238" duration="37000" />
       <workItem from="1608777381231" duration="5147000" />
-      <workItem from="1608793933717" duration="14455000" />
+      <workItem from="1608793933717" duration="14586000" />
+      <workItem from="1608824401599" duration="1236000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -351,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608732065507</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Test chức năng ngôn ngữ">
+      <created>1608810986849</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1608810986849</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +388,7 @@
     <MESSAGE value="Index html -&gt; jsp" />
     <MESSAGE value="admin html -&gt; jsp" />
     <MESSAGE value="23/12/2020 :v" />
-    <option name="LAST_COMMIT_MESSAGE" value="23/12/2020 :v" />
+    <MESSAGE value="Test chức năng ngôn ngữ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test chức năng ngôn ngữ" />
   </component>
 </project>
