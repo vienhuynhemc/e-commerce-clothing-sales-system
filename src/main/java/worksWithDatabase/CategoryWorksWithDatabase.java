@@ -1,10 +1,8 @@
 package worksWithDatabase;
 
-import category.Category;
 import connectionDatabase.DataSource;
 
 import java.sql.*;
-import java.util.Date;
 
 public class CategoryWorksWithDatabase {
 
@@ -46,9 +44,9 @@ public class CategoryWorksWithDatabase {
                 PreparedStatement s = connection.prepareStatement("INSERT INTO danhmuc VALUES (?,?,?)");
                 s.setString(1, "DM" + (row + 1));
                 s.setString(2, name);
-                s.setDate(3,date);
+                s.setDate(3, date);
                 s.execute();
-// tại sao web in lại có mấy thứ này ?
+
 
                 s.close();
                 DataSource.getInstance().releaseConnection(connection);

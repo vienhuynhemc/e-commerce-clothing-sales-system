@@ -1,1 +1,2 @@
-asdfasdf a
+khi pull thì nhớ : opull ko dc thi là do xung đột cái workbend trong .idea, nên cứ view error xong chuột phải rollback cái thằng workbend thì pull về bình thường
+khi commit nhớ bỏ thằng .idea ra nhé ok
