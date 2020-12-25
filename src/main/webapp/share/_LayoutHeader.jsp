@@ -85,10 +85,12 @@
                                                         class="activengonngu"
                                                         <%}%>
 
-                                                ><a href="<%=request.getParameter("levelPage")%><%=request.getParameter("linkMainPage")%>?lang=vietnamese"><img class="country"
-                                                                                                        src="<%=request.getParameter("levelPage")%>img/vietnam.png"
-                                                                                                        alt="">Việt
-                                                    Nam</a></li>
+                                                >
+                                                    <a href="<%=request.getParameter("levelPage")%><%=request.getParameter("linkMainPage")%>?lang=vietnamese"><img
+                                                            class="country"
+                                                            src="<%=request.getParameter("levelPage")%>img/vietnam.png"
+                                                            alt="">Việt
+                                                        Nam</a></li>
                                                 <li
 
                                                         <%
@@ -98,9 +100,11 @@
                                                         class="activengonngu"
                                                         <%}%>
 
-                                                ><a href="<%=request.getParameter("levelPage")%><%=request.getParameter("linkMainPage")%>?lang=english"><img class="country"
-                                                                                                     src="<%=request.getParameter("levelPage")%>img/language.png"
-                                                                                                     alt="">English</a>
+                                                >
+                                                    <a href="<%=request.getParameter("levelPage")%><%=request.getParameter("linkMainPage")%>?lang=english"><img
+                                                            class="country"
+                                                            src="<%=request.getParameter("levelPage")%>img/language.png"
+                                                            alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -156,9 +160,15 @@
                                         <div class="navbar-collapse collapse menuselect">
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
-                                                <li><a href="<%=request.getParameter("levelPage")%>IndexLanguageController"
-                                                       class="activeee"><%=lang.get("6")%>
-                                                </a></li>
+                                                <li>
+                                                    <a href="<%=request.getParameter("levelPage")%>IndexLanguageController"
+
+                                                            <% if (request.getParameter("activeselect") != null && request.getParameter("activeselect").equals("index.jsp")) { %>
+                                                       class="activeee"
+                                                            <%}%>
+
+                                                    ><%=lang.get("6")%>
+                                                    </a></li>
                                                 <li><a href="home/product.html"><%=lang.get("7")%><span
                                                         class="caret"></span></a>
                                                     <ul class="dropdown-menu">

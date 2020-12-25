@@ -57,10 +57,12 @@
                                         <h3><%=lang.get("6")%>
                                         </h3>
                                         <ul class="aa-footer-nav">
-                                            <li><a href="home/chooseSize.html"><%=lang.get("7")%>
-                                            </a></li>
-                                            <li><a href="<%=request.getParameter("levelPage")%>ShoppingGuideLanguageController"><%=lang.get("8")%>
-                                            </a></li>
+                                            <li>
+                                                <a href="<%=request.getParameter("levelPage")%>ChooseSizeLanguageController"><%=lang.get("7")%>
+                                                </a></li>
+                                            <li>
+                                                <a href="<%=request.getParameter("levelPage")%>ShoppingGuideLanguageController"><%=lang.get("8")%>
+                                                </a></li>
                                             <li><a href="home/membership_policy.html"><%=lang.get("9")%>
                                             </a></li>
                                             <li><a href="home/payment_policy.html"><%=lang.get("10")%>

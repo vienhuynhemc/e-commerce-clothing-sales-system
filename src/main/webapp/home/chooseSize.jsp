@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.ChooseSizeLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -47,25 +48,46 @@
     <link rel="stylesheet" href="../css/chooseSize.css">
 </head>
 
+<!--------------------------------Lấy list ngôn ngữ ra---------------------------------------->
+
+<%
+    //  Chuyển về UTF-8
+    request.setCharacterEncoding("UTF-8");
+
+    //  Lấy list ngôn ngữ ra
+    Map<String, String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if (lang == null) {
+        lang = ChooseSizeLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
+
 <body>
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"/>
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="ChooseSizeLanguageController"/>
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
+<!-- / header section -->
 
-<%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Hướng dẫn chọn size"/>
+<jsp:include page="../share/_LayoutBanner.jsp">
+    <jsp:param name="titleVietnamese" value="Hướng dẫn chọn size"/>
+    <jsp:param name="titleEnglish" value="Instructions to choose the size"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
 <div class="col-sm-12 divtitle">
-    <h3 class="title titlemain"><span class="red">Hướng dẫn</span> chọn size</h3>
-    <p class="titilesub">Ở đây bạn khỏi lo vấn đề đồ có vừa với mình hay không</p>
+    <h3 class="title titlemain"><span class="red"><%=lang.get("1")+" "%></span> <%=lang.get("2")%></h3>
+    <p class="titilesub"><%=lang.get("3")%></p>
 
     <div class="selectdiv">
-        <div class="men" id="men" onclick="man()">Dành cho nam</div>
-        <div class="woman" id="woman" onclick="woman()">Dành cho nữ</div>
+        <div class="men" id="men" onclick="man()"><%=lang.get("4")%></div>
+        <div class="woman" id="woman" onclick="woman()"><%=lang.get("5")%></div>
     </div>
 
     <img id="size1" src="../img/size1.jpg" class="img_policy" alt="">
@@ -76,10 +98,12 @@
 
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"/>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
 <!-- / footer -->
 
 <!-- jQuery library -->

@@ -76,6 +76,7 @@
 <jsp:include page="share/_LayoutHeader.jsp">
     <jsp:param name="linkMainPage" value="IndexLanguageController"/>
     <jsp:param name="levelPage" value=""/>
+    <jsp:param name="activeselect" value="index.jsp"/>
 </jsp:include>
 
 <!-- / header section -->
