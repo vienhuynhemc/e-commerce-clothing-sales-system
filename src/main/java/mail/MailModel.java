@@ -27,7 +27,6 @@ public class MailModel {
     public static final int REGISTER_KH = 4;
 
 
-
     //--------------------------------- Khai báo thuộc tính cần thiết để gửi email ---------------------------------
     //  Properties để thiết lập server
     private Properties properties;

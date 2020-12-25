@@ -44,6 +44,9 @@ body {
     width: 200px;
     height: 200px;
     transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .divsiitem a:hover h3 {
@@ -58,11 +61,11 @@ body {
 
 .divsiitem a h3 {
     position: absolute;
-    top: 0%;
-    left: 0px;
-    margin-top: -47px;
-    margin-left: 26px;
-    padding: 48px 20px;
+    /* top: 0%; */
+    /* left: 0px; */
+    /* margin-top: -47px; */
+    /* margin-left: 26px; */
+    /* padding: 48px 20px; */
     background-color: #232020b5;
     border-radius: 50%;
     color: white;
@@ -71,6 +74,12 @@ body {
     transform: scaleX(0);
     transition: all 0.5s ease;
     font-family: "Oswald", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 144px;
+    margin: auto;
+    height: 140px;
 }
 
 .divsiitem a h3:hover {
