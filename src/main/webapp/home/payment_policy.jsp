@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.PaymentPolicyLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -61,30 +62,55 @@
 
 </head>
 
+<%
+    //  Chuyển về UTF-8
+    request.setCharacterEncoding("UTF-8");
+
+    //  Lấy list ngôn ngữ ra
+    Map<String, String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if (lang == null) {
+        lang = PaymentPolicyLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
 <body>
 <!-- wpf loader Two -->
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"/>
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="PaymentPolicyLanguageController"/>
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
+<!-- / header section -->
 
-<%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Chính sách đổi trả"/>
+<jsp:include page="../share/_LayoutBanner.jsp">
+    <jsp:param name="titleVietnamese" value="Chính sách đổi trả"/>
+    <jsp:param name="titleEnglish" value="Payment policy"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
 <!-- Cart view section -->
 <div class="col-sm-12 divtitle">
-    <h3 class="title titlemain"><span class="red">Chính sách</span> đổi trả</h3>
-    <p class="titilesub">Chúng tôi nhận đổi trả sản phẩm với các quy định sau </p>
+    <h3 class="title titlemain"><span class="red"><%=lang.get("1") + " "%></span> <%=lang.get("2")%>
+    </h3>
+    <p class="titilesub"><%=lang.get("3")%>
+    </p>
     <img src="../img/chinhsachdoitra.jpg" class="img_policy" alt="">
 </div>
 
 
 <!-- Subscribe section -->
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"/>
+
+<!-- footer -->
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
 <!-- / footer -->
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
