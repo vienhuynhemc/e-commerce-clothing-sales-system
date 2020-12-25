@@ -1,6 +1,6 @@
 package controllerAdmin.account;
 
-import model.account.AddAccountModel;
+import model.account.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,18 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddAccountController",urlPatterns = "/AddAccountController")
-public class AddAccountController extends HttpServlet {
+@WebServlet(name = "AddAccountNVVCController",urlPatterns = "/AddAccountNVVCController")
+public class AddAccountNVVCController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        System.out.println("abc");
         response.sendRedirect("index.jsp");
+        //execute(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    doPost(request, response);
+        doPost(request, response);
     }
-
     public void execute(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
         String fullName = request.getParameter("full-name");
@@ -33,28 +31,17 @@ public class AddAccountController extends HttpServlet {
         String user = request.getParameter("userName");
         String pass = request.getParameter("passWord");
         String rePass = request.getParameter("rePassWord");
-        String salary = request.getParameter("salary");
-        String gioithieu = request.getParameter("gioi-thieu");
-        String trangthaidanhgia = request.getParameter("ttdg");
-        String trangthaikichhoat = request.getParameter("ttkh");
+        String avatar = request.getParameter("avatar");
+        int salary = Integer.parseInt(request.getParameter("salary"));
+        int gioithieu = Integer.parseInt(request.getParameter("gioi-thieu"));
 
 
-
-        if (pass.equals(rePass)){
-            int type = Integer.parseInt(request.getParameter("type"));
-            String address = xa + " - " + huyen + " - " + tinh;
-            String exe = AddAccountModel.getInstance().addAccount(type,user,pass,email,phone,displayName,fullName,salary,gioithieu,address,trangthaidanhgia,trangthaikichhoat);
-            if (exe.equals("OK")){
-                response.sendRedirect("index.jsp");
-            }else{
-                request.setAttribute("fail",exe);
-                request.getRequestDispatcher("index.jsp").forward(request,response);
-            }
+        String exe = AddAccountNVVCModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
+        if (exe.equals("OK")){
+            response.sendRedirect("index.jsp");
         }else{
-            request.setAttribute("fail","Xác nhận mật khẩu sai");
+            request.setAttribute("fail",exe);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
-
-
     }
 }

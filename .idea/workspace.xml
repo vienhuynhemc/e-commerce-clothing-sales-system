@@ -29,19 +29,15 @@
   <component name="ChangeListManager">
     <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/beans/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/beans/FooterLanguage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/FooterLanguage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/beans/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerIndex/MailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/MailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mail/MailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryWorksWithDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/CategoryWorksWithDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/MailPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeExist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeExist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeFailure.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeFailure.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeSuccess.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/popupMailNotice/indexMailNoticeSuccess.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AccountPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,19 +123,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 9.0.391" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.391" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ltw_thayLong_group5_war_exploded/" />
+    <configuration name="Tomcat 9.0.391" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ltw_thayLong_group5:war exploded">
@@ -175,6 +172,21 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -254,6 +266,7 @@
       <workItem from="1608777381231" duration="5147000" />
       <workItem from="1608793933717" duration="14586000" />
       <workItem from="1608824401599" duration="9233000" />
+      <workItem from="1608891248310" duration="1173000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>

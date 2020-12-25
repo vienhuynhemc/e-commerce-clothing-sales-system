@@ -52,9 +52,9 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li class="activelv2"><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
+                    <li><a href="quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li class="activelv2"><a href="quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li><a href="quanLyKhachHang.jsp"><i class="fa fa-users"></i>Khách hàng</a>
                     </li>
                 </ul>
                 <input type="checkbox" style="display: none;" checked>
@@ -1919,95 +1919,97 @@
             </div>
         </div>
 
-        <div id="div1">
-            <div>
-                <div class="div11">
-                    <h3>Hồ sơ của bạn</h3>
-                    <input id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event,this)"/>
-                    <div class="div11daidien" onclick="document.getElementById('fileInput12').click()">
-                        <div>
-                            <img src="../../img/user.jpg" alt="">
+        <form action="../../them-tai-khoan-nhan-vien-kho" method="post">
+            <div id="div1">
+                <div>
+                    <div class="div11">
+                        <h3>Hồ sơ của bạn</h3>
+                        <input id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event,this)"/>
+                        <div class="div11daidien" onclick="document.getElementById('fileInput12').click()">
+                            <div>
+                                <img src="../../img/user.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <button onclick="document.getElementById('fileInput12').click()">Thay đổi ảnh đại diện
+                            mới
+                        </button>
+                        <button onclick="removeImg()">Xóa ảnh đại diện</button>
+
+                    </div>
+
+                    <div class="div12">
+                        <h3>Điền thông tin cá nhân</h3>
+                        <div class="linediv12"></div>
+                        <div class="div12input">
+                            <label for="">* Họ và tên</label>
+                            <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây">
+                        </div>
+                        <div class="div12input">
+                            <label for="">Tên hiển thị</label>
+                            <input name="display-name" type="text" placeholder="Nhập tên hiển thị ở đây">
+                        </div>
+                        <div class="div12input">
+                            <label for="">* Email</label>
+                            <input name="email" type="text" placeholder="Nhập email ở đây">
+                        </div>
+                        <div class="div12input">
+                            <label for="">* Số điện thoại</label>
+                            <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây">
+                        </div>
+                        <div class="linediv12"></div>
+                        <div class="trangthai">
+                            <div class="div12inputlv2">
+                                <label for="">Tỉnh / Thành</label>
+                                <select name="tinh" id="">
+                                    <option value="">Chọn tỉnh / thành</option>
+                                </select>
+                            </div>
+                            <div class="div12inputlv2">
+                                <label for="">Quận / huyện</label>
+                                <select name="huyen" id="">
+                                    <option value="">Chọn quận / huyện</option>
+                                </select>
+                            </div>
+                            <div class="div12inputlv2">
+                                <label for="">Phường / xã</label>
+                                <select name="xa" id="">
+                                    <option value="">Chọn phường / xã</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="linediv12"></div>
+                        <div class="div12input">
+                            <label for="">* Tài khoản</label>
+                            <input name="userName" type="text" placeholder="Nhập tên tài khoản ở đây">
+                        </div>
+                        <div class="div12input">
+                            <label for="">* Mật khẩu</label>
+                            <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây">
+                        </div>
+                        <div class="div12input">
+                            <label for="">* Xác nhận</label>
+                            <input name="rePassWord" type="text" placeholder="Xác nhận mật khẩu ở đây">
                         </div>
                     </div>
 
-                    <button onclick="document.getElementById('fileInput12').click()">Thay đổi ảnh đại diện
-                        mới
-                    </button>
-                    <button onclick="removeImg()">Xóa ảnh đại diện</button>
-
-                </div>
-
-                <div class="div12">
-                    <h3>Điền thông tin cá nhân</h3>
-                    <div class="linediv12"></div>
-                    <div class="div12input">
-                        <label for="">* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây">
-                    </div>
-                    <div class="div12input">
-                        <label for="">Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây">
-                    </div>
-                    <div class="div12input">
-                        <label for="">* Email</label>
-                        <input type="text" placeholder="Nhập email ở đây">
-                    </div>
-                    <div class="div12input">
-                        <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây">
-                    </div>
-                    <div class="linediv12"></div>
-                    <div class="trangthai">
-                        <div class="div12inputlv2">
-                            <label for="">Tỉnh / Thành</label>
-                            <select name="" id="">
-                                <option value="">Chọn tỉnh / thành</option>
-                            </select>
+                    <div class="div13">
+                        <div class="div12input">
+                            <label for="">* Lương</label>
+                            <input type="text" placeholder="Nhập lương ở đây">
                         </div>
-                        <div class="div12inputlv2">
-                            <label for="">Quận / huyện</label>
-                            <select name="" id="">
-                                <option value="">Chọn quận / huyện</option>
-                            </select>
+                        <div class="linediv12"></div>
+                        <div class="div12input">
+                            <label for="">Giới thiệu</label>
+                            <input type="text" placeholder="Nhập số giới thiệu ở đây">
                         </div>
-                        <div class="div12inputlv2">
-                            <label for="">Phường / xã</label>
-                            <select name="" id="">
-                                <option value="">Chọn phường / xã</option>
-                            </select>
-                        </div>
+                        <div class="linediv12"></div>
+                        <button type="submit"><i class="fa fa-plus"></i>Thêm nhân viên</button>
+                        <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                     </div>
-                    <div class="linediv12"></div>
-                    <div class="div12input">
-                        <label for="">* Tài khoản</label>
-                        <input type="text" placeholder="Nhập tên tài khoản ở đây">
-                    </div>
-                    <div class="div12input">
-                        <label for="">* Mật khẩu</label>
-                        <input type="password" placeholder="Nhập mật khẩu ở đây">
-                    </div>
-                    <div class="div12input">
-                        <label for="">* Xác nhận</label>
-                        <input type="text" placeholder="Xác nhận mật khẩu ở đây">
-                    </div>
-                </div>
-
-                <div class="div13">
-                    <div class="div12input">
-                        <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây">
-                    </div>
-                    <div class="linediv12"></div>
-                    <div class="div12input">
-                        <label for="">Giới thiệu</label>
-                        <input type="text" placeholder="Nhập số giới thiệu ở đây">
-                    </div>
-                    <div class="linediv12"></div>
-                    <button><i class="fa fa-plus"></i>Thêm nhân viên</button>
-                    <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div id="div3">
         </div>

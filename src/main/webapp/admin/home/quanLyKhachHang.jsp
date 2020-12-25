@@ -52,9 +52,9 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li class="activelv2"><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
+                    <li><a href="quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li><a href="quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li class="activelv2"><a href="quanLyKhachHang.jsp"><i class="fa fa-users"></i>Khách hàng</a>
                     </li>
                 </ul>
                 <input type="checkbox" style="display: none;" checked>
@@ -1951,7 +1951,7 @@
             </div>
         </div>
 
-        <form action="../AddAccountController" method="post">
+        <form action="../../them-tai-khoan-khach-hang" method="post">
             <div id="div1">
                 <div>
                     <div class="div11">
@@ -1994,15 +1994,15 @@
                             <div class="div12inputlv2">
                                 <label for="">Trạng thái kích hoạt</label>
                                 <select name="ttkh" id="">
-                                    <option value="">Đã kích hoạt</option>
-                                    <option value="">Chưa kích hoạt</option>
+                                    <option value="1">Đã kích hoạt</option>
+                                    <option value="0">Chưa kích hoạt</option>
                                 </select>
                             </div>
                             <div class="div12inputlv2">
                                 <label for="">Trạng thái đánh giá</label>
                                 <select name="ttdg" id="">
-                                    <option value="">Cho phép đánh giá</option>
-                                    <option value="">Cấm đánh giá</option>
+                                    <option value="1">Cho phép đánh giá</option>
+                                    <option value="0">Cấm đánh giá</option>
                                 </select>
                             </div>
                         </div>

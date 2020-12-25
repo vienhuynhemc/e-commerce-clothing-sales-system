@@ -1,24 +1,24 @@
 package worksWithDatabase.account;
 
-public class AddAccountSource {
-    private static AddAccountSource addAccountSource;
-    private static AccountPool accountPool;
+public class AddAccountKHSource {
+    private static AddAccountKHSource addAccountSource;
+    private static AddAccountKHPool accountPool;
 
-    private AddAccountSource(){
-        accountPool = new AccountPool();
+    private AddAccountKHSource(){
+        accountPool = new AddAccountKHPool();
     }
-    public static synchronized AddAccountSource getInstance(){
+    public static synchronized AddAccountKHSource getInstance(){
         if (addAccountSource == null){
-            addAccountSource = new AddAccountSource();
+            addAccountSource = new AddAccountKHSource();
         }
         return addAccountSource;
     }
 
-    public AddAccountDAO getAddAccount(){
+    public AddAccountKHDAO getAddAccount(){
         return accountPool.getAccount();
     }
-    public void releaseAddAccount (AddAccountDAO addAccountDAO){
-        accountPool.releaseAddAccount(addAccountDAO);
+    public void releaseAddAccount (AddAccountKHDAO addAccountKHDAO){
+        accountPool.releaseAddAccount(addAccountKHDAO);
     }
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class AddAccountSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                AddAccountDAO a = AddAccountSource.getInstance().getAddAccount();
+                AddAccountKHDAO a = AddAccountKHSource.getInstance().getAddAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -34,7 +34,7 @@ public class AddAccountSource {
                     e.printStackTrace();
                 }
 
-                AddAccountSource.getInstance().releaseAddAccount(a);
+                AddAccountKHSource.getInstance().releaseAddAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };
@@ -51,5 +51,4 @@ public class AddAccountSource {
         t2.start();
         t3.start();
     }
-
 }

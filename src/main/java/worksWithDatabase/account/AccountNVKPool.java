@@ -1,15 +1,15 @@
 package worksWithDatabase.account;
 
-public class AccountPool {
+public class AccountNVKPool {
 
-    private AddAccountDAO addAccountDAO;
+    private AddAccountNVKDAO addAccountNVKDAO;
     private boolean isActive;
 
-    public AccountPool(){
-         addAccountDAO = new AddAccountDAO();
+    public AccountNVKPool(){
+         addAccountNVKDAO = new AddAccountNVKDAO();
          isActive = false;
      }
-     public synchronized AddAccountDAO getAccount(){
+     public synchronized AddAccountNVKDAO getAccount(){
 
         while (isActive){
             try {
@@ -19,10 +19,10 @@ public class AccountPool {
             }
         }
         isActive = true;
-        return  addAccountDAO;
+        return addAccountNVKDAO;
      }
-     public synchronized void releaseAddAccount(AddAccountDAO aa){
-        if (this.addAccountDAO == aa){
+     public synchronized void releaseAddAccount(AddAccountNVKDAO aa){
+        if (this.addAccountNVKDAO == aa){
             isActive = false;
             notifyAll();
         }
