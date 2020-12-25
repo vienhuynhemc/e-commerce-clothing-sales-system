@@ -19,10 +19,13 @@ public class DateTime {
         this.minute = minute;
         this.second = second;
     }
+    public DateTime(){
+
+    }
 
     //  To string
     public String toString(){
-        return day+"-"+month+"-"+year+" "+hour+"-"+minute+"-"+second;
+        return day+"-"+month+"-"+year+" "+hour+":"+minute+":"+second;
     }
 
     //  Getter and setter
