@@ -2,6 +2,9 @@ package beans.category;
 
 import beans.DateTime;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Category {
 
     //  Mã danh mục
@@ -11,22 +14,28 @@ public class Category {
     private String name;
 
     //  Ngày giờ tạo danh mục
-    private DateTime dateCreated;
+    private Date dateCreated;
+
+    private Time timeCreated;
 
     //  Trạng thái hiệu lục
-    private boolean exist;
+    private int exist;
 
     //  Constructor
-    public Category(String id, String name, DateTime dateCreated, boolean exíst) {
-        this.id = id;
+    public Category(String id, String name, Date dateCreated, Time timeCreated, int exist) {
+        setId(id);
         this.name = name;
         this.dateCreated = dateCreated;
-        this.exist = exíst;
+        this.timeCreated = timeCreated;
+        this.exist = exist;
+    }
+    public Category(){
+
     }
 
     //  To Sting
     public String toString() {
-        return id + " " + name + " " + dateCreated + " " + exist;
+        return id + " " + name + " " + dateCreated + " " +timeCreated+" "+ exist;
     }
 
     //  Getter and setter
@@ -46,20 +55,28 @@ public class Category {
         this.name = name;
     }
 
-    public DateTime getDateCreated() {
-        return dateCreated;
-    }
 
-    public void setDateCreated(DateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public boolean isExist() {
+    public int isExist() {
         return exist;
     }
 
-    public void setExist(boolean exist) {
+    public void setExist(int exist) {
         this.exist = exist;
     }
 
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Time getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(Time timeCreated) {
+        this.timeCreated = timeCreated;
+    }
 }
