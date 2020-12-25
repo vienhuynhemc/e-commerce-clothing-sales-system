@@ -13,23 +13,23 @@ public class AddAccountNVVCModel {
         return addAccountModel;
     }
 
-    public String addAccount(String userName,String passWord,String rePassWord,String email,String phone, String avatar,String displayName,String fullName,int salary,int num,String tinh,String huyen,String xa){
+    public String addAccount(String userName,String passWord,String rePassWord,String email,String phone, String avatar,String displayName,String fullName,String salary,String num,String tinh,String huyen,String xa){
 
         AddAccountNVVCDAO addAccountNVVCDAO = AddAccountNVVCSource.getInstance().getAddAccount();
         if(passWord.equals(rePassWord)){
             AddAccountNVVCSource.getInstance().releaseAddAccount(addAccountNVVCDAO);
-            return "Xác nhận mật khẩu sai";
+            return "error1";
         }
         if(addAccountNVVCDAO.isEmailInDatabase(email)){
             AddAccountNVVCSource.getInstance().releaseAddAccount(addAccountNVVCDAO);
-            return "Email đã tồn tại trong cơ sở dữ liệu";
+            return "error2";
         }else if (!addAccountNVVCDAO.isEmail(email)){
             AddAccountNVVCSource.getInstance().releaseAddAccount(addAccountNVVCDAO);
-            return "Email không tồn tại";
+            return "error3";
         }
         if(addAccountNVVCDAO.isAccountInDatabase(userName)){
             AddAccountNVVCSource.getInstance().releaseAddAccount(addAccountNVVCDAO);
-            return "Tài khoản đã tồn tại";
+            return "error4";
         }
         String address = xa + " - " + huyen + " - " + tinh;
         addAccountNVVCDAO.addAccount( userName, passWord, email, phone,  avatar, displayName, fullName,salary,num, address);

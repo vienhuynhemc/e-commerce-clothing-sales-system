@@ -72,7 +72,7 @@ public class AddAccountNVVCDAO implements AddAccountInterface {
         }
         return false;
     }
-    public static void addAccount(String userName,String passWord,String email,String phone, String avatar,String displayName,String fullName,int salary,int num,String address){
+    public static void addAccount(String userName,String passWord,String email,String phone, String avatar,String displayName,String fullName,String salary,String num,String address){
 
         Connection con = null;
 
@@ -96,29 +96,15 @@ public class AddAccountNVVCDAO implements AddAccountInterface {
 
             sm.executeUpdate(sql);
 
+            int su = Integer.parseInt(salary);
+            int nu = Integer.parseInt(num);
 
-            String sql2 =  "INSERT INTO employee VALUES (\"NVVC0" + sum + "\"" + "," + salary + "," + num
+            String sql2 =  "INSERT INTO employee VALUES (\"NVVC0" + sum + "\"" + "," + su + "," + nu
                     + "," + 2  + ",\"" + address + "\""+ ")";
             sm.executeUpdate(sql2);
 
             sm.close();
 
-
-//            if (type == 3){
-//
-//                int n1 = Integer.parseInt(ttdg) ;
-//                int n2 = Integer.parseInt(ttkh);
-//
-//                String sql =  "INSERT INTO account VALUES (\"KH0" + sum + ia;
-//                Statement sm = con.createStatement();
-//                sm.executeUpdate(sql);
-//
-//                String sql2 =  "INSERT INTO customer VALUES (\"KH0" + sum + "\"" + "," + "CURRENT_TIMESTAMP" + "," + n1
-//                        + "," + n2  + ")" ;
-//                sm.executeUpdate(sql2);
-//                sm.close();
-//
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
@@ -132,7 +118,7 @@ public class AddAccountNVVCDAO implements AddAccountInterface {
     }
 
     public static void main(String[] args) {
-        addAccount("nvk014","123","thaha@gmail.com","0234234","022930","huhu","sasa",30000,2,"hahaaa");
+        addAccount("nvk014","123","thaha@gmail.com","0234234","022930","huhu","sasa","30000","2","hahaaa");
     }
 
 }

@@ -12,8 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "AddAccountNVVCController",urlPatterns = "/AddAccountNVVCController")
 public class AddAccountNVVCController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
-        //execute(request, response);
+        execute(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,16 +31,16 @@ public class AddAccountNVVCController extends HttpServlet {
         String pass = request.getParameter("passWord");
         String rePass = request.getParameter("rePassWord");
         String avatar = request.getParameter("avatar");
-        int salary = Integer.parseInt(request.getParameter("salary"));
-        int gioithieu = Integer.parseInt(request.getParameter("gioi-thieu"));
+        String salary = request.getParameter("salary");
+        String gioithieu = request.getParameter("gioi-thieu");
 
 
         String exe = AddAccountNVVCModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
-        if (exe.equals("OK")){
-            response.sendRedirect("index.jsp");
-        }else{
-            request.setAttribute("fail",exe);
-            request.getRequestDispatcher("index.jsp").forward(request,response);
-        }
+
+        //setattribute tình trạng để sử lý
+        request.setAttribute("status",exe);
+
+        //forward lại trang quanlikhachhang
+        request.getRequestDispatcher("admin/home/quanLyNVGH.jsp").forward(request,response);
     }
 }
