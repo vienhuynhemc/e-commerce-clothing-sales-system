@@ -59,4 +59,5 @@ public class Category {
     public void setExist(boolean exist) {
         this.exist = exist;
     }
+
 }

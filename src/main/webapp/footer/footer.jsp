@@ -58,7 +58,7 @@
                                         <ul class="aa-footer-nav">
                                             <li><a href="home/chooseSize.html"><%=lang.get("7")%>
                                             </a></li>
-                                            <li><a href="home/shopping_guide.html"><%=lang.get("8")%>
+                                            <li><a href="ShoppingGuideLanguageController"><%=lang.get("8")%>
                                             </a></li>
                                             <li><a href="home/membership_policy.html"><%=lang.get("9")%>
                                             </a></li>

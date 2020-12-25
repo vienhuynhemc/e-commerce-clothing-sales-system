@@ -3,14 +3,14 @@ package beans;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IndexLanguage {
+public class ShoppingGuideLanguage {
 
     // map dùng để lưu ngôn ngữ
     private Map<String, String> vietnamese;
     private Map<String, String> english;
 
     //  Constructor khởi tạo 2 map ngôn ngữ
-    public IndexLanguage() {
+    public ShoppingGuideLanguage() {
 
         //  Khởi tạo 2 map
         vietnamese = new HashMap<String, String>();

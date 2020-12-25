@@ -123,7 +123,7 @@
                                                      <% if(lang.get("type").equals("vietnamese")){%>
                                                      src="img/vietnam.png"
                                                      <%} else{%>
-                                                        src = "img/language.png";
+                                                        src = "img/language.png"
                                                      <%}%>
 
                                                      alt="english flag">

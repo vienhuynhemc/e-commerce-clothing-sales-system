@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.ShoppingGuideLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -62,6 +63,20 @@
 
 </head>
 
+<!--------------------------------Lấy list ngôn ngữ ra---------------------------------------->
+
+<%
+
+    //  Lấy list ngôn ngữ ra
+    Map<String ,String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if(lang == null){
+        lang = ShoppingGuideLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
 <body>
 <!-- wpf loader Two -->
 <!-- wpf loader Two -->
@@ -94,7 +109,7 @@
                             <!-- start language -->
 
                             <!-- / language -->
-                            <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span> hàng từ <span
+                            <span id="qc"><%=lang.get("1")%> <span style="color:#ff7315; font-weight:bold"><%=lang.get("2")%></span> <%=lang.get("3")%> <span
                                     style="color:#ff7315; font-weight:bold">499,000đ</span></span>
                             <!-- start currency -->
                             <!-- / currency -->
@@ -105,14 +120,14 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound"><a href="changeInforCustomer.html"><i class="fa fa-user"
-                                                                                            aria-hidden="true"></i></a>
+                                <li class="iconRound"><a href="home/changeInforCustomer.html"><i class="fa fa-user"
+                                                                                                 aria-hidden="true"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRound"><a href="wishlist.html"><i class="fa fa-heart"></i></a>
+                                <li class="hidden-xs iconRound"><a href="home/wishlist.html"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="cart.html">Giỏ hàng
+                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.html"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
-                                <li class="hidden-xs iconRoundLenght"><a href="checkout.html">Thanh toán <span
+                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.html"><%=lang.get("5")%> <span
                                         class="fa fa-credit-card"></span></a></li>
                                 <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
                                 <li class="hidden-xs iconRoundLenghtt">
@@ -121,14 +136,48 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="../img/vietnam.png" alt="english flag">Việt Nam
+
+                                                <img class="country"
+
+                                                    <% if(lang.get("type").equals("vietnamese")){%>
+                                                     src="img/vietnam.png"
+                                                    <%} else{%>
+                                                     src = "img/language.png"
+                                                    <%}%>
+
+                                                     alt="english flag">
+
+                                                <% if(lang.get("type").equals("vietnamese")){%>
+                                                Việt Nam
+                                                <%} else{%>
+                                                English
+                                                <%}%>
+
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="../img/vietnam.png" alt="">Việt
+                                                <li
+
+                                                        <%
+                                                            //  Nếu như là ngôn ngữ việt nam thì ta thêm classs active vào
+                                                            if(lang.get("type").equals("vietnamese")){
+                                                        %>
+                                                        class="activengonngu"
+                                                        <%}%>
+
+                                                ><a href="ShoppingGuideLanguageController?lang=vietnamese"><img class="country" src="img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="../img/language.png" alt="">English</a>
+                                                <li
+
+                                                        <%
+                                                            //  Nếu như là ngôn ngữ english thì ta thêm classs active vào
+                                                            if(lang.get("type").equals("english")){
+                                                        %>
+                                                        class="activengonngu"
+                                                        <%}%>
+
+                                                ><a href="ShoppingGuideLanguageController?lang=english"><img class="country" src="img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -158,12 +207,12 @@
                         <!-- logo  -->
                         <div class="aa-logo">
                             <!-- Text based logo -->
-                            <a href="../index.html">
+                            <a href="IndexLanguageController">
                                 <span class="fa fa-shopping-cart"></span>
-                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
+                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span><%=lang.get("24")%>, <%=" "+lang.get("25")%></span></p>
                             </a>
                             <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="../img/logo.jpg" alt="logo img"></a> -->
+                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
                         </div>
                         <!-- / logo  -->
                         <section id="menu">
@@ -183,51 +232,52 @@
                                         <div class="navbar-collapse collapse menuselect">
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
-                                                <li><a href="../index.html">Trang chủ</a></li>
-                                                <li><a href="product.html">Nam<span class="caret"></span></a>
+                                                <li><a href="IndexLanguageController"><%=lang.get("6")%></a></li>
+                                                <li><a href="home/product.html"><%=lang.get("7")%><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="product.html">Áo nam <span
+                                                        <li><a href="home/product.html"><%=lang.get("8")%> <span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="product.html">Áo khoác</a></li>
-                                                                <li><a href="product.html">Áo thun</a></li>
-                                                                <li><a href="product.html">Áo sơ mi</a></li>
-                                                                <li><a href="product.html">Áo polo</a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("9")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("10")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("11")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("12")%></a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="product.html">Quần nam<span
+                                                        <li><a href="home/product.html"><%=lang.get("13")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="product.html">Quần ngắn</a></li>
-                                                                <li><a href="product.html">Quần dài</a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("14")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("15")%></a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="product2.html">Nữ<span class="caret"></span></a>
+                                                <li><a href="home/product2.html"><%=lang.get("16")%><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="product.html">Áo nữ<span class="caret"></span></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="product.html">Áo khoác</a></li>
-                                                                <li><a href="product.html">Áo thun</a></li>
-                                                                <li><a href="product.html">Áo sơ mi</a></li>
-                                                                <li><a href="product.html">Áo polo</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="product.html">Quần / Váy nữ<span
+                                                        <li><a href="home/product2.html"><%=lang.get("17")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="product.html">Váy</a></li>
-                                                                <li><a href="product.html">Đầm</a></li>
-                                                                <li><a href="product.html">Quần ngắn</a></li>
-                                                                <li><a href="product.html">Quần dài</a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("9")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("10")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("11")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("12")%></a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="home/product2.html"><%=lang.get("18")%><span
+                                                                class="caret"></span></a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="home/product2.html"><%=lang.get("19")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("26")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("14")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("15")%></a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="contact.html">Liên hệ</a></li>
-                                                <li><a href="about_US.html">Về chúng tôi</a></li>
-                                                <li><a href="../admin/home/login.html">ADMIN</a></li>
+                                                <li><a href="home/contact.html"><%=lang.get("21")%></a></li>
+                                                <li><a href="home/about_US.html"><%=lang.get("22")%></a></li>
+                                                <li><a href="admin/home/login.html"><%=lang.get("23")%></a></li>
                                             </ul>
                                         </div>
                                         <!--/.nav-collapse -->
@@ -237,50 +287,49 @@
                         </section>
                         <!-- cart box -->
                         <div class="aa-cartbox">
-                            <a class="aa-cart-link" href="cart.html">
+                            <a class="aa-cart-link" href="home/cart.html">
                                 <span class="fa fa-cart-arrow-down"></span>
-                                <span class="aa-cart-title">Giỏ hàng</span>
+                                <span class="aa-cart-title"><%=lang.get("27")%></span>
                                 <span class="aa-cart-notify">2</span>
                             </a>
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/12.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="home/detailsProduct.html"><img
+                                                src="img/do/nu/12.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
-                                            <h4><a href="detailsProduct.html">Áo thun MST 1002</a></h4>
+                                            <h4><a href="home/detailsProduct.html">Áo thun MST 1002</a></h4>
                                             <p>2 x 299,000 VND</p>
                                         </div>
-                                        <a class="aa-remove-product" href="detailsProduct.html"><span
+                                        <a class="aa-remove-product" href="home/detailsProduct.html"><span
                                                 class="fa fa-times"></span></a>
                                     </li>
                                     <li>
-                                        <a class="aa-cartbox-img" href="detailsProduct.html"><img src="../img/do/nu/13.jpg"
-                                                                                                  alt="img"></a>
+                                        <a class="aa-cartbox-img" href="home/detailsProduct.html"><img
+                                                src="img/do/nu/13.jpg" alt="img"></a>
                                         <div class="aa-cartbox-info">
-                                            <h4><a href="detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
+                                            <h4><a href="home/detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
                                             <p>3 x 129,000 VND</p>
                                         </div>
                                         <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
                                     </li>
                                     <li>
                       <span class="aa-cartbox-total-title">
-                        Tổng tiền
+                        <%=lang.get("30")%>
                       </span>
                                         <span class="aa-cartbox-total-price">
                         985,000 VND
                       </span>
                                     </li>
                                 </ul>
-                                <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="checkout.html">Kiểm tra giỏ
-                                    hàng</a>
+                                <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="home/checkout.html"><%=lang.get("28")%></a>
                             </div>
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
                             <form action="">
-                                <input type="text" name="" id="" placeholder="Tìm kiếm ở đây">
+                                <input type="text" name="" id="" placeholder="<%=lang.get("29")%>">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
@@ -579,102 +628,9 @@
 </div>
 
 <!-- footer -->
-<footer id="aa-footer">
-    <!-- footer bottom -->
-    <div class="aa-footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-footer-top-area">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
-                                    <ul class="aa-footer-nav">
-                                        <li><a href="#">Giới thiệu</a></li>
-                                        <li><a href="#">Tuyển dụng</a></li>
-                                        <li><a href="#">Tạp chí</a></li>
-                                        <li><a href="#">Hợp tác</a></li>
-
-                                    </ul>
-                                    <img src="../img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>HỖ TRỢ KHÁCH HÀNG</h3>
-                                        <ul class="aa-footer-nav">
-                                            <li><a href="chooseSize.html">Hướng dẫn chọn size</a></li>
-                                            <li><a href="shopping_guide.html">Hướng dẫn mua hàng</a></li>
-                                            <li><a href="membership_policy.html">Chính sách thành viên</a></li>
-                                            <li><a href="payment_policy.html">Chính sách đổi trả</a></li>
-                                            <li><a href="guarantee.html">Chính sách bảo hành</a></li>
-                                            <li><a href="check_orders.html">Tra cứu đơn hàng</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
-                                        <ul class="aa-footer-nav giaohang">
-                                            <li><img src="../img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="../img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="../img/grap.webp" alt=""></li>
-
-                                        </ul>
-                                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
-                                        <ul class="aa-footer-nav giaohang">
-                                            <li><img src="../img/vnpay.webp" alt=""></li>
-                                            <li><img src="../img/momo.webp" alt=""></li>
-                                            <li><img src="../img/cash.webp" alt=""></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>Contact Us</h3>
-                                        <address>
-                                            <p> Đại học Nông Lâm</p>
-                                            <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                                            <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
-                                        </address>
-                                        <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google"></i></a>
-                                            <a href="#"><i class="fa fa-youtube"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-bottom -->
-    <div class="aa-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-footer-bottom-area">
-                        <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
-                        <a href=""> Terms & Conditions</a>
-                        <a href="">Safety and Security</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<jsp:include page="../footer/footer.jsp"/>
 <!-- / footer -->
+
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
