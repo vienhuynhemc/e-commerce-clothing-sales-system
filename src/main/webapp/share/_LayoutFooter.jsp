@@ -69,8 +69,9 @@
                                             <li>
                                                 <a href="<%=request.getParameter("levelPage")%>PaymentPolicyLanguageController"><%=lang.get("10")%>
                                                 </a></li>
-                                            <li><a href="home/guarantee.html"><%=lang.get("11")%>
-                                            </a></li>
+                                            <li>
+                                                <a href="<%=request.getParameter("levelPage")%>GuaranteeLanguageController"><%=lang.get("11")%>
+                                                </a></li>
                                             <li><a href="home/check_orders.html"><%=lang.get("12")%>
                                             </a></li>
                                         </ul>
