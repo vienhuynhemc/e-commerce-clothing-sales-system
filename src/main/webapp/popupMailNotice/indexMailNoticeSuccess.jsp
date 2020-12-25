@@ -1,4 +1,4 @@
-<%@ page import="model.IndexMailNoticeLanguageModel" %>
+<%@ page import="model.language.IndexMailNoticeLanguageModel" %>
 <%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Administrator

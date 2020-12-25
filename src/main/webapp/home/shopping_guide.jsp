@@ -1,5 +1,5 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="model.ShoppingGuideLanguageModel" %><%--
+<%@ page import="model.language.ShoppingGuideLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020

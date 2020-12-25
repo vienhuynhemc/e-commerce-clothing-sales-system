@@ -1,5 +1,5 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="model.IndexMailNoticeLanguageModel" %><%--
+<%@ page import="model.language.IndexMailNoticeLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 23/12/2020

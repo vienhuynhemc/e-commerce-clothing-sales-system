@@ -438,60 +438,65 @@
                             </div>
 
 
-                                <div class="div12">
-                                    <h3>Điền thông tin cá nhân</h3>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Họ và tên</label>
-                                        <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây"
-                                               value="Nguyễn Thị Hoa Hồng">
+                            <div class="div12">
+                                <h3>Điền thông tin cá nhân</h3>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">* Họ và tên</label>
+                                    <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây"
+                                           value="Nguyễn Thị Hoa Hồng">
+                                </div>
+                                <div class="div12input">
+                                    <label for="">Tên hiển thị</label>
+                                    <input name="display-name" type="text" placeholder="Nhập tên hiển thị ở đây"
+                                           value="Hồng Nguyễn">
+                                </div>
+                                <div class="div12input">
+                                    <label for="">* Email</label>
+                                    <input name="email" type="text" placeholder="Nhập email ở đây"
+                                           value="nguyenthihoahong@gmail.com" disabled>
+                                </div>
+                                <div class="div12input">
+                                    <label for="">* Số điện thoại</label>
+                                    <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây"
+                                           value="0971-122-209"
+                                           disabled>
+                                </div>
+                                <div class="linediv12"></div>
+                                <div class="trangthai">
+                                    <div class="div12inputlv2">
+                                        <label for="">Trạng thái kích hoạt</label>
+                                        <select name="ttkh" id="">
+                                            <option value="1">Đã kích hoạt</option>
+                                            <option value="0">Chưa kích hoạt</option>
+                                        </select>
                                     </div>
-                                    <div class="div12input">
-                                        <label for="">Tên hiển thị</label>
-                                        <input name="display-name" type="text" placeholder="Nhập tên hiển thị ở đây" value="Hồng Nguyễn">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Email</label>
-                                        <input name="email" type="text" placeholder="Nhập email ở đây"
-                                               value="nguyenthihoahong@gmail.com" disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Số điện thoại</label>
-                                        <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209"
-                                               disabled>
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <div class="trangthai">
-                                        <div class="div12inputlv2">
-                                            <label for="">Trạng thái kích hoạt</label>
-                                            <select name="ttkh" id="">
-                                                <option value="1">Đã kích hoạt</option>
-                                                <option value="0">Chưa kích hoạt</option>
-                                            </select>
-                                        </div>
-                                        <div class="div12inputlv2">
-                                            <label for="">Trạng thái đánh giá</label>
-                                            <select name="ttdg" id="">
-                                                <option value="1">Cho phép đánh giá</option>
-                                                <option value="0">Cấm đánh giá</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Tài khoản</label>
-                                        <input name="userName"  type="text" placeholder="Nhập tên tài khoản ở đây" value="iamarose"
-                                               disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Mật khẩu</label>
-                                        <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Xác nhận</label>
-                                        <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
+                                    <div class="div12inputlv2">
+                                        <label for="">Trạng thái đánh giá</label>
+                                        <select name="ttdg" id="">
+                                            <option value="1">Cho phép đánh giá</option>
+                                            <option value="0">Cấm đánh giá</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="linediv12"></div>
+                                <div class="div12input">
+                                    <label for="">* Tài khoản</label>
+                                    <input namei="userName" type="text" placeholder="Nhập tên tài khoản ở đây"
+                                           value="iamarose"
+                                           disabled>
+                                </div>
+                                <div class="div12input">
+                                    <label for="">* Mật khẩu</label>
+                                    <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây"
+                                           value="mothaiba@@">
+                                </div>
+                                <div class="div12input">
+                                    <label for="">* Xác nhận</label>
+                                    <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây"
+                                           value="mothaiba@@">
+                                </div>
+                            </div>
 
 
                             <div class="div13">
@@ -639,7 +644,7 @@
 
                             <div class="div13">
                                 <button><i class="fa fa-save"></i>Lưu</button>
-                                <button  onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                                <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                                     lý
                                 </button>
                             </div>
@@ -1946,7 +1951,7 @@
             </div>
         </div>
 
-        <form action="AddAccountController" method="post">
+        <form action="../AddAccountController" method="post">
             <div id="div1">
                 <div>
                     <div class="div11">
@@ -2017,7 +2022,7 @@
                     </div>
 
                     <div class="div13">
-                        <button type="submit" ><i class="fa fa-plus"></i>Thêm khách hàng</button>
+                        <button type="submit"><i class="fa fa-plus"></i>Thêm khách hàng</button>
                         <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                     </div>
                 </div>

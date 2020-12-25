@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.IndexLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 21/12/2020
@@ -49,6 +50,21 @@
 
 </head>
 
+<!--------------------------------Lấy list ngôn ngữ ra---------------------------------------->
+
+<%
+
+    //  Lấy list ngôn ngữ ra
+    Map<String ,String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng ở trang chủ, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if(lang == null){
+        lang = IndexLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
+
 <body>
 <!-- wpf loader Two -->
 <div id="wpf-loader-two">
@@ -74,7 +90,7 @@
                             <!-- start language -->
 
                             <!-- / language -->
-                            <span id="qc">Free ship với <span style="color:#ff7315; font-weight:bold">đơn</span> hàng từ <span
+                            <span id="qc"><%=lang.get("1")%> <span style="color:#ff7315; font-weight:bold"><%=lang.get("2")%></span> <%=lang.get("3")%> <span
                                     style="color:#ff7315; font-weight:bold">499,000đ</span></span>
                             <!-- start currency -->
                             <!-- / currency -->
@@ -85,14 +101,14 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound"><a href="home/changeInforCustomer.jsp"><i class="fa fa-user"
+                                <li class="iconRound"><a href="home/changeInforCustomer.html"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRound"><a href="home/wishlist.jsp"><i class="fa fa-heart"></i></a>
+                                <li class="hidden-xs iconRound"><a href="home/wishlist.html"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.jsp">Giỏ hàng
+                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.html"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.jsp">Thanh toán <span
+                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.html"><%=lang.get("5")%> <span
                                         class="fa fa-credit-card"></span></a></li>
                                 <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
                                 <li class="hidden-xs iconRoundLenghtt">
@@ -101,14 +117,48 @@
                                             <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                                data-toggle="dropdown"
                                                aria-haspopup="true" aria-expanded="true">
-                                                <img class="country" src="img/vietnam.png" alt="english flag">Việt Nam
+
+                                                <img class="country"
+
+                                                    <% if(lang.get("type").equals("vietnamese")){%>
+                                                     src="img/vietnam.png"
+                                                    <%} else{%>
+                                                     src = "img/language.png"
+                                                    <%}%>
+
+                                                     alt="english flag">
+
+                                                <% if(lang.get("type").equals("vietnamese")){%>
+                                                Việt Nam
+                                                <%} else{%>
+                                                English
+                                                <%}%>
+
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu menucountry choiselanguage"
                                                 aria-labelledby="dropdownMenu1">
-                                                <li><a href="#"><img class="country" src="img/vietnam.png" alt="">Việt
+                                                <li
+
+                                                        <%
+                                                            //  Nếu như là ngôn ngữ việt nam thì ta thêm classs active vào
+                                                            if(lang.get("type").equals("vietnamese")){
+                                                        %>
+                                                        class="activengonngu"
+                                                        <%}%>
+
+                                                ><a href="IndexLanguageController?lang=vietnamese"><img class="country" src="img/vietnam.png" alt="">Việt
                                                     Nam</a></li>
-                                                <li><a href="#"><img class="country" src="img/language.png" alt="">English</a>
+                                                <li
+
+                                                        <%
+                                                            //  Nếu như là ngôn ngữ english thì ta thêm classs active vào
+                                                            if(lang.get("type").equals("english")){
+                                                        %>
+                                                        class="activengonngu"
+                                                        <%}%>
+
+                                                ><a href="IndexLanguageController?lang=english"><img class="country" src="img/language.png" alt="">English</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -138,9 +188,9 @@
                         <!-- logo  -->
                         <div class="aa-logo">
                             <!-- Text based logo -->
-                            <a href="index.jsp">
+                            <a href="IndexLanguageController">
                                 <span class="fa fa-shopping-cart"></span>
-                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
+                                <p>TVT<strong style="color:#ff7315">S</strong>hop <span><%=lang.get("24")%>, <%=" "+lang.get("25")%></span></p>
                             </a>
                             <!-- img based logo -->
                             <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -163,52 +213,52 @@
                                         <div class="navbar-collapse collapse menuselect">
                                             <!-- Left nav -->
                                             <ul class="nav navbar-nav leftnav">
-                                                <li><a href="index.html" class="activeee">Trang chủ</a></li>
-                                                <li><a href="home/product.html">Nam<span class="caret"></span></a>
+                                                <li><a href="IndexLanguageController" class="activeee"><%=lang.get("6")%></a></li>
+                                                <li><a href="home/product.html"><%=lang.get("7")%><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="home/product.html">Áo nam <span
+                                                        <li><a href="home/product.html"><%=lang.get("8")%> <span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="home/product.html">Áo khoác</a></li>
-                                                                <li><a href="home/product.html">Áo thun</a></li>
-                                                                <li><a href="home/product.html">Áo sơ mi</a></li>
-                                                                <li><a href="home/product.html">Áo polo</a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("9")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("10")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("11")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("12")%></a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="home/product.html">Quần nam<span
+                                                        <li><a href="home/product.html"><%=lang.get("13")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="home/product.html">Quần ngắn</a></li>
-                                                                <li><a href="home/product.html">Quần dài</a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("14")%></a></li>
+                                                                <li><a href="home/product.html"><%=lang.get("15")%></a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="home/product2.html">Nữ<span class="caret"></span></a>
+                                                <li><a href="home/product2.html"><%=lang.get("16")%><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="home/product2.html">Áo nữ<span
+                                                        <li><a href="home/product2.html"><%=lang.get("17")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="home/product2.html">Áo khoác</a></li>
-                                                                <li><a href="home/product2.html">Áo thun</a></li>
-                                                                <li><a href="home/product2.html">Áo sơ mi</a></li>
-                                                                <li><a href="home/product2.html">Áo polo</a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("9")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("10")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("11")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("12")%></a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="home/product2.html">Quần / Váy nữ<span
+                                                        <li><a href="home/product2.html"><%=lang.get("18")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="home/product2.html">Váy</a></li>
-                                                                <li><a href="home/product2.html">Đầm</a></li>
-                                                                <li><a href="home/product2.html">Quần ngắn</a></li>
-                                                                <li><a href="home/product2.html">Quần dài</a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("19")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("26")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("14")%></a></li>
+                                                                <li><a href="home/product2.html"><%=lang.get("15")%></a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="home/contact.jsp">Liên hệ</a></li>
-                                                <li><a href="home/about_US.jsp">Về chúng tôi</a></li>
-                                                <li><a href="admin/home/login.jsp">ADMIN</a></li>
+                                                <li><a href="home/contact.html"><%=lang.get("21")%></a></li>
+                                                <li><a href="home/about_US.html"><%=lang.get("22")%></a></li>
+                                                <li><a href="admin/home/login.html"><%=lang.get("23")%></a></li>
                                             </ul>
                                         </div>
                                         <!--/.nav-collapse -->
@@ -220,7 +270,7 @@
                         <div class="aa-cartbox">
                             <a class="aa-cart-link" href="home/cart.html">
                                 <span class="fa fa-cart-arrow-down"></span>
-                                <span class="aa-cart-title">Giỏ hàng</span>
+                                <span class="aa-cart-title"><%=lang.get("27")%></span>
                                 <span class="aa-cart-notify">2</span>
                             </a>
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
@@ -246,22 +296,21 @@
                                     </li>
                                     <li>
                       <span class="aa-cartbox-total-title">
-                        Tổng tiền
+                        <%=lang.get("30")%>
                       </span>
                                         <span class="aa-cartbox-total-price">
                         985,000 VND
                       </span>
                                     </li>
                                 </ul>
-                                <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="home/checkout.html">Thanh
-                                    toán</a>
+                                <a class="aa-cartbox-checkout aa-primary-btn tinhtien" href="home/checkout.html"><%=lang.get("28")%></a>
                             </div>
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
                             <form action="">
-                                <input type="text" name="" id="" placeholder="Tìm kiếm ở đây">
+                                <input type="text" name="" id="" placeholder="<%=lang.get("29")%>">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
@@ -287,9 +336,9 @@
                 <div class="hiddendivslider">
                 </div>
                 <div class="noidungslider">
-                    <p>THỜI TRANG NỮ CÔNG SỞ</p>
-                    <p>GIẢM GIÁ 12%</p>
-                    <a href="home/product.html" class="shopnow">Mua sắm ngay</a>
+                    <p><%=lang.get("31")%></p>
+                    <p><%=lang.get("32")+" "%> 12%</p>
+                    <a href="home/product.html" class="shopnow"><%=lang.get("33")%></a>
                 </div>
             </div>
             <div class="fatherimg">
@@ -297,9 +346,9 @@
                 <div class="hiddendivslider">
                 </div>
                 <div class="noidungslider">
-                    <p>ĐỒ TÂY NAM</p>
-                    <p>GIẢM GIÁ 14%</p>
-                    <a href="home/product.html" class="shopnow">Mua sắm ngay</a>
+                    <p><%=lang.get("34")%></p>
+                    <p><%=lang.get("32")+" "%>  14%</p>
+                    <a href="home/product.html" class="shopnow"><%=lang.get("33")%></a>
                 </div>
             </div>
             <div class="fatherimg">
@@ -307,9 +356,9 @@
                 <div class="hiddendivslider">
                 </div>
                 <div class="noidungslider">
-                    <p>ÁO SƠ MI NỮ</p>
-                    <p>GIẢM GIÁ 10%</p>
-                    <a href="home/product.html" class="shopnow">Mua sắm ngay</a>
+                    <p><%=lang.get("35")%></p>
+                    <p><%=lang.get("32")+" "%>  10%</p>
+                    <a href="home/product.html" class="shopnow"><%=lang.get("33")%></a>
                 </div>
             </div>
             <div class="fatherimg">
@@ -317,9 +366,9 @@
                 <div class="hiddendivslider">
                 </div>
                 <div class="noidungslider">
-                    <p>THỜI TRANG DỰ TIỆC</p>
-                    <p>GIẢM GIÁ 8%</p>
-                    <a href="home/product.html" class="shopnow">Mua sắm ngay</a>
+                    <p><%=lang.get("36")%></p>
+                    <p><%=lang.get("32")+" "%>  8%</p>
+                    <a href="home/product.html" class="shopnow"><%=lang.get("33")%></a>
                 </div>
             </div>
         </div>
@@ -330,8 +379,8 @@
     <div class="sliderright">
         <img src="img/left3.jpg" alt="">
         <div>
-            <p>ĐỒ NAM HÔM NAY</p>
-            <p>GIẢM GIÁ 4%</p>
+            <p><%=lang.get("37")%></p>
+            <p><%=lang.get("32")+" "%>  4%</p>
         </div>
     </div>
 </div>
@@ -339,8 +388,8 @@
 <!-- Start Promo section -->
 <div class="divsecondindex">
     <div class="divsecondindextitle">
-        <h3>MUA SẮM VỚI <span style="color:#ff7315">CHÚNG TÔI</span></h3>
-        <p>Mục yêu thích được lựa chọn cẩn thận chỉ dành cho bạn <span style="color: red;"><i
+        <h3><%=lang.get("38")%> <span style="color:#ff7315"><%=lang.get("39")%></span></h3>
+        <p><%=lang.get("40")+" "%> <span style="color: red;"><i
                 class="fa fa-heart"></i></span></p>
     </div>
 
@@ -348,44 +397,44 @@
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/category4.webp" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Áo khoác nữ</h4>
+            <h4><%=lang.get("41")%> </h4>
         </div>
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/category5.webp" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Áo thun nam</h4>
+            <h4><%=lang.get("42")%> </h4>
         </div>
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/banner3.jpg" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Áo váy</h4>
+            <h4><%=lang.get("43")%> </h4>
         </div>
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/grid1.jpg" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Váy trắng</h4>
+            <h4><%=lang.get("44")%> </h4>
         </div>
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/grid4.jpg" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Đồ tây nam</h4>
+            <h4><%=lang.get("45")%> </h4>
         </div>
         <div class="divsiitem">
             <a href="home/product.html">
                 <img src="img/left2.jpg" alt="">
-                <h3>ĐI NGAY</h3>
+                <h3><%=lang.get("33")%> </h3>
             </a>
-            <h4>Áo khoác nam</h4>
+            <h4><%=lang.get("46")%> </h4>
         </div>
 
     </div>
@@ -397,10 +446,10 @@
     <div class="qc1ct">
         <div class="qc1cttitle">
             <h3>
-                Tất cả đồ nam có thuơng hiệu đều được <span style="color:#ff7315">giảm giá 17%</span>
+                <%=lang.get("47")%> <span style="color:#ff7315"><%=lang.get("32")+" "%> 17%</span>
             </h3>
-            <p>Ghé thăm cửa hàng của chúng tôi để xem những sáng tạo tuyệt vời từ các nhà thiết kế</p>
-            <a href="home/product.html">Mua sắm ngay</a>
+            <p> <%=lang.get("48")%></p>
+            <a href="home/product.html"><%=lang.get("33")%></a>
         </div>
         <div class="qc1ctimg">
             <img src="img/1.jpg" alt="">
@@ -414,16 +463,16 @@
     </div>
     <div class="qc1cttitle">
         <h3>
-            đến với chúng tôi hãy chuẩn bị tinh thần để trở thành người <span style="color:#ff7315">Xinh đẹp</span>
+            <%=lang.get("49")+" "%> <span style="color:#ff7315"> <%=lang.get("50")%></span>
         </h3>
-        <p>Những thiết kế hiện đại giúp bạn đi lên tất cả</p>
-        <a href="home/product.html">Mua sắm ngay</a>
+        <p> <%=lang.get("51")%></p>
+        <a href="home/product.html"><%=lang.get("33")%></a>
     </div>
 </div>
 
 <div class="maintt">
-    <h3>Mua sắm với <span style="color:#ff7315">chúng tôi</span></h3>
-    <p>Những thời trang vừa mới được cập nhập</p>
+    <h3><%=lang.get("38")%> <span style="color:#ff7315"><%=lang.get("39")%></span></h3>
+    <p><%=lang.get("52")%></p>
 </div>
 
 
@@ -437,8 +486,8 @@
                         <div class="aa-product-inner">
                             <!-- start prduct navigation -->
                             <ul class="nav nav-tabs aa-products-tab">
-                                <li class="active"><a href="#men" data-toggle="tab">Thời trang nam</a></li>
-                                <li><a href="#women" data-toggle="tab">Thời trang nữ</a></li>
+                                <li class="active"><a href="#men" data-toggle="tab"><%=lang.get("53")%></a></li>
+                                <li><a href="#women" data-toggle="tab"><%=lang.get("54")%></a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -452,7 +501,7 @@
                                                         src="img/do/nam/1.jpg"
                                                         alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         khoác xanh chấm bi</a></h4>
@@ -462,14 +511,14 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                            <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -477,7 +526,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/2.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         sơ mi hồng cánh sen</a></h4>
@@ -486,15 +535,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                            <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -502,7 +551,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/3.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         thun SR 100 Vàng</a></h4>
@@ -512,11 +561,11 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -526,7 +575,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/4.jpg" alt=" polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         thun STICHERY</a></h4>
@@ -536,15 +585,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                            <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -552,7 +601,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/5.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         thun MTS 1009</a></h4>
@@ -561,11 +610,11 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -575,7 +624,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/6.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         khoác Kaki MOF 1001</a></h4>
@@ -585,11 +634,11 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -599,7 +648,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/7.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Quần
                                                         Kaki Nam form Ngắn MSR 1001</a></h4>
@@ -609,15 +658,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                            <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -625,7 +674,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nam/8.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         Thun MTS 1011</a></h4>
@@ -634,18 +683,18 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                            <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                         </li>
                                     </ul>
-                                    <a class="aa-browse-btn" href="home/product.html">Xem tất cả sản phẩm<span
+                                    <a class="aa-browse-btn" href="home/product.html"><%=lang.get("55")%><span
                                             class="fa fa-angle-double-right"></span></a>
                                 </div>
                                 <!-- / men product category -->
@@ -658,7 +707,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/1.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         thun WTS nâu 1109</a></h4>
@@ -668,15 +717,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                            <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -684,7 +733,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/2.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         thun nữ WAF 1002</a></h4>
@@ -693,15 +742,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                            <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -709,7 +758,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/3.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         dài phong cách ấn độ</a></h4>
@@ -719,11 +768,11 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -733,7 +782,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/4.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         dài phong cách ả rập</a></h4>
@@ -743,15 +792,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                            <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -759,7 +808,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/5.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         len xanh AFT 1009</a></h4>
@@ -769,11 +818,11 @@
 
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -783,7 +832,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/6.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Quần
                                                         Jogger Kakis COT 2002</a></h4>
@@ -793,11 +842,11 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                         </li>
@@ -807,7 +856,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/7.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                         Polo Lông vũ thiên nga</a></h4>
@@ -817,15 +866,15 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                            <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                         </li>
                                         <!-- start single product item -->
                                         <li>
@@ -833,7 +882,7 @@
                                                 <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                         src="img/do/nu/8.jpg" alt="polo shirt img"></a>
                                                 <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                        class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                        class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                                 <figcaption>
                                                     <h4 class="aa-product-title"><a href="home/detailsProduct.html">Đầm
                                                         kết hợp ly Millet CSE 2019</a></h4>
@@ -842,23 +891,23 @@
                                             </figure>
                                             <div class="aa-product-hvr-content">
                                                 <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                                   title="Thêm vào yêu thích"><span
+                                                   title="<%=lang.get("72")%>"><span
                                                         class="fa fa-heart"></span></a>
 
                                                 <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                   title="Xem nhanh" data-toggle="modal"
+                                                   title="<%=lang.get("73")%>" data-toggle="modal"
                                                    data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                             </div>
                                             <!-- product badge -->
-                                            <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                            <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                         </li>
                                     </ul>
-                                    <a class="aa-browse-btn" href="home/product.html">Xem tất cả sản phẩm<span
+                                    <a class="aa-browse-btn" href="home/product.html"><%=lang.get("55")%><span
                                             class="fa fa-angle-double-right"></span></a>
                                 </div>
                                 <!-- / women product category -->
                             </div>
-                            <!-- Xem nhanh modal -->
+                            <!-- <%=lang.get("73")%> modal -->
                             <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel"
                                  aria-hidden="true">
@@ -955,7 +1004,7 @@
                                                         <div class="aa-prod-view-bottom">
                                                             <a href="#"
                                                                class="aa-add-to-cart-btn addTocardViewQuick"><span
-                                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%> hàng</a>
                                                             <a href="#" class="aa-add-to-cart-btn"><span
                                                                     class="fa fa-eye"></span>Xem chi tiết</a>
                                                         </div>
@@ -965,7 +1014,7 @@
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
-                            </div><!-- / Xem nhanh modal -->
+                            </div><!-- / <%=lang.get("73")%> modal -->
                         </div>
                     </div>
                 </div>
@@ -983,15 +1032,15 @@
         <div class="hdqc3">
         </div>
         <div class="ctqc3">
-            <h3>SET ĐỒ BƯỚC RA TỪ CỔ TÍCH SET ĐỒ <span style="color:#ff7315"> TRUYỀN THUYẾT </span></h3>
-            <p>Gái nào mặc cũng đẹp - Trai nào mặc cũng sang</p>
-            <a href="home/product.html">Mua sắm ngay</a>
+            <h3><%=lang.get("56")+" "%> <span style="color:#ff7315"> <%=lang.get("57")%> </span></h3>
+            <p><%=lang.get("58")%></p>
+            <a href="home/product.html"><%=lang.get("33")%></a>
         </div>
 
     </div>
     <div class="maintt mainttt">
-        <h3>Xu huớng mua <span style="color:#ff7315">hàng</span></h3>
-        <p>Chọn lọc những sản phẩm được khách hàng mua nhiều nhất</p>
+        <h3><%=lang.get("59")+" "%><span style="color:#ff7315"><%=lang.get("60")%></span></h3>
+        <p><%=lang.get("61")%></p>
     </div>
 </section>
 
@@ -1005,8 +1054,8 @@
                     <div class="aa-popular-category-area">
                         <!-- start prduct navigation -->
                         <ul class="nav nav-tabs aa-products-tab">
-                            <li class="active"><a href="#popular" data-toggle="tab">Phổ biến</a></li>
-                            <li><a href="#featured" data-toggle="tab">Đặc biệt</a></li>
+                            <li class="active"><a href="#popular" data-toggle="tab"><%=lang.get("62")%></a></li>
+                            <li><a href="#featured" data-toggle="tab"><%=lang.get("63")%></a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -1019,7 +1068,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/16.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                     Sweater Nữ Logo Sài Gòn WSW 2003</a></h4>
@@ -1030,14 +1079,14 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                        <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1045,7 +1094,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/15.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
                                                     Relax Thêu Ngực WTS 2006</a></h4>
@@ -1054,14 +1103,14 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                        <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1069,7 +1118,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/14.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                         </figure>
                                         <figcaption>
                                             <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
@@ -1078,14 +1127,14 @@
                                         </figcaption>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                        <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1093,7 +1142,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/13.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
                                                     Dây Kéo WTS 2011</a></h4>
@@ -1104,10 +1153,10 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
@@ -1118,7 +1167,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/12.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
                                                     Nữ WTS 2016
@@ -1130,10 +1179,10 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
@@ -1144,7 +1193,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/11.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Quần
                                                     Jeans Dài Ống Rộng WJE 2002</a></h4>
@@ -1155,15 +1204,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                        <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1171,7 +1220,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/10.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
                                                     Nữ WTS 2035
@@ -1183,15 +1232,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                        <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1199,7 +1248,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/9.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo
                                                     Sweater Nữ Stay Together WSW 2006</a></h4>
@@ -1210,18 +1259,18 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                        <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                     </li>
                                 </ul>
-                                <a class="aa-browse-btn" href="home/product.html">Xem tất cả sản phẩm<span
+                                <a class="aa-browse-btn" href="home/product.html"><%=lang.get("55")%><span
                                         class="fa fa-angle-double-right"></span></a>
                             </div>
                             <!-- / popular product category -->
@@ -1235,7 +1284,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/17.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Len
                                                     Nữ Phối Sọc Ngang WOS 2002</a></h4>
@@ -1246,15 +1295,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                        <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1262,7 +1311,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/18.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Len
                                                     Nữ Phối Màu Zigzag WOS 2001</a></h4>
@@ -1271,15 +1320,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                        <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1287,7 +1336,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/19.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                         </figure>
                                         <figcaption>
                                             <h4 class="aa-product-title"><a href="home/detailsProduct.html">Quần Thun Nữ
@@ -1296,15 +1345,15 @@
                                         </figcaption>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
+                                        <span class="aa-badge aa-sold-out" href="#"><%=lang.get("77")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1312,7 +1361,7 @@
                                             <a class="aa-product-img" href="home/detailsProduct.html"><img
                                                     src="img/do/nu/20.jpg" alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="home/cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="home/detailsProduct.html">Áo Thun
                                                     Nữ WTS 2021</a></h4>
@@ -1323,10 +1372,10 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
@@ -1337,7 +1386,7 @@
                                             <a class="aa-product-img" href="#"><img src="img/do/nu/21.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="#">Áo Thun Nữ Form Slim Sunshine
                                                     WTS 2019</a></h4>
@@ -1348,10 +1397,10 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="#" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
@@ -1362,7 +1411,7 @@
                                             <a class="aa-product-img" href="#"><img src="img/do/nu/22.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="#">Áo Thun Nữ Form Slim Be
                                                     Stronger WTS 2018</a></h4>
@@ -1373,15 +1422,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="#" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                        <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1389,7 +1438,7 @@
                                             <a class="aa-product-img" href="#"><img src="img/do/nu/23.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="#">Áo Thun Nữ WTS 2017
                                                 </a></h4>
@@ -1400,15 +1449,15 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="#" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
+                                        <span class="aa-badge aa-hot" href="#"><%=lang.get("75")%></span>
                                     </li>
                                     <!-- start single product item -->
                                     <li>
@@ -1416,7 +1465,7 @@
                                             <a class="aa-product-img" href="#"><img src="img/do/nu/24.jpg"
                                                                                     alt="polo shirt img"></a>
                                             <a class="aa-add-card-btn" href="#"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
+                                                    class="fa fa-shopping-cart"></span><%=lang.get("74")%></a>
                                             <figcaption>
                                                 <h4 class="aa-product-title"><a href="#">Áo Thun Nữ The North Land WTS
                                                     2024</a></h4>
@@ -1427,18 +1476,18 @@
                                         </figure>
                                         <div class="aa-product-hvr-content">
                                             <a href="#" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span
+                                               title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
+                                            <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
                                                data-toggle="modal"
                                                data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
                                         </div>
                                         <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
+                                        <span class="aa-badge aa-sale" href="#"><%=lang.get("76")%></span>
                                     </li>
                                 </ul>
-                                <a class="aa-browse-btn" href="home/product.html">Xem tất cả sản phẩm<span
+                                <a class="aa-browse-btn" href="home/product.html"><%=lang.get("55")%><span
                                         class="fa fa-angle-double-right"></span></a>
                             </div>
                             <!-- / featured product category -->
@@ -1461,8 +1510,8 @@
 <!-- Client Brand -->
 <section id="aa-testimonial">
     <div class="kh">
-        <h3>KHÁCH HÀNG <span style="color:#ff7315">YÊU THÍCH</span></h3>
-        <p>Mọi người nói gì về chúng tôi</p>
+        <h3><%=lang.get("64")%> <span style="color:#ff7315"><%=lang.get("65")%></span></h3>
+        <p><%=lang.get("66")%></p>
 
         <div class="khlist">
             <div class="runkhlist" id="runkhlist">
@@ -1625,12 +1674,18 @@
 
 <!---------------MAIL LIÊN HỆ------------------>
 <a href="#aa-subscribe" id="movetosubscribe" style="display: none"></a>
+
 <%
+
+    //  Nếu như paggAddress != null thì có nghĩa ta đã được đi tới controller mail, nó sẽ trả về 1 pageAddress
     if (request.getAttribute("pageAddress") != null) {
+
+        //  Lấy link trang đó ra để include vào, đó là trang hiện lên 1 thông báo để người dùng biết trạng thái
         String address = (String) request.getAttribute("pageAddress");
+
 %>
 
-<jsp:include page="<%=address%>" />
+<jsp:include page="<%=address%>"/>
 
 <script>
     document.getElementById("movetosubscribe").click();
@@ -1645,15 +1700,15 @@
 <section id="aa-subscribe">
     <div class="subscribediv">
         <div class="subscribedivchild">
-            <h3>THAM GIA VỚI CHÚNG TÔI ĐỂ NHẬN NHỮNG <span style="color:#ff7315">EMAIL THÔNG TIN SỚM NHẤT</span></h3>
+            <h3><%=lang.get("67")+" "%> <span style="color:#ff7315"><%=lang.get("68")%></span></h3>
             <p>
-                Đăng ký và nhận thông báo về bản cập nhật và ưu đãi mới nhất trước tất cả!</p>
+                <%=lang.get("69")%></p>
             <form action="MailController" method="post">
                 <div class="form-action-sr">
-                    <input type="text" name="email"
+                    <input type="text" name="email" required
                            value=""
-                           placeholder="Nhập email bạn ở đây">
-                    <button>Tham gia</button>
+                           placeholder="<%=lang.get("70")%>">
+                    <button><%=lang.get("71")%></button>
                 </div>
             </form>
         </div>
@@ -1703,101 +1758,7 @@
 </div>
 
 <!-- footer -->
-<footer id="aa-footer">
-    <!-- footer bottom -->
-    <div class="aa-footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-footer-top-area">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <h3>CÔNG TY TNHH <span style="color:#ff7315;">TVT</span> SHOP</h3>
-                                    <ul class="aa-footer-nav">
-                                        <li><a href="#">Giới thiệu</a></li>
-                                        <li><a href="#">Tuyển dụng</a></li>
-                                        <li><a href="#">Tạp chí</a></li>
-                                        <li><a href="#">Hợp tác</a></li>
-
-                                    </ul>
-                                    <img src="img/logosalenoti.png" alt="" style=" width: 130px;margin-top: 20px;">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>HỖ TRỢ KHÁCH HÀNG</h3>
-                                        <ul class="aa-footer-nav">
-                                            <li><a href="home/chooseSize.html">Hướng dẫn chọn size</a></li>
-                                            <li><a href="home/shopping_guide.html">Hướng dẫn mua hàng</a></li>
-                                            <li><a href="home/membership_policy.html">Chính sách thành viên</a></li>
-                                            <li><a href="home/payment_policy.html">Chính sách đổi trả</a></li>
-                                            <li><a href="home/guarantee.html">Chính sách bảo hành</a></li>
-                                            <li><a href="home/check_orders.html">Tra cứu đơn hàng</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>ĐỐI TÁC VẬN CHUYỂN</h3>
-                                        <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/giaohangnhanh.webp" alt=""></li>
-                                            <li><img src="img/giaohangtietkiem.webp" alt=""></li>
-                                            <li><img src="img/grap.webp" alt=""></li>
-
-                                        </ul>
-                                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
-                                        <ul class="aa-footer-nav giaohang">
-                                            <li><img src="img/vnpay.webp" alt=""></li>
-                                            <li><img src="img/momo.webp" alt=""></li>
-                                            <li><img src="img/cash.webp" alt=""></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>Contact Us</h3>
-                                        <address>
-                                            <p> Đại học Nông Lâm</p>
-                                            <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                                            <p><span class="fa fa-envelope"></span>tvtshop@gmail.com</p>
-                                        </address>
-                                        <div class="aa-footer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-google"></i></a>
-                                            <a href="#"><i class="fa fa-youtube"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer-bottom -->
-    <div class="aa-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-footer-bottom-area">
-                        <a>© 2020 TVTShop. Powered by Haravan Enterprice</a>
-                        <a href=""> Terms & Conditions</a>
-                        <a href="">Safety and Security</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<jsp:include page="WEB-INF/share/_LayoutFooter.jsp"/>
 <!-- / footer -->
 
 <!-- Login Modal -->
