@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.MembershipPolicyLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -61,23 +62,44 @@
 
 </head>
 
+<!--------------------------------Lấy list ngôn ngữ ra---------------------------------------->
+
+<%
+    //  Chuyển về UTF-8
+    request.setCharacterEncoding("UTF-8");
+
+    //  Lấy list ngôn ngữ ra
+    Map<String, String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if (lang == null) {
+        lang = MembershipPolicyLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
 <body>
 <!-- wpf loader Two -->
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<!-- wpf loader Two -->
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"/>
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="MembershipPolicyLanguageController"/>
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
+<!-- / header section -->
 
-<%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Chính sách thành viên"/>
+<jsp:include page="../share/_LayoutBanner.jsp">
+    <jsp:param name="titleVietnamese" value="Chính sách thành viên"/>
+    <jsp:param name="titleEnglish" value="Membership policy"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
 <!-- Cart view section -->
 <div class="col-sm-12 divtitle">
-    <h3 class="title titlemain"><span class="red">Chính sách</span> thành viên</h3>
-    <p class="titilesub">Thành viên tuyệt vời nên sở hữu những quyền lợi riêng của họ<span style="color: red;"><i
+    <h3 class="title titlemain"><span class="red"><%=lang.get("1")+" "%></span> <%=lang.get("2")%></h3>
+    <p class="titilesub"> <%=lang.get("3")%><span style="color: red;"><i
             class="fa fa-heart"></i></span></p>
     <img src="../img/thanhvien.jpg" class="img_policy" alt="">
 </div>
@@ -85,10 +107,12 @@
 
 <!-- Subscribe section -->
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"/>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value="../"/>
+</jsp:include>
 <!-- / footer -->
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

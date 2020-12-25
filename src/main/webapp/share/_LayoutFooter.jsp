@@ -63,7 +63,7 @@
                                             <li>
                                                 <a href="<%=request.getParameter("levelPage")%>ShoppingGuideLanguageController"><%=lang.get("8")%>
                                                 </a></li>
-                                            <li><a href="home/membership_policy.html"><%=lang.get("9")%>
+                                            <li><a href="<%=request.getParameter("levelPage")%>MembershipPolicyLanguageController"><%=lang.get("9")%>
                                             </a></li>
                                             <li><a href="home/payment_policy.html"><%=lang.get("10")%>
                                             </a></li>
