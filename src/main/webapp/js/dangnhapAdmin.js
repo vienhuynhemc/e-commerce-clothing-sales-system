@@ -144,17 +144,17 @@ function toAccount() {
     let matkhau = document.getElementById("matkhau").value;
     if (taikhoan == "admin") {
         if (matkhau == "admin") {
-            window.location = "../index.html";
+            window.location = "../index.jsp";
             return;
         }
     } else if (taikhoan == "nvk") {
         if (matkhau == "nvk") {
-            window.location = "../admin/home/indexNVK.html";
+            window.location = "../admin/home/indexNVK.jsp";
             return;
         }
     } else if (taikhoan == "nvgh") {
         if (matkhau == "nvgh") {
-            window.location = "../admin/home/indexNVGH.html";
+            window.location = "../admin/home/indexNVGH.jsp";
             return;
         }
     } else {

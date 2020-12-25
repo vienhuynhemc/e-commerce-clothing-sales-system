@@ -422,21 +422,21 @@
                                 <div class="linediv12"></div>
                                 <div class="div12input">
                                     <label for="">* Họ và tên</label>
-                                    <input type="text" placeholder="Nhập họ và tên ở đây"
+                                    <input type="text" name="full-name" placeholder="Nhập họ và tên ở đây"
                                            value="Nguyễn Thị Hoa Hồng">
                                 </div>
                                 <div class="div12input">
                                     <label for="">Tên hiển thị</label>
-                                    <input type="text" placeholder="Nhập tên hiển thị ở đây" value="Hồng Nguyễn">
+                                    <input type="text" name="display-name" placeholder="Nhập tên hiển thị ở đây" value="Hồng Nguyễn">
                                 </div>
                                 <div class="div12input">
                                     <label for="">* Email</label>
-                                    <input type="text" placeholder="Nhập email ở đây"
+                                    <input type="text" name="email" placeholder="Nhập email ở đây"
                                            value="nguyenthihoahong@gmail.com" disabled>
                                 </div>
                                 <div class="div12input">
                                     <label for="">* Số điện thoại</label>
-                                    <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209"
+                                    <input type="text" name="phone" placeholder="Nhập số điện thoại ở đây" value="0971-122-209"
                                            disabled>
                                 </div>
                                 <div class="linediv12"></div>
@@ -558,84 +558,87 @@
                                 <button onclick="removeIMG2()">Xóa ảnh đại diện</button>
 
                             </div>
+                            <form action="" method="get">
+                                <div class="div12">
+                                    <h3>Điền thông tin cá nhân</h3>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">* Họ và tên</label>
+                                        <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây" value="Diệu Đặng">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">Tên hiển thị</label>
+                                        <input name="display-name" type="text" placeholder="Nhập tên hiển thị ở đây" value="Diệu">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Email</label>
+                                        <input name="email" type="text" placeholder="Nhập email ở đây"
+                                               value="dieudangprovjp@gmail.com" disabled>
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Số điện thoại</label>
+                                        <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây" value="0377-567-239"
+                                               disabled>
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <div class="trangthai">
+                                        <div class="div12inputlv2">
+                                            <label for="">Tỉnh / Thành</label>
+                                            <select name="tinh" id="">
+                                                <option value="">Chọn tỉnh / thành</option>
+                                                <option value="" selected>Phú Yên</option>
+                                            </select>
+                                        </div>
+                                        <div class="div12inputlv2">
+                                            <label for="">Quận / huyện</label>
+                                            <select name="huyen" id="">
+                                                <option value="">Chọn quận / huyện</option>
+                                                <option value="" selected>Huyện Đồng Xuân</option>
+                                            </select>
+                                        </div>
+                                        <div class="div12inputlv2">
+                                            <label for="">Phường / xã</label>
+                                            <select name="xa" id="">
+                                                <option value="">Chọn phường / xã</option>
+                                                <option value="" selected>Xã Đa Lộc</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">* Tài khoản</label>
+                                        <input name="userName" type="text" placeholder="Nhập tên tài khoản ở đây" value="dieudangmuado"
+                                               disabled>
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Mật khẩu</label>
+                                        <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Xác nhận</label>
+                                        <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
+                                    </div>
+                                </div>
+                                <div class="div13">
+                                    <div class="div12input">
+                                        <label for="">* Lương</label>
+                                        <input name="salary" type="text" placeholder="Nhập lương ở đây" value="10,500,000">
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">Giới thiệu</label>
+                                        <input name="gioi-thieu" type="text" placeholder="Nhập số giới thiệu ở đây" value="Xin chào!">
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <button><i class="fa fa-save"></i>Lưu</button>
+                                    <button type="submit" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                                        lý
+                                    </button>
+                                </div>
+                            </form>
 
-                            <div class="div12">
-                                <h3>Điền thông tin cá nhân</h3>
-                                <div class="linediv12"></div>
-                                <div class="div12input">
-                                    <label for="">* Họ và tên</label>
-                                    <input type="text" placeholder="Nhập họ và tên ở đây" value="Diệu Đặng">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">Tên hiển thị</label>
-                                    <input type="text" placeholder="Nhập tên hiển thị ở đây" value="Diệu">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Email</label>
-                                    <input type="text" placeholder="Nhập email ở đây"
-                                           value="dieudangprovjp@gmail.com" disabled>
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Số điện thoại</label>
-                                    <input type="text" placeholder="Nhập số điện thoại ở đây" value="0377-567-239"
-                                           disabled>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="trangthai">
-                                    <div class="div12inputlv2">
-                                        <label for="">Tỉnh / Thành</label>
-                                        <select name="" id="">
-                                            <option value="">Chọn tỉnh / thành</option>
-                                            <option value="" selected>Phú Yên</option>
-                                        </select>
-                                    </div>
-                                    <div class="div12inputlv2">
-                                        <label for="">Quận / huyện</label>
-                                        <select name="" id="">
-                                            <option value="">Chọn quận / huyện</option>
-                                            <option value="" selected>Huyện Đồng Xuân</option>
-                                        </select>
-                                    </div>
-                                    <div class="div12inputlv2">
-                                        <label for="">Phường / xã</label>
-                                        <select name="" id="">
-                                            <option value="">Chọn phường / xã</option>
-                                            <option value="" selected>Xã Đa Lộc</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12input">
-                                    <label for="">* Tài khoản</label>
-                                    <input type="text" placeholder="Nhập tên tài khoản ở đây" value="dieudangmuado"
-                                           disabled>
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Mật khẩu</label>
-                                    <input type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Xác nhận</label>
-                                    <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
-                                </div>
-                            </div>
 
-                            <div class="div13">
-                                <div class="div12input">
-                                    <label for="">* Lương</label>
-                                    <input type="text" placeholder="Nhập lương ở đây" value="10,500,000">
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12input">
-                                    <label for="">Giới thiệu</label>
-                                    <input type="text" placeholder="Nhập số giới thiệu ở đây" value="Xin chào!">
-                                </div>
-                                <div class="linediv12"></div>
-                                <button><i class="fa fa-save"></i>Lưu</button>
-                                <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                                    lý
-                                </button>
-                            </div>
+
                         </div>
 
                     </div>

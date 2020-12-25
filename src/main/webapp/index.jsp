@@ -85,14 +85,14 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound"><a href="home/changeInforCustomer.html"><i class="fa fa-user"
+                                <li class="iconRound"><a href="home/changeInforCustomer.jsp"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRound"><a href="home/wishlist.html"><i class="fa fa-heart"></i></a>
+                                <li class="hidden-xs iconRound"><a href="home/wishlist.jsp"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.html">Giỏ hàng
+                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.jsp">Giỏ hàng
                                     <span class="fa fa-shopping-cart"></span></a></li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.html">Thanh toán <span
+                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.jsp">Thanh toán <span
                                         class="fa fa-credit-card"></span></a></li>
                                 <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
                                 <li class="hidden-xs iconRoundLenghtt">
@@ -138,7 +138,7 @@
                         <!-- logo  -->
                         <div class="aa-logo">
                             <!-- Text based logo -->
-                            <a href="index.html">
+                            <a href="index.jsp">
                                 <span class="fa fa-shopping-cart"></span>
                                 <p>TVT<strong style="color:#ff7315">S</strong>hop <span>Giá rẻ, nhanh chóng</span></p>
                             </a>
@@ -206,9 +206,9 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="home/contact.html">Liên hệ</a></li>
-                                                <li><a href="home/about_US.html">Về chúng tôi</a></li>
-                                                <li><a href="admin/home/login.html">ADMIN</a></li>
+                                                <li><a href="home/contact.jsp">Liên hệ</a></li>
+                                                <li><a href="home/about_US.jsp">Về chúng tôi</a></li>
+                                                <li><a href="admin/home/login.jsp">ADMIN</a></li>
                                             </ul>
                                         </div>
                                         <!--/.nav-collapse -->

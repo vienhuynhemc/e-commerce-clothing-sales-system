@@ -19,6 +19,13 @@ public class MailModel {
     //  Liên hệ ở contact.jsp
     public static final int CONTACT_CONTACT = 1;
 
+    // Đăng kí nhân viên kho
+    public static  final int REGISTER_NVK = 2;
+    // Đăng kí nhân viên giao hàng
+    public static final int REGISTER_NVVC = 3;
+    // Đăng kí khách hàng
+    public static final int REGISTER_KH = 4;
+
 
 
     //--------------------------------- Khai báo thuộc tính cần thiết để gửi email ---------------------------------
@@ -125,6 +132,18 @@ public class MailModel {
             case CONTACT_CONTACT:
                 subject = "Liên hệ TVTSHOP";
                 text = "Kính gửi: " + email + "\n\nCảm ơn bạn đã liên hệ với TVTSHOP chúng tôi, chúng tôi đã nhận được vấn đề của bạn và nó đang trên đường tới các cộng tác viên, họ sẽ trả lời trong thời gian sớm nhất có thể, mong bạn hài lòng vì điều này!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
+                break;
+            case REGISTER_NVK:
+                subject = "Tham gia TVTSHOP";
+                text = "Xin chào: " + email + "\n\n Chúc mừng bạn đã trở thành nhân viên kho của TVTSHOP, hãy cùng nhau cố gắng xây dựng và phát triển Shop nhé!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
+                break;
+            case REGISTER_NVVC:
+                subject = "Tham gia TVTSHOP";
+                text = "Xin chào: " + email + "\n\n Chúc mừng bạn đã trở thành nhân viên vận chuyển của TVTSHOP, hãy cùng nhau cố gắng xây dựng và phát triển Shop nhé!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
+                break;
+            case REGISTER_KH:
+                subject = "Tham gia TVTSHOP";
+                text = "Xin chào: " + email + "\n\n Chúc mừng bạn đã trở thành thành viên mới của TVTSHOP, hãy mua sắm để nhận nhiều ưu đãi từ chúng tôi!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
                 break;
         }
 

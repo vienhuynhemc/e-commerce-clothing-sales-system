@@ -51,9 +51,9 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="home/quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="home/quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="home/quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a></li>
+                    <li><a href="home/quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li><a href="home/quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li><a href="home/quanLyKhachHang.jsp"><i class="fa fa-users"></i>Khách hàng</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
