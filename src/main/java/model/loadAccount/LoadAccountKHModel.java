@@ -2,7 +2,6 @@ package model.loadAccount;
 
 import beans.account.AccountKH;
 import worksWithDatabase.loadAccount.LoadKHDAO;
-import worksWithDatabase.loadAccount.LoadKHSource;
 
 import java.util.Map;
 
@@ -10,11 +9,7 @@ public class LoadAccountKHModel {
 
     private static LoadAccountKHModel loadAccountKH;
 
-    private LoadAccountKHModel(){
-        loadAccountKH = new LoadAccountKHModel();
-    }
-    
-    public static synchronized LoadAccountKHModel getInstance(){
+    public static LoadAccountKHModel getInstance(){
 
         if (loadAccountKH == null){
             loadAccountKH = new LoadAccountKHModel();
@@ -22,13 +17,13 @@ public class LoadAccountKHModel {
         return loadAccountKH;
 
     }
-    public Map<String, AccountKH> loadListKH(){
-         LoadKHDAO loadKHDAO =  LoadKHSource.getInstance().getLoadKHDAO();
+    public Map<String, AccountKH> loadListKH(int num){
 
-         Map<String,AccountKH> result = loadKHDAO.loadListKH();
+         LoadKHDAO loadKHDAO =  new LoadKHDAO();
 
-         LoadKHSource.getInstance().releaseLoadKH(loadKHDAO);
+         Map<String,AccountKH> result = loadKHDAO.loadListKH(num);
 
          return result;
     }
+
 }

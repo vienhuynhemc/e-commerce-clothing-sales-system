@@ -53,7 +53,7 @@
                 <ul>
                     <li><a href="home/quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
                     <li><a href="home/quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="home/quanLyKhachHang.jsp"><i class="fa fa-users"></i>Khách hàng</a></li>
+                    <li><a href="../LoadAccountKHController?page=1"><i class="fa fa-users"></i>Khách hàng</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
