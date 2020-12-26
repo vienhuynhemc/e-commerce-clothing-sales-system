@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddAccountKHController",urlPatterns = "/admin/home/AddAccountKHController")
+@WebServlet(name = "AddAccountKHController",urlPatterns = "/AddAccountKHController")
 public class AddAccountKHController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         execute(request, response);
