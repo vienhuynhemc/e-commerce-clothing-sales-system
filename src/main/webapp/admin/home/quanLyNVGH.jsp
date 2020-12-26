@@ -99,9 +99,16 @@
                 <ul>
                     <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
                     <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
+            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
+                <div>
+                    <i class="fa fa-balance-scale"></i>
+                    <p>Mã giảm giá</p>
+                </div>
+            </a>
             <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
                  onclick="indexleftselectitemlv2(this)">
                 <div class="indexleftselectitem">
