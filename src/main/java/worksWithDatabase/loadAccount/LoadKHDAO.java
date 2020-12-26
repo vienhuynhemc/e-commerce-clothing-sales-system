@@ -39,7 +39,7 @@ public class LoadKHDAO {
             rs.last();
             int end = rs.getRow();
             // lấy dc r thì di chuyển lại vị trí bắt đầu lấy
-            rs.absolute((num-1)*10);
+            rs.absolute((num)*10);
 
             if(num*10 < end){
                 // lấy đủ 10 thằng thôi
@@ -64,7 +64,6 @@ public class LoadKHDAO {
 
                     int second = (int) d;
 
-
                     DateTime datetime = new DateTime(year,month,day,hour,minute,second);
 
                     list.put(rs.getString("IDUser"),
@@ -88,7 +87,7 @@ public class LoadKHDAO {
 
             }else{
                 while (rs.next()){
-                        // lấy ra ngày để sử lí r cho nào class datetime
+
                         String date = rs.getString("RegisDate");
                         String[] split = date.split(" ");
 
@@ -100,7 +99,9 @@ public class LoadKHDAO {
                         int day = Integer.parseInt(dmy[2]);
                         int hour = Integer.parseInt(time[0]);
                         int minute = Integer.parseInt(time[1]);
-                    int second = Integer.parseInt(time[2].split(".")[0]);
+                       double d = Double.parseDouble(time[2]);
+
+                       int second = (int) d;
 
                         DateTime datetime = new DateTime(year,month,day,hour,minute,second);
 

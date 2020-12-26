@@ -9,7 +9,7 @@ public class LoadAccountKHModel {
 
     private static LoadAccountKHModel loadAccountKH;
 
-    public static LoadAccountKHModel getInstance(){
+    public static  LoadAccountKHModel getInstance(){
 
         if (loadAccountKH == null){
             loadAccountKH = new LoadAccountKHModel();
@@ -18,12 +18,10 @@ public class LoadAccountKHModel {
 
     }
     public Map<String, AccountKH> loadListKH(int num){
-
          LoadKHDAO loadKHDAO =  new LoadKHDAO();
 
          Map<String,AccountKH> result = loadKHDAO.loadListKH(num);
 
          return result;
     }
-
 }
