@@ -238,11 +238,11 @@ select option {
 }
 
 .maindiv2header > p:nth-child(5) {
-    margin-left: 93px;
+    margin-left: 40px;
 }
 
 .maindiv2header > p:nth-child(6) {
-    margin-left: 85px;
+    margin-left: 40px;
 }
 
 .item {
@@ -352,17 +352,17 @@ select option {
 
 .item > p:nth-child(4) {
     margin-left: 50px;
-    width: 100px;
+    width: 50px;
 }
 
 .item > p:nth-child(5) {
     margin-left: 50px;
-    width: 100px;
+    width: 50px;
 }
 
 .item > p:nth-child(6) {
     margin-left: 50px;
-    width: 100px;
+    width: 200px;
 }
 
 #div1 > div {

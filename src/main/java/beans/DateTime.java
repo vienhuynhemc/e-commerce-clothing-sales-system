@@ -19,13 +19,64 @@ public class DateTime {
         this.minute = minute;
         this.second = second;
     }
-    public DateTime(){
 
+    //  Constructor rỗng
+    public DateTime() {
     }
 
-    //  To string
-    public String toString(){
-        return day+"-"+month+"-"+year+" "+hour+":"+minute+":"+second;
+    //  To string all
+    public String toString() {
+        return day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
+    }
+
+    //  To string dạng 26 Tháng Tám 2020
+    public String toStringDateTypeNumberStringNumber() {
+
+        //  Chuyển tháng từ số sang dạng chuỗi
+        String mm = null;
+
+        switch (this.month) {
+            case 1:
+                mm = "Tháng Một";
+                break;
+            case 2:
+                mm = "Tháng Hai";
+                break;
+            case 3:
+                mm = "Tháng Ba";
+                break;
+            case 4:
+                mm = "Tháng Tư";
+                break;
+            case 5:
+                mm = "Tháng Năm";
+                break;
+            case 6:
+                mm = "Tháng Sáu";
+                break;
+            case 7:
+                mm = "Tháng Bảy";
+                break;
+            case 8:
+                mm = "Tháng Tám";
+                break;
+            case 9:
+                mm = "Tháng Chín";
+                break;
+            case 10:
+                mm = "Tháng Mười";
+                break;
+            case 11:
+                mm = "Tháng Mời Một";
+                break;
+            case 12:
+                mm = "Tháng Mười Hai";
+                break;
+        }
+
+        //  return về dạng mình mong muốn
+        return day + " " + mm + " " + year;
+
     }
 
     //  Getter and setter
