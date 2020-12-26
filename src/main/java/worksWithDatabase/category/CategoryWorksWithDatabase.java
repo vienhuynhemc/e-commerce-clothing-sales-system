@@ -21,13 +21,15 @@ public class CategoryWorksWithDatabase {
         Connection c = DataSource.getInstance().getConnection();
 
         try {
-            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE maDM = ?");
+            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ?");
             p.setString(1, id);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
                 DataSource.getInstance().releaseConnection(c);
                 return true;
             }
+            rs.close();
+            p.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -51,12 +53,12 @@ public class CategoryWorksWithDatabase {
 
                 LocalDate date = LocalDate.now();
                 LocalDateTime now = LocalDateTime.now();
-                DateTime dateTime = new DateTime(date.getDayOfYear(),date.getMonthValue(),date.getYear(),now.getHour(),now.getMinute(),now.getSecond());
-                PreparedStatement s = connection.prepareStatement("INSERT INTO danh_muc VALUES (?,?,?,?,?)");
+                DateTime dateTime = new DateTime(date.getYear(),date.getMonthValue(),date.getDayOfMonth(),now.getHour(),now.getMinute(),now.getSecond());
+                PreparedStatement s = connection.prepareStatement("INSERT INTO danh_muc VALUES (?,?,?,?)");
                 s.setString(1, "dm_" + (row + 1));
                 s.setString(2, name);
                 s.setString(3,dateTime.toString());
-                s.setInt(5,1);
+                s.setInt(4,1);
 
                 s.execute();
 
@@ -423,9 +425,9 @@ public class CategoryWorksWithDatabase {
 
     public static void main(String[] args) {
 //       System.out.println(addCategory("ÁP"));
-        for(Category ca : getCategoriesByNameASC()){
-            System.out.println(ca);
-        }
+//        for(Category ca : getCategoriesByNameASC()){
+//            System.out.println(ca);
+//        }
 
     }
 

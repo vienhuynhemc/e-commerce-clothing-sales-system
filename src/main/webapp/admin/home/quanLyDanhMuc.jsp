@@ -379,7 +379,7 @@
                                     </p>
 
                                     <p>
-                                        <%= c.getDateCreated() +" " + c.getTimeCreated()%>
+                                        <%= c.getDateCreated()%>
                                     </p>
 
                                     <div class="itemsubmit" onclick="showselect(this)">
@@ -389,28 +389,25 @@
                                         <i class="fa fa-circle"></i>
                                         <div>
 
+                                           <button type="submit"><a href="quanLyDanhMuc(sua).jsp?id=<%= c.getId() %>"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
 
-                                            <button type="submit" onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                            <form action="../../RemoveCategoryController" method="post">
 
-                                            <button ><i class="fa fa-trash"></i>Xóa</button>
+                                                <button type="submit" name="name_C" value="<%= c.getId()%>"><i class="fa fa-trash"></i>Xóa</button>
+                                            </form>
                                         </div>
                                     </div>
                                     <div>
                                         <div class="div11"></div>
-
-                                        <%
-
-                                        %>
-
 
                                            <div class="div12">
                                                <h3>Điền thông tin danh mục</h3>
                                                <div class="linediv12"></div>
                                                <form action="" method="get">
                                                <div class="div12input">
-                                                   <label for="">* Tên danh mục</label>
-                                                   <input type="text" placeholder="Nhập tên danh mục ở đây"
-                                                          value="<% %>">
+                                                   <label >* Tên danh mục</label>
+                                                   <input type="text" placeholder="Nhập tên danh mục ở đây" id="update"
+                                                          value="">
                                                </div>
                                                <div class="linediv12"></div>
                                                <button type="submit"><i class="fa fa-save"></i>Lưu</button>
@@ -439,7 +436,7 @@
                                    <div class="linediv12"></div>
                                    <form action="../../AddCategoryController" method="get">
                                    <div class="div12input">
-                                       <label for="">* Tên danh mục</label>
+                                       <label >* Tên danh mục</label>
                                        <input type="text" placeholder="Nhập tên danh mục ở đây" name="name" value="">
                                    </div>
                                    <div class="linediv12"></div>
