@@ -85,7 +85,7 @@ function removekhachhang(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
         let list = listItem[i].children;
-        let list2 = list[5].children;
+        let list2 = list[6].children;
         let list3 = list2[4].children;
         if (list3[1] == item) {
             document.getElementById("maindiv2").removeChild(listItem[i]);
@@ -171,15 +171,92 @@ function editdanhmuc(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
         let list = listItem[i].children;
-        let list2 = list[5].children;
+        let list2 = list[6].children;
         let list3 = list2[4].children;
         if (list3[0] == item) {
-            document.getElementById("div3").appendChild(list[6].cloneNode(true));
-            console.log(list[6])
+            document.getElementById("div3").appendChild(list[7].cloneNode(true));
             document.getElementById("div3").style.display = "block";
             document.getElementById("div1").style.display = "none";
             document.getElementById("div2").style.display = "none";
             return;
+        }
+    }
+}
+
+function themitemchitiet(item) {
+
+    let l1 = document.getElementById("div3").children[0];
+    let l2 = l1.children;
+    let l3 = l2[1].children;
+    if(l3[4] == item){
+
+        let div = document.createElement("div");
+        div.classList.add("itemchitiet");
+        div.innerText ="*";
+        let input = document.createElement("input");
+        input.type = "text";
+        input.required = true;
+        input.placeholder = "Nhập chi tiết ở đây"
+        div.appendChild(input);
+        let i = document.createElement("i");
+        i.classList.add("fa");
+        i.classList.add("fa-close");
+        i.onclick = function(){removeitemchitiet(i)};
+        div.appendChild(i);
+        l3[5].append(div);
+    }
+
+}
+
+function removeitemchitiet(item) {
+    let l1 = document.getElementById("div3").children[0];
+    let l2 = l1.children;
+    let l3 = l2[1].children;
+    let l4 = l3[5].children;
+    for(let i =0; i < l4.length;i++){
+        let l5 = l4[i].children;
+        if(l5[1] == item){
+            l3[5].removeChild(l4[i]);
+            return;_
+        }
+    }
+}
+
+function themitemchitiet2(item) {
+
+    let l1 = document.getElementById("div1").children[0];
+    let l2 = l1.children;
+    let l3 = l2[1].children;
+    if(l3[4] == item){
+
+        let div = document.createElement("div");
+        div.classList.add("itemchitiet");
+        div.innerText ="*";
+        let input = document.createElement("input");
+        input.type = "text";
+        input.required = true;
+        input.placeholder = "Nhập chi tiết ở đây"
+        div.appendChild(input);
+        let i = document.createElement("i");
+        i.classList.add("fa");
+        i.classList.add("fa-close");
+        i.onclick = function(){removeitemchitiet2(i)};
+        div.appendChild(i);
+        l3[5].append(div);
+    }
+
+}
+
+function removeitemchitiet2(item) {
+    let l1 = document.getElementById("div1").children[0];
+    let l2 = l1.children;
+    let l3 = l2[1].children;
+    let l4 = l3[5].children;
+    for(let i =0; i < l4.length;i++){
+        let l5 = l4[i].children;
+        if(l5[1] == item){
+            l3[5].removeChild(l4[i]);
+            return;_
         }
     }
 }
