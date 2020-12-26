@@ -1,6 +1,5 @@
 package controllerIndex.category;
 
-import beans.category.Category;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 
 import javax.servlet.ServletException;
@@ -9,16 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "CategoryController", urlPatterns = "/CategoryController")
-public class CategoryController extends HttpServlet {
+@WebServlet(name = "AddCategoryController", urlPatterns = "/AddCategoryController")
+public class AddCategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+            doGet(request,response);
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Category> categories = CategoryWorksWithDatabase.getAllCategories();
-        request.setAttribute("list",categories);
-        response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        String name = request.getParameter("name");
+        if(name != null){
+            CategoryWorksWithDatabase.addCategory(name);
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        }
+        else {
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        }
     }
 }

@@ -109,6 +109,28 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
         return false;
     }
+    // hiển thị danh sách danh mục sản phẩm
+    public static List<Category> getAllCategories(){
+        List<Category> categories = new ArrayList<>();
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc");
+            while(rs.next()){
+                categories.add(new Category(rs.getString(1),rs.getString(2),
+                        rs.getDate(3),rs.getTime(4),rs.getInt(5)));
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return categories;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
+    }
     // lấy một danh mục dựa vào mã danh mục
     public static Category getCategoryById(String id){
         Connection connection = DataSource.getInstance().getConnection();
