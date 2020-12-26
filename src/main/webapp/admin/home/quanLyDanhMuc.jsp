@@ -313,12 +313,14 @@
                         <div>
                             <div class="header">
                                 <div class="leftheader">
-                                    <select name="" id="">
-                                        <option value="" selected>Ngày tạo</option>
-                                        <option value="">Tên danh mục</option>
-                                        <option value="">Mã danh mục</option>
-                                        <option value="">Số lượng sản phẩm</option>
-                                    </select>
+                                    <form action="../../SortCategoryController" method="get">
+                                        <select name="sort" id="sort">
+                                            <option value="1" selected>Ngày tạo</option>
+                                            <option value="2">Tên danh mục</option>
+                                            <option value="3">Mã danh mục</option>
+                                            <option value="4">Số lượng sản phẩm</option>
+                                        </select>
+                                    </form>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
                                             <i class=" fa fa-sort-amount-desc"></i>
@@ -386,28 +388,36 @@
                                         <i class="fa fa-circle"></i>
                                         <i class="fa fa-circle"></i>
                                         <div>
-                                            <button onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
-                                            <button onclick="removekhachhang(this)"><i
-                                                    class="fa fa-trash"></i>Xóa</button>
+
+
+                                            <button type="submit" onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
+
+                                            <button ><i class="fa fa-trash"></i>Xóa</button>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="div11">
-                                        </div>
+                                        <div class="div11"></div>
 
-                                        <div class="div12">
-                                            <h3>Điền thông tin danh mục</h3>
-                                            <div class="linediv12"></div>
-                                            <div class="div12input">
-                                                <label for="">* Tên danh mục</label>
-                                                <input type="text" placeholder="Nhập tên danh mục ở đây"
-                                                    value="Áo thun tay dài">
-                                            </div>
-                                            <div class="linediv12"></div>
-                                            <button><i class="fa fa-save"></i>Lưu</button>
-                                            <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                                                lý</button>
-                                        </div>
+                                        <%
+
+                                        %>
+
+
+                                           <div class="div12">
+                                               <h3>Điền thông tin danh mục</h3>
+                                               <div class="linediv12"></div>
+                                               <form action="" method="get">
+                                               <div class="div12input">
+                                                   <label for="">* Tên danh mục</label>
+                                                   <input type="text" placeholder="Nhập tên danh mục ở đây"
+                                                          value="<% %>">
+                                               </div>
+                                               <div class="linediv12"></div>
+                                               <button type="submit"><i class="fa fa-save"></i>Lưu</button>
+                                               <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
+                                               </form>
+                                           </div>
+
                                         <div class="div13">
                                         </div>
                                     </div>
@@ -427,10 +437,10 @@
                                <div class="div12">
                                    <h3>Điền thông tin danh mục</h3>
                                    <div class="linediv12"></div>
-                                   <form action="AddCategoryController" method="post">
+                                   <form action="../../AddCategoryController" method="get">
                                    <div class="div12input">
                                        <label for="">* Tên danh mục</label>
-                                       <input type="text" placeholder="Nhập tên danh mục ở đây" name="name">
+                                       <input type="text" placeholder="Nhập tên danh mục ở đây" name="name" value="">
                                    </div>
                                    <div class="linediv12"></div>
                                    <button type="submit"><i class="fa fa-plus"></i>Thêm danh mục</button>

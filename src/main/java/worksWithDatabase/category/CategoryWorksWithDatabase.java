@@ -6,7 +6,9 @@ import connectionDatabase.DataSource;
 
 import java.sql.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class CategoryWorksWithDatabase {
@@ -19,7 +21,7 @@ public class CategoryWorksWithDatabase {
         Connection c = DataSource.getInstance().getConnection();
 
         try {
-            PreparedStatement p = c.prepareStatement("SELECT * FROM danhmuc WHERE maDM = ?");
+            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE maDM = ?");
             p.setString(1, id);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
@@ -38,21 +40,22 @@ public class CategoryWorksWithDatabase {
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
+                if(name.equals("")){
+                    return false;
+                }
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM danhmuc");
+                ResultSet rs = statement.executeQuery("SELECT * FROM danh_muc");
                 rs.beforeFirst();
                 rs.last();
                 int row = rs.getRow();
 
-                long millis = System.currentTimeMillis();
-                java.sql.Date date = new java.sql.Date(millis);
+                LocalDate date = LocalDate.now();
                 LocalDateTime now = LocalDateTime.now();
-                Time time = new Time(now.getHour(),now.getMinute(),now.getMinute());
-                PreparedStatement s = connection.prepareStatement("INSERT INTO danhmuc VALUES (?,?,?,?,?)");
-                s.setString(1, "DM" + (row + 1));
+                DateTime dateTime = new DateTime(date.getDayOfYear(),date.getMonthValue(),date.getYear(),now.getHour(),now.getMinute(),now.getSecond());
+                PreparedStatement s = connection.prepareStatement("INSERT INTO danh_muc VALUES (?,?,?,?,?)");
+                s.setString(1, "dm_" + (row + 1));
                 s.setString(2, name);
-                s.setDate(3, date);
-                s.setTime(4,time);
+                s.setString(3,dateTime.toString());
                 s.setInt(5,1);
 
                 s.execute();
@@ -74,7 +77,7 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try {
             if (check(id)) {
-                PreparedStatement s = connection.prepareStatement("DELETE FROM danhmuc where maDM = ?");
+                PreparedStatement s = connection.prepareStatement("DELETE FROM danh_muc where ma_dm = ?");
                 s.setString(1, id);
                 s.execute();
 
@@ -94,7 +97,7 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try{
             if(check(id)){
-                PreparedStatement s = connection.prepareStatement("UPDATE danhmuc SET tenDM = ? WHERE maDM = ?");
+                PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ten_dm = ? WHERE ma_dm = ?");
                 s.setString(1,newName);
                 s.setString(2,id);
                 s.execute();
@@ -115,10 +118,16 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try {
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc");
             while(rs.next()){
-                categories.add(new Category(rs.getString(1),rs.getString(2),
-                        rs.getDate(3),rs.getTime(4),rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -131,28 +140,43 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
+     public static DateTime getDateTime(String dateTime){
+         DateTime dayTime = new DateTime();
+         String[] date_time = dateTime.split(" ");
+         String[] date = date_time[0].split("-");
+         String[] time = date_time[1].split(":");
+
+         dayTime.setYear(Integer.parseInt(date[0]));
+         dayTime.setMonth(Integer.parseInt(date[1]));
+         dayTime.setDay(Integer.parseInt(date[2]));
+         dayTime.setHour(Integer.parseInt(time[0]));
+         dayTime.setMinute(Integer.parseInt(time[1]));
+         dayTime.setSecond((int)Double.parseDouble(time[2]));
+         return dayTime;
+     }
     // lấy một danh mục dựa vào mã danh mục
     public static Category getCategoryById(String id){
         Connection connection = DataSource.getInstance().getConnection();
         try {
-            if(check(id)) {
-                PreparedStatement s = connection.prepareStatement("SELECT * FROM danhmuc WHERE maDM = ? AND EXIST = 1");
+                PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ? and ton_tai = 1");
                 s.setString(1, id);
                 s.execute();
                 ResultSet rs = s.executeQuery();
                 if (rs.next()) {
                     Category category = new Category();
-                    category.setId(rs.getString(1));
-                    category.setName(rs.getString(2));
-                    category.setDateCreated(rs.getDate(3));
-                    category.setTimeCreated(rs.getTime(4));
-                    category.setExist(rs.getInt(5));
+                    category.setId(rs.getString("ma_dm"));
+                    category.setName(rs.getString("ten_dm"));
+                    String dateTime = rs.getString("ngay_tao");
+
+//                  xứ lí chuỗi yyyy-mm-dd hh:mm:ss
+                    DateTime dayTime = getDateTime(dateTime);
+                    category.setDateCreated(dayTime);
+                    category.setExist(rs.getInt("ton_tai"));
 
                     DataSource.getInstance().releaseConnection(connection);
                     rs.close();
                     s.close();
                     return category;
-                }
             }
         }
         catch (Exception e){
@@ -167,12 +191,17 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         List<Category> categories = new ArrayList<>();
         try{
-            String input = "maDM";
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY maDM");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ma_dm");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -191,10 +220,16 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY maDM DESC");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ma_dm DESC");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -213,10 +248,16 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY tenDM");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ten_dm");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -235,10 +276,16 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY tenDM");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ten_dm DESC");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -257,10 +304,16 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY ngaytao, thoigiantao");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ngay_tao");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -279,10 +332,16 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danhmuc ORDER BY ngaytao DESC, thoigiantao DESC");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ngay_tao DESC");
             while(rs.next()) {
-                categories.add(new Category(rs.getString(1), rs.getString(2),
-                        rs.getDate(3), rs.getTime(4), rs.getInt(5)));
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
             }
             rs.close();
             s.close();
@@ -301,8 +360,8 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT danhmuc.maDM, count(*) as tong FROM danhmuc,sanpham " +
-                    "WHERE danhmuc.maDM = sanpham.maDM GROUP BY danhmuc.maDM ORDER BY count(*)");
+            ResultSet rs = s.executeQuery("SELECT danh_muc.maDM, count(*) as tong FROM danh_muc,sanpham " +
+                    "WHERE danh_muc.maDM = sanpham.maDM GROUP BY danh_muc.maDM ORDER BY count(*)");
             // dùng map lưu kết quả
             HashMap<Category,Integer> map = new HashMap<>();
             while(rs.next()) {
@@ -328,8 +387,8 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT danhmuc.maDM, count(*) as tong FROM danhmuc,sanpham " +
-                    "WHERE danhmuc.maDM = sanpham.maDM GROUP BY danhmuc.maDM ORDER BY count(*) DESC");
+            ResultSet rs = s.executeQuery("SELECT danh_muc.maDM, count(*) as tong FROM danh_muc,sanpham " +
+                    "WHERE danh_muc.maDM = sanpham.maDM GROUP BY danh_muc.maDM ORDER BY count(*) DESC");
             // dùng map lưu kết quả
             HashMap<Category,Integer> map = new HashMap<>();
             while(rs.next()) {
@@ -349,12 +408,24 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
+    public static List<Category> sort(String input){
+        if(input.equals("1")){
+            return getCategoriesByDateCreatedASC();
+        }
+        else if(input.equals("2")){
+            return getCategoriesByNameASC();
+        }
+        else if(input.equals("2")){
+            return getCategoriesByIdASC();
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
-//       System.out.println(getCategoryById("DM1"));
-//        for(Category ca : getCategoriesByDateCreatedDESC()){
-//            System.out.println(ca);
-//        }
+//       System.out.println(addCategory("ÁP"));
+        for(Category ca : getCategoriesByNameASC()){
+            System.out.println(ca);
+        }
 
     }
 

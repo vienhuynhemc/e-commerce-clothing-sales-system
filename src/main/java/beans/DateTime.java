@@ -26,7 +26,7 @@ public class DateTime {
 
     //  To string all
     public String toString() {
-        return day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
     }
 
     //  To string dạng 26 Tháng Tám 2020
