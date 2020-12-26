@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddAccountKHController",urlPatterns = "/AddAccountKHController")
+@WebServlet(name = "AddAccountKHController",urlPatterns = "/admin/home/AddAccountKHController")
 public class AddAccountKHController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
-        //execute(request, response);
+        execute(request, response);
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
@@ -32,11 +30,10 @@ public class AddAccountKHController extends HttpServlet {
         String ttkh = request.getParameter("ttkh");
 
         String exe = AddAccountKHModel.getInstance().addAccount( user, pass, rePass, email, avatar, phone, displayName, fullName, ttdg, ttkh);
-        if (exe.equals("OK")){
-            response.sendRedirect("index.jsp");
-        }else{
-            request.setAttribute("fail",exe);
-            request.getRequestDispatcher("index.jsp").forward(request,response);
-        }
+
+        request.setAttribute("status",exe);
+
+        request.getRequestDispatcher("admin/home/quanLyKhachHang.jsp").forward(request,response);
+
     }
 }

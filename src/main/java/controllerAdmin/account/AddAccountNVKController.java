@@ -12,8 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "AddAccountController",urlPatterns = "/AddAccountController")
 public class AddAccountNVKController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
-        //execute(request, response);
+    execute(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,17 +32,14 @@ public class AddAccountNVKController extends HttpServlet {
         String pass = request.getParameter("passWord");
         String rePass = request.getParameter("rePassWord");
         String avatar = request.getParameter("avatar");
-        int salary = Integer.parseInt(request.getParameter("salary"));
-        int gioithieu = Integer.parseInt(request.getParameter("gioi-thieu"));
+        String salary = request.getParameter("salary");
+        String gioithieu = request.getParameter("gioi-thieu");
 
 
-            String address = xa + " - " + huyen + " - " + tinh;
-            String exe = AddAccountNVKModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
-            if (exe.equals("OK")){
-                response.sendRedirect("index.jsp");
-            }else{
-                request.setAttribute("fail",exe);
-                request.getRequestDispatcher("index.jsp").forward(request,response);
-            }
+        String exe = AddAccountNVKModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
+
+        request.setAttribute("status",exe);
+
+        request.getRequestDispatcher("admin/home/quanLyNVK.jsp").forward(request,response);
     }
 }

@@ -1,4 +1,4 @@
-package controllerIndex;
+package controllerIndex.category;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

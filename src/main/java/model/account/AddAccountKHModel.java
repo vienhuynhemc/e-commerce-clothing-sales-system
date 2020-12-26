@@ -18,18 +18,18 @@ public class AddAccountKHModel {
         AddAccountKHDAO addAccountKHDAO = AddAccountKHSource.getInstance().getAddAccount();
         if(passWord.equals(rePassWord)){
             AddAccountKHSource.getInstance().releaseAddAccount(addAccountKHDAO);
-            return "Xác nhận mật khẩu sai";
+            return "error1";
         }
         if(addAccountKHDAO.isEmailInDatabase(email)){
             AddAccountKHSource.getInstance().releaseAddAccount(addAccountKHDAO);
-            return "Email đã tồn tại trong cơ sở dữ liệu";
+            return "error2";
         }else if (!addAccountKHDAO.isEmail(email)){
             AddAccountKHSource.getInstance().releaseAddAccount(addAccountKHDAO);
-            return "Email không tồn tại";
+            return "error3";
         }
         if(addAccountKHDAO.isAccountInDatabase(userName)){
             AddAccountKHSource.getInstance().releaseAddAccount(addAccountKHDAO);
-            return "Tài khoản đã tồn tại";
+            return "error4";
         }
         addAccountKHDAO.addAccount( userName, passWord, email, avatar, phone, displayName, fullName, ttdg, ttkh);
         AddAccountKHSource.getInstance().releaseAddAccount(addAccountKHDAO);

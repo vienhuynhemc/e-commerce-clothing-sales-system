@@ -81,7 +81,7 @@ public class AddAccountNVKDAO implements AddAccountInterface{
         return false;
     }
 
-    public static void addAccount(String userName,String passWord,String email,String phone,String avatar,String displayName,String fullName,int salary,int num,String address){
+    public static void addAccount(String userName,String passWord,String email,String phone,String avatar,String displayName,String fullName,String salary,String num,String address){
 
         Connection con = null;
 
@@ -111,8 +111,10 @@ public class AddAccountNVKDAO implements AddAccountInterface{
 
             sm.executeUpdate(sql);
 
+            int sa = Integer.parseInt(salary);
+            int nu = Integer.parseInt(num);
             // sql insert vào bảng employee
-            String sql2 =  "INSERT INTO employee VALUES (\"NVK0" + sum + "\"" + "," + salary + "," + num
+            String sql2 =  "INSERT INTO employee VALUES (\"NVK0" + sum + "\"" + "," + sa + "," + nu
                         + "," + 1  + ",\"" + address + "\""+ ")";
             sm.executeUpdate(sql2);
             sm.close();
@@ -145,7 +147,7 @@ public class AddAccountNVKDAO implements AddAccountInterface{
     }
 
     public static void main(String[] args) {
-        addAccount("nvk014","123","thaha@gmail.com","022930","2332","huhu","sasa",30000,2,"hahaaa");
+        addAccount("nvk014","123","thaha@gmail.com","022930","2332","huhu","sasa","30000","2","hahaaa");
     }
 
 

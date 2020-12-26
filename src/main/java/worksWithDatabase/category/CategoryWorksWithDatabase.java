@@ -6,6 +6,7 @@ import connectionDatabase.DataSource;
 
 import java.sql.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class CategoryWorksWithDatabase {
@@ -45,12 +46,16 @@ public class CategoryWorksWithDatabase {
 
                 long millis = System.currentTimeMillis();
                 java.sql.Date date = new java.sql.Date(millis);
-                PreparedStatement s = connection.prepareStatement("INSERT INTO danhmuc VALUES (?,?,?)");
+                LocalDateTime now = LocalDateTime.now();
+                Time time = new Time(now.getHour(),now.getMinute(),now.getMinute());
+                PreparedStatement s = connection.prepareStatement("INSERT INTO danhmuc VALUES (?,?,?,?,?)");
                 s.setString(1, "DM" + (row + 1));
                 s.setString(2, name);
                 s.setDate(3, date);
-                s.execute();
+                s.setTime(4,time);
+                s.setInt(5,1);
 
+                s.execute();
 
                 s.close();
                 DataSource.getInstance().releaseConnection(connection);
@@ -328,6 +333,7 @@ public class CategoryWorksWithDatabase {
 //        for(Category ca : getCategoriesByDateCreatedDESC()){
 //            System.out.println(ca);
 //        }
+
     }
 
 

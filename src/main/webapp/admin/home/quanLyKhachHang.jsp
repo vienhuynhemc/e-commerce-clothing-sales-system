@@ -1,4 +1,4 @@
-<%--
+<%@ page import="beans.account.ErrorAccount" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -1958,22 +1958,23 @@
             </div>
         </div>
 
+
         <form action="../../them-tai-khoan-khach-hang" method="post">
             <div id="div1">
                 <div>
                     <div class="div11">
                         <h3>Hồ sơ của bạn</h3>
-                        <input id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event,this)"/>
+                        <input name="avatar" value="../../img/user.jpg" id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event)"/>
                         <div class="div11daidien" onclick="document.getElementById('fileInput12').click()">
                             <div>
-                                <img src="../../img/user.jpg" alt="">
+                                <img id="avatar" src="../../img/user.jpg" alt="">
                             </div>
                         </div>
 
-                        <button onclick="document.getElementById('fileInput12').click()">Thay đổi ảnh đại diện
+                        <button type="button" onclick="document.getElementById('fileInput12').click()">Thay đổi ảnh đại diện
                             mới
                         </button>
-                        <button onclick="removeImg()">Xóa ảnh đại diện</button>
+                        <button type="button" onclick="removeImg()">Xóa ảnh đại diện</button>
 
                     </div>
 
@@ -1982,19 +1983,19 @@
                         <div class="linediv12"></div>
                         <div class="div12input">
                             <label for="">* Họ và tên</label>
-                            <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây">
+                            <input name="full-name" value="${param["full-name"]}" type="text" placeholder="Nhập họ và tên ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">Tên hiển thị</label>
-                            <input name="dispaly-name" type="text" placeholder="Nhập tên hiển thị ở đây">
+                            <input name="dispaly-name" value="${param["display-name"]}" type="text" placeholder="Nhập tên hiển thị ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Email</label>
-                            <input name="email" type="text" placeholder="Nhập email ở đây">
+                            <input name="email" value="${param["email"]}" type="text" placeholder="Nhập email ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Số điện thoại</label>
-                            <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây">
+                            <input name="phone" value="${param["phone"]}" type="text" placeholder="Nhập số điện thoại ở đây">
                         </div>
                         <div class="linediv12"></div>
                         <div class="trangthai">
@@ -2016,7 +2017,7 @@
                         <div class="linediv12"></div>
                         <div class="div12input">
                             <label for="">* Tài khoản</label>
-                            <input name="userName" type="text" placeholder="Nhập tên tài khoản ở đây">
+                            <input name="userName" value="${param["userName"]}" type="text" placeholder="Nhập tên tài khoản ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Mật khẩu</label>
@@ -2036,6 +2037,39 @@
             </div>
         </form>
 
+
+
+<!---------------------------------------check--------------------------->
+        <%
+        //lấy status ra
+            if (request.getAttribute("status") != null) {
+
+                String status = (String) request.getAttribute("status");
+
+                //truyển status vào để sử lí
+                ErrorAccount errorAccount = new ErrorAccount(status);
+
+        %>
+        <%request.setCharacterEncoding("utf-8");%>
+
+        <!--lúc request lại thì về lại cái form-->
+        <script>
+            document.getElementById("div1").style.display = "flex";
+        document.getElementById("div2").style.display = "none";
+        document.getElementById("div3").style.display = "none";
+        </script>
+
+
+        <jsp:include page="../NotifyErrorAccount/AccountStatus.jsp">
+            <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>
+            <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>
+        </jsp:include>
+
+        <%
+            }
+        %>
+
+
         <div id="div3">
         </div>
     </div>
@@ -2046,5 +2080,64 @@
 </body>
 
 </html>
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+        authDomain: "ecommerce-b6c08.firebaseapp.com",
+        databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+        projectId: "ecommerce-b6c08",
+        storageBucket: "ecommerce-b6c08.appspot.com",
+        messagingSenderId: "390576423583",
+        appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+        measurementId: "G-LR0V7PWKZN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
 
+    function loadIMG(event) {
+        if (event.target.files.length > 0) {
+
+            const ref = firebase.storage().ref();
+            const file = event.target.files[0];
+            const name = file.name;
+            let link;
+            let nameData = name.split('.')[0];
+            const folder = "Account/" + nameData;
+            const metadata = {contentType: file.type};
+            const task = ref.child(folder).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(url => {
+                    alert("Thanh cong");
+                    document.getElementById('avatar').src = url;
+                    document.getElementById('fileInput12').value = url;
+                    link = url;
+                    firebase.database().ref(folder).set({
+                        Name: nameData,
+                        Link: link
+                    })
+                });
+
+//Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
+            firebase.database().ref("Account/").on('value', function (snapshot) {
+                document.getElementById('avatar').src = snapshot.val().Link;
+            })
+        }
+    }
+
+    function removeAvatar() {
+        document.getElementById('avatar').src = '../img/user.jpg';
+       // document.getElementById('avatar2').src = '../img/user.jpg';
+
+// xoá thì truyền link vào
+//database
+        firebase.database().ref('ProductNam/map').remove();
+        // img
+        firebase.storage().ref('ProductNam/map').delete();
+    }
+
+</script>
 <script src="../../js/quanLyKhachHangAdmin.js"></script>

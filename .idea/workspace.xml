@@ -27,14 +27,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="test">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Update Account">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AccountPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" afterDir="false" />
@@ -47,8 +50,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="jsf" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -79,7 +83,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -88,9 +92,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\NotifyErrorAccount" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\popupMailNotice" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\admin" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\home" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\css" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\js" />
@@ -123,15 +129,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -266,7 +270,8 @@
       <workItem from="1608777381231" duration="5147000" />
       <workItem from="1608793933717" duration="14586000" />
       <workItem from="1608824401599" duration="9233000" />
-      <workItem from="1608891248310" duration="1173000" />
+      <workItem from="1608891248310" duration="1591000" />
+      <workItem from="1608900263604" duration="12234000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -387,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608825782517</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update Account">
+      <created>1608892813276</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608892813276</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,6 +434,28 @@
     <MESSAGE value="23/12/2020 :v" />
     <MESSAGE value="Test chức năng ngôn ngữ" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Update Account" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Account" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+          <line>358</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+          <line>510</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+          <line>940</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
