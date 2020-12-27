@@ -1,7 +1,5 @@
 package worksWithDatabase.productDetailInformation;
 
-import connectionDatabase.DataSource;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +12,7 @@ public class ProductDetailInformationWorksWithDatabase {
     }
 
     //  Phương thức nhận vào hãng sản xuất id , trả về số sản phẩm còn lại của hãng này
-    public int getNumberOfProductByManufacturerId(String manufacturerId,Connection connection) {
+    public int getNumberOfProductByManufacturerId(String manufacturerId, Connection connection) {
 
         //  Khai báo kết quả
         int result = 0;
@@ -22,10 +20,11 @@ public class ProductDetailInformationWorksWithDatabase {
         try {
 
             //  Tạo 1 preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT SUM(t.so_luong_con_lai) as tong_so_luong  FROM thong_tin_chi_tiet_sp t JOIN san_pham sp WHERE sp.ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT SUM(t.so_luong_con_lai) as tong_so_luong  FROM thong_tin_chi_tiet_sp t JOIN san_pham sp WHERE sp.ma_hsx = ? AND t.ton_tai = ?");
 
-            //  Set where là id hãng sản xuất truyền vào
+            //  Set where là id hãng sản xuất truyền vào, tồn tại là 0
             preparedStatement.setString(1, manufacturerId);
+            preparedStatement.setInt(2, 0);
 
             //  Lấy result set
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -46,7 +45,7 @@ public class ProductDetailInformationWorksWithDatabase {
         }
 
         //  Trả về kết quả
-        return  result;
+        return result;
 
     }
 

@@ -39,32 +39,58 @@
     <div class="indexmain">
         <div id="div2">
             <div>
-                <form class="header" method="post" action="ManufacturerController" id="mainForm" onsubmit="return false">
+                <form class="header" method="post" action="ManufacturerController" id="mainForm"
+                      onsubmit="return false">
                     <div class="leftheader">
                         <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
-                            <option value="dateCreated" selected>Ngày tạo</option>
-                            <option value="manufacturerName">Tên hãng</option>
-                            <option value="manufacturerId">Mã hãng</option>
-                            <option value="informationList">Số lượng thông tin</option>
-                            <option value="numberOfProducts">Số lượng sản phẩm</option>
+
+                            <% String selectSearchAndSort = (String) request.getAttribute("selectSearchAndSort"); %>
+                            <option value="dateCreated"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("dateCreated")) {%>
+                                    selected
+                                    <%}%>
+                            >Ngày tạo
+                            </option>
+                            <option value="manufacturerName"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("manufacturerName")) {%>
+                                    selected
+                                    <%}%>
+                            >Tên hãng</option>
+                            <option value="manufacturerId"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("manufacturerId")) {%>
+                                    selected
+                                    <%}%>
+                            >Mã hãng</option>
+                            <option value="informationList"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("informationList")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lượng thông tin</option>
+                            <option value="numberOfProducts"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("numberOfProducts")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lượng sản phẩm</option>
                         </select>
                         <div>
 
-                            <% if(request.getAttribute("sort").equals("DESC")){%>
-                            <div class="leftheadersort" id="leftheadersort" onclick="changesortasc()">
+                            <% String sort = (String) request.getAttribute("sort");  %>
+
+                            <% if (sort.equals("DESC")) {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
                                 <i class=" fa fa-sort-amount-desc"></i>
                             </div>
-                            <%}else{%>
-                            <div class="leftheadersort" id="leftheadersort" onclick="changesortdesc()" style="margin-top:4px">
+                            <%} else {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()"
+                                 style="margin-top:4px">
                                 <i class=" fa fa-sort-amount-asc" style="margin-top: -10px"></i>
                             </div>
                             <%}%>
 
                             <div class="leftheadersearch">
-                                <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                 <div>
-                                    <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit">
+                                    <i class="fa fa-search"></i>
+                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit" value="<%=request.getAttribute("search")%>">
                                 </div>
                             </div>
                         </div>
@@ -72,31 +98,36 @@
                     <div class="leftnextpage">
                         <p>Hiển thị <strong><%= request.getAttribute("numberOfShow") %>
                         </strong> trên tổng <%=request.getAttribute("maximumManufacturer")%> hãng</p>
-                        <span onclick="prePage(<%=request.getAttribute("nowPage")%>)"><i class="fa fa-caret-left"></i></span>
+                        <span onclick="prePage(<%=request.getAttribute("nowPage")%>)"><i
+                                class="fa fa-caret-left"></i></span>
                         <ul>
 
                             <%
                                 //  Lấy list next page đổ next page ra
                                 List<NextPageObject> nextPages = (List<NextPageObject>) request.getAttribute("nextPages");
-                                for(NextPageObject n : nextPages){
+                                for (NextPageObject n : nextPages) {
                             %>
-                                <li
-                                    <%  if(n.getType() == NextPageConfiguration.ACTIVE_LI){ %>
-                                          class="activeli"
-                                     <%} else if( n.getType() == NextPageConfiguration.NONE){%>
-                                        class="none"
-                                        <%}else{%>
-                                  onclick="pageNavigation(<%=request.getAttribute("maximunPage")%>)"
-                                <%}%>
-                                ><%=n.getValue()%></li>
+                            <li
+                                    <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
+                                    class="activeli"
+                                    <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
+                                    class="none"
+                                    <%} else {%>
+                                    onclick="pageNavigation(<%=n.getValue()%>)"
+                                    <%}%>
+                            ><%=n.getValue()%>
+                            </li>
                             <%
-                                //  Kết thúc đổ next page
+                                    //  Kết thúc đổ next page
                                 }
                             %>
                         </ul>
-                        <span onclick="nextPage(<%=request.getAttribute("nowPage")%>,<%=request.getAttribute("maximunPage")%>)"><i class="fa fa-caret-right"></i></span>
-                        <input type="number" name="numberOfPage" id="numberOfPage" style="display: none" value="<%=request.getAttribute("nowPage")%>">
-                        <input type="number" name="maximunNumberOfPage" style="display: none" value="<%=request.getAttribute("maximunPage")%>">
+                        <span onclick="nextPage(<%=request.getAttribute("nowPage")%>,<%=request.getAttribute("maximumPage")%>)"><i
+                                class="fa fa-caret-right"></i></span>
+                        <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
+                               value="<%=request.getAttribute("nowPage")%>">
+                        <input type="number" name="maximunNumberOfPage" style="display: none"
+                               value="<%=request.getAttribute("maximumPage")%>">
                     </div>
                     <span onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</span>
                     <span onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</span>
@@ -105,7 +136,11 @@
                     <input type="text" name="action" style="display: none" id="action" value="">
 
                     <!-- sort -->
+                    <% if (sort.equals("DESC")) {%>
                     <input type="checkbox" style="display: none" name="sort" id="sort">
+                    <% }else{%>
+                    <input type="checkbox" style="display: none" name="sort" id="sort" checked>
+                    <%}%>
                 </form>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
@@ -167,7 +202,8 @@
                                 <div class="linediv12"></div>
                                 <div class="div12input">
                                     <label>* Tên hãng</label>
-                                    <input type="text" placeholder="Nhập tên hãng sản xuất ở đây" value="<%=m.getManufacturerName()%>">
+                                    <input type="text" placeholder="Nhập tên hãng sản xuất ở đây"
+                                           value="<%=m.getManufacturerName()%>">
                                 </div>
                                 <div class="linediv12"></div>
                                 <button onclick="themitemchitiet(this)"><i class="fa fa-plus"></i> Thêm chi tiết mới

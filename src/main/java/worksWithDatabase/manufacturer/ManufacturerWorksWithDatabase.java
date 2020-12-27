@@ -1,5 +1,6 @@
 package worksWithDatabase.manufacturer;
 
+import beans.BeansConfiguration;
 import beans.DateTime;
 import beans.manufacturer.Manufacturer;
 import connectionDatabase.DataSource;
@@ -9,9 +10,9 @@ import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSo
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +33,14 @@ public class ManufacturerWorksWithDatabase {
 
         try {
 
-            //  Taọ 1 statement
-            Statement statement = connection.createStatement();
+            //  Taọ 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM hang_san_xuat WHERE ton_tai = ? ORDER BY ngay_tao DESC LIMIT 0," + linesPerPage + ";");
+
+            //  set giá trị cho preparedsstatement 0 là tồn tại
+            preparedStatement.setInt(1, 0);
 
             //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM hang_san_xuat ORDER BY ngay_tao DESC LIMIT 0," + linesPerPage + ";");
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             //  Duyệt qua resultset
             while (resultSet.next()) {
@@ -80,7 +84,7 @@ public class ManufacturerWorksWithDatabase {
 
             // Đóng các kết nối
             resultSet.close();
-            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException throwables) {
 
@@ -96,7 +100,7 @@ public class ManufacturerWorksWithDatabase {
 
     }
 
-    //  Phương thức lấy số trang tối đa của trang quản lý hãng sản xuất không có điều kiện gì cả
+    //  Phương thức lấy số hsx tối đa của trang quản lý hãng sản xuất không có điều kiện gì cả
     public int getMaximunManufacturer() {
 
         //  Mượn connection
@@ -107,11 +111,14 @@ public class ManufacturerWorksWithDatabase {
 
         try {
 
-            //  Tạo một connection
-            Statement statement = connection.createStatement();
+            //  Taọ 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(ma_hsx) AS so_luong FROM hang_san_xuat WHERE ton_tai = ?");
 
-            //  Lấy kết quả mong muốn
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ma_hsx) AS so_luong FROM hang_san_xuat");
+            //  set giá trị cho preparedsstatement 0 là tồn tại
+            preparedStatement.setInt(1, 0);
+
+            //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             //  Gán co result
             while (resultSet.next()) {
@@ -120,7 +127,7 @@ public class ManufacturerWorksWithDatabase {
 
             //  Đóng các kết nối
             resultSet.close();
-            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException throwables) {
 
@@ -135,5 +142,469 @@ public class ManufacturerWorksWithDatabase {
         return result;
 
     }
+
+    //  Phương thức lấy list hãng sản xuất từ tất cả điều kiện
+    public List<Manufacturer> getListManufacturerFromAll(String selectSearchAndSort, String sort, String search, int linesPerPage ,int nowPage) {
+
+        //  Hàm lấy ra filter tương ứng trong database
+        String filter = null;
+        switch (selectSearchAndSort) {
+            case "dateCreated":
+                filter = "ngay_tao";
+                break;
+            case "manufacturerName":
+                filter = "ten_hsx";
+                break;
+            case "manufacturerId":
+                filter = "ma_hsx";
+                break;
+            case "informationList":
+                filter = "so_luong_thong_tin";
+                break;
+            case "numberOfProducts":
+                filter = "so_luong_san_pham";
+                break;
+        }
+
+        //  Nếu như không phải 2 trường hợp cuối thì ta cứ làm đơn gian vì nó chung bảng
+        if(filter.compareTo("so_luong_thong_tin") != 0 && filter.compareTo("so_luong_san_pham") != 0) {
+
+
+            //  Khởi tạo list result
+            List<Manufacturer> resultList = new ArrayList<Manufacturer>();
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM hang_san_xuat WHERE ton_tai = ? AND "+filter+" LIKE ? ORDER BY "+filter+" "+sort+" LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , " + linesPerPage + ";");
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setString(2,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+
+                    //  Lấy các thông tin hiện có của bản hãng sản xuất
+                    String manufacturerId = resultSet.getString("ma_hsx");
+                    String manufacturerName = resultSet.getString("ten_hsx");
+                    DateTime dateCreated = new DateTime(resultSet.getString("ngay_tao"));
+                    int exist = resultSet.getInt("ton_tai");
+
+                    //--------------lấy list thông tin chi tiết hãng từ bảng chi tiết hãng sản xuất-----------------
+
+                    //  Lấy manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationWorksWithDatabase manufacturerInformationWorksWithDatabase = ManufacturerInformationDataSource.getInstance().getManufacturerInformationWorksWithDatabase();
+
+                    //  Lấy danh sách
+                    List<String> informationList = manufacturerInformationWorksWithDatabase.getListManufacturerInformationById(manufacturerId, connection);
+
+                    //  Trả manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationDataSource.getInstance().releaseManufacturerInformationWorksWithDatabase(manufacturerInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    // ----------------Lấy số lượng sản phẩm còn phải của hãng này từ bảng chi tiết sản phẩm----------------
+
+                    //  Lấy productDetaiInformationWorksWithDabase
+                    ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+
+                    //  Lấy số lượng sản phẩm
+                    int nubmerOfProduct = productDetailInformationWorksWithDatabase.getNumberOfProductByManufacturerId(manufacturerId, connection);
+
+                    //  Trả productDetaiInformationWorksWithDabase
+                    ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    //  Sau khi có đủ thông tin ta thêm hãng sản xuất này vào list kết quả
+                    resultList.add(new Manufacturer(manufacturerId, manufacturerName, dateCreated, exist, informationList, nubmerOfProduct));
+
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return resultList;
+
+        }else if(filter.equals("so_luong_thong_tin")){
+
+            //  Khởi tạo list result
+            List<Manufacturer> resultList = new ArrayList<Manufacturer>();
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT t.ma_hsx,t.ngay_tao,t.ten_hsx,t.ton_tai, t.so_luong_chi_tiet FROM\n" +
+                        "(SELECT h.ma_hsx,h.ngay_tao,h.ten_hsx,h.ton_tai, COUNT(c.chi_tiet) as so_luong_chi_tiet FROM hang_san_xuat h JOIN chi_tiet_hsx c ON h.ma_hsx = c.ma_hsx\n" +
+                        "WHERE h.ton_tai = ?\n" +
+                        "GROUP BY h.ma_hsx,h.ngay_tao,h.ten_hsx\n" +
+                        "ORDER BY so_luong_chi_tiet "+sort+") t\n" +
+                        "WHERE t.so_luong_chi_tiet LIKE ? LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setString(2,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+
+                    //  Lấy các thông tin hiện có của bản hãng sản xuất
+                    String manufacturerId = resultSet.getString("ma_hsx");
+                    String manufacturerName = resultSet.getString("ten_hsx");
+                    DateTime dateCreated = new DateTime(resultSet.getString("ngay_tao"));
+                    int exist = resultSet.getInt("ton_tai");
+
+                    //--------------lấy list thông tin chi tiết hãng từ bảng chi tiết hãng sản xuất-----------------
+
+                    //  Lấy manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationWorksWithDatabase manufacturerInformationWorksWithDatabase = ManufacturerInformationDataSource.getInstance().getManufacturerInformationWorksWithDatabase();
+
+                    //  Lấy danh sách
+                    List<String> informationList = manufacturerInformationWorksWithDatabase.getListManufacturerInformationById(manufacturerId, connection);
+
+                    //  Trả manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationDataSource.getInstance().releaseManufacturerInformationWorksWithDatabase(manufacturerInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    // ----------------Lấy số lượng sản phẩm còn phải của hãng này từ bảng chi tiết sản phẩm----------------
+
+                    //  Lấy productDetaiInformationWorksWithDabase
+                    ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+
+                    //  Lấy số lượng sản phẩm
+                    int nubmerOfProduct = productDetailInformationWorksWithDatabase.getNumberOfProductByManufacturerId(manufacturerId, connection);
+
+                    //  Trả productDetaiInformationWorksWithDabase
+                    ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    //  Sau khi có đủ thông tin ta thêm hãng sản xuất này vào list kết quả
+                    resultList.add(new Manufacturer(manufacturerId, manufacturerName, dateCreated, exist, informationList, nubmerOfProduct));
+
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return resultList;
+
+        }else{
+
+            //  Khởi tạo list result
+            List<Manufacturer> resultList = new ArrayList<Manufacturer>();
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT t2.ma_hsx,t2.ngay_tao,t2.ten_hsx,t2.ton_tai,t2.so_luong\n" +
+                                "FROM(\n" +
+                                "SELECT t.ma_hsx,t.ngay_tao,t.ten_hsx,t.ton_tai,\n" +
+                                "CASE \n" +
+                                "WHEN t.tong_so_luong IS NULL THEN 0\n" +
+                                "ELSE t.tong_so_luong\n" +
+                                "END AS so_luong\n" +
+                                "FROM\n" +
+                                "(SELECT h.ma_hsx,h.ngay_tao, h.ten_hsx, h.ton_tai,\n" +
+                                "\n" +
+                                "(SELECT SUM(sp.so_luong_con_lai) FROM san_pham s JOIN thong_tin_chi_tiet_sp sp ON s.ma_sp =sp.ma_sp\n" +
+                                "\tWHERE s.ma_hsx = h.ma_hsx\n" +
+                                "\tAND sp.ton_tai = ?\n" +
+                                "\tGROUP BY s.ma_sp\n" +
+                                ") AS tong_so_luong\n" +
+                                "\n" +
+                                "FROM hang_san_xuat h\n" +
+                                "WHERE h.ton_tai = ?) t\n" +
+                                ") t2\n" +
+                                "WHERE t2.so_luong LIKE ? ORDER BY t2.so_luong " +sort+"\n"+
+                                "LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setInt(2, 0);
+                preparedStatement.setString(3,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+
+                    //  Lấy các thông tin hiện có của bản hãng sản xuất
+                    String manufacturerId = resultSet.getString("ma_hsx");
+                    String manufacturerName = resultSet.getString("ten_hsx");
+                    DateTime dateCreated = new DateTime(resultSet.getString("ngay_tao"));
+                    int exist = resultSet.getInt("ton_tai");
+
+                    //--------------lấy list thông tin chi tiết hãng từ bảng chi tiết hãng sản xuất-----------------
+
+                    //  Lấy manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationWorksWithDatabase manufacturerInformationWorksWithDatabase = ManufacturerInformationDataSource.getInstance().getManufacturerInformationWorksWithDatabase();
+
+                    //  Lấy danh sách
+                    List<String> informationList = manufacturerInformationWorksWithDatabase.getListManufacturerInformationById(manufacturerId, connection);
+
+                    //  Trả manufacturerInformationWorksWithDatabase
+                    ManufacturerInformationDataSource.getInstance().releaseManufacturerInformationWorksWithDatabase(manufacturerInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    // ----------------Lấy số lượng sản phẩm còn phải của hãng này từ bảng chi tiết sản phẩm----------------
+
+                    //  Lấy productDetaiInformationWorksWithDabase
+                    ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+
+                    //  Lấy số lượng sản phẩm
+                    int nubmerOfProduct = productDetailInformationWorksWithDatabase.getNumberOfProductByManufacturerId(manufacturerId, connection);
+
+                    //  Trả productDetaiInformationWorksWithDabase
+                    ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
+
+                    //--------------------------------------------------------------------------------------------------
+
+                    //  Sau khi có đủ thông tin ta thêm hãng sản xuất này vào list kết quả
+                    resultList.add(new Manufacturer(manufacturerId, manufacturerName, dateCreated, exist, informationList, nubmerOfProduct));
+
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return resultList;
+
+        }
+    }
+
+    //  Phương thức lấy list hãng sản xuất từ tất cả điều kiện
+    public int getMaximunManufacturerFromAll(String selectSearchAndSort,  String search) {
+
+        //  Hàm lấy ra filter tương ứng trong database
+        String filter = null;
+        switch (selectSearchAndSort) {
+            case "dateCreated":
+                filter = "ngay_tao";
+                break;
+            case "manufacturerName":
+                filter = "ten_hsx";
+                break;
+            case "manufacturerId":
+                filter = "ma_hsx";
+                break;
+            case "informationList":
+                filter = "so_luong_thong_tin";
+                break;
+            case "numberOfProducts":
+                filter = "so_luong_san_pham";
+                break;
+        }
+
+        //  Nếu như không phải 2 trường hợp cuối thì ta cứ làm đơn gian vì nó chung bảng
+        if(filter.compareTo("so_luong_thong_tin") != 0 && filter.compareTo("so_luong_san_pham") != 0) {
+
+
+            //  Khởi tạo result
+            int result = 0;
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(ma_hsx) AS so_luong FROM hang_san_xuat WHERE ton_tai = ? AND "+filter+" LIKE ?");
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setString(2,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+                    result = resultSet.getInt("so_luong");
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return result;
+
+        }else if(filter.equals("so_luong_thong_tin")){
+
+            //  Khởi tạo result
+            int result = 0;
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT COUNT(t.ma_hsx) as SO_LUONG FROM\n" +
+                                "(SELECT h.ma_hsx, COUNT(c.chi_tiet) as so_luong_chi_tiet FROM hang_san_xuat h JOIN chi_tiet_hsx c ON h.ma_hsx = c.ma_hsx\n" +
+                                "WHERE h.ton_tai = ?\n" +
+                                "GROUP BY h.ma_hsx\n" +
+                                ") t\n" +
+                                "WHERE t.so_luong_chi_tiet LIKE ?");
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setString(2,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+                    result = resultSet.getInt("so_luong");
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return result;
+
+        }else{
+
+            //  Khởi tạo result
+            int result = 0;
+
+            //  Mượn một connection
+            Connection connection = DataSource.getInstance().getConnection();
+
+            try {
+
+                //  Taọ 1 preparedStatement
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "SELECT COUNT(t2.ma_hsx) AS so_luong\n" +
+                                "FROM(\n" +
+                                "SELECT t.ma_hsx,\n" +
+                                "CASE \n" +
+                                "WHEN t.tong_so_luong IS NULL THEN 0\n" +
+                                "ELSE t.tong_so_luong\n" +
+                                "END AS so_luong\n" +
+                                "FROM\n" +
+                                "(SELECT h.ma_hsx,\n" +
+                                "\n" +
+                                "(SELECT SUM(sp.so_luong_con_lai) FROM san_pham s JOIN thong_tin_chi_tiet_sp sp ON s.ma_sp =sp.ma_sp\n" +
+                                "\tWHERE s.ma_hsx = h.ma_hsx\n" +
+                                "\tAND sp.ton_tai = ?\n" +
+                                "\tGROUP BY s.ma_sp\n" +
+                                ") AS tong_so_luong\n" +
+                                "\n" +
+                                "FROM hang_san_xuat h\n" +
+                                "WHERE h.ton_tai = ?) t\n" +
+                                ") t2\n" +
+                                "WHERE t2.so_luong LIKE ?\n"
+                                );
+
+                //  set giá trị cho preparedsstatement 0 là tồn tại
+                preparedStatement.setInt(1, 0);
+                preparedStatement.setInt(2, 0);
+                preparedStatement.setString(3,"%"+search+"%");
+
+                //  Lấy danh sách tương ứng, ở đây là ban đầu nên lấy linesPerPage hãng sản xuất đầu tiên, sắp xếp theo ngày tạo DESC
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                //  Duyệt qua resultset
+                while (resultSet.next()) {
+                    result = resultSet.getInt("so_luong");
+                }
+
+                // Đóng các kết nối
+                resultSet.close();
+                preparedStatement.close();
+
+            } catch (SQLException throwables) {
+
+                throwables.printStackTrace();
+
+            }
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+            //  Trả về kết quả
+            return result;
+
+        }
+    }
+
 
 }

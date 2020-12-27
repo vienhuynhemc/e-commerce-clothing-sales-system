@@ -65,4 +65,39 @@ public class ManufacturerModel {
         return maximunManufacturer % BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX > 0 ? maximunManufacturer / BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX + 1 : maximunManufacturer / BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX;
 
     }
+
+    //  Hàm này trả về số nhà sản xuất dựa trên các tham số truyền vào: bộ lọc, sort, search and numberOfPage
+    public List<Manufacturer> getListManufacturerFromAll(String selectSearchAndSort, String sort, String search, int numberOfPage, int nowPage) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy list first
+        List<Manufacturer> resultList = manufacturerWorksWithDatabase.getListManufacturerFromAll(selectSearchAndSort, sort, search, numberOfPage,nowPage);
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return resultList;
+
+    }
+
+    //  Hàm này trả về số lượng tối đa hãng sản xuất
+    public int getMaximunManufacturerFromAll(String selectSearchAndSort, String search) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy maximun number of pages
+        int result = manufacturerWorksWithDatabase.getMaximunManufacturerFromAll(selectSearchAndSort, search);
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }

@@ -29,14 +29,7 @@ function hiddensearch2(item) {
     }
 }
 
-function changesortasc() {
-    document.getElementById("sort").checked = true;
-    document.getElementById("action").value = "sort";
-    document.getElementById("mainForm").submit();
-}
-
-function changesortdesc() {
-    document.getElementById("sort").checked = false;
+function changesort() {
     document.getElementById("action").value = "sort";
     document.getElementById("mainForm").submit();
 }
