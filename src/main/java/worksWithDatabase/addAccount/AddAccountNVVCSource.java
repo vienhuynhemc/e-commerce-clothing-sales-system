@@ -1,4 +1,4 @@
-package worksWithDatabase.account;
+package worksWithDatabase.addAccount;
 
 public class AddAccountNVVCSource {
     private static AddAccountNVVCSource addAccountSource;

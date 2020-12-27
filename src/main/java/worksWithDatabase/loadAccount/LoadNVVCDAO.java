@@ -8,12 +8,13 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoadNVKDAO {
+public class LoadNVVCDAO {
+
     Map<String, AccountEmployee> list ;
-    public LoadNVKDAO(){
+    public LoadNVVCDAO(){
         list = new HashMap<>();
     }
-    public Map<String, AccountEmployee> loadListNVK(int num){
+    public Map<String, AccountEmployee> loadListNVVC(int num){
 
         Connection con = null;
         try {
@@ -28,7 +29,7 @@ public class LoadNVKDAO {
             // laod khach hang tu 2 bang account va employee
             String sql = "select a.IDUser, a.Type,a.UserName,a.`PassWord`,a.Email,a.Phone, a.Avatar, a.DisplayName,\n" +
                     "                    a.FullName,a.RegisDate , e.Salary,e.`Level`,e.Address,e.Info\n" +
-                    "                    from account a , employee e WHERE a.IDUser = e.IDUser and a.Type = 1;";
+                    "                    from account a , employee e WHERE a.IDUser = e.IDUser and a.Type = 2;";
             Statement sm = con.createStatement();
             ResultSet rs = sm.executeQuery(sql);
 
@@ -114,11 +115,11 @@ public class LoadNVKDAO {
 
                     DateTime datetime = new DateTime(year,month,day,hour,minute,second);
 
-                   // String address = rs.getString("Address");
+                    // String address = rs.getString("Address");
 
-                   // String[] add = address.split("-");
+                    // String[] add = address.split("-");
 
-                   // Address address1 = new Address(add[0],add[1],add[2]);
+                    // Address address1 = new Address(add[0],add[1],add[2]);
                     //test tại chưa có address
                     Address address1 = new Address("Mỹ cát", "Phù Mỹ" , "Bình Định");
 
@@ -160,13 +161,16 @@ public class LoadNVKDAO {
 
         return list;
 
-    }
 
-    public static void main(String[] args) throws SQLException {
-        LoadNVKDAO lao = new LoadNVKDAO();
-        Map<String, AccountEmployee> list = lao.loadListNVK(1);
+}
+
+    public static void main(String[] args) {
+        LoadNVVCDAO load = new LoadNVVCDAO();
+
+        Map<String, AccountEmployee> list = load.loadListNVVC(2);
 
         System.out.println(list.toString());
 
     }
 }
+

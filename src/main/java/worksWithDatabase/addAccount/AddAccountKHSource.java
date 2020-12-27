@@ -1,24 +1,24 @@
-package worksWithDatabase.account;
+package worksWithDatabase.addAccount;
 
-public class AddAccountNVKSource {
-    private static AddAccountNVKSource addAccountSource;
-    private static AccountNVKPool accountPool;
+public class AddAccountKHSource {
+    private static AddAccountKHSource addAccountSource;
+    private static AddAccountKHPool accountPool;
 
-    private AddAccountNVKSource(){
-        accountPool = new AccountNVKPool();
+    private AddAccountKHSource(){
+        accountPool = new AddAccountKHPool();
     }
-    public static synchronized AddAccountNVKSource getInstance(){
+    public static synchronized AddAccountKHSource getInstance(){
         if (addAccountSource == null){
-            addAccountSource = new AddAccountNVKSource();
+            addAccountSource = new AddAccountKHSource();
         }
         return addAccountSource;
     }
 
-    public AddAccountNVKDAO getAddAccount(){
+    public AddAccountKHDAO getAddAccount(){
         return accountPool.getAccount();
     }
-    public void releaseAddAccount (AddAccountNVKDAO addAccountNVKDAO){
-        accountPool.releaseAddAccount(addAccountNVKDAO);
+    public void releaseAddAccount (AddAccountKHDAO addAccountKHDAO){
+        accountPool.releaseAddAccount(addAccountKHDAO);
     }
 
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class AddAccountNVKSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                AddAccountNVKDAO a = AddAccountNVKSource.getInstance().getAddAccount();
+                AddAccountKHDAO a = AddAccountKHSource.getInstance().getAddAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -34,7 +34,7 @@ public class AddAccountNVKSource {
                     e.printStackTrace();
                 }
 
-                AddAccountNVKSource.getInstance().releaseAddAccount(a);
+                AddAccountKHSource.getInstance().releaseAddAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };
@@ -51,5 +51,4 @@ public class AddAccountNVKSource {
         t2.start();
         t3.start();
     }
-
 }

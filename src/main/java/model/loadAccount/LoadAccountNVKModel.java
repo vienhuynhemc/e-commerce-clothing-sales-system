@@ -1,5 +1,5 @@
 package model.loadAccount;
-import beans.account.AccountNVK;
+import beans.account.AccountEmployee;
 import worksWithDatabase.loadAccount.LoadNVKDAO;
 
 import java.util.Map;
@@ -15,11 +15,11 @@ public class LoadAccountNVKModel {
         return loadAccountNVK;
 
     }
-    public Map<String, AccountNVK> loadListNVK(int num){
+    public Map<String, AccountEmployee> loadListNVK(int num){
 
         LoadNVKDAO loadNVKDAO =  new LoadNVKDAO();
 
-        Map<String,AccountNVK> result = loadNVKDAO.loadListNVK(num);
+        Map<String, AccountEmployee> result = loadNVKDAO.loadListNVK(num);
 
         return result;
     }

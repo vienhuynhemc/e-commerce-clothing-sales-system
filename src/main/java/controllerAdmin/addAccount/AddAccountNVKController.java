@@ -1,6 +1,6 @@
-package controllerAdmin.account;
+package controllerAdmin.addAccount;
 
-import model.account.*;
+import model.addAccount.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddAccountNVVCController",urlPatterns = "/AddAccountNVVCController")
-public class AddAccountNVVCController extends HttpServlet {
+@WebServlet(name = "AddAccountController",urlPatterns = "/AddAccountController")
+public class AddAccountNVKController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        execute(request, response);
+    execute(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    doPost(request, response);
     }
+
     public void execute(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
 
         String fullName = request.getParameter("full-name");
@@ -35,12 +36,10 @@ public class AddAccountNVVCController extends HttpServlet {
         String gioithieu = request.getParameter("gioi-thieu");
 
 
-        String exe = AddAccountNVVCModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
+        String exe = AddAccountNVKModel.getInstance().addAccount( user, pass, rePass, email, phone, avatar, displayName, fullName, salary, gioithieu, tinh,huyen,xa);
 
-        //setattribute tình trạng để sử lý
         request.setAttribute("status",exe);
 
-        //forward lại trang quanlikhachhang
-        request.getRequestDispatcher("admin/home/quanLyNVGH.jsp").forward(request,response);
+        request.getRequestDispatcher("admin/home/quanLyNVK.jsp").forward(request,response);
     }
 }

@@ -1,24 +1,25 @@
-package worksWithDatabase.account;
+package worksWithDatabase.editAccount;
 
-public class AddAccountKHSource {
-    private static AddAccountKHSource addAccountSource;
-    private static AddAccountKHPool accountPool;
 
-    private AddAccountKHSource(){
-        accountPool = new AddAccountKHPool();
+public class EditAccountNVKSource {
+    private static EditAccountNVKSource addAccountSource;
+    private static EditAccountNVKPool accountPool;
+
+    private EditAccountNVKSource(){
+        accountPool = new EditAccountNVKPool();
     }
-    public static synchronized AddAccountKHSource getInstance(){
+    public static synchronized EditAccountNVKSource getInstance(){
         if (addAccountSource == null){
-            addAccountSource = new AddAccountKHSource();
+            addAccountSource = new EditAccountNVKSource();
         }
         return addAccountSource;
     }
 
-    public AddAccountKHDAO getAddAccount(){
+    public EditAccountNVKDAO getEditAccount(){
         return accountPool.getAccount();
     }
-    public void releaseAddAccount (AddAccountKHDAO addAccountKHDAO){
-        accountPool.releaseAddAccount(addAccountKHDAO);
+    public void releaseEditAccount(EditAccountNVKDAO addAccountNVKDAO){
+        accountPool.releaseEditAccount(addAccountNVKDAO);
     }
 
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class AddAccountKHSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                AddAccountKHDAO a = AddAccountKHSource.getInstance().getAddAccount();
+                EditAccountNVKDAO a = EditAccountNVKSource.getInstance().getEditAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -34,7 +35,7 @@ public class AddAccountKHSource {
                     e.printStackTrace();
                 }
 
-                AddAccountKHSource.getInstance().releaseAddAccount(a);
+                EditAccountNVKSource.getInstance().releaseEditAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };

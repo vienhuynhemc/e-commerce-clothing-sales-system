@@ -2,10 +2,11 @@ package beans.category;
 
 import beans.DateTime;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Category {
+public class Category implements Serializable {
 
     //  Mã danh mục
     private String id;
