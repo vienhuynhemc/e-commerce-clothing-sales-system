@@ -1,7 +1,12 @@
 <%@ page import="beans.category.Category" %>
-<%@ page import="worksWithDatabase.category.CategoryWorksWithDatabase" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:00 CH To change this template use File |
+<%@ page import="worksWithDatabase.category.CategoryWorksWithDatabase" %><%--<%@ page import="beans.category.Category" %>--%>
+<%--<%@ page import="worksWithDatabase.category.CategoryWorksWithDatabase" %>--%>
+<%@ page import="java.util.List" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:00 CH To change this template use File |
     Settings | File Templates. --%>
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
         <html>
 
         <head>
@@ -313,12 +318,15 @@
                         <div>
                             <div class="header">
                                 <div class="leftheader">
-                                    <form action="../../SortCategoryController" method="get">
+                                    <form action="../../FilterCategoryController" method="post">
+
                                         <select name="sort" id="sort">
-                                            <option value="1" selected>Ngày tạo</option>
-                                            <option value="2">Tên danh mục</option>
-                                            <option value="3">Mã danh mục</option>
-                                            <option value="4">Số lượng sản phẩm</option>
+                                            <a href="quanLyDanhMuc.jsp?type="><option value="1" selected>Ngày tạo</option></a>
+                                            <option value="2" >Tên danh mục</option>
+                                            <option value="3" >Mã danh mục</option>
+                                            <option value="4" >Số lượng sản phẩm</option>
+
+
                                         </select>
                                     </form>
                                     <div>
@@ -327,13 +335,17 @@
                                             <i class=" fa fa-sort-amount-asc"></i>
                                             <input type="checkbox" style="display: none;">
                                         </div>
-                                        <div class="leftheadersearch">
-                                            <i class="fa fa-search" onclick="showsearch2(this)"></i>
-                                            <div>
-                                                <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                                <input type="text" placeholder="Tìm kiếm">
+                                        <% %>
+                                        <form action="../../SearchCategoryController" method="post">
+                                            <div class="leftheadersearchs">
+<%--                                                <i class="fa fa-search" onclick="showsearch2(this)"></i>--%>
+                                                <div>
+<%--                                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
+                                                    <input type="text" name = "keyword" placeholder="Tìm kiếm">
+                                                     <input type="submit" value="Tìm kiếm">
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="leftnextpage">
@@ -362,7 +374,9 @@
                                     <p>Số sản phẩm</p>
                                     <p>Ngày tạo</p>
                                 </div>
-                            <% for(Category c : CategoryWorksWithDatabase.getAllCategories()){%>
+
+                                <%
+                                    for(Category c : CategoryWorksWithDatabase.getCategoriesByIdASC()){%>
                                 <div class="item">
                                     <label for="c1">
                                         <input type="checkbox" name="" id="c1">
@@ -371,7 +385,7 @@
                                         #<%= c.getId()%>
                                     </p>
                                     <p>
-                                        <%= c.getName()%>
+                                            <%= c.getName() %>
                                     </p>
 
                                     <p>
@@ -379,7 +393,7 @@
                                     </p>
 
                                     <p>
-                                        <%= c.getDateCreated()%>
+                                        <%= c.getDateCreated() %>
                                     </p>
 
                                     <div class="itemsubmit" onclick="showselect(this)">
@@ -389,11 +403,11 @@
                                         <i class="fa fa-circle"></i>
                                         <div>
 
-                                           <button type="submit"><a href="quanLyDanhMuc(sua).jsp?id=<%= c.getId() %>"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
+                                           <button type="submit"><a href="quanLyDanhMuc(Form_capnhat).jsp?id=<%= c.getId() %>"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
 
                                             <form action="../../RemoveCategoryController" method="post">
 
-                                                <button type="submit" name="name_C" value="<%= c.getId()%>"><i class="fa fa-trash"></i>Xóa</button>
+                                                <button type="submit" name="name_C" value=" <%= c.getId() %>"><i class="fa fa-trash"></i>Xóa</button>
                                             </form>
                                         </div>
                                     </div>
@@ -419,7 +433,7 @@
                                         </div>
                                     </div>
                                 </div>
-                             <%}%>
+                                <%}%>
 
                             </div>
                         </div>

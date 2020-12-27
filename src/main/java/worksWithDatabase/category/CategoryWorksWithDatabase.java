@@ -6,6 +6,7 @@ import connectionDatabase.DataSource;
 
 import java.sql.*;
 import java.sql.Date;
+import java.text.DateFormatSymbols;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -79,7 +80,7 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try {
             if (check(id)) {
-                PreparedStatement s = connection.prepareStatement("DELETE FROM danh_muc where ma_dm = ?");
+                PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
                 s.setString(1, id);
                 s.execute();
 
@@ -120,7 +121,7 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try {
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc where ton_tai = 1");
             while(rs.next()){
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -194,7 +195,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ma_dm");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ma_dm");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -222,7 +223,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ma_dm DESC");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ma_dm DESC");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -250,7 +251,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ten_dm");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ten_dm");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -278,7 +279,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ten_dm DESC");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ten_dm DESC");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -306,7 +307,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ngay_tao");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ngay_tao");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -334,7 +335,7 @@ public class CategoryWorksWithDatabase {
         List<Category> categories = new ArrayList<>();
         try{
             Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc ORDER BY ngay_tao DESC");
+            ResultSet rs = s.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1 ORDER BY ngay_tao DESC");
             while(rs.next()) {
                 Category category = new Category();
                 category.setId(rs.getString("ma_dm"));
@@ -411,16 +412,47 @@ public class CategoryWorksWithDatabase {
         return new ArrayList<>();
     }
     public static List<Category> sort(String input){
-        if(input.equals("1")){
+        if(input.equals("1".toString())){
             return getCategoriesByDateCreatedASC();
         }
-        else if(input.equals("2")){
+        else if(input.equals("2".toString())){
             return getCategoriesByNameASC();
         }
-        else if(input.equals("2")){
+        else if(input.equals("3".toString())){
             return getCategoriesByIdASC();
         }
-        return null;
+        return getAllCategories();
+    }
+    public static List<Category> search(String input){
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            List<Category> categories = new ArrayList<>();
+            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ? = ? OR ten_dm LIKE %?% OR ngay_tao = ? AND ton_tai = 1 ");
+            s.setString(1,input);
+            s.setString(2,"ma_dm");
+            s.setString(1,input);
+            ResultSet rs = s.executeQuery();
+            while(rs.next()){
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                String dateTime = rs.getString("ngay_tao");
+                DateTime dayTime = getDateTime(dateTime);
+                category.setDateCreated(dayTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
+
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return categories;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
     }
 
     public static void main(String[] args) {

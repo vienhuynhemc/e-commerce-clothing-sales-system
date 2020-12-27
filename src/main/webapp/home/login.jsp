@@ -33,12 +33,12 @@
 <body>
 
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
 
 <%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
+<jsp:include page="../share/_LayoutBanner.jsp">
     <jsp:param name="title" value="Đăng nhập"/>
 </jsp:include>
 
@@ -316,10 +316,10 @@
 </div>
 <!--End main-->
 
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
 <!-- / footer -->
 
 </body>
