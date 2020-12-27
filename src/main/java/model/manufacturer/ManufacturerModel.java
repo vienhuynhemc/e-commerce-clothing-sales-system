@@ -1,8 +1,10 @@
 package model.manufacturer;
 
+import beans.BeansConfiguration;
 import beans.manufacturer.Manufacturer;
+import worksWithDatabase.manufacturer.ManufacturerDataSource;
+import worksWithDatabase.manufacturer.ManufacturerWorksWithDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManufacturerModel {
@@ -26,14 +28,41 @@ public class ManufacturerModel {
     //  Phương thức trả về list manufacturer ban đầu để đổ dữ liêu ra, lúc khởi tạo trang
     public List<Manufacturer> getListManufacturerFirst(int numberOfPage) {
 
-        //  Khởi tạo list kết quả để trả về
-        List<Manufacturer> resultList = new ArrayList<Manufacturer>();
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
+        //  Lấy list first
+        List<Manufacturer> resultList = manufacturerWorksWithDatabase.getListManufacturerFirst(numberOfPage);
 
-        //  Trả về list kết quả
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
         return resultList;
 
     }
 
+    //  Hàm này trả về số lượng tối đa hãng sản xuất ban đầu
+    public int getMaximunManufacturer() {
 
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy maximun number of pages
+        int result = manufacturerWorksWithDatabase.getMaximunManufacturer();
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vô số hãng sản xuất tối đa, trả về số trang tối đa
+    public int getMaximunNumberOfPage(int maximunManufacturer) {
+
+        return maximunManufacturer % BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX > 0 ? maximunManufacturer / BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX + 1 : maximunManufacturer / BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX;
+
+    }
 }

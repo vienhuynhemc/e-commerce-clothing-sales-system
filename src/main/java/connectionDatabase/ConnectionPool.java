@@ -173,6 +173,9 @@ public class ConnectionPool {
         //  Thêm nó vào bysyConnections
         busyConnections.add(connection);
 
+        //  Thông báo có nguòi lấy connection
+        System.out.println("Free: "+availableConnections.size()+", busy:"+busyConnections.size());
+
         //  Trả về connection
         return connection;
 
@@ -212,6 +215,9 @@ public class ConnectionPool {
             e.printStackTrace();
 
         }
+
+        //  Thống báo có người trả connection
+        System.out.println("Free: "+availableConnections.size()+", busy:"+busyConnections.size());
 
     }
 

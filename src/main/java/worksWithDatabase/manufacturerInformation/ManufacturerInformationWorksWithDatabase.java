@@ -1,7 +1,5 @@
 package worksWithDatabase.manufacturerInformation;
 
-import connectionDatabase.DataSource;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,21 +14,15 @@ public class ManufacturerInformationWorksWithDatabase {
     }
 
     //  Phương thức nhận vào mã hãng sản xuất, trả về 1 list chi tiết hãng sản xuất
-    public List<String> getListManufacturerInformationById(String manufacturerId) {
+    public List<String> getListManufacturerInformationById(String manufacturerId, Connection connection) {
 
         //  Tọa list kết quả
         List<String> resultList = new ArrayList<String>();
 
-        // Mượn một connection
-        Connection connection = DataSource.getInstance().getConnection();
-        System.out.println("fsdfsdf ");
         try {
 
             //  Tạo 1 preparedstatement
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT chi_tiet FROM chi_tiet_hsx WHERE ma_hsx = ?");
-
-            //  Trả connection
-            DataSource.getInstance().releaseConnection(connection);
 
             //  Set ? là id truyền vào
             preparedStatement.setString(1, manufacturerId);
@@ -48,10 +40,8 @@ public class ManufacturerInformationWorksWithDatabase {
             preparedStatement.close();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
 
-            //  Trả connection
-            DataSource.getInstance().releaseConnection(connection);
+            throwables.printStackTrace();
 
         }
 

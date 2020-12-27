@@ -29,19 +29,16 @@ function hiddensearch2(item) {
     }
 }
 
-function changesort2(item) {
-    let list = item.children;
-    if (list[2].checked == false) {
-        list[2].checked = true;
-        list[0].style.display = "none";
-        list[1].style.display = "block";
-        item.style.marginTop = "0px";
-    } else {
-        list[2].checked = false;
-        list[1].style.display = "none";
-        list[0].style.display = "block";
-        item.style.marginTop = "-5px";
-    }
+function changesortasc() {
+    document.getElementById("sort").checked = true;
+    document.getElementById("action").value = "sort";
+    document.getElementById("mainForm").submit();
+}
+
+function changesortdesc() {
+    document.getElementById("sort").checked = false;
+    document.getElementById("action").value = "sort";
+    document.getElementById("mainForm").submit();
 }
 
 function showselect(item) {
@@ -188,11 +185,11 @@ function themitemchitiet(item) {
     let l1 = document.getElementById("div3").children[0];
     let l2 = l1.children;
     let l3 = l2[1].children;
-    if(l3[4] == item){
+    if (l3[4] == item) {
 
         let div = document.createElement("div");
         div.classList.add("itemchitiet");
-        div.innerText ="*";
+        div.innerText = "*";
         let input = document.createElement("input");
         input.type = "text";
         input.required = true;
@@ -201,7 +198,9 @@ function themitemchitiet(item) {
         let i = document.createElement("i");
         i.classList.add("fa");
         i.classList.add("fa-close");
-        i.onclick = function(){removeitemchitiet(i)};
+        i.onclick = function () {
+            removeitemchitiet(i)
+        };
         div.appendChild(i);
         l3[5].append(div);
     }
@@ -213,11 +212,12 @@ function removeitemchitiet(item) {
     let l2 = l1.children;
     let l3 = l2[1].children;
     let l4 = l3[5].children;
-    for(let i =0; i < l4.length;i++){
+    for (let i = 0; i < l4.length; i++) {
         let l5 = l4[i].children;
-        if(l5[1] == item){
+        if (l5[1] == item) {
             l3[5].removeChild(l4[i]);
-            return;_
+            return;
+            _
         }
     }
 }
@@ -227,11 +227,11 @@ function themitemchitiet2(item) {
     let l1 = document.getElementById("div1").children[0];
     let l2 = l1.children;
     let l3 = l2[1].children;
-    if(l3[4] == item){
+    if (l3[4] == item) {
 
         let div = document.createElement("div");
         div.classList.add("itemchitiet");
-        div.innerText ="*";
+        div.innerText = "*";
         let input = document.createElement("input");
         input.type = "text";
         input.required = true;
@@ -240,7 +240,9 @@ function themitemchitiet2(item) {
         let i = document.createElement("i");
         i.classList.add("fa");
         i.classList.add("fa-close");
-        i.onclick = function(){removeitemchitiet2(i)};
+        i.onclick = function () {
+            removeitemchitiet2(i)
+        };
         div.appendChild(i);
         l3[5].append(div);
     }
@@ -252,11 +254,48 @@ function removeitemchitiet2(item) {
     let l2 = l1.children;
     let l3 = l2[1].children;
     let l4 = l3[5].children;
-    for(let i =0; i < l4.length;i++){
+    for (let i = 0; i < l4.length; i++) {
         let l5 = l4[i].children;
-        if(l5[1] == item){
+        if (l5[1] == item) {
             l3[5].removeChild(l4[i]);
-            return;_
+            return;
         }
+    }
+}
+
+function prePage(nowPage) {
+    let n = parseInt(nowPage);
+    if (n > 1) {
+        document.getElementById("numberOfPage").value = parseInt(nowPage) - 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+function nextPage(nowPage, maximumPage, item) {
+    let n = parseInt(nowPage);
+    let m = parseInt(maximumPage);
+    if (n < m) {
+        document.getElementById("numberOfPage").value = n + 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+function pageNavigation(nowPage) {
+    document.getElementById("numberOfPage").value = parseInt(nowPage);
+    document.getElementById("action").value = "nextPage";
+    document.getElementById("mainForm").submit();
+}
+
+function changeFilter() {
+    document.getElementById("action").value = "changeFilter";
+    document.getElementById("mainForm").submit();
+}
+
+function submitSerach(e) {
+    if (e.keyCode == 13) {
+        document.getElementById("action").value = "search";
+        document.getElementById("mainForm").submit();
     }
 }

@@ -14,10 +14,7 @@ public class ProductDetailInformationWorksWithDatabase {
     }
 
     //  Phương thức nhận vào hãng sản xuất id , trả về số sản phẩm còn lại của hãng này
-    public int getNumberOfProductByManufacturerId(String manufacturerId) {
-
-        //  Mượn connection
-        Connection connection = DataSource.getInstance().getConnection();
+    public int getNumberOfProductByManufacturerId(String manufacturerId,Connection connection) {
 
         //  Khai báo kết quả
         int result = 0;
@@ -26,9 +23,6 @@ public class ProductDetailInformationWorksWithDatabase {
 
             //  Tạo 1 preparedStatement
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT SUM(t.so_luong_con_lai) as tong_so_luong  FROM thong_tin_chi_tiet_sp t JOIN san_pham sp WHERE sp.ma_hsx = ?");
-
-            //  Trả connection
-            DataSource.getInstance().releaseConnection(connection);
 
             //  Set where là id hãng sản xuất truyền vào
             preparedStatement.setString(1, manufacturerId);
@@ -48,9 +42,6 @@ public class ProductDetailInformationWorksWithDatabase {
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();
-
-            //  Trả connection
-            DataSource.getInstance().releaseConnection(connection);
 
         }
 

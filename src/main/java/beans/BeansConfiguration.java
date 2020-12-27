@@ -8,4 +8,7 @@ public class BeansConfiguration {
     //  Hết hiệu lục
     public static final int DOES_NOT_EXIST = 1;
 
+    //  Số dòng một trang admin
+    public static final int LINE_OF_ON_PAGE_QUAN_LY_HSX = 13;
+
 }
