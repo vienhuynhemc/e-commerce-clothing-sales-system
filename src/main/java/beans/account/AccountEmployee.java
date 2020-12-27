@@ -3,7 +3,7 @@ package beans.account;
 import beans.Address;
 import beans.DateTime;
 
-public class AccountNVK {
+public class AccountEmployee {
     private String idUser;
     private int type;
     private String userName;
@@ -19,10 +19,10 @@ public class AccountNVK {
     private int level;
     private Address address;
 
-    public AccountNVK() {
+    public AccountEmployee() {
     }
 
-    public AccountNVK(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int salary, int info, int level, Address address) {
+    public AccountEmployee(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int salary, int info, int level, Address address) {
         this.idUser = idUser;
         this.type = type;
         this.userName = userName;
