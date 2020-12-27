@@ -14,19 +14,16 @@ public class Category {
     private String name;
 
     //  Ngày giờ tạo danh mục
-    private Date dateCreated;
-
-    private Time timeCreated;
+    private DateTime dateCreated;
 
     //  Trạng thái hiệu lục
     private int exist;
 
     //  Constructor
-    public Category(String id, String name, Date dateCreated, Time timeCreated, int exist) {
+    public Category(String id, String name, DateTime dateCreated, int exist) {
         setId(id);
         this.name = name;
         this.dateCreated = dateCreated;
-        this.timeCreated = timeCreated;
         this.exist = exist;
     }
     public Category(){
@@ -35,7 +32,7 @@ public class Category {
 
     //  To Sting
     public String toString() {
-        return id + " " + name + " " + dateCreated + " " +timeCreated+" "+ exist;
+        return id + " " + name + " " + dateCreated + " " + exist;
     }
 
     //  Getter and setter
@@ -64,19 +61,11 @@ public class Category {
         this.exist = exist;
     }
 
-    public Date getDateCreated() {
+    public DateTime getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(DateTime dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public Time getTimeCreated() {
-        return timeCreated;
-    }
-
-    public void setTimeCreated(Time timeCreated) {
-        this.timeCreated = timeCreated;
     }
 }
