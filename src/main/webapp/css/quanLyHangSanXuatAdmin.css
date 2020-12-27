@@ -169,7 +169,7 @@ select option {
     background-color: #f5f5fa;
 }
 
-.header > button {
+.header > span {
     border: none;
     outline: none;
     padding: 7px 0px;
@@ -185,13 +185,16 @@ select option {
     left: 410px;
     top: 3px;
     box-shadow: 14px 15px 35px 3px #2141d65e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.header > button > i {
+.header > span> i {
     margin-right: 5px;
 }
 
-.header > button:nth-child(4) {
+.header > span:nth-child(4) {
     left: 590px;
     box-shadow: 14px 15px 35px 3px #d0d2d4d6;
     background-color: #fafafa !important;

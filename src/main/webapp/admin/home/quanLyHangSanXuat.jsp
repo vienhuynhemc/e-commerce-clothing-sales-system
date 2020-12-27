@@ -39,7 +39,7 @@
     <div class="indexmain">
         <div id="div2">
             <div>
-                <form class="header" method="post" action="ManufacturerController" id="mainForm">
+                <form class="header" method="post" action="ManufacturerController" id="mainForm" onsubmit="return false">
                     <div class="leftheader">
                         <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
                             <option value="dateCreated" selected>Ngày tạo</option>
@@ -64,7 +64,7 @@
                                 <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                 <div>
                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                    <input type="text" placeholder="Tìm kiếm" name="search" onsubmit="return false" onkeydown="submitSerach(e)" >
+                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit">
                                 </div>
                             </div>
                         </div>
@@ -98,8 +98,8 @@
                         <input type="number" name="numberOfPage" id="numberOfPage" style="display: none" value="<%=request.getAttribute("nowPage")%>">
                         <input type="number" name="maximunNumberOfPage" style="display: none" value="<%=request.getAttribute("maximunPage")%>">
                     </div>
-                    <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</button>
-                    <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <span onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</span>
+                    <span onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</span>
 
                     <!-- action -->
                     <input type="text" name="action" style="display: none" id="action" value="">

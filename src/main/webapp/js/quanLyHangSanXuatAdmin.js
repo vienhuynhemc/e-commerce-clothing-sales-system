@@ -293,9 +293,10 @@ function changeFilter() {
     document.getElementById("mainForm").submit();
 }
 
-function submitSerach(e) {
-    if (e.keyCode == 13) {
+const node = document.getElementsByClassName("searchsubmit")[0];
+node.addEventListener("keyup", function(event) {
+    if (event.key == "Enter" || event.keyCode == 13) {
         document.getElementById("action").value = "search";
         document.getElementById("mainForm").submit();
     }
-}
+});

@@ -82,11 +82,15 @@ public class ManufacturerController extends HttpServlet {
 
         } else {
 
-            response.getWriter().println(selectSearchAndSort);
-            response.getWriter().println(sort);
-            response.getWriter().println(search);
-            response.getWriter().println(numberOfPage);
-            response.getWriter().println(maximunNumberOfPage);
+            switch (action){
+                case "sort":
+                    break;
+                case "changeFilter":
+                    break;
+                case "nextPage":
+                    break;
+            }
+
             response.getWriter().println(action);
 
         }
