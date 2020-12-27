@@ -21,13 +21,17 @@ public class Manufacturer {
     //  List thông tin chi tiết
     private List<String> informationList;
 
+    //  Số lượng sản phẩm
+    private int numberOfProduct;
+
     //  Constructor
-    public Manufacturer(String manufacturerId, String manufacturerName, DateTime dateCreated, int exists, List<String> informationList) {
+    public Manufacturer(String manufacturerId, String manufacturerName, DateTime dateCreated, int exists, List<String> informationList, int numberOfProduct) {
         this.manufacturerId = manufacturerId;
         this.manufacturerName = manufacturerName;
         this.dateCreated = dateCreated;
         this.exists = exists;
         this.informationList = informationList;
+        this.numberOfProduct = numberOfProduct;
     }
 
     //  Getter and setter
@@ -69,6 +73,14 @@ public class Manufacturer {
 
     public void setInformationList(List<String> informationList) {
         this.informationList = informationList;
+    }
+
+    public int getNumberOfProduct() {
+        return numberOfProduct;
+    }
+
+    public void setNumberOfProduct(int numberOfProduct) {
+        this.numberOfProduct = numberOfProduct;
     }
 
 }

@@ -78,7 +78,7 @@ select option {
     border: 1px solid #eef0f5;
     height: 25px;
     align-items: center;
-    width: 193px;
+    width: 170px;
 }
 
 .leftheadersearch > div {
@@ -93,7 +93,7 @@ select option {
     outline: none;
     border: none;
     margin-left: 10px;
-    width: 140px;
+    width: 120px;
     margin-right: 12px;
 }
 

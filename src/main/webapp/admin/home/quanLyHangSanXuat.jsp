@@ -25,7 +25,7 @@
 
 <body>
 
-<jsp:include page="../share/_LayoutLeft.jsp" />
+<jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
 
@@ -36,26 +36,27 @@
     <div class="indexmain">
         <div id="div2">
             <div>
-                <div class="header">
+                <form class="header" method="post" action="../../ManufacturerController">
                     <div class="leftheader">
-                        <select name="" id="">
-                            <option value="" selected>Ngày tạo</option>
-                            <option value="">Tên hãng</option>
-                            <option value="">Mã hãng</option>
-                            <option value="">Số lượng thông tin</option>
-                            <option value="">Số lượng sản phẩm</option>
+                        <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="this.form.submit()">
+                            <option value="dateCreated" selected>Ngày tạo</option>
+                            <option value="manufacturerName">Tên hãng</option>
+                            <option value="manufacturerId">Mã hãng</option>
+                            <option value="informationList">Số lượng thông tin</option>
+                            <option value="numberOfProducts">Số lượng sản phẩm</option>
                         </select>
                         <div>
                             <div class="leftheadersort" onclick="changesort2(this)">
                                 <i class=" fa fa-sort-amount-desc"></i>
                                 <i class=" fa fa-sort-amount-asc"></i>
-                                <input type="checkbox" style="display: none;">
+                                <input type="checkbox" style="display: none;" name="sort">
                             </div>
                             <div class="leftheadersearch">
                                 <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                 <div>
                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                    <input type="text" placeholder="Tìm kiếm">
+                                    <input type="text" placeholder="Tìm kiếm" name="search">
+                                    <input type="submit" style="display: none">
                                 </div>
                             </div>
                         </div>
@@ -73,10 +74,11 @@
                             <li>9</li>
                         </ul>
                         <button><i class="fa fa-caret-right"></i></button>
+                        <input type="number" name="numberOfPage" style="display: none" value="1">
                     </div>
                     <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</button>
                     <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
-                </div>
+                </form>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
                         <button onclick="allselect()">+</button>

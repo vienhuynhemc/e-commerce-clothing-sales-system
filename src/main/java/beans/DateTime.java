@@ -10,7 +10,7 @@ public class DateTime {
     private int minute;
     private int second;
 
-    //  Constuctor
+    //  Constuctor nhận vào đầy đủ
     public DateTime(int year, int month, int day, int hour, int minute, int second) {
         this.year = year;
         this.month = month;
@@ -18,6 +18,19 @@ public class DateTime {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
+    }
+
+    //  Constructor nhận vào String
+    public DateTime(String dateTime) {
+        String[] dateTimes = dateTime.split(" ");
+        String[] dates = dateTimes[0].split("-");
+        String[] times = dateTimes[1].split(":");
+        this.year = Integer.parseInt(dates[0]);
+        this.month = Integer.parseInt(dates[1]);
+        this.day = Integer.parseInt(dates[2]);
+        this.hour = Integer.parseInt(times[0]);
+        this.minute = Integer.parseInt(times[1]);
+        this.second = (int) (Double.parseDouble(times[2]));
     }
 
     //  Constructor rỗng

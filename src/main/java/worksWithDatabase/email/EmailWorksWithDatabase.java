@@ -22,6 +22,9 @@ public class EmailWorksWithDatabase {
             //  Tạo 1 prepared statement
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT email FROM email WHERE email = ?");
 
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
             //  Gán email truyèn vào cho nó
             preparedStatement.setString(1, email);
 
@@ -37,20 +40,23 @@ public class EmailWorksWithDatabase {
                 //  Đóng prepared statement
                 preparedStatement.close();
 
-                //  Trả connection cho connection pool
-                DataSource.getInstance().releaseConnection(connection);
-
                 //  return true
                 return true;
 
             }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+            //  Không tồn tại kết quả thì vẫn đóng
+            resultSet.close();
+            preparedStatement.close();
 
-        //  Đi tới đây nghĩa là không tồn tại email nào cả, nên trả connection cho connection pool
-        DataSource.getInstance().releaseConnection(connection);
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+            //  Trả connection
+            DataSource.getInstance().releaseConnection(connection);
+
+        }
 
         //  trả về false
         return false;
@@ -68,6 +74,9 @@ public class EmailWorksWithDatabase {
             //  Bởi vị không có where ở đây nên tạo statement mà sử dụng
             Statement statement = conection.createStatement();
 
+            //  Trả conncetion
+            DataSource.getInstance().releaseConnection(conection);
+
             //  insert dũ liệu nào
             int numberOfRowsAdded = statement.executeUpdate("INSERT INTO email VALUES('" + email + "')");
 
@@ -77,21 +86,21 @@ public class EmailWorksWithDatabase {
                 //  Đóng statement
                 statement.close();
 
-                //  Trả conncetion
-                DataSource.getInstance().releaseConnection(conection);
-
                 //  Return true
                 return true;
 
             }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+            //  Không thành công thì vẫn phải đóng statement
+            statement.close();
 
-        //  Tới đây có nghĩa là việc thêm không hoàn thành, trả connection vè trả về false
-        //  Trả conncetion
-        DataSource.getInstance().releaseConnection(conection);
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+            //  Trả conncetion
+            DataSource.getInstance().releaseConnection(conection);
+
+        }
 
         //  Return false
         return false;
