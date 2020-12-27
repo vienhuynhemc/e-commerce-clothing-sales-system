@@ -1,4 +1,4 @@
-package worksWithDatabase.account;
+package worksWithDatabase.addAccount;
 
 import connectionDatabase.DataSource;
 import mail.MailModel;

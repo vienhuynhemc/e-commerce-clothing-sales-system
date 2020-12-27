@@ -6,7 +6,7 @@
     
     <servlet>
         <servlet-name>AddAccountController</servlet-name>
-        <servlet-class>controllerAdmin.account.AddAccountNVKController</servlet-class>
+        <servlet-class>controllerAdmin.addAccount.AddAccountNVKController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddAccountController</servlet-name>
@@ -15,7 +15,7 @@
 
     <servlet>
         <servlet-name>AddAccountKHController</servlet-name>
-        <servlet-class>controllerAdmin.account.AddAccountKHController</servlet-class>
+        <servlet-class>controllerAdmin.addAccount.AddAccountKHController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddAccountKHController</servlet-name>
@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>AddAccountNVVCController</servlet-name>
-        <servlet-class>controllerAdmin.account.AddAccountNVVCController</servlet-class>
+        <servlet-class>controllerAdmin.addAccount.AddAccountNVVCController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddAccountNVVCController</servlet-name>

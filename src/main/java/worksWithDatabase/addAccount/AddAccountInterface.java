@@ -1,4 +1,4 @@
-package worksWithDatabase.account;
+package worksWithDatabase.addAccount;
 
 public interface AddAccountInterface {
      boolean isEmail(String email);
