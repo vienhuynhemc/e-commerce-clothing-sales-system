@@ -2,7 +2,7 @@ package beans.account;
 
 import beans.DateTime;
 
-public class AccountKH {
+public class AccountCustomer {
 
     private String idUser;
     private int type;
@@ -17,7 +17,7 @@ public class AccountKH {
     private int activeStatus;
     private int activeEvaluate;
 
-    public AccountKH(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int activeStatus, int activeEvaluate) {
+    public AccountCustomer(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int activeStatus, int activeEvaluate) {
         this.idUser = idUser;
         this.type = type;
         this.userName = userName;
@@ -32,7 +32,7 @@ public class AccountKH {
         this.activeEvaluate = activeEvaluate;
     }
 
-    public AccountKH() {
+    public AccountCustomer() {
     }
 
     public int getActiveStatus() {
@@ -129,5 +129,23 @@ public class AccountKH {
 
     public void setRegisDate(DateTime regisDate) {
         this.regisDate = regisDate;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountCustomer{" +
+                "idUser='" + idUser + '\'' +
+                ", type=" + type +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", regisDate=" + regisDate +
+                ", activeStatus=" + activeStatus +
+                ", activeEvaluate=" + activeEvaluate +
+                '}';
     }
 }

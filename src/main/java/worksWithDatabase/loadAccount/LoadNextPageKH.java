@@ -1,14 +1,13 @@
 package worksWithDatabase.loadAccount;
 
-import beans.DateTime;
-import beans.account.AccountKH;
+import beans.account.AccountCustomer;
 
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoadNextPageKH {
-    Map<String, AccountKH> list ;
+    Map<String, AccountCustomer> list ;
     public LoadNextPageKH(){
         list = new HashMap<>();
     }

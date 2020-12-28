@@ -1,6 +1,6 @@
 package model.loadAccount;
 
-import beans.account.AccountKH;
+import beans.account.AccountCustomer;
 import worksWithDatabase.loadAccount.LoadKHDAO;
 
 import java.util.Map;
@@ -17,10 +17,10 @@ public class LoadAccountKHModel {
         return loadAccountKH;
 
     }
-    public Map<String, AccountKH> loadListKH(int num){
+    public Map<String, AccountCustomer> loadListKH(int num){
          LoadKHDAO loadKHDAO =  new LoadKHDAO();
 
-         Map<String,AccountKH> result = loadKHDAO.loadListKH(num);
+         Map<String, AccountCustomer> result = loadKHDAO.loadListKH(num);
 
          return result;
     }
