@@ -606,5 +606,48 @@ public class ManufacturerWorksWithDatabase {
         }
     }
 
+    //  Phương thức nhận vào mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
+    public boolean removeOneManufacturerInDatabase(String maufacturerId){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,maufacturerId);
+
+            // update
+            int row = preparedStatement.executeUpdate();
+
+            //  Nếu có đúng 1 dòng được cập nhập thì bạn đsung
+            if(row == 1){
+                result  =true;
+            }
+
+            //  Đóng các thứ
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
+
 
 }

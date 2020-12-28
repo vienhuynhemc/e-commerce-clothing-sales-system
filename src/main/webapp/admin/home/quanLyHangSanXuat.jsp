@@ -29,7 +29,15 @@
 
 <body>
 
-<!-- Form yes no -->
+
+<%
+
+    //  Lấy manufacturer Object
+    ManufacturerObject manufacturerObject = (ManufacturerObject) session.getAttribute("manufacturerObject");
+
+%>
+
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
 <div id="formYesNo">
     <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
     <div>
@@ -47,6 +55,31 @@
     </div>
 </div>
 
+<%
+    //  Nếu như có xóa thì thông báo xóa
+    if(manufacturerObject.isRemove()){
+
+        //  Thông báo xong để lại trạng thái ban đầu
+        manufacturerObject.setRemove(false);
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p>Bạn đã xóa thành công</p>
+            <p>Việc xóa đã thay đổi dữ liệu của bạn <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span  onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
+
 <jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
@@ -54,13 +87,6 @@
     <jsp:include page="../share/_LayoutTop.jsp"/>
 
     <!-- Code trang ở đây-->
-
-    <%
-
-        //  Lấy manufacturer Object
-        ManufacturerObject manufacturerObject = (ManufacturerObject) session.getAttribute("manufacturerObject");
-
-    %>
 
     <div class="indexmain">
         <div id="div2">

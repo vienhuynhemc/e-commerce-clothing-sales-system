@@ -84,7 +84,7 @@ function removekhachhang(item) {
             let item = document.createElement("i");
             item.classList.add("fa");
             item.classList.add("fa-hand-grab-o");
-            document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=single&&manufacturer="+list3[2].value;
+            document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=single&&manufacturerId="+list3[2].value;
             document.getElementById("formYesNoTitle2").appendChild(item);
             document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
@@ -303,4 +303,8 @@ node.addEventListener("keyup", function(event) {
 
 function hiddenFormYesNo() {
     document.getElementById("formYesNo").style.transform = 'scaleY(0)';
+}
+
+function hiddenNotifiSuccess() {
+    document.getElementById("notifiSuccess").style.transform = 'scaleY(0)';
 }

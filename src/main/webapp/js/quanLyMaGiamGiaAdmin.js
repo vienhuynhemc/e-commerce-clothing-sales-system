@@ -188,3 +188,7 @@ function editdanhmuc(item) {
 function hiddenFormYesNo() {
     document.getElementById("formYesNo").style.transform = 'scaleY(0)';
 }
+
+function hiddenNotifiSuccess() {
+    document.getElementById("notifiSuccess").style.transform = 'scaleY(0)';
+}

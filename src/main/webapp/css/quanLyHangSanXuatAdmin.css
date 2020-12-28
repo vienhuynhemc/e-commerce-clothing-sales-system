@@ -652,4 +652,118 @@ select option {
     margin-left: 5px;
 }
 
+#notifiSuccess {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    transition: 0.2s all ease-in-out;
+}
+
+.notifiSuccessHidden {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+#notifiSuccess > div:nth-child(2) {
+    width: 530px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    margin-left: -265px;
+    margin-top: -170px;
+    z-index: 3;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0 0 20px 0px #191818;
+}
+
+#notifiSuccess > div:nth-child(2) > p {
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(65, 98, 251);
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+#notifiSuccess > div:nth-child(2) > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(1) {
+    color: #36363f;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(2) {
+    color: #5e6477;
+    font-size: 14px;
+    text-align: center;
+    width: 350px;
+    margin-top: 35px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(2) > i {
+    color: rgb(65, 98, 251);
+}
+
+#notifiSuccess > div:nth-child(2) > div > div {
+    display: flex;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > a {
+    color: white;
+    background-color: rgb(216 216 216);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > span {
+    color: white;
+    background-color: rgb(65, 98, 251);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > span > i {
+    margin-left: 5px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > a > i {
+    margin-left: 5px;
+}
+
 

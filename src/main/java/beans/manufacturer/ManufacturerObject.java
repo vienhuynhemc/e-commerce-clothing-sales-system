@@ -34,6 +34,9 @@ public class ManufacturerObject implements Serializable {
     //  Select searchandSort
     private String selectSearchAndSort;
 
+    //  is remove
+    private boolean isRemove;
+
     //  Constructor rỗng
     public ManufacturerObject() {
     }
@@ -109,6 +112,14 @@ public class ManufacturerObject implements Serializable {
 
     public void setSelectSearchAndSort(String selectSearchAndSort) {
         this.selectSearchAndSort = selectSearchAndSort;
+    }
+
+    public boolean isRemove() {
+        return isRemove;
+    }
+
+    public void setRemove(boolean remove) {
+        isRemove = remove;
     }
 
 }

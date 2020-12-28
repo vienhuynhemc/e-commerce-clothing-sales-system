@@ -73,7 +73,7 @@ public class ManufacturerModel {
         ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
         //  Lấy list first
-        List<Manufacturer> resultList = manufacturerWorksWithDatabase.getListManufacturerFromAll(selectSearchAndSort, sort, search, numberOfPage,nowPage);
+        List<Manufacturer> resultList = manufacturerWorksWithDatabase.getListManufacturerFromAll(selectSearchAndSort, sort, search, numberOfPage, nowPage);
 
         //  Có mượn thì có trả
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
@@ -91,6 +91,23 @@ public class ManufacturerModel {
 
         //  Lấy maximun number of pages
         int result = manufacturerWorksWithDatabase.getMaximunManufacturerFromAll(selectSearchAndSort, search);
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
+    public boolean removeOneManufacturerInDatabase(String maufacturerId) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  update xóa nó trong cơ sở dữ liệu
+        boolean result = manufacturerWorksWithDatabase.removeOneManufacturerInDatabase(maufacturerId);
 
         //  Có mượn thì có trả
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
