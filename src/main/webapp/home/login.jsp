@@ -1,5 +1,6 @@
 <%@ page import="beans.account.ErrorLogin" %>
-<%@ page import="beans.account.AccountCustomer" %><%--
+<%@ page import="beans.account.AccountCustomer" %>
+<%@ page import="beans.account.ErrorSignUpAccount" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -147,52 +148,81 @@
                 <p class="info">Cung cấp cho chúng tôi một số thông tin của bạn để có quyền truy cập vào trang và
                     mua sắm</p>
 
-                <div class="form">
-                    <div class="tk">
-                        <p class="titletk">Tài khoản</p>
-                        <input type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="mk">
-                        <p class="titletk">Mật khẩu</p>
-                        <input type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Họ và tên</p>
-                        <input type="text" placeholder="&#xf2bc;    Nhập họ và tên của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Số điện thoại</p>
-                        <input type="text" placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput2"></div>
-                    </div>
-                    <div class="tk">
-                        <p class="titletk">Email</p>
-                        <input type="text" placeholder="&#xf003;    Nhập email của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="dkcsbm agree">
-                        <input type="checkbox" id="checkagree">
-                        <label for="checkagree">
-                            <p>Bằng cách tạo tài khoản, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> &
-                                <a href="">chính sách bảo mật</a> của
-                                chúng tôi</p>
-                        </label>
-                    </div>
-                    <div class="divsubmit">
-                        <button onclick="displayNoti()">Đăng ký</button>
-                        <p>Bạn đã có tài khoản? <span onclick="dangnhap()">Đăng nhập</span></p>
-                    </div>
+                <form action="../SignUpController" method="post">
+                    <div class="form">
+                        <div class="tk">
+                            <p class="titletk">Tài khoản</p>
+                            <input type="text" name="username" placeholder="&#xf2bd; Nhập tài khoản của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <div class="lineinput1"></div>
+                        </div>
+                        <div class="mk">
+                            <p class="titletk">Mật khẩu</p>
+                            <input type="password" name="pass" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                            <div class="lineinput2"></div>
+                        </div>
+                        <div class="tk">
+                            <p class="titletk">Họ và tên</p>
+                            <input type="text" name="name" placeholder="&#xf2bc;    Nhập họ và tên của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <div class="lineinput2"></div>
+                        </div>
+                        <div class="tk">
+                            <p class="titletk">Số điện thoại</p>
+                            <input type="text" name="phone"placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <div class="lineinput2"></div>
+                        </div>
+                        <div class="tk">
+                            <p class="titletk">Email</p>
+                            <input type="text" name="mail" placeholder="&#xf003;    Nhập email của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <div class="lineinput1"></div>
+                        </div>
+                        <div class="dkcsbm agree">
+                            <input type="checkbox" id="checkagree" name="check" value="check">
+                            <label for="checkagree">
+                                <p>Bằng cách tạo tài khoản, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> &
+                                    <a href="">chính sách bảo mật</a> của
+                                    chúng tôi</p>
+                            </label>
+                        </div>
+                        <div class="divsubmit">
+                            <%--                          <button onclick="displayNoti()">Đăng ký</button>--%>
+                            <button type="submit">Đăng ký</button>
+                            <p>Bạn đã có tài khoản? <span onclick="dangnhap()">Đăng nhập</span></p>
+                        </div>
 
-                </div>
+                    </div>
+                </form>
+
+
+                <%
+                    //lấy status ra
+
+                    String statusSignUP = (String) request.getAttribute("status");
+
+                    if (status != null) {
+                        //truyển status vào để sử lí
+                        ErrorSignUpAccount errorAccount = new ErrorSignUpAccount(statusSignUP);
+
+                %>
+
+
+                <!--lúc request lại thì về lại cái form-->
+                <%request.setCharacterEncoding("utf-8");%>
+                <jsp:include page="../notifyErrorAccount/AccountStatus.jsp">
+                    <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>
+                    <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>
+                </jsp:include>
+
+
+
+                <%
+                    }
+                %>
             </div>
         </div>
 

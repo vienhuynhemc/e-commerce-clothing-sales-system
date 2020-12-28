@@ -321,7 +321,7 @@
                                     <form action="../../FilterCategoryController" method="post">
 
                                         <select name="sort" id="sort">
-                                            <a href="quanLyDanhMuc.jsp?type="><option value="1" selected>Ngày tạo</option></a>
+                                            <a href="../../CategoryController?type="><option value="1" selected>Ngày tạo</option></a>
                                             <option value="2" >Tên danh mục</option>
                                             <option value="3" >Mã danh mục</option>
                                             <option value="4" >Số lượng sản phẩm</option>

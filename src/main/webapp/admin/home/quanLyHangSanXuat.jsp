@@ -215,6 +215,7 @@
                     <div class="item">
                         <label for="c1">
                             <input type="checkbox" name="" id="c1">
+                            <input type="text" style="display: none" value="<%=m.getManufacturerId()%>">
                         </label>
                         <p>
                             #<%= m.getManufacturerId() %>

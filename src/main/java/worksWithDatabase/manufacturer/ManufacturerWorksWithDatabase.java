@@ -178,8 +178,12 @@ public class ManufacturerWorksWithDatabase {
 
             try {
 
+                //  Tọa limit line
+                int limitLine = (nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX;
+                if(limitLine<0) limitLine = 0;
+
                 //  Taọ 1 preparedStatement
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM hang_san_xuat WHERE ton_tai = ? AND "+filter+" LIKE ? ORDER BY "+filter+" "+sort+" LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , " + linesPerPage + ";");
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM hang_san_xuat WHERE ton_tai = ? AND "+filter+" LIKE ? ORDER BY "+filter+" "+sort+" LIMIT "+limitLine+" , " + linesPerPage + ";");
 
                 //  set giá trị cho preparedsstatement 0 là tồn tại
                 preparedStatement.setInt(1, 0);
@@ -254,6 +258,10 @@ public class ManufacturerWorksWithDatabase {
 
             try {
 
+                //  Tọa limit line
+                int limitLine = (nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX;
+                if(limitLine<0) limitLine = 0;
+
                 //  Taọ 1 preparedStatement
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         "SELECT t.ma_hsx,t.ngay_tao,t.ten_hsx,t.ton_tai, t.so_luong_chi_tiet FROM\n" +
@@ -261,7 +269,7 @@ public class ManufacturerWorksWithDatabase {
                         "WHERE h.ton_tai = ?\n" +
                         "GROUP BY h.ma_hsx,h.ngay_tao,h.ten_hsx\n" +
                         "ORDER BY so_luong_chi_tiet "+sort+") t\n" +
-                        "WHERE t.so_luong_chi_tiet LIKE ? LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
+                        "WHERE t.so_luong_chi_tiet LIKE ? LIMIT "+limitLine+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
 
                 //  set giá trị cho preparedsstatement 0 là tồn tại
                 preparedStatement.setInt(1, 0);
@@ -336,6 +344,10 @@ public class ManufacturerWorksWithDatabase {
 
             try {
 
+                //  Tọa limit line
+                int limitLine = (nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX;
+                if(limitLine<0) limitLine = 0;
+
                 //  Taọ 1 preparedStatement
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         "SELECT t2.ma_hsx,t2.ngay_tao,t2.ten_hsx,t2.ton_tai,t2.so_luong\n" +
@@ -358,7 +370,7 @@ public class ManufacturerWorksWithDatabase {
                                 "WHERE h.ton_tai = ?) t\n" +
                                 ") t2\n" +
                                 "WHERE t2.so_luong LIKE ? ORDER BY t2.so_luong " +sort+"\n"+
-                                "LIMIT "+(nowPage-1)*BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
+                                "LIMIT "+limitLine+" , "+ BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX);
 
                 //  set giá trị cho preparedsstatement 0 là tồn tại
                 preparedStatement.setInt(1, 0);
@@ -628,6 +640,49 @@ public class ManufacturerWorksWithDatabase {
 
             //  Nếu có đúng 1 dòng được cập nhập thì bạn đsung
             if(row == 1){
+                result  =true;
+            }
+
+            //  Đóng các thứ
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
+    //  Phương thức nhận vào list mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
+    public boolean removeGroupManufacturerInDatabase(String[] manufacturerIds){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+
+            // update
+            int row = 0;
+            for(String manufacturerId : manufacturerIds){
+                preparedStatement.setString(1,manufacturerId);
+                row+= preparedStatement.executeUpdate();
+            }
+
+            //  Nếu có đúng số dòng bằng length mảng truyền vào là
+            if(row == manufacturerIds.length){
                 result  =true;
             }
 
