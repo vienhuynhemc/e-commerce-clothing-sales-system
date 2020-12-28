@@ -79,12 +79,12 @@ function removekhachhang(item) {
         let list3 = list2[4].children;
         if (list3[1] == item) {
             list2[1].checked = false;
-            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #'+list3[2].value;
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #' + list3[2].value;
             document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
             let item = document.createElement("i");
             item.classList.add("fa");
             item.classList.add("fa-hand-grab-o");
-            document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=single&&manufacturerId="+list3[2].value;
+            document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=single&&manufacturerId=" + list3[2].value;
             document.getElementById("formYesNoTitle2").appendChild(item);
             document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
@@ -105,17 +105,27 @@ function capnhaphienthi() {
 
 function xoacacmuadachon() {
     let listItem = document.getElementById("maindiv2").children;
-    let array = [];
+    let manufacturers = '';
     for (let i = 1; i < listItem.length; i++) {
         let list2 = listItem[i].children;
         let list3 = list2[0].children;
         if (list3[0].checked == true) {
-            array.push(listItem[i]);
+            manufacturers += list3[1].value + " ";
         }
     }
 
-    for (let i = 0; i < array.length; i++) {
-        document.getElementById("maindiv2").removeChild(array[i]);
+    if (manufacturers.length > 0) {
+        manufacturers = manufacturers.trim();
+        let size = manufacturers.split(" ").length;
+
+        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa ' + size + ' mục';
+        document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+        let item = document.createElement("i");
+        item.classList.add("fa");
+        item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=group&&manufacturers=" + manufacturers;
+        document.getElementById("formYesNoTitle2").appendChild(item);
+        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
     }
 }
 
@@ -294,7 +304,7 @@ function changeFilter() {
 }
 
 const node = document.getElementsByClassName("searchsubmit")[0];
-node.addEventListener("keyup", function(event) {
+node.addEventListener("keyup", function (event) {
     if (event.key == "Enter" || event.keyCode == 13) {
         document.getElementById("action").value = "search";
         document.getElementById("mainForm").submit();

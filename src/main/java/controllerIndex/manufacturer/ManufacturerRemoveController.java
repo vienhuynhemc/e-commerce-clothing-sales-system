@@ -31,12 +31,25 @@ public class ManufacturerRemoveController extends HttpServlet {
             ManufacturerModel.getInstance().removeOneManufacturerInDatabase(manufacturerId);
 
             //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
-            request.setAttribute("remove", "removeOnelement");
+            request.setAttribute("remove", "removeOneElement");
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);
 
         } else if (type.equals("group")) {
+
+            //  Lấy list id ra
+            String manufacturers = request.getParameter("manufacturers");
+            String[] manufacturerIds = manufacturers.split(" ");
+
+            //  Cho model cái list mã để nó xóa mã hãng , thay đổi cột tồn tại từ 0 -> 1
+            ManufacturerModel.getInstance().removeGroupManufacturerInDatabase(manufacturerIds);
+
+            //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
+            request.setAttribute("remove", "removeGroupElement");
+
+            //  Xong foward tới controller đỗ dữ liệu
+            request.getRequestDispatcher("ManufacturerController").forward(request, response);
 
         }
 
