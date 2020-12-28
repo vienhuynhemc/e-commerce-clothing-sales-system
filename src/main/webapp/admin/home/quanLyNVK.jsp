@@ -1,4 +1,5 @@
-<%@ page import="beans.account.ErrorAccount" %><%--
+<%@ page import="beans.account.ErrorAddAccount" %>
+<%@ page import="beans.account.ErrorEditAccount" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -365,7 +366,7 @@
                         <p>Ngày tạo</p>
                     </div>
 
-                    <!-- load danh sach nhan viên kho -->
+                    <!--------------------------- load danh sach nhan viên kho -------------------------------->
 
                     <c:forEach items="${listNVK}" var="nvk">
                         <div class="item">
@@ -404,7 +405,8 @@
                                 <i class="fa fa-circle"></i>
                                 <i class="fa fa-circle"></i>
                                 <div>
-                                    <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                    <button id="sua" onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+
                                     <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
                                 </div>
                             </div>
@@ -429,97 +431,130 @@
 
                                 </div>
 
-                                <div class="div12">
-                                    <h3>Điền thông tin cá nhân</h3>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Họ và tên</label>
-                                        <input type="text" name="full-name" placeholder="Nhập họ và tên ở đây"
-                                               value="Nguyễn Thị Hoa Hồng">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">Tên hiển thị</label>
-                                        <input type="text" name="display-name" placeholder="Nhập tên hiển thị ở đây" value="Hồng Nguyễn">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Email</label>
-                                        <input type="text" name="email" placeholder="Nhập email ở đây"
-                                               value="nguyenthihoahong@gmail.com" disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Số điện thoại</label>
-                                        <input type="text" name="phone" placeholder="Nhập số điện thoại ở đây" value="0971-122-209"
-                                               disabled>
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <div class="trangthai">
-                                        <div class="div12inputlv2">
-                                            <label for="">Tỉnh / Thành</label>
-                                            <select name="" id="">
-                                                <option value="">Chọn tỉnh / thành</option>
-                                                <option value="" selected>Hưng Yên</option>
-                                            </select>
+                                <form action="EditAccountNVKController?IDUser=${nvk.idUser}" method="post">
+                                    <div class="div12">
+                                        <h3>Điền thông tin cá nhân</h3>
+                                        <div class="linediv12"></div>
+                                        <div class="div12input">
+                                            <label for="">* Họ và tên</label>
+                                            <input type="text" name="fullName" placeholder="Nhập họ và tên ở đây"
+                                                   value="${nvk.fullName}">
                                         </div>
-                                        <div class="div12inputlv2">
-                                            <label for="">Quận / huyện</label>
-                                            <select name="" id="">
-                                                <option value="">Chọn quận / huyện</option>
-                                                <option value="" selected>Quận Đại Nam</option>
-                                            </select>
+                                        <div class="div12input">
+                                            <label for="">Tên hiển thị</label>
+                                            <input type="text" name="displayName" placeholder="Nhập tên hiển thị ở đây" value="${nvk.displayName}">
                                         </div>
-                                        <div class="div12inputlv2">
-                                            <label for="">Phường / xã</label>
-                                            <select name="" id="">
-                                                <option value="">Chọn phường / xã</option>
-                                                <option value="" selected>Xã Góm Đỏ</option>
-                                            </select>
+                                        <div class="div12input">
+                                            <label for="">* Email</label>
+                                            <input type="text" name="" placeholder="Nhập email ở đây"
+                                                   value="${nvk.email}" disabled>
+                                        </div>
+                                        <div class="div12input">
+                                            <label for="">* Số điện thoại</label>
+                                            <input type="text" name="" placeholder="Nhập số điện thoại ở đây" value="${nvk.phone}"
+                                                   disabled>
+                                        </div>
+                                        <div class="linediv12"></div>
+                                        <div class="trangthai">
+                                            <div class="div12inputlv2">
+                                                <label for="">Tỉnh / Thành</label>
+                                                <select name="tinh" id="">
+                                                    <option value="">Chọn tỉnh / thành</option>
+                                                    <option value="" selected>Hưng Yên</option>
+                                                </select>
+                                            </div>
+                                            <div class="div12inputlv2">
+                                                <label for="">Quận / huyện</label>
+                                                <select name="huyen" id="">
+                                                    <option value="">Chọn quận / huyện</option>
+                                                    <option value="" selected>Quận Đại Nam</option>
+                                                </select>
+                                            </div>
+                                            <div class="div12inputlv2">
+                                                <label for="">Phường / xã</label>
+                                                <select name="xa" id="">
+                                                    <option value="">Chọn phường / xã</option>
+                                                    <option value="" selected>Xã Góm Đỏ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="linediv12"></div>
+                                        <div class="div12input">
+                                            <label for="">* Tài khoản</label>
+                                            <input type="text" placeholder="Nhập tên tài khoản ở đây" value="${nvk.userName}"
+                                                   disabled>
+                                        </div>
+                                        <div class="div12input">
+                                            <label for="">* Mật khẩu</label>
+                                            <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây" value="">
+                                        </div>
+                                        <div class="div12input">
+                                            <label for="">* Xác nhận</label>
+                                            <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây" value="">
                                         </div>
                                     </div>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Tài khoản</label>
-                                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="iamarose"
-                                               disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Mật khẩu</label>
-                                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Xác nhận</label>
-                                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
-                                    </div>
-                                </div>
 
-                                <div class="div13">
-                                    <div class="div12input">
-                                        <label for="">* Lương</label>
-                                        <input type="text" placeholder="Nhập lương ở đây" value="10,000,000">
+                                    <div class="div13">
+                                        <div class="div12input">
+                                            <label for="">* Lương</label>
+                                            <input name="salary" type="text" placeholder="Nhập lương ở đây" value="${nvk.salary}">
+                                        </div>
+                                        <div class="linediv12"></div>
+                                        <div class="div12input">
+                                            <label for="">Giới thiệu</label>
+                                            <input name="info" type="text" placeholder="Nhập số giới thiệu ở đây"
+                                                   value="${nvk.info}">
+                                        </div>
+                                        <div class="linediv12"></div>
+                                        <button  type="submit"><i class="fa fa-save"></i>Lưu</button>
+
+                                        <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                                            lý
+                                        </button>
                                     </div>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">Giới thiệu</label>
-                                        <input type="text" placeholder="Nhập số giới thiệu ở đây"
-                                               value="Thiên hạ tồn vong, đóng gói cũng như thế">
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <button><i class="fa fa-save"></i>Lưu</button>
-                                    <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                                        lý
-                                    </button>
-                                </div>
+                                </form>
                             </div>
 
                         </div>
                     </c:forEach>
 
 
-
                 </div>
             </div>
         </div>
 
-        <form action="../../them-tai-khoan-nhan-vien-kho" method="post">
+
+        <!-- Chess hiện bản thông báo cho update nhân viên kho --->
+
+        <!---------------------------------------check---------------------------!>
+        <%
+            //lấy edit ra nếu khác null chứng tỏ có thằng edit
+            if (request.getAttribute("edit") != null) {
+
+                String edit = (String) request.getAttribute("edit");
+
+                //truyển status vào để sử lí
+                ErrorEditAccount erroreditAccount = new ErrorEditAccount(edit);
+
+        %>
+        <!--lúc request lại thì về lại cái form-->
+        <script>
+            editkhachhang(document.getElementById("sua"));
+        </script>
+
+        <%request.setCharacterEncoding("utf-8");%>
+        <jsp:include page="../NotifyErrorAccount/AccountStatus.jsp">
+            <jsp:param name="title" value="<%=erroreditAccount.getTitle()%>"/>
+            <jsp:param name="content" value="<%=erroreditAccount.getContent()%>"/>
+        </jsp:include>
+
+        <%
+            }
+        %>
+
+
+
+        <form action="them-tai-khoan-nhan-vien-kho" method="post">
             <div id="div1">
                 <div>
                     <div class="div11">
@@ -620,7 +655,7 @@
                 String status = (String) request.getAttribute("status");
 
                 //truyển status vào để sử lí
-                ErrorAccount errorAccount = new ErrorAccount(status);
+                ErrorAddAccount errorAccount = new ErrorAddAccount(status);
 
         %>
         <!--lúc request lại thì về lại cái form-->

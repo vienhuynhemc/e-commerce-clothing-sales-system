@@ -14,20 +14,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVT SHOP | Đăng nhập</title>
 
-    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
-    <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/trangChu.css">
-    <script src="../js"></script>
-    <link rel="stylesheet" href="../css/banner.css">
-    <link rel="stylesheet" href="../css/loginvien.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/trangChu.css">
+    <script src="js"></script>
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/loginvien.css">
 
-    <script src="../js/dangnhap.js"></script>
+    <script src="js/dangnhap.js"></script>
 
 </head>
 
@@ -71,11 +71,11 @@
 
                 <!--------------------- đăng nhập ở chỗ này ---------------------------->
 
-                <form action="../LoginUserCustomerController" method="post">
+                <form action="LoginUserCustomerController" method="post">
                     <div class="form">
                         <div class="tk">
                             <p class="titletk">Tài khoản</p>
-                            <input name="userName" type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
+                            <input name="userName" value="${param["userName"]}" type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput1"></div>
                         </div>
@@ -98,7 +98,7 @@
 
                         <div class="divsubmit">
                             <button type="submit" onclick="toAccount()">Đăng nhập</button>
-                            <button onclick="dangky()">Đăng ký</button>
+                            <button type="button" onclick="dangky()">Đăng ký</button>
                         </div>
 
                         <div class="dkcsbm">
@@ -362,20 +362,20 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="../js/sequence.js"></script>
-<script src="../js/sequence-theme.modern-slide-in.js"></script>
+<script src="js/sequence.js"></script>
+<script src="js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="../js/slick.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="../js/nouislider.js"></script>
+<script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="../js/custom.js"></script>
+<script src="js/custom.js"></script>

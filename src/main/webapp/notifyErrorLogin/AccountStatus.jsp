@@ -57,7 +57,7 @@
             transform: scaleY(1);
         }
 
-        .hiddenchangepassword {
+        .hiddenchangepassword1 {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -137,12 +137,12 @@
 <body>
 
 <div class="changepassword" id="changepassword">
-    <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+    <div class="hiddenchangepassword1" onclick="gobackpassword()"></div>
     <div class="mainchangepassword">
         <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
         <div class="changepasswordsuccess" id="changepasswordsuccess">
-            <p> ${param.title} </p>
-            <p> ${param.content}</p>
+            <p> <%=request.getParameter("title")%> </p>
+            <p> <%=request.getParameter("content")%></p>
             <button onclick="gobackpassword()">Trở về
             </button>
         </div>

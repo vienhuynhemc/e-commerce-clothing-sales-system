@@ -1,6 +1,4 @@
-package worksWithDatabase.editAccount;
-
-import connectionDatabase.DataSource;
+package worksWithDatabase.editAccountAdmin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

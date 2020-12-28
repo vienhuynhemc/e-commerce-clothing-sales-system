@@ -38,7 +38,7 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound"><a href="CheckSessionController"><i class="fa fa-user"
+                                <li class="iconRound"><a href="thong-tin"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i></a>
                                 </li>
                                 <li class="hidden-xs iconRound"><a href="wishlist.jsp"><i class="fa fa-heart"></i></a>

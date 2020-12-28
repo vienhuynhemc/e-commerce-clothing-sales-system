@@ -1,6 +1,6 @@
 package controllerAdmin.editAccount;
 
-import model.editAccount.EditAccountNVKModel;
+import model.editAccountAdmin.EditAccountNVKModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

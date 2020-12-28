@@ -2,6 +2,7 @@ package worksWithDatabase.loginUser;
 
 import beans.DateTime;
 import beans.account.AccountCustomer;
+import beans.encode.MD5;
 
 import java.sql.*;
 
@@ -111,8 +112,10 @@ public class LoginUserDAO {
 
             PreparedStatement ps = con.prepareStatement(sql);
 
+            String encode = MD5.md5(pass);
+
             ps.setString(1, user);
-            ps.setString(2,pass);
+            ps.setString(2,encode);
 
             ResultSet rs = ps.executeQuery();
 
@@ -176,11 +179,11 @@ public class LoginUserDAO {
     }
 
     public static void main(String[] args) {
-        LoginUserDAO  loginUserDAO = new LoginUserDAO();
-
-       System.out.println(loginUserDAO.isUserInDatabase("kh005"));
-       System.out.println(loginUserDAO.checkLogin("kh005","khso5"));
-       System.out.println(loginUserDAO.checkActiveStatus("kh004"));
+//        LoginUserDAO  loginUserDAO = new LoginUserDAO();
+//
+//       System.out.println(loginUserDAO.isUserInDatabase("kh005"));
+//       System.out.println(loginUserDAO.checkLogin("kh005","khso5"));
+//       System.out.println(loginUserDAO.checkActiveStatus("kh004"));
     }
 
 }

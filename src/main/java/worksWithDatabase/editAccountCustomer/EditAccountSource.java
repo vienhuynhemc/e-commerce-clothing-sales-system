@@ -1,25 +1,25 @@
-package worksWithDatabase.editAccount;
+package worksWithDatabase.editAccountCustomer;
 
+public class EditAccountSource {
 
-public class EditAccountNVKSource {
-    private static EditAccountNVKSource addAccountSource;
-    private static EditAccountNVKPool accountPool;
+    private static EditAccountSource addAccountSource;
+    private static EditAccountPool accountPool;
 
-    private EditAccountNVKSource(){
-        accountPool = new EditAccountNVKPool();
+    private EditAccountSource(){
+        accountPool = new EditAccountPool();
     }
-    public static synchronized EditAccountNVKSource getInstance(){
+    public static synchronized EditAccountSource getInstance(){
         if (addAccountSource == null){
-            addAccountSource = new EditAccountNVKSource();
+            addAccountSource = new EditAccountSource();
         }
         return addAccountSource;
     }
 
-    public EditAccountNVKDAO getEditAccount(){
+    public EditAccountDAO getEditAccount(){
         return accountPool.getAccount();
     }
-    public void releaseEditAccount(EditAccountNVKDAO addAccountNVKDAO){
-        accountPool.releaseEditAccount(addAccountNVKDAO);
+    public void releaseEditAccount(EditAccountDAO addAccountDAO){
+        accountPool.releaseEditAccount(addAccountDAO);
     }
 
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class EditAccountNVKSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                EditAccountNVKDAO a = EditAccountNVKSource.getInstance().getEditAccount();
+                EditAccountDAO a = EditAccountSource.getInstance().getEditAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -35,7 +35,7 @@ public class EditAccountNVKSource {
                     e.printStackTrace();
                 }
 
-                EditAccountNVKSource.getInstance().releaseEditAccount(a);
+                EditAccountSource.getInstance().releaseEditAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };
@@ -52,4 +52,5 @@ public class EditAccountNVKSource {
         t2.start();
         t3.start();
     }
+
 }

@@ -1,7 +1,7 @@
-package model.editAccount;
+package model.editAccountAdmin;
 
-import worksWithDatabase.editAccount.EditAccountNVKDAO;
-import worksWithDatabase.editAccount.EditAccountNVKSource;
+import worksWithDatabase.editAccountAdmin.EditAccountNVKDAO;
+import worksWithDatabase.editAccountAdmin.EditAccountNVKSource;
 
 public class EditAccountNVKModel {
 

@@ -20,11 +20,9 @@ public class LoginUserCustomerController extends HttpServlet {
 
         // lấy ra user với username và pass ở trên kiểm tra có hay k ?
 
-        System.out.println(userName + "   " + passWord);
-
         AccountCustomer accountCustomer = LoginUserModel.getInstance().getAccountCustomer(userName,passWord);
         // nếu khác null chứng tỏ đăng nhập đúng. add user vào session User , trả về trang index;
-        System.out.println(LoginUserModel.getInstance().getStatus());
+       // System.out.println(LoginUserModel.getInstance().getStatus());
         if(accountCustomer != null){
             HttpSession session = request.getSession();
             session.setAttribute("user",accountCustomer);
@@ -32,9 +30,7 @@ public class LoginUserCustomerController extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }else{ // nếu = null chứng tỏ sai
             request.setAttribute("loginStatus",LoginUserModel.getInstance().getStatus());
-
             request.getRequestDispatcher("home/login.jsp").forward(request,response);
-
         }
     }
 

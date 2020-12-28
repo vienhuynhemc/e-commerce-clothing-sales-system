@@ -32,6 +32,16 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>CheckSessionController</servlet-name>
+        <servlet-class>controllerIndex.loginUser.CheckSessionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckSessionController</servlet-name>
+        <url-pattern>/thong-tin</url-pattern>
+    </servlet-mapping>
+
+
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

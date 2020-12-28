@@ -1485,14 +1485,6 @@
 
 
 
-
-
-
-
-
-
-
-
 <!-- Subscribe section -->
 <section id="aa-subscribe">
     <div class="subscribediv">
