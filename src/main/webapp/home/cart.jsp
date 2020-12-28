@@ -56,11 +56,11 @@
 <body>
 
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
 <!-- END SCROLL TOP BUTTON -->
 
 <!-- Start header section -->
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
 <!-- / header section -->
 <!-- menu -->
 <!-- / header section -->
@@ -301,10 +301,10 @@
     </div>
 </section>
 
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
 <!-- / footer -->
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

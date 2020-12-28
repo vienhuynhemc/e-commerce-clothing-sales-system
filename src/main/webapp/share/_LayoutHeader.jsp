@@ -38,14 +38,14 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li class="iconRound"><a href="home/changeInforCustomer.html"><i class="fa fa-user"
+                                <li class="iconRound"><a href="CheckSessionController"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRound"><a href="home/wishlist.html"><i class="fa fa-heart"></i></a>
+                                <li class="hidden-xs iconRound"><a href="wishlist.jsp"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/cart.html"><%=lang.get("4")%>
+                                <li class="hidden-xs iconRoundLenght"><a href="cart.jsp"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
-                                <li class="hidden-xs iconRoundLenght"><a href="home/checkout.html"><%=lang.get("5")%>
+                                <li class="hidden-xs iconRoundLenght"><a href="checkout.jsp"><%=lang.get("5")%>
                                     <span
                                             class="fa fa-credit-card"></span></a></li>
                                 <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->

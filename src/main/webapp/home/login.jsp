@@ -1,4 +1,5 @@
-<%--
+<%@ page import="beans.account.ErrorLogin" %>
+<%@ page import="beans.account.AccountCustomer" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -67,41 +68,72 @@
                 </div>
                 <p class="or">- Hoặc -</p>
 
-                <div class="form">
-                    <div class="tk">
-                        <p class="titletk">Tài khoản</p>
-                        <input type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <div class="lineinput1"></div>
-                    </div>
-                    <div class="mk">
-                        <p class="titletk">Mật khẩu</p>
-                        <input type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
-                               style="font-family:Arial, FontAwesome">
-                        <button class="eye"><i class="fa fa-eye-slash"></i></button>
-                        <div class="lineinput2"></div>
-                    </div>
 
-                    <div class="helpLogin">
-                        <div>
-                            <input type="checkbox" name="" id="remember">
-                            <label for="remember">Nhớ mật khẩu</label>
+                <!--------------------- đăng nhập ở chỗ này ---------------------------->
+
+                <form action="../LoginUserCustomerController" method="post">
+                    <div class="form">
+                        <div class="tk">
+                            <p class="titletk">Tài khoản</p>
+                            <input name="userName" type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <div class="lineinput1"></div>
+                        </div>
+                        <div class="mk">
+                            <p class="titletk">Mật khẩu</p>
+                            <input name="passWord" type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
+                                   style="font-family:Arial, FontAwesome">
+                            <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                            <div class="lineinput2"></div>
                         </div>
 
-                        <button onclick="displaydivpassword()">Quên mật khẩu</button>
-                    </div>
+                        <div class="helpLogin">
+                            <div>
+                                <input type="checkbox" name="" id="remember">
+                                <label for="remember">Nhớ mật khẩu</label>
+                            </div>
 
-                    <div class="divsubmit">
-                        <button onclick="toAccount()">Đăng nhập</button>
-                        <button onclick="dangky()">Đăng ký</button>
-                    </div>
+                            <button onclick="displaydivpassword()">Quên mật khẩu</button>
+                        </div>
 
-                    <div class="dkcsbm">
-                        <p>Bằng cách đăng ký, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> & <a
-                                href="">chính sách bảo mật</a> của
-                            chúng tôi</p>
+                        <div class="divsubmit">
+                            <button type="submit" onclick="toAccount()">Đăng nhập</button>
+                            <button onclick="dangky()">Đăng ký</button>
+                        </div>
+
+                        <div class="dkcsbm">
+                            <p>Bằng cách đăng ký, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> & <a
+                                    href="">chính sách bảo mật</a> của
+                                chúng tôi</p>
+                        </div>
                     </div>
-                </div>
+                </form>
+
+
+            <!-- sử lí hiện bảng thông báo ---->
+                <%
+                    //lấy request loginStatus != null thì đăng nhập thất bại
+
+                    String status = (String) request.getAttribute("loginStatus");
+
+                    if (status  != null) {
+
+                        //truyển status vào để sử lí
+                        ErrorLogin errorLogin = new ErrorLogin(status);
+
+                %>
+
+                <%request.setCharacterEncoding("utf-8");%>
+                <jsp:include page="../notifyErrorLogin/AccountStatus.jsp">
+                    <jsp:param name="title" value="<%=errorLogin.getTitle()%>"/>
+                    <jsp:param name="content" value="<%=errorLogin.getContent()%>"/>
+                </jsp:include>
+                <%
+                    }
+                %>
+
+
+
             </div>
             <div class="contentleft signuppage" id="signuppage">
                 <div class="headerleft">

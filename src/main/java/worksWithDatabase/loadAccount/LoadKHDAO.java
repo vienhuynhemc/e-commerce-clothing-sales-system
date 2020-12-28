@@ -1,8 +1,7 @@
 package worksWithDatabase.loadAccount;
 
 import beans.DateTime;
-import beans.account.AccountKH;
-import connectionDatabase.DataSource;
+import beans.account.AccountCustomer;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -10,11 +9,11 @@ import java.util.Map;
 
 public class LoadKHDAO {
 
-    Map<String, AccountKH> list ;
+    Map<String, AccountCustomer> list ;
     public LoadKHDAO(){
         list = new HashMap<>();
     }
-    public Map<String,AccountKH> loadListKH(int num){
+    public Map<String, AccountCustomer> loadListKH(int num){
 
         Connection con = null;
         try {
@@ -67,7 +66,7 @@ public class LoadKHDAO {
                     DateTime datetime = new DateTime(year,month,day,hour,minute,second);
 
                     list.put(rs.getString("IDUser"),
-                            new AccountKH(rs.getString("IDUser"),
+                            new AccountCustomer(rs.getString("IDUser"),
                                     rs.getInt("Type"),
                                     rs.getString("UserName"),
                                     rs.getString("PassWord"),
@@ -106,7 +105,7 @@ public class LoadKHDAO {
                         DateTime datetime = new DateTime(year,month,day,hour,minute,second);
 
                         list.put(rs.getString("IDUser"),
-                                new AccountKH(rs.getString("IDUser"),
+                                new AccountCustomer(rs.getString("IDUser"),
                                         rs.getInt("Type"),
                                         rs.getString("UserName"),
                                         rs.getString("PassWord"),
@@ -144,7 +143,7 @@ public class LoadKHDAO {
 
     public static void main(String[] args) throws SQLException {
     LoadKHDAO lao = new LoadKHDAO();
-    Map<String,AccountKH> list = lao.loadListKH(5);
+    Map<String, AccountCustomer> list = lao.loadListKH(5);
 
     System.out.println(list.toString());
 

@@ -119,21 +119,6 @@ public class AddAccountNVKDAO implements AddAccountInterface{
             sm.executeUpdate(sql2);
             sm.close();
 
-//            if (type == 3){
-//
-//                int n1 = Integer.parseInt(ttdg) ;
-//                int n2 = Integer.parseInt(ttkh);
-//
-//                String sql =  "INSERT INTO account VALUES (\"KH0" + sum + ia;
-//                Statement sm = con.createStatement();
-//                sm.executeUpdate(sql);
-//
-//                String sql2 =  "INSERT INTO customer VALUES (\"KH0" + sum + "\"" + "," + "CURRENT_TIMESTAMP" + "," + n1
-//                        + "," + n2  + ")" ;
-//                sm.executeUpdate(sql2);
-//                sm.close();
-//
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }finally {

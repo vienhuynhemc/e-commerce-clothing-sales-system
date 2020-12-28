@@ -1,4 +1,5 @@
-<%--
+<%@ page import="beans.account.AccountCustomer" %>
+<%@ page import="beans.DateTime" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 21/12/2020
@@ -29,21 +30,24 @@
 
     <script src="../js/informationCustomer.js"></script>
 
+    <!-------------------------------------- lấy session chứa tài khoản ------------------------------>
+    <% AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user"); %>
+
 </head>
 
 <body>
 
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
 <!-- END SCROLL TOP BUTTON -->
 
 <!-- Start header section -->
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
 <!-- / header section -->
 
 <!-- catg header banner section -->
 <%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
+<jsp:include page="../share/_LayoutBanner.jsp">
     <jsp:param name="title" value="Thay đổi thông tin"/>
 </jsp:include>
 <!-- / catg header banner section -->
@@ -72,8 +76,8 @@
                 <div class="imguser">
                     <img id="avatar" src="../img/about/c1.jpg" alt="">
                 </div>
-                <p class="titleuser">Gia Cát Lượng<i class="fa fa-circle"></i></p>
-                <p class="gmailuser">nguoidung.dz@gmail.com</p>
+                <p class="titleuser"><%=accountCustomer.getFullName()%><i class="fa fa-circle"></i></p>
+                <p class="gmailuser"><%=accountCustomer.getEmail()%></p>
                 <p class="soinoi">Độ sôi nổi: Tiêu chuẩn</p>
                 <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)"/>
                 <button class=" changeimg" onclick="document.getElementById('fileInput').click()">Thay đổi ảnh đại
@@ -125,14 +129,14 @@
                             <p>Tên hiển thị</p>
                             <p>Hiển thị tên người dùng</p>
                         </div>
-                        <input type="text" value="Lượng">
+                        <input type="text" value="<%=accountCustomer.getDisplayName()%>">
                     </div>
                     <div class="statusdivinputitem">
                         <div>
                             <p>Tên đầy đủ</p>
                             <p>Bạn muốn được gọi như thế nào?</p>
                         </div>
-                        <input type="text" value="Gia Cát Lượng">
+                        <input type="text" value="<%=accountCustomer.getFullName()%>">
                     </div>
                 </div>
                 <div class="linestatus"></div>
@@ -142,14 +146,14 @@
                             <p>Tài khoản</p>
                             <p>Dùng để đăng nhập</p>
                         </div>
-                        <input type="text" value="giacatluongprovip" disabled>
+                        <input type="text" value="<%=accountCustomer.getUserName()%> " disabled>
                     </div>
                     <div class="statusdivinputitem">
                         <div>
                             <p>Mật khẩu</p>
                             <p onclick="doimatkhau()" class="doimatkhau">Đổi mật khẩu</p>
                         </div>
-                        <input type="password" value="giacatluong123" disabled>
+                        <input type="password" value="<%=accountCustomer.getPassWord() %>" disabled>
                     </div>
                 </div>
                 <div class="linestatus"></div>
@@ -159,14 +163,14 @@
                             <p>Địa chỉ email</p>
                             <p>Dùng để nhận thông báo và lấy lại mật khẩu</p>
                         </div>
-                        <input type="text" value="tuilaluong@gmail.com" disabled>
+                        <input type="text" value="<%=accountCustomer.getEmail()%>" disabled>
                     </div>
                     <div class="statusdivinputitem">
                         <div>
                             <p>Số điện thoại</p>
                             <p>Dùng để nhận thông báo và lấy lại mật khẩu</p>
                         </div>
-                        <input type="text" value="0971122209" disabled>
+                        <input type="text" value="<%=accountCustomer.getPhone()%>" disabled>
                     </div>
                 </div>
                 <div class="linestatus"></div>
@@ -176,14 +180,17 @@
                             <p>Ngày tạo</p>
                             <p>Bạn đã tham gia với chúng tôi lâu chưa?</p>
                         </div>
-                        <input type="text" value="24-2-2018" disabled>
+
+                        <%DateTime date = accountCustomer.getRegisDate();%>
+
+                        <input type="text" value="<%=date.getDay()%> - <%=date.getMonth()%> - <%=date.getYear()%>" disabled>
                     </div>
                     <div class="statusdivinputitem">
                         <div>
                             <p>Mã tài khoản</p>
                             <p>Để chúng tôi nhận biết tài khoản của bạn</p>
                         </div>
-                        <input type="text" value="KH1010" disabled>
+                        <input type="text" value="<%=accountCustomer.getIdUser()%>" disabled>
                     </div>
                 </div>
                 <div class="linestatus"></div>
@@ -568,10 +575,10 @@
 </div>
 <!--End main-->
 
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
 <!-- / footer -->
 
 </body>

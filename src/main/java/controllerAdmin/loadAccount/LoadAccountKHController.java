@@ -1,6 +1,6 @@
 package controllerAdmin.loadAccount;
 
-import beans.account.AccountKH;
+import beans.account.AccountCustomer;
 import model.loadAccount.LoadAccountKHModel;
 import model.loadAccount.LoadNextPageModel;
 
@@ -23,7 +23,7 @@ public class LoadAccountKHController extends HttpServlet {
 
         int number = Integer.parseInt(request.getParameter("page"));
 
-        Collection<AccountKH> listKH = LoadAccountKHModel.getInstance().loadListKH(number).values();
+        Collection<AccountCustomer> listKH = LoadAccountKHModel.getInstance().loadListKH(number).values();
 
         int numberPage = LoadNextPageModel.getInstance().loadNumberPageKH();
         //Laod số trang

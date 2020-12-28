@@ -1,5 +1,7 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="model.language.IndexLanguageModel" %><%--
+<%@ page import="model.language.IndexLanguageModel" %>
+<%@ page import="beans.account.ErrorLogin" %>
+<%@ page import="beans.account.AccountCustomer" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 21/12/2020
@@ -63,6 +65,10 @@
     }
 
 %>
+
+
+
+
 
 
 <body>
@@ -835,7 +841,7 @@
                                             </figcaption>
                                         </figure>
                                         <div class="aa-product-hvr-content">
-                                            <a href="home/wishlist.html" data-toggle="tooltip" data-placement="top"
+                                            <a href="wishlist.jsp" data-toggle="tooltip" data-placement="top"
                                                title="<%=lang.get("72")%>"><span
                                                     class="fa fa-heart"></span></a>
                                             <a href="#" data-toggle2="tooltip" data-placement="top" title="<%=lang.get("73")%>"
@@ -1452,6 +1458,40 @@
     }
 %>
 <!------------------------------------------------>
+
+<!-- sử lí đăng nhập thành công-->
+
+<%
+    //lấy request user == null thì đăng nhập thành công
+
+    AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user");
+
+    if (accountCustomer  != null) {
+        //truyển status vào để sử lí
+        ErrorLogin errorLogin = new ErrorLogin("ok");
+
+%>
+
+<%request.setCharacterEncoding("utf-8");%>
+<jsp:include page="notifyErrorLogin/AccountStatus.jsp">
+    <jsp:param name="title" value="<%=errorLogin.getTitle()%>"/>
+    <jsp:param name="content" value="<%=errorLogin.getContent()%>"/>
+</jsp:include>
+<%
+    }
+%>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Subscribe section -->
 <section id="aa-subscribe">
