@@ -88,8 +88,9 @@ function removekhachhang(item) {
         let list2 = list[5].children;
         let list3 = list2[4].children;
         if (list3[1] == item) {
-            document.getElementById("maindiv2").removeChild(listItem[i]);
-            capnhaphienthi();
+            list2[4].style.display = 'none';
+            list2[1].checked = false;
+            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
         }
     }
@@ -182,4 +183,8 @@ function editdanhmuc(item) {
             return;
         }
     }
+}
+
+function hiddenFormYesNo() {
+    document.getElementById("formYesNo").style.transform = 'scaleY(0)';
 }

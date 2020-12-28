@@ -41,7 +41,7 @@ function showselect(item) {
     let list = document.getElementById("maindiv2").children;
     for (let i = 1; i < list.length; i++) {
         list2 = list[i].children;
-        if (list2[5] == item) {
+        if (list2[6] == item) {
             index = i;
             break;
         }
@@ -78,8 +78,15 @@ function removekhachhang(item) {
         let list2 = list[6].children;
         let list3 = list2[4].children;
         if (list3[1] == item) {
-            document.getElementById("maindiv2").removeChild(listItem[i]);
-            capnhaphienthi();
+            list2[1].checked = false;
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #'+list3[2].value;
+            document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+            let item = document.createElement("i");
+            item.classList.add("fa");
+            item.classList.add("fa-hand-grab-o");
+            document.getElementById("formYesNoLink").href = "../../ManufacturerRemoveController?type=single&&manufacturer="+list3[2].value;
+            document.getElementById("formYesNoTitle2").appendChild(item);
+            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
         }
     }
@@ -293,3 +300,7 @@ node.addEventListener("keyup", function(event) {
         document.getElementById("mainForm").submit();
     }
 });
+
+function hiddenFormYesNo() {
+    document.getElementById("formYesNo").style.transform = 'scaleY(0)';
+}

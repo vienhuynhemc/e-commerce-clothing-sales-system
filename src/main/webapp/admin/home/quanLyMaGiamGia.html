@@ -17,6 +17,23 @@
 
 <body>
 
+    <div id="formYesNo">
+        <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+        <div>
+            <p>
+                <i class="fa fa-cogs"></i> TVT Shop
+            </p>
+            <div>
+                <p>Bạn có chắc chắn xóa ABC</p>
+                <p>Việc xóa sẽ thay đổi dữ liệu của bạn <i class="fa fa-hand-grab-o"></i></p>
+                <div>
+                    <a href="">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                    <span  onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="indexleft">
         <div class="indexleftlogo">
@@ -80,7 +97,8 @@
                     </ul>
                     <input type="checkbox" style="display: none;">
                 </div>
-                <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
+                <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                    onclick="indexleftselectitemlv2(this)">
                     <div class="indexleftselectitem">
                         <div>
                             <i class="fa fa-wpforms"></i>

@@ -29,6 +29,24 @@
 
 <body>
 
+<!-- Form yes no -->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a  id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span  onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
@@ -199,6 +217,7 @@
                             <div>
                                 <button onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
                                 <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <input type="text" style="display: none" value="<%=m.getManufacturerId()%>">
                             </div>
                         </div>
                         <div>
