@@ -1,7 +1,8 @@
 <%@ page import="beans.manufacturer.Manufacturer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="beans.nextPage.NextPageObject" %>
-<%@ page import="beans.nextPage.NextPageConfiguration" %><%--
+<%@ page import="beans.nextPage.NextPageConfiguration" %>
+<%@ page import="beans.manufacturer.ManufacturerObject" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 26/12/2020
@@ -16,12 +17,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý hãng sản xuất</title>
-    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/indexAdmin.css">
-    <script src="js/indexAdmin.js"></script>
+    <link rel="stylesheet" href="../../css/indexAdmin.css">
+    <script src="../../js/indexAdmin.js"></script>
 
-    <link rel="stylesheet" href="css/quanLyHangSanXuatAdmin.css">
+    <link rel="stylesheet" href="../../css/quanLyHangSanXuatAdmin.css">
 
 
 </head>
@@ -36,15 +37,22 @@
 
     <!-- Code trang ở đây-->
 
+    <%
+
+        //  Lấy manufacturer Object
+        ManufacturerObject manufacturerObject = (ManufacturerObject) session.getAttribute("manufacturerObject");
+
+    %>
+
     <div class="indexmain">
         <div id="div2">
             <div>
-                <form class="header" method="post" action="ManufacturerController" id="mainForm"
+                <form class="header" method="post" action="../../ManufacturerController" id="mainForm"
                       onsubmit="return false">
                     <div class="leftheader">
                         <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
 
-                            <% String selectSearchAndSort = (String) request.getAttribute("selectSearchAndSort"); %>
+                            <% String selectSearchAndSort = manufacturerObject.getSelectSearchAndSort(); %>
                             <option value="dateCreated"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("dateCreated")) {%>
                                     selected
@@ -74,7 +82,7 @@
                         </select>
                         <div>
 
-                            <% String sort = (String) request.getAttribute("sort");  %>
+                            <% String sort = manufacturerObject.getSort();  %>
 
                             <% if (sort.equals("DESC")) {%>
                             <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
@@ -90,21 +98,21 @@
                             <div class="leftheadersearch">
                                 <div>
                                     <i class="fa fa-search"></i>
-                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit" value="<%=request.getAttribute("search")%>">
+                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit" value="<%=manufacturerObject.getSearch()%>">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="leftnextpage">
-                        <p>Hiển thị <strong><%= request.getAttribute("numberOfShow") %>
-                        </strong> trên tổng <%=request.getAttribute("maximumManufacturer")%> hãng</p>
-                        <span onclick="prePage(<%=request.getAttribute("nowPage")%>)"><i
+                        <p>Hiển thị <strong><%= manufacturerObject.getNumberOfShow() %>
+                        </strong> trên tổng <%=manufacturerObject.getMaximumManufacturer()%> hãng</p>
+                        <span onclick="prePage(<%=manufacturerObject.getNowPage()%>)"><i
                                 class="fa fa-caret-left"></i></span>
                         <ul>
 
                             <%
                                 //  Lấy list next page đổ next page ra
-                                List<NextPageObject> nextPages = (List<NextPageObject>) request.getAttribute("nextPages");
+                                List<NextPageObject> nextPages= manufacturerObject.getNextPages();
                                 for (NextPageObject n : nextPages) {
                             %>
                             <li
@@ -122,12 +130,12 @@
                                 }
                             %>
                         </ul>
-                        <span onclick="nextPage(<%=request.getAttribute("nowPage")%>,<%=request.getAttribute("maximumPage")%>)"><i
+                        <span onclick="nextPage(<%=manufacturerObject.getNowPage()%>,<%=manufacturerObject.getMaximumPage()%>)"><i
                                 class="fa fa-caret-right"></i></span>
                         <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
-                               value="<%=request.getAttribute("nowPage")%>">
+                               value="<%=manufacturerObject.getNowPage()%>">
                         <input type="number" name="maximunNumberOfPage" style="display: none"
-                               value="<%=request.getAttribute("maximumPage")%>">
+                               value="<%=manufacturerObject.getMaximumPage()%>">
                     </div>
                     <span onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</span>
                     <span onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</span>
@@ -155,7 +163,7 @@
                     <%
 
                         //  Đổ dữ liệu list sản hãng sản xuất
-                        List<Manufacturer> manufacturers = (List<Manufacturer>) request.getAttribute("manufacturers");
+                        List<Manufacturer> manufacturers = manufacturerObject.getManufacturers();
 
                         for (Manufacturer m : manufacturers) {
 
@@ -284,4 +292,4 @@
 
 </html>
 
-<script src="js/quanLyHangSanXuatAdmin.js"></script>
+<script src="../../js/quanLyHangSanXuatAdmin.js"></script>

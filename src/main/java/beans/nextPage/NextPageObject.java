@@ -1,6 +1,8 @@
 package beans.nextPage;
 
-public class NextPageObject {
+import java.io.Serializable;
+
+public class NextPageObject implements Serializable {
 
     //  Giá trị của item nextPage
     private String value;
@@ -31,7 +33,7 @@ public class NextPageObject {
         this.type = type;
     }
 
-    public String toString(){
+    public String toString() {
         return value;
     }
 

@@ -2,6 +2,7 @@ package controllerIndex.manufacturer;
 
 import beans.BeansConfiguration;
 import beans.manufacturer.Manufacturer;
+import beans.manufacturer.ManufacturerObject;
 import beans.nextPage.NextPageObject;
 import model.manufacturer.ManufacturerModel;
 import model.nextPage.NextPageModel;
@@ -68,126 +69,95 @@ public class ManufacturerController extends HttpServlet {
             //  Lấy list nextPage
             List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(nowPage, maximunPage);
 
-            //  Set các attribute cho request
-            request.setAttribute("manufacturers", manufacturers);
-            request.setAttribute("nowPage", nowPage);
-            request.setAttribute("maximumManufacturer", maximunManufacturer);
-            request.setAttribute("maximumPage", maximunPage);
-            request.setAttribute("numberOfShow", manufacturers.size());
-            request.setAttribute("nextPages", nextPages);
-            request.setAttribute("sort", "DESC");
-            request.setAttribute("search","");
+            //  Khi mới chuyển tới trang này thì tạo 1 ManufacturerObject gán cho sesstion
+            ManufacturerObject manufacturerObject = new ManufacturerObject();
+            manufacturerObject.setManufacturers(manufacturers);
+            manufacturerObject.setNowPage(nowPage);
+            manufacturerObject.setMaximumManufacturer(maximunManufacturer);
+            manufacturerObject.setMaximumPage(maximunPage);
+            manufacturerObject.setNumberOfShow(manufacturers.size());
+            manufacturerObject.setNextPages(nextPages);
+            manufacturerObject.setSort("DESC");
+            manufacturerObject.setSearch("");
+            manufacturerObject.setSelectSearchAndSort("dateCreated");
+            request.getSession().setAttribute("manufacturerObject", manufacturerObject);
 
-            // forward tới trang của mình thôi nào
-            request.getRequestDispatcher("admin/home/quanLyHangSanXuat.jsp").forward(request, response);
+            // sedirect tới trang của mình thôi nào
+            response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
 
         } else {
 
-            if (action.equals("sort")) {
+            //  Lấy đối tượng ra
+            ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
 
-                //  Vì sắp xếp nên ta chỉ cần lấy lại list
-                //  Giữ nguyên số trang đang
-                request.setAttribute("nowPage", numberOfPage);
+            switch (action) {
 
-                //  Giữ nguyên số trang tối đa
-                request.setAttribute("maximumPage", maximunNumberOfPage);
+                case "sort":
 
-                //  Lấy cách sắp xếp
-                if (sort != null) {
-                    request.setAttribute("sort", "DESC");
-                } else {
-                    request.setAttribute("sort", "ASC");
-                }
+                    //  Lấy lại cách sắp xếp
+                    if (sort != null) {
+                        manufacturerObject.setSort("DESC");
+                    } else {
+                        manufacturerObject.setSort("ASC");
+                    }
 
-                //  set bộ lọc
-                request.setAttribute("selectSearchAndSort", selectSearchAndSort);
+                    break;
 
-                //  Lấy nội dung tìm kiếm
-                request.setAttribute("search", search);
+                case "changeFilter":
 
-                //  Chuyển tới controller điều hướng hãng sản xuất chỉ riêng cho việc sort
-                request.getRequestDispatcher("ManufacturerSortController").forward(request, response);
-            } else if (action.equals("changeFilter")) {
+                    //  Lấy lại bộ lọc
+                    manufacturerObject.setSelectSearchAndSort(selectSearchAndSort);
 
-                //  Vì sắp xếp lại bộ lọc nên giữ nguyên
-                //  Giữ nguyên số trang đang
-                request.setAttribute("nowPage", numberOfPage);
+                    break;
 
-                //  Giữ nguyên số trang tối đa
-                request.setAttribute("maximumPage", maximunNumberOfPage);
+                case "nextPage":
 
-                //  Lấy cách sắp xếp
-                if (sort == null) {
-                    request.setAttribute("sort", "DESC");
-                } else {
-                    request.setAttribute("sort", "ASC");
-                }
+                    //  Lấy lại nowPage
+                    manufacturerObject.setNowPage(Integer.parseInt(numberOfPage));
 
-                //  set bộ lọc
-                request.setAttribute("selectSearchAndSort", selectSearchAndSort);
+                    //  Cập nhập lại list nextPage
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(manufacturerObject.getNowPage(), manufacturerObject.getMaximumPage());
+                    manufacturerObject.setNextPages(nextPages);
 
-                //  Lấy nội dung tìm kiếm
-                request.setAttribute("search", search);
+                    break;
 
-                //  Chuyển tới controller điều hướng hãng sản xuất chỉ riêng cho việc lọc
-                request.getRequestDispatcher("ManufacturerFilterController").forward(request, response);
+                case "search":
 
-            } else if (action.equals("nextPage")) {
+                    //  Cập nhập now page là 1
+                    manufacturerObject.setNowPage(1);
 
-                //  Vì sắp chuyển trang giữ nguyên
-                //  Giữ nguyên số trang đang
-                request.setAttribute("nowPage", numberOfPage);
+                    //  Lấy lại search
+                    manufacturerObject.setSearch(search);
 
-                //  Giữ nguyên số trang tối đa
-                request.setAttribute("maximumPage", maximunNumberOfPage);
+                    //  Cập nhập lại maximun hãng sản xuất
+                    int maximunManufacture = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
+                    manufacturerObject.setMaximumManufacturer(maximunManufacture);
 
-                //  Lấy cách sắp xếp
-                if (sort == null) {
-                    request.setAttribute("sort", "DESC");
-                } else {
-                    request.setAttribute("sort", "ASC");
-                }
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacture);
+                    manufacturerObject.setMaximumPage(maximumPage);
 
-                //  set bộ lọc
-                request.setAttribute("selectSearchAndSort", selectSearchAndSort);
+                    //  Cập nhập lại list nextPage
+                    List<NextPageObject> nextPagess = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPage);
+                    manufacturerObject.setNextPages(nextPagess);
 
-                //  Lấy nội dung tìm kiếm
-                request.setAttribute("search", search);
-
-                //  Chuyển tới controller điều hướng hãng sản xuất chỉ riêng cho việc next page
-                request.getRequestDispatcher("ManufacturerNextPageController").forward(request, response);
-
-            } else if (action.equals("search")) {
-
-                //  Tìm kiếm thì kết quả sẽ được tạo mới, now page thành 1
-                //  Trang hiện tại thành 1
-                request.setAttribute("nowPage", 1);
-
-                //  tính lại hãng sản xuất tốt đa
-                int maximunManufacturer = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(selectSearchAndSort, search);
-                request.setAttribute("maximumManufacturer", maximunManufacturer);
-
-                //  Tính lại trang tối đa
-                int maxPage = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacturer);
-                request.setAttribute("maximumPage",maxPage);
-
-                //  Lấy cách sắp xếp
-                if (sort == null) {
-                    request.setAttribute("sort", "DESC");
-                } else {
-                    request.setAttribute("sort", "ASC");
-                }
-
-                //  set bộ lọc
-                request.setAttribute("selectSearchAndSort", selectSearchAndSort);
-
-                //  Lấy nội dung tìm kiếm
-                request.setAttribute("search", search);
-
-                //  Chuyển tới controller điều hướng hãng sản xuất chỉ riêng cho việc search
-                request.getRequestDispatcher("ManufacturerSearchController").forward(request, response);
+                    break;
 
             }
+
+            //  Lấy lại hãng sản xuất
+            List<Manufacturer> manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
+            manufacturerObject.setManufacturers(manufacturers);
+
+            //  Cập nhập lại số sản phẩm hiện thị
+            manufacturerObject.setNumberOfShow(manufacturers.size());
+
+            //  Gán lại cho sesstion
+            request.getSession().setAttribute("manufacturerObject", manufacturerObject);
+
+            // sedirect tới trang của mình thôi nào
+            response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
+
         }
     }
 
