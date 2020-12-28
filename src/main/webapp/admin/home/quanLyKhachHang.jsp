@@ -1,4 +1,4 @@
-<%@ page import="beans.account.ErrorAccount" %><%--
+<%@ page import="beans.account.ErrorAddAccount" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
