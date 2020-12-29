@@ -422,6 +422,14 @@ select option {
   padding: 5px 20px;
 }
 
+.div12input > select {
+  width: 65%;
+  border: 1px solid #e0e5e9;
+  border-radius: 20px;
+  padding: 5px 20px;
+  padding-right: 10px;
+}
+
 .div13 {
   background-color: white;
   padding-top: 20px;
@@ -446,7 +454,7 @@ select option {
   margin-bottom: 38px;
 }
 
-.div12 > button:nth-child(6) {
+.div12 > button:nth-child(5) {
   left: 590px;
   box-shadow: 14px 15px 35px 3px #d3d3d3d6;
   background-color: #fafafa !important;
@@ -711,4 +719,8 @@ select option {
 
 #notifiSuccess > div:nth-child(2) > div > div > a > i {
   margin-left: 5px;
+}
+
+.hidden {
+  display: none;
 }

@@ -1,5 +1,6 @@
 package controllerAdmin.category;
 
+import model.category.CategoryModel;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,7 @@ public class AddCategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
-        if(name != null){
-            CategoryWorksWithDatabase.addCategory(name);
+        if(CategoryModel.checkAddCategory(name)){
             response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
         }
         else {

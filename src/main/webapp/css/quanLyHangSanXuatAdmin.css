@@ -42,7 +42,7 @@ select option {
 .leftheader > div {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 .leftheadersort {
@@ -78,21 +78,19 @@ select option {
     border: 1px solid #eef0f5;
     height: 25px;
     align-items: center;
-    width: 170px;
+    width: 138px;
 }
 
-.leftheadersearch > div {
-}
 
 .leftheadersearch > div > i {
-    margin-left: 10px;
+    margin-left: 6px;
 }
 
 .leftheadersearch > div input {
     outline: none;
     border: none;
     margin-left: 10px;
-    width: 120px;
+    width: 102px;
     margin-right: 12px;
 }
 
@@ -706,6 +704,8 @@ select option {
     font-weight: bold;
     font-size: 18px;
     font-family: sans-serif;
+    width: 83%;
+    text-align: center;
 }
 
 #notifiSuccess > div:nth-child(2) > div > p:nth-child(2) {
@@ -766,4 +766,18 @@ select option {
     margin-left: 5px;
 }
 
+.loadPage {
+    width: 25px;
+    border-radius: 50%;
+    height: 25px;
+    background: white;
+    cursor: pointer;
+    box-shadow: 14px 15px 35px 3px #7a7e94;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    left: 352px;
+    position: absolute;
+}
 

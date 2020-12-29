@@ -28,10 +28,19 @@ public class ManufacturerRemoveController extends HttpServlet {
             String manufacturerId = request.getParameter("manufacturerId");
 
             //  Cho model cái mã để nó xóa mã hãng , thay đổi cột tồn tại từ 0 -> 1
-            ManufacturerModel.getInstance().removeOneManufacturerInDatabase(manufacturerId);
+            boolean check = ManufacturerModel.getInstance().removeOneManufacturerInDatabase(manufacturerId);
 
             //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
-            request.setAttribute("remove", "removeOneElement");
+            request.setAttribute("forward", "remove");
+
+            //  Xóa thành công chức tỏ mã có tồn tại và đã xóa
+            if (check) {
+                request.setAttribute("more", "Bạn đã xóa thành công " + manufacturerId);
+                request.setAttribute("more2", "Việc xóa đã thay đổi dữ liệu của bạn");
+            } else {
+                request.setAttribute("more", "Hãng sản xuất không tồn tại");
+                request.setAttribute("more2", "Dữ liệu không có gì thay đổi");
+            }
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);
@@ -43,10 +52,19 @@ public class ManufacturerRemoveController extends HttpServlet {
             String[] manufacturerIds = manufacturers.split(" ");
 
             //  Cho model cái list mã để nó xóa mã hãng , thay đổi cột tồn tại từ 0 -> 1
-            ManufacturerModel.getInstance().removeGroupManufacturerInDatabase(manufacturerIds);
+            int row = ManufacturerModel.getInstance().removeGroupManufacturerInDatabase(manufacturerIds);
 
             //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
-            request.setAttribute("remove", "removeGroupElement");
+            request.setAttribute("forward", "remove");
+
+            //  Xem thử nó xóa được bao nhiêu dòng
+            if (row == 0) {
+                request.setAttribute("more", "Không xóa được hãng nào hết vì nó không tồn tại");
+                request.setAttribute("more2", "Dữ liệu không có gì thay đổi");
+            } else {
+                request.setAttribute("more", "Bạn đã xóa thành công " + row + " hãng sản xuất");
+                request.setAttribute("more2", "Việc xóa đã thay đổi dữ liệu của bạn");
+            }
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);

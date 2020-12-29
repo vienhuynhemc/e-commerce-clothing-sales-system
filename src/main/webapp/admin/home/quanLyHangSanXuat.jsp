@@ -48,19 +48,20 @@
             <p id="formYesNoTitle"></p>
             <p id="formYesNoTitle2"></p>
             <div>
-                <a  id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
-                <span  onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
             </div>
         </div>
     </div>
 </div>
 
 <%
-    //  Nếu như có xóa thì thông báo xóa
-    if(manufacturerObject.isRemove()){
+    //  Nếu như có thông báo thì hiển thị
+    if (manufacturerObject.isNotify()) {
 
-        //  Thông báo xong để lại trạng thái ban đầu
-        manufacturerObject.setRemove(false);
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        manufacturerObject.setNotify(false);
+
 %>
 <div id="notifiSuccess">
     <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
@@ -69,10 +70,10 @@
             <i class="fa fa-cogs"></i> TVT Shop
         </p>
         <div>
-            <p>Bạn đã xóa thành công</p>
-            <p>Việc xóa đã thay đổi dữ liệu của bạn <i class="fa fa-hand-grab-o"></i></p>
+            <p><%=manufacturerObject.getTitle()%></p>
+            <p><%=manufacturerObject.getConntent()%> <i class="fa fa-hand-grab-o"></i></p>
             <div>
-                <span  onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
             </div>
         </div>
     </div>
@@ -107,26 +108,30 @@
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("manufacturerName")) {%>
                                     selected
                                     <%}%>
-                            >Tên hãng</option>
+                            >Tên hãng
+                            </option>
                             <option value="manufacturerId"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("manufacturerId")) {%>
                                     selected
                                     <%}%>
-                            >Mã hãng</option>
+                            >Mã hãng
+                            </option>
                             <option value="informationList"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("informationList")) {%>
                                     selected
                                     <%}%>
-                            >Số lượng thông tin</option>
+                            >Số lượng thông tin
+                            </option>
                             <option value="numberOfProducts"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("numberOfProducts")) {%>
                                     selected
                                     <%}%>
-                            >Số lượng sản phẩm</option>
+                            >Số lượng sản phẩm
+                            </option>
                         </select>
                         <div>
 
-                            <% String sort = manufacturerObject.getSort();  %>
+                            <% String sort = manufacturerObject.getSort(); %>
 
                             <% if (sort.equals("DESC")) {%>
                             <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
@@ -142,7 +147,9 @@
                             <div class="leftheadersearch">
                                 <div>
                                     <i class="fa fa-search"></i>
-                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit" value="<%=manufacturerObject.getSearch()%>">
+                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
+                                           value="<%=manufacturerObject.getSearch()%>">
+                                    <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +163,7 @@
 
                             <%
                                 //  Lấy list next page đổ next page ra
-                                List<NextPageObject> nextPages= manufacturerObject.getNextPages();
+                                List<NextPageObject> nextPages = manufacturerObject.getNextPages();
                                 for (NextPageObject n : nextPages) {
                             %>
                             <li
@@ -190,7 +197,7 @@
                     <!-- sort -->
                     <% if (sort.equals("DESC")) {%>
                     <input type="checkbox" style="display: none" name="sort" id="sort">
-                    <% }else{%>
+                    <% } else {%>
                     <input type="checkbox" style="display: none" name="sort" id="sort" checked>
                     <%}%>
                 </form>
@@ -258,6 +265,7 @@
                                     <label>* Tên hãng</label>
                                     <input type="text" placeholder="Nhập tên hãng sản xuất ở đây"
                                            value="<%=m.getManufacturerName()%>">
+                                    <input type="text" style="display: none" value="<%=m.getManufacturerId()%>">
                                 </div>
                                 <div class="linediv12"></div>
                                 <button onclick="themitemchitiet(this)"><i class="fa fa-plus"></i> Thêm chi tiết mới
@@ -285,7 +293,7 @@
 
                                 </div>
                                 <div class="linediv12"></div>
-                                <button><i class="fa fa-save"></i>Lưu</button>
+                                <button onclick="capnhap()"><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                             </div>
                             <div class="div13">
@@ -312,14 +320,14 @@
                     <div class="linediv12"></div>
                     <div class="div12input">
                         <label>* Tên hãng</label>
-                        <input type="text" placeholder="Nhập tên hãng sản xuất ở đây">
+                        <input type="text" placeholder="Nhập tên hãng sản xuất ở đây" id="">
                     </div>
                     <div class="linediv12"></div>
                     <button onclick="themitemchitiet2(this)"><i class="fa fa-plus"></i> Thêm chi tiết mới</button>
                     <div class="listItemChiTiet">
                     </div>
                     <div class="linediv12"></div>
-                    <button><i class="fa fa-plus"></i>Thêm danh mục</button>
+                    <button onclick="themmoi()"><i class="fa fa-plus"></i>Thêm danh mục</button>
                     <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                 </div>
                 <div class="div13">

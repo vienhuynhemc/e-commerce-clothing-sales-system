@@ -118,14 +118,64 @@ public class ManufacturerModel {
     }
 
     //  Phương thức nhận vào list mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
-    public boolean removeGroupManufacturerInDatabase(String[] manufacturerIds){
+    public int removeGroupManufacturerInDatabase(String[] manufacturerIds) {
 
         //  Mượn manufacturer works with database
         ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
         //  update xóa nó trong cơ sở dữ liệu
-        boolean result = manufacturerWorksWithDatabase.removeGroupManufacturerInDatabase(manufacturerIds);
+        int result = manufacturerWorksWithDatabase.removeGroupManufacturerInDatabase(manufacturerIds);
 
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức lấy mã hãng sản xuất tiếp theo
+    public String getNextManufacturerId() {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy mã hãng sản xuất tiếp theo
+        String result = manufacturerWorksWithDatabase.getNextManufacturerId();
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức thêm một hãng sản xuất mới vào database , nhận vào id và name hãng sản xuất
+    public boolean addManufacturerToDatabase(String manufacturerId, String manufacturerName) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy kết quả add
+        boolean result = manufacturerWorksWithDatabase.addManufacturerToDatabase(manufacturerId, manufacturerName);
+
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức cập nhập lại hãng sản xuất nhận vào mã hãng và tên hãng
+    public boolean updateManufacturer(String manufacturerId, String manufacturerName) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy kết quả edit
+        boolean result = manufacturerWorksWithDatabase.updateManufacturer(manufacturerId, manufacturerName);
         //  Có mượn thì có trả
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
 

@@ -9,11 +9,9 @@ import worksWithDatabase.manufacturerInformation.ManufacturerInformationWorksWit
 import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSource;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ManufacturerWorksWithDatabase {
@@ -630,7 +628,7 @@ public class ManufacturerWorksWithDatabase {
         try {
 
             //  Tạo 1 preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ? AND ton_tai = 0");
 
             //  Set dữ liệu
             preparedStatement.setString(1,maufacturerId);
@@ -661,18 +659,18 @@ public class ManufacturerWorksWithDatabase {
     }
 
     //  Phương thức nhận vào list mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
-    public boolean removeGroupManufacturerInDatabase(String[] manufacturerIds){
+    public int removeGroupManufacturerInDatabase(String[] manufacturerIds){
 
         //  Lấy connection
         Connection connection = DataSource.getInstance().getConnection();
 
         //  Kết quả
-        boolean result = false;
+        int result = 0;
 
         try {
 
             //  Tạo 1 preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ? AND ton_tai = 0");
 
             // update
             int row = 0;
@@ -681,10 +679,8 @@ public class ManufacturerWorksWithDatabase {
                 row+= preparedStatement.executeUpdate();
             }
 
-            //  Nếu có đúng số dòng bằng length mảng truyền vào là
-            if(row == manufacturerIds.length){
-                result  =true;
-            }
+            //  Gán lại số dòng đã xóa là bao nhiêu
+            result = row;
 
             //  Đóng các thứ
             preparedStatement.close();
@@ -703,6 +699,132 @@ public class ManufacturerWorksWithDatabase {
 
     }
 
+    //  Phương thức lấy mã hãng sản xuất tiếp theo
+    public String getNextManufacturerId(){
 
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kết quả
+        String result = null;
+
+        //  Khai báo vị trí
+        int index = 0;
+
+        try {
+
+            //  Tạo connection
+            Statement statement = connection.createStatement();
+
+            //  Lấy resultSet
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ma_hsx) AS so_luong FROM hang_san_xuat");
+
+            //  Lấy kết quả
+            while(resultSet.next()){
+                index = resultSet.getInt("so_luong")+1;
+            }
+
+            //  Đóng các thứ
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Ráp vô kết quả
+        result = "hsx_"+index;
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào mã_hsx và tên hãng , thêm vô bảng hang_san_xuat
+    public boolean addManufacturerToDatabase(String manufacturerId,String manufacturerName){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kểt quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO hang_san_xuat VALUES (?,?,?,?)");
+
+            //  Tạo ngày tạo là ngày hôm nay
+            Date date = new Date();
+            DateTime nowDate = new DateTime(date.getYear()+1900,date.getMonth()+1,date.getDate(),date.getHours(),date.getMinutes(),date.getSeconds());
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,manufacturerId);
+            preparedStatement.setString(2,manufacturerName);
+            preparedStatement.setString(3,nowDate.toString());
+            preparedStatement.setInt(4,0);
+
+            //  update
+            int row = preparedStatement.executeUpdate();
+
+            //  Kiểm tra số dòng được thêm vào
+            if(row == 1) result = true;
+
+            //  Đóng các kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả kết quả
+        return result;
+
+    }
+
+    //  Phương thức cập nhập lại hãng sản xuất nhận vào mã hãng và tên hãng
+    public boolean updateManufacturer(String manufacturerId,String manufacturerName){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat SET ten_hsx = ? WHERE ma_hsx = ? AND ton_tai = 0");
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,manufacturerName);
+            preparedStatement.setString(2,manufacturerId);
+
+            //  update
+            int row = preparedStatement.executeUpdate();
+
+            //  Kiểm tra xem thử có oke hay không
+            if(row == 1) result = true;
+
+            //  Đóng kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả
+        return result;
+
+    }
 
 }

@@ -311,10 +311,100 @@ node.addEventListener("keyup", function (event) {
     }
 });
 
+function loadPage(){
+    document.getElementById("action").value = "load";
+    document.getElementById("mainForm").submit();
+}
+
 function hiddenFormYesNo() {
     document.getElementById("formYesNo").style.transform = 'scaleY(0)';
 }
 
 function hiddenNotifiSuccess() {
     document.getElementById("notifiSuccess").style.transform = 'scaleY(0)';
+}
+
+function themmoi() {
+    let l1 = document.getElementById("div1").children[0].children;
+    let l2 = l1[1].children;
+
+    let l3 = l2[2].children;
+    let nameHang = l3[1].value;
+
+    let array = [];
+    let l4 = l2[5].children;
+    for (let i = 0; i < l4.length; i++) {
+        let l5 = l4[i].children;
+        let value = l5[0].value;
+        value = value.trim();
+        if(value.length>0){
+            array.push(value);
+        }
+    }
+
+    nameHang = nameHang.trim();
+    if (nameHang.length > 0) {
+
+        let information = '';
+        for (let i = 0; i < array.length; i++) {
+            if(i  == array.length-1){
+                information += array[i];
+            }else{
+                information += array[i] + ";";
+            }
+        }
+
+        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm hãng sản xuất mới';
+        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm vào sẽ thay đổi dữ liệu của bạn ';
+        let item = document.createElement("i");
+        item.classList.add("fa");
+        item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").href = `../../ManufacturerAddController?manufacturerName=${nameHang}&&manufacturerInformations=${information}`;
+        document.getElementById("formYesNoTitle2").appendChild(item);
+        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+    }
+
+}
+
+function capnhap() {
+    let l1 = document.getElementById("div3").children[0].children;
+    let l2 = l1[1].children;
+
+    let l3 = l2[2].children;
+    let nameHang = l3[1].value;
+    let maHang = l3[2].value;
+
+    let array = [];
+    let l4 = l2[5].children;
+    for (let i = 0; i < l4.length; i++) {
+        let l5 = l4[i].children;
+        let value = l5[0].value;
+        value = value.trim();
+        if(value.length>0){
+            array.push(value);
+        }
+    }
+
+    nameHang = nameHang.trim();
+    if (nameHang.length > 0) {
+
+        let information = '';
+        for (let i = 0; i < array.length; i++) {
+            if(i  == array.length-1){
+                information += array[i];
+            }else{
+                information += array[i] + ";";
+            }
+        }
+
+        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn cập nhật lại hãng sản xuất này';
+        document.getElementById("formYesNoTitle2").innerText = 'Việc cập nhật lại sẽ thay đổi dữ liệu của bạn ';
+        let item = document.createElement("i");
+        item.classList.add("fa");
+        item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").href = `../../ManufacturerEditController?manufacturerName=${nameHang}&&manufacturerInformations=${information}&&manufacturerId=${maHang}`;
+        document.getElementById("formYesNoTitle2").appendChild(item);
+        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+    }
+
 }
