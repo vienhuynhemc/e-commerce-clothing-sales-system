@@ -3,6 +3,7 @@ package worksWithDatabase.category;
 import beans.DateTime;
 import beans.category.Category;
 import connectionDatabase.DataSource;
+import model.category.CategoryModel;
 
 import java.sql.*;
 import java.sql.Date;
@@ -116,8 +117,8 @@ public class CategoryWorksWithDatabase {
         return false;
     }
     // hiển thị danh sách danh mục sản phẩm
-    public static List<Category> getAllCategories(){
-        List<Category> categories = new ArrayList<>();
+    public static ArrayList<Category> getAllCategories(){
+        ArrayList<Category> categories = new ArrayList<>();
         Connection connection = DataSource.getInstance().getConnection();
         try {
             Statement s = connection.createStatement();
@@ -454,15 +455,90 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
+    // hiển thị số danh mục từ kết quả tìm kiếm để phân trang (theo tên danh mục)
+//    public static int numberOfPage(String input){
+//        Connection connection = DataSource.getInstance().getConnection();
+//        try {
+//            PreparedStatement s = connection.prepareStatement("SELECT COUNT(*) FROM danh_muc WHERE ten_dm LIKE ?");
+//            s.setString(1,"%"+input+"%");
+//            ResultSet rs = s.executeQuery();
+//            while(rs.next()){
+//                return rs.getInt(1);
+//            }
+//            rs.close();
+//            s.close();
+//            DataSource.getInstance().releaseConnection(connection);
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        DataSource.getInstance().releaseConnection(connection);
+//        return 0;
+//    }
+    public static int numberOfPage(){
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            Statement s = connection.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT COUNT(*) FROM danh_muc WHERE ton_tai = 1");
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return 0;
+    }
+    // vid dụ 15 trang
+    public static int getIndex(int index,int number){
+        int result = number*(index-1)+1;
+        return result;
+    }
+    public static ArrayList<Category> getCategoriesByIndex(int index,int number){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            ArrayList<Category> categories = new ArrayList<>();
+            PreparedStatement s = connection.prepareStatement("select * from danh_muc LIMIT ?,?");
+            int value = getIndex(index,number);
+            s.setInt(1,value);
+            s.setInt(2,number);
+
+            ResultSet rs = s.executeQuery();
+            while(rs.next()){
+                Category category = new Category();
+                category.setId(rs.getString("ma_dm"));
+                category.setName(rs.getString("ten_dm"));
+                DateTime dateTime = getDateTime(rs.getString("ngay_tao"));
+                category.setDateCreated(dateTime);
+                category.setExist(rs.getInt("ton_tai"));
+                categories.add(category);
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return categories;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
+    }
 
     public static void main(String[] args) {
 //       System.out.println(addCategory("ÁP"));
-//        for(Category ca : getCategoriesByNameASC()){
-//            System.out.println(ca);
-//        }
-        System.out.println(removeCategory("dm_6"));
+        for(Category ca : getCategoriesByIndex(1,3)){
+            System.out.println(ca);
+        }
+       // System.out.println(removeCategory("dm_6"));
 
-    }
+
+        }
+
+
 
 
 }

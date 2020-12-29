@@ -1,7 +1,8 @@
 <%@ page import="beans.category.Category" %>
 <%@ page import="worksWithDatabase.category.CategoryWorksWithDatabase" %><%--<%@ page import="beans.category.Category" %>--%>
 <%--<%@ page import="worksWithDatabase.category.CategoryWorksWithDatabase" %>--%>
-<%@ page import="java.util.List" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:00 CH To change this template use File |
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:00 CH To change this template use File |
     Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,12 +15,12 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>TVTSHOP ADMIN | Quản lý danh mục</title>
-            <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-            <link rel="stylesheet" href="../../css/indexAdmin.css">
-            <script src="../../js/indexAdmin.js"></script>
+            <link rel="stylesheet" href="css/indexAdmin.css">
+            <script src="js/indexAdmin.js"></script>
 
-            <link rel="stylesheet" href="../../css/quanLyDanhMucAdmin.css">
+            <link rel="stylesheet" href="css/quanLyDanhMucAdmin.css">
 
 
         </head>
@@ -321,7 +322,7 @@
                                     <form action="../../FilterCategoryController" method="post">
 
                                         <select name="sort" id="sort">
-                                            <a href="../../CategoryController?type="><option value="1" selected>Ngày tạo</option></a>
+                                            <a href="CategoryController?type="><option value="1" selected>Ngày tạo</option></a>
                                             <option value="2" >Tên danh mục</option>
                                             <option value="3" >Mã danh mục</option>
                                             <option value="4" >Số lượng sản phẩm</option>
@@ -336,29 +337,36 @@
                                             <input type="checkbox" style="display: none;">
                                         </div>
                                         <% %>
-                                        <form action="../../SearchCategoryController" method="post">
                                             <div class="leftheadersearchs">
-<%--                                                <i class="fa fa-search" onclick="showsearch2(this)"></i>--%>
+                                                <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                                 <div>
-<%--                                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
-                                                    <input type="text" name = "keyword" placeholder="Tìm kiếm">
-                                                     <input type="submit" value="Tìm kiếm">
+                                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
+                                                    <input type="text" placeholder="Tìm kiếm">
+<%--                                                     <input type="submit" value="Tìm kiếm">--%>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                 </div>
                                 <div class="leftnextpage">
                                     <p>Hiển thị <strong> 13 </strong> trên tổng 135 danh mục</p>
                                     <button><i class="fa fa-caret-left"></i></button>
                                     <ul>
-                                        <li>1</li>
-                                        <li>2</li>
-                                        <li>3</li>
-                                        <li>4</li>
-                                        <li>5</li>
-                                        <li class="none">...</li>
-                                        <li>9</li>
+<%--                                        <li>1</li>--%>
+<%--                                        <li>2</li>--%>
+<%--                                        <li>3</li>--%>
+<%--                                        <li>4</li>--%>
+<%--                                        <li>5</li>--%>
+<%--                                        <li class="none">...</li>--%>
+<%--                                        <li>9</li>--%>
+                                        <%
+                                            int numberOfPage = (int) request.getAttribute("numberOfPage");
+                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");
+                                        %>
+
+                                        <% for(int i = 0; i< list.size();i++){%>
+                                        <a href="CategoryController?idd=<%= (i+1) %>"><li><%= (i+1) %></li></a>
+                                        <%}%>
+
                                     </ul>
                                     <button><i class="fa fa-caret-right"></i></button>
                                 </div>
@@ -375,25 +383,27 @@
                                     <p>Ngày tạo</p>
                                 </div>
 
-                                <%
-                                    for(Category c : CategoryWorksWithDatabase.getCategoriesByIdASC()){%>
+<%--                                <%--%>
+<%--                                    for(Category c : CategoryWorksWithDatabase.getCategoriesByIdASC()){%>--%>
+                                <c:forEach items="${list}" var="c">
                                 <div class="item">
                                     <label for="c1">
                                         <input type="checkbox" name="" id="c1">
                                     </label>
                                     <p>
-                                        #<%= c.getId()%>
+<%--                                        #<%= c.id%>--%>
+                                        #${c.id}
                                     </p>
                                     <p>
-                                            <%= c.getName() %>
+<%--                                            <%= c.name %>--%>
+                                        ${c.name}
                                     </p>
-
                                     <p>
                                         24
                                     </p>
-
                                     <p>
-                                        <%= c.getDateCreated() %>
+                                         ${c.dateCreated}
+<%--                                        <%= c.dateCreated %>--%>
                                     </p>
 
                                     <div class="itemsubmit" onclick="showselect(this)">
@@ -403,11 +413,11 @@
                                         <i class="fa fa-circle"></i>
                                         <div>
 
-                                           <button type="submit"><a href="quanLyDanhMuc(Form_capnhat).jsp?id=<%= c.getId() %>"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
+                                           <button type="submit"><a href="quanLyDanhMuc(Form_capnhat).jsp?id=${c.id}"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
 
-                                            <form action="../../RemoveCategoryController" method="post">
+                                            <form action="RemoveCategoryController" method="post">
 
-                                                <button type="submit" name="name_C" value=" <%= c.getId() %>"><i class="fa fa-trash"></i>Xóa</button>
+                                                <button type="submit" name="name_C" value=" ${c.id} "><i class="fa fa-trash"></i>Xóa</button>
                                             </form>
                                         </div>
                                     </div>
@@ -433,7 +443,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <%}%>
+                                </c:forEach>
+<%--                                <% }%>--%>
 
                             </div>
                         </div>
@@ -455,7 +466,7 @@
                                    </div>
                                    <div class="linediv12"></div>
                                    <button type="submit"><i class="fa fa-plus"></i>Thêm danh mục</button>
-                                   <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
+                                   <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                                    </form>
                                </div>
 
@@ -476,4 +487,4 @@
 
         </html>
 
-        <script src="../../js/quanLyDanhMucAdmin.js"></script>
+        <script src="js/quanLyDanhMucAdmin.js"></script>

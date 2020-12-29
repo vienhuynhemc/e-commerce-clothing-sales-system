@@ -20,11 +20,12 @@ public class RemoveCategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id =  request.getParameter("name_C");
         if(CategoryModel.checkRemoveCategory(id)){
-            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
             System.out.println(id);
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
         }
         else {
             response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
         }
+
     }
 }
