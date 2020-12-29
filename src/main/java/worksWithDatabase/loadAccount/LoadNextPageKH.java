@@ -27,7 +27,7 @@ public class LoadNextPageKH {
             String sql = "select a.IDUser, a.Type,a.UserName," +
                     "a.`PassWord`,a.Email,a.Phone, a.Avatar, a.DisplayName," +
                     "a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate  " +
-                    "from account a , customer c WHERE a.IDUser = c.IDUser";
+                    "from account a , customer c WHERE a.IDUser = c.IDUser Order  by a.RegisDate DESC";
             Statement sm = con.createStatement();
             ResultSet rs = sm.executeQuery(sql);
 

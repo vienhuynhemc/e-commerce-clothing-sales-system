@@ -26,7 +26,7 @@ public class LoginUserCustomerController extends HttpServlet {
         if(accountCustomer != null){
             HttpSession session = request.getSession();
             session.setAttribute("user",accountCustomer);
-            request.setAttribute("loginStatus",LoginUserModel.getInstance().getStatus());
+            request.setAttribute("loginStatus","OK");
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }else{ // nếu = null chứng tỏ sai
             request.setAttribute("loginStatus",LoginUserModel.getInstance().getStatus());

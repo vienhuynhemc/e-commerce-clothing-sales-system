@@ -18,12 +18,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý khách hàng</title>
-    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../../css/indexAdmin.css">
-    <script src="../../js/indexAdmin.js"></script>
+    <link rel="stylesheet" href="css/indexAdmin.css">
+    <script src="js/indexAdmin.js"></script>
 
-    <link rel="stylesheet" href="../../css/quanLyKhachHangAdmin.css">
+    <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
 
 
 </head>
@@ -320,29 +320,40 @@
         <div id="div2">
             <div>
                 <div class="header">
-                    <div class="leftheader">
-                        <select name="" id="">
-                            <option value="" selected>Ngày tạo</option>
-                            <option value="">Họ và tên</option>
-                            <option value="">Tài khoản</option>
-                            <option value="">Kích hoạt</option>
-                            <option value="">Đánh giá</option>
-                        </select>
-                        <div>
-                            <div class="leftheadersort" onclick="changesort2(this)">
-                                <i class=" fa fa-sort-amount-desc"></i>
-                                <i class=" fa fa-sort-amount-asc"></i>
-                                <input type="checkbox" style="display: none;">
-                            </div>
-                            <div class="leftheadersearch">
-                                <i class="fa fa-search" onclick="showsearch2(this)"></i>
-                                <div>
-                                    <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                    <input type="text" placeholder="Tìm kiếm">
+
+
+                    <!--code------------------------------------------------------------------->
+
+                    <form action="LoadAccountKHController?page=1" method="get">
+                        <div class="leftheader">
+                            <select name="type" id="">
+                                <option value="RegisDate" selected>Ngày tạo</option>
+                                <option value="FullName">Họ và tên</option>
+                                <option value="UserName">Tài khoản</option>
+                            </select>
+                            <div>
+                                <div class="leftheadersort" onclick="changesort2(this)">
+                                    <i class=" fa fa-sort-amount-desc"></i>
+
+                                    <input type="hidden" name="orderBy" value="DESC">
+
+                                    <i class=" fa fa-sort-amount-asc"></i>
+                                    <input type="checkbox" style="display: none;">
+                                </div>
+                                <div class="leftheadersearch">
+
+                                    <button type="submit" > <i class="fa fa-search" type="submit" onclick="showsearch2(this)"></i></button>
+                                    <input type="text" name="search" placeholder="Tìm kiếm" value="${param.search}">
+<%--                                    <div>--%>
+<%--                                        <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
+<%--                                        --%>
+<%--                                    </div>--%>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    </form>
+
                     <div class="leftnextpage">
                         <p>Hiển thị <strong> 10 </strong> trên tổng 95 khách hàng</p>
                         <button><i class="fa fa-caret-left"></i></button>
@@ -351,10 +362,14 @@
                             <c:forEach begin="1" end="${numberPage}" var="i" >
                             <li><a href="LoadAccountKHController?page=${i}"> ${i} </a></li>
                             </c:forEach>
-                           
+
                         </ul>
                         <button><i class="fa fa-caret-right"></i></button>
                     </div>
+
+
+
+
                     <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
                     <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                 </div>
@@ -692,7 +707,7 @@
             const name = file.name;
             let link;
             let nameData = name.split('.')[0];
-            const folder = "Account/" + nameData;
+            const folder = "Avatar/" + nameData;
             const metadata = {contentType: file.type};
             const task = ref.child(folder).put(file, metadata);
             task
@@ -709,7 +724,7 @@
                 });
 
 //Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
-            firebase.database().ref("Account/").on('value', function (snapshot) {
+            firebase.database().ref("Avatar/").on('value', function (snapshot) {
                 document.getElementById('avatar').src = snapshot.val().Link;
             })
         }
@@ -727,4 +742,4 @@
     }
 
 </script>
-<script src="../../js/quanLyKhachHangAdmin.js"></script>
+<script src="js/quanLyKhachHangAdmin.js"></script>

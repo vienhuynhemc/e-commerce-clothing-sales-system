@@ -16,6 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVT SHOP | Tài khoản khách hàng</title>
 
+
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
@@ -26,6 +28,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/trangChu.css">
     <script src="js"></script>
+
     <link rel="stylesheet" href="css/banner.css">
     <link rel="stylesheet" href="css/informationCustomer.css">
     <link rel="stylesheet" href="css/cart.css">
@@ -56,7 +59,7 @@
 
 <!-- main-->
 
-<form action="EditAccountController?UserName=<%=accountCustomer.getUserName()%>" method="post">
+<form action="EditAccountController" method="post">
         <div class="mainAccount" id="contentaccount">
         <div class="contentAccount">
             <div class="left" id="leftaccount">
@@ -77,13 +80,13 @@
 
                 <div class="customer">
                     <div class="imguser">
-                        <img id="avatar" src="../img/about/c1.jpg" alt="">
+                        <img id="avatar" src="<%=accountCustomer.getAvatar()%>" alt="">
                     </div>
                     <p class="titleuser"><%=accountCustomer.getFullName()%><i class="fa fa-circle"></i></p>
                     <p class="gmailuser"><%=accountCustomer.getEmail()%></p>
                     <p class="soinoi">Độ sôi nổi: Tiêu chuẩn</p>
                     <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)"/>
-                    <button class=" changeimg" onclick="document.getElementById('fileInput').click()">Thay đổi ảnh đại
+                    <button type="button" class=" changeimg" onclick="document.getElementById('fileInput').click()">Thay đổi ảnh đại
                         diện
                     </button>
 
@@ -120,10 +123,11 @@
                     <p class="statusavatar">Ảnh đại diện</p>
                     <div class="divavatar">
                         <div class="avatar">
-                            <img id="avatar2" src="../img/about/c1.jpg" alt="">
+                            <input id="loadAvatar" type="hidden" name="avatar" value="<%=accountCustomer.getAvatar()%>" >
+                            <img name="avatar" id="avatar2" src="<%=accountCustomer.getAvatar()%>" alt="">
                         </div>
-                        <button onclick="document.getElementById('fileInput').click()">Thay đổi</button>
-                        <button onclick="removeAvatar()">Xóa</button>
+                        <button type="button" onclick="document.getElementById('fileInput').click()">Thay đổi</button>
+                        <button type="button" onclick="removeAvatar()">Xóa</button>
                     </div>
                     <div class="linestatus"></div>
                     <div class="statusdivinput">
@@ -149,7 +153,8 @@
                                 <p>Tài khoản</p>
                                 <p>Dùng để đăng nhập</p>
                             </div>
-                            <input name="userName" type="text" value="<%=accountCustomer.getUserName()%> " disabled>
+                            <input name="" type="text" value="<%=accountCustomer.getUserName()%> " disabled>
+                            <input name="userName" type="hidden" value="<%=accountCustomer.getUserName()%>">
                         </div>
                         <div class="statusdivinputitem">
                             <div>
@@ -384,8 +389,8 @@
                     <button type="button" onclick="gotosuccesspassword()">Thay đổi mật khẩu</button>
                 </div>
                 <div class="changepasswordsuccess" id="changepasswordsuccess">
-                    <p>Thay đổi mật khẩu thành công</p>
-                    <p>Từ bây giờ, bạn có thể sử dụng mật khẩu mới của mình để đăng nhập vào tài khoản của bạn <img
+                    <p>Thay đổi mật khẩu</p>
+                    <p>Hãy nhẫn lưu để tiến hành thay đổi mật khẩu của bạn <img
                             src="../img/raising-hands-emoji-218129.png" alt=""></p>
                     <button type="button" onclick="gobackpassword()">Trở về tài khoản</button>
                 </div>
@@ -400,31 +405,31 @@
 
 
 <!-- sử lí hiện bảng thông báo ---->
-<%
-    //lấy request loginStatus != null thì đăng nhập thất bại
+<%--<%--%>
+<%--    //lấy request loginStatus != null thì đăng nhập thất bại--%>
 
-    String status = (String) request.getAttribute("error");
+<%--    String status = (String) request.getAttribute("error");--%>
 
-    if (status  != null) {
+<%--    if (status  != null) {--%>
 
-        //truyển status vào để sử lí
-        ErrorEditAccountCustomer editError = new ErrorEditAccountCustomer(status);
-%>
+<%--        //truyển status vào để sử lí--%>
+<%--        ErrorEditAccountCustomer editError = new ErrorEditAccountCustomer(status);--%>
+<%--%>--%>
 
-<script>
+<%--<script>--%>
 
-    document.getElementById("doimatkhau").onclick="doimatkhau()";
+<%--    document.getElementById("doimatkhau").onclick="doimatkhau()";--%>
 
-</script>
+<%--</script>--%>
 
-<%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../notifyErrorLogin/AccountStatus.jsp">
-    <jsp:param name="title" value="<%=editError.getTitle()%>"/>
-    <jsp:param name="content" value="<%=editError.getContent()%>"/>
-</jsp:include>
-<%
-    }
-%>
+<%--<%request.setCharacterEncoding("utf-8");%>--%>
+<%--<jsp:include page="../notifyErrorLogin/AccountStatus.jsp">--%>
+<%--    <jsp:param name="title" value="<%=editError.getTitle()%>"/>--%>
+<%--    <jsp:param name="content" value="<%=editError.getContent()%>"/>--%>
+<%--</jsp:include>--%>
+<%--<%--%>
+<%--    }--%>
+<%--%>--%>
 
 
 <!--cart-->
@@ -494,7 +499,7 @@
                                     <a href="" class="cartleftmainimg"> <img src="../img/product/pro4.webp" alt=""></a>
                                     <a href="">
                                         <div class="cartleftmainiteminfor">
-                                            <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
+                                            <p >Áo Sweater Logo Sài Gòn MSW 1003</p>
                                             <h6>Áo thun tay dài | Size: M</h6>
                                         </div>
                                     </a>
@@ -681,8 +686,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
             const name = file.name;
             let link;
             let nameData = name.split('.')[0];
-            const folder = "ProductNam/" + nameData;
+            const folder = "Avatar/" + nameData;
             const metadata = {contentType: file.type};
+            let urlm;
             const task = ref.child(folder).put(file, metadata);
             task
                 .then(snapshot => snapshot.ref.getDownloadURL())
@@ -690,6 +696,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                     alert("Thanh cong");
                     document.getElementById('avatar').src = url;
                     document.getElementById('avatar2').src = url;
+                    document.getElementById("loadAvatar").value = url;
+                    urlm = url;
+
                     link = url;
                     firebase.database().ref(folder).set({
                         Name: nameData,
@@ -697,22 +706,26 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                     })
                 });
 
-//Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
-            firebase.database().ref("ProductNam/index").on('value', function (snapshot) {
-                document.getElementById('avatar').src = snapshot.val().Link;
-            })
+// Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
+//             firebase.database().ref().on('value', function (snapshot) {
+//                 document.getElementById('avatar').src = snapshot.val().Link;
+//                 document.getElementById('avatar2').src = snapshot.val().Link;
+//                 document.getElementById("loadAvatar").value = snapshot.val().Link;
+//             })
         }
     }
 
     function removeAvatar() {
+
         document.getElementById('avatar').src = '../img/user.jpg';
         document.getElementById('avatar2').src = '../img/user.jpg';
-
 // xoá thì truyền link vào
 //database
-        firebase.database().ref('ProductNam/map').remove();
+        firebase.database().ref(<%=accountCustomer.getAvatar()%>).remove();
         // img
-        firebase.storage().ref('ProductNam/map').delete();
+        firebase.storage().ref(<%=accountCustomer.getAvatar()%>).delete();
+
+
     }
 
 </script>

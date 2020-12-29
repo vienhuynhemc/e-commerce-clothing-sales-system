@@ -1464,11 +1464,13 @@
 <%
     //lấy request user == null thì đăng nhập thành công
 
-    AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user");
+    //AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user");
 
-    if (accountCustomer  != null) {
+    String status = (String) request.getAttribute("loginStatus");
+
+    if (status  != null) {
         //truyển status vào để sử lí
-        ErrorLogin errorLogin = new ErrorLogin("ok");
+        ErrorLogin errorLogin = new ErrorLogin(status);
 
 %>
 

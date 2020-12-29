@@ -146,6 +146,6 @@ public class AccountCustomer {
                 ", regisDate=" + regisDate +
                 ", activeStatus=" + activeStatus +
                 ", activeEvaluate=" + activeEvaluate +
-                '}';
+                '}' + "\n";
     }
 }

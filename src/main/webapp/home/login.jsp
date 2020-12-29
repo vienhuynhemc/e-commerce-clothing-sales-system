@@ -204,7 +204,7 @@
 
                     String statusSignUP = (String) request.getAttribute("status");
 
-                    if (status != null) {
+                    if (statusSignUP != null) {
                         //truyển status vào để sử lí
                         ErrorSignUpAccount errorAccount = new ErrorSignUpAccount(statusSignUP);
 

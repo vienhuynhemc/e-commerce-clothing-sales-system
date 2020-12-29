@@ -18,4 +18,8 @@ public class LoadNextPageModel {
         return new LoadNextPageKH().loadNextPageKH();
     }
 
+    public static void main(String[] args) {
+        System.out.println(LoadNextPageModel.getInstance().loadNumberPageKH());
+    }
+
 }
