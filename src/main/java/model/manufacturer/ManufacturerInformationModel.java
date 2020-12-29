@@ -38,4 +38,21 @@ public class ManufacturerInformationModel {
 
     }
 
+    //  Phương thức nhận vào ma_hsx và list information cập nhập nó trong cơ sở dữ liệu
+    public boolean updateInformation(String manufacturerId, String[] informations) {
+
+        //  Lấy ông thông tin sản xuất làm việc với database
+        ManufacturerInformationWorksWithDatabase manufacturerInformationWorksWithDatabase = ManufacturerInformationDataSource.getInstance().getManufacturerInformationWorksWithDatabase();
+
+        //  edit to database
+        boolean result = manufacturerInformationWorksWithDatabase.updateInformation(manufacturerId, informations);
+
+        //  Lấy thì trả
+        ManufacturerInformationDataSource.getInstance().releaseManufacturerInformationWorksWithDatabase(manufacturerInformationWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }

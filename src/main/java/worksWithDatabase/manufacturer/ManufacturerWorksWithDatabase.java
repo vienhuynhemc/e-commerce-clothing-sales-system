@@ -790,4 +790,43 @@ public class ManufacturerWorksWithDatabase {
 
     }
 
+    //  Phương thức cập nhập lại hãng sản xuất nhận vào mã hãng và tên hãng
+    public boolean updateManufacturer(String manufacturerId,String manufacturerName){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat SET ten_hsx = ? WHERE ma_hsx = ?");
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,manufacturerName);
+            preparedStatement.setString(2,manufacturerId);
+
+            //  update
+            int row = preparedStatement.executeUpdate();
+
+            //  Kiểm tra xem thử có oke hay không
+            if(row == 1) result = true;
+
+            //  Đóng kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }

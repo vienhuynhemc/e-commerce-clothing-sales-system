@@ -168,4 +168,20 @@ public class ManufacturerModel {
 
     }
 
+    //  Phương thức cập nhập lại hãng sản xuất nhận vào mã hãng và tên hãng
+    public boolean updateManufacturer(String manufacturerId, String manufacturerName) {
+
+        //  Mượn manufacturer works with database
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy kết quả edit
+        boolean result = manufacturerWorksWithDatabase.updateManufacturer(manufacturerId, manufacturerName);
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }

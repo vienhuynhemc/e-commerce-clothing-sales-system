@@ -14,6 +14,11 @@ import java.io.IOException;
 public class ManufacturerAddController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // set charset cho cả request và responne
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         //  Lấy tên hãng ra
         String manufacturerName = request.getParameter("manufacturerName");
 

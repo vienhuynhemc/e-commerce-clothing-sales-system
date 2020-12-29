@@ -93,6 +93,13 @@ public class ManufacturerController extends HttpServlet {
                 manufacturerObject.setTitle("Bạn đã thêm thành công "+request.getAttribute("more"));
                 manufacturerObject.setConntent("Việc thêm đã thay đổi dữ liệu của bạn");
 
+            } else if(foward.equals("edit")){
+
+                //  Cập nhập lại là edit
+                manufacturerObject.setNotify(true);
+                manufacturerObject.setTitle("Bạn đã cập nhật thành công "+request.getAttribute("more"));
+                manufacturerObject.setConntent("Việc cập nhật đã thay đổi dữ liệu của bạn");
+
             }
 
             //  Gán lại cho sesstion

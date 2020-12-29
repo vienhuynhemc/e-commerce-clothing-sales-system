@@ -98,4 +98,56 @@ public class ManufacturerInformationWorksWithDatabase {
 
     }
 
+    //  Update các thông tin vô database dựa theo ma_hsx nhận vào và list thông tin
+    public boolean updateInformation(String manufacturerId, String[] informations) {
+
+        //  Mượn connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kết quả
+        boolean result = false;
+
+        try {
+
+            //  Trước tiên xóa tất cả những thứ liên quan đến nó, sau đó add lại
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM chi_tiet_hsx WHERE ma_hsx = ?");
+            preparedStatement.setString(1,manufacturerId);
+            preparedStatement.executeUpdate();
+
+            //Sau đó add lại
+            preparedStatement = connection.prepareStatement("INSERT INTO chi_tiet_hsx VALUES(?,?)");
+
+            //  Set giá trị đầu là ma_hsx
+            preparedStatement.setString(1, manufacturerId);
+
+            //  Khai báo số row được thêm vô
+            int row = 0;
+
+            //  update insert tất cả informations
+            for (String s : informations) {
+                preparedStatement.setString(2, s);
+                row += preparedStatement.executeUpdate();
+            }
+
+            //  Kiểm tra , nếu row thêm vô == informations.length thì bạn đúng
+            if (row == informations.length) {
+                result = true;
+            }
+
+            //  Đóng các kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }
