@@ -27,10 +27,12 @@ public class SignUpController extends HttpServlet {
 
         System.out.println(exe);
 
+
         if (exe.equals("OK")) {
-            request.setAttribute("status", exe);
+            request.setAttribute("statuss", exe);
             request.getRequestDispatcher("home/login.jsp").forward(request, response);
-        } else {
+        }
+        else {
             request.setAttribute("statuss", exe);
             request.getRequestDispatcher("home/login.jsp").forward(request, response);
         }

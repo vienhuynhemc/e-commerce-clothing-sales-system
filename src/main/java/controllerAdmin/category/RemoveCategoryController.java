@@ -1,5 +1,6 @@
 package controllerAdmin.category;
 
+import model.category.CategoryModel;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,12 @@ public class RemoveCategoryController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id =  request.getParameter("name_C");
-        CategoryWorksWithDatabase.removeCategory(id);
-        response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
-
+        if(CategoryModel.checkRemoveCategory(id)){
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            System.out.println(id);
+        }
+        else {
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        }
     }
 }
