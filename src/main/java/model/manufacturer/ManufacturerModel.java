@@ -118,13 +118,13 @@ public class ManufacturerModel {
     }
 
     //  Phương thức nhận vào list mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
-    public boolean removeGroupManufacturerInDatabase(String[] manufacturerIds) {
+    public int removeGroupManufacturerInDatabase(String[] manufacturerIds) {
 
         //  Mượn manufacturer works with database
         ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
         //  update xóa nó trong cơ sở dữ liệu
-        boolean result = manufacturerWorksWithDatabase.removeGroupManufacturerInDatabase(manufacturerIds);
+        int result = manufacturerWorksWithDatabase.removeGroupManufacturerInDatabase(manufacturerIds);
 
         //  Có mượn thì có trả
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);

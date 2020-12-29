@@ -194,7 +194,7 @@ function hiddenNotifiSuccess() {
 }
 
 
-function themmoi(){
+function themmoi() {
     let l1 = document.getElementById("div1").children[0].children;
     let l2 = l1[1].children;
 
@@ -203,11 +203,54 @@ function themmoi(){
 
     let array = [];
     let l4 = l2[5].children;
-    for(let i =0; i <l4.length;i++){
+    for (let i = 0; i < l4.length; i++) {
         console.log(l4[i]);
     }
 
     console.log(nameHang);
     console.log(array)
+
+}
+
+function changeSelect(item) {
+    let l = item.children;
+    let check = false;
+    for (let i = 0; i < l.length; i++) {
+        if (l[i].selected == true) {
+            if (i == 0) {
+                check = true;
+            }
+        }
+    }
+
+    let list1 = document.getElementById("div1").children[0].children[1].children;
+    if (!check) {
+        list1[3].classList.remove("hidden");
+    } else {
+        if (!list1[3].classList.contains("hidden"))
+            list1[3].classList.add("hidden");
+    }
+
+}
+
+
+function changeSelect2(item) {
+    let l = item.children;
+    let check = false;
+    for (let i = 0; i < l.length; i++) {
+        if (l[i].selected == true) {
+            if (i == 0) {
+                check = true;
+            }
+        }
+    }
+
+    let list1 = document.getElementById("div3").children[0].children[1].children;
+    if (!check) {
+        list1[3].classList.remove("hidden");
+    } else {
+        if (!list1[3].classList.contains("hidden"))
+            list1[3].classList.add("hidden");
+    }
 
 }

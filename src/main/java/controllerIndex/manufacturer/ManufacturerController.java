@@ -27,7 +27,7 @@ public class ManufacturerController extends HttpServlet {
         String foward = (String) request.getAttribute("forward");
 
         //  Nếu khác null thì xem thử nó là từ trang nào
-        if (foward!= null) {
+        if (foward != null) {
 
             //  Lấy đối tượng ra
             ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
@@ -67,8 +67,8 @@ public class ManufacturerController extends HttpServlet {
 
                 //  Cập nhập lại là bị xóa
                 manufacturerObject.setNotify(true);
-                manufacturerObject.setTitle("Bạn đã xóa thành công "+request.getAttribute("more"));
-                manufacturerObject.setConntent("Việc xóa đã thay đổi dữ liệu của bạn");
+                manufacturerObject.setTitle((String) request.getAttribute("more"));
+                manufacturerObject.setConntent((String) request.getAttribute("more2"));
 
                 //  Nếu là từ trang thêm thì làm như thế này
             } else if (foward.equals("add")) {
@@ -90,15 +90,15 @@ public class ManufacturerController extends HttpServlet {
 
                 //  Cập nhập lại là thêm mới
                 manufacturerObject.setNotify(true);
-                manufacturerObject.setTitle("Bạn đã thêm thành công "+request.getAttribute("more"));
+                manufacturerObject.setTitle("Bạn đã thêm thành công " + request.getAttribute("more"));
                 manufacturerObject.setConntent("Việc thêm đã thay đổi dữ liệu của bạn");
 
-            } else if(foward.equals("edit")){
+            } else if (foward.equals("edit")) {
 
                 //  Cập nhập lại là edit
                 manufacturerObject.setNotify(true);
-                manufacturerObject.setTitle("Bạn đã cập nhật thành công "+request.getAttribute("more"));
-                manufacturerObject.setConntent("Việc cập nhật đã thay đổi dữ liệu của bạn");
+                manufacturerObject.setTitle((String) request.getAttribute("more"));
+                manufacturerObject.setConntent((String) request.getAttribute("more2"));
 
             }
 
@@ -177,7 +177,7 @@ public class ManufacturerController extends HttpServlet {
             } else {
 
                 //  Action load là một thứ gì đó khác hoàn toàn nên ta phải làm như trường hợp xóa
-                if(action.equals("load")){
+                if (action.equals("load")) {
 
                     //  Lấy đối tượng ra
                     ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
@@ -218,7 +218,7 @@ public class ManufacturerController extends HttpServlet {
                     // sedirect tới trang của mình thôi nào
                     response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
 
-                }else {
+                } else {
 
                     //  Lấy đối tượng ra
                     ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");

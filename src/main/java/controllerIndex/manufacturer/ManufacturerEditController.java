@@ -33,14 +33,26 @@ public class ManufacturerEditController extends HttpServlet {
         String[] informations = manufacturerInformations.split(";");
 
         //  Cập nhập trong bảng hãng sản xuất
-        ManufacturerModel.getInstance().updateManufacturer(manufacturerId, manufacturerName);
+        boolean checkManufacturerTable = ManufacturerModel.getInstance().updateManufacturer(manufacturerId, manufacturerName);
 
-        //  Cập nhập trong bảng chi_tiet_hsx
-        ManufacturerInformationModel.getInstance().updateInformation(manufacturerId, informations);
+        //  Nếu như việc cập nhập trong bảng manufacturer thành công thì mới làm tiếp không thì thông báo hãng sản xuất không tồn tại
+        if (checkManufacturerTable) {
+
+            //  Cập nhập trong bảng chi_tiet_hsx
+            ManufacturerInformationModel.getInstance().updateInformation(manufacturerId, informations);
+
+            request.setAttribute("more", "Cập nhật thành công " + manufacturerId);
+            request.setAttribute("more2", "Việc cập nhật đã thay đổi dữ liệu của bạn");
+
+        } else {
+
+            request.setAttribute("more", "Cập nhật không thành công vì hãng sản xuất không tồn tại");
+            request.setAttribute("more2", "Dữ liệu không có gì thay đổi");
+
+        }
 
         //  Edit xong thì set một biến cho request biết là thêm một đối tượng để nó cập nhập lại
         request.setAttribute("forward", "edit");
-        request.setAttribute("more", manufacturerId);
 
         //  Xong foward tới controller đỗ dữ liệu
         request.getRequestDispatcher("ManufacturerController").forward(request, response);

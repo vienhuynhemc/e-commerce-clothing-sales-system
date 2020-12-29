@@ -628,7 +628,7 @@ public class ManufacturerWorksWithDatabase {
         try {
 
             //  Tạo 1 preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ? AND ton_tai = 0");
 
             //  Set dữ liệu
             preparedStatement.setString(1,maufacturerId);
@@ -659,18 +659,18 @@ public class ManufacturerWorksWithDatabase {
     }
 
     //  Phương thức nhận vào list mã hãng sản xuất, xóa nó trong cơ sở dữ liệu
-    public boolean removeGroupManufacturerInDatabase(String[] manufacturerIds){
+    public int removeGroupManufacturerInDatabase(String[] manufacturerIds){
 
         //  Lấy connection
         Connection connection = DataSource.getInstance().getConnection();
 
         //  Kết quả
-        boolean result = false;
+        int result = 0;
 
         try {
 
             //  Tạo 1 preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat  SET ton_tai = 1 WHERE ma_hsx = ? AND ton_tai = 0");
 
             // update
             int row = 0;
@@ -679,10 +679,8 @@ public class ManufacturerWorksWithDatabase {
                 row+= preparedStatement.executeUpdate();
             }
 
-            //  Nếu có đúng số dòng bằng length mảng truyền vào là
-            if(row == manufacturerIds.length){
-                result  =true;
-            }
+            //  Gán lại số dòng đã xóa là bao nhiêu
+            result = row;
 
             //  Đóng các thứ
             preparedStatement.close();
@@ -802,7 +800,7 @@ public class ManufacturerWorksWithDatabase {
         try {
 
             //  Tạo preparedStatement
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat SET ten_hsx = ? WHERE ma_hsx = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE hang_san_xuat SET ten_hsx = ? WHERE ma_hsx = ? AND ton_tai = 0");
 
             //  Set dữ liệu
             preparedStatement.setString(1,manufacturerName);
