@@ -126,9 +126,9 @@ public class SignUpDAO {
     }
 
     public static void main(String[] args) {
-       // System.out.println(checkUser("KH001"));
-        //System.out.println(checkMail("luducpho@gmail.com"));
-        System.out.println(addUser("truong123","agtmzxc","HUYNH NHAT TRUONG","0961185373","nhattruongagtm@gmail.com"));
+//        System.out.println(checkUser("KH001"));
+//        System.out.println(checkMail("luyducpho@gmail.com"));
+       // System.out.println(addUser("truong123","agtmzxc","HUYNH NHAT TRUONG","0961185373","nhattruongagtm@gmail.com"));
 
     }
 }
