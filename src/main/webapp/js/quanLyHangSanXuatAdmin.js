@@ -311,6 +311,11 @@ node.addEventListener("keyup", function (event) {
     }
 });
 
+function loadPage(){
+    document.getElementById("action").value = "load";
+    document.getElementById("mainForm").submit();
+}
+
 function hiddenFormYesNo() {
     document.getElementById("formYesNo").style.transform = 'scaleY(0)';
 }

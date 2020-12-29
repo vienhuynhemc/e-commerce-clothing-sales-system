@@ -176,92 +176,137 @@ public class ManufacturerController extends HttpServlet {
 
             } else {
 
-                //  Lấy đối tượng ra
-                ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
+                //  Action load là một thứ gì đó khác hoàn toàn nên ta phải làm như trường hợp xóa
+                if(action.equals("load")){
 
-                switch (action) {
+                    //  Lấy đối tượng ra
+                    ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
 
-                    case "sort":
+                    //  Lấy lại list hãng sản xuất đổ dữ liệu
+                    List<Manufacturer> manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
 
-                        //  Lấy lại cách sắp xếp
-                        if (sort != null) {
-                            manufacturerObject.setSort("DESC");
-                        } else {
-                            manufacturerObject.setSort("ASC");
+                    //  Cập nhập lại list hãng sản xuất
+                    manufacturerObject.setManufacturers(manufacturers);
+
+                    //  Kiểm tra nếu như manufacturers.size == 0 thì có nghĩa trang này hết dữ liệu rồi, cập nhập lại nowPage -1
+                    if (manufacturers.size() == 0) {
+                        if (manufacturerObject.getNowPage() > 0) {
+                            manufacturerObject.setNowPage(manufacturerObject.getNowPage() - 1);
+                            manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
+                            manufacturerObject.setManufacturers(manufacturers);
                         }
+                    }
 
-                        break;
+                    //  Cập nhập lại số lượng hiển thị
+                    manufacturerObject.setNumberOfShow(manufacturers.size());
 
-                    case "changeFilter":
+                    //  Cập nhập lại số sản phẩm tối đa
+                    int maximumMaufacturer = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
+                    manufacturerObject.setMaximumManufacturer(maximumMaufacturer);
 
-                        //  Lấy lại bộ lọc
-                        manufacturerObject.setSelectSearchAndSort(selectSearchAndSort);
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximumMaufacturer);
+                    manufacturerObject.setMaximumPage(maximumPage);
 
-                        //  Cập nhập lại maximun hãng sản xuất
-                        int maximunManufacturee = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
-                        manufacturerObject.setMaximumManufacturer(maximunManufacturee);
+                    //  Cập nhập lại list Next page
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(manufacturerObject.getNowPage(), manufacturerObject.getMaximumPage());
+                    manufacturerObject.setNextPages(nextPages);
 
-                        //  Cập nhập lại số trang tối đa
-                        int maximumPagee = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacturee);
-                        manufacturerObject.setMaximumPage(maximumPagee);
+                    //  Gán lại cho sesstion
+                    request.getSession().setAttribute("manufacturerObject", manufacturerObject);
 
-                        //  Cập nhập lại list nextPage
-                        List<NextPageObject> nextPagesss = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPagee);
-                        manufacturerObject.setNextPages(nextPagesss);
+                    // sedirect tới trang của mình thôi nào
+                    response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
 
-                        //  Cập nhập lại nowPage là 1
-                        manufacturerObject.setNowPage(1);
+                }else {
 
-                        break;
+                    //  Lấy đối tượng ra
+                    ManufacturerObject manufacturerObject = (ManufacturerObject) request.getSession().getAttribute("manufacturerObject");
 
-                    case "nextPage":
+                    switch (action) {
 
-                        //  Lấy lại nowPage
-                        manufacturerObject.setNowPage(Integer.parseInt(numberOfPage));
+                        case "sort":
 
-                        //  Cập nhập lại list nextPage
-                        List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(manufacturerObject.getNowPage(), manufacturerObject.getMaximumPage());
-                        manufacturerObject.setNextPages(nextPages);
+                            //  Lấy lại cách sắp xếp
+                            if (sort != null) {
+                                manufacturerObject.setSort("DESC");
+                            } else {
+                                manufacturerObject.setSort("ASC");
+                            }
 
-                        break;
+                            break;
 
-                    case "search":
+                        case "changeFilter":
 
-                        //  Cập nhập now page là 1
-                        manufacturerObject.setNowPage(1);
+                            //  Lấy lại bộ lọc
+                            manufacturerObject.setSelectSearchAndSort(selectSearchAndSort);
 
-                        //  Lấy lại search
-                        manufacturerObject.setSearch(search);
+                            //  Cập nhập lại maximun hãng sản xuất
+                            int maximunManufacturee = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
+                            manufacturerObject.setMaximumManufacturer(maximunManufacturee);
 
-                        //  Cập nhập lại maximun hãng sản xuất
-                        int maximunManufacture = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
-                        manufacturerObject.setMaximumManufacturer(maximunManufacture);
+                            //  Cập nhập lại số trang tối đa
+                            int maximumPagee = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacturee);
+                            manufacturerObject.setMaximumPage(maximumPagee);
 
-                        //  Cập nhập lại số trang tối đa
-                        int maximumPage = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacture);
-                        manufacturerObject.setMaximumPage(maximumPage);
+                            //  Cập nhập lại list nextPage
+                            List<NextPageObject> nextPagesss = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPagee);
+                            manufacturerObject.setNextPages(nextPagesss);
 
-                        //  Cập nhập lại list nextPage
-                        List<NextPageObject> nextPagess = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPage);
-                        manufacturerObject.setNextPages(nextPagess);
+                            //  Cập nhập lại nowPage là 1
+                            manufacturerObject.setNowPage(1);
 
-                        break;
+                            break;
+
+                        case "nextPage":
+
+                            //  Lấy lại nowPage
+                            manufacturerObject.setNowPage(Integer.parseInt(numberOfPage));
+
+                            //  Cập nhập lại list nextPage
+                            List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(manufacturerObject.getNowPage(), manufacturerObject.getMaximumPage());
+                            manufacturerObject.setNextPages(nextPages);
+
+                            break;
+
+                        case "search":
+
+                            //  Cập nhập now page là 1
+                            manufacturerObject.setNowPage(1);
+
+                            //  Lấy lại search
+                            manufacturerObject.setSearch(search);
+
+                            //  Cập nhập lại maximun hãng sản xuất
+                            int maximunManufacture = ManufacturerModel.getInstance().getMaximunManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSearch());
+                            manufacturerObject.setMaximumManufacturer(maximunManufacture);
+
+                            //  Cập nhập lại số trang tối đa
+                            int maximumPage = ManufacturerModel.getInstance().getMaximunNumberOfPage(maximunManufacture);
+                            manufacturerObject.setMaximumPage(maximumPage);
+
+                            //  Cập nhập lại list nextPage
+                            List<NextPageObject> nextPagess = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPage);
+                            manufacturerObject.setNextPages(nextPagess);
+
+                            break;
+
+                    }
+
+                    //  Lấy lại hãng sản xuất
+                    List<Manufacturer> manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
+                    manufacturerObject.setManufacturers(manufacturers);
+
+                    //  Cập nhập lại số sản phẩm hiện thị
+                    manufacturerObject.setNumberOfShow(manufacturers.size());
+
+                    //  Gán lại cho sesstion
+                    request.getSession().setAttribute("manufacturerObject", manufacturerObject);
+
+                    // sedirect tới trang của mình thôi nào
+                    response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
 
                 }
-
-                //  Lấy lại hãng sản xuất
-                List<Manufacturer> manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
-                manufacturerObject.setManufacturers(manufacturers);
-
-                //  Cập nhập lại số sản phẩm hiện thị
-                manufacturerObject.setNumberOfShow(manufacturers.size());
-
-                //  Gán lại cho sesstion
-                request.getSession().setAttribute("manufacturerObject", manufacturerObject);
-
-                // sedirect tới trang của mình thôi nào
-                response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
-
             }
         }
     }

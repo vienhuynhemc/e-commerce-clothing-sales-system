@@ -149,6 +149,7 @@
                                     <i class="fa fa-search"></i>
                                     <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
                                            value="<%=manufacturerObject.getSearch()%>">
+                                    <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                                 </div>
                             </div>
                         </div>
