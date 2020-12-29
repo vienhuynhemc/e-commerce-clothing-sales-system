@@ -148,7 +148,7 @@
                 <p class="info">Cung cấp cho chúng tôi một số thông tin của bạn để có quyền truy cập vào trang và
                     mua sắm</p>
 
-                <form action="../SignUpController" method="post">
+                <form action="SignUpController" method="post">
                     <div class="form">
                         <div class="tk">
                             <p class="titletk">Tài khoản</p>
@@ -202,9 +202,9 @@
                 <%
                     //lấy status ra
 
-                    String statusSignUP = (String) request.getAttribute("status");
+                    String statusSignUP = (String) request.getAttribute("statuss");
 
-                    if (status != null) {
+                    if (statusSignUP != null) {
                         //truyển status vào để sử lí
                         ErrorSignUpAccount errorAccount = new ErrorSignUpAccount(statusSignUP);
 
