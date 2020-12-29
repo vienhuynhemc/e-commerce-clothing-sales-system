@@ -34,8 +34,12 @@ public class ManufacturerObject implements Serializable {
     //  Select searchandSort
     private String selectSearchAndSort;
 
-    //  is remove
-    private boolean isRemove;
+    //  is notify
+    private boolean isNotify;
+
+    //  Content notify
+    private String title;
+    private String conntent;
 
     //  Constructor rỗng
     public ManufacturerObject() {
@@ -114,12 +118,27 @@ public class ManufacturerObject implements Serializable {
         this.selectSearchAndSort = selectSearchAndSort;
     }
 
-    public boolean isRemove() {
-        return isRemove;
+    public boolean isNotify() {
+        return isNotify;
     }
 
-    public void setRemove(boolean remove) {
-        isRemove = remove;
+    public void setNotify(boolean notify) {
+        isNotify = notify;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getConntent() {
+        return conntent;
+    }
+
+    public void setConntent(String conntent) {
+        this.conntent = conntent;
+    }
 }

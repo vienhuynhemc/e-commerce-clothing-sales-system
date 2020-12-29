@@ -192,3 +192,22 @@ function hiddenFormYesNo() {
 function hiddenNotifiSuccess() {
     document.getElementById("notifiSuccess").style.transform = 'scaleY(0)';
 }
+
+
+function themmoi(){
+    let l1 = document.getElementById("div1").children[0].children;
+    let l2 = l1[1].children;
+
+    let l3 = l2[2].children;
+    let nameHang = l3[1].value;
+
+    let array = [];
+    let l4 = l2[5].children;
+    for(let i =0; i <l4.length;i++){
+        console.log(l4[i]);
+    }
+
+    console.log(nameHang);
+    console.log(array)
+
+}

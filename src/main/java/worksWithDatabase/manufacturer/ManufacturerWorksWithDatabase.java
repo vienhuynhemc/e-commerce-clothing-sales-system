@@ -9,11 +9,9 @@ import worksWithDatabase.manufacturerInformation.ManufacturerInformationWorksWit
 import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSource;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ManufacturerWorksWithDatabase {
@@ -703,6 +701,93 @@ public class ManufacturerWorksWithDatabase {
 
     }
 
+    //  Phương thức lấy mã hãng sản xuất tiếp theo
+    public String getNextManufacturerId(){
 
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kết quả
+        String result = null;
+
+        //  Khai báo vị trí
+        int index = 0;
+
+        try {
+
+            //  Tạo connection
+            Statement statement = connection.createStatement();
+
+            //  Lấy resultSet
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ma_hsx) AS so_luong FROM hang_san_xuat");
+
+            //  Lấy kết quả
+            while(resultSet.next()){
+                index = resultSet.getInt("so_luong")+1;
+            }
+
+            //  Đóng các thứ
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Ráp vô kết quả
+        result = "hsx_"+index;
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào mã_hsx và tên hãng , thêm vô bảng hang_san_xuat
+    public boolean addManufacturerToDatabase(String manufacturerId,String manufacturerName){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khai báo kểt quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO hang_san_xuat VALUES (?,?,?,?)");
+
+            //  Tạo ngày tạo là ngày hôm nay
+            Date date = new Date();
+            DateTime nowDate = new DateTime(date.getYear()+1900,date.getMonth()+1,date.getDate(),date.getHours(),date.getMinutes(),date.getSeconds());
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,manufacturerId);
+            preparedStatement.setString(2,manufacturerName);
+            preparedStatement.setString(3,nowDate.toString());
+            preparedStatement.setInt(4,0);
+
+            //  update
+            int row = preparedStatement.executeUpdate();
+
+            //  Kiểm tra số dòng được thêm vào
+            if(row == 1) result = true;
+
+            //  Đóng các kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả kết quả
+        return result;
+
+    }
 
 }

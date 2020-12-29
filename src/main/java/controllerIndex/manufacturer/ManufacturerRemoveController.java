@@ -31,7 +31,8 @@ public class ManufacturerRemoveController extends HttpServlet {
             ManufacturerModel.getInstance().removeOneManufacturerInDatabase(manufacturerId);
 
             //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
-            request.setAttribute("remove", "removeOneElement");
+            request.setAttribute("forward", "remove");
+            request.setAttribute("more",manufacturerId);
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);
@@ -46,7 +47,8 @@ public class ManufacturerRemoveController extends HttpServlet {
             ManufacturerModel.getInstance().removeGroupManufacturerInDatabase(manufacturerIds);
 
             //  Xóa xong thì set một biến cho request biết là xóa một đối tượng để nó cập nhập lại
-            request.setAttribute("remove", "removeGroupElement");
+            request.setAttribute("forward", "remove");
+            request.setAttribute("more",manufacturerIds.length +" hãng sản xuất");
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);
