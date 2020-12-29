@@ -79,7 +79,7 @@ public class CategoryWorksWithDatabase {
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
-            if (check(id)) {
+
                 PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
                 s.setString(1, id);
                 s.execute();
@@ -87,7 +87,7 @@ public class CategoryWorksWithDatabase {
                 DataSource.getInstance().releaseConnection(connection);
                 s.close();
                 return true;
-            }
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -460,6 +460,7 @@ public class CategoryWorksWithDatabase {
 //        for(Category ca : getCategoriesByNameASC()){
 //            System.out.println(ca);
 //        }
+        System.out.println(removeCategory("dm_6"));
 
     }
 

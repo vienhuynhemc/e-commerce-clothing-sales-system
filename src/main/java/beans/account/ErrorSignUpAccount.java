@@ -18,6 +18,9 @@ public class ErrorSignUpAccount {
         else if (status.equals("error4")){
             return "Vui lòng chấp nhận thỏa thuận để hoàn tất đăng ký!";
         }
+        else if (status.equals("no")){
+            return "Vui lòng nhập đầy đủ thông tin!";
+        }
         else{
             return "Đăng ký tài khoản thành công!";
         }
@@ -34,6 +37,9 @@ public class ErrorSignUpAccount {
         }
         else if (status.equals("error4")){
             return "Vui lòng đọc thông tin và chấp nhận thỏa thuận nếu bạn muốn hoàn tất đăng ký!";
+        }
+        else if (status.equals("no")){
+            return "Vui lòng nhập đầy đủ thông tin để đăng ký tài khoản!";
         }
         else{
             return "Đăng ký tài khoản thành công!";

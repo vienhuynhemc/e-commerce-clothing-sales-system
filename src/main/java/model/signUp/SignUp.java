@@ -16,15 +16,18 @@ public class SignUp {
     // kiểm tra thông tin đầu vào
     public String checkUserInput(String username, String pass, String name,String phone, String mail, String check){
         SignUpDAO signUpDAO = SignUpDataSource.getInstance().getSignUpDAO();
-        // kiểm tra mail có tồn tại mail trong db không
-        if(SignUpDAO.checkMail(mail)){
-            SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
-            return "error1";
+        if (username.equals("") || pass.equals("") || name.equals("") || phone.equals("") || mail.equals("")){
+            return "no";
         }
         // kiểm tra có tồn tại username chưa
         if(SignUpDAO.checkUser(username)){
             SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
             return "error2";
+        }
+        // kiểm tra mail có tồn tại mail trong db không
+        if(SignUpDAO.checkMail(mail)){
+            SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
+            return "error1";
         }
         // kiểm tra email có tồn tại không
         if(SignUpDAO.isEmail(mail)){
@@ -36,10 +39,12 @@ public class SignUp {
             SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
             return "error4";
         }
+
         SignUpDAO.addUser(username, pass, name, phone, mail);
         SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
         return "OK";
     }
+
 
 
 }

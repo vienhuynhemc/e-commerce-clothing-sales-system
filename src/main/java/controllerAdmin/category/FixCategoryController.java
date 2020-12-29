@@ -1,5 +1,6 @@
 package controllerAdmin.category;
 
+import model.category.CategoryModel;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,14 @@ public class FixCategoryController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String name = request.getParameter("name");
             String id = request.getParameter("ids");
-            CategoryWorksWithDatabase.updateCategory(id,name);
+
+        if(CategoryModel.checkUpdateCategory(name,id)){
             response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            System.out.print("OK");
+        }
+        else{
+            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        }
+
     }
 }
