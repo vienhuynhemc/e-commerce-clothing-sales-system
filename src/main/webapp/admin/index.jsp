@@ -95,7 +95,7 @@
                 </div>
                 <ul>
                     <li><a href="home/quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="home/quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                    <li><a href="../CategoryController?vi-tri=1"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>

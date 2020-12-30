@@ -365,7 +365,8 @@
 
                                         <%
 
-                                            for(int i = 0; i< 3;i++){%>
+                                            for(int i = 0; i< 3;i++){
+                                        %>
 
                                         <a href="CategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>
 

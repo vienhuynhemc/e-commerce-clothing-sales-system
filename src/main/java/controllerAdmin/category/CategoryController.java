@@ -28,8 +28,10 @@ public class CategoryController extends HttpServlet {
             // mỗi trang hiển thị 3 danh mục
 
             //lấy vị trí 1,2,3...4,5,6
-//            String s = request.getParameter("vi-tri");
-//            int index = Integer.parseInt(s);
+            String s = request.getParameter("vi-tri");
+           int index = Integer.parseInt(s);
+
+           System.out.println(index);
 
           //  ArrayList<Category> categories = CategoryWorksWithDatabase.getCategoriesByIndex(2, 3);
 
