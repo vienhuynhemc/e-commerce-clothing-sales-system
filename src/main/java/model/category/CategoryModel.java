@@ -85,7 +85,10 @@ public class CategoryModel {
         }
     }
     public static ArrayList<Category> getAllList(){
-        return CategoryWorksWithDatabase.getAllCategories();
+        CategoryWorksWithDatabase categoryDAO = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        ArrayList<Category> list = CategoryWorksWithDatabase.getAllCategories();
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryDAO);
+        return list;
     }
 
     public static void main(String[] args) {

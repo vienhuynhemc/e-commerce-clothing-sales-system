@@ -32,8 +32,16 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             p.close();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+        finally {
+            try{
+                c.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
 
         DataSource.getInstance().releaseConnection(c);
@@ -71,6 +79,13 @@ public class CategoryWorksWithDatabase {
         }catch (Exception e){
             e.printStackTrace();
         }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không thể thêm danh mục do đã tồn tại");
         return false;
@@ -87,10 +102,18 @@ public class CategoryWorksWithDatabase {
 
                 DataSource.getInstance().releaseConnection(connection);
                 s.close();
+
                 return true;
 
         }catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không thể xóa danh mục!");
@@ -100,18 +123,25 @@ public class CategoryWorksWithDatabase {
     public static boolean updateCategory(String id, String newName){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            if(check(id)){
                 PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ten_dm = ? WHERE ma_dm = ?");
                 s.setString(1,newName);
                 s.setString(2,id);
                 s.execute();
                 s.close();
+
                 DataSource.getInstance().releaseConnection(connection);
+
                 return true;
-            }
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return false;
@@ -135,13 +165,22 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        DataSource.getInstance().releaseConnection(connection);
+//        finally {
+//            try{
+//                connection.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
+       DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
      public static DateTime getDateTime(String dateTime){
@@ -180,11 +219,19 @@ public class CategoryWorksWithDatabase {
                     DataSource.getInstance().releaseConnection(connection);
                     rs.close();
                     s.close();
+
                     return category;
             }
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không tồn tại danh mục trong hệ thống");
@@ -209,11 +256,19 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -237,11 +292,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -265,11 +329,21 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
+
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -293,11 +367,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -321,11 +404,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -349,11 +441,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -376,11 +477,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -403,11 +513,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -446,11 +565,20 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch(Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
@@ -484,10 +612,22 @@ public class CategoryWorksWithDatabase {
             while(rs.next()){
                 return rs.getInt(1);
             }
+            rs.close();
+            s.close();
+
+            DataSource.getInstance().releaseConnection(connection);
+
 
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return 0;
@@ -518,11 +658,21 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
+
+
             DataSource.getInstance().releaseConnection(connection);
+
             return categories;
         }
         catch (Exception e){
             e.printStackTrace();
+        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();

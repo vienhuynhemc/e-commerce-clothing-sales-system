@@ -12,18 +12,18 @@ import java.io.IOException;
 
 @WebServlet(name = "AddCategoryController", urlPatterns = "/AddCategoryController")
 public class AddCategoryController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            doGet(request,response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            doPost(request,response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         if(CategoryModel.checkAddCategory(name)){
-            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            response.sendRedirect("CategoryController");
         }
         else {
-            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            response.sendRedirect("CategoryController");
         }
     }
 }

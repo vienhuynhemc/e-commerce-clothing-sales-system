@@ -22,11 +22,11 @@ public class FixCategoryController extends HttpServlet {
             String id = request.getParameter("ids");
 
         if(CategoryModel.checkUpdateCategory(name,id)){
-            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            response.sendRedirect("CategoryController");
             System.out.print("OK");
         }
         else{
-            response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+            response.sendRedirect("CategoryController");
         }
 
     }

@@ -22,18 +22,28 @@ public class CategoryController extends HttpServlet {
         doPost(request,response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String input = request.getParameter("keyword");
-        // mỗi trang hiển thị 3 danh mục
+//
+        try{
+            //String input = request.getParameter("keyword");
+            // mỗi trang hiển thị 3 danh mục
 
-        //lấy vị trí 1,2,3...4,5,6
-//          String index = request.getParameter("idd");
-            ArrayList<Category> categories = CategoryWorksWithDatabase.getCategoriesByIndex(1, 3);
+            //lấy vị trí 1,2,3...4,5,6
+//            String s = request.getParameter("vi-tri");
+//            int index = Integer.parseInt(s);
+
+          //  ArrayList<Category> categories = CategoryWorksWithDatabase.getCategoriesByIndex(2, 3);
+
             //lấy sô lượng trang
-            int numPage = CategoryModel.getNumberOfPage(categories, 3);
-            System.out.println(numPage);
-            request.setAttribute("numberOfPage", numPage);
-            request.setAttribute("list", categories);
+            ArrayList<Category> categories1 = CategoryModel.getAllList();
+          ////  int numPage = CategoryModel.getNumberOfPage(categories1, 3);
+          //  request.setAttribute("numberOfPage", numPage);
+            request.setAttribute("list", categories1);
             request.getRequestDispatcher("admin/home/quanLyDanhMuc.jsp").forward(request, response);
 
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("loi:" +e);
+        }
     }
 }

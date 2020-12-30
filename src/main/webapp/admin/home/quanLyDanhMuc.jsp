@@ -319,7 +319,7 @@
                         <div>
                             <div class="header">
                                 <div class="leftheader">
-                                    <form action="../../FilterCategoryController" method="post">
+                                    <form action="FilterCategoryController" method="post">
 
                                         <select name="sort" id="sort">
                                             <a href="CategoryController?type="><option value="1" selected>Ngày tạo</option></a>
@@ -336,7 +336,7 @@
                                             <i class=" fa fa-sort-amount-asc"></i>
                                             <input type="checkbox" style="display: none;">
                                         </div>
-                                        <% %>
+
                                             <div class="leftheadersearchs">
                                                 <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                                 <div>
@@ -359,12 +359,16 @@
 <%--                                        <li class="none">...</li>--%>
 <%--                                        <li>9</li>--%>
                                         <%
-                                            int numberOfPage = (int) request.getAttribute("numberOfPage");
-                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");
+                                          //  int numberOfPage = (int) request.getAttribute("numberOfPage");
+//                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");
                                         %>
 
-                                        <% for(int i = 0; i< list.size();i++){%>
-                                        <a href="CategoryController?idd=<%= (i+1) %>"><li><%= (i+1) %></li></a>
+                                        <%
+
+                                            for(int i = 0; i< 3;i++){%>
+
+                                        <a href="CategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>
+
                                         <%}%>
 
                                     </ul>
@@ -413,7 +417,7 @@
                                         <i class="fa fa-circle"></i>
                                         <div>
 
-                                           <button type="submit"><a href="quanLyDanhMuc(Form_capnhat).jsp?id=${c.id}"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
+                                           <button type="submit"><a href="admin/home/quanLyDanhMuc(Form_capnhat).jsp?id=${c.id}"> <i class="fa fa-pencil" style="margin-right: 10px"></i>Sửa</a> </button>
 
                                             <form action="RemoveCategoryController" method="post">
 
@@ -459,7 +463,7 @@
                                <div class="div12">
                                    <h3>Điền thông tin danh mục</h3>
                                    <div class="linediv12"></div>
-                                   <form action="../../AddCategoryController" method="get">
+                                   <form action="AddCategoryController" method="post">
                                    <div class="div12input">
                                        <label >* Tên danh mục</label>
                                        <input type="text" placeholder="Nhập tên danh mục ở đây" name="name" value="">
