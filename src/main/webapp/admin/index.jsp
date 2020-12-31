@@ -53,7 +53,7 @@
                 <ul>
                     <li><a href="../LoadAccountNVVCController?page=1"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
                     <li><a href="../LoadAccountNVKController?page=1"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="../LoadAccountKHController?page=1"><i class="fa fa-users"></i>Khách hàng</a></li>
+                    <li><a href="../LoadAccountKHStartController"><i class="fa fa-users"></i>Khách hàng</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
@@ -95,7 +95,7 @@
                 </div>
                 <ul>
                     <li><a href="home/quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="home/quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                    <li><a href="../CategoryController?vi-tri=1"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>

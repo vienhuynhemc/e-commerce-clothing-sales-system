@@ -62,7 +62,7 @@ public class EditAccountDAO {
 
     }
 
-    public AccountCustomer changeInfoCustomer(String userName, String displayName, String fullName, String avatar, String newPass){
+    public AccountCustomer changeInfoCustomer(String userName, String displayName, String fullName, String avatar, String newPass,String oldPass,String rePass){
 
         Connection con = null;
 
@@ -75,23 +75,36 @@ public class EditAccountDAO {
 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
+            String sql;
 
-            String sql = "UPDATE account a set a.DisplayName = ?, a.FullName = ?,a.Avatar = ?,a.`PassWord` = ?  WHERE a.UserName = ?";
+            if(oldPass.equals("") && newPass.equals("") && rePass.equals("")){
+                sql = "UPDATE account a set a.DisplayName = ?, a.FullName = ?,a.Avatar = ? WHERE a.UserName = ?";
+                PreparedStatement ps = con.prepareStatement(sql);
 
+                ps.setString(1,displayName);
+                ps.setString(2,fullName);
+                ps.setString(3,avatar);
 
-            PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(4,userName);
+                ps.executeUpdate();
+                ps.close();
 
-            ps.setString(1,displayName);
-            ps.setString(2,fullName);
-            ps.setString(3,avatar);
+            }else{
+                sql = "UPDATE account a set a.DisplayName = ?, a.FullName = ?,a.Avatar = ?,a.`PassWord` = ?  WHERE a.UserName = ?";
+                PreparedStatement ps = con.prepareStatement(sql);
 
-            String encode = MD5.md5(newPass);
+                ps.setString(1,displayName);
+                ps.setString(2,fullName);
+                ps.setString(3,avatar);
 
-            ps.setString(4,encode);
-            ps.setString(5,userName);
+                String encode = MD5.md5(newPass);
 
-           ps.executeUpdate();
-           ps.close();
+                ps.setString(4,encode);
+                ps.setString(5,userName);
+                ps.executeUpdate();
+                ps.close();
+            }
+
 
            String sql1 = "select * from account where userName = ? and type = 3";
 

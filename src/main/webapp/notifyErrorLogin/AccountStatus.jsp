@@ -46,7 +46,7 @@
             margin: 0 0 10px;
         }
 
-        .changepassword {
+        .changepassword1 {
             width: 100vw;
             height: 100vh;
             position: fixed;
@@ -136,13 +136,13 @@
 
 <body>
 
-<div class="changepassword" id="changepassword">
+<div class="changepassword1" id="changepassword1">
     <div class="hiddenchangepassword1" onclick="gobackpassword()"></div>
     <div class="mainchangepassword">
         <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
         <div class="changepasswordsuccess" id="changepasswordsuccess">
-            <p> <%=request.getParameter("title")%> </p>
-            <p> <%=request.getParameter("content")%></p>
+            <p> ${param.title} </p>
+            <p> ${param.content}</p>
             <button onclick="gobackpassword()">Trở về
             </button>
         </div>
@@ -151,7 +151,7 @@
 
 <script>
     function gobackpassword() {
-        document.getElementById('changepassword').style.transform = 'scaleY(0)';
+        document.getElementById('changepassword1').style.transform = 'scaleY(0)';
     }
 </script>
 

@@ -19,9 +19,10 @@ public class EditAccountController extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        AccountCustomer acc = (AccountCustomer) session.getAttribute("user");
+        ///AccountCustomer acc = (AccountCustomer) session.getAttribute("user");
 
-        String userName = acc.getUserName() ;
+        //String userName = acc.getUserName();
+        String userName = request.getParameter("userName");
         String avatar = request.getParameter("avatar");
         String displayName = request.getParameter("displayName");
         String fullName = request.getParameter("fullName");
@@ -29,7 +30,9 @@ public class EditAccountController extends HttpServlet {
         String newPass = request.getParameter("newPass");
         String rePass = request.getParameter("rePass");
 
+        System.out.println(userName);
         System.out.println(newPass);
+        System.out.println(avatar);
 
         try {
             EditAccountModel editAccountModel = EditAccountModel.getInstance();
@@ -42,7 +45,7 @@ public class EditAccountController extends HttpServlet {
                 request.setAttribute("error", status);
                 request.getRequestDispatcher("thong-tin").forward(request, response);
             }else{
-                AccountCustomer accountCustomer =  editAccountModel.editAccount(userName, displayName, fullName, avatar, newPass);
+                AccountCustomer accountCustomer =  editAccountModel.editAccount(userName, displayName, fullName, avatar, newPass,oldPass,rePass);
                 request.setAttribute("error", "none");
                 session.setAttribute("user",accountCustomer);
                 request.getRequestDispatcher("thong-tin").forward(request, response);
