@@ -14,9 +14,15 @@ import java.util.List;
 @WebServlet(name = "SearchCategoryController",urlPatterns = "/SearchCategoryController")
 public class SearchCategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String keyword = request.getParameter("keyword");
-//        List<Category> list = CategoryWorksWithDatabase.search(keyword);
-        response.sendRedirect("admin/home/quanLyDanhMuc.jsp");
+        request.setCharacterEncoding("UTF-8");
+        String keyword = request.getParameter("keyword");
+        if(keyword != null){
+            System.out.println(keyword);
+            request.getRequestDispatcher("CategoryController").forward(request,response);
+        }
+        else {
+            response.sendRedirect("CategoryController");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

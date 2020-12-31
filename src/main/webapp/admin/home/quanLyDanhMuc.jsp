@@ -359,16 +359,16 @@
 <%--                                        <li class="none">...</li>--%>
 <%--                                        <li>9</li>--%>
                                         <%
-                                          //  int numberOfPage = (int) request.getAttribute("numberOfPage");
+                                            int numberOfPage = (int)request.getAttribute("numberOfPage");
 //                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");
                                         %>
 
                                         <%
 
-                                            for(int i = 0; i< 3;i++){
+                                            for(int i = 0; i< numberOfPage;i++){
                                         %>
 
-                                        <a href="CategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>
+                                        <a href="PageCategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>
 
                                         <%}%>
 

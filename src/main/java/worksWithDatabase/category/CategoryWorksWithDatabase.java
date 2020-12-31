@@ -547,10 +547,10 @@ public class CategoryWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
         try {
             List<Category> categories = new ArrayList<>();
-            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ? = ? OR ten_dm LIKE %?% OR ngay_tao = ? AND ton_tai = 1 ");
+            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ? = ? OR ten_dm LIKE ? OR ngay_tao = ? AND ton_tai = 1");
             s.setString(1,input);
             s.setString(2,"ma_dm");
-            s.setString(1,input);
+            s.setString(1,"%"+input+"%");
             ResultSet rs = s.executeQuery();
             while(rs.next()){
                 Category category = new Category();
@@ -565,9 +565,7 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             s.close();
-
             DataSource.getInstance().releaseConnection(connection);
-
             return categories;
         }
         catch(Exception e){
@@ -667,13 +665,13 @@ public class CategoryWorksWithDatabase {
         catch (Exception e){
             e.printStackTrace();
         }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//        finally {
+//            try{
+//                connection.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }

@@ -20,10 +20,10 @@ public class AddCategoryController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         if(CategoryModel.checkAddCategory(name)){
-            response.sendRedirect("CategoryController");
+            request.getRequestDispatcher("CategoryController").forward(request,response);
         }
         else {
-            response.sendRedirect("CategoryController");
+            request.getRequestDispatcher("CategoryController").forward(request,response);
         }
     }
 }

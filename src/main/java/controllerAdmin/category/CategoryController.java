@@ -28,18 +28,21 @@ public class CategoryController extends HttpServlet {
             // mỗi trang hiển thị 3 danh mục
 
             //lấy vị trí 1,2,3...4,5,6
-            String s = request.getParameter("vi-tri");
-           int index = Integer.parseInt(s);
-
-           System.out.println(index);
-
-          //  ArrayList<Category> categories = CategoryWorksWithDatabase.getCategoriesByIndex(2, 3);
-
+            ArrayList<Category> categories = null;
+            int index = 1;
+            if(request.getAttribute("index") == null) {
+                categories = CategoryWorksWithDatabase.getCategoriesByIndex(index, 3);
+            }
+            else{
+                index = (int)request.getAttribute("index");
+                categories = CategoryWorksWithDatabase.getCategoriesByIndex(index, 3);
+            }
             //lấy sô lượng trang
             ArrayList<Category> categories1 = CategoryModel.getAllList();
-          ////  int numPage = CategoryModel.getNumberOfPage(categories1, 3);
-          //  request.setAttribute("numberOfPage", numPage);
-            request.setAttribute("list", categories1);
+            int numPage = CategoryModel.getNumberOfPage(categories1, 3);
+            request.setAttribute("numberOfPage", numPage);
+            request.setAttribute("list", categories);
+            System.out.println(categories.size());
             request.getRequestDispatcher("admin/home/quanLyDanhMuc.jsp").forward(request, response);
 
         }
