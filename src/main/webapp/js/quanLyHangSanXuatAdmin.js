@@ -311,7 +311,7 @@ node.addEventListener("keyup", function (event) {
     }
 });
 
-function loadPage(){
+function loadPage() {
     document.getElementById("action").value = "load";
     document.getElementById("mainForm").submit();
 }
@@ -337,7 +337,7 @@ function themmoi() {
         let l5 = l4[i].children;
         let value = l5[0].value;
         value = value.trim();
-        if(value.length>0){
+        if (value.length > 0) {
             array.push(value);
         }
     }
@@ -347,9 +347,9 @@ function themmoi() {
 
         let information = '';
         for (let i = 0; i < array.length; i++) {
-            if(i  == array.length-1){
+            if (i == array.length - 1) {
                 information += array[i];
-            }else{
+            } else {
                 information += array[i] + ";";
             }
         }
@@ -380,7 +380,7 @@ function capnhap() {
         let l5 = l4[i].children;
         let value = l5[0].value;
         value = value.trim();
-        if(value.length>0){
+        if (value.length > 0) {
             array.push(value);
         }
     }
@@ -390,9 +390,9 @@ function capnhap() {
 
         let information = '';
         for (let i = 0; i < array.length; i++) {
-            if(i  == array.length-1){
+            if (i == array.length - 1) {
                 information += array[i];
-            }else{
+            } else {
                 information += array[i] + ";";
             }
         }
@@ -405,6 +405,57 @@ function capnhap() {
         document.getElementById("formYesNoLink").href = `../../ManufacturerEditController?manufacturerName=${nameHang}&&manufacturerInformations=${information}&&manufacturerId=${maHang}`;
         document.getElementById("formYesNoTitle2").appendChild(item);
         document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+    }
+
+}
+
+function showselectgopage(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        if (listUl[i] == item) {
+
+            let l = listUl[i].children[0].children;
+
+            if (l[0].checked == true) {
+                listUl[i].children[0].style.display = "none";
+                l[0].checked = false;
+            } else {
+                listUl[i].children[0].style.display = "flex";
+                l[1].click();
+                l[0].checked = true;
+            }
+
+        }
+
+    }
+
+}
+
+function gopagefast(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        let l = listUl[i].children[0].children;
+
+        if (l[2] == item) {
+            let value = l1.value;
+            if (!isNaN(value)) {
+                document.getElementById("numberOfPage").value = parseInt(value);
+                document.getElementById("action").value = "nextPage";
+                document.getElementById("mainForm").submit();
+            }
+
+        }
+
     }
 
 }

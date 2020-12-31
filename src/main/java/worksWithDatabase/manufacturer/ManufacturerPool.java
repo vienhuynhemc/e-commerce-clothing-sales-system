@@ -11,7 +11,7 @@ public class ManufacturerPool {
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo email ManufacturerWorksWithDatabase
+    //  Constructor thì khởi tạo ManufacturerWorksWithDatabase
     public ManufacturerPool() {
 
         //  Khởi tạo  ManufacturerWorksWithDatabase
@@ -51,7 +51,7 @@ public class ManufacturerPool {
     //  Phương thứct trả về ManufacturerWorksWithDatabase
     public synchronized void releaseManufacturerWorksWithDatabase(ManufacturerWorksWithDatabase manufacturerWorksWithDatabase) {
 
-        //  Kiểm tra mail nhận vào có đúng là mail cửa lớp này hay không
+        //  Kiểm tra ManufacturerWorksWithDatabase nhận vào có đúng là ManufacturerWorksWithDatabase cửa lớp này hay không
         if (this.manufacturerWorksWithDatabase == manufacturerWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false

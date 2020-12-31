@@ -9,7 +9,7 @@ public class ManufacturerInformationPool {
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo email ManufacturerInformationWorksWithDatabase
+    //  Constructor thì khởi tạo ManufacturerInformationWorksWithDatabase
     public ManufacturerInformationPool() {
 
         //  Khởi tạo  ManufacturerInformationWorksWithDatabase
@@ -49,7 +49,7 @@ public class ManufacturerInformationPool {
     //  Phương thứct trả về ManufacturerInformationWorksWithDatabase
     public synchronized void releaseManufacturerInformationWorksWithDatabase(ManufacturerInformationWorksWithDatabase manufacturerInformationWorksWithDatabase) {
 
-        //  Kiểm tra mail nhận vào có đúng là mail cửa lớp này hay không
+        //  Kiểm tra ManufacturerInformationWorksWithDatabase nhận vào có đúng là ManufacturerInformationWorksWithDatabase cửa lớp này hay không
         if (this.manufacturerInformationWorksWithDatabase == manufacturerInformationWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false

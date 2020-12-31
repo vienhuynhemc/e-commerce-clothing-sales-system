@@ -154,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="leftnextpage">
+                    <div class="leftnextpage" id="leftnextpage">
                         <p>Hiển thị <strong><%= manufacturerObject.getNumberOfShow() %>
                         </strong> trên tổng <%=manufacturerObject.getMaximumManufacturer()%> hãng</p>
                         <span onclick="prePage(<%=manufacturerObject.getNowPage()%>)"><i
@@ -170,11 +170,18 @@
                                     <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
                                     class="activeli"
                                     <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
-                                    class="none"
+                                    class="none" onclick="showselectgopage(this)"
                                     <%} else {%>
                                     onclick="pageNavigation(<%=n.getValue()%>)"
                                     <%}%>
                             ><%=n.getValue()%>
+
+                                <div class="gopage">
+                                    <input type="checkbox" style="display: none;">
+                                    <input type="text">
+                                    <i class="fa fa-angle-right" onclick="gopagefast(this)"></i>
+                                </div>
+
                             </li>
                             <%
                                     //  Kết thúc đổ next page

@@ -1,4 +1,4 @@
-package controllerIndex.manufacturer;
+package controllerAdmin.manufacturer;
 
 import model.manufacturer.ManufacturerInformationModel;
 import model.manufacturer.ManufacturerModel;

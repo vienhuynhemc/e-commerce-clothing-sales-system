@@ -1,4 +1,4 @@
-package controllerIndex.mail;
+package controllerAdmin.mail;
 
 import model.contact.JoinUsModel;
 

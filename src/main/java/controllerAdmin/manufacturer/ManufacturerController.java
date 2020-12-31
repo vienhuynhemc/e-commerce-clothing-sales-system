@@ -1,4 +1,4 @@
-package controllerIndex.manufacturer;
+package controllerAdmin.manufacturer;
 
 import beans.BeansConfiguration;
 import beans.manufacturer.Manufacturer;

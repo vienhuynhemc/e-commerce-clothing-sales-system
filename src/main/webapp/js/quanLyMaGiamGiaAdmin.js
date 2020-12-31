@@ -85,7 +85,7 @@ function removekhachhang(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
         let list = listItem[i].children;
-        let list2 = list[5].children;
+        let list2 = list[11].children;
         let list3 = list2[4].children;
         if (list3[1] == item) {
             list2[4].style.display = 'none';
@@ -172,11 +172,10 @@ function editdanhmuc(item) {
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
         let list = listItem[i].children;
-        let list2 = list[5].children;
+        let list2 = list[11].children;
         let list3 = list2[4].children;
         if (list3[0] == item) {
-            document.getElementById("div3").appendChild(list[6].cloneNode(true));
-            console.log(list[6])
+            document.getElementById("div3").appendChild(list[12].cloneNode(true));
             document.getElementById("div3").style.display = "block";
             document.getElementById("div1").style.display = "none";
             document.getElementById("div2").style.display = "none";
@@ -251,6 +250,58 @@ function changeSelect2(item) {
     } else {
         if (!list1[3].classList.contains("hidden"))
             list1[3].classList.add("hidden");
+    }
+
+}
+
+
+function showselectgopage(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        if (listUl[i] == item) {
+
+            let l = listUl[i].children[0].children;
+
+            if (l[0].checked == true) {
+                listUl[i].children[0].style.display = "none";
+                l[0].checked = false;
+            } else {
+                listUl[i].children[0].style.display = "flex";
+                l[1].click();
+                l[0].checked = true;
+            }
+
+        }
+
+    }
+
+}
+
+function gopagefast(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        let l = listUl[i].children[0].children;
+
+        if (l[2] == item) {
+            let value = l1.value;
+            if (!isNaN(value)) {
+                document.getElementById("numberOfPage").value = parseInt(value);
+                document.getElementById("action").value = "nextPage";
+                document.getElementById("mainForm").submit();
+            }
+
+        }
+
     }
 
 }

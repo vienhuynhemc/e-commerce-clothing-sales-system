@@ -1,19 +1,19 @@
-package worksWithDatabase.productDetailInformation;
+package worksWithDatabase.discountCode;
 
-public class ProductDetailInformationPool {
+public class DiscountCodePool {
 
     //---------------------------------Pool ---------------------------------
 
-    private ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase;
+    private DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase;
     private boolean isActive;
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo ProductDetailInformation works with database
-    public ProductDetailInformationPool() {
+    //  Constructor thì khởi tạo DiscountCodeWorksWithDatabase
+    public DiscountCodePool() {
 
-        //  Khởi tạo  ProductDetailInformation works with database
-        productDetailInformationWorksWithDatabase = new ProductDetailInformationWorksWithDatabase();
+        //  Khởi tạo  DiscountCodeWorksWithDatabase
+        discountCodeWorksWithDatabase = new DiscountCodeWorksWithDatabase();
 
         //  Đặt trạng thái hoạt động ban đầu là false
         isActive = false;
@@ -21,7 +21,7 @@ public class ProductDetailInformationPool {
     }
 
     //  Lấy thể hiện của lớp, để ở trạng thái synchronized
-    public synchronized ProductDetailInformationWorksWithDatabase getProductDetailInformationWorksWithDatabase() {
+    public synchronized DiscountCodeWorksWithDatabase getDiscountCodeWorksWithDatabase() {
 
         //  Xem thử nó có đang được hoạt động hay không, đang hoạt động thì bắt client yêu cầu chờ
         while (isActive) {
@@ -42,15 +42,15 @@ public class ProductDetailInformationPool {
         isActive = true;
 
         //  Trả về thể hiện
-        return productDetailInformationWorksWithDatabase;
+        return discountCodeWorksWithDatabase;
 
     }
 
-    //  Phương thứct trả về ProductDetailInformationWorksWithDatabase
-    public synchronized void releaseProductDetailInformationWorksWithDatabase(ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase) {
+    //  Phương thứct trả về DiscountCodeWorksWithDatabase
+    public synchronized void releaseDiscountCodeWorksWithDatabase(DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase) {
 
-        //  Kiểm tra ProductDetailInformationWorksWithDatabase nhận vào có đúng là ProductDetailInformationWorksWithDatabase cửa lớp này hay không
-        if (this.productDetailInformationWorksWithDatabase == productDetailInformationWorksWithDatabase) {
+        //  Kiểm tra discountCodeWorksWithDatabase nhận vào có đúng là discountCodeWorksWithDatabase cửa lớp này hay không
+        if (this.discountCodeWorksWithDatabase == discountCodeWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false
             isActive = false;

@@ -772,7 +772,7 @@ select option {
     height: 25px;
     background: white;
     cursor: pointer;
-    box-shadow: 14px 15px 35px 3px #7a7e94;
+    box-shadow: 0px 0px 5px 1px #e8e8e8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -780,4 +780,37 @@ select option {
     left: 352px;
     position: absolute;
 }
+
+.none {
+    position: relative;
+}
+
+.gopage {
+    position: absolute;
+    padding: 14px 16px 12px 13px;
+    box-shadow: 17px 20px 14px 4px #dbdae4;
+    background-color: white;
+    border-radius: 5px;
+    top: 39px;
+    left: 8px;
+    z-index: 1;
+    display: none;
+}
+
+.gopage > input {
+    width: 40px;
+    border: 1px solid #e0e5e9;
+    border-radius: 20px;
+    padding: 3px 5px;
+    outline: none;
+    text-align: center;
+}
+
+.gopage > i {
+    cursor: pointer;
+    font-size: 21px;
+    margin-left: 10px;
+}
+
+
 

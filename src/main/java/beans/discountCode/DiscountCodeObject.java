@@ -1,25 +1,24 @@
-package beans.manufacturer;
+package beans.discountCode;
 
 import beans.nextPage.NextPageObject;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class ManufacturerObject implements Serializable {
+public class DiscountCodeObject {
 
-    //  Số hãng sản xuất để đỗ dữ liệu ra
-    private List<Manufacturer> manufacturers;
+    //  List mã giảm giá để đổ dữ liệu ra
+    List<DiscountCode> discountCodes;
 
     //  Trang hiện tại
     private int nowPage;
 
     //  Số hãng sản xuất tối đa
-    private int maximumManufacturer;
+    private int maximumDiscountCode;
 
     //  Số trang tối đa
     private int maximumPage;
 
-    //  Số hãng sản xuất hiện thị
+    //  Số mã giảm giá hiện thị
     private int numberOfShow;
 
     //  List để đổ dữ liệu phân trang
@@ -42,16 +41,16 @@ public class ManufacturerObject implements Serializable {
     private String conntent;
 
     //  Constructor rỗng
-    public ManufacturerObject() {
+    public DiscountCodeObject() {
     }
 
-    //  Getter and setter
-    public List<Manufacturer> getManufacturers() {
-        return manufacturers;
+    //  GETTER  AND SETTER
+    public List<DiscountCode> getDiscountCodes() {
+        return discountCodes;
     }
 
-    public void setManufacturers(List<Manufacturer> manufacturers) {
-        this.manufacturers = manufacturers;
+    public void setDiscountCodes(List<DiscountCode> discountCodes) {
+        this.discountCodes = discountCodes;
     }
 
     public int getNowPage() {
@@ -62,12 +61,12 @@ public class ManufacturerObject implements Serializable {
         this.nowPage = nowPage;
     }
 
-    public int getMaximumManufacturer() {
-        return maximumManufacturer;
+    public int getMaximumDiscountCode() {
+        return maximumDiscountCode;
     }
 
-    public void setMaximumManufacturer(int maximumManufacturer) {
-        this.maximumManufacturer = maximumManufacturer;
+    public void setMaximumDiscountCode(int maximumDiscountCode) {
+        this.maximumDiscountCode = maximumDiscountCode;
     }
 
     public int getMaximumPage() {
@@ -141,4 +140,5 @@ public class ManufacturerObject implements Serializable {
     public void setConntent(String conntent) {
         this.conntent = conntent;
     }
+
 }

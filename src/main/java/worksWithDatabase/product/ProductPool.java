@@ -9,7 +9,7 @@ public class ProductPool {
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo email Product works with database
+    //  Constructor thì khởi tạo Product works with database
     public ProductPool() {
 
         //  Khởi tạo  Product works with database
@@ -49,7 +49,7 @@ public class ProductPool {
     //  Phương thứct trả về ProductWorksWithDatabase
     public synchronized void releaseProductWorksWithDatabase(ProductWorksWithDatabase productWorksWithDatabase) {
 
-        //  Kiểm tra mail nhận vào có đúng là mail cửa lớp này hay không
+        //  Kiểm tra ProductWorksWithDatabase nhận vào có đúng là ProductWorksWithDatabase cửa lớp này hay không
         if (this.productWorksWithDatabase == productWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false
