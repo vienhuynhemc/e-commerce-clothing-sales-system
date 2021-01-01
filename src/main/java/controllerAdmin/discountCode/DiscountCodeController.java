@@ -3,8 +3,6 @@ package controllerAdmin.discountCode;
 import beans.BeansConfiguration;
 import beans.discountCode.DiscountCode;
 import beans.discountCode.DiscountCodeObject;
-import beans.manufacturer.Manufacturer;
-import beans.manufacturer.ManufacturerObject;
 import beans.nextPage.NextPageObject;
 import model.discountCode.DiscountCodeModel;
 import model.manufacturer.ManufacturerModel;
@@ -96,6 +94,53 @@ public class DiscountCodeController extends HttpServlet {
             response.sendRedirect("admin/home/quanLyMaGiamGia.jsp");
 
         } else {
+
+            //  Action load là một thứ gì đó khác hoàn toàn nên ta phải làm như trường hợp xóa
+            if (action.equals("load")) {
+
+                //  Lấy đối tượng ra
+                DiscountCodeObject discountCodeObject = (DiscountCodeObject) request.getSession().getAttribute("discountCodeObject");
+
+                //  Lấy lại list hãng sản xuất đổ dữ liệu
+                List<DiscountCode> discountCodes = DiscountCodeModel.getInstance().getListDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSort(), discountCodeObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_MGG, discountCodeObject.getNowPage());
+
+                //  Cập nhập lại list mã giảm giá
+                discountCodeObject.setDiscountCodes(discountCodes);
+
+                //  Kiểm tra nếu như discountCodes.size == 0 thì có nghĩa trang này hết dữ liệu rồi, cập nhập lại nowPage -1
+                if (discountCodes.size() == 0) {
+                    if (discountCodeObject.getNowPage() > 0) {
+                        discountCodeObject.setNowPage(discountCodeObject.getNowPage() - 1);
+                         discountCodes = DiscountCodeModel.getInstance().getListDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSort(), discountCodeObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_MGG, discountCodeObject.getNowPage());
+                        discountCodeObject.setDiscountCodes(discountCodes);
+                    }
+                }
+
+                //  Cập nhập lại số lượng hiển thị
+                discountCodeObject.setNumberOfShow(discountCodes.size());
+
+                //  Cập nhập lại số sản phẩm tối đa
+                int maximumDiscountCode = DiscountCodeModel.getInstance().getMaximunDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSearch());
+                discountCodeObject.setMaximumDiscountCode(maximumDiscountCode);
+
+                //  Cập nhập lại số trang tối đa
+                int maximumPage = DiscountCodeModel.getInstance().getMaximunNumberOfPage(maximumDiscountCode);
+                discountCodeObject.setMaximumPage(maximumPage);
+
+                //  Cập nhập lại list Next page
+                List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(discountCodeObject.getNowPage(), discountCodeObject.getMaximumPage());
+               discountCodeObject.setNextPages(nextPages);
+
+                //  Gán lại cho sesstion
+                request.getSession().setAttribute("discountCodeObject", discountCodeObject);
+
+                // sedirect tới trang của mình thôi nào
+                response.sendRedirect("admin/home/quanLyMaGiamGia.jsp");
+
+            } else {
+
+            }
+
         }
 
     }

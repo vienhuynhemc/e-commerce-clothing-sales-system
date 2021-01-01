@@ -862,7 +862,6 @@ select option {
 .tableitemicon div:nth-child(2) > i {
   color: #e3f8e3;
   font-size: 21px;
-  transform: translateY(-0.5px) translateX(0px);
 }
 
 .tableitemicon div:nth-child(3) > i {

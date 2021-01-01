@@ -74,7 +74,7 @@ public class DiscountCodeModel {
     }
 
     //  Phương thức update lại bảng mã giảm giá  ngay lúc gọi
-    public void update(){
+    public void update() {
 
         //  Mượn discountcode works with database
         DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
@@ -84,6 +84,40 @@ public class DiscountCodeModel {
 
         //  Có mượn thì có trả
         DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+    }
+
+    //  Hàm này trả về list mã giảm giá dựa trên các tham số truyền vào: bộ lọc, sort, search and numberOfPage
+    public List<DiscountCode> getListDiscountCodeFromAll(String selectSearchAndSort, String sort, String search, int numberOfPage, int nowPage) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy list first
+        List<DiscountCode> resultList = discountCodeWorksWithDatabase.getListDiscountCodeFromAll(selectSearchAndSort, sort, search, numberOfPage, nowPage);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return resultList;
+
+    }
+
+    //  Hàm này trả về số lượng tối đa mã giảm giá
+    public int getMaximunDiscountCodeFromAll(String selectSearchAndSort, String search) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy maximun number of pages
+        int result = discountCodeWorksWithDatabase.getMaximunDiscountCodeFromAll(selectSearchAndSort, search);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
 
     }
 

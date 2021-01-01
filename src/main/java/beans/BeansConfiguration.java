@@ -12,6 +12,6 @@ public class BeansConfiguration {
     public static final int LINE_OF_ON_PAGE_QUAN_LY_HSX = 13;
 
     //  Số dòng một trang quản lý mã giảm giá
-    public static final int LINE_OF_ON_PAGE_QUAN_LY_MGG = 11;
+    public static final int LINE_OF_ON_PAGE_QUAN_LY_MGG = 12;
 
 }

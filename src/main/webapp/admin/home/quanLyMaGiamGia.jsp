@@ -73,7 +73,7 @@
                                     selected
                                     <%}%>
                             >Trạng thái sử dụng</option>
-                            <option value="numberOfUe"
+                            <option value="numberOfUse"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("numberOfUse")) {%>
                                     selected
                                     <%}%>
@@ -92,7 +92,7 @@
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("deadline")) {%>
                                     selected
                                     <%}%>
-                            >Ngày hết hạng</option>
+                            >Ngày hết hạn</option>
                             <option value="%"
                                     <% if (selectSearchAndSort != null && selectSearchAndSort.equals("%")) {%>
                                     selected
@@ -244,7 +244,7 @@
                         <div class="tableitemicon
 
                         <% if(d.getStatus() == 0){%>
-                        choxuly
+                        hoanthanh
                         <%}else{%>
                         khonghoanthanh
                         <%}%>
