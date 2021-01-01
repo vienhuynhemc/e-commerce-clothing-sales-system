@@ -305,3 +305,43 @@ function gopagefast(item) {
     }
 
 }
+
+function changeFilter() {
+    document.getElementById("action").value = "changeFilter";
+    document.getElementById("mainForm").submit();
+}
+
+function changesort() {
+    document.getElementById("action").value = "sort";
+    document.getElementById("mainForm").submit();
+}
+
+function loadPage() {
+    document.getElementById("action").value = "load";
+    document.getElementById("mainForm").submit();
+}
+
+function prePage(nowPage) {
+    let n = parseInt(nowPage);
+    if (n > 1) {
+        document.getElementById("numberOfPage").value = parseInt(nowPage) - 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+function nextPage(nowPage, maximumPage, item) {
+    let n = parseInt(nowPage);
+    let m = parseInt(maximumPage);
+    if (n < m) {
+        document.getElementById("numberOfPage").value = n + 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+function pageNavigation(nowPage) {
+    document.getElementById("numberOfPage").value = parseInt(nowPage);
+    document.getElementById("action").value = "nextPage";
+    document.getElementById("mainForm").submit();
+}

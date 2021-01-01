@@ -1,4 +1,8 @@
-<%--
+<%@ page import="beans.discountCode.DiscountCodeObject" %>
+<%@ page import="beans.nextPage.NextPageObject" %>
+<%@ page import="java.util.List" %>
+<%@ page import="beans.nextPage.NextPageConfiguration" %>
+<%@ page import="beans.discountCode.DiscountCode" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 31/12/2020
@@ -12,7 +16,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Quản lý hãng mã giảm giá</title>
+    <title>TVTSHOP ADMIN | Quản lý mã giảm giá</title>
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
@@ -25,334 +29,132 @@
 
 <body>
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
-                    </li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
-                        mục</a></li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div class="active">
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<%
+
+    //  Lấy DiscountCode
+    DiscountCodeObject discountCodeObject = (DiscountCodeObject) session.getAttribute("discountCodeObject");
+
+%>
+
+<jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar7.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
-                    <p>Admin</p>
-                </div>
-            </a>
-        </div>
-    </div>
 
-    <div class="backgroundindexmain">
-    </div>
+    <jsp:include page="../share/_LayoutTop.jsp"/>
 
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
         <div id="div2">
             <div>
-                <div class="header">
+                <form class="header" method="post" action="../../DiscountCodeController" id="mainForm" onsubmit="return false">
                     <div class="leftheader">
-                        <select name="" id="">
-                            <option value="" selected>Ngày tạo</option>
-                            <option value="">Mã giảm giá</option>
-                            <option value="">Mã nhập</option>
-                            <option value="">Trạng thái sử dụng</option>
-                            <option value="">Số lần đã sử dụng</option>
-                            <option value="">Số lần sử dụng tối đa</option>
-                            <option value="">Số lần sử dụng còn lại</option>
-                            <option value="">Ngày hết hạng</option>
-                            <option value="">Giảm giá theo %</option>
-                            <option value="">Giảm giá theo số tiền</option>
-                            <option value="">Miến phí vận chuyển</option>
+                        <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
+
+                            <% String selectSearchAndSort = discountCodeObject.getSelectSearchAndSort(); %>
+
+                            <option value="dateCreated" selected
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("dateCreated")) {%>
+                                    selected
+                                    <%}%>
+                            >Ngày tạo</option>
+                            <option value="id"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("id")) {%>
+                                    selected
+                                    <%}%>
+                            >Mã giảm giá</option>
+                            <option value="name"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("name")) {%>
+                                    selected
+                                    <%}%>
+                            >Mã nhập</option>
+                            <option value="status"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("status")) {%>
+                                    selected
+                                    <%}%>
+                            >Trạng thái sử dụng</option>
+                            <option value="numberOfUe"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("numberOfUse")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lần đã sử dụng</option>
+                            <option value="maximunNumberOfUse"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("maximunNumberOfUse")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lần sử dụng tối đa</option>
+                            <option value="remainNumberOfUse"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("remainNumberOfUse")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lần sử dụng còn lại</option>
+                            <option value="deadline"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("deadline")) {%>
+                                    selected
+                                    <%}%>
+                            >Ngày hết hạng</option>
+                            <option value="%"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("%")) {%>
+                                    selected
+                                    <%}%>
+                            >Giảm giá theo %</option>
+                            <option value="VND"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("VND")) {%>
+                                    selected
+                                    <%}%>
+                            >Giảm giá theo số tiền</option>
+                            <option value="MPVC"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("MPVC")) {%>
+                                    selected
+                                    <%}%>
+                            >Miến phí vận chuyển</option>
                         </select>
                         <div>
-                            <div class="leftheadersort" onclick="changesort2(this)">
+
+                            <% String sort = discountCodeObject.getSort(); %>
+
+                            <% if (sort.equals("DESC")) {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
                                 <i class=" fa fa-sort-amount-desc"></i>
-                                <i class=" fa fa-sort-amount-asc"></i>
-                                <input type="checkbox" style="display: none;">
                             </div>
+                            <%} else {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()"
+                                 style="margin-top:4px">
+                                <i class=" fa fa-sort-amount-asc" style="margin-top: -10px"></i>
+                            </div>
+                            <%}%>
+
                             <div class="leftheadersearch">
                                 <div>
                                     <i class="fa fa-search"></i>
                                     <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
-                                           value="">
+                                           value="<%=discountCodeObject.getSearch()%>">
                                     <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="leftnextpage" id="leftnextpage">
-                        <p>Hiển thị <strong> 13 </strong> trên tổng 135 danh mục</p>
-                        <button><i class="fa fa-caret-left"></i></button>
+                        <p>Hiển thị <strong><%= discountCodeObject.getNumberOfShow() %>
+                        </strong> trên tổng <%=discountCodeObject.getMaximumDiscountCode()%> mã giảm giá</p>
+                        <span onclick="prePage(<%=discountCodeObject.getNowPage()%>)"><i
+                                class="fa fa-caret-left"></i></span>
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li class="none" onclick="showselectgopage(this)">...
+
+                            <%
+                                //  Lấy list next page đổ next page ra
+                                List<NextPageObject> nextPages = discountCodeObject.getNextPages();
+                                for (NextPageObject n : nextPages) {
+                            %>
+                            <li
+                                    <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
+                                    class="activeli"
+                                    <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
+                                    class="none" onclick="showselectgopage(this)"
+                                    <%} else {%>
+                                    onclick="pageNavigation(<%=n.getValue()%>)"
+                                    <%}%>
+                            ><%=n.getValue()%>
 
                                 <div class="gopage">
                                     <input type="checkbox" style="display: none;">
@@ -361,13 +163,32 @@
                                 </div>
 
                             </li>
-                            <li>9</li>
+                            <%
+                                    //  Kết thúc đổ next page
+                                }
+                            %>
                         </ul>
-                        <button><i class="fa fa-caret-right"></i></button>
+                        <span onclick="nextPage(<%=discountCodeObject.getNowPage()%>,<%=discountCodeObject.getMaximumPage()%>)"><i
+                                class="fa fa-caret-right"></i></span>
+                        <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
+                               value="<%=discountCodeObject.getNowPage()%>">
+                        <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
+                               value="<%=discountCodeObject.getMaximumPage()%>">
                     </div>
                     <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm mã giảm giá mới</button>
                     <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
-                </div>
+
+                    <!-- action -->
+                    <input type="text" name="action" style="display: none" id="action" value="">
+
+                    <!-- sort -->
+                    <% if (sort.equals("DESC")) {%>
+                    <input type="checkbox" style="display: none" name="sort" id="sort">
+                    <% } else {%>
+                    <input type="checkbox" style="display: none" name="sort" id="sort" checked>
+                    <%}%>
+
+                </form>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
                         <button onclick="allselect()">+</button>
@@ -383,34 +204,52 @@
                         <p>Hạn sử dụng</p>
                     </div>
 
+                    <%
+
+                        //  Đổ dữ liệu list mã giảm giá
+                        List<DiscountCode> discountCodes = discountCodeObject.getDiscountCodes();
+
+                        for (DiscountCode d : discountCodes) {
+
+                    %>
+
                     <div class="item">
                         <label for="c1">
                             <input type="checkbox" name="" id="c1">
+                            <input type="text" style="display: none" value="<%=d.getId()%>">
                         </label>
                         <p>
-                            #mgg_1
+                            #<%= d.getId()%>
                         </p>
                         <p>
-                            KF12ADBVD
+                           <%=d.getName()%>
                         </p>
 
-                        <p>MPVC</p>
+                        <p><%=d.getType()%></p>
 
                         <p>
-                            150,000 VND
+                            <%=d.getStringValue()%>
                         </p>
 
                         <p>
-                            4
+                            <%=d.getNumberOfUse()%>
                         </p>
                         <p>
-                            1
+                            <%=d.getRemainNumberOfUse()%>
                         </p>
                         <p>
-                            5
+                            <%=d.getMaximunNumberOfUse()%>
                         </p>
 
-                        <div class="tableitemicon choxuly">
+                        <div class="tableitemicon
+
+                        <% if(d.getStatus() == 0){%>
+                        choxuly
+                        <%}else{%>
+                        khonghoanthanh
+                        <%}%>
+
+                        ">
                             <div>
                                 <i class="fa fa-clock-o"></i>
                             </div>
@@ -422,9 +261,9 @@
                             </div>
                         </div>
 
-                        <p>2020-11-17 12:00:00</p>
+                        <p><%=d.getDateCreated().toString()%></p>
 
-                        <p>2020-12-17 12:00:00</p>
+                        <p><%=d.getDeadline().toString()%></p>
 
                         <div class="itemsubmit" onclick="showselect(this)">
                             <input type="text" style="display: none;">
@@ -434,6 +273,7 @@
                             <div>
                                 <button onclick="editdanhmuc(this)"><i class="fa fa-pencil"></i>Sửa</button>
                                 <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <input type="text" style="display: none" value="<%=d.getId()%>">
                             </div>
                         </div>
                         <div>
@@ -446,27 +286,50 @@
                                 <div class="div12input">
                                     <label>* Loại mã giảm giá</label>
                                     <select name="" id="" onchange="changeSelect2(this)">
-                                        <option value="mpvc" selected>Miễn phí vận chuyển</option>
-                                        <option value="ggtpt">Giảm theo %</option>
-                                        <option value="ggtstnt">Giảm theo số tiền nhất định</option>
+                                        <option value="mpvc"
+
+                                                <% if (d.getType().equals("MPVC")) {%>
+                                                selected
+                                                <%}%>
+
+                                        >Miễn phí vận chuyển</option>
+                                        <option value="ggtpt"
+
+                                                <% if (d.getType().equals("%")) {%>
+                                                selected
+                                                <%}%>
+
+                                        >Giảm theo %</option>
+                                        <option value="ggtstnt"
+
+                                                <% if (d.getType().equals("VND")) {%>
+                                                selected
+                                                <%}%>
+
+                                        >Giảm theo số tiền nhất định</option>
                                     </select>
                                 </div>
-                                <div class="div12input hidden">
+                                <div class="div12input
+                                     <%if(d.getType().equals("MPVC")){%>
+                                        hidden
+                                    <%}%>
+                                    ">
                                     <label for="">* Giá trị</label>
-                                    <input type="text" placeholder="Giá trị của mã giảm giá">
+                                    <input type="text" placeholder="Giá trị của mã giảm giá" value="<%=d.getValue()%>">
                                 </div>
                                 <div class="div12input">
                                     <label for="">* Mã nhập</label>
-                                    <input type="text" placeholder="Mã để người dùng nhập">
+                                    <input type="text" placeholder="Mã để người dùng nhập" value="<%=d.getName()%>">
                                 </div>
                                 <div class="div12input">
                                     <label for="">* Số lần sử dụng</label>
-                                    <input type="number" placeholder="Số làn sử dụng tối đa của mã">
+                                    <input type="number" placeholder="Số làn sử dụng tối đa của mã" value="<%=d.getMaximunNumberOfUse()%>">
                                 </div>
                                 <div class="div12input">
                                     <label for="">* Hạn sử dụng</label>
-                                    <input type="datetime-local">
+                                    <input type="datetime-local" value="<%=d.getDeadline().toStringDateTimeLocal()%>">
                                 </div>
+                                <input type="text" style="display: none" value="<%=d.getId()%>">
                                 <div class="linediv12"></div>
                                 <button onclick="themmoi()"><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
@@ -475,6 +338,15 @@
                             </div>
                         </div>
                     </div>
+
+                        <%
+                                // End đổ dữ liệu list mã giảm giá
+                            }
+
+                        %>
+
+
+
 
                 </div>
             </div>

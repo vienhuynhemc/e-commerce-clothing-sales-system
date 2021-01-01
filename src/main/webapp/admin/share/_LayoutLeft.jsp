@@ -81,12 +81,12 @@
                     <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
                     <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
                         mục</a></li>
-                    <li class="activelv2"><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng
+                    <li class="activelv2"><a href="../../ManufacturerController"><i class="fa fa-viadeo-square"></i>Hãng
                         sản xuất</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;" checked>
             </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
+            <a href="../../DiscountCodeController" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-balance-scale"></i>
                     <p>Mã giảm giá</p>

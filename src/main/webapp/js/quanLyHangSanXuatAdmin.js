@@ -448,12 +448,31 @@ function gopagefast(item) {
 
         if (l[2] == item) {
             let value = l1.value;
-            if (!isNaN(value)) {
-                document.getElementById("numberOfPage").value = parseInt(value);
-                document.getElementById("action").value = "nextPage";
-                document.getElementById("mainForm").submit();
-            }
 
+            let maxPage = parseInt(document.getElementById("maximunNumberOfPage").value);
+            let nowPage = parseInt(document.getElementById("numberOfPage").value);
+
+            if (Number.isInteger(value)) {
+
+                if (value != nowPage && value >= 1 && value <= maxPage) {
+                    document.getElementById("numberOfPage").value = value;
+                    document.getElementById("action").value = "nextPage";
+                    document.getElementById("mainForm").submit();
+                }
+
+            } else {
+                if (value.match(/^-{0,1}\d+$/)) {
+
+                    let number = parseInt(value);
+
+                    if (number != nowPage && number >= 1 && number <= maxPage) {
+                        document.getElementById("numberOfPage").value = number;
+                        document.getElementById("action").value = "nextPage";
+                        document.getElementById("mainForm").submit();
+                    }
+
+                }
+            }
         }
 
     }

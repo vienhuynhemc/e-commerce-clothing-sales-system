@@ -39,8 +39,41 @@ public class DateTime {
 
     //  To string all
     public String toString() {
-        return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+
+        String stringMonth = month + "";
+        if (stringMonth.length() == 1) stringMonth = "0" + stringMonth;
+        String stringDay = day + "";
+        if (stringDay.length() == 1) stringDay = "0" + stringDay;
+        String stringHour = hour + "";
+        if (stringHour.length() == 1) stringHour = "0" + stringHour;
+        String stringMinute = minute + "";
+        if (stringMinute.length() == 1) stringMinute = "0" + stringMinute;
+        String stringSecond = second + "";
+        if (stringSecond.length() == 1) stringSecond = "0" + stringSecond;
+
+        return year + "-" + stringMonth + "-" + stringDay + " " + stringHour + ":" + stringMinute + ":" + stringSecond;
+
     }
+
+    //  To value input type = datetimelocal
+    public String toStringDateTimeLocal(){
+
+        String stringMonth = month + "";
+        if (stringMonth.length() == 1) stringMonth = "0" + stringMonth;
+        String stringDay = day + "";
+        if (stringDay.length() == 1) stringDay = "0" + stringDay;
+        String stringHour = hour + "";
+        if (stringHour.length() == 1) stringHour = "0" + stringHour;
+        String stringMinute = minute + "";
+        if (stringMinute.length() == 1) stringMinute = "0" + stringMinute;
+        String stringSecond = second + "";
+        if (stringSecond.length() == 1) stringSecond = "0" + stringSecond;
+
+        return year + "-" + stringMonth + "-" + stringDay + "T" + stringHour + ":" + stringMinute + ":" + stringSecond;
+
+    }
+
+
 
     //  To string dạng 26 Tháng Tám 2020
     public String toStringDateTypeNumberStringNumber() {
@@ -87,8 +120,13 @@ public class DateTime {
                 break;
         }
 
+        String stringDay = day + "";
+        if (stringDay.length() == 1) {
+            stringDay = "0" + stringDay;
+        }
+
         //  return về dạng mình mong muốn
-        return day + " " + mm + " " + year;
+        return stringDay + " " + mm + " " + year;
 
     }
 

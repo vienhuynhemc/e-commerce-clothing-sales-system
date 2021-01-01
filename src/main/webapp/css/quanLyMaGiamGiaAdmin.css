@@ -131,7 +131,7 @@ select option {
   color: #333333;
 }
 
-.leftnextpage button {
+.leftnextpage span {
   background-color: white;
   border: none;
   border-radius: 5px;
@@ -141,6 +141,9 @@ select option {
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
   cursor: pointer;
   color: #9795b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leftnextpage ul {
@@ -552,6 +555,7 @@ select option {
 
 .tableitemicon {
   margin-left: 10px;
+  padding: 1px 0px;
 }
 
 .tableitemicon div:nth-child(1) {

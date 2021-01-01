@@ -14,7 +14,7 @@ public class DiscountCode {
     private String type;
 
     //   = "" khi là MPVC , xxx % khi giảm theo %, xxx VND khi giảm theo số tiền nhất định
-    private String value;
+    private int value;
 
     //  Sô làn đã sử dụng
     private int numberOfUse;
@@ -38,7 +38,7 @@ public class DiscountCode {
     private DateTime deadline;
 
     //  Constructor với đầy đủ thông tin
-    public DiscountCode(String id, String name, String type, String value, int numberOfUse, int maximunNumberOfUse, int remainNumberOfUse, int status, int exists, DateTime dateCreated, DateTime deadline) {
+    public DiscountCode(String id, String name, String type, int value, int numberOfUse, int maximunNumberOfUse, int remainNumberOfUse, int status, int exists, DateTime dateCreated, DateTime deadline) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -51,6 +51,34 @@ public class DiscountCode {
         this.dateCreated = dateCreated;
         this.deadline = deadline;
     }
+
+    //  Phương thức getValue()
+    public String getStringValue() {
+
+        String expand = type.compareTo("MPVC") == 0 ? "" : type;
+        String stringValue = value + "";
+        if(type.equals("MPVC")) stringValue = "";
+        if (type.equals("VND")) {
+
+            String saveValue = stringValue;
+            stringValue = "";
+            int count = 0;
+            for (int i = saveValue.length() - 1; i >= 0; i--) {
+
+                count++;
+                stringValue = saveValue.charAt(i) + stringValue;
+                if (count == 3 && i != 0) {
+                    count = 0;
+                    stringValue = "," + stringValue;
+                }
+
+            }
+        }
+
+        return stringValue + " " + expand;
+
+    }
+
 
     //  GETTER AND SETTER
     public String getId() {
@@ -77,11 +105,11 @@ public class DiscountCode {
         this.type = type;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

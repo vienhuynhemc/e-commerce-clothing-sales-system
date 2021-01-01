@@ -192,7 +192,7 @@
                                 class="fa fa-caret-right"></i></span>
                         <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
                                value="<%=manufacturerObject.getNowPage()%>">
-                        <input type="number" name="maximunNumberOfPage" style="display: none"
+                        <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
                                value="<%=manufacturerObject.getMaximumPage()%>">
                     </div>
                     <span onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm hãng mới</span>
