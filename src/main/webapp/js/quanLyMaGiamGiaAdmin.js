@@ -345,3 +345,11 @@ function pageNavigation(nowPage) {
     document.getElementById("action").value = "nextPage";
     document.getElementById("mainForm").submit();
 }
+
+const node = document.getElementsByClassName("searchsubmit")[0];
+node.addEventListener("keyup", function (event) {
+    if (event.key == "Enter" || event.keyCode == 13) {
+        document.getElementById("action").value = "search";
+        document.getElementById("mainForm").submit();
+    }
+});

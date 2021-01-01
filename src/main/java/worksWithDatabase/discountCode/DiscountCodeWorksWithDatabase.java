@@ -180,7 +180,7 @@ public class DiscountCodeWorksWithDatabase {
             case "status":
                 filter = "trang_thai_su_dung";
                 break;
-            case "numberOfUs":
+            case "numberOfUse":
                 filter = "so_lan_su_dung";
                 break;
             case "maximunNumberOfUse":
@@ -190,7 +190,7 @@ public class DiscountCodeWorksWithDatabase {
                 filter = "so_lan_su_dung_con_lai";
                 break;
             case "deadline":
-                filter = "ngay_het_han";
+                filter = "han_su_dung";
                 break;
             case "%":
                 filter = "value";
@@ -200,12 +200,11 @@ public class DiscountCodeWorksWithDatabase {
                 filter = "value";
                 typeMGG = "1";
                 break;
-            case "MTPC":
+            case "MPVC":
                 filter = "value";
                 typeMGG = "0";
                 break;
         }
-
 
         //  Khởi tạo list result
         List<DiscountCode> resultList = new ArrayList<DiscountCode>();
@@ -222,7 +221,7 @@ public class DiscountCodeWorksWithDatabase {
             //  Taọ 1 preparedStatement tùy thuộc vào trạng thái ta thiết lập
             PreparedStatement preparedStatement = null;
             if(filter.equals("so_lan_su_dung_con_lai")){
-                preparedStatement = connection.prepareStatement("SELECT *,(so_lan_su_dung_toi_da-so_lan_su_dung) AS "+filter+" FROM ma_giam_gia WHERE ton_tai = ? AND " + filter + " LIKE ? ORDER BY " + filter + " " + sort + " LIMIT " + limitLine + " , " + linesPerPage + ";");
+                preparedStatement = connection.prepareStatement("SELECT *,(so_lan_su_dung_toi_da-so_lan_su_dung) AS "+filter+" FROM ma_giam_gia WHERE ton_tai = ? AND (so_lan_su_dung_toi_da-so_lan_su_dung) LIKE ? ORDER BY (so_lan_su_dung_toi_da-so_lan_su_dung) " + sort + " LIMIT " + limitLine + " , " + linesPerPage + ";");
             }else if(filter.equals("value")){
                 preparedStatement = connection.prepareStatement("SELECT * FROM ma_giam_gia WHERE ton_tai = ? AND kieu_mgg = "+typeMGG+" AND gia_tri LIKE ? ORDER BY gia_tri " + sort + " LIMIT " + limitLine + " , " + linesPerPage + ";");
             }
@@ -295,7 +294,7 @@ public class DiscountCodeWorksWithDatabase {
             case "status":
                 filter = "trang_thai_su_dung";
                 break;
-            case "numberOfUs":
+            case "numberOfUse":
                 filter = "so_lan_su_dung";
                 break;
             case "maximunNumberOfUse":
@@ -305,7 +304,7 @@ public class DiscountCodeWorksWithDatabase {
                 filter = "so_lan_su_dung_con_lai";
                 break;
             case "deadline":
-                filter = "ngay_het_han";
+                filter = "han_su_dung";
                 break;
             case "%":
                 filter = "value";
@@ -315,7 +314,7 @@ public class DiscountCodeWorksWithDatabase {
                 filter = "value";
                 typeMGG = "1";
                 break;
-            case "MTPC":
+            case "MPVC":
                 filter = "value";
                 typeMGG = "0";
                 break;
@@ -333,7 +332,7 @@ public class DiscountCodeWorksWithDatabase {
             //  Taọ 1 preparedStatement tùy thuộc vào trạng thái ta thiết lập
             PreparedStatement preparedStatement = null;
             if(filter.equals("so_lan_su_dung_con_lai")){
-                preparedStatement = connection.prepareStatement("SELECT COUNT(so_lan_su_dung_toi_da-so_lan_su_dung) AS so_luong FROM ma_giam_gia WHERE ton_tai = ? AND so_luong LIKE ?");
+                preparedStatement = connection.prepareStatement("SELECT COUNT(t.so_luong) as so_luong FROM (SELECT (so_lan_su_dung_toi_da-so_lan_su_dung) AS so_luong FROM ma_giam_gia WHERE ton_tai = ?) t WHERE t.so_luong LIKE ?");
             }else if(filter.equals("value")){
                 preparedStatement = connection.prepareStatement("SELECT COUNT(ma_mgg) as so_luong FROM ma_giam_gia WHERE ton_tai = ? AND kieu_mgg = "+typeMGG+" AND gia_tri LIKE ? ");
             }

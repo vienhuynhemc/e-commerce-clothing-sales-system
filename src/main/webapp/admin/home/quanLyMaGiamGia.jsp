@@ -175,8 +175,8 @@
                         <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
                                value="<%=discountCodeObject.getMaximumPage()%>">
                     </div>
-                    <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm mã giảm giá mới</button>
-                    <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <span onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm mã giảm giá mới</span>
+                    <span onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</span>
 
                     <!-- action -->
                     <input type="text" name="action" style="display: none" id="action" value="">

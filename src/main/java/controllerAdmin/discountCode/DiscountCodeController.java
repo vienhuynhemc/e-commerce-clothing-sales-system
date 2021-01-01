@@ -3,6 +3,8 @@ package controllerAdmin.discountCode;
 import beans.BeansConfiguration;
 import beans.discountCode.DiscountCode;
 import beans.discountCode.DiscountCodeObject;
+import beans.manufacturer.Manufacturer;
+import beans.manufacturer.ManufacturerObject;
 import beans.nextPage.NextPageObject;
 import model.discountCode.DiscountCodeModel;
 import model.manufacturer.ManufacturerModel;
@@ -138,6 +140,92 @@ public class DiscountCodeController extends HttpServlet {
                 response.sendRedirect("admin/home/quanLyMaGiamGia.jsp");
 
             } else {
+
+                //  Lấy đối tượng ra
+                DiscountCodeObject discountCodeObject = (DiscountCodeObject) request.getSession().getAttribute("discountCodeObject");
+
+                switch (action) {
+
+                    case "sort":
+
+                        //  Lấy lại cách sắp xếp
+                        if (sort != null) {
+                            discountCodeObject.setSort("DESC");
+                        } else {
+                            discountCodeObject.setSort("ASC");
+                        }
+
+                        break;
+
+                    case "changeFilter":
+
+                        //  Lấy lại bộ lọc
+                        discountCodeObject.setSelectSearchAndSort(selectSearchAndSort);
+
+                        //  Cập nhập lại maximun mã giảm giá
+                        int maximunDiscountCode = DiscountCodeModel.getInstance().getMaximunDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSearch());
+                        discountCodeObject.setMaximumDiscountCode(maximunDiscountCode);
+
+                        //  Cập nhập lại số trang tối đa
+                        int maximumPagee = DiscountCodeModel.getInstance().getMaximunNumberOfPage(maximunDiscountCode);
+                        discountCodeObject.setMaximumPage(maximumPagee);
+
+                        //  Cập nhập lại list nextPage
+                        List<NextPageObject> nextPagesss = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPagee);
+                        discountCodeObject.setNextPages(nextPagesss);
+
+                        //  Cập nhập lại nowPage là 1
+                        discountCodeObject.setNowPage(1);
+
+                        break;
+
+                    case "nextPage":
+
+                        //  Lấy lại nowPage
+                        discountCodeObject.setNowPage(Integer.parseInt(numberOfPage));
+
+                        //  Cập nhập lại list nextPage
+                        List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(discountCodeObject.getNowPage(), discountCodeObject.getMaximumPage());
+                        discountCodeObject.setNextPages(nextPages);
+
+                        break;
+
+                    case "search":
+
+                        //  Cập nhập now page là 1
+                        discountCodeObject.setNowPage(1);
+
+                        //  Lấy lại search
+                        discountCodeObject.setSearch(search);
+
+                        //  Cập nhập lại maximun mã giảm giá
+                        int maximunDiscountcode = DiscountCodeModel.getInstance().getMaximunDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSearch());
+                        discountCodeObject.setMaximumDiscountCode(maximunDiscountcode);
+
+                        //  Cập nhập lại số trang tối đa
+                        int maximumPage = DiscountCodeModel.getInstance().getMaximunNumberOfPage(maximunDiscountcode);
+                        discountCodeObject.setMaximumPage(maximumPage);
+
+                        //  Cập nhập lại list nextPage
+                        List<NextPageObject> nextPagess = NextPageModel.getInstance().getListNextPageObjectAdmin(1, maximumPage);
+                        discountCodeObject.setNextPages(nextPagess);
+
+                        break;
+
+                }
+
+                //  Lấy lại hãng sản xuất
+                List<DiscountCode> discountCodes = DiscountCodeModel.getInstance().getListDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSort(),discountCodeObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_MGG, discountCodeObject.getNowPage());
+                discountCodeObject.setDiscountCodes(discountCodes);
+
+                //  Cập nhập lại số sản phẩm hiện thị
+                discountCodeObject.setNumberOfShow(discountCodes.size());
+
+                //  Gán lại cho sesstion
+                request.getSession().setAttribute("manufacturerObject", discountCodeObject);
+
+                // sedirect tới trang của mình thôi nào
+                response.sendRedirect("admin/home/quanLyMaGiamGia.jsp");
 
             }
 
