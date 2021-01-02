@@ -3,6 +3,7 @@ package controllerAdmin.loadAccount;
 import beans.account.AccountCustomer;
 import model.loadAccount.LoadAccountKHModel;
 import model.loadAccount.LoadNextPageModel;
+import worksWithDatabase.loadAccount.LoadKHDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,24 +22,34 @@ public class LoadAccountKHController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println(request.getParameter("page"));
-       // int page = Integer.parseInt(request.getParameter("page"));
+
+        int page = Integer.parseInt(request.getParameter("page"));
+        System.out.println(page);
       //  System.out.println(page);
         String type = request.getParameter("type");
 
+
         String search = request.getParameter("search");
         String orderby = request.getParameter("orderBy");
+
         System.out.println(type);
         System.out.println(search);
         System.out.println(orderby);
 
-        Collection<AccountCustomer> listKH = LoadAccountKHModel.getInstance().loadListKH(1,type,search,orderby);
+        LoadKHDAO loadKHDAO = new LoadKHDAO();
+        Collection<AccountCustomer> listKH = loadKHDAO.LoadKHAll(page,type,search,orderby);
 
 
-
-        int numberPage = LoadAccountKHModel.getInstance().getNumPage();
+        int numberPage = loadKHDAO.getNumPage();
         //Laod số trang
         request.setAttribute("numberPage",numberPage);
+
+
+        //load tổng sô khách hàng
+        int sum = loadKHDAO.getSumCustomer();
+        request.setAttribute("sumCustomer",sum);
+
+
         //load danh sách khách hàng
         request.setAttribute("listKH",listKH);
 

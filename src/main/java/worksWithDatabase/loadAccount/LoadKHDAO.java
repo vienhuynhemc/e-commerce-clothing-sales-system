@@ -14,6 +14,7 @@ public class LoadKHDAO {
     //Map<String, AccountCustomer> list ;
     ArrayList<AccountCustomer> list;
      int numPage;
+     int sumCustomer;
     public LoadKHDAO(){
         //list = new HashMap<>();
         list = new ArrayList<>();
@@ -42,11 +43,7 @@ public class LoadKHDAO {
 
             ResultSet rs = sm.executeQuery(sql);
 
-            // di chuyển tới cuối hàng để lấy số hàng
-         //   rs.last();
-          //  int end = rs.getRow();
-            // lấy dc r thì di chuyển lại vị trí bắt đầu lấy
-          //  rs.absolute((num-1)*10);
+
 
             //if(num*10 < end){
                 // lấy đủ 10 thằng thôi
@@ -108,6 +105,7 @@ public class LoadKHDAO {
 
     }
 
+
     public ArrayList<AccountCustomer> LoadKHAll(int page,String type,String search,String orderBy){
         Connection con = null;
 
@@ -116,47 +114,64 @@ public class LoadKHDAO {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
 
-
             String sql = "WITH list as(SELECT ROW_NUMBER() Over(ORDER BY a." +type+" "+orderBy +") as n" +
-                    ", a.IDUser, a.Type,a.UserName,a.`PassWord`,a.Email,a.Phone, a.Avatar, " +
-                    "a.DisplayName,a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate " +
-                    "from account a , customer c WHERE a.IDUser = c.IDUser and " +
-                    "(a.FullName LIKE ? or a.Email LIKE ? or a.Phone LIKE ? or a.UserName LIKE ?)) " +
-                    "SELECT * from list WHERE n BETWEEN ? AND ?";
+                        ", a.IDUser, a.Type,a.UserName,a.`PassWord`,a.Email,a.Phone, a.Avatar, " +
+                        "a.DisplayName,a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate " +
+                        "from account a , customer c WHERE a.IDUser = c.IDUser and " +
+                        "(a.FullName LIKE ? or a.Email LIKE ? or a.Phone LIKE ? or a.UserName LIKE ? or day(a.RegisDate) = ? or MONTH(a.RegisDate) = ? OR YEAR(a.RegisDate) = ?)) " +
+                        "SELECT * from list WHERE n BETWEEN ? AND ?";
+
+           String sql1 = "select *from account a , customer c WHERE a.IDUser = c.IDUser and (a.FullName LIKE ? or a.Email LIKE ? or a.Phone LIKE ? or a.UserName LIKE ? or day(a.RegisDate) = ? or MONTH(a.RegisDate) = ? OR YEAR(a.RegisDate) = ?)";
+
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+
+            ps1.setString(1,"%" + search);
+            ps1.setString(2,"%" + search + "%");
+            ps1.setString(3, search + "%");
+            ps1.setString(4,"%" + search + "%");
+            ps1.setString(5, search );
+            ps1.setString(6,search);
+            ps1.setString(7, search);
+
+
+            ResultSet rs1 = ps1.executeQuery();
+
+            rs1.last();
+            sumCustomer = rs1.getRow();
+            rs1.beforeFirst();
+
+            if(sumCustomer%10 != 0){
+                setNumPage((int) (sumCustomer/10) +1);
+            }else{
+                setNumPage( sumCustomer/10);
+            }
+            ps1.close();
+            rs1.close();
+
 
             PreparedStatement ps = con.prepareStatement(sql);
+            int start = (page-1)*10+1;
+            int end;
+            if(page != numPage){
+                end  = page * 10;
 
-            int start = page*10;
-            int end = (page+1) * 10;
+            }else{
+                end = sumCustomer ;
 
-            //ps.setString(1,type);
-           // ps.setString(1,orderBy);
-            ps.setString(1,"%" + search + "%");
+            }
+
+
+            ps.setString(1,"%" + search);
             ps.setString(2,"%" + search + "%");
-            ps.setString(3,"%" + search + "%");
+            ps.setString(3,search + "%");
             ps.setString(4,"%" + search + "%");
-            ps.setString(5,String.valueOf(0));
-            ps.setString(6,String.valueOf(10));
-
-
-
+            ps.setString(5,search);
+            ps.setString(6,search);
+            ps.setString(7,search);
+            ps.setString(8,String.valueOf(start));
+            ps.setString(9,String.valueOf(end));
 
             ResultSet rs = ps.executeQuery();
-
-
-        // di chuyển tới cuối hàng để lấy số hàng
-//        rs.last();
-//        int end = rs.getRow();
-//
-//            int sum = rs.getRow();
-//
-//            // nếu dư thì cho nó qua trang mới
-//            if(sum%10 != 0){
-//                numPage = (int) (sum/10) +1;
-//            }else{
-//                numPage = sum/10;
-//            }
-
 
             while (rs.next()) {
 
@@ -226,11 +241,24 @@ public class LoadKHDAO {
         this.numPage = numPage;
     }
 
+    public int getSumCustomer() {
+        return sumCustomer;
+    }
+
+    public void setSumCustomer(int sumCustomer) {
+        this.sumCustomer = sumCustomer;
+    }
+
+
+
     public static void main(String[] args) throws SQLException {
     LoadKHDAO lao = new LoadKHDAO();
    // ArrayList<AccountCustomer> list = lao.loadListKH();
     //    System.out.println(list.toString());
-      ArrayList<AccountCustomer> list2 = lao.LoadKHAll(0,"email","gmail","DESC");
+      ArrayList<AccountCustomer> list2 = lao.LoadKHAll(6,"RegisDate",".","DESC");
+
         System.out.println(list2.toString());
+        System.out.println(lao.getNumPage());
+        System.out.println(list2.size());
     }
 }

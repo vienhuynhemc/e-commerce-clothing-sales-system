@@ -29,20 +29,7 @@ function hiddensearch2(item) {
     }
 }
 
-function changesort2(item) {
-    let list = item.children;
-    if (list[2].checked == false) {
-        list[2].checked = true;
-        list[0].style.display = "none";
-        list[1].style.display = "block";
-        item.style.marginTop = "0px";
-    } else {
-        list[2].checked = false;
-        list[1].style.display = "none";
-        list[0].style.display = "block";
-        item.style.marginTop = "-5px";
-    }
-}
+
 
 function showselect(item) {
 

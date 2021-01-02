@@ -1,6 +1,7 @@
 <%@ page import="beans.account.ErrorAddAccount" %>
 <%@ page import="beans.account.AccountCustomer" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
 
   Created by IntelliJ IDEA.
   User: Administrator
@@ -19,11 +20,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý khách hàng</title>
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="js/Truong/jquery/jquery-3.5.1.min.js">
 
     <link rel="stylesheet" href="css/indexAdmin.css">
     <script src="js/indexAdmin.js"></script>
 
     <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
+
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
+
+
+    <% ArrayList<AccountCustomer> list = (ArrayList<AccountCustomer>) request.getAttribute("listKH");%>
+
 
 
 </head>
@@ -324,26 +332,25 @@
 
                     <!--code------------------------------------------------------------------->
 
-                    <form action="LoadAccountKHController?page=1" method="get">
+                    <form action="LoadAccountKHController" method="get">
                         <div class="leftheader">
-                            <select name="type" id="">
+                            <select name="type" id="typeSelect" >
                                 <option value="RegisDate" selected>Ngày tạo</option>
                                 <option value="FullName">Họ và tên</option>
                                 <option value="UserName">Tài khoản</option>
                             </select>
                             <div>
                                 <div class="leftheadersort" onclick="changesort2(this)">
-                                    <i class=" fa fa-sort-amount-desc"></i>
-
-                                    <input type="hidden" name="orderBy" value="DESC">
-
-                                    <i class=" fa fa-sort-amount-asc"></i>
+                                    <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
+                                    <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                     <input type="checkbox" style="display: none;">
+                                    <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
                                 </div>
                                 <div class="leftheadersearch">
 
-                                    <button type="submit" > <i class="fa fa-search" type="submit" onclick="showsearch2(this)"></i></button>
-                                    <input type="text" name="search" placeholder="Tìm kiếm" value="${param.search}">
+                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" onclick="showsearch2(this)"></i></button>
+                                    <input name="page" value="1" type="hidden">
+                                    <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
 <%--                                    <div>--%>
 <%--                                        <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
 <%--                                        --%>
@@ -355,19 +362,38 @@
                     </form>
 
                     <div class="leftnextpage">
-                        <p>Hiển thị <strong> 10 </strong> trên tổng 95 khách hàng</p>
-                        <button><i class="fa fa-caret-left"></i></button>
+                        <p>Hiển thị <strong> <%=list.size()%> </strong> trên tổng
+
+
+                            <%= request.getAttribute("sumCustomer") %>
+
+                            khách hàng</p>
+                        <a href="LoadAccountKHController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" ><button><i class="fa fa-caret-left"></i></button></a>
                         <ul>
 
-                            <c:forEach begin="1" end="${numberPage}" var="i" >
-                            <li><a href="LoadAccountKHController?page=${i}"> ${i} </a></li>
-                            </c:forEach>
+                            <%
+                                int listpage = (int) request.getAttribute("numberPage");
+                                int nowpage = Integer.parseInt(request.getParameter("page"));
+                            for (int i = 1;i <= listpage;i++){
+                                if(i == nowpage){
+                            %>
+                            <li style="background-color: #4162fb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
+
+                            <%}else{%>
+                            <li ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
+                            <%}}%>
+
+<%--                            <c:forEach begin="1" end="${numberPage}" var="i" >--%>
+<%--                                --%>
+<%--                            <li><a href="LoadAccountKHController?page=${i}&type=${param.type}&search=${param.search}&orderBy=${param.orderBy}"> ${i} </a></li>--%>
+<%--                            </c:forEach>--%>
 
                         </ul>
-                        <button><i class="fa fa-caret-right"></i></button>
+                        <a href="LoadAccountKHController?page=<%=Integer.parseInt(request.getParameter("page"))  + 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">
+                            <button><i class="fa fa-caret-right"></i></button>
+                        </a>
+
                     </div>
-
-
 
 
                     <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
@@ -385,70 +411,75 @@
                         <p>Ngày tạo</p>
                     </div>
 
-                    <c:forEach items="${listKH}" var="k">
+                    <%
+
+                        for ( AccountCustomer k : list  ) {
+                    %>
 
                     <div class="item">
                         <label for="c1">
-                            <input type="checkbox" name="" id="c1">
+                            <input type="checkbox" name="checkRemove" id="c1" onclick="check()">
+                            <input style="display: none;" type="hidden" id="checkRemove" name="checkRemove" value="<%=k.getIdUser()%>">
+
                         </label>
                         <div class="itemhdd">
-                            <img src="../../img/user.jpg" alt="">
+                            <img src="<%=k.getAvatar()%>" alt="">
                         </div>
                         <p class="itemname">
-                            ${k.fullName}
+                            <%=k.getFullName()%>
                         </p>
 
                         <p class="itememail">
-                           ${k.email}
+                            <%=k.getEmail()%>
                         </p>
 
                         <p class="itemphone">
-                            ${k.phone}
+                            <%=k.getPhone()%>
                         </p>
 
                         <p class="itemtk">
-                            ${k.userName}
+                            <%=k.getUserName()%>
                         </p>
 
                         <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
+                                                        <div>
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </div>
+                            <%
+                            if (k.getActiveStatus() ==1){
 
-<%--                           <% --%>
-<%--                               if (${} == 1){--%>
-
-<%--                           %>--%>
-<%--                                    <div>--%>
-<%--                                        <i class="fa fa-check-circle"></i>--%>
-<%--                                    </div>--%>
-<%--                            <%}else{%>--%>
-<%--                                    <div>--%>
-<%--                                        <i class="fa fa-clock-o"></i>--%>
-<%--                                    </div>--%>
-<%--                            <%}%>--%>
+                            %>
+                                <div>
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <%}else{%>
+                                <div>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <%}%>
 
                         </div>
                         <div class="tableitemicon hoanthanh">
                             <div>
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            <div>
-                                <i class="fa fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <i class="fa fa-close"></i>
-                            </div>
-                        </div>
+
+              <%
+                    if (k.getActiveEvaluate() ==1){
+
+                 %>
+                 <div>
+                     <i class="fa fa-check-circle"></i>
+                 </div>
+                 <%}else{%>
+                    <div>
+                     <i class="fa fa-clock-o"></i>
+                     </div>
+                      <%}%>
+                             </div>
 
                         <p class="itemdate">
-                            ${k.regisDate.day} Tháng ${k.regisDate.month} ${k.regisDate.year}
+                            <%=k.getRegisDate().getDay()%> Tháng <%=k.getRegisDate().getMonth()%> <%=k.getRegisDate().getYear()%>
                         </p>
 
                         <div class="itemsubmit" onclick="showselect(this)">
@@ -463,99 +494,100 @@
                         </div>
 
 
-                        <div>
-                            <div class="div11">
-                                <h3>Hồ sơ của bạn</h3>
-                                <input id="fileInput1" type="file" style="display:none;"
-                                       onchange="loadIMG2(event,this)"/>
-                                <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
-                                    <div>
-                                        <img src="../../img/user.jpg" alt="">
+<%--                       <form action="EditAccountKHController" method="post">--%>
+                            <div>
+                                <div class="div11">
+                                    <h3>Hồ sơ của bạn</h3>
+                                    <input id="fileInput1" type="file" style="display:none;"
+                                           onchange="loadIMG(event)"/>
+                                    <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
+                                        <div>
+                                            <img id="avataredit" src="<%=k.getAvatar()%>" alt="">
+                                            <input id="loadAvatar" type="hidden" name="avatar" value="<%=k.getAvatar()%>" >
+                                        </div>
+                                    </div>
+
+                                    <button type="button" onclick="document.getElementById('fileInput1').click()">Thay đổi
+                                        ảnh đại diện
+                                        mới
+                                    </button>
+                                    <button type="button" onclick="removeIMG2()">Xóa ảnh đại diện</button>
+
+                                </div>
+
+                                <div class="div12">
+                                    <h3>Điền thông tin cá nhân</h3>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">* Họ và tên</label>
+                                        <input name="fullName" type="text" placeholder="Nhập họ và tên ở đây"
+                                               value="<%=k.getFullName()%>">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">Tên hiển thị</label>
+                                        <input name="displayName" type="text" placeholder="Nhập tên hiển thị ở đây"
+                                               value="<%=k.getDisplayName()%>">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Email</label>
+                                        <input name="email" type="text" placeholder="Nhập email ở đây"
+                                               value="<%=k.getEmail()%>" disabled>
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Số điện thoại</label>
+                                        <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây"
+                                               value="<%=k.getPhone()%>"
+                                               disabled>
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <div class="trangthai">
+                                        <div class="div12inputlv2">
+                                            <label for="">Trạng thái kích hoạt</label>
+                                            <select name="activeStatus" id="">
+                                                <option value="1">Đã kích hoạt</option>
+                                                <option value="0">Chưa kích hoạt</option>
+                                            </select>
+                                        </div>
+                                        <div class="div12inputlv2">
+                                            <label for="">Trạng thái đánh giá</label>
+                                            <select name="activeEvaluate" id="">
+                                                <option value="1">Cho phép đánh giá</option>
+                                                <option value="0">Cấm đánh giá</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="linediv12"></div>
+                                    <div class="div12input">
+                                        <label for="">* Tài khoản</label>
+                                        <input namei="userName" type="text" placeholder="Nhập tên tài khoản ở đây"
+                                               value="<%=k.getUserName()%>"
+                                               disabled>
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Mật khẩu</label>
+                                        <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây"
+                                               value="">
+                                    </div>
+                                    <div class="div12input">
+                                        <label for="">* Xác nhận</label>
+                                        <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây"
+                                               value="">
                                     </div>
                                 </div>
 
-                                <button onclick="document.getElementById('fileInput1').click()">Thay đổi
-                                    ảnh đại diện
-                                    mới
-                                </button>
-                                <button onclick="removeIMG2()">Xóa ảnh đại diện</button>
 
-                            </div>
-
-
-                            <div class="div12">
-                                <h3>Điền thông tin cá nhân</h3>
-                                <div class="linediv12"></div>
-                                <div class="div12input">
-                                    <label for="">* Họ và tên</label>
-                                    <input name="full-name" type="text" placeholder="Nhập họ và tên ở đây"
-                                           value="Nguyễn Thị Hoa Hồng">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">Tên hiển thị</label>
-                                    <input name="display-name" type="text" placeholder="Nhập tên hiển thị ở đây"
-                                           value="Hồng Nguyễn">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Email</label>
-                                    <input name="email" type="text" placeholder="Nhập email ở đây"
-                                           value="nguyenthihoahong@gmail.com" disabled>
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Số điện thoại</label>
-                                    <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây"
-                                           value="0971-122-209"
-                                           disabled>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="trangthai">
-                                    <div class="div12inputlv2">
-                                        <label for="">Trạng thái kích hoạt</label>
-                                        <select name="ttkh" id="">
-                                            <option value="1">Đã kích hoạt</option>
-                                            <option value="0">Chưa kích hoạt</option>
-                                        </select>
-                                    </div>
-                                    <div class="div12inputlv2">
-                                        <label for="">Trạng thái đánh giá</label>
-                                        <select name="ttdg" id="">
-                                            <option value="1">Cho phép đánh giá</option>
-                                            <option value="0">Cấm đánh giá</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12input">
-                                    <label for="">* Tài khoản</label>
-                                    <input namei="userName" type="text" placeholder="Nhập tên tài khoản ở đây"
-                                           value="iamarose"
-                                           disabled>
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Mật khẩu</label>
-                                    <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây"
-                                           value="mothaiba@@">
-                                </div>
-                                <div class="div12input">
-                                    <label for="">* Xác nhận</label>
-                                    <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây"
-                                           value="mothaiba@@">
+                                <div class="div13">
+                                    <button type="submit"><i class="fa fa-save"></i>Lưu</button>
+                                    <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                                        lý
+                                    </button>
                                 </div>
                             </div>
-
-
-                            <div class="div13">
-                                <button><i class="fa fa-save"></i>Lưu</button>
-                                <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                                    lý
-                                </button>
-                            </div>
-                        </div>
+<%--                        </form>--%>
 
                     </div>
 
-                    </c:forEach>
-
+                    <%}%>
                 </div>
             </div>
         </div>
@@ -633,7 +665,7 @@
 
                     <div class="div13">
                         <button type="submit"><i class="fa fa-plus"></i>Thêm khách hàng</button>
-                        <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
+                        <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                     </div>
                 </div>
             </div>
@@ -682,6 +714,16 @@
 </body>
 
 </html>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
 <script>
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -709,13 +751,16 @@
             let nameData = name.split('.')[0];
             const folder = "Avatar/" + nameData;
             const metadata = {contentType: file.type};
+            let urlm;
             const task = ref.child(folder).put(file, metadata);
             task
                 .then(snapshot => snapshot.ref.getDownloadURL())
                 .then(url => {
                     alert("Thanh cong");
-                    document.getElementById('avatar').src = url;
-                    document.getElementById('fileInput12').value = url;
+                    document.getElementById('avataredit').src = url;
+                    document.getElementById("loadAvatar").value = url;
+                    urlm = url;
+
                     link = url;
                     firebase.database().ref(folder).set({
                         Name: nameData,
@@ -723,23 +768,88 @@
                     })
                 });
 
-//Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
-            firebase.database().ref("Avatar/").on('value', function (snapshot) {
-                document.getElementById('avatar').src = snapshot.val().Link;
-            })
+// Lấy dữ liệu xuống như lấy thuộc tính từ đối tượng ra , chỉ cần truyền đúng link thì oke
+//             firebase.database().ref().on('value', function (snapshot) {
+//                 document.getElementById('avatar').src = snapshot.val().Link;
+//                 document.getElementById('avatar2').src = snapshot.val().Link;
+//                 document.getElementById("loadAvatar").value = snapshot.val().Link;
+//             })
         }
     }
 
-    function removeAvatar() {
-        document.getElementById('avatar').src = '../img/user.jpg';
-       // document.getElementById('avatar2').src = '../img/user.jpg';
+<%--    function removeAvatar() {--%>
 
-// xoá thì truyền link vào
-//database
-        firebase.database().ref('ProductNam/map').remove();
-        // img
-        firebase.storage().ref('ProductNam/map').delete();
+<%--        document.getElementById('avatar').src = '../img/user.jpg';--%>
+<%--        document.getElementById('avatar2').src = '../img/user.jpg';--%>
+<%--// xoá thì truyền link vào--%>
+<%--//database--%>
+<%--        firebase.database().ref(<%=accountCustomer.getAvatar()%>).remove();--%>
+<%--        // img--%>
+<%--        firebase.storage().ref(<%=accountCustomer.getAvatar()%>).delete();--%>
+
+
+<%--    }--%>
+
+</script>
+
+<script>
+    function changesort2(item) {
+        let list = item.children;
+        if (list[2].checked == false) {
+            list[2].checked = true;
+            list[0].style.display = "none";
+            list[1].style.display = "block";
+
+            item.style.marginTop = "0px";
+        } else {
+            list[2].checked = false;
+            list[1].style.display = "none";
+            list[0].style.display = "block";
+            item.style.marginTop = "-5px";
+
+        }
+    }
+    function setOrderBy(){
+        if(document.getElementById("checkSort").value == "ASC"){
+            document.getElementById("checkSort").value = "DESC";
+        }else{
+            document.getElementById("checkSort").value = "ASC";
+        }
+
     }
 
 </script>
+
+<script>
+    function check(){
+
+        document.getElementById("checkRemove").style.display = "block";
+
+    }
+</script>
+
+<script>
+    $(function (){
+        let type = <%=request.getParameter("type")%>;
+        let list =  document.getElementById("typeSelect").children;
+        if(type.equals("RegisDate")){
+            list[0].prop("selected",true);
+        }else if(type.equals("FullName")){
+            list[1].prop("selected",true);
+        }else{
+            list[2].prop("selected",true);
+        }
+
+        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', true);
+        $('select#typeSelect options[value=<%=request.getParameter("type")%>]).attr('selected',true);
+        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', 'selected').change();
+
+        $(document).ready(function() {
+            $("select#typeSelect option[value='<%=request.getParameter("type")%>']").prop('selected', true);
+        });
+    });
+</script>
+
 <script src="js/quanLyKhachHangAdmin.js"></script>
+<script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
+

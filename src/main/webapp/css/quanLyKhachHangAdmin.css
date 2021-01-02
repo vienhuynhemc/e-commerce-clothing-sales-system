@@ -54,9 +54,30 @@
 }
 
 .leftheadersearch {
-    color: #9795b4;
+    color: #575665;
     margin-left: 10px;
     cursor: pointer;
+    width: 208px;
+    height: 32px;
+    background: white;
+    border-radius: 2px;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border-radius: 8px;
+}
+
+
+button.timkiem {
+    width: 16%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+}
+input.search2{
+    width: 84%;
+    outline: none;
+    border: none;
 }
 
 .leftheadersearch > div {
@@ -138,11 +159,11 @@
     color: #9795b4;
 }
 
-.leftnextpage ul li:nth-child(1) {
-    background-color: #4162fb;
-    color: white;
-    box-shadow: 0 3px 5px #90a3ff;
-}
+/*.leftnextpage ul li:nth-child(1) {*/
+/*    background-color: #4162fb;*/
+/*    color: white;*/
+/*    box-shadow: 0 3px 5px #90a3ff;*/
+/*}*/
 
 .maindiv2 {
     margin-top: 20px;
