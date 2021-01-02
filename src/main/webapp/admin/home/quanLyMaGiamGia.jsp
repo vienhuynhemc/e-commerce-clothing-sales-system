@@ -80,7 +80,9 @@
 <%}%>
 <!------------------------------------------------------------------------------------------------------------------->
 
-<jsp:include page="../share/_LayoutLeft.jsp"/>
+<jsp:include page="../share/_LayoutLeft.jsp">
+    <jsp:param name="activeSelect" value="quanLyMaGiamGia"/>
+</jsp:include>
 
 <div class="indexright">
 
