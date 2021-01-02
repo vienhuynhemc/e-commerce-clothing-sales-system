@@ -501,4 +501,88 @@ public class DiscountCodeWorksWithDatabase {
         return result;
 
     }
+
+    //  Phương thức nhận vào mã mgg, xóa nó trong cơ sở dữ liệu
+    public boolean removeOneDiscountCodeInDatabase(String id){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE ma_giam_gia  SET ton_tai = 1 WHERE ma_mgg = ? AND ton_tai = 0");
+
+            //  Set dữ liệu
+            preparedStatement.setString(1,id);
+
+            // update
+            int row = preparedStatement.executeUpdate();
+
+            //  Nếu có đúng 1 dòng được cập nhập thì bạn đsung
+            if(row == 1){
+                result  =true;
+            }
+
+            //  Đóng các thứ
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
+    //  Phương thức nhận vào list mã mgg, xóa nó trong cơ sở dữ liệu
+    public int removeGroupDiscountCodeInDatabase(String[] discountCodeIds){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        int result = 0;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE ma_giam_gia  SET ton_tai = 1 WHERE ma_mgg = ? AND ton_tai = 0");
+
+            // update
+            int row = 0;
+            for(String discountCodeId : discountCodeIds){
+                preparedStatement.setString(1,discountCodeId);
+                row+= preparedStatement.executeUpdate();
+            }
+
+            //  Gán lại số dòng đã xóa là bao nhiêu
+            result = row;
+
+            //  Đóng các thứ
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
 }

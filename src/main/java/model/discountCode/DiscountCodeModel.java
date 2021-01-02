@@ -166,13 +166,47 @@ public class DiscountCodeModel {
     }
 
     //  Phương thức thêm một mã giảm giá vô cơ sở dữ liệu
-    public boolean addDiscountCode(String ma_mgg, int kieu_mgg, int gia_tri, int so_lan_su_dung, int so_lan_su_dung_toi_da, DateTime han_su_dung, DateTime ngay_tao, int ton_tai,String ma_nhap,int trang_thai_su_dung){
+    public boolean addDiscountCode(String ma_mgg, int kieu_mgg, int gia_tri, int so_lan_su_dung, int so_lan_su_dung_toi_da, DateTime han_su_dung, DateTime ngay_tao, int ton_tai, String ma_nhap, int trang_thai_su_dung) {
 
         //  Mượn discountcode works with database
         DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
 
         //  Lấy kết quả
-        boolean result = discountCodeWorksWithDatabase.addDiscountCode(ma_mgg,kieu_mgg,gia_tri,so_lan_su_dung,so_lan_su_dung_toi_da,han_su_dung,ngay_tao,ton_tai,ma_nhap,trang_thai_su_dung);
+        boolean result = discountCodeWorksWithDatabase.addDiscountCode(ma_mgg, kieu_mgg, gia_tri, so_lan_su_dung, so_lan_su_dung_toi_da, han_su_dung, ngay_tao, ton_tai, ma_nhap, trang_thai_su_dung);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào mã mgg, xóa nó trong cơ sở dữ liệu
+    public boolean removeOneDiscountCodeInDatabase(String id) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  update xóa nó trong cơ sở dữ liệu
+        boolean result = discountCodeWorksWithDatabase.removeOneDiscountCodeInDatabase(id);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào list mã mgg, xóa nó trong cơ sở dữ liệu
+    public int removeGroupDiscountCodeInDatabase(String[] discountCodeIds) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  update xóa nó trong cơ sở dữ liệu
+        int result = discountCodeWorksWithDatabase.removeGroupDiscountCodeInDatabase(discountCodeIds);
 
         //  Có mượn thì có trả
         DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);

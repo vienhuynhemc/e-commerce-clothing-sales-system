@@ -43,7 +43,7 @@ public class ManufacturerController extends HttpServlet {
 
                 //  Kiểm tra nếu như manufacturers.size == 0 thì có nghĩa trang này hết dữ liệu rồi, cập nhập lại nowPage -1
                 if (manufacturers.size() == 0) {
-                    if (manufacturerObject.getNowPage() > 0) {
+                    if (manufacturerObject.getNowPage() > 1) {
                         manufacturerObject.setNowPage(manufacturerObject.getNowPage() - 1);
                         manufacturers = ManufacturerModel.getInstance().getListManufacturerFromAll(manufacturerObject.getSelectSearchAndSort(), manufacturerObject.getSort(), manufacturerObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_HSX, manufacturerObject.getNowPage());
                         manufacturerObject.setManufacturers(manufacturers);

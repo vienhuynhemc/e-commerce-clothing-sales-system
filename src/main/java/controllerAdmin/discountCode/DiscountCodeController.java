@@ -52,6 +52,34 @@ public class DiscountCodeController extends HttpServlet {
             //  Nếu là từ trang xóa thì làm như thế này
             if (foward.equals("remove")) {
 
+                //  Kiểm tra nếu như discountCodes.size == 0 thì có nghĩa trang này hết dữ liệu rồi, cập nhập lại nowPage -1
+                if (discountCodes.size() == 0) {
+                    if (discountCodeObject.getNowPage() > 1) {
+                        discountCodeObject.setNowPage(discountCodeObject.getNowPage() - 1);
+                         discountCodes = DiscountCodeModel.getInstance().getListDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSort(), discountCodeObject.getSearch(), BeansConfiguration.LINE_OF_ON_PAGE_QUAN_LY_MGG, discountCodeObject.getNowPage());
+                    discountCodeObject.setDiscountCodes(discountCodes);
+                    }
+                }
+
+                //  Cập nhập lại số lượng hiển thị
+                discountCodeObject.setNumberOfShow(discountCodes.size());
+
+                //  Cập nhập lại số sản phẩm tối đa
+                int maximumDiscountCode = DiscountCodeModel.getInstance().getMaximunDiscountCodeFromAll(discountCodeObject.getSelectSearchAndSort(), discountCodeObject.getSearch());
+                discountCodeObject.setMaximumDiscountCode(maximumDiscountCode);
+
+                //  Cập nhập lại số trang tối đa
+                int maximumPage = DiscountCodeModel.getInstance().getMaximunNumberOfPage(maximumDiscountCode);
+                discountCodeObject.setMaximumPage(maximumPage);
+
+                //  Cập nhập lại list Next page
+                List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(discountCodeObject.getNowPage(), discountCodeObject.getMaximumPage());
+                discountCodeObject.setNextPages(nextPages);
+
+                //  Cập nhập lại là bị xóa
+                discountCodeObject.setNotify(true);
+                discountCodeObject.setTitle((String) request.getAttribute("more"));
+                discountCodeObject.setConntent((String) request.getAttribute("more2"));
 
                 //  Nếu là từ trang thêm thì làm như thế này
             } else if (foward.equals("add")) {

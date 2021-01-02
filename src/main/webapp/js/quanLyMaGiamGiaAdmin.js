@@ -51,7 +51,7 @@ function showselect(item) {
     let list = document.getElementById("maindiv2").children;
     for (let i = 1; i < list.length; i++) {
         list2 = list[i].children;
-        if (list2[5] == item) {
+        if (list2[11] == item) {
             index = i;
             break;
         }
@@ -88,8 +88,14 @@ function removekhachhang(item) {
         let list2 = list[11].children;
         let list3 = list2[4].children;
         if (list3[1] == item) {
-            list2[4].style.display = 'none';
             list2[1].checked = false;
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #' + list3[2].value;
+            document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+            let item = document.createElement("i");
+            item.classList.add("fa");
+            item.classList.add("fa-hand-grab-o");
+            document.getElementById("formYesNoLink").href = "../../DiscountCodeRemoveController?type=single&&id=" + list3[2].value;
+            document.getElementById("formYesNoTitle2").appendChild(item);
             document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
         }
@@ -109,17 +115,27 @@ function capnhaphienthi() {
 
 function xoacacmuadachon() {
     let listItem = document.getElementById("maindiv2").children;
-    let array = [];
+    let discountCodes = '';
     for (let i = 1; i < listItem.length; i++) {
         let list2 = listItem[i].children;
         let list3 = list2[0].children;
         if (list3[0].checked == true) {
-            array.push(listItem[i]);
+            discountCodes += list3[1].value + " ";
         }
     }
 
-    for (let i = 0; i < array.length; i++) {
-        document.getElementById("maindiv2").removeChild(array[i]);
+    if (discountCodes.length > 0) {
+       discountCodes = discountCodes.trim();
+        let size = discountCodes.split(" ").length;
+
+        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa ' + size + ' mục';
+        document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+        let item = document.createElement("i");
+        item.classList.add("fa");
+        item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").href = "../../DiscountCodeRemoveController?type=group&&discountCodes=" + discountCodes;
+        document.getElementById("formYesNoTitle2").appendChild(item);
+        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
     }
 }
 
