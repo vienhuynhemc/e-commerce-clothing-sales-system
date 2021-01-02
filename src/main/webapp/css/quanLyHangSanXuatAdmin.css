@@ -187,7 +187,7 @@ select option {
     align-items: center;
 }
 
-.header > span> i {
+.header > span > i {
     margin-right: 5px;
 }
 
@@ -497,7 +497,7 @@ select option {
     margin-right: 5px;
 }
 
-.itemchitiet input{
+.itemchitiet input {
     width: 80%;
     border: 1px solid #e0e5e9;
     border-radius: 20px;
@@ -508,7 +508,7 @@ select option {
     margin-top: 10px;
 }
 
-.itemchitiet > i{
+.itemchitiet > i {
     width: 25px;
     border-radius: 50%;
     height: 25px;
@@ -522,7 +522,7 @@ select option {
     margin-top: 10px;
 }
 
-.itemchitiet{
+.itemchitiet {
     margin-left: 30px;
     font-family: sans-serif;
     color: #444446;
@@ -530,7 +530,7 @@ select option {
     display: flex;
 }
 
-.itemchitiet input::placeholder{
+.itemchitiet input::placeholder {
     color: #e0e5e9;
     font-size: 12px;
 }

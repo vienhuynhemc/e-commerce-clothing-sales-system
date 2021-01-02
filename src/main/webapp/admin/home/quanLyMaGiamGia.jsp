@@ -36,6 +36,50 @@
 
 %>
 
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (discountCodeObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        discountCodeObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=discountCodeObject.getTitle()%></p>
+            <p><%=discountCodeObject.getConntent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
+
 <jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">

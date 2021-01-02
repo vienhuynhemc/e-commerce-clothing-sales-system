@@ -1,6 +1,7 @@
 package model.discountCode;
 
 import beans.BeansConfiguration;
+import beans.DateTime;
 import beans.discountCode.DiscountCode;
 import worksWithDatabase.discountCode.DiscountCodeDataSource;
 import worksWithDatabase.discountCode.DiscountCodeWorksWithDatabase;
@@ -112,6 +113,66 @@ public class DiscountCodeModel {
 
         //  Lấy maximun number of pages
         int result = discountCodeWorksWithDatabase.getMaximunDiscountCodeFromAll(selectSearchAndSort, search);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức lấy mã mã giảm giá tiếp theo
+    public String getNextDiscountCodeId() {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy mã hãng sản xuất tiếp theo
+        String result = discountCodeWorksWithDatabase.getNextDiscountCodeId();
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //   Phương thức nhận vào mã nhập, kiểm tra mã nhập này đã tồn tại trong cơ sở dữ liệu hay chưa với những mã giảm giá còn hoạt động
+    public boolean isInDatabaseWithExists(String name) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy kết quả
+        boolean result = discountCodeWorksWithDatabase.isInDatabaseWithExists(name);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào 1 type có kiểu là String, trả về số nguyên tương tứng
+    public int coverTypeFromStringToInt(String type) {
+
+        if (type.equals("mpvc")) return 0;
+        else if (type.equals("ggtpt")) return 2;
+        else return 1;
+
+    }
+
+    //  Phương thức thêm một mã giảm giá vô cơ sở dữ liệu
+    public boolean addDiscountCode(String ma_mgg, int kieu_mgg, int gia_tri, int so_lan_su_dung, int so_lan_su_dung_toi_da, DateTime han_su_dung, DateTime ngay_tao, int ton_tai,String ma_nhap,int trang_thai_su_dung){
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy kết quả
+        boolean result = discountCodeWorksWithDatabase.addDiscountCode(ma_mgg,kieu_mgg,gia_tri,so_lan_su_dung,so_lan_su_dung_toi_da,han_su_dung,ngay_tao,ton_tai,ma_nhap,trang_thai_su_dung);
 
         //  Có mượn thì có trả
         DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);

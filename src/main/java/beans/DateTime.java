@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Date;
+
 public class DateTime {
 
     //  Lớp này đại diện cho thuộc tính datatime trong mysql
@@ -33,6 +35,40 @@ public class DateTime {
         this.second = (int) (Double.parseDouble(times[2]));
     }
 
+    //  Constructor  nhận vào string và type
+    public DateTime(String dateTime, int type) {
+
+        if (type == DateTimeConfiguration.COVER_DATE_TIME_LIKE_DATETIME_LOCAL) {
+            String[] dateTimes = dateTime.split("T");
+            String[] dates = dateTimes[0].split("-");
+            String[] times = dateTimes[1].split(":");
+            this.year = Integer.parseInt(dates[0]);
+            this.month = Integer.parseInt(dates[1]);
+            this.day = Integer.parseInt(dates[2]);
+            this.hour = Integer.parseInt(times[0]);
+            this.minute = Integer.parseInt(times[1]);
+            this.second = 0;
+        }
+
+    }
+
+    //  Constructor nhận vào type
+    public DateTime(int type){
+
+        if(type == DateTimeConfiguration.NOW_DATE){
+
+            Date date = new Date();
+            this.year = date.getYear()+1900;
+            this.month = date.getMonth()+1;
+            this.day = date.getDate();
+            this.hour = date.getHours();
+            this.minute = date.getMinutes();
+            this.second = date.getSeconds();
+
+        }
+
+    }
+
     //  Constructor rỗng
     public DateTime() {
     }
@@ -56,7 +92,7 @@ public class DateTime {
     }
 
     //  To value input type = datetimelocal
-    public String toStringDateTimeLocal(){
+    public String toStringDateTimeLocal() {
 
         String stringMonth = month + "";
         if (stringMonth.length() == 1) stringMonth = "0" + stringMonth;
@@ -72,7 +108,6 @@ public class DateTime {
         return year + "-" + stringMonth + "-" + stringDay + "T" + stringHour + ":" + stringMinute + ":" + stringSecond;
 
     }
-
 
 
     //  To string dạng 26 Tháng Tám 2020

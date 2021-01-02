@@ -198,16 +198,63 @@ function themmoi() {
     let l2 = l1[1].children;
 
     let l3 = l2[2].children;
-    let nameHang = l3[1].value;
+    let type = l3[1].value;
+    let l4 = l2[3].children;
+    let value = l4[1].value.trim();
+    let l5 = l2[4].children;
+    let maNhap = l5[1].value.trim();
+    let l6 = l2[5].children;
+    let soLanSuDung = l6[1].value.trim();
+    let l7 = l2[6].children;
+    let hanSuDUng = l7[1].value;
 
-    let array = [];
-    let l4 = l2[5].children;
-    for (let i = 0; i < l4.length; i++) {
-        console.log(l4[i]);
+    let slsd = parseInt(soLanSuDung);
+    if (slsd > 0) {
+        if (type == 'mpvc') {
+            if (isInteger(soLanSuDung) && hanSuDUng.length != 0 && maNhap.length != 0) {
+
+                document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm mã giảm giá mới';
+                document.getElementById("formYesNoTitle2").innerText = 'Việc thêm vào sẽ thay đổi dữ liệu của bạn ';
+                let item = document.createElement("i");
+                item.classList.add("fa");
+                item.classList.add("fa-hand-grab-o");
+                document.getElementById("formYesNoLink").href = `../../DiscountCodeAddController?type=${type}&&value=${0}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}`;
+                document.getElementById("formYesNoTitle2").appendChild(item);
+                document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+
+            }
+        } else {
+            if (isInteger(value) && isInteger(soLanSuDung) && hanSuDUng.length != 0 && maNhap.length != 0) {
+
+                if (type == 'ggtpt') {
+                    let valuegg = parseInt(value);
+                    if (value <= 100 && value >= 0) {
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm mã giảm giá mới';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm vào sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoLink").href = `../../DiscountCodeAddController?type=${type}&&value=${value}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}`;
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                    }
+
+                } else {
+                    let valuegg = parseInt(value);
+                    if (value >= 0) {
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm mã giảm giá mới';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm vào sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoLink").href = `../../DiscountCodeAddController?type=${type}&&value=${value}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}`;
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                    }
+                }
+            }
+        }
     }
-
-    console.log(nameHang);
-    console.log(array)
 
 }
 
@@ -353,3 +400,21 @@ node.addEventListener("keyup", function (event) {
         document.getElementById("mainForm").submit();
     }
 });
+
+function isInteger(value) {
+
+    if (Number.isInteger(value)) {
+
+        return true;
+
+    } else {
+        if (value.match(/^-{0,1}\d+$/)) {
+
+            return true;
+
+        }
+    }
+
+    return false;
+
+}
