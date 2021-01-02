@@ -16,7 +16,6 @@ public class LogOutModel {
     public static String OutSession(HttpSession session,String user){
 
          if(session.getAttribute(user) != null){
-             session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
              session.invalidate();
              return "OK";
          }

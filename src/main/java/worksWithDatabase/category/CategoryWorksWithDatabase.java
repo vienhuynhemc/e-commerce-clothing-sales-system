@@ -32,6 +32,7 @@ public class CategoryWorksWithDatabase {
             }
             rs.close();
             p.close();
+            DataSource.getInstance().releaseConnection(c);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -47,12 +48,14 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(c);
         return false;
     }
+
     // thêm một danh mục mới
     public static boolean addCategory(String name){
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
                 if(name.equals("")){
+                    DataSource.getInstance().releaseConnection(connection);
                     return false;
                 }
                 Statement statement = connection.createStatement();
@@ -79,13 +82,13 @@ public class CategoryWorksWithDatabase {
         }catch (Exception e){
             e.printStackTrace();
         }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//        finally {
+//            try{
+//                connection.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không thể thêm danh mục do đã tồn tại");
         return false;
@@ -95,15 +98,20 @@ public class CategoryWorksWithDatabase {
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
+                if(check(id)) {
+                    PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
+                    s.setString(1, id);
+                    s.execute();
 
-                PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
-                s.setString(1, id);
-                s.execute();
+                    s.close();
+                    DataSource.getInstance().releaseConnection(connection);
+                    return true;
+                }
+                else{
+                    DataSource.getInstance().releaseConnection(connection);
+                    return false;
 
-                DataSource.getInstance().releaseConnection(connection);
-                s.close();
-
-                return true;
+                }
 
         }catch (Exception e){
             e.printStackTrace();
@@ -127,22 +135,22 @@ public class CategoryWorksWithDatabase {
                 s.setString(1,newName);
                 s.setString(2,id);
                 s.execute();
-                s.close();
 
                 DataSource.getInstance().releaseConnection(connection);
+                s.close();
 
                 return true;
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//        finally {
+//            try{
+//                connection.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
         DataSource.getInstance().releaseConnection(connection);
         return false;
     }
@@ -543,14 +551,15 @@ public class CategoryWorksWithDatabase {
         }
         return getAllCategories();
     }
-    public static List<Category> search(String input){
+    public ArrayList<Category> search(String input){
         Connection connection = DataSource.getInstance().getConnection();
         try {
-            List<Category> categories = new ArrayList<>();
-            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ? = ? OR ten_dm LIKE ? OR ngay_tao = ? AND ton_tai = 1");
-            s.setString(1,input);
-            s.setString(2,"ma_dm");
+            ArrayList<Category> categories = new ArrayList<>();
+//            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ? = ? OR ten_dm LIKE ? OR ngay_tao = ? AND ton_tai = 1");
+            PreparedStatement s = connection.prepareStatement("SELECT * FROM danh_muc WHERE ten_dm LIKE ? AND ton_tai = 1");
             s.setString(1,"%"+input+"%");
+//            s.setString(2,"ma_dm");
+//            s.setString(1,"%"+input+"%");
             ResultSet rs = s.executeQuery();
             while(rs.next()){
                 Category category = new Category();
@@ -571,13 +580,13 @@ public class CategoryWorksWithDatabase {
         catch(Exception e){
             e.printStackTrace();
         }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//        finally {
+//            try{
+//                connection.close();
+//            } catch (SQLException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
@@ -635,13 +644,13 @@ public class CategoryWorksWithDatabase {
         int result = number*(index-1)+1;
         return result;
     }
-    public static ArrayList<Category> getCategoriesByIndex(int index,int number){
+    public ArrayList<Category> getCategoriesByIndex(int index,int number){
         Connection connection = DataSource.getInstance().getConnection();
         try{
             ArrayList<Category> categories = new ArrayList<>();
-            PreparedStatement s = connection.prepareStatement("select * from danh_muc LIMIT ?,?");
+            PreparedStatement s = connection.prepareStatement("select * from danh_muc WHERE ton_tai = 1 LIMIT ?,?");
             int value = getIndex(index,number);
-            s.setInt(1,value);
+            s.setInt(1,value-1);
             s.setInt(2,number);
 
             ResultSet rs = s.executeQuery();
@@ -657,7 +666,6 @@ public class CategoryWorksWithDatabase {
             rs.close();
             s.close();
 
-
             DataSource.getInstance().releaseConnection(connection);
 
             return categories;
@@ -665,23 +673,27 @@ public class CategoryWorksWithDatabase {
         catch (Exception e){
             e.printStackTrace();
         }
-//        finally {
-//            try{
-//                connection.close();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
-//        }
+        finally {
+            try{
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
 
     public static void main(String[] args) {
-//       System.out.println(addCategory("ÁP"));
-        for(Category ca : getCategoriesByIndex(1,3)){
-            System.out.println(ca);
-        }
-       // System.out.println(removeCategory("dm_6"));
+        CategoryWorksWithDatabase test = new CategoryWorksWithDatabase();
+
+      // System.out.println(addCategory("ÁP"));
+//        for(Category ca : categoryDAO.getCategoriesByIndex(1,3)){
+//            System.out.println(ca);
+//        }
+
+        System.out.println(removeCategory("dm_10"));
+
 
 
         }

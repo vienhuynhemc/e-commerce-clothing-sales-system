@@ -20,13 +20,15 @@ public class FixCategoryController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String name = request.getParameter("name");
             String id = request.getParameter("ids");
+            System.out.println(id);
 
         if(CategoryModel.checkUpdateCategory(name,id)){
-            response.sendRedirect("CategoryController");
+            request.getRequestDispatcher("CategoryController").forward(request,response);
+            //response.sendRedirect("CategoryController");
             System.out.print("OK");
         }
         else{
-            response.sendRedirect("CategoryController");
+            request.getRequestDispatcher("CategoryController").forward(request,response);
         }
 
     }
