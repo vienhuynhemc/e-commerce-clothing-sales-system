@@ -216,5 +216,56 @@ public class DiscountCodeModel {
 
     }
 
+    //  Phương thức nhận vào mã mgg, xem thử nó còn tồn tại hay không
+    public boolean isExistsInDatabaseWithId(String id){
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  lấy kết quả
+        boolean result = discountCodeWorksWithDatabase.isExistsInDatabaseWithId(id);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức nhận vào name và id, xem thử ngoài id đó ra còn id nào có name như v nữa không
+    public boolean isInDatabaseWithNameAndId(String name ,String id){
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  lấy kết quả
+        boolean result = discountCodeWorksWithDatabase.isInDatabaseWithNameAndId(name,id);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
+    //  Phương thức cập nhập mã giảm giá
+    public boolean editDiscountCode(String ma_mgg, int kieu_mgg, int gia_tri, int so_lan_su_dung, int so_lan_su_dung_toi_da, DateTime han_su_dung, String ngay_tao, int ton_tai, String ma_nhap, int trang_thai_su_dung) {
+
+        //  Mượn discountcode works with database
+        DiscountCodeWorksWithDatabase discountCodeWorksWithDatabase = DiscountCodeDataSource.getInstance().getDiscountCodeWorksWithDatabase();
+
+        //  Lấy kết quả
+        boolean result = discountCodeWorksWithDatabase.editDiscountCode(ma_mgg, kieu_mgg, gia_tri, so_lan_su_dung, so_lan_su_dung_toi_da, han_su_dung, ngay_tao, ton_tai, ma_nhap, trang_thai_su_dung);
+
+        //  Có mượn thì có trả
+        DiscountCodeDataSource.getInstance().releaseDiscountCodeWorksWithDatabase(discountCodeWorksWithDatabase);
+
+        //  Trả về kết quả
+        return result;
+
+    }
+
 }
 

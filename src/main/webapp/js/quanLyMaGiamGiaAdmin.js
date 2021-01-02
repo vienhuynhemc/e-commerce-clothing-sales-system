@@ -57,7 +57,7 @@ function showselect(item) {
         }
     }
 
-    if (index < 11) {
+    if (index < 10) {
         let listItem = item.children;
         if (listItem[0].checked == true) {
             listItem[0].checked = false;
@@ -264,6 +264,73 @@ function themmoi() {
                         item.classList.add("fa");
                         item.classList.add("fa-hand-grab-o");
                         document.getElementById("formYesNoLink").href = `../../DiscountCodeAddController?type=${type}&&value=${value}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}`;
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+function capnhat() {
+    let l1 = document.getElementById("div3").children[0].children;
+    let l2 = l1[1].children;
+
+    let l3 = l2[2].children;
+    let type = l3[1].value;
+    let l4 = l2[3].children;
+    let value = l4[1].value.trim();
+    let l5 = l2[4].children;
+    let maNhap = l5[1].value.trim();
+    let l6 = l2[5].children;
+    let soLanSuDung = l6[1].value.trim();
+    let l7 = l2[6].children;
+    let hanSuDUng = l7[1].value;
+    let id = l2[7].value;
+    let ngayTao = l2[8].value;
+
+    let slsd = parseInt(soLanSuDung);
+    if (slsd > 0) {
+        if (type == 'mpvc') {
+            if (isInteger(soLanSuDung) && hanSuDUng.length != 0 && maNhap.length != 0) {
+
+                document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn lưu thay đổi';
+                document.getElementById("formYesNoTitle2").innerText = 'Việc thay đổi sẽ thay đổi dữ liệu của bạn ';
+                let item = document.createElement("i");
+                item.classList.add("fa");
+                item.classList.add("fa-hand-grab-o");
+                document.getElementById("formYesNoLink").href = `../../DiscountCodeEditController?type=${type}&&value=${0}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}&&id=${id}&&dateCreated=${ngayTao}`;
+                document.getElementById("formYesNoTitle2").appendChild(item);
+                document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+
+            }
+        } else {
+            if (isInteger(value) && isInteger(soLanSuDung) && hanSuDUng.length != 0 && maNhap.length != 0) {
+
+                if (type == 'ggtpt') {
+                    let valuegg = parseInt(value);
+                    if (value < 100 && value > 0) {
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn lưu thay đổi';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thay đổi sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoLink").href = `../../DiscountCodeEditController?type=${type}&&value=${value}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}&&id=${id}&&dateCreated=${ngayTao}`;
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                    }
+
+                } else {
+                    let valuegg = parseInt(value);
+                    if (value > 0) {
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn lưu thay đổi';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thay đổi sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoLink").href = `../../DiscountCodeEditController?type=${type}&&value=${value}&&name=${maNhap}&&maximunNumberOfUse=${soLanSuDung}&&deadline=${hanSuDUng}&&id=${id}&&dateCreated=${ngayTao}`;
                         document.getElementById("formYesNoTitle2").appendChild(item);
                         document.getElementById("formYesNo").style.transform = 'scaleY(1)';
                     }

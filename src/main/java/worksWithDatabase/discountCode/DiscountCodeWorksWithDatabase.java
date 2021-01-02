@@ -585,4 +585,142 @@ public class DiscountCodeWorksWithDatabase {
 
     }
 
+    //  Phương thức nhận vào mã mgg, xem thử nó còn tồn tại hay không
+    public boolean isExistsInDatabaseWithId(String id){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_mgg FROM ma_giam_gia  WHERE ton_tai = ? AND ma_mgg = ?");
+
+            // update
+            preparedStatement.setInt(1,0);
+            preparedStatement.setString(2,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // get result
+            while(resultSet.next()){
+                result = true;
+            }
+
+            //  Đóng các thứ
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
+    //  Phương thức nhận vào name và id, xem thử ngoài id đó ra còn id nào có name như v nữa không
+    public boolean isInDatabaseWithNameAndId(String name ,String id){
+
+        //  Lấy connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo 1 preparedStatement
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_mgg FROM ma_giam_gia  WHERE ton_tai = ? AND ma_nhap = ? AND ma_mgg != ? AND trang_thai_su_dung = ? ");
+
+            // update
+            preparedStatement.setInt(1,0);
+            preparedStatement.setString(2,name);
+            preparedStatement.setString(3,id);
+            preparedStatement.setInt(4,0);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // get result
+            while(resultSet.next()){
+                result = true;
+            }
+
+            //  Đóng các thứ
+            resultSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        //  Trả về kết quả có update đc hay không
+        return result;
+
+    }
+
+    //  Phương thức cập nhập mã giảm giá
+    public boolean editDiscountCode(String ma_mgg, int kieu_mgg, int gia_tri, int so_lan_su_dung, int so_lan_su_dung_toi_da, DateTime han_su_dung, String ngay_tao, int ton_tai, String ma_nhap, int trang_thai_su_dung) {
+
+        //  Mượn connection
+        Connection connection = DataSource.getInstance().getConnection();
+
+        //  Khởi tạo kết quả
+        boolean result = false;
+
+        try {
+
+            //  Tạo prepared statementInsert
+            //  Remove
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ma_giam_gia WHERE ma_mgg = ?");
+            preparedStatement.setString(1,ma_mgg);
+            preparedStatement.executeUpdate();
+
+            //
+             preparedStatement = connection.prepareStatement("INSERT INTO ma_giam_gia VALUES(?,?,?,?,?,?,?,?,?,?)");
+
+            // Set tham số
+            preparedStatement.setString(1,ma_mgg);
+            preparedStatement.setInt(2,kieu_mgg);
+            preparedStatement.setInt(3,gia_tri);
+            preparedStatement.setInt(4,so_lan_su_dung);
+            preparedStatement.setInt(5,so_lan_su_dung_toi_da);
+            preparedStatement.setString(6,han_su_dung.toString());
+            preparedStatement.setString(7,ngay_tao);
+            preparedStatement.setInt(8,ton_tai);
+            preparedStatement.setString(9,ma_nhap);
+            preparedStatement.setInt(10,trang_thai_su_dung);
+
+            //  execute
+            int row = preparedStatement.executeUpdate();
+
+            //  Kiểm tra kết quả
+            if(row == 1) result = true;
+
+            //  Đóng các kết nối
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        //  Trả connection
+        DataSource.getInstance().releaseConnection(connection);
+
+        return result;
+
+    }
+
 }

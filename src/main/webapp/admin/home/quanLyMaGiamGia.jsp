@@ -374,8 +374,9 @@
                                     <input type="datetime-local" value="<%=d.getDeadline().toStringDateTimeLocal()%>">
                                 </div>
                                 <input type="text" style="display: none" value="<%=d.getId()%>">
+                                <input type="text" value="<%=d.getDateCreated()%>" style="display: none">
                                 <div class="linediv12"></div>
-                                <button onclick="themmoi()"><i class="fa fa-save"></i>Lưu</button>
+                                <button onclick="capnhat()"><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                             </div>
                             <div class="div13">

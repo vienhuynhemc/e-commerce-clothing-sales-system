@@ -107,7 +107,9 @@ public class DiscountCodeController extends HttpServlet {
             } else if (foward.equals("edit")) {
 
                 //  Cập nhập lại là edit
-
+                discountCodeObject.setNotify(true);
+                discountCodeObject.setTitle((String) request.getAttribute("more"));
+                discountCodeObject.setConntent((String) request.getAttribute("more2"));
             }
 
             //  Gán lại cho sesstion
