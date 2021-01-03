@@ -22,8 +22,6 @@ public class LoadAccountKHModel {
     public ArrayList<AccountCustomer> loadListKH(int page, String type, String search, String orderby){
          LoadKHDAO loadKHDAO =  new LoadKHDAO();
 
-         //Map<String, AccountCustomer> result = loadKHDAO.loadListKH(num);
-
         ArrayList<AccountCustomer> result = loadKHDAO.LoadKHAll(page,type,search,orderby);
          numPage = loadKHDAO.getNumPage();
 

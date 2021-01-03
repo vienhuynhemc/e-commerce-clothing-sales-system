@@ -52,7 +52,7 @@
                 </div>
                 <ul>
                     <li><a href="../LoadAccountNVVCController?page=1"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="../LoadAccountNVKController?page=1"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li><a href="../LoadAccountNVKController?page=1&type=RegisDate&search=&orderBy=DESC"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
                     <li><a href="../LoadAccountKHController?page=1&type=RegisDate&search=&orderBy=DESC"><i class="fa fa-users"></i>Khách hàng</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">

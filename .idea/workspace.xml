@@ -27,32 +27,47 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Update Account">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa - Trang quan lí khách hàng">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_12_59_AM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_12_59_AM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_2020_1_23_AM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_2020_1_23_AM__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/beans/account/AccountEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/account/AccountEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountKHController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountKHController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountKHStartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountNVKController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountNVKController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadAccountKHModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadAccountKHModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadAccountNVKModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadKHStartModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/loadAccount/LoadNextPageModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadNVKDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadNVKDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadNextPageKH.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/share/_LayoutLeft.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/share/_LayoutLeft.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/quanLyNVKAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/quanLyNVKAdmin.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="jsf" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,12 +93,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/home" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -92,6 +108,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\home" />
+      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp" />
+      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\admin" />
       <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\NotifyErrorAccount" />
       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\popupMailNotice" />
     </key>
@@ -103,12 +122,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.391">
-    <configuration name="CategoryDataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.CategoryDataSource" />
+    <configuration name="ConvertArrayString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="beans.account.ConvertArrayString" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worksWithDatabase.*" />
+          <option name="PATTERN" value="beans.account.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,12 +135,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="mail.Main" />
+    <configuration name="LoadKHDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.loadAccount.LoadKHDAO" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="mail.*" />
+          <option name="PATTERN" value="worksWithDatabase.loadAccount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoadNVKDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.loadAccount.LoadNVKDAO" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worksWithDatabase.loadAccount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RemoveAccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountDAO" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RemoveAccountSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountSource" />
+      <module name="ltw_thayLong_group5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -227,10 +285,21 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.LoadKHDAO" />
+      <item itemvalue="Application.LoadNVKDAO" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.391" />
+      <item itemvalue="Application.RemoveAccountDAO" />
+      <item itemvalue="Application.ConvertArrayString" />
+      <item itemvalue="Application.RemoveAccountSource" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CategoryDataSource" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.RemoveAccountSource" />
+        <item itemvalue="Application.ConvertArrayString" />
+        <item itemvalue="Application.RemoveAccountDAO" />
+        <item itemvalue="Application.LoadNVKDAO" />
+        <item itemvalue="Application.LoadKHDAO" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +340,21 @@
       <workItem from="1608793933717" duration="14586000" />
       <workItem from="1608824401599" duration="9233000" />
       <workItem from="1608891248310" duration="1591000" />
-      <workItem from="1608900263604" duration="12234000" />
+      <workItem from="1608900263604" duration="12501000" />
+      <workItem from="1608969111129" duration="6814000" />
+      <workItem from="1608981799024" duration="19457000" />
+      <workItem from="1609071734394" duration="17431000" />
+      <workItem from="1609121237018" duration="9069000" />
+      <workItem from="1609132299861" duration="5154000" />
+      <workItem from="1609160042096" duration="3481000" />
+      <workItem from="1609164530690" duration="13800000" />
+      <workItem from="1609210896322" duration="3618000" />
+      <workItem from="1609233210967" duration="30052000" />
+      <workItem from="1609347114526" duration="5212000" />
+      <workItem from="1609416277068" duration="12970000" />
+      <workItem from="1609566450581" duration="21029000" />
+      <workItem from="1609660173052" duration="5751000" />
+      <workItem from="1609673511556" duration="12689000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -399,7 +482,84 @@
       <option name="project" value="LOCAL" />
       <updated>1608892813276</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Update code Account">
+      <created>1608912747464</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1608912747464</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Load danh sách khách hàng">
+      <created>1608975972261</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1608975972262</updated>
+    </task>
+    <task id="LOCAL-00021" summary="danh sách khách hàng + next page">
+      <created>1608998398396</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1608998398396</updated>
+    </task>
+    <task id="LOCAL-00022" summary="load danh sách nhân viên kho">
+      <created>1609003355953</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1609003355953</updated>
+    </task>
+    <task id="LOCAL-00023" summary="load danh sách nhân viên vận chuyển">
+      <created>1609074193557</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1609074193558</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Chỉnh sửa nhân viên kho">
+      <created>1609087427989</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1609087427989</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Đăng kí trang chủ + xem thông tin của người dùng">
+      <created>1609161119809</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1609161119810</updated>
+    </task>
+    <task id="LOCAL-00026" summary="thay đổi thông tin tài khoản + encode">
+      <created>1609178328473</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1609178328474</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Search trang thêm khách hàng">
+      <created>1609266180339</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1609266180340</updated>
+    </task>
+    <task id="LOCAL-00028" summary="sửa link trang">
+      <created>1609347878022</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1609347878022</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa - Trang quan lí khách hàng">
+      <created>1609579636862</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1609579636862</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,10 +578,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="github oke" />
-    <MESSAGE value="add my sql maven and test project" />
-    <MESSAGE value="rút ngắn project" />
-    <MESSAGE value="hoàn thành cấu trúc thư mục, chưa cập nhập link" />
     <MESSAGE value="connection pool step1 create databaseConfiguration" />
     <MESSAGE value="connectionPool class" />
     <MESSAGE value="Hoàn thành connection pool - đã test 100%" />
@@ -435,25 +591,90 @@
     <MESSAGE value="Test chức năng ngôn ngữ" />
     <MESSAGE value="test" />
     <MESSAGE value="Update Account" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Account" />
+    <MESSAGE value="Update code Account" />
+    <MESSAGE value="Load danh sách khách hàng" />
+    <MESSAGE value="danh sách khách hàng + next page" />
+    <MESSAGE value="load danh sách nhân viên kho" />
+    <MESSAGE value="load danh sách nhân viên vận chuyển" />
+    <MESSAGE value="Chỉnh sửa nhân viên kho" />
+    <MESSAGE value="Đăng kí trang chủ + xem thông tin của người dùng" />
+    <MESSAGE value="thay đổi thông tin tài khoản + encode" />
+    <MESSAGE value="Search trang thêm khách hàng" />
+    <MESSAGE value="sửa chút" />
+    <MESSAGE value="sửa link trang" />
+    <MESSAGE value="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa - Trang quan lí khách hàng" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa - Trang quan lí khách hàng" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>358</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
+          <line>92</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>510</line>
-          <option name="timeStamp" value="2" />
+          <line>41</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>940</line>
-          <option name="timeStamp" value="3" />
+          <line>393</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp</url>
+          <line>376</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/home/login.jsp</url>
+          <line>114</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp</url>
+          <line>171</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
+          <line>435</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
+          <line>151</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
+          <line>445</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
+          <line>236</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+          <line>789</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+          <line>335</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadKHDAO.java</url>
+          <line>237</line>
+          <properties class="worksWithDatabase.loadAccount.LoadKHDAO">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

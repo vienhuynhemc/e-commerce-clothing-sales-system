@@ -348,13 +348,10 @@
                                 </div>
                                 <div class="leftheadersearch">
 
-                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" onclick="showsearch2(this)"></i></button>
+                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" ></i></button>
                                     <input name="page" value="1" type="hidden">
                                     <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
-<%--                                    <div>--%>
-<%--                                        <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
-<%--                                        --%>
-<%--                                    </div>--%>
+
                                 </div>
                             </div>
                         </div>
@@ -368,7 +365,10 @@
                             <%= request.getAttribute("sumCustomer") %>
 
                             khách hàng</p>
-                        <a href="LoadAccountKHController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" ><button><i class="fa fa-caret-left"></i></button></a>
+                        <a href="LoadAccountKHController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                            <button><i class="fa fa-caret-left"></i>
+                            </button>
+                        </a>
                         <ul>
 
                             <%
@@ -382,11 +382,6 @@
                             <%}else{%>
                             <li ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
                             <%}}%>
-
-<%--                            <c:forEach begin="1" end="${numberPage}" var="i" >--%>
-<%--                                --%>
-<%--                            <li><a href="LoadAccountKHController?page=${i}&type=${param.type}&search=${param.search}&orderBy=${param.orderBy}"> ${i} </a></li>--%>
-<%--                            </c:forEach>--%>
 
                         </ul>
                         <a href="LoadAccountKHController?page=<%=Integer.parseInt(request.getParameter("page"))  + 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">
