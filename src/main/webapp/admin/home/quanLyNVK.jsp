@@ -438,7 +438,7 @@
                             <div>
                                 <button id="sua" onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
 
-                                <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <button type="button" id="<%=nvk.getIdUser()%>"  onclick="deleteOne(this)"><i class="fa fa-trash"></i>Xóa</button>
                             </div>
                         </div>
 
@@ -744,6 +744,11 @@
     deleteE(data);
     });
 
+    function deleteOne(event){
+        var data = $(event).attr('id');
+        deleteE(data);
+    }
+
     function deleteE(data){
         $.ajax({
             url:'RemoveAccountNVKController',
@@ -753,9 +758,11 @@
                 list: JSON.stringify(data)
             },
             success: function (result){
+                alert("Xóa thành công");
             window.location.href = "LoadAccountNVKController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
             },
             error: function (){
+                alert("Xóa thất bại");
                 window.location.href = "LoadAccountNVKController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
             }
         });

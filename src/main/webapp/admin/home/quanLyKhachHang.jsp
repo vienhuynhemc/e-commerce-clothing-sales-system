@@ -19,6 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý khách hàng</title>
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="js/Truong/jquery/jquery-3.5.1.min.js">
 
@@ -27,11 +28,12 @@
 
     <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
 
-    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
+
 
 
     <% ArrayList<AccountCustomer> list = (ArrayList<AccountCustomer>) request.getAttribute("listKH");%>
 
+    <c:url var="xoa-khach-hang" value="/RemoveAccountHKController"/>
 
 
 </head>
@@ -392,7 +394,7 @@
 
 
                     <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
-                    <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <button id="btDelete"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                 </div>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
@@ -413,8 +415,7 @@
 
                     <div class="item">
                         <label for="c1">
-                            <input type="checkbox" name="checkRemove" id="c1" onclick="check()">
-                            <input style="display: none;" type="hidden" id="checkRemove" name="checkRemove" value="<%=k.getIdUser()%>">
+                            <input type="checkbox" name="checkRemove" id="checkRemove_<%=k.getIdUser()%>" value="<%=k.getIdUser()%>">
 
                         </label>
                         <div class="itemhdd">
@@ -483,8 +484,13 @@
                             <i class="fa fa-circle"></i>
                             <i class="fa fa-circle"></i>
                             <div>
-                                <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
-                                <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <button type="button" onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                <button type="button" id="<%=k.getIdUser()%>"  onclick="deleteOne(this)" >
+                                    <i class="fa fa-trash"></i>
+                                    <input type="hidden" value="<%=k.getIdUser()%>">
+                                    Xóa
+
+                                </button>
                             </div>
                         </div>
 
@@ -813,15 +819,47 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 
     }
 
-</script>
+    $('#btDelete').click(function (){
+        var data = {};
+        var dis = $('#maindiv2 input[type = checkbox]:checked').map(function (){
+            return $(this).val();
 
-<script>
-    function check(){
+        }).get();
 
-        document.getElementById("checkRemove").style.display = "block";
+        data = dis;
 
+        console.log(data);
+
+        deleteE(data);
+    });
+    function deleteOne(event){
+        var data = $(event).attr('id');
+        deleteE(data);
     }
+
+    function deleteE(data){
+        console.log(data);
+        $.ajax({
+            url:'RemoveAccountHKController',
+            contentType:'application/json',
+            type:'get',
+            data: {
+                list: JSON.stringify(data)
+            },
+            success: function (result){
+                alert("Xóa thành công");
+                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
+            },
+            error: function (){
+                alert("Xóa thất bại");
+                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
+            }
+        });
+    }
+
+
 </script>
+
 
 <script>
     $(function (){
@@ -843,6 +881,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
             $("select#typeSelect option[value='<%=request.getParameter("type")%>']").prop('selected', true);
         });
     });
+
+
+
 </script>
 
 <script src="js/quanLyKhachHangAdmin.js"></script>

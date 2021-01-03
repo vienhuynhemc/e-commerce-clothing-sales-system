@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RemoveAccountDAO {
+public class RemoveAccountNVKDAO {
 
-    public boolean RemoveAccountDAO(String idUser){
+    public boolean removeAccountDAO(String idUser){
         Connection con = null;
 
         try {
@@ -37,9 +37,9 @@ public class RemoveAccountDAO {
     }
 
     public static void main(String[] args) {
-        RemoveAccountDAO removeAccountDAO = new RemoveAccountDAO();
+        RemoveAccountNVKDAO removeAccountDAO = new RemoveAccountNVKDAO();
 
-        System.out.print(removeAccountDAO.RemoveAccountDAO("NVK13"));
+        System.out.print(removeAccountDAO.removeAccountDAO("NVK13"));
 
     }
 

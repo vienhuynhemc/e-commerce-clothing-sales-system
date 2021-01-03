@@ -1,24 +1,24 @@
 package worksWithDatabase.removeAccount;
 
 
-public class RemoveAccountSource {
-    private static RemoveAccountSource addAccountSource;
-    private static RemoveAccountPool accountPool;
+public class RemoveAccountNVKSource {
+    private static RemoveAccountNVKSource addAccountSource;
+    private static RemoveAccountNVKPool accountPool;
 
-    private RemoveAccountSource(){
-        accountPool = new RemoveAccountPool();
+    private RemoveAccountNVKSource(){
+        accountPool = new RemoveAccountNVKPool();
     }
-    public static synchronized RemoveAccountSource getInstance(){
+    public static synchronized RemoveAccountNVKSource getInstance(){
         if (addAccountSource == null){
-            addAccountSource = new RemoveAccountSource();
+            addAccountSource = new RemoveAccountNVKSource();
         }
         return addAccountSource;
     }
 
-    public RemoveAccountDAO getAddAccount(){
+    public RemoveAccountNVKDAO getRemoveAccount(){
         return accountPool.getAccount();
     }
-    public void releaseAddAccount (RemoveAccountDAO addAccountNVKDAO){
+    public void releaseAddAccount (RemoveAccountNVKDAO addAccountNVKDAO){
         accountPool.releaseRemoveAccount(addAccountNVKDAO);
     }
 
@@ -27,7 +27,7 @@ public class RemoveAccountSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                RemoveAccountDAO a = RemoveAccountSource.getInstance().getAddAccount();
+                RemoveAccountNVKDAO a = RemoveAccountNVKSource.getInstance().getRemoveAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -35,7 +35,7 @@ public class RemoveAccountSource {
                     e.printStackTrace();
                 }
 
-                RemoveAccountSource.getInstance().releaseAddAccount(a);
+                RemoveAccountNVKSource.getInstance().releaseAddAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };

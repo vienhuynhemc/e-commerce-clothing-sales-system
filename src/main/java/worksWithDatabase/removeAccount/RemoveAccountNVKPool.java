@@ -1,16 +1,16 @@
 package worksWithDatabase.removeAccount;
 
 
-public class RemoveAccountPool {
+public class RemoveAccountNVKPool {
 
-    private RemoveAccountDAO removeAccountDAO;
+    private RemoveAccountNVKDAO removeAccountDAO;
     private boolean isActive;
 
-    public RemoveAccountPool(){
-        removeAccountDAO = new RemoveAccountDAO();
+    public RemoveAccountNVKPool(){
+        removeAccountDAO = new RemoveAccountNVKDAO();
         isActive = false;
     }
-    public synchronized RemoveAccountDAO getAccount(){
+    public synchronized RemoveAccountNVKDAO getAccount(){
 
         while (isActive){
             try {
@@ -22,7 +22,7 @@ public class RemoveAccountPool {
         isActive = true;
         return removeAccountDAO;
     }
-    public synchronized void releaseRemoveAccount(RemoveAccountDAO aa){
+    public synchronized void releaseRemoveAccount(RemoveAccountNVKDAO aa){
         if (this.removeAccountDAO == aa){
             isActive = false;
             notifyAll();

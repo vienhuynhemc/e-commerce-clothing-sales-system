@@ -8,21 +8,24 @@ public class ConvertArrayString {
     public static ArrayList<String> convertString(String s) {
         ArrayList<String> result = new ArrayList<>();
 
-        String[] sp = s.split(",");
+        String ss = s.replaceAll("[\\[\"\\]]","");
 
-        String[] s1 = sp[0].split("\"");
-        result.add(s1[1]);
-        String[] s2 = sp[sp.length-1].split("\"");
-        result.add(s2[1]);
-        for (int i = 1; i <sp.length-1 ; i++) {
-            result.add(sp[i].split("\"")[1]);
+        System.out.println(ss);
+
+        String[] sss = ss.split(",");
+
+        for (String ssss: sss) {
+            result.add(ssss);
         }
+
 
         return result;
     }
+    // ["KH053","KH043"]
 
     public static void main(String[] args) {
 
-
+      // System.out.println(ConvertArrayString.convertString("[\"KH053\",\"KH043\"]"));
+        System.out.println(ConvertArrayString.convertString("KH053"));
     }
 }

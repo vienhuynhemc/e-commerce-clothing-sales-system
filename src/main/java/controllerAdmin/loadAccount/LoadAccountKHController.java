@@ -30,10 +30,6 @@ public class LoadAccountKHController extends HttpServlet {
         String search = request.getParameter("search");
         String orderby = request.getParameter("orderBy");
 
-        System.out.println(page);
-        System.out.println(type);
-        System.out.println(search);
-        System.out.println(orderby);
 
         LoadKHDAO loadKHDAO = new LoadKHDAO();
         Collection<AccountCustomer> listKH = loadKHDAO.LoadKHAll(page,type,search,orderby);
