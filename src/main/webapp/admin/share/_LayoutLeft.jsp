@@ -69,7 +69,17 @@
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
-            <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
+            <div
+                    <%if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) ||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham"))||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat"))
+                    ) {%>
+                    class="indexleftselectitemlv2"
+                    <%}else{%>
+                    class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                    <%}%>
+
+                    onclick="indexleftselectitemlv2(this)">
                 <div class="indexleftselectitem">
                     <div>
                         <i class="fa fa-wpforms"></i>
@@ -78,16 +88,38 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
                         mục</a></li>
-                    <li class="activelv2"><a href="../../ManufacturerController"><i class="fa fa-viadeo-square"></i>Hãng
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="../../ManufacturerController"><i class="fa fa-viadeo-square"></i>Hãng
                         sản xuất</a></li>
                 </ul>
+                <%if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) ||
+                        (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham"))||
+                        (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat"))
+                ) {%>
                 <input type="checkbox" style="display: none;" checked>
+                <%}else{%>
+                <input type="checkbox" style="display: none;">
+                <%}%>
             </div>
             <a href="../../DiscountCodeController" class="indexleftselectitem  ">
-                <div>
+                <div <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyMaGiamGia")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-balance-scale"></i>
                     <p>Mã giảm giá</p>
                 </div>

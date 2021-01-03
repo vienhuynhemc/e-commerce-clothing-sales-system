@@ -90,10 +90,29 @@ public class CategoryModel {
         CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryDAO);
         return list;
     }
+    public static ArrayList<Category> getCategoriesBySearch(String keyword){
+        CategoryWorksWithDatabase categoryDAO = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        ArrayList<Category> categories = categoryDAO.search(keyword);
+        ArrayList<Category> notFound = new ArrayList<Category>();
+        if(categories != null) {
+            CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryDAO);
+            return categories;
+        }
+        notFound.add(new Category("","Không tìm thấy danh mục!",null,0));
+        return notFound;
+    }
+    public static ArrayList<Category> getCategoriesByIndex(int index, int number) {
+        CategoryWorksWithDatabase categoryDAO = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        ArrayList<Category> categories = categoryDAO.getCategoriesByIndex(index, number);
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryDAO);
+        return categories;
+    }
+
 
     public static void main(String[] args) {
         //System.out.println(CategoryWorksWithDatabase.numberOfPage());
        // System.out.println(getNumberOfPage(getAllList(), 3));
+        System.out.print(checkRemoveCategory("dm_11"));
     }
 
 

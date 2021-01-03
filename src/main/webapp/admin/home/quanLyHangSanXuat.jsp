@@ -81,7 +81,9 @@
 <%}%>
 <!------------------------------------------------------------------------------------------------------------------->
 
-<jsp:include page="../share/_LayoutLeft.jsp"/>
+<jsp:include page="../share/_LayoutLeft.jsp">
+<jsp:param name="activeSelect" value="quanLyHangSanXuat"/>
+</jsp:include>
 
 <div class="indexright">
 

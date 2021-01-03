@@ -36,7 +36,53 @@
 
 %>
 
-<jsp:include page="../share/_LayoutLeft.jsp"/>
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (discountCodeObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        discountCodeObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=discountCodeObject.getTitle()%></p>
+            <p><%=discountCodeObject.getConntent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
+
+<jsp:include page="../share/_LayoutLeft.jsp">
+    <jsp:param name="activeSelect" value="quanLyMaGiamGia"/>
+</jsp:include>
 
 <div class="indexright">
 
@@ -330,8 +376,9 @@
                                     <input type="datetime-local" value="<%=d.getDeadline().toStringDateTimeLocal()%>">
                                 </div>
                                 <input type="text" style="display: none" value="<%=d.getId()%>">
+                                <input type="text" value="<%=d.getDateCreated()%>" style="display: none">
                                 <div class="linediv12"></div>
-                                <button onclick="themmoi()"><i class="fa fa-save"></i>Lưu</button>
+                                <button onclick="capnhat()"><i class="fa fa-save"></i>Lưu</button>
                                 <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                             </div>
                             <div class="div13">
@@ -344,9 +391,6 @@
                             }
 
                         %>
-
-
-
 
                 </div>
             </div>

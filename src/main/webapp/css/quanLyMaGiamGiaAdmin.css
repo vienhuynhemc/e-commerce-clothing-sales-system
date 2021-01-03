@@ -791,6 +791,8 @@ select option {
   font-weight: bold;
   font-size: 18px;
   font-family: sans-serif;
+  width: 83%;
+  text-align: center;
 }
 
 #notifiSuccess > div:nth-child(2) > div > p:nth-child(2) {

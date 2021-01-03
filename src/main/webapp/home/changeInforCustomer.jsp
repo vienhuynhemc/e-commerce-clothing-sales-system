@@ -72,10 +72,13 @@
                     <p><i class="fa fa-history"></i>Lịch sử mua</p>
                     <i class="fa fa-chevron-right"></i>
                 </div>
-                <div class="leftitemselect">
-                    <a href="login.html"><i class="fa fa-power-off"></i>Đăng xuất</a>
-                    <i class="fa fa-chevron-right"></i>
-                </div>
+                <form action="LogOutController" method="post">
+                    <div class="leftitemselect">
+                        <a href="login.html"><i class="fa fa-power-off"></i>Đăng xuất</a>
+                       <input type="submit"><i class="fa fa-power-off"></i>Đăng xuất
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                </form>
                 <div class="lineleft"></div>
 
                 <div class="customer">

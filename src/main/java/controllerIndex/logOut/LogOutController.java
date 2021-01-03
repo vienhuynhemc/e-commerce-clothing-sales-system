@@ -18,7 +18,8 @@ public class LogOutController extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        LogOutModel.OutSession(session,"user");
-        request.getRequestDispatcher("home/login.jsp").forward(request,response);
+        if(LogOutModel.OutSession(session,"user").equals("OK")) {
+            request.getRequestDispatcher("home/login.jsp").forward(request, response);
+        }
     }
 }
