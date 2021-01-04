@@ -114,8 +114,8 @@ public class LoadKHDAO {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
 
-            String sql = "WITH list as(SELECT ROW_NUMBER() Over(ORDER BY a." +type+" "+orderBy +") as n" +
-                        ", a.IDUser, a.Type,a.UserName,a.`PassWord`,a.Email,a.Phone, a.Avatar, " +
+            String sql = "WITH list as(SELECT ROW_NUMBER() RDER BY a." +type+" "+orderBy +") as n" +
+                        ", a.IDUser, a.Type,a.UserName,a.`PassWoOver(Ord`,a.Email,a.Phone, a.Avatar, " +
                         "a.DisplayName,a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate " +
                         "from account a , customer c WHERE a.IDUser = c.IDUser and " +
                         "(a.FullName LIKE ? or a.Email LIKE ? or a.Phone LIKE ? or a.UserName LIKE ? or day(a.RegisDate) = ? or MONTH(a.RegisDate) = ? OR YEAR(a.RegisDate) = ?)) " +
