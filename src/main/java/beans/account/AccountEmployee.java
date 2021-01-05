@@ -150,4 +150,24 @@ public class AccountEmployee {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "AccountEmployee{" +
+                "idUser='" + idUser + '\'' +
+                ", type=" + type +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", regisDate=" + regisDate +
+                ", salary=" + salary +
+                ", info=" + info +
+                ", level=" + level +
+                ", address=" + address +
+                '}' + "\n";
+    }
 }

@@ -1,0 +1,446 @@
+Index: .idea/artifacts/ltw_thayLong_group5_war_exploded.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"ArtifactManager\">\r\n  <artifact type=\"exploded-war\" name=\"ltw_thayLong_group5:war exploded\">\r\n    <output-path>$PROJECT_DIR$/target/ltw_thayLong_group5-1.0-SNAPSHOT</output-path>\r\n    <properties id=\"maven-jee-properties\">\r\n      <options>\r\n        <exploded>true</exploded>\r\n        <module>ltw_thayLong_group5</module>\r\n        <packaging>war</packaging>\r\n      </options>\r\n    </properties>\r\n    <root id=\"root\">\r\n      <element id=\"directory\" name=\"WEB-INF\">\r\n        <element id=\"directory\" name=\"classes\">\r\n          <element id=\"module-output\" name=\"ltw_thayLong_group5\" />\r\n        </element>\r\n        <element id=\"directory\" name=\"lib\">\r\n          <element id=\"library\" level=\"project\" name=\"Maven: mysql:mysql-connector-java:5.1.49\" />\r\n          <element id=\"library\" level=\"project\" name=\"Maven: com.sun.mail:javax.mail:1.5.6\" />\r\n          <element id=\"library\" level=\"project\" name=\"Maven: javax.activation:activation:1.1\" />\r\n        </element>\r\n      </element>\r\n      <element id=\"directory\" name=\"META-INF\">\r\n        <element id=\"file-copy\" path=\"$PROJECT_DIR$/target/ltw_thayLong_group5-1.0-SNAPSHOT/META-INF/MANIFEST.MF\" />\r\n      </element>\r\n      <element id=\"javaee-facet-resources\" facet=\"ltw_thayLong_group5/web/Web\" />\r\n    </root>\r\n  </artifact>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml b/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml
+--- a/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml	(revision 1131de1c1f7387870fa99d13a6ec00c05564235d)
++++ b/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml	(date 1608987061240)
+@@ -17,6 +17,7 @@
+           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.49" />
+           <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.6" />
+           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
++          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+         </element>
+       </element>
+       <element id="directory" name="META-INF">
+Index: .idea/webContexts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"WebContextManager\">\r\n    <option name=\"state\">\r\n      <map>\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount/AccountStatus.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/guiEmailThongBao.html\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/login.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/nhapHang.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/index.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/admin/share/formQLKH.xhtml\" value=\"file://$PROJECT_DIR$/src/main/webapp/admin/share\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/about_US.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/cart.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/check_orders.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/checkout.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/chooseSize.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/contact.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/guarantee.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/informationOrder.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/login.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/membership_policy.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/payment_policy.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/product2.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/shopping_guide.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/home/wishlist.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp/home\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/index.html\" value=\"file://$PROJECT_DIR$/src/main/webapp\" />\r\n        <entry key=\"file://$PROJECT_DIR$/src/main/webapp/index.jsp\" value=\"file://$PROJECT_DIR$/src/main/webapp\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/webContexts.xml b/.idea/webContexts.xml
+--- a/.idea/webContexts.xml	(revision 1131de1c1f7387870fa99d13a6ec00c05564235d)
++++ b/.idea/webContexts.xml	(date 1608970921227)
+@@ -10,6 +10,7 @@
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyBinhLuan.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
++        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"ltw_thayLong_group5:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"91b55f5f-0b6a-4ce5-bb8b-293d8d90821d\" name=\"Default Changelist\" comment=\"Update Account\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/webContexts.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/webContexts.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"jsf\" />\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"JsFlowSettings\">\r\n    <service-enabled>true</service-enabled>\r\n    <exe-path />\r\n    <other-services-enabled>true</other-services-enabled>\r\n    <auto-save>true</auto-save>\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lu9bSyqW0odQkztWvf5zuBMeox\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Artifacts\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.updates\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Admin\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\NotifyErrorAccount\" />\r\n      <recent name=\"C:\\Users\\Administrator\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\popupMailNotice\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Admin\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\admin\" />\r\n      <recent name=\"C:\\Users\\Administrator\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\home\" />\r\n      <recent name=\"C:\\Users\\Administrator\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\css\" />\r\n      <recent name=\"C:\\Users\\Administrator\\Desktop\\ltw_group5\\ltw_thayLong_group5\\src\\main\\webapp\\js\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Tomcat Server.Tomcat 9.0.391\">\r\n    <configuration name=\"CategoryDataSource\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"worksWithDatabase.CategoryDataSource\" />\r\n      <module name=\"ltw_thayLong_group5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"worksWithDatabase.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"mail.Main\" />\r\n      <module name=\"ltw_thayLong_group5\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"mail.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"ArquillianJUnit\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 9.0.391\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.41\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"ltw_thayLong_group5:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/ltw_thayLong_group5_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"Unnamed_ltw_thayLong_group5\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"51293\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"ltw_thayLong_group5:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CategoryDataSource\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"91b55f5f-0b6a-4ce5-bb8b-293d8d90821d\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1608435124405</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1608435124405</updated>\r\n      <workItem from=\"1608435125648\" duration=\"1018000\" />\r\n      <workItem from=\"1608436191830\" duration=\"242000\" />\r\n      <workItem from=\"1608468013140\" duration=\"4837000\" />\r\n      <workItem from=\"1608478350561\" duration=\"4267000\" />\r\n      <workItem from=\"1608522688087\" duration=\"6805000\" />\r\n      <workItem from=\"1608547749286\" duration=\"6312000\" />\r\n      <workItem from=\"1608554184359\" duration=\"998000\" />\r\n      <workItem from=\"1608556884004\" duration=\"10847000\" />\r\n      <workItem from=\"1608606906954\" duration=\"5099000\" />\r\n      <workItem from=\"1608612232250\" duration=\"331000\" />\r\n      <workItem from=\"1608621828972\" duration=\"3960000\" />\r\n      <workItem from=\"1608636509338\" duration=\"7631000\" />\r\n      <workItem from=\"1608648468637\" duration=\"1640000\" />\r\n      <workItem from=\"1608650162210\" duration=\"4905000\" />\r\n      <workItem from=\"1608689522686\" duration=\"2163000\" />\r\n      <workItem from=\"1608701627811\" duration=\"78000\" />\r\n      <workItem from=\"1608701869976\" duration=\"5019000\" />\r\n      <workItem from=\"1608709319215\" duration=\"5033000\" />\r\n      <workItem from=\"1608724241012\" duration=\"149000\" />\r\n      <workItem from=\"1608724568691\" duration=\"233000\" />\r\n      <workItem from=\"1608725015343\" duration=\"182000\" />\r\n      <workItem from=\"1608725227521\" duration=\"89000\" />\r\n      <workItem from=\"1608725343716\" duration=\"5434000\" />\r\n      <workItem from=\"1608731856839\" duration=\"938000\" />\r\n      <workItem from=\"1608732865238\" duration=\"37000\" />\r\n      <workItem from=\"1608777381231\" duration=\"5147000\" />\r\n      <workItem from=\"1608793933717\" duration=\"14586000\" />\r\n      <workItem from=\"1608824401599\" duration=\"9233000\" />\r\n      <workItem from=\"1608891248310\" duration=\"1591000\" />\r\n      <workItem from=\"1608900263604\" duration=\"12234000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"github oke\">\r\n      <created>1608435612510</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608435612510</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"add my sql  and test projectmaven\">\r\n      <created>1608436040507</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608436040507</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"rút ngắn project\">\r\n      <created>1608436400514</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608436400514</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"hoàn thành cấu trúc thư mục, chưa cập nhập link\">\r\n      <created>1608472160311</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608472160311</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"connection pool step1 create databaseConfiguration\">\r\n      <created>1608482967136</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608482967136</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"connectionPool class\">\r\n      <created>1608529794549</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608529794549</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Hoàn thành connection pool - đã test 100%\">\r\n      <created>1608550989626</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608550989626</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"update project\">\r\n      <created>1608555177915</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608555177915</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Email singleton\">\r\n      <created>1608567655671</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608567655671</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Mail pool + check mail\">\r\n      <created>1608612029936</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608612029936</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Mail pool + check mail index, contact. Đã test 100%\">\r\n      <created>1608612472186</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608612472186</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Index html -&gt; jsp\">\r\n      <created>1608639766501</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608639766501</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"admin html -&gt; jsp\">\r\n      <created>1608649416116</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608649416116</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"23/12/2020 :v\">\r\n      <created>1608731623802</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608731623802</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"23/12/2020 :v\">\r\n      <created>1608732065507</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608732065507</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"Test chức năng ngôn ngữ\">\r\n      <created>1608810986849</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608810986849</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"test\">\r\n      <created>1608825782517</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608825782517</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Update Account\">\r\n      <created>1608892813276</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1608892813276</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"19\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"github oke\" />\r\n    <MESSAGE value=\"add my sql maven and test project\" />\r\n    <MESSAGE value=\"rút ngắn project\" />\r\n    <MESSAGE value=\"hoàn thành cấu trúc thư mục, chưa cập nhập link\" />\r\n    <MESSAGE value=\"connection pool step1 create databaseConfiguration\" />\r\n    <MESSAGE value=\"connectionPool class\" />\r\n    <MESSAGE value=\"Hoàn thành connection pool - đã test 100%\" />\r\n    <MESSAGE value=\"update project\" />\r\n    <MESSAGE value=\"Email singleton\" />\r\n    <MESSAGE value=\"Mail pool + check mail\" />\r\n    <MESSAGE value=\"Mail pool + check mail index, contact. Đã test 100%\" />\r\n    <MESSAGE value=\"Index html -&gt; jsp\" />\r\n    <MESSAGE value=\"admin html -&gt; jsp\" />\r\n    <MESSAGE value=\"23/12/2020 :v\" />\r\n    <MESSAGE value=\"Test chức năng ngôn ngữ\" />\r\n    <MESSAGE value=\"test\" />\r\n    <MESSAGE value=\"Update Account\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Update Account\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>\r\n          <line>358</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>\r\n          <line>510</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>\r\n          <line>940</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1131de1c1f7387870fa99d13a6ec00c05564235d)
++++ b/.idea/workspace.xml	(date 1609178236908)
+@@ -27,32 +27,75 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Update Account">
++    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Đăng kí trang chủ + xem thông tin của người dùng">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/beans/account/ErrorEditAccountCustomer.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/beans/encode/MD5.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/editAccount/ChessPassWordController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/editAccount/EditAccountController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/loginUser/LoginController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/model/editAccountCustomer/EditAccountModel.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountCustomer/EditAccountDAO.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountCustomer/EditAccountPool.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountCustomer/EditAccountSource.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ltw_thayLong_group5_war_exploded.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountKHController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVKController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/account/AddAccountNVVCController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountKHModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVKModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/account/AddAccountNVVCModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVKDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/account/AddAccountNVVCDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/editAccount/EditAccountNVKController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/editAccount/EditAccountNVKController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllerIndex/loginUser/CheckSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/loginUser/CheckSessionController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllerIndex/loginUser/LoginUserCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/loginUser/LoginUserCustomerController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/model/editAccount/EditAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/editAccountAdmin/EditAccountNVKModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccount/EditAccountNVKDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountAdmin/EditAccountNVKDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccount/EditAccountNVKPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountAdmin/EditAccountNVKPool.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccount/EditAccountNVKSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/editAccountAdmin/EditAccountNVKSource.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loginUser/LoginUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loginUser/LoginUserDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/bd1.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/bd2.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/bd3.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/bdtim.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/den.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/do.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/docam.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/hong.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/icon-5.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/icon-6.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/icon-7.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/icon-8.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/icon-mail.png" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/profile-bg.jpg" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/trang.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/vangdat.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/xam.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/xanhdam.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/xanhden.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/img/xanhngoc.webp" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/loginvien.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/loginvien.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/login.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/notifyErrorLogin/AccountStatus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/notifyErrorLogin/AccountStatus.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="ChangesViewManager">
++    <option name="groupingKeys">
++      <option value="directory" />
++    </option>
+   </component>
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="Class" />
+         <option value="jsf" />
+         <option value="Jsp File" />
++        <option value="Class" />
+       </list>
+     </option>
+   </component>
+@@ -78,12 +121,13 @@
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/NotifyErrorAccount" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/home" />
+     <property name="nodejs_package_manager_path" value="npm" />
+     <property name="project.structure.last.edited" value="Artifacts" />
+     <property name="project.structure.proportion" value="0.15" />
+@@ -92,6 +136,9 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\home" />
++      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp" />
++      <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\admin" />
+       <recent name="C:\Users\Admin\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\NotifyErrorAccount" />
+       <recent name="C:\Users\Administrator\Desktop\ltw_group5\ltw_thayLong_group5\src\main\webapp\popupMailNotice" />
+     </key>
+@@ -103,12 +150,51 @@
+     </key>
+   </component>
+   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.391">
+-    <configuration name="CategoryDataSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.CategoryDataSource" />
++    <configuration name="EditAccountDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.editAccountCustomer.EditAccountDAO" />
++      <module name="ltw_thayLong_group5" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="worksWithDatabase.editAccountCustomer.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="EditAccountSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.editAccountCustomer.EditAccountSource" />
++      <module name="ltw_thayLong_group5" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="worksWithDatabase.editAccountCustomer.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LoginUserDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.loginUser.LoginUserDAO" />
++      <module name="ltw_thayLong_group5" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="worksWithDatabase.loginUser.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LoginUserSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.loginUser.LoginUserSource" />
+       <module name="ltw_thayLong_group5" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="worksWithDatabase.*" />
++          <option name="PATTERN" value="worksWithDatabase.loginUser.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -116,12 +202,12 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="mail.Main" />
++    <configuration name="MD5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="beans.encode.MD5" />
+       <module name="ltw_thayLong_group5" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="mail.*" />
++          <option name="PATTERN" value="beans.encode.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -129,13 +215,15 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+       <option name="arquillianRunConfiguration">
+         <value>
+           <option name="containerStateName" value="" />
+         </value>
+       </option>
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="TEST_OBJECT" value="CLASS" />
++      <properties />
++      <listeners />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -227,10 +315,21 @@
+         </option>
+       </method>
+     </configuration>
++    <list>
++      <item itemvalue="Application.LoginUserDAO" />
++      <item itemvalue="Application.LoginUserSource" />
++      <item itemvalue="Tomcat Server.Tomcat 9.0.391" />
++      <item itemvalue="Application.EditAccountDAO" />
++      <item itemvalue="Application.MD5" />
++      <item itemvalue="Application.EditAccountSource" />
++    </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.CategoryDataSource" />
+-        <item itemvalue="Application.Main" />
++        <item itemvalue="Application.EditAccountDAO" />
++        <item itemvalue="Application.EditAccountSource" />
++        <item itemvalue="Application.MD5" />
++        <item itemvalue="Application.LoginUserDAO" />
++        <item itemvalue="Application.LoginUserSource" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -271,7 +370,14 @@
+       <workItem from="1608793933717" duration="14586000" />
+       <workItem from="1608824401599" duration="9233000" />
+       <workItem from="1608891248310" duration="1591000" />
+-      <workItem from="1608900263604" duration="12234000" />
++      <workItem from="1608900263604" duration="12501000" />
++      <workItem from="1608969111129" duration="6814000" />
++      <workItem from="1608981799024" duration="19457000" />
++      <workItem from="1609071734394" duration="17431000" />
++      <workItem from="1609121237018" duration="9069000" />
++      <workItem from="1609132299861" duration="5154000" />
++      <workItem from="1609160042096" duration="3481000" />
++      <workItem from="1609164530690" duration="13509000" />
+     </task>
+     <task id="LOCAL-00001" summary="github oke">
+       <created>1608435612510</created>
+@@ -399,7 +505,56 @@
+       <option name="project" value="LOCAL" />
+       <updated>1608892813276</updated>
+     </task>
+-    <option name="localTasksCounter" value="19" />
++    <task id="LOCAL-00019" summary="Update code Account">
++      <created>1608912747464</created>
++      <option name="number" value="00019" />
++      <option name="presentableId" value="LOCAL-00019" />
++      <option name="project" value="LOCAL" />
++      <updated>1608912747464</updated>
++    </task>
++    <task id="LOCAL-00020" summary="Load danh sách khách hàng">
++      <created>1608975972261</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1608975972262</updated>
++    </task>
++    <task id="LOCAL-00021" summary="danh sách khách hàng + next page">
++      <created>1608998398396</created>
++      <option name="number" value="00021" />
++      <option name="presentableId" value="LOCAL-00021" />
++      <option name="project" value="LOCAL" />
++      <updated>1608998398396</updated>
++    </task>
++    <task id="LOCAL-00022" summary="load danh sách nhân viên kho">
++      <created>1609003355953</created>
++      <option name="number" value="00022" />
++      <option name="presentableId" value="LOCAL-00022" />
++      <option name="project" value="LOCAL" />
++      <updated>1609003355953</updated>
++    </task>
++    <task id="LOCAL-00023" summary="load danh sách nhân viên vận chuyển">
++      <created>1609074193557</created>
++      <option name="number" value="00023" />
++      <option name="presentableId" value="LOCAL-00023" />
++      <option name="project" value="LOCAL" />
++      <updated>1609074193558</updated>
++    </task>
++    <task id="LOCAL-00024" summary="Chỉnh sửa nhân viên kho">
++      <created>1609087427989</created>
++      <option name="number" value="00024" />
++      <option name="presentableId" value="LOCAL-00024" />
++      <option name="project" value="LOCAL" />
++      <updated>1609087427989</updated>
++    </task>
++    <task id="LOCAL-00025" summary="Đăng kí trang chủ + xem thông tin của người dùng">
++      <created>1609161119809</created>
++      <option name="number" value="00025" />
++      <option name="presentableId" value="LOCAL-00025" />
++      <option name="project" value="LOCAL" />
++      <updated>1609161119810</updated>
++    </task>
++    <option name="localTasksCounter" value="26" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -435,25 +590,70 @@
+     <MESSAGE value="Test chức năng ngôn ngữ" />
+     <MESSAGE value="test" />
+     <MESSAGE value="Update Account" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Update Account" />
++    <MESSAGE value="Update code Account" />
++    <MESSAGE value="Load danh sách khách hàng" />
++    <MESSAGE value="danh sách khách hàng + next page" />
++    <MESSAGE value="load danh sách nhân viên kho" />
++    <MESSAGE value="load danh sách nhân viên vận chuyển" />
++    <MESSAGE value="Chỉnh sửa nhân viên kho" />
++    <MESSAGE value="Đăng kí trang chủ + xem thông tin của người dùng" />
++    <option name="LAST_COMMIT_MESSAGE" value="Đăng kí trang chủ + xem thông tin của người dùng" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+       <breakpoints>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+-          <line>358</line>
+-          <option name="timeStamp" value="1" />
++          <line>540</line>
++          <option name="timeStamp" value="2" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
++          <line>92</line>
++          <option name="timeStamp" value="4" />
+         </line-breakpoint>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+-          <line>510</line>
+-          <option name="timeStamp" value="2" />
++          <line>36</line>
++          <option name="timeStamp" value="5" />
+         </line-breakpoint>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
+-          <line>940</line>
+-          <option name="timeStamp" value="3" />
++          <line>361</line>
++          <option name="timeStamp" value="6" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp</url>
++          <line>376</line>
++          <option name="timeStamp" value="8" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/home/login.jsp</url>
++          <line>113</line>
++          <option name="timeStamp" value="9" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp</url>
++          <line>171</line>
++          <option name="timeStamp" value="10" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
++          <line>430</line>
++          <option name="timeStamp" value="11" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/webapp/index.jsp</url>
++          <line>151</line>
++          <option name="timeStamp" value="12" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-method">
++          <url>file://$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadKHDAO.java</url>
++          <line>143</line>
++          <properties class="worksWithDatabase.loadAccount.LoadKHDAO" method="main">
++            <option name="EMULATED" value="true" />
++          </properties>
++          <option name="timeStamp" value="7" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+Index: .idea/libraries/Maven__javax_servlet_jstl_1_2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml b/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml
+new file mode 100644
+--- /dev/null	(date 1608987061193)
++++ b/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml	(date 1608987061193)
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: javax.servlet:jstl:1.2">
++    <CLASSES>
++      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jstl/1.2/jstl-1.2.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jstl/1.2/jstl-1.2-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jstl/1.2/jstl-1.2-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file

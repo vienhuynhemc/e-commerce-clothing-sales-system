@@ -35,12 +35,12 @@ function changesort2(item) {
         list[2].checked = true;
         list[0].style.display = "none";
         list[1].style.display = "block";
-        item.style.marginTop = "0px";
+        // item.style.marginTop = "0px";
     } else {
         list[2].checked = false;
         list[1].style.display = "none";
         list[0].style.display = "block";
-        item.style.marginTop = "-5px";
+        // item.style.marginTop = "-5px";
     }
 }
 

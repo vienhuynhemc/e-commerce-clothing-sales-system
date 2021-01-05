@@ -22,6 +22,7 @@
 
             <link rel="stylesheet" href="css/quanLyDanhMucAdmin.css">
 
+            <% ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("listDM");%>
 
         </head>
 
@@ -318,38 +319,38 @@
                     <div id="div2">
                         <div>
                             <div class="header">
+                            <form action="LoadCategoryController" method="get">
                                 <div class="leftheader">
-                                    <form action="FilterCategoryController" method="post">
-
-                                        <select name="sort" id="sort">
-                                            <a href="CategoryController?type="><option value="1" selected>Ngày tạo</option></a>
-                                            <option value="2" >Tên danh mục</option>
-                                            <option value="3" >Mã danh mục</option>
-                                            <option value="4" >Số lượng sản phẩm</option>
-
-
-                                        </select>
-                                    </form>
+                                    <select name="type" id="typeSelect" >
+                                        <option value="ngay_tao" selected>Ngày tạo</option>
+                                        <option value="ten_dm">Tên danh mục</option>
+                                        <option value="ma_dm">Mã danh mục</option>
+                                    </select>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
-                                            <i class=" fa fa-sort-amount-desc"></i>
-                                            <i class=" fa fa-sort-amount-asc"></i>
+                                            <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
+                                            <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                             <input type="checkbox" style="display: none;">
+                                            <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
                                         </div>
 
-                                            <div class="leftheadersearchs">
-                                                <i class="fa fa-search" onclick="showsearch2(this)"></i>
-                                                <div>
-                                                     <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                                    <input type="text" placeholder="Tìm kiếm">
-<%--                                                     <input type="submit" value="Tìm kiếm">--%>
-                                                </div>
-                                            </div>
+                                        <div class="leftheadersearch">
+                                            <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" ></i></button>
+                                            <input name="page" value="1" type="hidden">
+                                            <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
+
+                                        </div>
                                     </div>
                                 </div>
+                            </form>
                                 <div class="leftnextpage">
-                                    <p>Hiển thị <strong> 13 </strong> trên tổng 135 danh mục</p>
-                                    <button><i class="fa fa-caret-left"></i></button>
+                                    <p>Hiển thị <strong> <%= list.size() %> </strong> trên tổng <%= request.getAttribute("sumCategory")%> danh mục</p>
+<%--                                    <button><i class="fa fa-caret-left"></i></button>--%>
+                                    <% // nut qua trai trang hien tai  <-- 2 %>
+                                    <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                                        <button><i class="fa fa-caret-left"></i>
+                                        </button>
+                                    </a>
                                     <ul>
 <%--                                        <li>1</li>--%>
 <%--                                        <li>2</li>--%>
@@ -358,22 +359,42 @@
 <%--                                        <li>5</li>--%>
 <%--                                        <li class="none">...</li>--%>
 <%--                                        <li>9</li>--%>
-                                        <%
-                                            int numberOfPage = (int)request.getAttribute("numberOfPage");
-//                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");
-                                        %>
+<%--                                        <%--%>
+<%--                                            int numberOfPage = (int)request.getAttribute("numberOfPage");--%>
+<%--//                                            ArrayList<Category> list = (ArrayList<Category>) request.getAttribute("list");--%>
+<%--                                        %>--%>
+
+<%--                                        <%--%>
+
+<%--                                            for(int i = 0; i< numberOfPage;i++){--%>
+<%--                                        %>--%>
+
+<%--                                        <a href="PageCategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>--%>
+
+<%--                                        <%}%>--%>
 
                                         <%
+                                            // so trang hien thi 1 2 ... 4 5
+                                            int listpage = (int) request.getAttribute("numberPage");
 
-                                            for(int i = 0; i< numberOfPage;i++){
+                                            // lay trang hien tai
+                                            int nowpage = Integer.parseInt(request.getParameter("page"));
+
+                                            for (int i = 1;i <= listpage;i++){
+                                                if(i == nowpage){
                                         %>
+                                        <li style="background-color: #4162fb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
 
-                                        <a href="PageCategoryController?vi-tri=<%=(i+1)%>"><li><%= (i+1) %></li></a>
-
-                                        <%}%>
+                                        <%}else{%>
+                                        <li ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
+                                        <%}}%>
 
                                     </ul>
-                                    <button><i class="fa fa-caret-right"></i></button>
+                                    <% // nut qua phai trang hien tai  2 -->%>
+                                    <a href="LoadCategoryController?page=<%=Integer.parseInt(request.getParameter("page"))  + 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">
+                                        <button><i class="fa fa-caret-right"></i></button>
+                                    </a>
+
                                 </div>
                                 <button onclick="themdanhmuc()"><i class="fa fa-plus"></i>Thêm danh mục mới</button>
                                 <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã
@@ -390,7 +411,7 @@
 
 <%--                                <%--%>
 <%--                                    for(Category c : CategoryWorksWithDatabase.getCategoriesByIdASC()){%>--%>
-                                <c:forEach items="${list}" var="c">
+                                <c:forEach items="${listDM}" var="c">
                                 <div class="item">
                                     <label for="c1">
                                         <input type="checkbox" name="" id="c1">
@@ -491,5 +512,62 @@
         </body>
 
         </html>
+<script>
+    function changesort2(item) {
+        let list = item.children;
+        if (list[2].checked == false) {
+            list[2].checked = true;
+            list[0].style.display = "none";
+            list[1].style.display = "block";
+
+            item.style.marginTop = "0px";
+        } else {
+            list[2].checked = false;
+            list[1].style.display = "none";
+            list[0].style.display = "block";
+            item.style.marginTop = "-5px";
+
+        }
+    }
+    function setOrderBy(){
+        if(document.getElementById("checkSort").value == "ASC"){
+            document.getElementById("checkSort").value = "DESC";
+        }else{
+            document.getElementById("checkSort").value = "ASC";
+        }
+
+    }
+
+</script>
+
+<script>
+    function check(){
+
+        document.getElementById("checkRemove").style.display = "block";
+
+    }
+</script>
+
+<script>
+    $(function (){
+        let type = <%=request.getParameter("type")%>;
+        let list =  document.getElementById("typeSelect").children;
+        if(type.equals("RegisDate")){
+            list[0].prop("selected",true);
+        }else if(type.equals("FullName")){
+            list[1].prop("selected",true);
+        }else{
+            list[2].prop("selected",true);
+        }
+
+        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', true);
+        $('select#typeSelect options[value=<%=request.getParameter("type")%>]).attr('selected',true);
+        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', 'selected').change();
+
+        $(document).ready(function() {
+            $("select#typeSelect option[value='<%=request.getParameter("type")%>']").prop('selected', true);
+        });
+    });
+</script>
 
         <script src="js/quanLyDanhMucAdmin.js"></script>

@@ -2,7 +2,6 @@ package controllerAdmin.loadAccount;
 
 import beans.account.AccountCustomer;
 import model.loadAccount.LoadAccountKHModel;
-import model.loadAccount.LoadNextPageModel;
 import worksWithDatabase.loadAccount.LoadKHDAO;
 
 import javax.servlet.ServletException;
@@ -24,17 +23,13 @@ public class LoadAccountKHController extends HttpServlet {
 
 
         int page = Integer.parseInt(request.getParameter("page"));
-        System.out.println(page);
-      //  System.out.println(page);
+
         String type = request.getParameter("type");
 
 
         String search = request.getParameter("search");
         String orderby = request.getParameter("orderBy");
 
-        System.out.println(type);
-        System.out.println(search);
-        System.out.println(orderby);
 
         LoadKHDAO loadKHDAO = new LoadKHDAO();
         Collection<AccountCustomer> listKH = loadKHDAO.LoadKHAll(page,type,search,orderby);

@@ -19,6 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Quản lý khách hàng</title>
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="js/Truong/jquery/jquery-3.5.1.min.js">
 
@@ -27,11 +28,10 @@
 
     <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
 
-    <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
-
 
     <% ArrayList<AccountCustomer> list = (ArrayList<AccountCustomer>) request.getAttribute("listKH");%>
 
+    <c:url var="xoa-khach-hang" value="/RemoveAccountHKController"/>
 
 
 </head>
@@ -42,125 +42,7 @@
 
 <%--</jsp:include>--%>
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li class="activelv2"><a href=""><i class="fa fa-users"></i>Khách hàng</a>
-                    </li>
-                </ul>
-                <input type="checkbox" style="display: none;" checked>
-            </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
     <div class="indextop">
@@ -338,9 +220,10 @@
                                 <option value="RegisDate" selected>Ngày tạo</option>
                                 <option value="FullName">Họ và tên</option>
                                 <option value="UserName">Tài khoản</option>
+                                <input type="hidden" name="" id="typeName" value="<%=request.getParameter("type")%>">
                             </select>
                             <div>
-                                <div class="leftheadersort" onclick="changesort2(this)">
+                                <div class="leftheadersort" id="order" onclick="changesort2(this)">
                                     <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
                                     <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                     <input type="checkbox" style="display: none;">
@@ -348,13 +231,10 @@
                                 </div>
                                 <div class="leftheadersearch">
 
-                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" onclick="showsearch2(this)"></i></button>
+                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" ></i></button>
                                     <input name="page" value="1" type="hidden">
                                     <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
-<%--                                    <div>--%>
-<%--                                        <i class="fa fa-search" onclick="hiddensearch2(this)"></i>--%>
-<%--                                        --%>
-<%--                                    </div>--%>
+
                                 </div>
                             </div>
                         </div>
@@ -368,12 +248,23 @@
                             <%= request.getAttribute("sumCustomer") %>
 
                             khách hàng</p>
-                        <a href="LoadAccountKHController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" ><button><i class="fa fa-caret-left"></i></button></a>
+
+                        <%int nowpage = Integer.parseInt(request.getParameter("page"));
+                        if(nowpage == 1){
+                        %>
+                        <a href="LoadAccountKHController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                        <%}else { %>
+                            <a href="LoadAccountKHController?page=<%=nowpage-1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                        <%}%>
+
+                        <button><i class="fa fa-caret-left"></i>
+                            </button>
+                        </a>
                         <ul>
 
                             <%
                                 int listpage = (int) request.getAttribute("numberPage");
-                                int nowpage = Integer.parseInt(request.getParameter("page"));
+
                             for (int i = 1;i <= listpage;i++){
                                 if(i == nowpage){
                             %>
@@ -381,15 +272,17 @@
 
                             <%}else{%>
                             <li ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
-                            <%}}%>
-
-<%--                            <c:forEach begin="1" end="${numberPage}" var="i" >--%>
-<%--                                --%>
-<%--                            <li><a href="LoadAccountKHController?page=${i}&type=${param.type}&search=${param.search}&orderBy=${param.orderBy}"> ${i} </a></li>--%>
-<%--                            </c:forEach>--%>
+                            <%}
+                            }%>
 
                         </ul>
-                        <a href="LoadAccountKHController?page=<%=Integer.parseInt(request.getParameter("page"))  + 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">
+                        <%
+                        if(nowpage == listpage){
+                        %>
+                            <a href="LoadAccountKHController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                        <%}else { %>
+                           <a href="LoadAccountKHController?page=<%=nowpage+1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                        <%}%>
                             <button><i class="fa fa-caret-right"></i></button>
                         </a>
 
@@ -397,7 +290,7 @@
 
 
                     <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
-                    <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <button id="btDelete"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                 </div>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
@@ -418,8 +311,7 @@
 
                     <div class="item">
                         <label for="c1">
-                            <input type="checkbox" name="checkRemove" id="c1" onclick="check()">
-                            <input style="display: none;" type="hidden" id="checkRemove" name="checkRemove" value="<%=k.getIdUser()%>">
+                            <input type="checkbox" name="checkRemove" id="checkRemove_<%=k.getIdUser()%>" value="<%=k.getIdUser()%>">
 
                         </label>
                         <div class="itemhdd">
@@ -488,8 +380,13 @@
                             <i class="fa fa-circle"></i>
                             <i class="fa fa-circle"></i>
                             <div>
-                                <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
-                                <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <button type="button" onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
+                                <button type="button" id="<%=k.getIdUser()%>"  onclick="deleteOne(this)" >
+                                    <i class="fa fa-trash"></i>
+                                    <input type="hidden" value="<%=k.getIdUser()%>">
+                                    Xóa
+
+                                </button>
                             </div>
                         </div>
 
@@ -799,16 +696,15 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
             list[2].checked = true;
             list[0].style.display = "none";
             list[1].style.display = "block";
-
             item.style.marginTop = "0px";
         } else {
             list[2].checked = false;
             list[1].style.display = "none";
             list[0].style.display = "block";
             item.style.marginTop = "-5px";
-
         }
     }
+    <!--sử lí click vào cái sắp xếp nó set lại value -->
     function setOrderBy(){
         if(document.getElementById("checkSort").value == "ASC"){
             document.getElementById("checkSort").value = "DESC";
@@ -817,38 +713,85 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         }
 
     }
+    <!-- sử lí cự kiện onlick xóa nhiều mục-->
+    $('#btDelete').click(function (){
+        var data = {};
+        var dis = $('#maindiv2 input[type = checkbox]:checked').map(function (){
+            return $(this).val();
 
-</script>
+        }).get();
 
-<script>
-    function check(){
+        data = dis;
 
-        document.getElementById("checkRemove").style.display = "block";
+        console.log(data);
 
+        deleteE(data);
+    });
+    <!-- sử lí cự kiện onlick button xóa 1 nhân viên cụ thể-->
+    function deleteOne(event){
+        var data = $(event).attr('id');
+        deleteE(data);
     }
-</script>
 
-<script>
+    function deleteE(data){
+        console.log(data);
+        $.ajax({
+            url:'RemoveAccountHKController',
+            contentType:'application/json',
+            type:'get',
+            data: {
+                list: JSON.stringify(data)
+            },
+            success: function (result){
+                alert("Xóa thành công");
+                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
+            },
+            error: function (){
+                alert("Xóa thất bại");
+                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
+            }
+        });
+    }
+
+    <!--sử lí load lại thì có giá trị trước cho cho cái select -->
     $(function (){
-        let type = <%=request.getParameter("type")%>;
+        var typename = $('#typeName').attr('value');
         let list =  document.getElementById("typeSelect").children;
-        if(type.equals("RegisDate")){
-            list[0].prop("selected",true);
-        }else if(type.equals("FullName")){
-            list[1].prop("selected",true);
+
+        if(typename == "RegisDate"){
+            $('select#typeSelect option[value= "RegisDate" ]').prop('selected', true);
+        }else if(typename == "FullName"){
+            $('select#typeSelect option[value= "FullName" ]').prop('selected', true);
+        }else if(typename == "UserName"){
+            $('select#typeSelect option[value= "UserName" ]').prop('selected', true);
+        }
+    });
+
+    $(function (){
+        var order = $('#checkSort').attr('value') ;
+        let list =  document.getElementById("order").children;
+
+        if(order == "DESC"){
+
+            if (list[2].checked == true) {
+                list[2].checked = false;
+                list[1].style.display = "none";
+                list[0].style.display = "block";
+                //list[0].style.marginTop = "0px";
+            }
         }else{
-            list[2].prop("selected",true);
+            if (list[2].checked == false) {
+                list[2].checked = true;
+                list[0].style.display = "none";
+                list[1].style.display = "block";
+                //list[1].style.marginTop = "-9px";
+            }
         }
 
-        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', true);
-        $('select#typeSelect options[value=<%=request.getParameter("type")%>]).attr('selected',true);
-        $('select#typeSelect option[value=<%=request.getParameter("type")%>]').prop('selected', 'selected').change();
-
-        $(document).ready(function() {
-            $("select#typeSelect option[value='<%=request.getParameter("type")%>']").prop('selected', true);
-        });
     });
+
 </script>
+
 
 <script src="js/quanLyKhachHangAdmin.js"></script>
 <script src="js/Truong/jquery/jquery-3.5.1.min.js"></script>

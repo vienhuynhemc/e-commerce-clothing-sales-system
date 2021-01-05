@@ -2,7 +2,7 @@ package model.loadAccount;
 import beans.account.AccountEmployee;
 import worksWithDatabase.loadAccount.LoadNVKDAO;
 
-import java.util.Map;
+import java.util.ArrayList;
 
 public class LoadAccountNVKModel {
     private static LoadAccountNVKModel loadAccountNVK;
@@ -15,11 +15,11 @@ public class LoadAccountNVKModel {
         return loadAccountNVK;
 
     }
-    public Map<String, AccountEmployee> loadListNVK(int num){
+    public ArrayList<AccountEmployee> loadListNVK(int page, String type, String search, String orderby){
 
         LoadNVKDAO loadNVKDAO =  new LoadNVKDAO();
 
-        Map<String, AccountEmployee> result = loadNVKDAO.loadListNVK(num);
+       ArrayList<AccountEmployee> result = loadNVKDAO.loadNVKAll(page,type,search,orderby);
 
         return result;
     }
