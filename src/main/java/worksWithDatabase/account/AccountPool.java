@@ -1,19 +1,19 @@
-package worksWithDatabase.manufacturer;
+package worksWithDatabase.account;
 
-public class ManufacturerPool {
+public class AccountPool {
 
     //---------------------------------Pool ---------------------------------
 
-    private ManufacturerWorksWithDatabase manufacturerWorksWithDatabase;
+    private AccountWorksWithDatabase accountWorksWithDatabase;
     private boolean isActive;
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo ManufacturerWorksWithDatabase
-    public ManufacturerPool() {
+    //  Constructor thì khởi tạo account works with database
+    public AccountPool() {
 
-        //  Khởi tạo  ManufacturerWorksWithDatabase
-        manufacturerWorksWithDatabase = new ManufacturerWorksWithDatabase();
+        //  Khởi tạo  account works with database
+        accountWorksWithDatabase = new AccountWorksWithDatabase();
 
         //  Đặt trạng thái hoạt động ban đầu là false
         isActive = false;
@@ -21,7 +21,7 @@ public class ManufacturerPool {
     }
 
     //  Lấy thể hiện của lớp, để ở trạng thái synchronized
-    public synchronized ManufacturerWorksWithDatabase getManufacturerWorksWithDatabase() {
+    public synchronized AccountWorksWithDatabase getAccountWorksWithDatabase() {
 
         //  Xem thử nó có đang được hoạt động hay không, đang hoạt động thì bắt client yêu cầu chờ
         while (isActive) {
@@ -42,15 +42,15 @@ public class ManufacturerPool {
         isActive = true;
 
         //  Trả về thể hiện
-        return manufacturerWorksWithDatabase;
+        return accountWorksWithDatabase;
 
     }
 
-    //  Phương thứct trả về ManufacturerWorksWithDatabase
-    public synchronized void releaseManufacturerWorksWithDatabase(ManufacturerWorksWithDatabase manufacturerWorksWithDatabase) {
+    //  Phương thứct trả về accountWorksWithDatabase
+    public synchronized void releaseAccountWorksWithDatabase(AccountWorksWithDatabase accountWorksWithDatabase) {
 
-        //  Kiểm tra ManufacturerWorksWithDatabase nhận vào có đúng là ManufacturerWorksWithDatabase cửa lớp này hay không
-        if (this.manufacturerWorksWithDatabase == manufacturerWorksWithDatabase) {
+        //  Kiểm tra accountWorksWithDatabase nhận vào có đúng là accountWorksWithDatabase cửa lớp cnày hay không
+        if (this.accountWorksWithDatabase == accountWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false
             isActive = false;
@@ -61,5 +61,6 @@ public class ManufacturerPool {
         }
 
     }
+
 
 }

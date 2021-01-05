@@ -1,19 +1,19 @@
-package worksWithDatabase.manufacturer;
+package worksWithDatabase.role;
 
-public class ManufacturerPool {
+public class RolePool {
 
     //---------------------------------Pool ---------------------------------
 
-    private ManufacturerWorksWithDatabase manufacturerWorksWithDatabase;
+    private RoleWorksWithDatabase roleWorksWithDatabase;
     private boolean isActive;
 
     //-----------------------------------------------------------------------
 
-    //  Constructor thì khởi tạo ManufacturerWorksWithDatabase
-    public ManufacturerPool() {
+    //  Constructor thì khởi tạo role works with database
+    public RolePool() {
 
-        //  Khởi tạo  ManufacturerWorksWithDatabase
-        manufacturerWorksWithDatabase = new ManufacturerWorksWithDatabase();
+        //  Khởi tạo  role works with database
+        roleWorksWithDatabase = new RoleWorksWithDatabase();
 
         //  Đặt trạng thái hoạt động ban đầu là false
         isActive = false;
@@ -21,7 +21,7 @@ public class ManufacturerPool {
     }
 
     //  Lấy thể hiện của lớp, để ở trạng thái synchronized
-    public synchronized ManufacturerWorksWithDatabase getManufacturerWorksWithDatabase() {
+    public synchronized RoleWorksWithDatabase getRoleWorksWithDatabase() {
 
         //  Xem thử nó có đang được hoạt động hay không, đang hoạt động thì bắt client yêu cầu chờ
         while (isActive) {
@@ -42,15 +42,15 @@ public class ManufacturerPool {
         isActive = true;
 
         //  Trả về thể hiện
-        return manufacturerWorksWithDatabase;
+        return roleWorksWithDatabase;
 
     }
 
-    //  Phương thứct trả về ManufacturerWorksWithDatabase
-    public synchronized void releaseManufacturerWorksWithDatabase(ManufacturerWorksWithDatabase manufacturerWorksWithDatabase) {
+    //  Phương thứct trả về roleWorksWithDatabase
+    public synchronized void releaseRoleWorksWithDatabase(RoleWorksWithDatabase roleWorksWithDatabase) {
 
-        //  Kiểm tra ManufacturerWorksWithDatabase nhận vào có đúng là ManufacturerWorksWithDatabase cửa lớp này hay không
-        if (this.manufacturerWorksWithDatabase == manufacturerWorksWithDatabase) {
+        //  Kiểm tra roleWorksWithDatabase nhận vào có đúng là roleWorksWithDatabase cửa lớp này hay không
+        if (this.roleWorksWithDatabase == roleWorksWithDatabase) {
 
             //  Đúng thì cho trạng thái hoạt động thành false
             isActive = false;
@@ -61,5 +61,5 @@ public class ManufacturerPool {
         }
 
     }
-
+    
 }

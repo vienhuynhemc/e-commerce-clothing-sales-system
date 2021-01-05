@@ -244,8 +244,17 @@ a {
     font-weight: bold;
 }
 
+.helpLogin span {
+    font-size: 14px;
+    border: none;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .divsubmit {
     margin-top: 30px;
+    display: flex;
 }
 
 .divsubmit button {
@@ -254,6 +263,17 @@ a {
 }
 
 .divsubmit button:nth-child(1) {
+    background: linear-gradient(to right, #ffd698, #fd9a46, #ff5c00);
+    border: none;
+    outline: none;
+    color: white;
+    font-family: sans-serif;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 15px 14px #d6d1d1;
+}
+
+.divsubmit span:nth-child(1) {
     background: linear-gradient(to right, #ffd698, #fd9a46, #ff5c00);
     border: none;
     outline: none;
@@ -280,6 +300,24 @@ a {
     font-size: 14px;
     border-radius: 5px;
     outline: none;
+}
+
+.divsubmit a:nth-child(2) {
+    margin-left: 30px;
+    border: 1px solid #cacaca;
+    background-color: white;
+    color: #2d2d2d;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .divalink {
@@ -344,6 +382,7 @@ a {
     position: absolute;
     right: 15%;
     color: #737373;
+    cursor: pointer;
 }
 
 .contentright p:nth-child(1) {
@@ -431,6 +470,10 @@ a {
     z-index: 1000;
     transition: all 0.2s ease-in-out;
     transform: scaleY(0);
+}
+
+.showdivsuccess{
+    transform: scaleY(1);
 }
 
 .contentsuccess {
@@ -538,6 +581,13 @@ a {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    opacity: 1;
+    z-index: 2;
+}
+
+.left1divpasswordhidden{
+    opacity: 0;
+    z-index: 1;
 }
 
 #divpassword .contentsuccess {
@@ -583,6 +633,23 @@ a {
     box-shadow: 0px 15px 14px #d6d1d1;
 }
 
+#divpassword span {
+    background: linear-gradient(to right, #ffd698, #fd9a46, #ff5c00);
+    border: none;
+    outline: none;
+    color: white;
+    font-family: sans-serif;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 15px 14px #d6d1d1;
+    margin-top: 30px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .left2divpassword button {
     margin-top: 30px;
 }
@@ -613,14 +680,22 @@ a {
 
 #left2divpassword1 {
     transition: all 0.2s ease-in-out;
+    z-index: 1;
     opacity: 0;
     top: 100%;
+}
+
+.left2divpassword1show{
+    top:0% !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
 }
 
 #left2divpassword11 {
     transition: all 1s ease-in-out;
     z-index: 5;
     width: 100%;
+    display: block;
 }
 
 #left2divpassword12 {
@@ -632,10 +707,18 @@ a {
     transition: all 0.2s ease-in-out;
     opacity: 0;
     top: 100%;
+    z-index: 1;
+}
+
+.left2divpassword2show{
+    top: 0% !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
 }
 
 #left2divpassword21 {
     width: 100%;
+    display: block;
 }
 
 #left2divpassword22 {
@@ -670,11 +753,22 @@ a {
     transition: all 0.2s ease-in-out;
     opacity: 0;
     top: 100%;
+    z-index: 1;
+}
+
+.left3divpasswordshow{
+    opacity: 1 !important;
+    top:0% !important;
+    z-index: 2;
 }
 
 #notifi1 .contentsuccess h3,
 #notifi2 .contentsuccess h3 {
     margin-top: -20px;
+}
+
+.showsuccessee{
+    transform: scaleY(1);
 }
 
 #error {
@@ -685,5 +779,10 @@ a {
     z-index: 100;
     font-weight: bold;
     font-size: 14px;
-    display: none;
+}
+
+.error{
+    color: #ec3650;
+    font-weight: bold;
+    font-size: 14px;
 }

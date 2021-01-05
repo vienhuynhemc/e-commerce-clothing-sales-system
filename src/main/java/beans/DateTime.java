@@ -1,5 +1,7 @@
 package beans;
 
+import beans.loginAdmin.ForgotPasswordAdminObjectConfiguration;
+
 import java.util.Date;
 
 public class DateTime {
@@ -53,13 +55,24 @@ public class DateTime {
     }
 
     //  Constructor nhận vào type
-    public DateTime(int type){
+    public DateTime(int type) {
 
-        if(type == DateTimeConfiguration.NOW_DATE){
+        if (type == DateTimeConfiguration.NOW_DATE) {
 
             Date date = new Date();
-            this.year = date.getYear()+1900;
-            this.month = date.getMonth()+1;
+            this.year = date.getYear() + 1900;
+            this.month = date.getMonth() + 1;
+            this.day = date.getDate();
+            this.hour = date.getHours();
+            this.minute = date.getMinutes();
+            this.second = date.getSeconds();
+
+        } else if (type == DateTimeConfiguration.NOW_DATE_ADD_SOME_MINUTE) {
+
+            Date date = new Date();
+            Date dateThreeMinute = new Date(date.getTime() + (ForgotPasswordAdminObjectConfiguration.TIME_EXISTS * DateTimeConfiguration.ONE_MINUTE_IN_MILLIS));
+            this.year = date.getYear() + 1900;
+            this.month = date.getMonth() + 1;
             this.day = date.getDate();
             this.hour = date.getHours();
             this.minute = date.getMinutes();
