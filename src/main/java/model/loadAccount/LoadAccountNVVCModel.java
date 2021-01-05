@@ -3,6 +3,7 @@ package model.loadAccount;
 import beans.account.AccountEmployee;
 import worksWithDatabase.loadAccount.LoadNVVCDAO;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class LoadAccountNVVCModel {
@@ -17,11 +18,11 @@ public class LoadAccountNVVCModel {
         return loadAccountNVVC;
 
     }
-    public Map<String, AccountEmployee> loadListNVVC(int num){
+    public ArrayList<AccountEmployee> loadListNVK(int page, String type, String search, String orderby){
 
         LoadNVVCDAO loadNVKDAO =  new LoadNVVCDAO();
 
-        Map<String, AccountEmployee> result = loadNVKDAO.loadListNVVC(num);
+        ArrayList<AccountEmployee> result = loadNVKDAO.loadNVVCAll(page,type,search,orderby);
 
         return result;
     }

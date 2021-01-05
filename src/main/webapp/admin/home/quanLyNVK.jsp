@@ -26,133 +26,14 @@
     <link rel="stylesheet" href="css/quanLyNVKAdmin.css">
 
     <% ArrayList<AccountEmployee> list = (ArrayList<AccountEmployee>) request.getAttribute("listNVK");%>
-    <% ArrayList<String> listRemove = new ArrayList<String>();%>
-    <c:url var="xoa-nhan-vien" value="/RemoveAccountNVKController"/>
+
 
 </head>
 
 <body>
 
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.jsp"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li class="activelv2"><a href="quanLyNVK.jsp"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.jsp"><i class="fa fa-users"></i>Khách hàng</a>
-                    </li>
-                </ul>
-                <input type="checkbox" style="display: none;" checked>
-            </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<jsp:include page="../share/_LayoutLeft.jsp"/>
 
 <div class="indexright">
     <div class="indextop">
@@ -326,14 +207,15 @@
 
                     <form action="LoadAccountNVKController" method="get">
                     <div class="leftheader">
-                        <select name="type" >
+                        <select name="type" id="typeSelect" >
                             <option value="RegisDate" selected>Ngày tạo</option>
                             <option value="FullName">Họ và tên</option>
                             <option value="UserName">Tài khoản</option>
                             <option value="Salary">Lương</option>
+                            <input type="hidden" name="" id="typeName" value="<%=request.getParameter("type")%>">
                         </select>
                         <div>
-                            <div class="leftheadersort" onclick="changesort2(this)">
+                            <div class="leftheadersort" id="order" onclick="changesort2(this)">
                                 <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
                                 <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                 <input type="checkbox" style="display: none;">
@@ -351,6 +233,8 @@
 
                     </form>
 
+
+                    <!-- xử lí phân trang ở đây-->
                     <div class="leftnextpage">
                         <p>Hiển thị <strong> <%=list.size()%> </strong> trên tổng
 
@@ -359,12 +243,22 @@
 
                             nhân viên</p>
 
-                        <a href="LoadAccountNVKController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" ><button><i class="fa fa-caret-left"></i></button></a>
+                        <%int nowpage = Integer.parseInt(request.getParameter("page"));
+                            if(nowpage == 1){
+                        %>
+                        <a href="LoadAccountNVKController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                                <%}else { %>
+                            <a href="LoadAccountNVKController?page=<%=nowpage-1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                                <%}%>
+
+                                <button><i class="fa fa-caret-left"></i>
+                                </button>
+                            </a>
+
                         <ul>
 
                             <%
                                 int listpage = (int) request.getAttribute("numberPage");
-                                int nowpage = Integer.parseInt(request.getParameter("page"));
                                 for (int i = 1;i <= listpage;i++){
                                     if(i == nowpage){
                             %>
@@ -375,12 +269,27 @@
                             <%}}%>
 
                         </ul>
-                        <a href="LoadAccountNVKController?page=<%=Integer.parseInt(request.getParameter("page"))  + 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">
-                            <button><i class="fa fa-caret-right"></i></button>
-                        </a>
+
+                                        <%
+                        if(nowpage == listpage){
+                        %>
+                                    <a href="LoadAccountNVKController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                                            <%}else { %>
+                                        <a href="LoadAccountNVKController?page=<%=nowpage+1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
+                                            <%}%>
+                                            <button><i class="fa fa-caret-right"></i></button>
+                                        </a>
+
+
                     </div>
+
+                    <!-- end code--->
+
+                    <!-- sử lí xóa nhiều mục đã chọn, script sử lỉ sự kiện onclick ở dưới cùng-->
                     <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm nhân viên mới</button>
                     <button type="button" id="btDelete"> <i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+
+
                 </div>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
@@ -550,8 +459,6 @@
                     </div>
 
                     <%}%>
-
-
 
 
                 </div>
@@ -731,7 +638,7 @@
             document.getElementById("checkSort").value = "ASC";
         }
     }
-
+    <!-- sử lí cự kiện onlick xóa nhiều mục-->
     $('#btDelete').click(function (){
     var data = {};
     var dis = $('#maindiv2 input[type = checkbox]:checked').map(function (){
@@ -743,7 +650,7 @@
 
     deleteE(data);
     });
-
+    <!-- sử lí cự kiện onlick button xóa 1 nhân viên cụ thể-->
     function deleteOne(event){
         var data = $(event).attr('id');
         deleteE(data);
@@ -768,7 +675,44 @@
         });
     }
 
+    <!--sử lí load lại thì có giá trị trước cho cho cái select -->
+    $(function (){
+        var typename = $('#typeName').attr('value');
+        let list =  document.getElementById("typeSelect").children;
 
+        if(typename == "RegisDate"){
+            $('select#typeSelect option[value= "RegisDate" ]').prop('selected', true);
+        }else if(typename == "FullName"){
+            $('select#typeSelect option[value= "FullName" ]').prop('selected', true);
+        }else if(typename == "UserName"){
+            $('select#typeSelect option[value= "UserName" ]').prop('selected', true);
+        }else{
+            $('select#typeSelect option[value= "Salary" ]').prop('selected', true);
+        }
+    });
+
+    $(function (){
+        var order = $('#checkSort').attr('value') ;
+        let list =  document.getElementById("order").children;
+
+        if(order == "DESC"){
+
+            if (list[2].checked == true) {
+                list[2].checked = false;
+                list[1].style.display = "none";
+                list[0].style.display = "block";
+                //list[0].style.marginTop = "0px";
+            }
+        }else{
+            if (list[2].checked == false) {
+                list[2].checked = true;
+                list[0].style.display = "none";
+                list[1].style.display = "block";
+                //list[1].style.marginTop = "-9px";
+            }
+        }
+
+    });
 
 </script>
 

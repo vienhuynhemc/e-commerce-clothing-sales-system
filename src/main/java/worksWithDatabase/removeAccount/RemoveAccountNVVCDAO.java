@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RemoveAccountNVKDAO {
-    public RemoveAccountNVKDAO() {
+public class RemoveAccountNVVCDAO {
+    public RemoveAccountNVVCDAO() {
     }
 
     public boolean removeAccountDAO(String idUser){
@@ -16,8 +16,8 @@ public class RemoveAccountNVKDAO {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
 
-            String sql = "Delete from account where idUser = ? and type = 1";
-            String sql1 = "Delete from employee where iduser = ? and level = 1";
+            String sql = "Delete from account where idUser = ? and type = 2";
+            String sql1 = "Delete from employee where iduser = ? and level = 2";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,idUser);
@@ -35,14 +35,12 @@ public class RemoveAccountNVKDAO {
             throwables.printStackTrace();
         }
         return false;
-
     }
 
     public static void main(String[] args) {
-        RemoveAccountNVKDAO removeAccountDAO = new RemoveAccountNVKDAO();
+        RemoveAccountNVVCDAO removeAccountDAO = new RemoveAccountNVVCDAO();
 
-        System.out.print(removeAccountDAO.removeAccountDAO("NVK13"));
+        System.out.print(removeAccountDAO.removeAccountDAO("NVVC13"));
 
     }
-
 }
