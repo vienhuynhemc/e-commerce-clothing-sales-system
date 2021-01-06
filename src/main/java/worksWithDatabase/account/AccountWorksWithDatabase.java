@@ -191,6 +191,28 @@ public class AccountWorksWithDatabase {
 
     }
 
+    //  Phương thứuc nhận vào 1 email và 1 mật khẩu, cập nhập lại mật khẩu của tài khoản có email này
+    public void updatePasswordFromEmail(String mat_khau,String email){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau = ? WHERE email = ?");
+            preparedStatement.setString(1,mat_khau);
+            preparedStatement.setString(2,email);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 
 }
 

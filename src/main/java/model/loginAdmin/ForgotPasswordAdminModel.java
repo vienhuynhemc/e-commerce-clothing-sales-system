@@ -116,4 +116,18 @@ public class ForgotPasswordAdminModel {
 
     }
 
+    //  Phương thứuc nhận vào 1 email và 1 mật khẩu, cập nhập lại mật khẩu của tài khoản có email này
+    public void updatePasswordFromEmail(String mat_khau,String email){
+
+        //  Mượn account works withdataabase
+        AccountWorksWithDatabase accountWorksWithDatabase = AccountDataSource.getInstance().getAccountWorksWithDatabase();
+
+        //  update
+        accountWorksWithDatabase.updatePasswordFromEmail(mat_khau,email);
+
+        //  Có mượn có trả
+        AccountDataSource.getInstance().releaseAccountWorksWithDatabase(accountWorksWithDatabase);
+
+    }
+
 }

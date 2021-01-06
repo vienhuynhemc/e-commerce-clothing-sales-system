@@ -155,7 +155,13 @@
 </div>
 
 <!--notification-->
-<div class="success" id="success">
+<div class="success
+<%
+    if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isComplete()){
+%>
+     showdivsuccess
+        <%}%>
+" id="success">
     <div class="helponclick" onclick="completesuccess()"></div>
     <div class="contentsuccess" id="notifi1" style="display: none">
         <h3>Đăng ký thành công!</h3>
@@ -234,43 +240,57 @@
             <div class="left2divpassword" id="left2divpassword21">
                 <h3>Xác nhận email</h3>
                 <p>Vui lòng nhập mã gồm 6 chữ số được gửi tới email của bạn</p>
-                <div class="tk">
-                    <input type="text" placeholder="&#xf13e;   Nhập mã 6 chữ số của bạn ở đây"
-                           style="font-family:Arial, FontAwesome" maxlength="4">
+                <form class="tk" method="post" action="../../ForgotPasswordAdminController" id="verifycode">
+                    <input type="text" name="code" placeholder="&#xf13e;   Nhập mã 6 chữ số của bạn ở đây"
+                           style="font-family:Arial, FontAwesome" maxlength="6" required value="<%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.getCodeFill() != null){%><%=forgotPasswordAdminObject.getCodeFill()%><%}%>">
                     <div class="lineinput1"></div>
-                </div>
+                    <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.getContent2()!= null){%>
+                    <p class="error" style="color: #ec3650;margin-top: 20px"><%=forgotPasswordAdminObject.getContent2()%></p>
+                    <%}%>
+                    <input type="text" name="role" value="verifyCode" style="display: none">
+                </form>
                 <div class="divbutton">
                     <div class="divalink">
                         <button class="alink" onclick="guilaima()">Gởi lại mã ( <pre class="timeout" id="timeout"><%if(forgotPasswordAdminObject!= null && forgotPasswordAdminObject.getTimeExists() != null){%><%=forgotPasswordAdminObject.getTimeOut()%><%}%></pre> )</button>
                         <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi email</button>
                     </div>
-                    <button onclick="gotochange()">Đặt lại mật khẩu</button>
+                    <button onclick="submitcode()">Đặt lại mật khẩu</button>
                 </div>
                 <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
             </div>
         </div>
-        <div class="left2divpassword1" id="left3divpassword">
-            <div class="left2divpassword" id="left2divpassword31">
+        <div class="left2divpassword1
+ <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isValidPassword()){%>
+        left3divpasswordshow
+        <%}%>
+" id="left3divpassword">
+            <form class="left2divpassword" id="left2divpassword31" method="post" action="../../ForgotPasswordAdminController">
                 <h3>Mật khẩu mới</h3>
                 <p>Chúc mừng bạn đã tới giai đoạn này, bây giờ hãy nhập mật khẩu mới và hoàn tất công việc lấy lại
                     mật khẩu</p>
                 <div class="tk">
-                    <input type="password" placeholder="&#xf13e;   Nhập mật khẩu mới bạn ở đây"
-                           style="font-family:Arial, FontAwesome">
-                    <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                    <input type="<%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass1()){%>text<%}else{%>password<%}%>" id="pass1" placeholder="&#xf13e;   Nhập mật khẩu mới bạn ở đây"
+                           style="font-family:Arial, FontAwesome" required name="pass1" value="<%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.getPass1() != null){%><%=forgotPasswordAdminObject.getPass1()%><%}%>">
+                    <span class="eye"><i class="fa <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass1()){%>fa-eye<%}else{%>fa-eye-slash<%}%>" id="pass1eye" onclick="showpass1()"></i></span>
                     <div class="lineinput1"></div>
+                    <input type="checkbox" name="pass1check" id="pass1check" style="display:none;"  <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass1()){%>checked<%}%>>
                 </div>
                 <div class="tk">
-                    <input type="password" placeholder="&#xf13e;   Nhập lại mật khẩu"
-                           style="font-family:Arial, FontAwesome">
-                    <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                    <input type="<%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass2()){%>text<%}else{%>password<%}%>" id="pass2" placeholder="&#xf13e;   Nhập lại mật khẩu"
+                           style="font-family:Arial, FontAwesome" required name="pass2" value="<%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.getPass2() != null){%><%=forgotPasswordAdminObject.getPass2()%><%}%>">
+                    <span class="eye"><i class="fa <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass2()){%>fa-eye<%}else{%>fa-eye-slash<%}%>" id="pass2eye" onclick="showpass2()"></i></span>
                     <div class="lineinput1"></div>
+                    <input type="checkbox" name="pass2check" id="pass2check" style="display:none;"  <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isShowPass2()){%>checked<%}%>>
                 </div>
+                <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.getContent3()!= null){%>
+                <p class="error" style="color: #ec3650;margin-top: 20px"><%=forgotPasswordAdminObject.getContent3()%></p>
+                <%}%>
                 <div class="divbutton">
-                    <button onclick="gotocomplete()">Đặt lại mật khẩu</button>
+                    <button>Đặt lại mật khẩu</button>
                 </div>
                 <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
-            </div>
+                <input type="text" name="role" value="validPassword" style="display: none">
+            </form>
         </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
-
 function completesuccess() {
-    document.getElementById('success').classList.remove("showsuccessee");
+    document.getElementById("formForgotPasswordAdminRemoveAllController").submit();
 }
 
 function displayNoti() {
@@ -62,29 +61,69 @@ function toPublic() {
     window.location = "../index.html";
 }
 
-function showPassword(){
+function showPassword() {
     let x = document.getElementById("matkhau");
     let icon = document.getElementById("iconshowpassword");
-    if(x.type == "password"){
+    if (x.type == "password") {
         x.type = "text";
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
-    }else{
+    } else {
         x.type = "password";
         icon.classList.add("fa-eye-slash");
         icon.classList.remove("fa-eye");
     }
 }
 
-function guilaima(){
+function submitcode() {
+
+    document.getElementById("verifycode").submit();
+
+}
+
+function showpass1() {
+    let item = document.getElementById("pass1");
+    let eye = document.getElementById("pass1eye");
+    let check = document.getElementById("pass1check");
+    if (item.type == "password") {
+        item.type = "text";
+        eye.classList.remove("fa-eye-slash");
+        eye.classList.add("fa-eye");
+        check.checked = true;
+    } else {
+        item.type = "password";
+        eye.classList.add("fa-eye-slash");
+        eye.classList.remove("fa-eye");
+        check.checked = false;
+    }
+}
+
+function showpass2() {
+    let item = document.getElementById("pass2");
+    let eye = document.getElementById("pass2eye");
+    let check = document.getElementById("pass2check");
+    if (item.type == "password") {
+        item.type = "text";
+        eye.classList.remove("fa-eye-slash");
+        eye.classList.add("fa-eye");
+        check.checked = true;
+    } else {
+        item.type = "password";
+        eye.classList.add("fa-eye-slash");
+        eye.classList.remove("fa-eye");
+        check.checked = false;
+    }
+}
+
+function guilaima() {
     document.getElementById("left2divpassword11").submit();
 }
 
-setInterval(function(){
+setInterval(function () {
 
     let value = parseInt(document.getElementById("timeout").innerText);
-    if(value >=1){
-        value = value-1;
+    if (value >= 1) {
+        value = value - 1;
     }
     document.getElementById("timeout").innerText = value;
 
