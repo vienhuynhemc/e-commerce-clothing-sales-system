@@ -1,6 +1,8 @@
 package model.loginAdmin;
 
 import beans.DateTimeConfiguration;
+import mail.MailConfiguration;
+import mail.MailModel;
 import worksWithDatabase.account.AccountDataSource;
 import worksWithDatabase.account.AccountWorksWithDatabase;
 import worksWithDatabase.staff.StaffDataSource;
@@ -33,7 +35,7 @@ public class ForgotPasswordAdminModel {
     }
 
     //  Phương thức nhận vào thời hạn của mã , trả về số giây còn hiệu lực, hết hiệu lực trả về 0
-    public static int getTimeOut(Date timeExists) {
+    public int getTimeOut(Date timeExists) {
 
         Date now = new Date();
         long timeOut = timeExists.getTime() - now.getTime();
@@ -89,5 +91,29 @@ public class ForgotPasswordAdminModel {
 
     }
 
+    //  Phương thức nhận vào mã tài khoản, mã verify và hạn sử dụng của nó, đưa vào csdl
+    public void updateVerifyCodeAndTimeOut(String ma_tai_khoan, String ma_quen_mat_khau, String han_su_dung_ma_qmk) {
+
+        //  Mượn account works withdataabase
+        AccountWorksWithDatabase accountWorksWithDatabase = AccountDataSource.getInstance().getAccountWorksWithDatabase();
+
+        //  update
+        accountWorksWithDatabase.updateVerifyCodeAndTimeOut(ma_tai_khoan, ma_quen_mat_khau, han_su_dung_ma_qmk);
+
+        //  Có mượn có trả
+        AccountDataSource.getInstance().releaseAccountWorksWithDatabase(accountWorksWithDatabase);
+
+    }
+
+    //  Phương thức nhận vào mã verify quên mật khẩu và email, gửi mã này tới email này
+    public void sendMailForgotPasswordVerifyCode(String email, String verifyCode){
+
+        String text = "Dear: " + email + "\n\nThis is your password forgotten code "+verifyCode+" ,please don't share this code with anyone, it's up to 180 seconds";
+        String subject = "Forgot password TVTSHOP";
+
+        MailModel.getInstance().initializedSesstion(MailConfiguration.USERNAME_TVTSHOP, MailConfiguration.PASSWORD_TVTSHOP);
+        MailModel.getInstance().sendMail("TVTSHOP",email,subject,text);
+
+    }
 
 }

@@ -472,7 +472,7 @@ a {
     transform: scaleY(0);
 }
 
-.showdivsuccess{
+.showdivsuccess {
     transform: scaleY(1);
 }
 
@@ -585,7 +585,7 @@ a {
     z-index: 2;
 }
 
-.left1divpasswordhidden{
+.left1divpasswordhidden {
     opacity: 0;
     z-index: 1;
 }
@@ -648,6 +648,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .left2divpassword button {
@@ -685,8 +686,8 @@ a {
     top: 100%;
 }
 
-.left2divpassword1show{
-    top:0% !important;
+.left2divpassword1show {
+    top: 0% !important;
     opacity: 1 !important;
     z-index: 2 !important;
 }
@@ -710,7 +711,7 @@ a {
     z-index: 1;
 }
 
-.left2divpassword2show{
+.left2divpassword2show {
     top: 0% !important;
     opacity: 1 !important;
     z-index: 2 !important;
@@ -756,9 +757,9 @@ a {
     z-index: 1;
 }
 
-.left3divpasswordshow{
+.left3divpasswordshow {
     opacity: 1 !important;
-    top:0% !important;
+    top: 0% !important;
     z-index: 2;
 }
 
@@ -767,7 +768,7 @@ a {
     margin-top: -20px;
 }
 
-.showsuccessee{
+.showsuccessee {
     transform: scaleY(1);
 }
 
@@ -781,8 +782,12 @@ a {
     font-size: 14px;
 }
 
-.error{
+.error {
     color: #ec3650;
     font-weight: bold;
     font-size: 14px;
+}
+
+.timeout {
+    display: inline;
 }

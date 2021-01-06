@@ -18,6 +18,11 @@ import java.util.Date;
 public class ForgotPasswordAdminController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // set charset cho cả request và responne
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         //  Kiểm tra chức năng nhận vào là gì
         String role = request.getParameter("role");
 
@@ -57,6 +62,7 @@ public class ForgotPasswordAdminController extends HttpServlet {
                     forgotPasswordAdminObject.setCode("");
                     forgotPasswordAdminObject.setFillCode(true);
                     forgotPasswordAdminObject.setContent("");
+                    forgotPasswordAdminObject.setEmail(email);
 
                     //  2. Tạo và gửi cái mã tới email này, và điều không thể thiếu là lưu các thông tin cần thiết vô forgotPasswordAdminObject
                     //  Mã
@@ -66,10 +72,13 @@ public class ForgotPasswordAdminController extends HttpServlet {
                     //  Date để lưu vô forgotpasswordadminobject cho dễ hành động
                     Date nowDate = new Date();
                     Date timeExistsTypeDate = new Date(nowDate.getTime() + (ForgotPasswordAdminObjectConfiguration.TIME_EXISTS * DateTimeConfiguration.ONE_MINUTE_IN_MILLIS));
-                    //  Lưu thông tin
+                    //  Lưu thông tin vô forgotpasssword admin object
                     forgotPasswordAdminObject.setCode(verifyCode);
                     forgotPasswordAdminObject.setTimeExists(timeExistsTypeDate);
                     //  Đưa mã và thời gian hết hạn mã vô csdl
+                    ForgotPasswordAdminModel.getInstance().updateVerifyCodeAndTimeOut(ma_tai_khoan,verifyCode,timeExistsTypeDateTime.toString());
+                    //  Gửi email có cái mã này đến địa chỉ email này
+                    ForgotPasswordAdminModel.getInstance().sendMailForgotPasswordVerifyCode(email,verifyCode);
 
                 }
             }
@@ -84,4 +93,5 @@ public class ForgotPasswordAdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
+
 }

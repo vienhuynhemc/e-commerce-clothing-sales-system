@@ -22,15 +22,7 @@ function displaydivpassword() {
 }
 
 function hiddendivpassword() {
-    document.getElementById('divpassword').classList.remove("showdivsuccess");
-
-    document.getElementById('left2divpassword1').classList.remove('left2divpassword1show');
-
-    document.getElementById('left2divpassword2').classList.remove("left2divpassword2show");
-
-    document.getElementById('left1divpassword').classList.remove("left1divpasswordhidden");
-
-    document.getElementById('left3divpassword').classList.remove("left3divpasswordshow");
+    document.getElementById("formForgotPasswordAdminRemoveAllController").submit();
 }
 
 function email() {
@@ -83,3 +75,18 @@ function showPassword(){
         icon.classList.remove("fa-eye");
     }
 }
+
+function guilaima(){
+    document.getElementById("left2divpassword11").submit();
+}
+
+setInterval(function(){
+
+    let value = parseInt(document.getElementById("timeout").innerText);
+    if(value >=1){
+        value = value-1;
+    }
+    document.getElementById("timeout").innerText = value;
+
+
+}, 1000);

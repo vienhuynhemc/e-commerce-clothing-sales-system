@@ -1,5 +1,6 @@
 <%@ page import="beans.loginAdmin.LoginAdminObject" %>
-<%@ page import="beans.loginAdmin.RememberAccount" %><%--
+<%@ page import="beans.loginAdmin.RememberAccount" %>
+<%@ page import="beans.loginAdmin.ForgotPasswordAdminObject" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -12,8 +13,8 @@
 <%
 
     //  Nếu như đã đăng nhập rồi thì sẽ không thể tới trang này foward tới controller điều hướng index
-    if(request.getSession().getAttribute("userAdmin")!=null){
-        request.getRequestDispatcher("../../AdminIndexNavigation").forward(request,response);
+    if (request.getSession().getAttribute("userAdmin") != null) {
+        request.getRequestDispatcher("../../AdminIndexNavigation").forward(request, response);
     }
 
 
@@ -28,7 +29,7 @@
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/loginvienAdmin.css">
 
-    <script src="../../js/dangnhapAdmin.js"></script>
+
 
 </head>
 
@@ -47,6 +48,10 @@
 
     //  Lấy remember account, để làm những việc cần thiết
     RememberAccount rememberAccount = (RememberAccount) request.getSession().getAttribute("rememberAccount");
+
+    //  Lấy forgotPasswordAdminObject để xử lý việc có hiện thông báo quên mật khẩu hay không
+    ForgotPasswordAdminObject forgotPasswordAdminObject = (ForgotPasswordAdminObject) request.getSession().getAttribute("forgotPasswordAdminObject");
+
 
 %>
 
@@ -171,10 +176,21 @@
 </div>
 
 <!--forgotpassword-->
-<div class="success" id="divpassword">
+<div class="success
+<%
+    if(forgotPasswordAdminObject != null && (forgotPasswordAdminObject.isFillCode() || forgotPasswordAdminObject.isFillEmail()|| forgotPasswordAdminObject.isValidPassword())){
+%>
+     showdivsuccess
+        <%}%>
+" id="divpassword">
     <div class="helponclick" onclick="hiddendivpassword()"></div>
     <div class="contentsuccess">
-        <div class="left1divpassword" id="left1divpassword">
+        <div class="left1divpassword
+            <%    if(forgotPasswordAdminObject != null && (forgotPasswordAdminObject.isFillCode() || forgotPasswordAdminObject.isFillEmail()|| forgotPasswordAdminObject.isValidPassword())){
+                %>
+                left1divpasswordhidden
+                <%}%>
+                " id="left1divpassword">
             <h3>Quên mật khẩu</h3>
             <p>Hãy chọn cách mà chúng tôi sẽ sử dụng để đặt lại mật khẩu của bạn:</p>
 
@@ -185,24 +201,36 @@
             <button onclick="hiddendivpassword()">Trở lại</button>
             <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
         </div>
-        <div class="left2divpassword1" id="left2divpassword1">
-            <form class="left2divpassword" id="left2divpassword11" method="post" action="../../ForgotPasswordAdminController">
+        <div class="left2divpassword1
+        <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isFillEmail()){%>
+        left2divpassword1show
+        <%}%>
+            " id="left2divpassword1">
+            <form class="left2divpassword" id="left2divpassword11" method="post"
+                  action="../../ForgotPasswordAdminController">
                 <h3>Bằng email</h3>
                 <p>Nhập email của bạn dưới đây để đặt lại mật khẩu</p>
                 <div class="tk">
-                    <input type="text" name="email" placeholder="&#xf003;    Nhập email của bạn ở đây"
-                           style="font-family:Arial, FontAwesome">
+                    <input type="text" name="email" placeholder="&#xf003;    Nhập email của bạn ở đây" required
+                           style="font-family:Arial, FontAwesome" value="<%if(forgotPasswordAdminObject!=null){%><%=forgotPasswordAdminObject.getEmail()%><%}%>">
                     <div class="lineinput1"></div>
                 </div>
+                <% if (forgotPasswordAdminObject != null) {%>
+                <p class="error" style="color: #ec3650;margin-top: 20px"><%=forgotPasswordAdminObject.getContent()%></p>
+                <%}%>
                 <div class="divbutton">
-                    <button onclick="veryemail()">Đặt lại mật khẩu</button>
+                    <button>Đặt lại mật khẩu</button>
                     <span onclick="hiddendivpasswordBack1()">Trở lại</span>
                 </div>
                 <i class=" fa fa-times closesuccess" onclick="hiddendivpassword()"> </i>
                 <input type="text" name="role" value="email" style="display: none">
             </form>
         </div>
-        <div class="left2divpassword1" id="left2divpassword2">
+        <div class="left2divpassword1
+ <%if(forgotPasswordAdminObject != null && forgotPasswordAdminObject.isFillCode()){%>
+        left2divpassword2show
+        <%}%>
+                " id="left2divpassword2">
             <div class="left2divpassword" id="left2divpassword21">
                 <h3>Xác nhận email</h3>
                 <p>Vui lòng nhập mã gồm 6 chữ số được gửi tới email của bạn</p>
@@ -213,7 +241,7 @@
                 </div>
                 <div class="divbutton">
                     <div class="divalink">
-                        <button class="alink">Gởi lại mã</button>
+                        <button class="alink" onclick="guilaima()">Gởi lại mã ( <pre class="timeout" id="timeout"><%if(forgotPasswordAdminObject!= null && forgotPasswordAdminObject.getTimeExists() != null){%><%=forgotPasswordAdminObject.getTimeOut()%><%}%></pre> )</button>
                         <button class="alink" onclick="hiddendivpasswordBack2()">Thay đổi email</button>
                     </div>
                     <button onclick="gotochange()">Đặt lại mật khẩu</button>
@@ -246,9 +274,17 @@
         </div>
     </div>
 </div>
+<!-- Form remove forgotpassword admin object-->
+<form action="../../ForgotPasswordAdminRemoveAllController" id="formForgotPasswordAdminRemoveAllController"
+      style="display: none">
+</form>
+
+
 <!--End main-->
 
 
 </body>
 
 </html>
+
+<script src="../../js/dangnhapAdmin.js"></script>

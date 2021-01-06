@@ -46,7 +46,7 @@ public class ForgotPasswordAdminObject {
 
     //  Phương thức lấy thời gian còn lại từ model, hết hến hạn thì trả về 0
     public int getTimeOut(){
-        this.timeOut = ForgotPasswordAdminModel.getTimeOut(timeExists);
+        this.timeOut = ForgotPasswordAdminModel.getInstance().getTimeOut(timeExists);
         return timeOut;
     }
 

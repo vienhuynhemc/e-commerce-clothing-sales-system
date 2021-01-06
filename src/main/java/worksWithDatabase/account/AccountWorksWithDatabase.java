@@ -171,12 +171,15 @@ public class AccountWorksWithDatabase {
 
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET ma_quen_mat_khau = ? AND han_su_dung_ma_qmk = ? WHERE ma_tai_khoan = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET ma_quen_mat_khau = ? WHERE ma_tai_khoan = ?");
             preparedStatement.setString(1,ma_quen_mat_khau);
-            preparedStatement.setString(2,han_su_dung_ma_qmk);
-            preparedStatement.setString(3,ma_tai_khoan);
-
+            preparedStatement.setString(2,ma_tai_khoan);
             preparedStatement.executeUpdate();
+
+             preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET  han_su_dung_ma_qmk = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,han_su_dung_ma_qmk);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();;
 
             preparedStatement.close();
 
