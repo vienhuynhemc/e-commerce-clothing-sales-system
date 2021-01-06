@@ -17,6 +17,11 @@ public class MailController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // set charset cho cả request và responne
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         //  Lấy email từ input ra
         String email = request.getParameter("email");
 

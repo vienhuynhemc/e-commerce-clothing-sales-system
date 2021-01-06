@@ -28,8 +28,14 @@ public class ForgotPasswordAdminObject {
     //  Boolean show thành công
     private boolean isComplete;
 
-    //  Nội dung thông báo
+    //  Nội dung thông báo email
     private String content;
+
+    //  Nội dung thông báo verify code
+    private String content2;
+
+    //  Nội dung thông báo validpassword
+    private String content3;
 
     //  Biến thời gian hiệu lực, tính = giây
     private int timeOut;
@@ -40,13 +46,21 @@ public class ForgotPasswordAdminObject {
     //  Thời hạn của mã code;
     private Date timeExists;
 
-    //  Constructor rỗng, rồi set từng thằng cho dễ
-    public ForgotPasswordAdminObject() {
+    // is show pass1
+    private boolean isShowPass1;
+
+    //  is showw pass2
+    private boolean isShowPass2;
+
+    //  Constructor rỗng, rồi set từng thằng cho dễ, ở khoang phải chứa 2 cái show pass1 pass2
+    public ForgotPasswordAdminObject(boolean isShowPass1, boolean isShowPass2) {
+        this.isShowPass1 = isShowPass1;
+        this.isShowPass2 = isShowPass2;
     }
 
     //  Phương thức lấy thời gian còn lại từ model, hết hến hạn thì trả về 0
-    public int getTimeOut(){
-        this.timeOut = ForgotPasswordAdminModel.getTimeOut(timeExists);
+    public int getTimeOut() {
+        this.timeOut = ForgotPasswordAdminModel.getInstance().getTimeOut(timeExists);
         return timeOut;
     }
 
@@ -141,6 +155,38 @@ public class ForgotPasswordAdminObject {
 
     public void setTimeExists(Date timeExists) {
         this.timeExists = timeExists;
+    }
+
+    public String getContent2() {
+        return content2;
+    }
+
+    public void setContent2(String content2) {
+        this.content2 = content2;
+    }
+
+    public String getContent3() {
+        return content3;
+    }
+
+    public void setContent3(String content3) {
+        this.content3 = content3;
+    }
+
+    public boolean isShowPass1() {
+        return isShowPass1;
+    }
+
+    public void setShowPass1(boolean showPass1) {
+        isShowPass1 = showPass1;
+    }
+
+    public boolean isShowPass2() {
+        return isShowPass2;
+    }
+
+    public void setShowPass2(boolean showPass2) {
+        isShowPass2 = showPass2;
     }
 
 }

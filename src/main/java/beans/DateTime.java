@@ -71,12 +71,12 @@ public class DateTime {
 
             Date date = new Date();
             Date dateThreeMinute = new Date(date.getTime() + (ForgotPasswordAdminObjectConfiguration.TIME_EXISTS * DateTimeConfiguration.ONE_MINUTE_IN_MILLIS));
-            this.year = date.getYear() + 1900;
-            this.month = date.getMonth() + 1;
-            this.day = date.getDate();
-            this.hour = date.getHours();
-            this.minute = date.getMinutes();
-            this.second = date.getSeconds();
+            this.year = dateThreeMinute.getYear() + 1900;
+            this.month = dateThreeMinute.getMonth() + 1;
+            this.day = dateThreeMinute.getDate();
+            this.hour = dateThreeMinute.getHours();
+            this.minute = dateThreeMinute.getMinutes();
+            this.second = dateThreeMinute.getSeconds();
 
         }
 

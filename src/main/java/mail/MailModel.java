@@ -125,12 +125,12 @@ public class MailModel {
         //  Tạo tiêu đề và nội dung dựa trên type
         switch (type) {
             case CONTACT_INDEX:
-                subject = "Tham gia TVTSHOP";
-                text = "Kính gửi: " + email + "\n\nCảm ơn bạn đã tham gia với TVTSHOP chúng tôi, ngay từ lúc này mỗi khi có thông báo mới bạn sẽ là người biết đầu tiên!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
+                subject = "Join TVTSHOP";
+                text = "Dear: " + email + "\n\nThank you for joining us TVTSHOP, from now on every new announcement you will be the first to know!\n\n\nThanks, have a good day\nTVTSHOP";
                 break;
             case CONTACT_CONTACT:
                 subject = "Liên hệ TVTSHOP";
-                text = "Kính gửi: " + email + "\n\nCảm ơn bạn đã liên hệ với TVTSHOP chúng tôi, chúng tôi đã nhận được vấn đề của bạn và nó đang trên đường tới các cộng tác viên, họ sẽ trả lời trong thời gian sớm nhất có thể, mong bạn hài lòng vì điều này!\n\n\nCảm ơn, chúc bạn một ngày tốt lành\nTVTSHOP";
+                text = "Dear: " + email + "\n\n\nThank you for contacting our TVTSHOP, we received your problem and it is on its way to the collaborators, they will respond as soon as possible, hope you are satisfied with this!\n\n\nThanks, have a good day\nTVTSHOP";
                 break;
             case REGISTER_NVK:
                 subject = "Tham gia TVTSHOP";
