@@ -1512,10 +1512,10 @@
 
 <jsp:include page="share/_LayoutChatBox.jsp" />
 
-<!-- footer -->
-<jsp:include page="share/_LayoutFooter.jsp">
+<!-- footer --><jsp:include page="share/_LayoutFooter.jsp">
     <jsp:param name="levelPage" value=""/>
 </jsp:include>
+
 <!-- / footer -->
 
 <!-- Login Modal -->

@@ -16,8 +16,11 @@ public class AccountCustomer {
     private DateTime regisDate;
     private int activeStatus;
     private int activeEvaluate;
+    private DateTime deadline;
+    private int ton_tai;
+    private String ngon_ngu;
 
-    public AccountCustomer(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int activeStatus, int activeEvaluate) {
+    public AccountCustomer(String idUser, int type, String userName, String passWord, String email, String phone, String avatar, String displayName, String fullName, DateTime regisDate, int activeStatus, int activeEvaluate, DateTime deadline, int ton_tai, String ngon_ngu) {
         this.idUser = idUser;
         this.type = type;
         this.userName = userName;
@@ -30,6 +33,9 @@ public class AccountCustomer {
         this.regisDate = regisDate;
         this.activeStatus = activeStatus;
         this.activeEvaluate = activeEvaluate;
+        this.deadline = deadline;
+        this.ton_tai = ton_tai;
+        this.ngon_ngu = ngon_ngu;
     }
 
     public AccountCustomer() {
@@ -131,6 +137,30 @@ public class AccountCustomer {
         this.regisDate = regisDate;
     }
 
+    public DateTime getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(DateTime deadline) {
+        this.deadline = deadline;
+    }
+
+    public int getTon_tai() {
+        return ton_tai;
+    }
+
+    public void setTon_tai(int ton_tai) {
+        this.ton_tai = ton_tai;
+    }
+
+    public String getNgon_ngu() {
+        return ngon_ngu;
+    }
+
+    public void setNgon_ngu(String ngon_ngu) {
+        this.ngon_ngu = ngon_ngu;
+    }
+
     @Override
     public String toString() {
         return "AccountCustomer{" +
@@ -146,6 +176,9 @@ public class AccountCustomer {
                 ", regisDate=" + regisDate +
                 ", activeStatus=" + activeStatus +
                 ", activeEvaluate=" + activeEvaluate +
-                '}' + "\n";
+                ", deadline=" + deadline +
+                ", ton_tai=" + ton_tai +
+                ", ngon_ngu='" + ngon_ngu + '\'' +
+                '}';
     }
 }

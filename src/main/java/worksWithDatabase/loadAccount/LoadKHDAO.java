@@ -70,17 +70,7 @@ public class LoadKHDAO {
                     DateTime datetime = new DateTime(year, month, day, hour, minute, second);
 
                         list.add(
-                                new AccountCustomer(rs.getString("IDUser"),
-                                        rs.getInt("Type"),
-                                        rs.getString("UserName"),
-                                        rs.getString("PassWord"),
-                                        rs.getString("Email"),
-                                        rs.getString("phone"),
-                                        rs.getString("Avatar"),
-                                        rs.getString("DisplayName"),
-                                        rs.getString("FullName"),
-                                        datetime, rs.getInt("ActiveStatus"),
-                                        rs.getInt("ActiveEvaluate")));
+                                new AccountCustomer());
                     }
 
                     rs.close();
@@ -196,17 +186,7 @@ public class LoadKHDAO {
                 DateTime datetime = new DateTime(year, month, day, hour, minute, second);
 
                 list.add(
-                        new AccountCustomer(rs.getString("IDUser"),
-                                rs.getInt("Type"),
-                                rs.getString("UserName"),
-                                rs.getString("PassWord"),
-                                rs.getString("Email"),
-                                rs.getString("phone"),
-                                rs.getString("Avatar"),
-                                rs.getString("DisplayName"),
-                                rs.getString("FullName"),
-                                datetime, rs.getInt("ActiveStatus"),
-                                rs.getInt("ActiveEvaluate")));
+                        new AccountCustomer());
 
             }
 

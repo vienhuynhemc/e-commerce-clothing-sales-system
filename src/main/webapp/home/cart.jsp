@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 21/12/2020
-  Time: 8:45 CH
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.IndexLanguageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
@@ -15,29 +10,32 @@
     <title>TVT Shop | Giỏ hàng</title>
 
     <!-- Font awesome -->
-    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"> -->
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <!-- Top Slider CSS -->
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
 
     <!-- Main style sheet -->
-    <link href="../css/Mycard.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/trangChu.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/banner.css">
-    <link rel="stylesheet" href="../css/cart.css">
+    <link href="css/Mycard.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/trangChu.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/cart.css">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -49,18 +47,38 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
     <![endif]-->
+
+
+
+    <%
+
+        //  Lấy list ngôn ngữ ra
+        Map<String ,String> lang = (Map<String, String>) session.getAttribute("langList");
+
+        // Riêng ở trang chủ, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+        if(lang == null){
+            lang = IndexLanguageModel.getInstance().getList("vietnamese");
+        }
+
+    %>
+
 
 </head>
 
 <body>
 
 <!-- wpf loader Two -->
-<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<%--<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>--%>
 <!-- END SCROLL TOP BUTTON -->
 
 <!-- Start header section -->
-<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="IndexLanguageController"/>
+    <jsp:param name="levelPage" value="../"/>
+    <jsp:param name="activeselect" value="index.jsp"/>
+</jsp:include>
 <!-- / header section -->
 <!-- menu -->
 <!-- / header section -->
@@ -70,178 +88,22 @@
 
 <!-- catg header banner section -->
 <%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
+<jsp:include page="../share/_LayoutBanner.jsp">
     <jsp:param name="title" value="Giỏ hàng"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
 <section class="contentcart">
     <div class="cart">
-        <div class="cartleft">
-            <div class="cartleftheader">
-                <h3> T<span style="color:#ff7315">V</span>T</h3>
-                <h5>|</h5>
-                <p>Giỏ hàng của bạn</p>
-            </div>
-            <div class="scrollmain">
-                <div class="cartleftmain">
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro10.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Thun MTS 1011</p>
-                                    <h6>Áo thun | Size : M</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Trắng</p>
-                            <div class="cartleftmainitemsl">
-                                <p>2</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">798,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro11.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Thun MTS 1010</p>
-                                    <h6>Áo thun | Size : M</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Đen</p>
-                            <div class="cartleftmainitemsl">
-                                <p>3</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">597,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro12.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Thun Nam Raglan Tay Dài MTS 1008</p>
-                                    <h6>Áo thun tay dài | Size: M</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Xanh</p>
-                            <div class="cartleftmainitemsl">
-                                <p>1</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">399,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro4.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
-                                    <h6>Áo thun tay dài | Size: L</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Vàng</p>
-                            <div class="cartleftmainitemsl">
-                                <p>4</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">1,196,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro1.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Sweater Nam Stay Together MSW 1006</p>
-                                    <h6>Áo len | Size: XL</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Đỏ đô</p>
-                            <div class="cartleftmainitemsl">
-                                <p>3</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">900,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="cartleftmainitem">
-                        <div class="cartleftmainitemleft">
-                            <a href="" class="cartleftmainimg"> <img src="../img/product/pro9.webp" alt=""></a>
-                            <a href="">
-                                <div class="cartleftmainiteminfor">
-                                    <p>Áo Thun MTS 1012</p>
-                                    <h6>Áo thun | Size : M</h6>
-                                </div>
-                            </a>
-                            <p class="cartleftmainitemcolor">Trắng</p>
-                            <div class="cartleftmainitemsl">
-                                <p>1</p>
-                                <div>
-                                    <button>+</button>
-                                    <button>-</button>
-                                </div>
-                            </div>
-                            <p class="cartleftmainitemprice">399,000 VND</p>
-                        </div>
-                        <div class="cartleftmainitemright">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="cartleft" id="loadCart">
 
-            <div class="cartleftfooter">
-                <a href="product.html" class="back">
-                    <i class="fa fa-long-arrow-left"></i> Tiếp tục mua sắm
-                </a>
-                <div class="footertongtien">
-                    <p>Tổng tiền sản phẩm:</p>
-                    <p>4,289,000 VND</p>
-                </div>
+            <!-- dùng ajax để load cart-->
 
-            </div>
+
+
+
+
+            <!-- end Code-->
         </div>
 
         <div class="cartright">
@@ -304,56 +166,81 @@
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 <!-- / footer -->
 <!-- Login Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Login or Register</h4>
-                <form class="aa-login-form" action="">
-                    <label for="">Username or Email address<span>*</span></label>
-                    <input type="text" placeholder="Username or email">
-                    <label for="">Password<span>*</span></label>
-                    <input type="password" placeholder="Password">
-                    <button class="aa-browse-btn" type="submit">Login</button>
-                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me
-                    </label>
-                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                    <div class="aa-register-now">
-                        Don't have an account?<a href="account.html">Register now!</a>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
+<%--<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"--%>
+<%--     aria-hidden="true">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-body">--%>
+<%--                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+<%--                <h4>Login or Register</h4>--%>
+<%--                <form class="aa-login-form" action="">--%>
+<%--                    <label for="">Username or Email address<span>*</span></label>--%>
+<%--                    <input type="text" placeholder="Username or email">--%>
+<%--                    <label for="">Password<span>*</span></label>--%>
+<%--                    <input type="password" placeholder="Password">--%>
+<%--                    <button class="aa-browse-btn" type="submit">Login</button>--%>
+<%--                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me--%>
+<%--                    </label>--%>
+<%--                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>--%>
+<%--                    <div class="aa-register-now">--%>
+<%--                        Don't have an account?<a href="account.html">Register now!</a>--%>
+<%--                    </div>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--        </div><!-- /.modal-content -->--%>
+<%--    </div><!-- /.modal-dialog -->--%>
+<%--</div>--%>
+
+
 
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="../js/sequence.js"></script>
-<script src="../js/sequence-theme.modern-slide-in.js"></script>
+<script src="js/sequence.js"></script>
+<script src="js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="../js/slick.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="../js/nouislider.js"></script>
+<script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="../js/custom.js"></script>
+<%--<script src="js/custom.js"></script>--%>
+<script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
+
+
+<script>
+    $(function (){
+        $.ajax({
+            url: 'LoadCartController',
+            dataType:'html',
+            type:'get',
+            success: function (data) {
+                $('#loadCart').html(data);
+            },
+            error: function (e) {
+                window.location.href = "index.jsp";
+            }
+        });
+
+    });
+
+</script>
 
 </body>
 
 </html>
+

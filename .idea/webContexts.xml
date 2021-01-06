@@ -11,6 +11,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDanhMuc.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyDonHangNVGH.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/thongTinTaiKhoanAdmin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/home/thuNhap.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin/home" />
@@ -18,6 +19,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/share/formQLKH.xhtml" value="file://$PROJECT_DIR$/src/main/webapp/admin/share" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/home/about_US.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/home/cart.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/home/cart_Ajax.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/home/check_orders.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/home/checkout.jsp" value="file://$PROJECT_DIR$/src/main/webapp/home" />

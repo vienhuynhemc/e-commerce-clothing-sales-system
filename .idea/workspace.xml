@@ -27,15 +27,37 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên kho">
+    <list default="true" id="91b55f5f-0b6a-4ce5-bb8b-293d8d90821d" name="Default Changelist" comment="Lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên vận chuyển">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2021_1_19_AM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_4_2021_1_19_AM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_5_2021_4_48_PM_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_5_2021_4_48_PM__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/beans/account/ConvertDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/beans/cart/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/cart/ChessSessionCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/cart/HoverCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllerIndex/cart/LoadCartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/cart/CartModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/cart/CartDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/cart/CartPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/cart/CartSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/home/cart_Ajax.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/home/cart_Hover.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_12_59_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2020_12_59_AM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_2020_1_23_AM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_2020_1_23_AM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/beans/account/ConvertArrayString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/account/ConvertArrayString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountKHController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllerAdmin/loadAccount/LoadAccountKHController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/removeAccount/RemoveAccountNVKModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/removeAccount/RemoveAccountNVKModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountNVKDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountNVKPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/removeAccount/RemoveAccountNVKSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/beans/account/AccountCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/account/AccountCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/beans/encode/MD5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/beans/encode/MD5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/loginUser/LoginUserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/loginUser/LoginUserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadKHDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadKHDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loginUser/LoginUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/worksWithDatabase/loginUser/LoginUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +73,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="jsf" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -107,12 +129,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.391">
-    <configuration name="ConvertArrayString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="beans.account.ConvertArrayString" />
+    <configuration name="CartDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.cart.CartDAO" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="beans.account.*" />
+          <option name="PATTERN" value="worksWithDatabase.cart.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,12 +142,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveAccountKHDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountKHDAO" />
+    <configuration name="CartModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.cart.CartModel" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
+          <option name="PATTERN" value="model.cart.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,12 +155,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveAccountKHSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountKHSource" />
+    <configuration name="CartSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.cart.CartSource" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
+          <option name="PATTERN" value="worksWithDatabase.cart.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,12 +168,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveAccountNVKDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountNVKDAO" />
+    <configuration name="LoginUserDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.loginUser.LoginUserDAO" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
+          <option name="PATTERN" value="worksWithDatabase.loginUser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -159,12 +181,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveAccountNVKSource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="worksWithDatabase.removeAccount.RemoveAccountNVKSource" />
+    <configuration name="MD5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="beans.encode.MD5" />
       <module name="ltw_thayLong_group5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worksWithDatabase.removeAccount.*" />
+          <option name="PATTERN" value="beans.encode.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -272,19 +294,19 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.Tomcat 9.0.391" />
-      <item itemvalue="Application.ConvertArrayString" />
-      <item itemvalue="Application.RemoveAccountNVKDAO" />
-      <item itemvalue="Application.RemoveAccountNVKSource" />
-      <item itemvalue="Application.RemoveAccountKHDAO" />
-      <item itemvalue="Application.RemoveAccountKHSource" />
+      <item itemvalue="Application.CartDAO" />
+      <item itemvalue="Application.CartSource" />
+      <item itemvalue="Application.MD5" />
+      <item itemvalue="Application.CartModel" />
+      <item itemvalue="Application.LoginUserDAO" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ConvertArrayString" />
-        <item itemvalue="Application.RemoveAccountKHSource" />
-        <item itemvalue="Application.RemoveAccountKHDAO" />
-        <item itemvalue="Application.RemoveAccountNVKSource" />
-        <item itemvalue="Application.RemoveAccountNVKDAO" />
+        <item itemvalue="Application.LoginUserDAO" />
+        <item itemvalue="Application.CartDAO" />
+        <item itemvalue="Application.CartModel" />
+        <item itemvalue="Application.MD5" />
+        <item itemvalue="Application.CartSource" />
       </list>
     </recent_temporary>
   </component>
@@ -339,7 +361,9 @@
       <workItem from="1609416277068" duration="12970000" />
       <workItem from="1609566450581" duration="21029000" />
       <workItem from="1609660173052" duration="5751000" />
-      <workItem from="1609673511556" duration="19846000" />
+      <workItem from="1609673511556" duration="20266000" />
+      <workItem from="1609827294023" duration="12811000" />
+      <workItem from="1609920194806" duration="25881000" />
     </task>
     <task id="LOCAL-00001" summary="github oke">
       <created>1608435612510</created>
@@ -551,7 +575,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609690593790</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Xóa một hoặc nhiều khách hàng - Trang quản lí khách hàng và button &quot;xóa&quot; trang QLKH, QLNVK">
+      <created>1609697967250</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1609697967250</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên vận chuyển">
+      <created>1609840120585</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1609840120586</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,8 +608,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="connectionPool class" />
-    <MESSAGE value="Hoàn thành connection pool - đã test 100%" />
     <MESSAGE value="update project" />
     <MESSAGE value="Email singleton" />
     <MESSAGE value="Mail pool + check mail" />
@@ -595,7 +631,9 @@
     <MESSAGE value="sửa link trang" />
     <MESSAGE value="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa - Trang quan lí khách hàng" />
     <MESSAGE value="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên kho" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hoàn thành lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên kho" />
+    <MESSAGE value="Xóa một hoặc nhiều khách hàng - Trang quản lí khách hàng và button &quot;xóa&quot; trang QLKH, QLNVK" />
+    <MESSAGE value="Lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên vận chuyển" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lọc, tìm kiếm, sắp xếp, phân trang, sửa, xóa một hoặc nhiều nhân viên - Trang quan lí nhân viên vận chuyển" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -607,18 +645,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>43</line>
+          <line>41</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>395</line>
+          <line>291</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp</url>
-          <line>376</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/home/login.jsp</url>
@@ -627,12 +660,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp</url>
-          <line>171</line>
+          <line>176</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
-          <line>438</line>
+          <line>447</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -642,31 +675,59 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
-          <line>448</line>
+          <line>457</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/home/changeInforCustomer.jsp</url>
-          <line>239</line>
+          <line>248</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>795</line>
+          <line>691</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyKhachHang.jsp</url>
-          <line>337</line>
+          <line>217</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVGH.jsp</url>
+          <line>237</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp</url>
+          <line>632</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/admin/home/quanLyNVK.jsp</url>
+          <line>35</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/share/_LayoutHeader.jsp</url>
+          <line>249</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/worksWithDatabase/loadAccount/LoadKHDAO.java</url>
-          <line>237</line>
+          <line>217</line>
           <properties class="worksWithDatabase.loadAccount.LoadKHDAO">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/worksWithDatabase/loginUser/LoginUserDAO.java</url>
+          <line>136</line>
+          <properties class="worksWithDatabase.loginUser.LoginUserDAO" method="main">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
