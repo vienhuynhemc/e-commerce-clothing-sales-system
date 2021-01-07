@@ -2,7 +2,9 @@ package worksWithDatabase.loginUser;
 
 import beans.DateTime;
 import beans.account.AccountCustomer;
+import beans.account.ConvertDate;
 import beans.encode.MD5;
+import connectionDatabase.DataSource;
 
 import java.sql.*;
 
@@ -16,13 +18,10 @@ public class LoginUserDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
-
-          //  con = DataSource.getInstance().getConnection();
+            con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "SELECT * FROM account WHERE userName = ? and Type = 3";
+            String sql = "SELECT * FROM tai_khoan WHERE tai_khoan = ? and kieu_tai_khoan = 3";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -33,22 +32,16 @@ public class LoginUserDAO {
             if (rs.next()) {
                 rs.close();
                 ps.close();
-               /// DataSource.getInstance().releaseConnection(con);
+                DataSource.getInstance().releaseConnection(con);
                 return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            DataSource.getInstance().releaseConnection(con);
         } finally {
-
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            //DataSource.getInstance().releaseConnection(con);
+            DataSource.getInstance().releaseConnection(con);
         }
-
+        DataSource.getInstance().releaseConnection(con);
         return false;
     }
 
@@ -57,13 +50,10 @@ public class LoginUserDAO {
         Connection con = null;
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
-
-            //  con = DataSource.getInstance().getConnection();
+              con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "select * from account a , customer c WHERE a.IDUser = c.IDUser and c.ActiveStatus = 1 and a.UserName = ?";
+            String sql = "select * from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -75,23 +65,16 @@ public class LoginUserDAO {
 
                 rs.close();
                 ps.close();
-                /// DataSource.getInstance().releaseConnection(con);
+                 DataSource.getInstance().releaseConnection(con);
                 return true;
 
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            DataSource.getInstance().releaseConnection(con);
         } finally {
-
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            //DataSource.getInstance().releaseConnection(con);
+            DataSource.getInstance().releaseConnection(con);
         }
-
+        DataSource.getInstance().releaseConnection(con);
         return false;
     }
 
@@ -100,15 +83,12 @@ public class LoginUserDAO {
         Connection con = null;
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
-
-            //  con = DataSource.getInstance().getConnection();
+              con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "select a.IDUser, a.Type,a.UserName, a.`PassWord`,a.Email,a.Phone, a.Avatar, a.DisplayName,\n" +
-                    "                                       a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate\n" +
-                    "                                       from account a , customer c WHERE a.IDUser = c.IDUser and c.ActiveStatus = 1 and a.UserName = ? and a.`PassWord` = ?";
+            String sql = "select a.ma_tai_khoan, a.kieu_tai_khoan,a.tai_khoan, a.mat_khau,a.email,a.so_dien_thoai, a.link_hinh_dai_dien, a.ten_hien_thi,\n" +
+                    "                                       a.ten_day_du,a.ngay_tao,a.han_su_dung_ma_qmk ,c.trang_thai_kich_hoat,c.trang_thai_danh_gia,c.ton_tai,c.ngon_ngu \n" +
+                    "                                       from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ? and a.mat_khau = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -121,69 +101,45 @@ public class LoginUserDAO {
 
             if (rs.next()) {
 
-                acc.setIdUser(rs.getString("IDUser"));
-                acc.setType(rs.getInt("type"));
-                acc.setUserName(rs.getString("UserName"));
-                acc.setPassWord(rs.getString("passWord"));
+                acc.setIdUser(rs.getString("ma_tai_khoan"));
+                acc.setType(rs.getInt("kieu_tai_khoan"));
+                acc.setUserName(rs.getString("tai_khoan"));
+                acc.setPassWord(rs.getString("mat_khau"));
                 acc.setEmail(rs.getString("email"));
-                acc.setPhone(rs.getString("phone"));
-                acc.setAvatar(rs.getString("avatar"));
-                acc.setDisplayName(rs.getString("displayname"));
-                acc.setFullName(rs.getString("fullname"));
-
-
-                String date = rs.getString("RegisDate");
-                String[] split = date.split(" ");
-
-                String[] dmy = split[0].split("-");
-                String[] time = split[1].split(":");
-
-                // sử lí lấy ra dc ngày tháng năm + time
-                int year = Integer.parseInt(dmy[0]);
-                int month = Integer.parseInt(dmy[1]);
-                int day = Integer.parseInt(dmy[2]);
-                int hour = Integer.parseInt(time[0]);
-                int minute = Integer.parseInt(time[1]);
-
-                double d = Double.parseDouble(time[2]);
-
-                int second = (int) d;
-
-                DateTime datetime = new DateTime(year,month,day,hour,minute,second);
-
-                acc.setRegisDate(datetime);
-                acc.setActiveStatus(rs.getInt("ActiveStatus"));
-                acc.setActiveEvaluate(rs.getInt("ActiveEvaluate"));
+                acc.setPhone(rs.getString("so_dien_thoai"));
+                acc.setAvatar(rs.getString("link_hinh_dai_dien"));
+                acc.setDisplayName(rs.getString("ten_hien_thi"));
+                acc.setFullName(rs.getString("ten_day_du"));
+                acc.setDeadline(ConvertDate.changeDate(rs.getString("han_su_dung_ma_qmk")));
+                acc.setRegisDate(ConvertDate.changeDate(rs.getString("ngay_tao")));
+                acc.setActiveStatus(rs.getInt("trang_thai_kich_hoat"));
+                acc.setActiveEvaluate(rs.getInt("trang_thai_danh_gia"));
+                acc.setTon_tai(rs.getInt("ton_tai"));
+                acc.setNgon_ngu(rs.getString("ngon_ngu"));
 
 
                 rs.close();
                 ps.close();
-                /// DataSource.getInstance().releaseConnection(con);
+                DataSource.getInstance().releaseConnection(con);
                 return acc;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            DataSource.getInstance().releaseConnection(con);
         } finally {
 
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            //DataSource.getInstance().releaseConnection(con);
+            DataSource.getInstance().releaseConnection(con);
         }
-
+        DataSource.getInstance().releaseConnection(con);
         return null;
 
     }
 
     public static void main(String[] args) {
-//        LoginUserDAO  loginUserDAO = new LoginUserDAO();
-//
-//       System.out.println(loginUserDAO.isUserInDatabase("kh005"));
-//       System.out.println(loginUserDAO.checkLogin("kh005","khso5"));
-//       System.out.println(loginUserDAO.checkActiveStatus("kh004"));
+        LoginUserDAO  loginUserDAO = new LoginUserDAO();
+
+       //System.out.println(loginUserDAO.isUserInDatabase("kh001"));
+       System.out.println(loginUserDAO.checkLogin("kh001","khso1"));
+      // System.out.println(loginUserDAO.checkActiveStatus("kh001"));
     }
 
 }

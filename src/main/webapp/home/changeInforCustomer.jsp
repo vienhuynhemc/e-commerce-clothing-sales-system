@@ -1,6 +1,8 @@
 <%@ page import="beans.account.AccountCustomer" %>
 <%@ page import="beans.DateTime" %>
-<%@ page import="beans.account.ErrorEditAccountCustomer" %><%--
+<%@ page import="beans.account.ErrorEditAccountCustomer" %>
+<%@ page import="model.language.IndexLanguageModel" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 21/12/2020
@@ -38,6 +40,9 @@
     <!-------------------------------------- lấy session chứa tài khoản ------------------------------>
     <% AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user"); %>
 
+
+
+
 </head>
 
 <body>
@@ -47,7 +52,11 @@
 <!-- END SCROLL TOP BUTTON -->
 
 <!-- Start header section -->
-<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="IndexLanguageController"/>
+    <jsp:param name="levelPage" value=""/>
+    <jsp:param name="activeselect" value="index.jsp"/>
+</jsp:include>
 <!-- / header section -->
 
 <!-- catg header banner section -->

@@ -1,5 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="model.language.HeaderLanguageModel" %>
+<%@ page import="beans.cart.Cart" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
@@ -13,6 +15,9 @@
     Map<String, String> lang = HeaderLanguageModel.getInstance().getList(language);
 
 %>
+
+
+
 
 <header id="aa-header">
     <!-- start header top  -->
@@ -43,7 +48,7 @@
                                 </li>
                                 <li class="hidden-xs iconRound"><a href="wishlist.jsp"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="cart.jsp"><%=lang.get("4")%>
+                                <li class="hidden-xs iconRoundLenght"><a href="ChessSessionCartController"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
                                 <li class="hidden-xs iconRoundLenght"><a href="checkout.jsp"><%=lang.get("5")%>
                                     <span
@@ -241,41 +246,17 @@
                             </div>
                         </section>
                         <!-- cart box -->
-                        <div class="aa-cartbox">
+                        <div class="aa-cartbox" id="cart_hover">
                             <a class="aa-cart-link" href="home/cart.html">
                                 <span class="fa fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title"><%=lang.get("27")%></span>
                                 <span class="aa-cart-notify">2</span>
                             </a>
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
-                                <ul>
-                                    <li>
-                                        <a class="aa-cartbox-img" href="home/detailsProduct.html"><img
-                                                src="<%=request.getParameter("levelPage")%>img/do/nu/12.jpg" alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="home/detailsProduct.html">Áo thun MST 1002</a></h4>
-                                            <p>2 x 299,000 VND</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="home/detailsProduct.html"><span
-                                                class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                                        <a class="aa-cartbox-img" href="home/detailsProduct.html"><img
-                                                src="<%=request.getParameter("levelPage")%>img/do/nu/13.jpg" alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="home/detailsProduct.html">Áo thun kéo ASF 1209</a></h4>
-                                            <p>3 x 129,000 VND</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                      <span class="aa-cartbox-total-title">
-                        <%=lang.get("30")%>
-                      </span>
-                                        <span class="aa-cartbox-total-price">
-                        985,000 VND
-                      </span>
-                                    </li>
+                                <ul id="cart_hover_data">
+                                <!--danh sách sẽ add vào chỗ này-->
+
+
                                 </ul>
                                 <a class="aa-cartbox-checkout aa-primary-btn tinhtien"
                                    href="home/checkout.html"><%=lang.get("28")%>
@@ -298,3 +279,28 @@
     </div>
     <!-- / header bottom  -->
 </header>
+<script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
+<script>
+
+    $(document).ready(function (){
+
+        $('#cart_hover').hover(function (){
+            console.log("b1");
+            $.ajax({
+                url:'HoverCartController',
+                type:'get',
+                dataType:'html',
+                success: function (data) {
+                    $('#cart_hover_data').html(data);
+                    console.log("b2");
+                } ,
+                error: function () {
+                    alert("Đang bận!")
+                }
+            });
+
+        },function (){});
+
+    });
+
+</script>

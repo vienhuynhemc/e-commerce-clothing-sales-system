@@ -48,4 +48,8 @@ public class LoginUserModel {
         return status;
     }
 
+    public static void main(String[] args) {
+
+    }
+
 }
