@@ -102,6 +102,43 @@ public class MailModel {
 
     }
 
+    //  Phương thức kiểm tra email có thật hay không bằng cách gửi gmail nhưng dưới dạng HTML
+    public boolean checkEmailHTML(String email, int type) {
+
+        //  Check email chỉ được sử dụng đối với gmail shop, vì vậy xem thử sesstion hiện tại có phải là gmail shop?
+        if (this.username.compareTo(MailConfiguration.USERNAME_TVTSHOP) != 0) {
+
+            //  Nếu khác thì ta khởi tạo lại session là gmail shop
+            initializedSesstion(MailConfiguration.USERNAME_TVTSHOP, MailConfiguration.PASSWORD_TVTSHOP);
+
+        }
+
+        /*
+         *  Khởi tạo text và subject, nội dung của chúng tùy thuộc vào type truyền vào
+         *  Ta chỉ sử lý ở 2 trường hợp liên hệ, vì tạo tài khoản hay quên mật khẩu thì ta sẽ gửi mã xác nhân tới người
+         *  dùng, có quy trình nghiệp vụ riêng không sài hàm này, thế nên hàm này ta chỉ viết với mục đích check email
+         *  có thật hay không ở 2 form liên hệ index và contact
+         */
+        String subject = null;
+        String text = null;
+
+        //  Tạo tiêu đề và nội dung dựa trên type
+        switch (type) {
+            case CONTACT_INDEX:
+                subject = "Join TVTSHOP";
+                 text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Join TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Verify email address</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">We are sending you this email to make sure the email belongs to someone else, and that it is yours.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you for joining us. From now on, every time new information comes, you will be the first to know group.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
+                break;
+            case CONTACT_CONTACT:
+                subject = "Liên hệ TVTSHOP";
+                text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Contact TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Verify email address</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">We are sending you this email to make sure the email belongs to someone else, and that it is yours.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you for contacting our TVTSHOP, we received your problem and it is on its way to the collaborators, they will respond as soon as possible, hope you are satisfied with this!</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
+                break;
+        }
+
+        //  Trả về trạng thái gửi thư, thành công = email tồn tại và ngược lại
+        return sendMail("TVTSHOP", email, subject, text, MailConfiguration.MAIL_HTML);
+
+    }
+
     //  Phương thức kiểm tra email có thật hay không bằng cách gửi gmail
     public boolean checkEmail(String email, int type) {
 
@@ -147,12 +184,12 @@ public class MailModel {
         }
 
         //  Trả về trạng thái gửi thư, thành công = email tồn tại và ngược lại
-        return sendMail("TVTSHOP", email, subject, text);
+        return sendMail("TVTSHOP", email, subject, text, MailConfiguration.MAIL_TEXT);
 
     }
 
     //  Phương thức gửi email tới một email khách nhận vào tên người gửi, tiêu đề + nội dung
-    public boolean sendMail(String personal, String address, String subject, String text) {
+    public boolean sendMail(String personal, String address, String subject, String text , int typeMail) {
 
         //  Bỏ vào try catch, nếu ok thì trả về true, ngược lại xảy ra ngoại lệ thì trả về false;
         try {
@@ -170,7 +207,11 @@ public class MailModel {
             message.setSubject(subject);
 
             //  Thiết lập nội dung thư
-            message.setText(text);
+            if(typeMail == MailConfiguration.MAIL_HTML){
+                message.setContent(text,"text/html");
+            }else{
+                message.setText(text);
+            }
 
             //  Gửi thư
             Transport.send(message);

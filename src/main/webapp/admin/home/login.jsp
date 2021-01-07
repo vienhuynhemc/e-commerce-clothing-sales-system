@@ -14,7 +14,7 @@
 
     //  Nếu như đã đăng nhập rồi thì sẽ không thể tới trang này foward tới controller điều hướng index
     if (request.getSession().getAttribute("userAdmin") != null) {
-        request.getRequestDispatcher("../../AdminIndexNavigation").forward(request, response);
+        response.sendRedirect("../../AdminIndexNavigation");
     }
 
 

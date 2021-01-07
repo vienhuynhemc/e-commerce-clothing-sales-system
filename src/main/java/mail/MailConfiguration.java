@@ -32,4 +32,11 @@ public class MailConfiguration {
     //  Mật khẩu cấp 2 của gmail shop
     public static final String PASSWORD_TVTSHOP = "jkkxrprzunwbsyyf";
 
+    //  Gửi mail = text
+    public static final int MAIL_TEXT = 0;
+
+    //  Gửi mail = html
+    public static final int MAIL_HTML = 1;
+
+
 }

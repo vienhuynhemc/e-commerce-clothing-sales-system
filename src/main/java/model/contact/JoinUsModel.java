@@ -40,7 +40,7 @@ public class JoinUsModel {
         }
 
         //  Nếu email không tồn tại trong database thì kiểm tra email có thật hay không bằng cách gửi thư
-        if (!MailModel.getInstance().checkEmail(email, MailModel.CONTACT_INDEX)) {
+        if (!MailModel.getInstance().checkEmailHTML(email, MailModel.CONTACT_INDEX)) {
 
             //  Email không tồn tại thì trả lại người gác cổng email
             MailDataSource.getInstance().releaseMailModel(emailWorksWithDatabase);
