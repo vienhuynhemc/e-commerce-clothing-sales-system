@@ -43,3 +43,14 @@ function thaydoithongtin() {
     document.getElementById("div2").style.display = "none";
     document.getElementById("div3").style.display = "block";
 }
+
+//  Khai báo editor
+var editor = '';
+main();
+
+function main() {
+
+    //  Khởi tạo editor
+    editor = CKEDITOR.replace('gioiThieu');
+
+};

@@ -17,292 +17,24 @@
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
 
+
     <link rel="stylesheet" href="../../css/thongTinTaiKhoanAdminAdmin.css">
-    <script src="../../js/thongTinTaiKhoanAdminAdmin.js"></script>
+
+    <!-- CKEDitor -->
+    <script src="../../ckeditor/ckeditor.js"></script>
+
 
 </head>
 
 <body>
 
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>ut type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div class="active">
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<jsp:include page="../share/_LayoutLeft.jsp">
+    <jsp:param name="activeSelect" value="quanLyHangSanXuat"/>
+</jsp:include>
 
 <div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar7.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
-                    <p>Admin</p>
-                </div>
-            </a>
-        </div>
-    </div>
-
+    <jsp:include page="../share/_LayoutTop.jsp"/>
     <div class="backgroundindexmain">
     </div>
 
@@ -640,11 +372,9 @@
                         <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
                     </div>
                     <div class="linediv12"></div>
-                    <div class="div12input">
+                    <div class="div12input formckgioithieu">
                         <label for="">Giới thiệu</label>
-                        <input type="text" placeholder="Nhập số giới thiệu ở đây"
-                               value="Phải tôi đôi order thêm mấy món, hehe giỡn thôi.
-                                Được đảm nhận công việc này tôi cảm thấy tôi là một người rất may mắn khi được giao đúng công việc mình yêu thích sau một thời gian dài đóng gói và vận chuyển :((">
+                        <textarea name="gioiThieu" id="gioiThieu" placeholder="Nhập giới thiệu ở đây"></textarea>
                     </div>
                     <div class="linediv12"></div>
                     <button><i class="fa fa-save"></i>Lưu</button>
@@ -662,3 +392,5 @@
 </body>
 
 </html>
+
+<script src="../../js/thongTinTaiKhoanAdminAdmin.js"></script>
