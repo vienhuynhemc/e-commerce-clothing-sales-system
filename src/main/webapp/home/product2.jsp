@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="beans.fproduct.FProduct" %>
+<%@ page import="worksWithDatabase.femaleProducts.FProductDAO" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -49,6 +51,10 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- lấy danh sách sản phẩm nữ
+    <% ArrayList<FProduct> list = (ArrayList<FProduct>) request.getAttribute("list");
+    System.out.print(list);%>
 
 </head>
 <!-- !Important notice -->
@@ -266,8 +272,9 @@
                         <!-- search box -->
                         <div class="aa-search-box">
                             <form action="">
-                                <input type="text" name="" id="" placeholder="Tìm kiếm ở đây">
+                                <input type="search" name="" id="" placeholder="Tìm kiếm ở đây">
                                 <button type="submit"><span class="fa fa-search"></span></button>
+                                <input name="page" value="1" type="hidden">
                             </form>
                         </div>
                         <!-- / search box -->
@@ -310,19 +317,19 @@
                         <div class="aa-product-catg-head-left headerproduct">
                             <form action="" class="aa-sort-form">
                                 <label for="">XẾP THEO</label>
-                                <select name="">
-                                    <option value="1" selected="Default">Mặc định</option>
-                                    <option value="2">Tên sản phẩm</option>
-                                    <option value="3">Giá</option>
-                                    <option value="4">Ngày cập nhập</option>
+                                <select name="type" id="type">
+                                    <option value="ma_sp" selected >Mã sản phẩm</option>
+                                    <option value="ten_sp">Tên sản phẩm</option>
+                                    <option value="ngay_tao">Ngày cập nhập </option>
+                                    <input type="hidden" name="orderBy" value="">
                                 </select>
                             </form>
                             <form action="" class="aa-show-form">
                                 <label for="">XEM</label>
                                 <select name="">
-                                    <option value="1" selected="15">15</option>
-                                    <option value="2">10</option>
-                                    <option value="3">5</option>
+                                    <option value="1" selected>6</option>
+                                    <option value="2">9</option>
+                                    <option value="3">12</option>
                                 </select>
                             </form>
                         </div>
@@ -334,6 +341,8 @@
                     </div>
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
+
+                            <% for(FProduct p : list){%>
                             <!-- start single product item -->
                             <li>
                                 <figure>
@@ -344,8 +353,7 @@
                                             class="fa fa-shopping-cart"></span>Thêm vào
                                         giỏ</a>
                                     <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Croptop Nữ
-                                            WTS 2036</a></h4>
+                                        <h4 class="aa-product-title"><a href="detailsProduct.html"><%= p.getName()%></a></h4>
                                         <span class="aa-product-price sprice">239,000 VND</span><span
                                             class="aa-product-price"><del>259,000
                           VND</del></span>
@@ -359,7 +367,7 @@
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
+                                    <a href="wishlist.jsp" data-toggle="tooltip" data-placement="top"
                                        title="Thêm vào yêu thích"><span
                                             class="fa fa-heart"></span></a>
                                     <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
@@ -370,463 +378,7 @@
                                 <!-- product badge -->
                                 <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
                             </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn1.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Croptop Nữ
-                                            WTS 2037</a></h4>
-                                        <span class="aa-product-price sprice">239,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Thun Croptop Nữ WTS 2037 loại áo croptop cỗ
-                                            vuông lạ mắt, là một
-                                            chiếc áo tương đối ngắn,
-                                            được thiết kế theo kiểu ôm để lộ phần eo của người mặc nhằm tôn lên vẻ gợi
-                                            cảm, quyến rũ của
-                                            phái nữ.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn3.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo kiểu Nữ Croptop Nữ
-                                            WSH 2009</a></h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span><span
-                                            class="aa-product-price"><del>359,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo kiểu nữ Croptop chất liệu kaki form mỏng WSH
-                                            2009 kết hợp cùng
-                                            tay phồng nữ tính, nhẹ nhàng, màu sắc tươi trẻ.
-                                            Là một trong những item không thể thiếu trong tủ quần áo của bất cứ cô nàng
-                                            nào.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn4.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Logo Sài
-                                            Gòn MSW 1003</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">279,000 VND</span><span
-                                            class="aa-product-price"><del>300,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sweater Logo Sài Gòn MSW 1003 là item không thể
-                                            thiếu trong tủ đồ
-                                            của các chàng trai trong mùa thu đông. Chất liệu cotton dày dặn kết hợp với
-                                            form suông năng động
-                                            giúp chiếc áo phù hợp với mọi vóc dáng. Ngực áo được thêu logo chợ Bến Thành
-                                            - biểu tượng của
-                                            Sài Gòn tạo nên điểm nhấn độc đáo cho Áo Sweater Logo Sài Gòn MSW 1003.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-hot" href="#">Mới!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn5.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
-                                            WSH 2008</a></h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2008 kết hợp cùng tay
-                                            phồng nữ tính, nhẹ
-                                            nhàng, màu sắc tươi trẻ.
-                                            Là một trong những item không thể thiếu trong tủ quần áo của bất cứ cô nàng
-                                            nào.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn6.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
-                                            WSH 2007</a></h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span><span
-                                            class="aa-product-price"><del>329,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2007 croptop tay áo rút
-                                            dây điệu đà cho bạn
-                                            nữ, lạ mắt khiến ai cũng phải ngỡ ngàng.
-                                            Một chút trẻ trung nhưng lại hết sức quyến rũ.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn7.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop caro
-                                            Nữ WSH 2005</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">349,000 VND</span><span
-                                            class="aa-product-price"><del>429,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop caro Nữ WSH 2005 tay phồng thời
-                                            trang, nếu đã quá
-                                            quen thuộc với các kiểu áo sơ mi cổ điển thì
-                                            kiểu dáng cách điệu trễ vai này chắc chắn sẽ mang đến cho bạn vẻ ngoài vô
-                                            cùng trẻ trung và sành
-                                            điệu. </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn8.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Crop Top Tay
-                                            Phồng Nữ WSH
-                                            2004</a></h4>
-                                        <span class="aa-product-price sprice">349,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Crop Top Tay Phồng Nữ WSH 2004 Áo sơ mi
-                                            croptop ngày nay
-                                            đang dần trở nên phổ biến
-                                            và khẳng định sức hút của mình đối với các tín đồ thời trang hiện đại. Dễ
-                                            mặc,
-                                            dễ mix còn cực tôn dáng, sơ mi crop top đúng là item mà hội mi nhon không
-                                            thể bỏ qua.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn9.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="wishlist.html">Áo Sơ Mi Nữ WSH 2003</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Nữ WSH 2003 áo kiểu tay nhún tay phồng,
-                                            được thiết kế mới
-                                            lạ phá cách đem lại vẻ đẹp
-                                            quyến rũ đằm thắm cho các cô nàng.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn10.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sơ Mi Croptop Nữ
-                                            WSH 2001</a></h4>
-                                        <span class="aa-product-price sprice">279,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Sơ Mi Croptop Nữ WSH 2001 tay cánh dơi thời
-                                            trang lạ mắt, đem lại
-                                            vẻ ngoài tươi trẻ,
-                                            năng động cho bạn gái. Áo có thể mặc 2 mặt tiện lợi.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn11.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Nữ WTS
-                                            2035</a></h4>
-                                        <span class="aa-product-price sprice">139,000 VND</span><span
-                                            class="aa-product-price"><del>219,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nữ WTS 2035 có thiết kế trơn đơn giản với
-                                            màu sắc tươi mới,
-                                            thích hợp cho những bạn trẻ năng động, cá tính. Chất liệu vải cotton
-                                            mang đến sự thoải mái khi mặc, từng mối chỉ đường kim được gia công kỹ lưỡng
-                                            chắc chắn.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn12.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Quần Kaki Ngắn Nữ WSR
-                                            2002</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Quần Kaki Ngắn Nữ WSR 2002 với chiêc quần cạp cao
-                                            để các bạn nữ thỏa
-                                            mái khoe đôi chân của mình.
-                                            Đây là kiểu quần được nhiều bạn nữ ưa chuộng nhất trong tất cả các loại quần
-                                            short nữ đẹp nhất
-                                        </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-hot" href="#">Mới!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn13.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Khoác Thun Nữ WOK
-                                            2002</a></h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Khoác Thun Nữ WOK 2002 nằm trong bộ sưu tập
-                                            "Vietnam from above"
-                                            mang đến cho bạn nữ phong cách thời trang trẻ trung, ấn tượng.</p>
-                                    </figcaption>
-                                </figure>
-
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn14.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Quần Jeans Dài Ống
-                                            Rộng WJE 2002</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>599,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Quần Jeans Dài Ống Rộng WJE 2002 - Item không thể
-                                            thiếu của các bạn
-                                            nữ năng động với kiểu dáng hiện đại, trẻ trung.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn15.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Khoác Dù Nữ WOP
-                                            2004</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">529,000 VND</span><span
-                                            class="aa-product-price"><del>699,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Khoác Dù Nữ WOP 2004 với thiết kế trẻ trung,
-                                            phóng khoáng hứa hẹn
-                                            sẽ đem đến cho bạn gái phong cách thời trang năng động, cá tính.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
+                            <%}%>
                         </ul>
                         <!-- Xem nhanh modal -->
                         <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog"
@@ -939,19 +491,33 @@
                     <div class="aa-product-catg-pagination">
                         <nav>
                             <ul class="pagination">
+                                <%
+                                    // hiển thị số trang
+                                    int numPage = (int) request.getAttribute("numPage");
+
+                                    // lấy trang hiện tại
+                                    int pageNow = Integer.parseInt(request.getParameter("page"));
+                                    System.out.println(pageNow);
+
+
+                                %>
+
                                 <li>
-                                    <a href="#" aria-label="Previous">
+                                    <a href="LoadListFProductController?page=<%=Integer.parseInt(request.getParameter("page")) - 1%>&idCategory=<%= request.getParameter("idCategory")%>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&orderBy=<%= request.getParameter("orderBy")%>" aria-label="Previous">
                                         <span aria-hidden="true" class="nextprebar">&laquo;</span>
                                     </a>
                                 </li>
-                                <li><a href="#" class="activenextbar">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#" class="none">...</a></li>
-                                <li><a href="#">12</a></li>
+                              <!--  <li><a href="#" class="activenextbar">1</a></li> -->
+
+                                <% for( int i = 1; i <= numPage; i++){
+                                    if(i == pageNow){
+                                %>
+                                <li style="background-color: #ff6600"><a href="LoadListFProductController?page=<%=i%>&idCategory=<%= request.getParameter("idCategory")%>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&orderBy=<%= request.getParameter("orderBy")%>"><%=i%></a></li>
+                                <% } else {%>
+                                <li><a href="LoadListFProductController?page=<%=i%>&idCategory=<%= request.getParameter("idCategory")%>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&orderBy=<%= request.getParameter("orderBy")%>"><%=i%></a></li>
+                                <%}}%>
                                 <li>
-                                    <a href="#" aria-label="Next">
+                                    <a href="LoadListFProductController?page=<%=Integer.parseInt(request.getParameter("page")) + 1%>&idCategory=<%= request.getParameter("idCategory")%>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&orderBy=<%= request.getParameter("orderBy")%>" aria-label="Next">
                                         <span aria-hidden="true" class="nextprebar">&raquo;</span>
                                     </a>
                                 </li>

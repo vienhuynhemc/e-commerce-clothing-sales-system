@@ -20,10 +20,10 @@ public class AddCategoryController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         if(CategoryModel.checkAddCategory(name)){
-            request.getRequestDispatcher("CategoryController").forward(request,response);
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
         }
         else {
-            request.getRequestDispatcher("CategoryController").forward(request,response);
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
         }
     }
 }
