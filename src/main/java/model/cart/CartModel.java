@@ -2,8 +2,8 @@ package model.cart;
 
 
 import beans.cart.Cart;
-import worksWithDatabase.cart.CartDAO;
-import worksWithDatabase.cart.CartSource;
+import worksWithDatabase.cart.LoadCartDAO;
+import worksWithDatabase.cart.LoadCartSource;
 
 import java.util.ArrayList;
 
@@ -19,11 +19,11 @@ public class CartModel {
 
     public ArrayList<Cart> loadCartByID(String id){
 
-        CartDAO cartDAO = CartSource.getInstance().getAddAccount();
+        LoadCartDAO cartDAO = LoadCartSource.getInstance().getAddAccount();
 
         ArrayList<Cart> result = cartDAO.listCartByID(id);
 
-        CartSource.getInstance().releaseAddAccount(cartDAO);
+        LoadCartSource.getInstance().releaseAddAccount(cartDAO);
 
     return result;
     }

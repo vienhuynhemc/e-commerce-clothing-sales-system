@@ -48,6 +48,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
     <![endif]-->
 
 </head>
@@ -56,12 +57,12 @@
 
 <body class="productPage">
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
 
 <%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
+<jsp:include page="../share/_LayoutBanner.jsp">
     <jsp:param name="title" value="Danh sách sản phẩm"/>
 </jsp:include>
 <!-- / catg header banner section -->
@@ -103,12 +104,20 @@
                             <!-- start single product item -->
                             <li>
                                 <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
+                                    <a class="aa-product-img" href="detailsProduct.html">
+                                        <img
                                             src="../img/product/pro1.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
+                                            alt="polo shirt img">
+                                    </a>
+                                    <button class="aa-add-card-btn" onclick="addCart(this)">
+                                        <input type="hidden" name="" id="sp_1">
+                                        <input type="hidden" name="" id="mau_1">
+                                        <span
+                                            class="fa fa-shopping-cart">
+                                        </span>
+                                        Thêm vào giỏ
+
+                                    </button>
                                     <figcaption>
                                         <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Stay
                                             Together MSW
@@ -883,14 +892,26 @@
 
         </div>
     </div>
+    <div id="addCartStatus" style="display:none">
+        <div class="changepassword" id="changepassword">
+            <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+            <div class="mainchangepassword">
+                <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+                <div class="changepasswordsuccess" id="changepasswordsuccess">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- / product category -->
 
 
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
@@ -938,8 +959,49 @@
 <script type="text/javascript" src="../js/nouislider.js"></script>
 <!-- Custom js -->
 <script src="../js/custom.js"></script>
+<script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
 
+<script>
+
+    function addCart(event){
+        var list = event.children;
+        console.log(list);
+        var ma_sp = $(list[0]).attr("id");
+        var ma_mau =  $(list[1]).attr("id");
+        console.log(ma_sp);
+        console.log(ma_mau);
+        document.getElementById("addCartStatus").style.display = "none";
+        document.getElementById('changepassword').style.transform = 'scaleY(0)';
+        $.ajax({
+            url:'../AddCartController',
+            type:'get',
+            dataType:'html',
+            data:{
+                ma_sp:ma_sp,
+                ma_mau:ma_mau,
+            },
+            success:function (data){
+                console.log(data);
+                 $('#changepasswordsuccess').html(data);
+
+                 document.getElementById("addCartStatus").style.display = "block";
+                document.getElementById('changepassword').style.transform = 'scaleY(1)';
+            },
+            error:function () {
+                alert("that bai");
+                // window.location.href = 'index.jsp';
+            }
+        });
+
+    }
+
+        function gobackpassword() {
+        document.getElementById('changepassword').style.transform = 'scaleY(0)';
+    }
+
+</script>
 
 </body>
 
 </html>
+
