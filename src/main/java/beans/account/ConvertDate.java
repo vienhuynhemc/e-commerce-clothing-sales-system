@@ -28,4 +28,9 @@ public class ConvertDate {
 
     }
 
+    public static void main(String[] args) {
+        System.out.println(changeDate("2021-01-06 20:11:19"));
+        System.out.println(changeDate("2021-01-10 16:48:42"));
+    }
+
 }

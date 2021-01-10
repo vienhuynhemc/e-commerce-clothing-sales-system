@@ -24,14 +24,11 @@
     <link rel="stylesheet" href="js/Truong/jquery/jquery-3.5.1.min.js">
 
     <link rel="stylesheet" href="css/indexAdmin.css">
-    <script src="js/indexAdmin.js"></script>
 
     <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
 
 
     <% ArrayList<AccountCustomer> list = (ArrayList<AccountCustomer>) request.getAttribute("listKH");%>
-
-    <c:url var="xoa-khach-hang" value="/RemoveAccountHKController"/>
 
 
 </head>
@@ -214,281 +211,53 @@
 
                     <!--code------------------------------------------------------------------->
 
-                    <form action="LoadAccountKHController" method="get">
+
                         <div class="leftheader">
-                            <select name="type" id="typeSelect" >
-                                <option value="RegisDate" selected>Ngày tạo</option>
-                                <option value="FullName">Họ và tên</option>
-                                <option value="UserName">Tài khoản</option>
-                                <input type="hidden" name="" id="typeName" value="<%=request.getParameter("type")%>">
+                            <select name="type" onchange="loadKH()" id="typeSelect" >
+                                <option value="ngay_tao" selected>Ngày tạo</option>
+                                <option value="ten_day_du">Họ và tên</option>
+                                <option value="tai_khoan">Tài khoản</option>
                             </select>
                             <div>
                                 <div class="leftheadersort" id="order" onclick="changesort2(this)">
                                     <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
                                     <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                     <input type="checkbox" style="display: none;">
-                                    <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
+                                    <input type="hidden" id="checkSort" name="orderBy" value="DESC">
                                 </div>
                                 <div class="leftheadersearch">
-
-                                    <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" ></i></button>
-                                    <input name="page" value="1" type="hidden">
-                                    <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
+                                    <button type="submit" class="timkiem" disabled > <i class="fa fa-search" type="submit" ></i></button>
+<%--                                    <input name="page" value="1" type="hidden">--%>
+                                    <input type="text" id="resultSearch" name="search" class="search2" placeholder="Tìm kiếm" value="" oninput="loadKH()">
 
                                 </div>
                             </div>
                         </div>
 
-                    </form>
-
-                    <div class="leftnextpage">
-                        <p>Hiển thị <strong> <%=list.size()%> </strong> trên tổng
 
 
-                            <%= request.getAttribute("sumCustomer") %>
-
-                            khách hàng</p>
-
-                        <%int nowpage = Integer.parseInt(request.getParameter("page"));
-                        if(nowpage == 1){
-                        %>
-                        <a href="LoadAccountKHController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
-                        <%}else { %>
-                            <a href="LoadAccountKHController?page=<%=nowpage-1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
-                        <%}%>
-
-                        <button><i class="fa fa-caret-left"></i>
-                            </button>
-                        </a>
-                        <ul>
-
-                            <%
-                                int listpage = (int) request.getAttribute("numberPage");
-
-                            for (int i = 1;i <= listpage;i++){
-                                if(i == nowpage){
-                            %>
-                            <li style="background-color: #4162fb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
-
-                            <%}else{%>
-                            <li ><a href="LoadAccountKHController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
-                            <%}
-                            }%>
-
-                        </ul>
-                        <%
-                        if(nowpage == listpage){
-                        %>
-                            <a href="LoadAccountKHController?page=<%=nowpage%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
-                        <%}else { %>
-                           <a href="LoadAccountKHController?page=<%=nowpage+1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
-                        <%}%>
-                            <button><i class="fa fa-caret-right"></i></button>
-                        </a>
-
-                    </div>
 
 
-                    <button onclick="themkhachhang()"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
-                    <button id="btDelete"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <button onclick="themkhachhang()" style="position: absolute;left: 350px;"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
+                    <button id="btDelete" style="position: absolute;left: 535px; background-color: #80808061;"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
                 </div>
                 <div class="maindiv2" id="maindiv2">
-                    <div class="maindiv2header">
-                        <button onclick="allselect()">+</button>
-                        <p>Họ và tên</p>
-                        <p>Email</p>
-                        <p>Số điện thoại</p>
-                        <p>Tài khoản</p>
-                        <p>Kích hoạt</p>
-                        <p>Đánh giá</p>
-                        <p>Ngày tạo</p>
-                    </div>
-
-                    <%
-
-                        for ( AccountCustomer k : list  ) {
-                    %>
-
-                    <div class="item">
-                        <label for="c1">
-                            <input type="checkbox" name="checkRemove" id="checkRemove_<%=k.getIdUser()%>" value="<%=k.getIdUser()%>">
-
-                        </label>
-                        <div class="itemhdd">
-                            <img src="<%=k.getAvatar()%>" alt="">
-                        </div>
-                        <p class="itemname">
-                            <%=k.getFullName()%>
-                        </p>
-
-                        <p class="itememail">
-                            <%=k.getEmail()%>
-                        </p>
-
-                        <p class="itemphone">
-                            <%=k.getPhone()%>
-                        </p>
-
-                        <p class="itemtk">
-                            <%=k.getUserName()%>
-                        </p>
-
-                        <div class="tableitemicon hoanthanh">
-                                                        <div>
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </div>
-                            <%
-                            if (k.getActiveStatus() ==1){
-
-                            %>
-                                <div>
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <%}else{%>
-                                <div>
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                                <%}%>
-
-                        </div>
-                        <div class="tableitemicon hoanthanh">
-                            <div>
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-
-              <%
-                    if (k.getActiveEvaluate() ==1){
-
-                 %>
-                 <div>
-                     <i class="fa fa-check-circle"></i>
-                 </div>
-                 <%}else{%>
-                    <div>
-                     <i class="fa fa-clock-o"></i>
-                     </div>
-                      <%}%>
-                             </div>
-
-                        <p class="itemdate">
-                            <%=k.getRegisDate().getDay()%> Tháng <%=k.getRegisDate().getMonth()%> <%=k.getRegisDate().getYear()%>
-                        </p>
-
-                        <div class="itemsubmit" onclick="showselect(this)">
-                            <input type="text" style="display: none;">
-                            <i class="fa fa-circle"></i>
-                            <i class="fa fa-circle"></i>
-                            <i class="fa fa-circle"></i>
-                            <div>
-                                <button type="button" onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
-                                <button type="button" id="<%=k.getIdUser()%>"  onclick="deleteOne(this)" >
-                                    <i class="fa fa-trash"></i>
-                                    <input type="hidden" value="<%=k.getIdUser()%>">
-                                    Xóa
-
-                                </button>
-                            </div>
-                        </div>
 
 
-<%--                       <form action="EditAccountKHController" method="post">--%>
-                            <div>
-                                <div class="div11">
-                                    <h3>Hồ sơ của bạn</h3>
-                                    <input id="fileInput1" type="file" style="display:none;"
-                                           onchange="loadIMG(event)"/>
-                                    <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
-                                        <div>
-                                            <img id="avataredit" src="<%=k.getAvatar()%>" alt="">
-                                            <input id="loadAvatar" type="hidden" name="avatar" value="<%=k.getAvatar()%>" >
-                                        </div>
-                                    </div>
 
-                                    <button type="button" onclick="document.getElementById('fileInput1').click()">Thay đổi
-                                        ảnh đại diện
-                                        mới
-                                    </button>
-                                    <button type="button" onclick="removeIMG2()">Xóa ảnh đại diện</button>
+<%--                    <%--%>
 
-                                </div>
+<%--                        for ( AccountCustomer k : list  ) {--%>
+<%--                    %>--%>
 
-                                <div class="div12">
-                                    <h3>Điền thông tin cá nhân</h3>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Họ và tên</label>
-                                        <input name="fullName" type="text" placeholder="Nhập họ và tên ở đây"
-                                               value="<%=k.getFullName()%>">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">Tên hiển thị</label>
-                                        <input name="displayName" type="text" placeholder="Nhập tên hiển thị ở đây"
-                                               value="<%=k.getDisplayName()%>">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Email</label>
-                                        <input name="email" type="text" placeholder="Nhập email ở đây"
-                                               value="<%=k.getEmail()%>" disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Số điện thoại</label>
-                                        <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây"
-                                               value="<%=k.getPhone()%>"
-                                               disabled>
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <div class="trangthai">
-                                        <div class="div12inputlv2">
-                                            <label for="">Trạng thái kích hoạt</label>
-                                            <select name="activeStatus" id="">
-                                                <option value="1">Đã kích hoạt</option>
-                                                <option value="0">Chưa kích hoạt</option>
-                                            </select>
-                                        </div>
-                                        <div class="div12inputlv2">
-                                            <label for="">Trạng thái đánh giá</label>
-                                            <select name="activeEvaluate" id="">
-                                                <option value="1">Cho phép đánh giá</option>
-                                                <option value="0">Cấm đánh giá</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="linediv12"></div>
-                                    <div class="div12input">
-                                        <label for="">* Tài khoản</label>
-                                        <input namei="userName" type="text" placeholder="Nhập tên tài khoản ở đây"
-                                               value="<%=k.getUserName()%>"
-                                               disabled>
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Mật khẩu</label>
-                                        <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây"
-                                               value="">
-                                    </div>
-                                    <div class="div12input">
-                                        <label for="">* Xác nhận</label>
-                                        <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây"
-                                               value="">
-                                    </div>
-                                </div>
+<%--                    --%>
 
-
-                                <div class="div13">
-                                    <button type="submit"><i class="fa fa-save"></i>Lưu</button>
-                                    <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                                        lý
-                                    </button>
-                                </div>
-                            </div>
-<%--                        </form>--%>
-
-                    </div>
-
-                    <%}%>
+<%--                    <%}%>--%>
                 </div>
             </div>
         </div>
 
+        <input type="hidden" name="" id="page" value="1">
 
         <form action="../../them-tai-khoan-khach-hang" method="post">
             <div id="div1">
@@ -711,7 +480,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         }else{
             document.getElementById("checkSort").value = "ASC";
         }
-
+    loadKH();
     }
     <!-- sử lí cự kiện onlick xóa nhiều mục-->
     $('#btDelete').click(function (){
@@ -754,40 +523,103 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
     }
 
     <!--sử lí load lại thì có giá trị trước cho cho cái select -->
-    $(function (){
-        var typename = $('#typeName').attr('value');
-        let list =  document.getElementById("typeSelect").children;
+    // $(function (){
+    //     var typename = $('#typeName').attr('value');
+    //     let list =  document.getElementById("typeSelect").children;
+    //
+    //     if(typename == "RegisDate"){
+    //         $('select#typeSelect option[value= "RegisDate" ]').prop('selected', true);
+    //     }else if(typename == "FullName"){
+    //         $('select#typeSelect option[value= "FullName" ]').prop('selected', true);
+    //     }else if(typename == "UserName"){
+    //         $('select#typeSelect option[value= "UserName" ]').prop('selected', true);
+    //     }
+    // });
 
-        if(typename == "RegisDate"){
-            $('select#typeSelect option[value= "RegisDate" ]').prop('selected', true);
-        }else if(typename == "FullName"){
-            $('select#typeSelect option[value= "FullName" ]').prop('selected', true);
-        }else if(typename == "UserName"){
-            $('select#typeSelect option[value= "UserName" ]').prop('selected', true);
-        }
-    });
+    // $(function (){
+    //     var order = $('#checkSort').attr('value') ;
+    //     let list =  document.getElementById("order").children;
+    //
+    //     if(order == "DESC"){
+    //
+    //         if (list[2].checked == true) {
+    //             list[2].checked = false;
+    //             list[1].style.display = "none";
+    //             list[0].style.display = "block";
+    //             //list[0].style.marginTop = "0px";
+    //         }
+    //     }else{
+    //         if (list[2].checked == false) {
+    //             list[2].checked = true;
+    //             list[0].style.display = "none";
+    //             list[1].style.display = "block";
+    //             //list[1].style.marginTop = "-9px";
+    //         }
+    //     }
+    //
+    // });
 
-    $(function (){
-        var order = $('#checkSort').attr('value') ;
-        let list =  document.getElementById("order").children;
+</script>
 
-        if(order == "DESC"){
 
-            if (list[2].checked == true) {
-                list[2].checked = false;
-                list[1].style.display = "none";
-                list[0].style.display = "block";
-                //list[0].style.marginTop = "0px";
+<script >
+
+    function changePage(event){
+        var page = $(event).attr("id");
+        document.getElementById("page").value = page;
+        loadKH();
+    }
+    function loadKH(){
+
+        var page = $('#page').val();
+        var type = $('#typeSelect').val();
+        var search = $('#resultSearch').val();
+        var orderBy = $('#checkSort').val();
+        console.log(page);
+        console.log(type);
+        console.log(search);
+        console.log(orderBy);
+
+        $.ajax({
+            url: 'LoadAccountKH_AjaxController',
+            type: 'get',
+            dataType:'html',
+            data:{
+                page:page,
+                type:type,
+                search:search,
+                orderBy:orderBy
+            },
+            success:function (data){
+                $('#maindiv2').html(data);
+            },
+            error:function (){
+                alert("loi r");
             }
-        }else{
-            if (list[2].checked == false) {
-                list[2].checked = true;
-                list[0].style.display = "none";
-                list[1].style.display = "block";
-                //list[1].style.marginTop = "-9px";
-            }
-        }
+        })
+    };
 
+
+
+  $(document).ready(function (){
+
+        $.ajax({
+            url: 'LoadAccountKH_AjaxController',
+            type: 'get',
+            dataType:'html',
+            data:{
+                page:1,
+                type:'ngay_tao',
+                search:'',
+                orderBy:'DESC'
+            },
+            success:function (data){
+                $('#maindiv2').html(data);
+            },
+            error:function (){
+                alert("loi r");
+            }
+        })
     });
 
 </script>

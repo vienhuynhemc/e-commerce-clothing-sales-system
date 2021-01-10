@@ -1,4 +1,4 @@
-capnhaphienthi();
+// capnhaphienthi();
 
 function showsearch2(item) {
     let l1 = document.getElementById("div2").children;
@@ -82,16 +82,16 @@ function removekhachhang(item) {
     }
 }
 
-function capnhaphienthi() {
-    let listItem = document.getElementById("maindiv2").children;
-    for (let i = 0; i < listItem.length; i++) {
-        if (i <= 10) {
-            listItem[i].style.display = "flex";
-        } else {
-            listItem[i].style.display = "none";
-        }
-    }
-}
+// function capnhaphienthi() {
+//     let listItem = document.getElementById("maindiv2").children;
+//     for (let i = 0; i < listItem.length; i++) {
+//         if (i <= 10) {
+//             listItem[i].style.display = "flex";
+//         } else {
+//             listItem[i].style.display = "none";
+//         }
+//     }
+// }
 
 function xoacacmuadachon() {
     let listItem = document.getElementById("maindiv2").children;
