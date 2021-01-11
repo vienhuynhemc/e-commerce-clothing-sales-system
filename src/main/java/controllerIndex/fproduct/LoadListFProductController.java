@@ -15,10 +15,10 @@ import java.util.ArrayList;
 @WebServlet(name = "LoadListFProductController", urlPatterns = "/LoadListFProductController")
 public class LoadListFProductController extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int page = Integer.parseInt(request.getParameter("page"));
 
@@ -43,7 +43,6 @@ public class LoadListFProductController extends HttpServlet {
         request.setAttribute("sumProduct",sumProduct);
 
         request.setAttribute("list",list);
-
 
         request.getRequestDispatcher("home/product2.jsp").forward(request,response);
     }

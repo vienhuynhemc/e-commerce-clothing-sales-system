@@ -1,21 +1,49 @@
 package beans.wishlist;
 
+import beans.DateTime;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Wishlist {
 
     private String name;
-    private int price;
-    private int size;
+    private double price;
+    private String size;
     private int quantity;
-    private int color;
-    private String img;
+    private String color;
+//    private String img;
+    private DateTime dateAdded;
+    private int status;
 
-    public Wishlist(String name, int price, int size, int quantity, int color, String img) {
+    public Wishlist(String name, double price, String size, int quantity, String color,int status,DateTime dateAdded) {
         this.name = name;
         this.price = price;
         this.size = size;
         this.quantity = quantity;
         this.color = color;
-        this.img = img;
+//        this.img = img;
+        this.status = status;
+        this.dateAdded = dateAdded;
+    }
+    public Wishlist(){
+
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public DateTime getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(DateTime dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public String getName() {
@@ -26,19 +54,19 @@ public class Wishlist {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -50,31 +78,33 @@ public class Wishlist {
         this.quantity = quantity;
     }
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
+//
+//    public String getImg() {
+//        return img;
+//    }
+//
+//    public void setImg(String img) {
+//        this.img = img;
+//    }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
 
     @Override
     public String toString() {
         return "Wishlist{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", size=" + size +
+                ", size='" + size + '\'' +
                 ", quantity=" + quantity +
-                ", color=" + color +
-                ", img='" + img + '\'' +
+                ", color='" + color + '\'' +
+                ", dateAdded=" + dateAdded +
+                ", status=" + status +
                 '}';
     }
 }

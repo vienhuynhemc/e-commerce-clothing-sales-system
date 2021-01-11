@@ -17,28 +17,28 @@
     <title>TVT Shop | Danh sách sản phẩm</title>
 
     <!-- Font awesome -->
-    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <!-- Top Slider CSS -->
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="../css/product.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/trangChu.css">
-    <link rel="stylesheet" href="../css/banner.css">
-    <script src="../js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/product.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/trangChu.css">
+    <link rel="stylesheet" href="css/banner.css">
+    <script src="js"></script>
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -347,7 +347,7 @@
                             <li>
                                 <figure>
                                     <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/do/nu/nu/spn2.webp"
+                                            src="img/do/nu/nu/spn2.webp"
                                             alt="polo shirt img"></a>
                                     <a class="aa-add-card-btn" href="cart.html"><span
                                             class="fa fa-shopping-cart"></span>Thêm vào
@@ -820,23 +820,23 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="../js/sequence.js"></script>
-<script src="../js/sequence-theme.modern-slide-in.js"></script>
+<script src="js/sequence.js"></script>
+<script src="js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="../js/slick.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="../js/nouislider.js"></script>
+<script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="../js/custom.js"></script>
+<script src="js/custom.js"></script>
 
 
 </body>
