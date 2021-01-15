@@ -9,8 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CartDAO {
-    public CartDAO() {
+public class LoadCartDAO {
+    public LoadCartDAO() {
     }
 
     public ArrayList<Cart> listCartByID(String ID){
@@ -60,7 +60,7 @@ public class CartDAO {
     }
 
     public static void main(String[] args) {
-        CartDAO cartDAO = new CartDAO();
+        LoadCartDAO cartDAO = new LoadCartDAO();
 
         System.out.println(cartDAO.listCartByID("KH001"));
 

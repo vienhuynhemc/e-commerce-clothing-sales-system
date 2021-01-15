@@ -2,24 +2,24 @@ package worksWithDatabase.cart;
 
 
 
-public class CartSource {
-    private static CartSource cartSource;
-    private static CartPool cartPool;
+public class LoadCartSource {
+    private static LoadCartSource cartSource;
+    private static LoadCartPool cartPool;
 
-    private CartSource(){
-        cartPool = new CartPool();
+    private LoadCartSource(){
+        cartPool = new LoadCartPool();
     }
-    public static synchronized CartSource getInstance(){
+    public static synchronized LoadCartSource getInstance(){
         if (cartSource == null){
-            cartSource = new CartSource();
+            cartSource = new LoadCartSource();
         }
         return cartSource;
     }
 
-    public CartDAO getAddAccount(){
+    public LoadCartDAO getAddAccount(){
         return cartPool.getAccount();
     }
-    public void releaseAddAccount (CartDAO cartDAO){
+    public void releaseAddAccount (LoadCartDAO cartDAO){
         cartPool.releaseAddAccount(cartDAO);
     }
 
@@ -28,7 +28,7 @@ public class CartSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                CartDAO a = CartSource.getInstance().getAddAccount();
+                LoadCartDAO a = LoadCartSource.getInstance().getAddAccount();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
@@ -36,7 +36,7 @@ public class CartSource {
                     e.printStackTrace();
                 }
 
-                CartSource.getInstance().releaseAddAccount(a);
+                LoadCartSource.getInstance().releaseAddAccount(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };

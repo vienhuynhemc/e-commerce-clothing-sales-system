@@ -1,15 +1,14 @@
 package worksWithDatabase.cart;
 
-
-public class CartPool {
-    private CartDAO cart;
+public class AddCartPool {
+    private AddCartDAO cart;
     private boolean isActive;
 
-    public CartPool(){
-        cart = new CartDAO();
+    public AddCartPool(){
+        cart = new AddCartDAO();
         isActive = false;
     }
-    public synchronized CartDAO getAccount(){
+    public synchronized AddCartDAO getAccount(){
 
         while (isActive){
             try {
@@ -21,7 +20,7 @@ public class CartPool {
         isActive = true;
         return cart;
     }
-    public synchronized void releaseAddAccount(CartDAO aa){
+    public synchronized void releaseAddCart(AddCartDAO aa){
         if (this.cart == aa){
             isActive = false;
             notifyAll();

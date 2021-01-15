@@ -1,4 +1,4 @@
-<%--
+<%@ page import="beans.account.AccountCustomer" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -25,6 +25,8 @@
     <script src="../js"></script>
     <link rel="stylesheet" href="../css/banner.css">
     <link rel="stylesheet" href="../css/wishlist2.css">
+
+    <% AccountCustomer account = (AccountCustomer) session.getAttribute("");%>
 
 
 </head>

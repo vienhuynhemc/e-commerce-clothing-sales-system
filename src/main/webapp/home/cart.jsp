@@ -221,7 +221,7 @@
 <%--<script src="js/custom.js"></script>--%>
 <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
 
-
+<!--ajax để load danh sách sản phẩm trong giỏ hàng-->
 <script>
     $(function (){
         $.ajax({

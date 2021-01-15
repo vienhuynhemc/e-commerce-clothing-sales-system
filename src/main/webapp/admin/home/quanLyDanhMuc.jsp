@@ -321,10 +321,11 @@
                             <div class="header">
                             <form action="LoadCategoryController" method="get">
                                 <div class="leftheader">
-                                    <select name="type" id="typeSelect" >
-                                        <option value="ngay_tao" selected>Ngày tạo</option>
-                                        <option value="ten_dm">Tên danh mục</option>
-                                        <option value="ma_dm">Mã danh mục</option>
+                                    <select name="type" id="typeSelect" onchange="window.location=this.value">
+
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Ngày tạo</option>
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ten_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Tên danh mục</option>
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ma_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Mã danh mục</option>
                                     </select>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
