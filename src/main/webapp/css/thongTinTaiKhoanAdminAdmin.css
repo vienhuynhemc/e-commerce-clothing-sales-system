@@ -479,16 +479,23 @@ button:focus {
     color: #9ea5ad;
     font-weight: normal;
     font-size: 14px;
-    margin-top: 20px;
+    margin-top: 16px;
     padding-left: 30px;
+}
+
+.div121 > div:nth-child(1) >div{
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
 }
 
 .linediv12 {
     background-color: #f0f0f0;
     width: 100%;
     height: 1px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .div12input {
@@ -542,7 +549,7 @@ button:focus {
     border-radius: 20px;
     padding: 5px 20px;
     color: #e0e5e9;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .div13 {
@@ -555,7 +562,7 @@ button:focus {
 
 .div13 .div12input {
     width: 100%;
-    margin-top: 0px;
+    margin-top: -38px;
     margin-left: -20px !important;
 }
 
@@ -580,7 +587,7 @@ button:focus {
     color: white;
     box-shadow: 14px 15px 35px 3px #6c82e45e;
     margin-left: 7px;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .div13 > button:nth-child(6) {
@@ -607,9 +614,20 @@ button:focus {
 }
 
 .formckgioithieu > div{
+    visibility: visible;
     margin-top: 19px;
 }
 
 .formckgioithieu > label{
     margin-left: 27px;
 }
+
+.matKhauVaLuong{
+    display: flex;
+}
+
+.matKhauVaLuong > div{
+    width: 50%;
+}
+
+

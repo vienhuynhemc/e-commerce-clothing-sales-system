@@ -46,11 +46,23 @@ function thaydoithongtin() {
 
 //  Khai báo editor
 var editor = '';
-main();
 
-function main() {
+$(document).ready(function () {
 
     //  Khởi tạo editor
     editor = CKEDITOR.replace('gioiThieu');
 
-};
+});
+
+function getData() {
+    let p = CKEDITOR.instances['gioiThieu'].getData();
+    let div = document.createElement("div");
+    div.innerHTML = p;
+    let list = div.children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].nodeName == 'FIGURE') {
+            let img = list[i].children[0];
+            console.log(img.src);
+        }
+    }
+}

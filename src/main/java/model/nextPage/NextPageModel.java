@@ -63,7 +63,11 @@ public class NextPageModel {
 
             //  Nếu như không lớn hơn 1+3 thì sẽ có dạng 1->nowpage
             for (int i = 1; i <= nowPage; i++) {
-                resultList.add(new NextPageObject(i + "", NextPageConfiguration.NORMAL));
+                if(i!=nowPage){
+                    resultList.add(new NextPageObject(i + "", NextPageConfiguration.NORMAL));
+               }else{
+                    resultList.add(new NextPageObject(i + "", NextPageConfiguration.ACTIVE_LI));
+                }
             }
 
         }
