@@ -41,7 +41,7 @@ public class FProductDAO {
             if (numberOfProduct % numberPerPage == 0) {
                 setNumberOfPage(numberOfProduct / numberPerPage);
             } else {
-                setNumberOfPage((numberPerPage / numberPerPage) + 1);
+                setNumberOfPage((numberOfProduct / numberPerPage) + 1);
             }
             rs.close();
             s.close();

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
+    <script src="../../js/Truong/jquery/jquery-3.5.1.min.js"></script>
     <script src="../../js/indexAdmin.js"></script>
 
 
@@ -30,7 +31,7 @@
 
 
 <jsp:include page="../share/_LayoutLeft.jsp">
-    <jsp:param name="activeSelect" value="quanLyHangSanXuat"/>
+    <jsp:param name="activeSelect" value="thongTinTiKhoanAdmin"/>
 </jsp:include>
 
 <div class="indexright">
@@ -72,11 +73,9 @@
                 <div class="div121" id="div121">
                     <div>
                         <h3>Giới thiệu: </h3>
-                        <p>Phải tôi đôi order thêm mấy món, hehe giỡn thôi.<br>Được đảm nhận công việc này tôi cảm
-                            thấy
-                            tôi là một người rất may mắn khi được giao đúng công việc mình yêu thích sau một thời
-                            gian
-                            dài đóng gói và vận chuyển :((</p>
+                        <div>
+                         <p>Ng&acirc;y thơ trong s&aacute;ng như ch&uacute; m&egrave;o trong ảnh :v&nbsp;</p> <figure class="easyimage easyimage-full"><img alt="" src="https://firebasestorage.googleapis.com/v0/b/ecommerce-b6c08.appspot.com/o/hinh_anh_gioi_thieu%2Fnv_1%2FMS_3.jpg?alt=media&amp;token=1df7945a-df19-4a4b-9c44-2b350d0c598c" width="200" /> <figcaption></figcaption> </figure> <hr/> <p>V&agrave; best dasua 10tr th&ocirc;ng thạo :3&nbsp;</p> <figure class="easyimage easyimage-full"><img alt="" src="https://firebasestorage.googleapis.com/v0/b/ecommerce-b6c08.appspot.com/o/hinh_anh_gioi_thieu%2Fnv_1%2F1.png?alt=media&amp;token=1abc7f1f-eca5-4282-8281-a08e127f1dc1" width="1920" /> <figcaption></figcaption> </figure> <hr /> <p>Contact:&nbsp;<img alt="wink" height="23" src="http://localhost:8080/ltw_thayLong_group5_war_exploded/ckeditor/plugins/smiley/images/wink_smile.png" title="wink" width="23" /><a href="https://www.facebook.com/vientamthuong">www.facebook.com/vientamthuong<img alt="wink" height="23" src="http://localhost:8080/ltw_thayLong_group5_war_exploded/ckeditor/plugins/smiley/images/wink_smile.png" title="wink" width="23" /></a></p>
+                        </div>
                     </div>
                     <div>
                         <div>
@@ -325,7 +324,11 @@
                     </div>
                     <div class="div12input">
                         <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209" disabled>
+                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209">
+                    </div>
+                    <div class="div12input">
+                        <label for="">* Lương</label>
+                        <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
@@ -367,17 +370,11 @@
                 </div>
 
                 <div class="div13">
-                    <div class="div12input">
-                        <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
-                    </div>
-                    <div class="linediv12"></div>
+
                     <div class="div12input formckgioithieu">
-                        <label for="">Giới thiệu</label>
                         <textarea name="gioiThieu" id="gioiThieu" placeholder="Nhập giới thiệu ở đây"></textarea>
                     </div>
-                    <div class="linediv12"></div>
-                    <button><i class="fa fa-save"></i>Lưu</button>
+                    <button onclick="getData()"><i class="fa fa-save"></i>Lưu</button>
                     <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
                         lý
                     </button>

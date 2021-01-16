@@ -1,11 +1,13 @@
 package worksWithDatabase.wishlist;
 
+import beans.DateTime;
 import connectionDatabase.DataSource;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class AddWishlistDAO {
     public AddWishlistDAO(){
@@ -39,10 +41,14 @@ public class AddWishlistDAO {
     public boolean insertWishlist(String idProduct, String idCustomer, String color){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            PreparedStatement s = connection.prepareStatement("INSERT INTO yeu_thich VALUES(?,?,?,1)");
+            PreparedStatement s = connection.prepareStatement("INSERT INTO yeu_thich VALUES(?,?,?,?,1)");
             s.setString(1,idProduct);
             s.setString(2,idCustomer);
             s.setString(3,color);
+            DateTime now = new DateTime(LocalDate.now().getYear(),LocalDate.now().getMonthValue(),
+                    LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),LocalTime.now().getSecond());
+
+            s.setString(4,now.toString());
 
             int row = s.executeUpdate();
             if(row > 0) {
@@ -61,11 +67,15 @@ public class AddWishlistDAO {
     public boolean updateWishlist(String idProduct, String idCustomer, String color){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            PreparedStatement s = connection.prepareStatement("UPDATE yeu_thich SET so_luong = so_luong + 1 WHERE" +
+            PreparedStatement s = connection.prepareStatement("UPDATE yeu_thich SET so_luong = so_luong + 1,ngay_them = ? WHERE" +
                     " ma_sp = ? AND ma_kh = ? AND ma_mau = ?");
-            s.setString(1,idProduct);
-            s.setString(2,idCustomer);
-            s.setString(3,color);
+
+            DateTime now = new DateTime(LocalDate.now().getYear(),LocalDate.now().getMonthValue(),
+                    LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),LocalTime.now().getSecond());
+            s.setString(1,now.toString());
+            s.setString(2,idProduct);
+            s.setString(3,idCustomer);
+            s.setString(4,color);
 
             int row = s.executeUpdate();
             if(row > 0){
@@ -108,8 +118,13 @@ public class AddWishlistDAO {
 
     public static void main(String[] args) {
         AddWishlistDAO dao = new AddWishlistDAO();
-       //System.out.println(dao.addWishlist("sp003","kh002","vang02"));
-        //System.out.println(dao.updateWishlist("sp004","kh002","vang02"));
+       //System.out.println(dao.addWishlist("sp_1","kh001","mau_1"));
+       //System.out.println(dao.updateWishlist("sp004","kh002","vang02"));
+
+//        DateTime now = new DateTime(LocalDate.now().getYear(),LocalDate.now().getMonthValue(),
+//                LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),(int)LocalTime.now().getSecond()+);
+//        System.out.println(now);
+
     }
 
 }

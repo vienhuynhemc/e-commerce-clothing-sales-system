@@ -125,7 +125,7 @@ function xoacacmuadachon() {
     }
 
     if (discountCodes.length > 0) {
-       discountCodes = discountCodes.trim();
+        discountCodes = discountCodes.trim();
         let size = discountCodes.split(" ").length;
 
         document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa ' + size + ' mục';
@@ -393,23 +393,20 @@ function showselectgopage(item) {
 
     for (let i = 0; i < listUl.length; i++) {
 
-        if (listUl[i] == item) {
+        let list = listUl[i].children;
+        if (list[0] == item) {
 
-            let l = listUl[i].children[0].children;
-
+            let l = list[1].children;
             if (l[0].checked == true) {
-                listUl[i].children[0].style.display = "none";
+                list[1].style.display = "none";
                 l[0].checked = false;
             } else {
-                listUl[i].children[0].style.display = "flex";
+                list[1].style.display = "flex";
                 l[1].click();
                 l[0].checked = true;
             }
-
         }
-
     }
-
 }
 
 function gopagefast(item) {
@@ -420,20 +417,40 @@ function gopagefast(item) {
 
     for (let i = 0; i < listUl.length; i++) {
 
-        let l = listUl[i].children[0].children;
+        let l = listUl[i].children;
 
-        if (l[2] == item) {
-            let value = l1.value;
-            if (!isNaN(value)) {
-                document.getElementById("numberOfPage").value = parseInt(value);
-                document.getElementById("action").value = "nextPage";
-                document.getElementById("mainForm").submit();
+        if (l.length == 2) {
+            l = l[1].children;
+            if (l[2] == item) {
+                let value = l[1].value;
+
+                let maxPage = parseInt(document.getElementById("maximunNumberOfPage").value);
+                let nowPage = parseInt(document.getElementById("numberOfPage").value);
+
+                if (Number.isInteger(value)) {
+
+                    if (value != nowPage && value >= 1 && value <= maxPage) {
+                        document.getElementById("numberOfPage").value = value;
+                        document.getElementById("action").value = "nextPage";
+                        document.getElementById("mainForm").submit();
+                    }
+
+                } else {
+                    if (value.match(/^-{0,1}\d+$/)) {
+
+                        let number = parseInt(value);
+
+                        if (number != nowPage && number >= 1 && number <= maxPage) {
+                            document.getElementById("numberOfPage").value = number;
+                            document.getElementById("action").value = "nextPage";
+                            document.getElementById("mainForm").submit();
+                        }
+
+                    }
+                }
             }
-
         }
-
     }
-
 }
 
 function changeFilter() {

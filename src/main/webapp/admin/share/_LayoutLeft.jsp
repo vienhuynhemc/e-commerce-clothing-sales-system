@@ -140,7 +140,11 @@
                 <input type="checkbox" style="display: none;">
             </div>
             <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
+                <div
+                        <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("thongTinTaiKhoanAdmin")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-user-circle-o"></i>
                     <p>Thông tin tài khoản</p>
                 </div>
@@ -151,7 +155,7 @@
                     <p>Trở về trang mua sắm</p>
                 </div>
             </a>
-            <a href="login.html" class="indexleftselectitem  ">
+            <a href="../../LogOutAdminController" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-power-off"></i>
                     <p>Đăng xuất</p>

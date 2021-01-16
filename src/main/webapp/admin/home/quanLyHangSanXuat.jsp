@@ -172,12 +172,16 @@
                                     <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
                                     class="activeli"
                                     <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
-                                    class="none" onclick="showselectgopage(this)"
+                                    class="none"
                                     <%} else {%>
                                     onclick="pageNavigation(<%=n.getValue()%>)"
                                     <%}%>
-                            ><%=n.getValue()%>
-
+                            >
+                                <%if(n.getType() == NextPageConfiguration.NONE){%>
+                                <p onclick="showselectgopage(this)"><%=n.getValue()%></p>
+                                <%}else{%>
+                                <%=n.getValue()%>
+                                <%}%>
                                 <div class="gopage">
                                     <input type="checkbox" style="display: none;">
                                     <input type="text">
