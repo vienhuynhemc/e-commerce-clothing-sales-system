@@ -166,10 +166,13 @@
     color: #888;
     font-weight: normal;
     font-family: sans-serif;
-    margin-left: 40px;
-    margin-top: 20px;
     font-size: 14px;
     width: 85%;
+    padding: 10px 0px;
+}
+
+.div121 > div:nth-child(1) img{
+    padding: 10px 0px;
 }
 
 .div121 > div:nth-child(2) {
@@ -484,7 +487,7 @@ button:focus {
 }
 
 .div121 > div:nth-child(1) >div{
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 30px;

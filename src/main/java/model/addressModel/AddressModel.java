@@ -4,7 +4,6 @@ import beans.address.Provincial;
 import worksWithDatabase.provincial.ProvincialDataSource;
 import worksWithDatabase.provincial.ProvincialWorksWithDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddressModel {
@@ -19,16 +18,12 @@ public class AddressModel {
     //  Phương thức trả về một list đẩy đủ các tỉnh thành
     public List<Provincial> getListProvincial() {
 
-        //  Trước tiên tạo một list Provincial, đưa vô cho thằng Provincial works with database nó fill dữ liệu vào
-        List<Provincial> provincials = new ArrayList<Provincial>();
-
-        //  Điền thông tin tỉnh
         ProvincialWorksWithDatabase provincialWorksWithDatabase = ProvincialDataSource.getInstance().getProvincialWorksWithDatabase();
-        provincialWorksWithDatabase.fillInformation(provincials);
+        List<Provincial> provincials = provincialWorksWithDatabase.getListProvincial();
         ProvincialDataSource.getInstance().releaseProvincialWorksWithDatabase(provincialWorksWithDatabase);
 
-        //  Trả về kết quả
         return provincials;
+
     }
 
 }

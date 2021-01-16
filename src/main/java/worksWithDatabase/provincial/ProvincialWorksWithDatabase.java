@@ -17,15 +17,17 @@ public class ProvincialWorksWithDatabase {
     public ProvincialWorksWithDatabase() {
     }
 
-    //  Phương thức nhận vào một list provincial, điền đẩy đủ thông tin các tỉnh cho nó
-    public void fillInformation(List<Provincial> provincials) {
+    //  Phương thức trả về list
+    public List<Provincial> getListProvincial () {
+
+        List<Provincial> provincials = new ArrayList<Provincial>();
 
         Connection connection = DataSource.getInstance().getConnection();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM tinh_thanh");
             while(resultSet.next()){
-                provincials.add(new Provincial(resultSet.getString("ma_tinh_thanh"),resultSet.getString("ten_tinh_thanh"),new ArrayList<District>()));
+                provincials.add(new Provincial(resultSet.getString("ma_tinh_thanh"),resultSet.getString("ten_tinh_thanh")));
             }
             resultSet.close();
             statement.close();
@@ -33,6 +35,9 @@ public class ProvincialWorksWithDatabase {
             throwables.printStackTrace();
         }
         DataSource.getInstance().releaseConnection(connection);
+
+        return provincials;
+
     }
 
 }

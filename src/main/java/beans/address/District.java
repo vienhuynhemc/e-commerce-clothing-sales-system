@@ -6,12 +6,10 @@ public class District {
 
     private String districtId;
     private String districtName;
-    private List<Commune> communes;
 
-    public District(String districtId, String districtName, List<Commune> communes) {
+    public District(String districtId, String districtName) {
         this.districtId = districtId;
         this.districtName = districtName;
-        this.communes = communes;
     }
 
     public String toString(){
@@ -32,14 +30,6 @@ public class District {
 
     public void setDistrictName(String districtName) {
         this.districtName = districtName;
-    }
-
-    public List<Commune> getCommunes() {
-        return communes;
-    }
-
-    public void setCommunes(List<Commune> communes) {
-        this.communes = communes;
     }
 
 }

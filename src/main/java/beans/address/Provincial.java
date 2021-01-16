@@ -6,12 +6,10 @@ public class Provincial {
 
     private String provincialId;
     private String provincialName;
-    private List<District> districts;
 
-    public Provincial(String provincialId, String provincialName, List<District> districts) {
+    public Provincial(String provincialId, String provincialName) {
         this.provincialId = provincialId;
         this.provincialName = provincialName;
-        this.districts = districts;
     }
 
     public String getProvincialId() {
@@ -28,14 +26,6 @@ public class Provincial {
 
     public void setProvincialName(String provincialName) {
         this.provincialName = provincialName;
-    }
-
-    public List<District> getDistricts() {
-        return districts;
-    }
-
-    public void setDistricts(List<District> districts) {
-        this.districts = districts;
     }
 
     public String toString() {
