@@ -41,6 +41,15 @@
         <url-pattern>/thong-tin</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChessSessionCartController</servlet-name>
+        <servlet-class>controllerIndex.cart.ChessSessionCartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChessSessionCartController</servlet-name>
+        <url-pattern>/gio-hang</url-pattern>
+    </servlet-mapping>
+
 
 
     <welcome-file-list>
