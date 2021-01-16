@@ -103,7 +103,7 @@
                             <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat")) {%>
                             class="activelv2"
                             <%}%>
-                    ><a href="../../ManufacturerController"><i class="fa fa-viadeo-square"></i>Hãng
+                    ><a href="../home/quanLyHangSanXuat.jsp"><i class="fa fa-viadeo-square"></i>Hãng
                         sản xuất</a></li>
                 </ul>
                 <%if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) ||

@@ -10,10 +10,6 @@
 <div class="indextop">
     <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
     <div class="indextopright">
-        <div class="indextopsearch">
-            <i class="fa fa-search"></i>
-            <input type="text" placeholder="Tìm kiếm">
-        </div>
         <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
             <i class="fa fa-bell-o"></i>
             <div>

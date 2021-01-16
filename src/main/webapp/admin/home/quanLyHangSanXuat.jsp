@@ -2,7 +2,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="beans.nextPage.NextPageObject" %>
 <%@ page import="beans.nextPage.NextPageConfiguration" %>
-<%@ page import="beans.manufacturer.ManufacturerObject" %><%--
+<%@ page import="beans.manufacturer.ManufacturerObject" %>
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 26/12/2020
@@ -31,11 +33,27 @@
 
 
 <%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
 
-    //  Lấy manufacturer Object
-    ManufacturerObject manufacturerObject = (ManufacturerObject) session.getAttribute("manufacturerObject");
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.quanLyHangSanXuat");
 
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.quanLyHangSanXuat")){
+
+            ManufacturerObject manufacturerObject = (ManufacturerObject) userAdmin.getListOfFunction().get("manufacturerObject");
+            if(manufacturerObject == null || !manufacturerObject.isReady()){
+                response.sendRedirect("../../ManufacturerController");
+            }else {
 %>
+
 
 <!----------------------------------------------------- Form yes no ------------------------------------------------->
 <div id="formYesNo">
@@ -360,3 +378,18 @@
 </html>
 
 <script src="../../js/quanLyHangSanXuatAdmin.js"></script>
+<%     }
+
+}else{
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>
+
+
