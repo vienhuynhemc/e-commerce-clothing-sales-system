@@ -48,7 +48,7 @@
                                 </li>
                                 <li class="hidden-xs iconRound"><a href="wishlist.jsp"><i class="fa fa-heart"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRoundLenght"><a href="ChessSessionCartController"><%=lang.get("4")%>
+                                <li class="hidden-xs iconRoundLenght"><a href="gio-hang"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
                                 <li class="hidden-xs iconRoundLenght"><a href="checkout.jsp"><%=lang.get("5")%>
                                     <span
@@ -250,7 +250,7 @@
                             <a class="aa-cart-link" href="home/cart.html">
                                 <span class="fa fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title"><%=lang.get("27")%></span>
-                                <span class="aa-cart-notify">2</span>
+                                <span class="aa-cart-notify" id="soluonggiohang">0</span>
                             </a>
                             <div class="aa-cartbox-summary  xemnhanhgiohang">
                                 <ul id="cart_hover_data">
@@ -258,6 +258,7 @@
 
 
                                 </ul>
+                                <span id="sumprice" class="aa-cartbox-total-price"> 0  VND</span>
                                 <a class="aa-cartbox-checkout aa-primary-btn tinhtien"
                                    href="home/checkout.html"><%=lang.get("28")%>
                                 </a>
@@ -284,23 +285,46 @@
 
     $(document).ready(function (){
 
-        $('#cart_hover').hover(function (){
-            console.log("b1");
-            $.ajax({
-                url:'HoverCartController',
-                type:'get',
-                dataType:'html',
-                success: function (data) {
-                    $('#cart_hover_data').html(data);
-                    console.log("b2");
-                } ,
-                error: function () {
-                    alert("Đang bận!")
-                }
-            });
+        $.ajax({
+            url:'HoverCartController',
+            type:'get',
+            dataType:'html',
+            success: function (data) {
+                $('#cart_hover_data').html(data);
+                console.log("b2");
+                var sl = $('#soluongsp').val();
+                $('#soluonggiohang').text(sl);
 
-        },function (){});
+            } ,
+            error: function () {
+
+            }
+        });
+
 
     });
+    $('#cart_hover').hover(function (){
+        console.log("b1");
+        $.ajax({
+            url:'HoverCartController',
+            type:'get',
+            dataType:'html',
+            success: function (data) {
+                $('#cart_hover_data').html(data);
+                console.log("b2");
+                var sl = $('#soluongsp').val();
+                $('#soluonggiohang').text(sl);
+
+                var tt = $('#tongtien').val();
+                $('#sumprice').text(tt);
+
+
+            } ,
+            error: function () {
+
+            }
+        });
+
+    },function (){});
 
 </script>

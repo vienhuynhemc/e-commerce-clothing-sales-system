@@ -1,6 +1,8 @@
 <%@ page import="beans.account.ErrorLogin" %>
 <%@ page import="beans.account.AccountCustomer" %>
-<%@ page import="beans.account.ErrorSignUpAccount" %><%--
+<%@ page import="beans.account.ErrorSignUpAccount" %>
+<%@ page import="model.language.LoginLanguageModel" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -32,16 +34,35 @@
 
 </head>
 
+<%
+    //  Chuyển về UTF-8
+    request.setCharacterEncoding("UTF-8");
+
+    //  Lấy list ngôn ngữ ra
+    Map<String, String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if (lang == null) {
+        lang = LoginLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
+
 <body>
 
 <!-- wpf loader Two -->
 <jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
 
-<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="LoginLanguageController"/>
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 
 <%request.setCharacterEncoding("utf-8");%>
 <jsp:include page="../share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Đăng nhập"/>
+    <jsp:param name="titleVietnamese" value="Đăng Nhập & Đăng Ký"/>
+    <jsp:param name="titleEnglish" value="Login & Register"/>
 </jsp:include>
 
 <!-- / catg header banner section -->
@@ -58,16 +79,16 @@
                         <p>TVT Shop</p>
                     </a>
                 </div>
-                <p class="wellcome">Chào mừng bạn trở lại, vui lòng đăng nhập vào tài khoản của mình</p>
+                <p class="wellcome"><%=lang.get("1")%></p>
                 <div class="loginwith">
                     <div class="loginwithitem"><i class="fa fa-facebook-f"></i>
-                        <p onclick="toAccount()">Đăng nhập bằng facebook</p>
+                        <p onclick="toAccount()"><%=lang.get("2")%></p>
                     </div>
                     <div class="loginwithitem"><i class="fa fa-google"></i>
-                        <p onclick="toAccount()">Đăng nhập bằng google</p>
+                        <p onclick="toAccount()"><%=lang.get("25")%></p>
                     </div>
                 </div>
-                <p class="or">- Hoặc -</p>
+                <p class="or">- <%=lang.get("3")%> -</p>
 
 
                 <!--------------------- đăng nhập ở chỗ này ---------------------------->
@@ -75,14 +96,14 @@
                 <form action="LoginUserCustomerController" method="post">
                     <div class="form">
                         <div class="tk">
-                            <p class="titletk">Tài khoản</p>
-                            <input name="userName" value="${param["userName"]}" type="text" placeholder="&#xf2bd;    Nhập tài khoản của bạn ở đây"
+                            <p class="titletk"><%=lang.get("4")%></p>
+                            <input name="userName" value="${param["userName"]}" type="text" placeholder="&#xf2bd;    <%=lang.get("5")%>"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput1"></div>
                         </div>
                         <div class="mk">
-                            <p class="titletk">Mật khẩu</p>
-                            <input name="passWord" type="password" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
+                            <p class="titletk"><%=lang.get("6")%></p>
+                            <input name="passWord" type="password" placeholder="&#xf13e;     <%=lang.get("7")%>"
                                    style="font-family:Arial, FontAwesome">
                             <button class="eye"><i class="fa fa-eye-slash"></i></button>
                             <div class="lineinput2"></div>
@@ -91,21 +112,20 @@
                         <div class="helpLogin">
                             <div>
                                 <input type="checkbox" name="" id="remember">
-                                <label for="remember">Nhớ mật khẩu</label>
+                                <label for="remember"><%=lang.get("8")%></label>
                             </div>
 
-                            <button onclick="displaydivpassword()">Quên mật khẩu</button>
+                            <button onclick="displaydivpassword()"><%=lang.get("9")%></button>
                         </div>
 
                         <div class="divsubmit">
-                            <button type="submit" onclick="toAccount()">Đăng nhập</button>
-                            <button type="button" onclick="dangky()">Đăng ký</button>
+                            <button type="submit" onclick="toAccount()"><%=lang.get("10")%></button>
+                            <button type="button" onclick="dangky()"><%=lang.get("11")%></button>
                         </div>
 
                         <div class="dkcsbm">
-                            <p>Bằng cách đăng ký, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> & <a
-                                    href="">chính sách bảo mật</a> của
-                                chúng tôi</p>
+                            <p><%=lang.get("11")%> <a href=""><%=lang.get("26")%></a> <%=lang.get("27")%> <a
+                                    href=""><%=lang.get("28")%></a> <%=lang.get("29")%></p>
                         </div>
                     </div>
                 </form>
@@ -144,55 +164,53 @@
                     </a>
                 </div>
 
-                <p class="title">Đăng ký</p>
-                <p class="info">Cung cấp cho chúng tôi một số thông tin của bạn để có quyền truy cập vào trang và
-                    mua sắm</p>
+                <p class="title"><%=lang.get("11")%></p>
+                <p class="info"><%=lang.get("18")%></p>
 
                 <form action="SignUpController" method="post">
                     <div class="form">
                         <div class="tk">
-                            <p class="titletk">Tài khoản</p>
-                            <input type="text" name="username" placeholder="&#xf2bd; Nhập tài khoản của bạn ở đây"
+                            <p class="titletk"><%=lang.get("4")%></p>
+                            <input type="text" name="username" placeholder="&#xf2bd; <%=lang.get("5")%>"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput1"></div>
                         </div>
                         <div class="mk">
-                            <p class="titletk">Mật khẩu</p>
-                            <input type="password" name="pass" placeholder="&#xf13e;     Nhập mật khẩu của bạn ở đây"
+                            <p class="titletk"><%=lang.get("6")%></p>
+                            <input type="password" name="pass" placeholder="&#xf13e;     <%=lang.get("7")%>"
                                    style="font-family:Arial, FontAwesome">
                             <button class="eye"><i class="fa fa-eye-slash"></i></button>
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
-                            <p class="titletk">Họ và tên</p>
-                            <input type="text" name="name" placeholder="&#xf2bc;    Nhập họ và tên của bạn ở đây"
+                            <p class="titletk"><%=lang.get("19")%></p>
+                            <input type="text" name="name" placeholder="&#xf2bc;    <%=lang.get("20")%>"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
-                            <p class="titletk">Số điện thoại</p>
-                            <input type="text" name="phone"placeholder="&#xf10b;    Nhập số điện thoại của bạn ở đây"
+                            <p class="titletk"><%=lang.get("21")%></p>
+                            <input type="text" name="phone"placeholder="&#xf10b;    <%=lang.get("22")%>"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
                             <p class="titletk">Email</p>
-                            <input type="text" name="mail" placeholder="&#xf003;    Nhập email của bạn ở đây"
+                            <input type="text" name="mail" placeholder="&#xf003;    <%=lang.get("22")%>"
                                    style="font-family:Arial, FontAwesome">
                             <div class="lineinput1"></div>
                         </div>
                         <div class="dkcsbm agree">
                             <input type="checkbox" id="checkagree" name="check" value="check">
                             <label for="checkagree">
-                                <p>Bằng cách tạo tài khoản, bạn đồng ý với <a href="">các điều khoản và điều kiện</a> &
-                                    <a href="">chính sách bảo mật</a> của
-                                    chúng tôi</p>
+                                <p><%=lang.get("11")%> <a href=""><%=lang.get("26")%></a> <%=lang.get("27")%> <a
+                                        href=""><%=lang.get("28")%></a> <%=lang.get("29")%></p>
                             </label>
                         </div>
                         <div class="divsubmit">
                             <%--                          <button onclick="displayNoti()">Đăng ký</button>--%>
-                            <button type="submit">Đăng ký</button>
-                            <p>Bạn đã có tài khoản? <span onclick="dangnhap()">Đăng nhập</span></p>
+                            <button type="submit"><%=lang.get("11")%></button>
+                            <p><%=lang.get("24")%> <span onclick="dangnhap()"><%=lang.get("10")%></span></p>
                         </div>
 
                     </div>
@@ -231,15 +249,15 @@
         </div>
 
         <div class="contentright" id="contentright">
-            <p>Xin chào, bạn của tôi!</p>
-            <p>Đăng ký tài khoản dành riêng cho bạn và bắt đầu hành trình mua sắm với chúng tôi</p>
-            <button onclick="dangky()">ĐĂNG KÝ</button>
+            <p><%=lang.get("13")%></p>
+            <p><%=lang.get("14")%></p>
+            <button onclick="dangky()"><%=lang.get("15")%></button>
         </div>
 
         <div class="contentright ctl" id="ctl">
-            <p>Chào mừng trở lại!</p>
-            <p>Hãy duy trì kết nối với chúng tôi bằng cách đăng nhập tài khoản của bạn</p>
-            <button onclick="dangnhap()">ĐĂNG NHẬP</button>
+            <p><%=lang.get("16")%></p>
+            <p><%=lang.get("17")%></p>
+            <button onclick="dangnhap()"><%=lang.get("10")%></button>
         </div>
 
     </div>

@@ -1,6 +1,5 @@
 package worksWithDatabase.cart;
 
-import beans.cart.Cart;
 import connectionDatabase.DataSource;
 
 import java.sql.Connection;
@@ -8,11 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AddCartDAO {
-    public AddCartDAO() {
+public class RemoveCartDAO {
+    public RemoveCartDAO() {
     }
 
-    public boolean addCart(String ma_sp,String ma_kh,String ma_mau) {
+    public boolean remove(String ma_sp,String ma_kh,String ma_mau) {
         try {
             Connection con = DataSource.getInstance().getConnection();
 
@@ -25,7 +24,7 @@ public class AddCartDAO {
             ps.setString(3, ma_mau);
 
             ResultSet rs = ps.executeQuery();
-            String exe;
+            String exe = "";
             if (rs.next()){
 
                 String soluong = "select so_luong from gio_hang WHERE ma_sp = ? and ma_kh = ? and ma_mau = ?";
@@ -37,15 +36,12 @@ public class AddCartDAO {
                 ResultSet rs0 = ps0.executeQuery();
                 int soluongsp = 0;
                 if(rs0.next()){
-                    soluongsp = rs0.getInt("so_luong") + 1;
+                    soluongsp = rs0.getInt("so_luong") - 1;
                 }
                 rs0.close();
                 ps0.close();
 
-
                 exe = "UPDATE gio_hang set so_luong = " +soluongsp +" WHERE ma_sp = ? and ma_kh = ? and ma_mau = ?";
-            }else{
-                exe = "INSERT INTO gio_hang(so_luong,ma_sp,ma_kh,ma_mau) VALUES (1,?,?,?);";
             }
             rs.close();
             ps.close();
@@ -57,14 +53,14 @@ public class AddCartDAO {
             pse.setString(2,ma_kh);
             pse.setString(3,ma_mau);
 
-             int n = pse.executeUpdate();
+            int n = pse.executeUpdate();
 
             DataSource.getInstance().releaseConnection(con);
 
-             if(n != 0)
-                 return true;
+            if(n != 0)
+                return true;
             else
-                 return false;
+                return false;
 
 
         } catch (SQLException throwables) {
@@ -74,7 +70,7 @@ public class AddCartDAO {
     }
 
     public static void main(String[] args) {
-        AddCartDAO cartDAO = new AddCartDAO();
-        System.out.println(cartDAO.addCart("sp_1","kh001","mau_3"));
+        RemoveCartDAO cartDAO = new RemoveCartDAO();
+        System.out.println(cartDAO.remove("sp_1","kh001","mau_1"));
     }
 }

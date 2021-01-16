@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class Cart implements Serializable {
 
+    private String ma_sp;
+    private String ma_kh;
+    private String ma_mau;
     private String hinh_sp;
     private String ten_sp;
     private String size;
@@ -14,7 +17,10 @@ public class Cart implements Serializable {
     public Cart() {
     }
 
-    public Cart(String hinh_sp, String ten_sp, String size, String mau_sp, int so_luong, double gia) {
+    public Cart(String ma_sp, String ma_kh, String ma_mau, String hinh_sp, String ten_sp, String size, String mau_sp, int so_luong, double gia) {
+        this.ma_sp = ma_sp;
+        this.ma_kh = ma_kh;
+        this.ma_mau = ma_mau;
         this.hinh_sp = hinh_sp;
         this.ten_sp = ten_sp;
         this.size = size;
@@ -71,10 +77,37 @@ public class Cart implements Serializable {
         this.gia = gia;
     }
 
+    public String getMa_sp() {
+        return ma_sp;
+    }
+
+    public void setMa_sp(String ma_sp) {
+        this.ma_sp = ma_sp;
+    }
+
+    public String getMa_kh() {
+        return ma_kh;
+    }
+
+    public void setMa_kh(String ma_kh) {
+        this.ma_kh = ma_kh;
+    }
+
+    public String getMa_mau() {
+        return ma_mau;
+    }
+
+    public void setMa_mau(String ma_mau) {
+        this.ma_mau = ma_mau;
+    }
+
     @Override
     public String toString() {
         return "Cart{" +
-                "hinh_sp='" + hinh_sp + '\'' +
+                "ma_sp='" + ma_sp + '\'' +
+                ", ma_kh='" + ma_kh + '\'' +
+                ", ma_mau='" + ma_mau + '\'' +
+                ", hinh_sp='" + hinh_sp + '\'' +
                 ", ten_sp='" + ten_sp + '\'' +
                 ", size='" + size + '\'' +
                 ", mau_sp='" + mau_sp + '\'' +

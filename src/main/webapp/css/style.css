@@ -671,8 +671,10 @@ button:hover {
     position: absolute;
     right: 0;
     top: 100%;
-    width: 300px;
+    width: 304px;
     z-index: 9999;
+    overflow: hidden;
+    height: 275px;
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary:after,
@@ -6708,6 +6710,8 @@ span.fa.fa-cart-arrow-down {
 .tinhtien {
     background-color: #232020;
     color: white;
+    position: relative;
+    top: -116px;
 }
 
 .tinhtien:hover {
@@ -7032,4 +7036,42 @@ span.red {
 
 .aa-cartbox-summary.xemnhanhgiohang {
     transition: all 0s ease !important;
+}
+ul#cart_hover_data {
+    overflow: scroll;
+    height: 300px;
+    width: 299px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+span.aa-cartbox-total-title {
+    position: relative;
+    left: -45px;
+}
+#aa-header
+.aa-header-bottom
+.aa-cartbox
+.aa-cartbox-summary
+ul
+li
+.aa-cartbox-img
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+#aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary ul li .aa-cartbox-img {
+    display: block;
+    float: left;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+#aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary ul li .aa-cartbox-info h4 a {
+    color: #333333;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    font-family: system-ui;
 }

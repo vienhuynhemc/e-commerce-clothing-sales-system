@@ -18,7 +18,7 @@ public class LoadCartDAO {
         try {
         Connection con = DataSource.getInstance().getConnection();
 
-        String sql = "SELECT  sp.ten_sp,h.link_hinh_anh,s.ten_size, m.ten_mau,g.so_luong,g.so_luong*gsp.gia_sp as gia\n" +
+        String sql = "SELECT g.ma_sp,g.ma_kh,g.ma_mau, sp.ten_sp,h.link_hinh_anh,s.ten_size, m.ten_mau,g.so_luong,g.so_luong*gsp.gia_sp as gia\n" +
                 "from gio_hang g, hinh_anh_sp h,san_pham sp,thong_tin_chi_tiet_sp tt,gia_sp gsp,size s,mau m \n" +
                 "WHERE g.ma_kh = ?\n" +
                 "and g.ma_sp = h.ma_sp \n" +
@@ -42,9 +42,9 @@ public class LoadCartDAO {
 
 
             while (rs.next()){
-                result.add(new Cart(rs.getString(2),rs.getString(1),
-                                rs.getString(3),rs.getString(4),
-                                rs.getInt(5),rs.getDouble(6)));
+                result.add(new Cart(rs.getString(1),rs.getString(2)
+                ,rs.getString(3),rs.getString(5),rs.getString(4),rs.getString(6)
+                ,rs.getString(7),rs.getInt(8),rs.getDouble(9)));
             }
             rs.close();
             ps.close();

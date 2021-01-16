@@ -2,7 +2,8 @@
 <%@ page import="beans.DateTime" %>
 <%@ page import="beans.account.ErrorEditAccountCustomer" %>
 <%@ page import="model.language.IndexLanguageModel" %>
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="model.language.ChangInfoCustomerLanguageModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 21/12/2020
@@ -36,7 +37,11 @@
     <link rel="stylesheet" href="css/cart.css">
 
     <script src="js/informationCustomer.js"></script>
+    <!-------------------------------------- lấy session chứa tài khoản ------------------------------>
 
+
+
+    <!-------------------------------------- ----------------------------- ------------------------------>
     <!-------------------------------------- lấy session chứa tài khoản ------------------------------>
     <% AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user"); %>
 
@@ -44,6 +49,25 @@
 
 
 </head>
+
+
+
+
+<%
+    //  Chuyển về UTF-8
+    request.setCharacterEncoding("UTF-8");
+
+    //  Lấy list ngôn ngữ ra
+    Map<String, String> lang = (Map<String, String>) session.getAttribute("langList");
+
+    // Riêng khi test, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
+    if (lang == null) {
+        lang = ChangInfoCustomerLanguageModel.getInstance().getList("vietnamese");
+    }
+
+%>
+
+
 
 <body>
 
@@ -53,7 +77,7 @@
 
 <!-- Start header section -->
 <jsp:include page="../share/_LayoutHeader.jsp">
-    <jsp:param name="linkMainPage" value="IndexLanguageController"/>
+    <jsp:param name="linkMainPage" value="ChangeInfoLanguageController"/>
     <jsp:param name="levelPage" value=""/>
     <jsp:param name="activeselect" value="index.jsp"/>
 </jsp:include>
@@ -62,7 +86,8 @@
 <!-- catg header banner section -->
 <%request.setCharacterEncoding("utf-8");%>
 <jsp:include page="../share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Thay đổi thông tin"/>
+    <jsp:param name="titleVietnamese" value="Thay đổi thông tin"/>
+    <jsp:param name="titleEnglish" value="Change information"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
@@ -74,17 +99,19 @@
             <div class="left" id="leftaccount">
                 <p class="titleleft"><i class="fa fa-address-card-o"></i> TVTShop</p>
                 <div class="leftitemselect activeeselect" onclick="trangthai()" id="buttontrangthai">
-                    <p><i class="fa fa-tasks"></i> Trạng thái</p>
+                    <p><i class="fa fa-tasks"></i> <%=lang.get("26")%>></p>
                     <i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="leftitemselect" onclick="lichsumua()" id="buttonlsm">
-                    <p><i class="fa fa-history"></i>Lịch sử mua</p>
+                    <p><i class="fa fa-history"></i><%=lang.get("27")%></p>
                     <i class="fa fa-chevron-right"></i>
                 </div>
                 <form action="LogOutController" method="post">
                     <div class="leftitemselect">
-                        <a href="login.html"><i class="fa fa-power-off"></i>Đăng xuất</a>
-                       <input type="submit"><i class="fa fa-power-off"></i>Đăng xuất
+                        <a href="login.html"><i class="fa fa-power-off"></i><%=lang.get("28")%></a>
+<%--                       <input type="submit">--%>
+                        <i class="fa fa-power-off"></i>
+
                         <i class="fa fa-chevron-right"></i>
                     </div>
                 </form>
@@ -96,15 +123,14 @@
                     </div>
                     <p class="titleuser"><%=accountCustomer.getFullName()%><i class="fa fa-circle"></i></p>
                     <p class="gmailuser"><%=accountCustomer.getEmail()%></p>
-                    <p class="soinoi">Độ sôi nổi: Tiêu chuẩn</p>
+                    <p class="soinoi"><%=lang.get("29")%>: Tiêu chuẩn</p>
                     <input id="fileInput" type="file" style="display:none;" onchange="loadIMG(event)"/>
-                    <button type="button" class=" changeimg" onclick="document.getElementById('fileInput').click()">Thay đổi ảnh đại
-                        diện
+                    <button type="button" class=" changeimg" onclick="document.getElementById('fileInput').click()"><%=lang.get("30")%>
                     </button>
 
                     <div class=" planclick">
                         <div class="headerplanclick">
-                            <p>Độ sôi nổi của bạn</p>
+                            <p><%=lang.get("31")%></p>
                             <div class="lineheaderplanclick">
                                 <div></div>
                             </div>
@@ -112,12 +138,12 @@
                         <div class="contetnplanclick">
                             <div class="itemplanclick">
                                 <h3>5,467</h3>
-                                <p>Nhấp chuột trong ngày</p>
+                                <p><%=lang.get("32")%></p>
                             </div>
                             <div class="lineitemplanclick"></div>
                             <div class="itemplanclick">
                                 <h3>102,467</h3>
-                                <p>Nhấp chuột trong tháng</p>
+                                <p><%=lang.get("33")%></p>
                             </div>
                         </div>
                     </div>
@@ -131,29 +157,29 @@
             <div class="rightaccount" id="rightaccount">
 
                 <div class="status" id="status">
-                    <p class="statustitle">Tài khoản</p>
-                    <p class="statusavatar">Ảnh đại diện</p>
+                    <p class="statustitle"><%=lang.get("4")%></p>
+                    <p class="statusavatar"><%=lang.get("1")%></p>
                     <div class="divavatar">
                         <div class="avatar">
                             <input id="loadAvatar" type="hidden" name="avatar" value="<%=accountCustomer.getAvatar()%>" >
                             <img name="avatar" id="avatar2" src="<%=accountCustomer.getAvatar()%>" alt="">
                         </div>
-                        <button type="button" onclick="document.getElementById('fileInput').click()">Thay đổi</button>
-                        <button type="button" onclick="removeAvatar()">Xóa</button>
+                        <button type="button" onclick="document.getElementById('fileInput').click()"><%=lang.get("2")%></button>
+                        <button type="button" onclick="removeAvatar()"><%=lang.get("3")%></button>
                     </div>
                     <div class="linestatus"></div>
                     <div class="statusdivinput">
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Tên hiển thị</p>
-                                <p>Hiển thị tên người dùng</p>
+                                <p><%=lang.get("5")%></p>
+                                <p><%=lang.get("6")%></p>
                             </div>
                             <input name="displayName" type="text" value="<%=accountCustomer.getDisplayName()%>">
                         </div>
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Tên đầy đủ</p>
-                                <p>Bạn muốn được gọi như thế nào?</p>
+                                <p><%=lang.get("7")%></p>
+                                <p><%=lang.get("8")%></p>
                             </div>
                             <input name="fullName" type="text" value="<%=accountCustomer.getFullName()%>">
                         </div>
@@ -162,16 +188,16 @@
                     <div class="statusdivinput">
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Tài khoản</p>
-                                <p>Dùng để đăng nhập</p>
+                                <p><%=lang.get("4")%></p>
+                                <p><%=lang.get("9")%></p>
                             </div>
                             <input name="" type="text" value="<%=accountCustomer.getUserName()%> " disabled>
                             <input name="userName" type="hidden" value="<%=accountCustomer.getUserName()%>">
                         </div>
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Mật khẩu</p>
-                                <p id="doimatkhau" onclick="doimatkhau()" class="doimatkhau">Đổi mật khẩu</p>
+                                <p><%=lang.get("10")%></p>
+                                <p id="doimatkhau" onclick="doimatkhau()" class="doimatkhau"><%=lang.get("11")%></p>
                             </div>
                             <input type="password" value="<%=accountCustomer.getPassWord() %>" disabled>
                         </div>
@@ -180,15 +206,15 @@
                     <div class="statusdivinput">
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Địa chỉ email</p>
-                                <p>Dùng để nhận thông báo và lấy lại mật khẩu</p>
+                                <p><%=lang.get("12")%></p>
+                                <p><%=lang.get("13")%></p>
                             </div>
                             <input type="text" value="<%=accountCustomer.getEmail()%>" disabled>
                         </div>
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Số điện thoại</p>
-                                <p>Dùng để nhận thông báo và lấy lại mật khẩu</p>
+                                <p><%=lang.get("14")%></p>
+                                <p><%=lang.get("13")%></p>
                             </div>
                             <input type="text" value="<%=accountCustomer.getPhone()%>" disabled>
                         </div>
@@ -197,8 +223,8 @@
                     <div class="statusdivinput">
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Ngày tạo</p>
-                                <p>Bạn đã tham gia với chúng tôi lâu chưa?</p>
+                                <p><%=lang.get("15")%></p>
+                                <p><%=lang.get("16")%></p>
                             </div>
 
                             <%DateTime date = accountCustomer.getRegisDate();%>
@@ -207,41 +233,41 @@
                         </div>
                         <div class="statusdivinputitem">
                             <div>
-                                <p>Mã tài khoản</p>
-                                <p>Để chúng tôi nhận biết tài khoản của bạn</p>
+                                <p><%=lang.get("17")%></p>
+                                <p><%=lang.get("18")%></p>
                             </div>
                             <input type="text" value="<%=accountCustomer.getIdUser()%>" disabled>
                         </div>
                     </div>
                     <div class="linestatus"></div>
                     <div class="connectgg">
-                        <p>Liên kết tài khoản</p>
-                        <p>Chúng tôi sử dụng nó để cho phép bạn đăng nhập và hoàn thiện thông tin của bạn</p>
+                        <p><%=lang.get("19")%></p>
+                        <p><%=lang.get("20")%></p>
                         <div>
                             <div><img src="../img/google.jpg" alt="">
-                                <p>Đăng nhập với Google</p>
+                                <p><%=lang.get("21")%></p>
                             </div>
-                            <button>Kết nối</button>
+                            <button><%=lang.get("22")%></button>
                         </div>
                     </div>
                     <div class="linestatus"></div>
 
                     <div class="deleleaccount">
                         <div>
-                            <p>Xóa tài khoản</p>
-                            <p>Nếu xóa tài khoản, bạn sẽ mất toàn bộ dữ liệu của mình</p>
+                            <p><%=lang.get("23")%></p>
+                            <p><%=lang.get("24")%></p>
                         </div>
-                        <p>Xóa tài khoản...</p>
+                        <p><%=lang.get("23")%>...</p>
                     </div>
 
                     <div class="linestatus"></div>
 
-                    <button type="submit" class="savestatus">Lưu thay đổi</button>
+                    <button type="submit" class="savestatus"><%=lang.get("25")%></button>
                 </div>
 
                 <div class="historyorder" id="historyorder">
                     <div class="historyheader">
-                        <p class="historytitle">Lịch sử mua hàng</p>
+                        <p class="historytitle"><%=lang.get("27")%></p>
                         <input type="text" placeholder="Tìm kiếm mã đơn hàng">
                     </div>
                     <div class="historycontent">

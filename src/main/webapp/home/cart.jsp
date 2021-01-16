@@ -1,5 +1,5 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="model.language.IndexLanguageModel" %>
+<%@ page import="model.language.CartLanguageModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
@@ -52,17 +52,7 @@
 
 
 
-    <%
 
-        //  Lấy list ngôn ngữ ra
-        Map<String ,String> lang = (Map<String, String>) session.getAttribute("langList");
-
-        // Riêng ở trang chủ, khi mở server thì nó vô thẳng trang này nên là lấy thủ công ra 1 tí
-        if(lang == null){
-            lang = IndexLanguageModel.getInstance().getList("vietnamese");
-        }
-
-    %>
 
 
 </head>
@@ -75,8 +65,8 @@
 
 <!-- Start header section -->
 <jsp:include page="../share/_LayoutHeader.jsp">
-    <jsp:param name="linkMainPage" value="IndexLanguageController"/>
-    <jsp:param name="levelPage" value="../"/>
+    <jsp:param name="linkMainPage" value="CartLanguageController"/>
+    <jsp:param name="levelPage" value=""/>
     <jsp:param name="activeselect" value="index.jsp"/>
 </jsp:include>
 <!-- / header section -->
@@ -89,77 +79,15 @@
 <!-- catg header banner section -->
 <%request.setCharacterEncoding("utf-8");%>
 <jsp:include page="../share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Giỏ hàng"/>
+    <jsp:param name="titleVietnamese" value="Giỏ hàng"/>
+    <jsp:param name="titleEnglish" value="Cart"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
 <section class="contentcart">
-    <div class="cart">
-        <div class="cartleft" id="loadCart">
-
-            <!-- dùng ajax để load cart-->
+    <div class="cart" id="loadCart">
 
 
-
-
-
-            <!-- end Code-->
-        </div>
-
-        <div class="cartright">
-            <h3>Thông tin đơn hàng</h3>
-            <div class="pricecr">
-                <div class="pricedivright">
-                    <p>Phí vận chuyển: </p>
-                    <p>70,000 VND</p>
-                </div>
-                <div class="pricedivright">
-                    <p>Tổng tiền: </p>
-                    <p>4,359,000 VND</p>
-                </div>
-            </div>
-            <div class="linecr"></div>
-            <div class="pricecr">
-                <div class="pricedivright">
-                    <p>Số loại:</p>
-                    <p>6</p>
-                </div>
-                <div class="pricedivright">
-                    <p>Số lượng</p>
-                    <p>14</p>
-                </div>
-            </div>
-            <div class="linecr"></div>
-            <div class="pricecr">
-                <div class="pricedivrightinfor">
-                    <div>
-                        <i class="fa fa-clock-o"></i>
-                        <p>Thời gian giao hàng từ 1-5 ngày tùy khu vực</p>
-                    </div>
-                    <div>
-                        <i class="fa fa-truck"></i>
-                        <p>Free ship cho đơn hàng từ 499k trở lên</p>
-                    </div>
-                </div>
-            </div>
-            <div class="linecr"></div>
-            <div class="note">
-                <p>Ghi chú đơn hàng</p>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-            </div>
-            <a href="checkout.html" class="submit">
-                Thanh toán
-            </a>
-
-            <!-- Lam dep -->>
-            <div class="box1">
-            </div>
-            <div class="box2">
-                <div></div>
-                <div style="background-color: #ff7315;"></div>
-                <div></div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -218,7 +146,7 @@
 <!-- Price picker slider -->
 <script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<%--<script src="js/custom.js"></script>--%>
+<script src="js/custom.js"></script>
 <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
 
 <!--ajax để load danh sách sản phẩm trong giỏ hàng-->
