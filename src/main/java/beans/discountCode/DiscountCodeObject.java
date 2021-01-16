@@ -1,10 +1,11 @@
 package beans.discountCode;
 
+import beans.ObjectPageAdmin;
 import beans.nextPage.NextPageObject;
 
 import java.util.List;
 
-public class DiscountCodeObject {
+public class DiscountCodeObject implements ObjectPageAdmin {
 
     //  List mã giảm giá để đổ dữ liệu ra
     List<DiscountCode> discountCodes;
@@ -39,6 +40,8 @@ public class DiscountCodeObject {
     //  Content notify
     private String title;
     private String conntent;
+
+    private boolean ready;
 
     //  Constructor rỗng
     public DiscountCodeObject() {
@@ -141,4 +144,13 @@ public class DiscountCodeObject {
         this.conntent = conntent;
     }
 
+    @Override
+    public boolean isReady() {
+        return ready;
+    }
+
+    @Override
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
 }

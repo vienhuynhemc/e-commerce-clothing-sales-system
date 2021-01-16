@@ -2,7 +2,9 @@
 <%@ page import="beans.nextPage.NextPageObject" %>
 <%@ page import="java.util.List" %>
 <%@ page import="beans.nextPage.NextPageConfiguration" %>
-<%@ page import="beans.discountCode.DiscountCode" %><%--
+<%@ page import="beans.discountCode.DiscountCode" %>
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 31/12/2020
@@ -30,12 +32,28 @@
 <body>
 
 <%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
 
-    //  Lấy DiscountCode
-    DiscountCodeObject discountCodeObject = (DiscountCodeObject) session.getAttribute("discountCodeObject");
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.quanLyMaGiamGia");
 
-%>
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
 
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.quanLyMaGiamGia")){
+
+            DiscountCodeObject discountCodeObject  = (DiscountCodeObject) userAdmin.getListOfFunction().get("discountCodeObject");
+            if(discountCodeObject == null || !discountCodeObject.isReady()){
+                response.sendRedirect("../../DiscountCodeController");
+            }else {
+ %>
+
+<!-------------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------------- Form yes no ------------------------------------------------->
 <div id="formYesNo">
     <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
@@ -272,7 +290,7 @@
                             #<%= d.getId()%>
                         </p>
                         <p>
-                           <%=d.getName()%>
+                            <%=d.getName()%>
                         </p>
 
                         <p><%=d.getType()%></p>
@@ -390,11 +408,11 @@
                         </div>
                     </div>
 
-                        <%
-                                // End đổ dữ liệu list mã giảm giá
-                            }
+                    <%
+                            // End đổ dữ liệu list mã giảm giá
+                        }
 
-                        %>
+                    %>
 
                 </div>
             </div>
@@ -453,3 +471,20 @@
 </html>
 
 <script src="../../js/quanLyMaGiamGiaAdmin.js"></script>
+<!---------------------------------------------------------------------------------------------------------------------->
+
+<%     }
+
+        }else{
+
+            //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+            response.sendRedirect("../../AdminIndexNavigation");
+
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>
+
+

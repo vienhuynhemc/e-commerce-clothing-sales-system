@@ -1,11 +1,12 @@
 package beans.manufacturer;
 
+import beans.ObjectPageAdmin;
 import beans.nextPage.NextPageObject;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class ManufacturerObject implements Serializable {
+public class ManufacturerObject implements Serializable, ObjectPageAdmin {
 
     //  Số hãng sản xuất để đỗ dữ liệu ra
     private List<Manufacturer> manufacturers;
@@ -40,6 +41,8 @@ public class ManufacturerObject implements Serializable {
     //  Content notify
     private String title;
     private String conntent;
+
+    private boolean ready;
 
     //  Constructor rỗng
     public ManufacturerObject() {
@@ -140,5 +143,15 @@ public class ManufacturerObject implements Serializable {
 
     public void setConntent(String conntent) {
         this.conntent = conntent;
+    }
+
+    @Override
+    public boolean isReady() {
+        return ready;
+    }
+
+    @Override
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 }

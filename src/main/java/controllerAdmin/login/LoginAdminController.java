@@ -1,5 +1,6 @@
 package controllerAdmin.login;
 
+import beans.ObjectPageAdmin;
 import beans.loginAdmin.*;
 import model.loginAdmin.LoginAdminModel;
 
@@ -27,7 +28,7 @@ public class LoginAdminController extends HttpServlet {
         String remember = request.getParameter("remember");
 
         //  Lưu biến thông báo
-        LoginAdminObject loginAdminObject = new LoginAdminObject(  "", remember);
+        LoginAdminObject loginAdminObject = new LoginAdminObject("", remember);
         boolean notify = false;
 
         //  Kiểm tra xem thử đúng tài khoản có đúng hay không
@@ -64,16 +65,16 @@ public class LoginAdminController extends HttpServlet {
         }
 
         //  Nếu như có thông báo thì bạn đã nhập sai
-        if(notify){
+        if (notify) {
 
             //  Tới trang đăng nhập thì ta xóa remember account khỏi sesstion
             request.getSession().removeAttribute("rememberAccount");
 
             //  Lưu vô session rồi senDirect
-            request.getSession().setAttribute("loginAdminObject",loginAdminObject);
+            request.getSession().setAttribute("loginAdminObject", loginAdminObject);
             response.sendRedirect("admin/home/login.jsp");
 
-        }else {
+        } else {
 
             //  Nếu tới đây là oke hết rồi, chuyển người dùng tới controller chuyển trang, nếu đủ quyền hạn thì nó ở
             //  đấy luôn còn nếu không đủ thì nó sẽ cuyển tới trang tương ứng (làm thế này để trấch trường hợp vào = link)
@@ -86,17 +87,17 @@ public class LoginAdminController extends HttpServlet {
             accountStaffAdmin.setRole(role);
 
             //  oke . H tạo đối tượng user rồi lưu vào session
-            UserAdmin userAdmin = new UserAdmin(accountStaffAdmin, new HashMap<String, Object>());
+            UserAdmin userAdmin = new UserAdmin(accountStaffAdmin, new HashMap<String, ObjectPageAdmin>());
             request.getSession().setAttribute("userAdmin", userAdmin);
 
             //  À quên, kiểm tra xem thứ có nhớ mật khẩu hay không. có thì tạo một đối tượng rêmmberAccount lưu vào session
-            if(remember != null){
+            if (remember != null) {
                 RememberAccount rememberAccount = new RememberAccount(tai_khoan, mat_khau);
                 request.getSession().setAttribute("rememberAccount", rememberAccount);
             }
 
-            //  sendirect tới controller điều hướng trang index
-            response.sendRedirect("AdminIndexNavigation");
+            //  sendirect tới controller điều hướng trackpage
+            response.sendRedirect("TrackPageController");
 
         }
 

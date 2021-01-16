@@ -1,5 +1,7 @@
 package beans.loginAdmin;
 
+import beans.ObjectPageAdmin;
+
 import java.util.Map;
 
 public class UserAdmin {
@@ -8,12 +10,21 @@ public class UserAdmin {
     private AccountStaffAdmin account;
 
     //  User Admin chứa một hashMap các object quản lý trang
-    private Map<String,Object> listOfFunction;
+    private Map<String, ObjectPageAdmin> listOfFunction;
 
     //  CONSTRUCTOR nhận đầy đủ thông tin
-    public UserAdmin(AccountStaffAdmin account, Map<String, Object> listOfFunction) {
+    public UserAdmin(AccountStaffAdmin account, Map<String, ObjectPageAdmin> listOfFunction) {
         this.account = account;
         this.listOfFunction = listOfFunction;
+    }
+
+    //  Phương thức cập nhập ready tất cả thành false trừ thằng có key truyền vào
+    public void updateReady(String keyIgnore) {
+        for (Map.Entry<String, ObjectPageAdmin> e : listOfFunction.entrySet()) {
+            if(!e.getKey().equals(keyIgnore)){
+                e.getValue().setReady(false);
+            }
+        }
     }
 
     //  GETTER AND SETTER
@@ -25,11 +36,11 @@ public class UserAdmin {
         this.account = account;
     }
 
-    public Map<String, Object> getListOfFunction() {
+    public Map<String, ObjectPageAdmin> getListOfFunction() {
         return listOfFunction;
     }
 
-    public void setListOfFunction(Map<String, Object> listOfFunction) {
+    public void setListOfFunction(Map<String, ObjectPageAdmin> listOfFunction) {
         this.listOfFunction = listOfFunction;
     }
 }

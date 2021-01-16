@@ -54,7 +54,7 @@ public class StaffWorksWithDatabase {
 
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nhan_vien WHERE ma_tai_khoan = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nhan_vien WHERE ma_nv = ?");
             preparedStatement.setString(1, ma_tai_khoan);
 
             ResultSet resultset = preparedStatement.executeQuery();

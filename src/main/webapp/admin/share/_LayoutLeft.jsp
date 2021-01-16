@@ -115,7 +115,7 @@
                 <input type="checkbox" style="display: none;">
                 <%}%>
             </div>
-            <a href="../../DiscountCodeController" class="indexleftselectitem  ">
+            <a href="../home/quanLyMaGiamGia.jsp" class="indexleftselectitem  ">
                 <div <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyMaGiamGia")) {%>
                         class="active"
                         <%}%>
