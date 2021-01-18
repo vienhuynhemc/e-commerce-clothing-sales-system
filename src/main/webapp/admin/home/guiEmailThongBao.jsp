@@ -1,4 +1,10 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.emailNotification.EmailNotificationObject" %>
+<%@ page import="beans.nextPage.NextPageObject" %>
+<%@ page import="java.util.List" %>
+<%@ page import="beans.nextPage.NextPageConfiguration" %>
+<%@ page import="beans.emailNotification.EmailNotification" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -13,336 +19,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Gửi email thông báo</title>
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/Truong/jquery/jquery-3.5.1.min.js"></script>
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
 
     <link rel="stylesheet" href="../../css/guiEmailThongBaoAdmin.css">
-    <script src="../../js/guiEmailThongBaoAdmin.js"></script>
+
+    <script src="../../ckeditor/ckeditor.js"></script>
 
 </head>
 
 <body>
 
+<%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.guiEmailThongBao");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.guiEmailThongBao")){
+
+            EmailNotificationObject emailNotificationObject  = (EmailNotificationObject) userAdmin.getListOfFunction().get("emailNotificationObject");
+            if(emailNotificationObject == null || !emailNotificationObject.isReady()){
+                response.sendRedirect("../../EmailNotificationController");
+            }else {
+%>
+
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
         <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <p onclick="submitAdd()" id="pFormYesNo">Có, chắc chắn <i class="fa fa-check"></i></p>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
             </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li class="activelv2"><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a>
-                    </li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;" checked>
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
         </div>
     </div>
 </div>
 
-<div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
+<form action="../../EmailNotificationAddController" method="post" style="display: none" id="fromSubmidAdd">
+    <input type="text" name="titleSend" id="titleSend">
+    <input type="text" name="dataSend" id="dataSend">
+</form>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (emailNotificationObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+       emailNotificationObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=emailNotificationObject.getTitle()%></p>
+            <p><%=emailNotificationObject.getConntent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
             </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> bình luận trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa bình luận trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> bình luận trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa bình luận trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar7.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
-                    <p>Admin</p>
-                </div>
-            </a>
         </div>
     </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
 
-    <div class="backgroundindexmain">
-    </div>
+<jsp:include page="../share/_LayoutLeft.jsp">
+    <jsp:param name="activeSelect" value="guiEmailThongBao"/>
+</jsp:include>
+<div class="indexright">
+
+    <jsp:include page="../share/_LayoutTop.jsp"/>
 
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
         <div>
-            <div class="left">
+            <form class="left" method="post" action="../../EmailNotificationController" id="mainForm" onsubmit="return false">
                 <div class="leftheader">
-                    <select name="" id="">
-                        <option value="" selected>Ngày gửi</option>
+                    <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
+
+                        <% String selectSearchAndSort = emailNotificationObject.getSelectSearchAndSort(); %>
+
+                        <option value="dateCreated"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("dateCreated")) {%>
+                                selected
+                                <%}%>
+                        >Ngày gửi</option>
+                        <option value="id"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("id")) {%>
+                                selected
+                                <%}%>
+                        >Mã TB</option>
+                        <option value="nameStaff"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("nameStaff")) {%>
+                                selected
+                                <%}%>
+                        >Tên NV</option>
                     </select>
                     <div>
-                        <div class="leftheadersort" onclick="changesort(this)">
-                            <i class=" fa fa-sort-amount-desc" id="leftheadersort1"></i>
-                            <i class=" fa fa-sort-amount-asc" id="leftheadersort2"></i>
-                            <input type="checkbox" style="display: none;">
+
+                        <% String sort = emailNotificationObject.getSort(); %>
+
+                        <% if (sort.equals("DESC")) {%>
+                        <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
+                            <i class=" fa fa-sort-amount-desc"></i>
                         </div>
-                        <div class="leftheadersearch" id="leftheadersearch">
-                            <i class="fa fa-search" onclick="showsearch()"></i>
+                        <%} else {%>
+                        <div class="leftheadersort" id="leftheadersort" onclick="changesort()"
+                             style="margin-top:4px">
+                            <i class=" fa fa-sort-amount-asc" style="margin-top: -10px"></i>
+                        </div>
+                        <%}%>
+
+                        <div class="leftheadersearch">
                             <div>
-                                <i class="fa fa-search" onclick="hiddensearch()"></i>
-                                <input type="text" placeholder="Tìm kiếm">
+                                <i class="fa fa-search" onclick="searchByClick()" ></i>
+                                <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
+                                       value="<%=emailNotificationObject.getSearch()%>">
+                                <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="leftnextpage">
-                    <button><i class="fa fa-caret-left"></i></button>
+                <div class="leftnextpage" id="leftnextpage">
+                    <span onclick="prePage(<%=emailNotificationObject.getNowPage()%>)"><i
+                            class="fa fa-caret-left"></i></span>
                     <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li class="none">...</li>
-                        <li>11</li>
+
+                        <%
+                            //  Lấy list next page đổ next page ra
+                            List<NextPageObject> nextPages = emailNotificationObject.getNextPages();
+                            for (NextPageObject n : nextPages) {
+                        %>
+                        <li
+                                <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
+                                class="activeli"
+                                <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
+                                class="none"
+                                <%} else {%>
+                                onclick="pageNavigation(<%=n.getValue()%>)"
+                                <%}%>
+                        >
+                            <%if(n.getType() == NextPageConfiguration.NONE){%>
+                            <p onclick="showselectgopage(this)"><%=n.getValue()%></p>
+                            <%}else{%>
+                            <%=n.getValue()%>
+                            <%}%>
+                            <div class="gopage">
+                                <input type="checkbox" style="display: none;">
+                                <input type="text">
+                                <i class="fa fa-angle-right" onclick="gopagefast(this)"></i>
+                            </div>
+
+                        </li>
+                        <%
+                                //  Kết thúc đổ next page
+                            }
+                        %>
                     </ul>
-                    <button><i class="fa fa-caret-right"></i></button>
+                    <span onclick="nextPage(<%=emailNotificationObject.getNowPage()%>,<%=emailNotificationObject.getMaximumPage()%>)"><i
+                            class="fa fa-caret-right"></i></span>
+                    <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
+                           value="<%=emailNotificationObject.getNowPage()%>">
+                    <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
+                           value="<%=emailNotificationObject.getMaximumPage()%>">
                 </div>
+
                 <div>
                     <div id="listleftitem">
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item0">
+                        <div class="leftitem" onclick="vietThongBaoMoi(this)" id="item0">
 
                             <div>
                                 <img src="../img/icon-mail.png" alt="">
@@ -352,277 +217,115 @@
                                 <p>Viết thông báo mới</p>
                                 <div class="khonghoanthanh">
                                     <i class="fa fa-circle"></i>
-                                    <p>TB1063</p>
+                                    <p>#<%=emailNotificationObject.getNextId()%></p>
                                 </div>
                             </div>
 
                             <div>
                             </div>
                             <div>
-                                <div class="rightheader">
-                                    <div>
-                                        <div>
-                                            <img src="../../img/product/avatar7.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="rightinfor">
-                                        <p>Nguyễn Thị Hoa Hồng</p>
-                                        <p>Tới tất cả</p>
-                                    </div>
-
-                                    <div class="rightend">
-                                    </div>
-
-                                </div>
-                                <div class="rightcontent">
-                                    <div>
-                                        <textarea name="" id="" cols="30" rows="10"
-                                                  placeholder="Nhập nội dung ở đây"></textarea>
-                                    </div>
-                                </div>
-                                <div class="rightsubmit">
-                                    <button>GỬI</button>
-                                </div>
                             </div>
-
-
                         </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item1">
+
+                        <%
+                          List<EmailNotification> emailNotifications = emailNotificationObject.getEmailNotificationLists();
+                          int count = 0;
+                          for(EmailNotification emailNotification : emailNotifications){
+                              count++;
+                        %>
+                        <div class="leftitem" onclick="changerightdonhang(this)" id="item<%=count%>">
 
                             <div>
-                                <img src="../../img/product/avatar7.jpg" alt="">
+                                <img src="<%=emailNotification.getLinkImgStaff()%>" alt="">
                             </div>
 
                             <div>
-                                <p>Nguyễn Thị Hoa Hồng</p>
+                                <p><%=emailNotification.getNameStaff()%></p>
                                 <div class="hoanthanh">
                                     <i class="fa fa-circle"></i>
-                                    <p>TB1062</p>
+                                    <p>#<%=emailNotification.getEmailNotificationId()%></p>
                                 </div>
                             </div>
 
-                            <div>
+                            <div style="display: none">
+                                <input type="text" value="<%=emailNotification.getEmailNotificationId()%>">
                             </div>
 
                             <div>
                                 <div class="rightheader">
                                     <div>
                                         <div>
-                                            <img src="../../img/product/avatar7.jpg" alt="">
+                                            <img src="<%=emailNotification.getLinkImgStaff()%>" alt="">
                                         </div>
                                     </div>
 
                                     <div class="rightinfor">
-                                        <p>Nguyễn Thị Hoa Hồng</p>
+                                        <p><%=emailNotification.getNameStaff()%></p>
                                         <p>Tới tất cả</p>
                                     </div>
 
                                     <div class="rightend">
-                                        <p>25 Tháng Tám, 2018, 11:18 AM</p>
+                                        <p><%=emailNotification.getDateSend().toString()%></p>
                                         <i class="fa fa-trash"
-                                           onclick="removeitem(document.getElementById('item1'))"></i>
+                                           onclick="removeitem(document.getElementById('item<%=count%>'))"></i>
                                     </div>
 
                                 </div>
                                 <div class="rightcontent">
                                     <div>
-                                        <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                            mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
+                                        <p class="titleEmail">Tiêu đề: <%=emailNotification.getTitle()%></p>
+                                        <%=emailNotification.getContent()%>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item2">
-
-                            <div>
-                                <img src="../../img/product/avatar2.jpg" alt="">
-                            </div>
-
-                            <div>
-                                <p>Nguyễn Văn A</p>
-                                <div class="hoanthanh">
-                                    <i class="fa fa-circle"></i>
-                                    <p>TB1061</p>
-                                </div>
-                            </div>
-
-                            <div>
-                            </div>
-
-                            <div>
-                                <div class="rightheader">
-                                    <div>
-                                        <div>
-                                            <img src="../../img/product/avatar2.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="rightinfor">
-                                        <p>Nguyễn Văn A</p>
-                                        <p>Tới tất cả</p>
-                                    </div>
-
-                                    <div class="rightend">
-                                        <p>24 Tháng Tám, 2018, 11:18 AM</p>
-                                        <i class="fa fa-trash"
-                                           onclick="removeitem(document.getElementById('item2'))"></i>
-                                    </div>
-
-                                </div>
-                                <div class="rightcontent">
-                                    <div>
-                                        <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                            mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item3">
-
-                            <div>
-                                <img src="../../img/product/avatar7.jpg" alt="">
-                            </div>
-
-                            <div>
-                                <p>Nguyễn Thị Hoa Hồng</p>
-                                <div class="hoanthanh">
-                                    <i class="fa fa-circle"></i>
-                                    <p>TB1060</p>
-                                </div>
-                            </div>
-
-                            <div>
-                            </div>
-
-                            <div>
-                                <div class="rightheader">
-                                    <div>
-                                        <div>
-                                            <img src="../../img/product/avatar7.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="rightinfor">
-                                        <p>Nguyễn Thị Hoa Hồng</p>
-                                        <p>Tới tất cả</p>
-                                    </div>
-
-                                    <div class="rightend">
-                                        <p>23 Tháng Tám, 2018, 11:18 AM</p>
-                                        <i class="fa fa-trash"
-                                           onclick="removeitem(document.getElementById('item3'))"></i>
-                                    </div>
-
-                                </div>
-                                <div class="rightcontent">
-                                    <div>
-                                        <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                            mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item4">
-
-                            <div>
-                                <img src="../../img/product/avatar7.jpg" alt="">
-                            </div>
-
-                            <div>
-                                <p>Nguyễn Thị Hoa Hồng</p>
-                                <div class="hoanthanh">
-                                    <i class="fa fa-circle"></i>
-                                    <p>TB1059</p>
-                                </div>
-                            </div>
-
-                            <div>
-                            </div>
-
-                            <div>
-                                <div class="rightheader">
-                                    <div>
-                                        <div>
-                                            <img src="../../img/product/avatar7.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="rightinfor">
-                                        <p>Nguyễn Thị Hoa Hồng</p>
-                                        <p>Tới tất cả</p>
-                                    </div>
-
-                                    <div class="rightend">
-                                        <p>22 Tháng Tám, 2018, 11:18 AM</p>
-                                        <i class="fa fa-trash"
-                                           onclick="removeitem(document.getElementById('item4'))"></i>
-                                    </div>
-
-                                </div>
-                                <div class="rightcontent">
-                                    <div>
-                                        <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                            mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)" id="item5">
-
-                            <div>
-                                <img src="../../img/product/avatar2.jpg" alt="">
-                            </div>
-
-                            <div>
-                                <p>Nguyễn Văn A</p>
-                                <div class="hoanthanh">
-                                    <i class="fa fa-circle"></i>
-                                    <p>TB1058</p>
-                                </div>
-                            </div>
-
-                            <div>
-                            </div>
-
-                            <div>
-                                <div class="rightheader">
-                                    <div>
-                                        <div>
-                                            <img src="../../img/product/avatar2.jpg" alt="">
-                                        </div>
-                                    </div>
-
-                                    <div class="rightinfor">
-                                        <p>Nguyễn Văn A</p>
-                                        <p>Tới tất cả</p>
-                                    </div>
-
-                                    <div class="rightend">
-                                        <p>20 Tháng Tám, 2018, 11:18 AM</p>
-                                        <i class="fa fa-trash"
-                                           onclick="removeitem(document.getElementById('item5'))"></i>
-                                    </div>
-
-                                </div>
-                                <div class="rightcontent">
-                                    <div>
-                                        <p>Xin chào mọi người, <br><br> Shop chúng tôi vừa giảm giá 352 sản phẩm. <br>Hàng
-                                            mới về với số lượng là 1052. <br><br> Thân gửi,<br>-Nguyễn Thị Hoa Hồng</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
-            </div>
+
+                <!-- action -->
+                <input type="text" name="action" style="display: none" id="action" value="">
+
+                <!-- sort -->
+                <% if (sort.equals("DESC")) {%>
+                <input type="checkbox" style="display: none" name="sort" id="sort">
+                <% } else {%>
+                <input type="checkbox" style="display: none" name="sort" id="sort" checked>
+                <%}%>
+
+            </form>
 
             <div class="right" id="right">
+                <div id="vietThongBaoMoi">
+                    <div class="rightheader">
+                        <div>
+                            <div>
+                                <img src="<%=accountStaffAdmin.getAvatarLink()%>" alt="">
+                            </div>
+                        </div>
+
+                        <div class="rightinfor">
+                            <p><%=accountStaffAdmin.getDisplayName()%></p>
+                            <p>Tới tất cả</p>
+                        </div>
+
+                        <div class="rightend">
+                        </div>
+
+                    </div>
+                    <div class="rightcontentt">
+                        <input type="text" placeholder="Tiêu đề email" id="titleEmail" required>
+                        <textarea name="thongBaoMoi" id="thongBaoMoi" cols="30" rows="10"
+                                                  placeholder="Nhập nội dung ở đây"></textarea>
+                    </div>
+                    <div class="rightsubmit">
+                        <button onclick="guiEmail()">GỬI</button>
+                        <input type="text" style="display: none" value="<%=emailNotificationObject.getNextId()%>" id="nextId">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -633,3 +336,28 @@
 </body>
 
 </html>
+
+!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
+<script src="../../js/guiEmailThongBaoAdmin.js"></script>
+<%     }
+
+}else{
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>
+

@@ -1,4 +1,4 @@
-package model.addressModel;
+package model.address;
 
 import beans.address.Provincial;
 import worksWithDatabase.provincial.ProvincialDataSource;

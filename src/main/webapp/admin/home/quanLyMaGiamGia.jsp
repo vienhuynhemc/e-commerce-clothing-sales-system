@@ -190,7 +190,7 @@
 
                             <div class="leftheadersearch">
                                 <div>
-                                    <i class="fa fa-search"></i>
+                                    <i class="fa fa-search" onclick="searchByClick()" ></i>
                                     <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
                                            value="<%=discountCodeObject.getSearch()%>">
                                     <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>

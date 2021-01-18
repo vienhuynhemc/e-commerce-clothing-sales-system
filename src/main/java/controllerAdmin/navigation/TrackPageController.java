@@ -20,12 +20,23 @@ public class TrackPageController extends HttpServlet {
         String trackPage = (String) request.getSession().getAttribute("trackPage");
         if (trackPage != null) {
             if (trackPage.equals("admin.quanLyMaGiamGia")) {
+                request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/quanLyMaGiamGia.jsp");
             } else if (trackPage.equals("admin.quanLyHangSanXuat")) {
+                request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
+            }else if(trackPage.equals("admin.guiEmailThongBao")){
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/guiEmailThongBao.jsp");
             }
         } else {
             response.sendRedirect("AdminIndexNavigation");
         }
+        //  Lấy thời gian hiện tại
+        long nowTime = System.currentTimeMillis();
+        //  Chạy minimaxAlphabeta của m
+        // to do
+        //  Lấy thời gian đã sử dụng
+        long timeUsed = System.currentTimeMillis()- nowTime;
     }
 }

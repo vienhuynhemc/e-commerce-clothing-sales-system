@@ -468,6 +468,11 @@ function loadPage() {
     document.getElementById("mainForm").submit();
 }
 
+function searchByClick(){
+    document.getElementById("action").value = "search";
+    document.getElementById("mainForm").submit();
+}
+
 function prePage(nowPage) {
     let n = parseInt(nowPage);
     if (n > 1) {

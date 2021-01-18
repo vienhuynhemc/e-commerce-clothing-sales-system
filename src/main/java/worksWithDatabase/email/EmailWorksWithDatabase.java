@@ -2,7 +2,10 @@ package worksWithDatabase.email;
 
 import connectionDatabase.DataSource;
 
+import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmailWorksWithDatabase {
 
@@ -106,6 +109,41 @@ public class EmailWorksWithDatabase {
         //  Return false
         return false;
 
+    }
+
+    //  Phương thức lấy tất cả email trong csdl
+    public List<String> getAllEmail(){
+        //  Lấy 1 connection ra
+        Connection conection = DataSource.getInstance().getConnection();
+
+        List<String>  result = new ArrayList<String>();
+
+        try {
+
+            //  Bởi vị không có where ở đây nên tạo statement mà sử dụng
+            Statement statement = conection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT email FROM email");
+            while(resultSet.next()){
+                result.add(resultSet.getString("email"));
+            }
+
+            resultSet.close();
+
+            //  Không thành công thì vẫn phải đóng statement
+            statement.close();
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+
+        //  Trả conncetion
+        DataSource.getInstance().releaseConnection(conection);
+
+        //  Return false
+        return result;
     }
 
 }

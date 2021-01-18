@@ -1,15 +1,18 @@
 package worksWithDatabase.account;
 
 import beans.DateTime;
+import beans.emailNotification.EmailNotification;
 import beans.loginAdmin.AccountStaffAdmin;
 import connectionDatabase.DataSource;
 import worksWithDatabase.staff.StaffDataSource;
 import worksWithDatabase.staff.StaffWorksWithDatabase;
 
+import javax.validation.constraints.Email;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class AccountWorksWithDatabase {
 
@@ -211,6 +214,30 @@ public class AccountWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    //  Phương thức được dùng ở EmailNotification works with database, nhiệm vụ lấy tên là link hình đại diện
+    public void fillInformationEmailNotifications(List<EmailNotification> emailNotificationList){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_dai_dien,ten_hien_thi FROM tai_khoan WHERE ma_tai_khoan = ?");
+            for(EmailNotification emailNotification : emailNotificationList){
+                preparedStatement.setString(1,emailNotification.getStaffId());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                emailNotification.setNameStaff(resultSet.getString("ten_hien_thi"));
+                emailNotification.setLinkImgStaff(resultSet.getString("link_hinh_dai_dien"));
+                resultSet.close();
+            }
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
     }
 
 

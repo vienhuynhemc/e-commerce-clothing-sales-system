@@ -135,7 +135,6 @@ public class DiscountCodeController extends HttpServlet {
 
                 //  Không thì chạy bình thường như chưa từng xảy ra
 
-
                 // set charset cho cả request và responne
                 request.setCharacterEncoding("UTF-8");
                 response.setContentType("text/html; charset=UTF-8");

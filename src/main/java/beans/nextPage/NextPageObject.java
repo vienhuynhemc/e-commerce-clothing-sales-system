@@ -16,6 +16,11 @@ public class NextPageObject implements Serializable {
         this.type = type;
     }
 
+    //   toString
+    public String toString() {
+        return value + " " + type;
+    }
+
     //  Getter and setter
     public String getValue() {
         return value;
@@ -31,10 +36,6 @@ public class NextPageObject implements Serializable {
 
     public void setType(int type) {
         this.type = type;
-    }
-
-    public String toString() {
-        return value;
     }
 
 }

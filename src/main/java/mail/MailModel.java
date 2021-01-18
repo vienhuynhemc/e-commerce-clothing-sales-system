@@ -1,9 +1,13 @@
 package mail;
 
+import worksWithDatabase.email.EmailWorksWithDatabase;
+import worksWithDatabase.email.MailDataSource;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Properties;
 
 public class MailModel {
@@ -125,12 +129,12 @@ public class MailModel {
         //  Tạo tiêu đề và nội dung dựa trên type
         switch (type) {
             case CONTACT_INDEX:
-                subject = "Join TVTSHOP";
-                 text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Join TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Verify email address</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">We are sending you this email to make sure the email belongs to someone else, and that it is yours.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you for joining us. From now on, every time new information comes, you will be the first to know group.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
+                subject = "Tham gia TVTSHOP";
+                 text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Tham gia TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Xác nhận địa chỉ email</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Chúng tôi gửi cho bạn email này để đảm bảo email thuộc về người khác và email đó là của bạn.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Cảm ơn bạn đã tham gia cùng chúng tôi. Từ bây giờ, mỗi khi có thông tin mới, bạn sẽ là người đầu tiên biết đến nhóm.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Cảm ơn bạn,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
                 break;
             case CONTACT_CONTACT:
                 subject = "Liên hệ TVTSHOP";
-                text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Contact TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Verify email address</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">We are sending you this email to make sure the email belongs to someone else, and that it is yours.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you for contacting our TVTSHOP, we received your problem and it is on its way to the collaborators, they will respond as soon as possible, hope you are satisfied with this!</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Thank you,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
+                text = "<p style=\"padding: 0;font-size: 17px;color: #707070;font-family:sans-serif\">Liên hệ TVTSHOP</p><h1 style=\"padding: 0;font-size: 41px;color: #2672ec;font-family:sans-serif\">Xác nhận địa chỉ email</h1><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Chúng tôi gửi cho bạn email này để đảm bảo email thuộc về người khác và email đó là của bạn.</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Cảm ơn bạn đã liên hệ với TVTSHOP của chúng tôi, chúng tôi đã nhận được sự cố của bạn và đang chuyển đến các cộng tác viên, họ sẽ phản hồi trong thời gian sớm nhất, mong bạn hài lòng với điều này!</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">Cảm ơn bạn,</p><p style=\"padding: 0;font-size: 14px;color: #2a2a2a;font-family:sans-serif\">TVTSHOP</p>";
                 break;
         }
 
@@ -195,7 +199,7 @@ public class MailModel {
         try {
 
             //  Khởi tạo message
-            Message message = new MimeMessage(this.session);
+            MimeMessage message = new MimeMessage(this.session);
 
             //  Thiết lập người gửi
             message.setFrom(new InternetAddress(this.username, personal));
@@ -203,14 +207,16 @@ public class MailModel {
             //  Thiết lập người nhận
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(address));
 
+            message.setHeader("Content-Type","text/html; charset=UTF-8");
+
             //  Thiết lập subject
-            message.setSubject(subject);
+            message.setSubject(subject,"UTF-8");
 
             //  Thiết lập nội dung thư
             if(typeMail == MailConfiguration.MAIL_HTML){
-                message.setContent(text,"text/html");
+                message.setContent(text,"text/html; charset=UTF-8");
             }else{
-                message.setText(text);
+                message.setText(text,"UTF-8");
             }
 
             //  Gửi thư
@@ -227,6 +233,27 @@ public class MailModel {
             return false;
 
         }
+    }
+
+    //  Phương thức gửi email cho tất cả những email tham gia
+    public void sendMailAllJoinUs(String content,String subject){
+        //   Phương thức gửi email chỉ được sử dụng đối với gmail shop, vì vậy xem thử sesstion hiện tại có phải là gmail shop?
+        if (this.username.compareTo(MailConfiguration.USERNAME_TVTSHOP) != 0) {
+
+            //  Nếu khác thì ta khởi tạo lại session là gmail shop
+            initializedSesstion(MailConfiguration.USERNAME_TVTSHOP, MailConfiguration.PASSWORD_TVTSHOP);
+
+        }
+
+        //  Lấy list email từ csdl
+        EmailWorksWithDatabase emailWorksWithDatabase = MailDataSource.getInstance().getEmailWorksWithDatabase();
+        List<String> emails = emailWorksWithDatabase.getAllEmail();
+        MailDataSource.getInstance().releaseMailModel(emailWorksWithDatabase);
+
+        for(String email: emails){
+            sendMail("TVTSHOP", email, subject, content, MailConfiguration.MAIL_HTML);
+        }
+
     }
 
 }

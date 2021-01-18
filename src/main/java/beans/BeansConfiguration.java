@@ -14,4 +14,7 @@ public class BeansConfiguration {
     //  Số dòng một trang quản lý mã giảm giá
     public static final int LINE_OF_ON_PAGE_QUAN_LY_MGG = 12;
 
+    //  Số dòng một trang trong trang gửi email thông báo
+    public static final int LINE_OF_ON_PAGE_GUI_EMAIL_THONG_BAO = 5;
+
 }

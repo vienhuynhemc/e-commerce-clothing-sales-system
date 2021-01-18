@@ -1,26 +1,25 @@
-package beans.manufacturer;
+package beans.emailNotification;
 
 import beans.ObjectPageAdmin;
 import beans.nextPage.NextPageObject;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class ManufacturerObject implements Serializable, ObjectPageAdmin {
+public class EmailNotificationObject implements ObjectPageAdmin {
 
-    //  Số hãng sản xuất để đỗ dữ liệu ra
-    private List<Manufacturer> manufacturers;
+    //  List email thông báo để đổ dữ liệu ra
+    private List<EmailNotification> emailNotificationLists;
 
     //  Trang hiện tại
     private int nowPage;
 
-    //  Số hãng sản xuất tối đa
-    private int maximumManufacturer;
+    //  Số email thông báo tối ta
+    private int maximumEmailNotification;
 
     //  Số trang tối đa
     private int maximumPage;
 
-    //  Số hãng sản xuất hiện thị
+    //  Số email thông báo hiện tại
     private int numberOfShow;
 
     //  List để đổ dữ liệu phân trang
@@ -42,19 +41,22 @@ public class ManufacturerObject implements Serializable, ObjectPageAdmin {
     private String title;
     private String conntent;
 
+    //  Next id email
+    private String nextId;
+
     private boolean ready;
 
     //  Constructor rỗng
-    public ManufacturerObject() {
+    public EmailNotificationObject() {
     }
 
-    //  Getter and setter
-    public List<Manufacturer> getManufacturers() {
-        return manufacturers;
+    // GETTER AND SETTER
+    public List<EmailNotification> getEmailNotificationLists() {
+        return emailNotificationLists;
     }
 
-    public void setManufacturers(List<Manufacturer> manufacturers) {
-        this.manufacturers = manufacturers;
+    public void setEmailNotificationLists(List<EmailNotification> emailNotificationLists) {
+        this.emailNotificationLists = emailNotificationLists;
     }
 
     public int getNowPage() {
@@ -65,12 +67,12 @@ public class ManufacturerObject implements Serializable, ObjectPageAdmin {
         this.nowPage = nowPage;
     }
 
-    public int getMaximumManufacturer() {
-        return maximumManufacturer;
+    public int getMaximumEmailNotification() {
+        return maximumEmailNotification;
     }
 
-    public void setMaximumManufacturer(int maximumManufacturer) {
-        this.maximumManufacturer = maximumManufacturer;
+    public void setMaximumEmailNotification(int maximumEmailNotification) {
+        this.maximumEmailNotification = maximumEmailNotification;
     }
 
     public int getMaximumPage() {
@@ -153,6 +155,14 @@ public class ManufacturerObject implements Serializable, ObjectPageAdmin {
     @Override
     public void setReady(boolean ready) {
         this.ready = ready;
+    }
+
+    public String getNextId() {
+        return nextId;
+    }
+
+    public void setNextId(String nextId) {
+        this.nextId = nextId;
     }
 
 }

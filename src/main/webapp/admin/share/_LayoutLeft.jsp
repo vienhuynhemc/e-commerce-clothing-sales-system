@@ -124,7 +124,15 @@
                     <p>Mã giảm giá</p>
                 </div>
             </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+            <div
+                    <%if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) ||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe"))
+                    ) {%>
+                    class="indexleftselectitemlv2"
+                    <%}else{%>
+                    class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                    <%}%>
+
                  onclick="indexleftselectitemlv2(this)">
                 <div class="indexleftselectitem">
                     <div>
@@ -134,10 +142,24 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="../home/guiEmailThongBao.jsp"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
                 </ul>
+                <%if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) ||
+                        (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe"))
+                ) {%>
+                <input type="checkbox" style="display: none;" checked>
+                <%}else{%>
                 <input type="checkbox" style="display: none;">
+                <%}%>
             </div>
             <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
                 <div
