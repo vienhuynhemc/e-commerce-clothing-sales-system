@@ -178,6 +178,11 @@ public class DateTime {
 
     }
 
+    //  ToString dạng 14:32 - 12/10/2020
+    public String toStrngRingNotification(){
+        return hour+":"+minute+" - "+day+"/"+month+"/"+year;
+    }
+
     //  Getter and setter
     public int getYear() {
         return year;

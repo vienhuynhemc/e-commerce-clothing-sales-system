@@ -5,7 +5,9 @@ import model.staff.StaffModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailedRingerNotificationWorksWithDatabase {
@@ -40,7 +42,31 @@ public class DetailedRingerNotificationWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
 
+    //  Phương thức nhận vào mã nhân viên, trả về danh sách mã thông báo chuông của nhân viên này, sắp xếp theo thứ tự giảm giần ngày tạo
+    //  À quên vì là thông báo nên chỉ lấy 100 thông báo gần đây nhất
+    public List<String> getAllRingNotificationIdFromStaffId(String ma_nv_nhan){
+
+        List<String> result = new ArrayList<String>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT tb.ma_thong_bao_chuong FROM thong_bao_chuong tb JOIN chi_tiet_thong_bao_chuong ct ON tb.ma_thong_bao_chuong = ct.ma_thong_bao_chuong WHERE tb.ma_nv_nhan = ? ORDER BY ct.ngay_tao DESC LIMIT 0,100 ");
+            preparedStatement.setString(1,ma_nv_nhan);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                result.add(resultSet.getString("ma_thong_bao_chuong"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
     }
 
 }

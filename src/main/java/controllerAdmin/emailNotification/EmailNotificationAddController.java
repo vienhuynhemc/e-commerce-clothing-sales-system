@@ -42,7 +42,7 @@ public class EmailNotificationAddController extends HttpServlet {
             MailModel.getInstance().sendMailAllJoinUs(data, title);
 
             //  Tạo thông báo chuông tới tất cả các accoutn admin khác
-            RingNotificationModel.getInstance().addNewRingNotificationToDatabase("vừi gửi email thông báo",userAdmin.getAccount().getId(),0);
+            RingNotificationModel.getInstance().addNewRingNotificationToDatabase("vừi gửi email thông báo #"+nextId,userAdmin.getAccount().getId(),0,"../home/guiEmailThongBao.jsp");
 
             //  Tọa thông báo cá nhân cho chính user gửi
             PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(ma_nv, "Bạn", "vừa gửi thông báo", "#"+nextId, "tới tất cả các thành viên tham gia", "");
