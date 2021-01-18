@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StaffWorksWithDatabase {
 
@@ -76,4 +78,28 @@ public class StaffWorksWithDatabase {
 
     }
 
+    //  Phương thức lấy danh sách mã nhân viên có cấp độ là 0 (admin)
+    public List<String> getAllAdmin() {
+
+        Connection connection = DataSource.getInstance().getConnection();
+        List<String> result = new ArrayList<String>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_nv FROM nhan_vien WHERE cap_do = ?");
+            preparedStatement.setInt(1, 0);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                result.add(resultSet.getString("ma_nv"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
+    }
+
 }
+

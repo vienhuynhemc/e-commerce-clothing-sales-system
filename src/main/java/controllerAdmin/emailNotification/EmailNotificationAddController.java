@@ -3,6 +3,8 @@ package controllerAdmin.emailNotification;
 import beans.loginAdmin.UserAdmin;
 import mail.MailModel;
 import model.emailNotification.EmailNotificationModel;
+import model.personalNotice.PersonalNoticeModel;
+import model.ringNotification.RingNotificationModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,11 +39,13 @@ public class EmailNotificationAddController extends HttpServlet {
             EmailNotificationModel.getInstance().addEmailNotificationToDatabase(nextId, data, ma_nv, title);
 
             //  Gửi email tới tất cả moi nguoi
-            MailModel.getInstance().sendMailAllJoinUs(data,title);
+            MailModel.getInstance().sendMailAllJoinUs(data, title);
 
             //  Tạo thông báo chuông tới tất cả các accoutn admin khác
+            RingNotificationModel.getInstance().addNewRingNotificationToDatabase("vừi gửi email thông báo",userAdmin.getAccount().getId(),0);
 
             //  Tọa thông báo cá nhân cho chính user gửi
+            PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(ma_nv, "Bạn", "vừa gửi thông báo", "#"+nextId, "tới tất cả các thành viên tham gia", "");
 
             request.setAttribute("forward", "add");
             request.setAttribute("more", "Gửi thông báo #" + nextId + " thành công");
