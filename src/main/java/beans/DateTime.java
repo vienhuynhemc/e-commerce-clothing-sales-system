@@ -180,7 +180,15 @@ public class DateTime {
 
     //  ToString dạng 14:32 - 12/10/2020
     public String toStrngRingNotification(){
-        return hour+":"+minute+" - "+day+"/"+month+"/"+year;
+        String stringMonth = month + "";
+        if (stringMonth.length() == 1) stringMonth = "0" + stringMonth;
+        String stringDay = day + "";
+        if (stringDay.length() == 1) stringDay = "0" + stringDay;
+        String stringHour = hour + "";
+        if (stringHour.length() == 1) stringHour = "0" + stringHour;
+        String stringMinute = minute + "";
+        if (stringMinute.length() == 1) stringMinute = "0" + stringMinute;
+        return stringHour+":"+stringMinute+" - "+stringDay+"/"+stringMonth+"/"+year;
     }
 
     //  Getter and setter
