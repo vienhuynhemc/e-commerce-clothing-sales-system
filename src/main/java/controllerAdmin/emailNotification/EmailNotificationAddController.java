@@ -39,6 +39,10 @@ public class EmailNotificationAddController extends HttpServlet {
             //  Gửi email tới tất cả moi nguoi
             MailModel.getInstance().sendMailAllJoinUs(data,title);
 
+            //  Tạo thông báo chuông tới tất cả các accoutn admin khác
+
+            //  Tọa thông báo cá nhân cho chính user gửi
+
             request.setAttribute("forward", "add");
             request.setAttribute("more", "Gửi thông báo #" + nextId + " thành công");
             request.setAttribute("more2", "Cơ sở dữ liệu của bạn đã được thay đổi");
