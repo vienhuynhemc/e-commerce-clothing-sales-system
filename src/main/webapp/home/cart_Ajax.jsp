@@ -32,7 +32,7 @@
     </div>
 
     <div class="scrollmain">
-        <div class="cartleftmain" id="">
+        <div class="cartleftmain" id="b">
 
 
             <!-- load danh sách cart vào chỗ này-->
@@ -142,7 +142,7 @@
     <div class="linecr"></div>
     <div class="note">
         <p><%=lang.get("11")%></p>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="" id="a" cols="30" rows="10"></textarea>
     </div>
     <a href="checkout.html" class="submit">
         <%=lang.get("12")%>
@@ -215,11 +215,11 @@
 
     }
 
-    $(document).ready(function (){
-        var total = $('#getgia').val();
-        document.getElementById("total_all_1").innerText = convert + " VND";
-        document.getElementById("total_all_2").innerText = convert+ " VND";
-
-    })
+    // $(document).ready(function (){
+    //     var total = $('#getgia').val();
+    //     document.getElementById("total_all_1").innerText = total + " VND";
+    //     document.getElementById("total_all_2").innerText = total+ " VND";
+    //
+    // })
 
 </script>
