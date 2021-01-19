@@ -6,7 +6,10 @@
 <%@ page import="model.salary.SalaryModel" %>
 <%@ page import="model.personalNotice.PersonalNoticeModel" %>
 <%@ page import="beans.personalNotice.PersonalNotice" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="beans.address.Provincial" %>
+<%@ page import="beans.address.District" %>
+<%@ page import="beans.address.Commune" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -203,7 +206,7 @@
                     <input id="fileInput1" type="file" style="display:none;" onchange="loadIMG2(event,this)"/>
                     <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
                         <div>
-                            <img src="../../img/product/avatar7.jpg" alt="">
+                            <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                         </div>
                     </div>
 
@@ -219,62 +222,92 @@
                     <h3>Điền thông tin cá nhân</h3>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây" value="Nguyễn Thị Hoa Hồng">
+                        <label >* Họ và tên</label>
+                        <input type="text" placeholder="Nhập họ và tên ở đây" value="<%=userAdmin.getAccount().getFullName()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="">
+                        <label >Tên hiển thị</label>
+                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="<%=userAdmin.getAccount().getDisplayName()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">* Email</label>
-                        <input type="text" placeholder="Nhập email ở đây" value="nguyenthihoahong@gmail.com"
+                        <label >* Email</label>
+                        <input type="text" placeholder="Nhập email ở đây" value="<%=userAdmin.getAccount().getEmail()%>" required
                                disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209">
+                        <label >* Số điện thoại</label>
+                        <input type="number" placeholder="Nhập số điện thoại ở đây" value="<%=userAdmin.getAccount().getPhoneNumber()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
+                        <label >* Lương</label>
+                        <input type="number" placeholder="Nhập lương ở đây" value="<%=userAdmin.getAccount().getSalary()%>" required>
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
                         <div class="div12inputlv2">
-                            <label for="">Tỉnh / Thành</label>
-                            <select name="" id="">
-                                <option value="">Chọn tỉnh / thành</option>
-                                <option value="" selected>Phú Yên</option>
+                            <label >Tỉnh / Thành</label>
+                            <select name=""  required>
+                                <%
+                                if(informationAccountAdminObject.getProvincial() == null){
+                                %>
+                                <option value="" selected>Chọn tỉnh / thành</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getProvincial().getProvincialId()%>" selected><%=informationAccountAdminObject.getProvincial().getProvincialName()%></option>
+                                <% }
+                                if(informationAccountAdminObject.getProvincials() != null){
+                                for(Provincial provincial : informationAccountAdminObject.getProvincials()){
+                                %>
+                                <option value="<%=provincial.getProvincialId()%>"><%=provincial.getProvincialName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Quận / huyện</label>
-                            <select name="" id="">
-                                <option value="">Chọn quận / huyện</option>
-                                <option value="" selected>Huyện Đồng Xuân</option>
+                            <label >Quận / huyện</label>
+                            <select name="" required>
+                                <%
+                                    if(informationAccountAdminObject.getDistrict() == null){
+                                %>
+                                <option value="" selected>Chọn quận / huyện</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getDistrict().getDistrictId()%>" selected><%=informationAccountAdminObject.getDistrict().getDistrictName()%></option>
+                                <% }
+                                    if(informationAccountAdminObject.getDistricts() != null){
+                                        for(District district : informationAccountAdminObject.getDistricts()){
+                                %>
+                                <option value="<%=district.getDistrictId()%>"><%=district.getDistrictName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Phường / xã</label>
-                            <select name="" id="">
-                                <option value="">Chọn phường / xã</option>
-                                <option value="" selected>Xã Đa Lộc</option>
+                            <label  >Phường / xã</label>
+                            <select name=""  required>
+                                <%
+                                    if(informationAccountAdminObject.getDistrict() == null){
+                                %>
+                                <option value="" selected>Chọn phường / xã</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getCommune().getCommuneId()%>" selected><%=informationAccountAdminObject.getCommune().getCommuneName()%></option>
+                                <% }
+                                    if(informationAccountAdminObject.getCommunes() != null){
+                                        for(Commune commune : informationAccountAdminObject.getCommunes()){
+                                %>
+                                <option value="<%=commune.getCommuneId()%>"><%=commune.getCommuneName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Tài khoản</label>
-                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="adminhong" disabled>
+                        <label >* Tài khoản</label>
+                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="<%=userAdmin.getAccount().getAccount()%>" disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">* Mật khẩu</label>
-                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Mật khẩu</label>
+                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
                     </div>
                     <div class="div12input">
-                        <label for="">* Xác nhận</label>
-                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Xác nhận</label>
+                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
                     </div>
                 </div>
 

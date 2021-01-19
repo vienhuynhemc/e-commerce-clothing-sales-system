@@ -4,6 +4,8 @@ import beans.address.District;
 import worksWithDatabase.district.DistrictDataSource;
 import worksWithDatabase.district.DistrictWorksWithDatabase;
 
+import java.util.List;
+
 public class DistrictModel {
 
     private static DistrictModel districtModel;
@@ -20,6 +22,14 @@ public class DistrictModel {
         DistrictWorksWithDatabase districtWorksWithDatabase = DistrictDataSource.getInstance().getDistrictWorksWithDatabase();
         districtWorksWithDatabase.fillNameById(district);
         DistrictDataSource.getInstance().releaseDistrictWorksWithDatabase(districtWorksWithDatabase);
+    }
+
+    //  Phương thức nhận vô mã tỉnh, trả về list huyện của nó
+    public List<District> getDistrictByProvincialId(String ma_tinh_thanh){
+        DistrictWorksWithDatabase districtWorksWithDatabase = DistrictDataSource.getInstance().getDistrictWorksWithDatabase();
+        List<District> result = districtWorksWithDatabase.getDistrictByProvincialId(ma_tinh_thanh);
+        DistrictDataSource.getInstance().releaseDistrictWorksWithDatabase(districtWorksWithDatabase);
+        return result;
     }
 
 }

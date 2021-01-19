@@ -38,6 +38,31 @@ public class DistrictWorksWithDatabase {
 
     }
 
+    //  Phương thức nhận vô mã tỉnh, trả về list huyện của nó
+    public List<District> getDistrictByProvincialId(String ma_tinh_thanh){
+        List<District> districts = new ArrayList<District>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_quan_huyen,ten_quan_huyen FROM quan_huyen WHERE ma_tinh_thanh = ?");
+            preparedStatement.setString(1,ma_tinh_thanh);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                District district = new District();
+                district.setDistrictName(resultSet.getString("ten_quan_huyen"));
+                district.setDistrictId(resultSet.getString("ma_quan_huyen"));
+                districts.add(district);
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return districts;
+    }
+
 
 
 }

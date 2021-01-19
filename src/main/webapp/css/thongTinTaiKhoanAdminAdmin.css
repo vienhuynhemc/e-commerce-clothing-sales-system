@@ -550,8 +550,7 @@ button:focus {
 .div12inputlv2 > select {
     border: 1px solid #e0e5e9;
     border-radius: 20px;
-    padding: 5px 20px;
-    color: #e0e5e9;
+    padding: 5px 10px;
     margin-top: 10px;
 }
 
