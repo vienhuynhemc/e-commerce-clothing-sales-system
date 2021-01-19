@@ -3,6 +3,7 @@ package controllerAdmin.emailNotification;
 import beans.loginAdmin.UserAdmin;
 import model.discountCode.DiscountCodeModel;
 import model.emailNotification.EmailNotificationModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,10 @@ public class EmailNotificationRemoveController extends HttpServlet {
             if (check) {
                 request.setAttribute("more", "Bạn đã xóa thành công #" + id);
                 request.setAttribute("more2", "Việc xóa đã thay đổi dữ liệu của bạn");
+
+                //  Tạo thông báo cá nhân
+                PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa xóa", "một thông báo", "có ID là:", "#"+id);
+
             } else {
                 request.setAttribute("more", "Thông báo không tồn tại");
                 request.setAttribute("more2", "Dữ liệu không có gì thay đổi");

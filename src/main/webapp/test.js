@@ -45,7 +45,10 @@ function getFile() {
         if (list[i].nodeName == 'FIGURE') {
 
             let theBlob = list[i].children[0].src;
-         
+            if(theBlob.includes('blob')){
+                console.log(theBlob)
+            }
+
             var xhr = new XMLHttpRequest();
             xhr.open('GET', theBlob, true);
             xhr.responseType = 'blob';
@@ -55,7 +58,6 @@ function getFile() {
                 console.log(myBlob);
                 const file = new File([myBlob], 'untitled', { type:myBlob.type })
                 console.log(file);
-                loadIMG(file);
             }
             };
             xhr.send();

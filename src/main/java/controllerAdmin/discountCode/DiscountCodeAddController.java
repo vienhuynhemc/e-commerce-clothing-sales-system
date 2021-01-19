@@ -4,6 +4,7 @@ import beans.DateTime;
 import beans.DateTimeConfiguration;
 import beans.loginAdmin.UserAdmin;
 import model.discountCode.DiscountCodeModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,6 +64,10 @@ public class DiscountCodeAddController extends HttpServlet {
                 request.setAttribute("forward", "add");
                 request.setAttribute("more", "Thêm thành công mã giảm giá #" + id);
                 request.setAttribute("more2", "Cơ sở dữ liệu của bạn đã được thay đổi");
+
+                //  Tạo thông báo cá nhân
+                PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa thêm", "một mã giảm giá" ,"mới có ID là:", "#"+id);
+
 
                 //  Xong foward tới controller đỗ dữ liệu
                 request.getRequestDispatcher("DiscountCodeController").forward(request, response);

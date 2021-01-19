@@ -6,6 +6,7 @@ import beans.loginAdmin.UserAdmin;
 import model.discountCode.DiscountCodeModel;
 import model.manufacturer.ManufacturerInformationModel;
 import model.manufacturer.ManufacturerModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +59,9 @@ public class DiscountCodeEditController extends HttpServlet {
 
                     request.setAttribute("more", "Cập nhật thành công #" + id);
                     request.setAttribute("more2", "Việc cập nhật đã thay đổi dữ liệu của bạn");
+                    //  Tạo thông báo cá nhân
+                    PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa cập nhật thông tin", "một mã giảm giá" ,"có ID là:", "#"+id);
+
 
                 } else {
 
