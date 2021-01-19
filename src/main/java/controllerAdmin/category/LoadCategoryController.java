@@ -2,6 +2,7 @@ package controllerAdmin.category;
 
 import beans.account.AccountCustomer;
 import beans.category.Category;
+import worksWithDatabase.category.CategoryWorksWithDatabase;
 import worksWithDatabase.category.LoadCategoryDAO;
 import worksWithDatabase.loadAccount.LoadKHDAO;
 
@@ -20,18 +21,26 @@ public class LoadCategoryController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         int page = Integer.parseInt(request.getParameter("page"));
 
         String type = request.getParameter("type");
 
-        String search = request.getParameter("search");
+        String s = (String)request.getAttribute("search");
+        String search;
+        if(s == null){
+            search = "";
+        }
+        else{
+            search = s;
+        }
         String orderby = request.getParameter("orderBy");
 
         System.out.println(page);
         System.out.println(type);
         System.out.println(search);
         System.out.println(orderby);
-        LoadCategoryDAO loadCategoryDAO = new LoadCategoryDAO();
+        CategoryWorksWithDatabase loadCategoryDAO = new CategoryWorksWithDatabase();
         Collection<Category> listDM = loadCategoryDAO.LoadAllCategories(page,type,search,orderby,3);
 
 

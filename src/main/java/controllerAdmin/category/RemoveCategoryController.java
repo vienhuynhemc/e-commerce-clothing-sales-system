@@ -18,12 +18,16 @@ public class RemoveCategoryController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id =  request.getParameter("name_C");
+        request.setCharacterEncoding("UTF-8");
+        String id =  request.getParameter("name_C").trim();
+        System.out.println("ma danh muc là"+id);
         if(CategoryModel.checkRemoveCategory(id)){
-            response.sendRedirect("CategoryController");
+            System.out.println("ok");
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
+
         }
         else {
-            response.sendRedirect("CategoryController");
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
         }
 
     }

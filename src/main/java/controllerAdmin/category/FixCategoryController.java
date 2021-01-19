@@ -12,23 +12,25 @@ import java.io.IOException;
 
 @WebServlet(name = "FixCategoryController", urlPatterns = "/FixCategoryController")
 public class FixCategoryController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            doGet(request,response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            doPost(request,response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             request.setCharacterEncoding("UTF-8");
             String name = request.getParameter("name");
-            String id = request.getParameter("ids");
-            System.out.println(id);
+            String id = request.getParameter("ids").trim();
 
-        if(CategoryModel.checkUpdateCategory(name,id)){
-            request.getRequestDispatcher("CategoryController").forward(request,response);
-            //response.sendRedirect("CategoryController");
-            System.out.print("OK");
+            System.out.println("ma danh muc la:"+id);
+
+
+        if(CategoryModel.checkUpdateCategory(id,name)){
+            System.out.println("cap nhat ok");
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
+
         }
         else{
-            request.getRequestDispatcher("CategoryController").forward(request,response);
+            request.getRequestDispatcher("LoadCategoryController?page=1&type=ngay_tao&search=&orderBy=ASC").forward(request,response);
         }
 
     }

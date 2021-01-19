@@ -103,8 +103,9 @@ public class LoadCategoryDAO {
 //        } catch (SQLException throwables) {
 //            throwables.printStackTrace();
 //        }
-        DataSource.getInstance().releaseConnection(connection);
+
     }
+        DataSource.getInstance().releaseConnection(connection);
         return list;
     }
 

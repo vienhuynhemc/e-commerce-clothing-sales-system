@@ -343,7 +343,7 @@
                                     </div>
                                     <div class="linediv12"></div>
                                     <button type="submit"><i class="fa fa-save"></i>Lưu</button>
-                                    <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
+                                    <button type="button"onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                                 </form>
                             </div>
 

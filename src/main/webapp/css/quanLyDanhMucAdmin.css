@@ -156,9 +156,9 @@ select option {
 }
 
 .leftnextpage ul li:nth-child(1) {
-    background-color: #4162fb;
+    /*background-color: #4162fb;*/
     color: white;
-    box-shadow: 0 3px 5px #90a3ff;
+    /*box-shadow: 0 3px 5px #90a3ff;*/
 }
 
 .leftnextpage .none {

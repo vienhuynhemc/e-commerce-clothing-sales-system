@@ -1,5 +1,8 @@
 package worksWithDatabase.category;
 
+import worksWithDatabase.addAccount.AddAccountKHDAO;
+import worksWithDatabase.addAccount.AddAccountKHSource;
+
 public class CategoryDataSource {
 
     /*
@@ -49,6 +52,37 @@ public class CategoryDataSource {
         //  Trả EmailWorksWithDatabase về cho mailPool
         categoryPool.releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
 
+    }
+    public static void main(String[] args) {
+
+        Runnable r1 = new Runnable() {
+            @Override
+            public void run() {
+                CategoryWorksWithDatabase a = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+                System.out.println(Thread.currentThread().getName() + "start");
+                try {
+                    System.out.println(a.check("dm_102"));
+                    Thread.sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(a);
+                System.out.println(Thread.currentThread().getName() + "end");
+            }
+        };
+
+        Thread t1 = new Thread(r1,"1");
+
+        Thread t2 = new Thread(r1,"2");
+
+        Thread t3 = new Thread(r1,"3");
+
+        Thread t4 = new Thread(r1,"4");
+        t4.start();
+        t1.start();
+        t2.start();
+        t3.start();
     }
 
 
