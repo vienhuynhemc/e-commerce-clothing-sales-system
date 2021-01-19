@@ -1,6 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="beans.fproduct.FProduct" %>
-<%@ page import="worksWithDatabase.femaleProducts.FProductDAO" %><%--
+<%@ page import="worksWithDatabase.femaleProducts.FProductDAO" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.account.AccountCustomer" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -54,7 +56,9 @@
 
     <!-- lấy danh sách sản phẩm nữ
     <% ArrayList<FProduct> list = (ArrayList<FProduct>) request.getAttribute("list");
-    System.out.print(list);%>
+    AccountCustomer user = (AccountCustomer) session.getAttribute("user");
+
+    %>
 
 </head>
 <!-- !Important notice -->
@@ -367,7 +371,7 @@
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
-                                    <a href="wishlist.jsp" data-toggle="tooltip" data-placement="top"
+                                    <a href="AddWishlistController" data-toggle="tooltip" data-placement="top"
                                        title="Thêm vào yêu thích"><span
                                             class="fa fa-heart"></span></a>
                                     <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->

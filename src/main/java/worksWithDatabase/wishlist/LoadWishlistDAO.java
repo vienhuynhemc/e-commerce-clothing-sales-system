@@ -139,7 +139,7 @@ public class LoadWishlistDAO {
     public static void setSumProduct(int sumProduct) {
         LoadWishlistDAO.sumProduct = sumProduct;
     }
-    
+
 
     public static void main(String[] args) {
         LoadWishlistDAO dao = new LoadWishlistDAO();
