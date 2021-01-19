@@ -110,15 +110,15 @@
                     </div>
                     <div>
                         <div>
-                            <p>370</p>
+                            <p><%=informationAccountAdminObject.getOrderApproval()%></p>
                             <p>Thao tác đơn hàng</p>
                         </div>
                         <div>
-                            <p>42</p>
+                            <p><%=informationAccountAdminObject.getNumberOfImportProduct()%></p>
                             <p>Số lần nhập hàng</p>
                         </div>
                         <div>
-                            <p>4200</p>
+                            <p><%=informationAccountAdminObject.getSumImportProduct()%></p>
                             <p>Số sản phẩm nhập</p>
                         </div>
                     </div>

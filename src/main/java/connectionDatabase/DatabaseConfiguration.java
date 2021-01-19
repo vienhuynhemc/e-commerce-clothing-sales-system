@@ -30,7 +30,7 @@ public class DatabaseConfiguration {
     public static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
 
     // Số kết nối tối thiểu ta thiết lập cho connection pool
-    public static final int DATABASE_MIN_CONNECTION = 2;
+    public static final int DATABASE_MIN_CONNECTION = 0;
 
     // Số kết nối tối đa ta thiết lập cho connection pool
     public static final int DATABASE_MAX_CONNECTION = 5;

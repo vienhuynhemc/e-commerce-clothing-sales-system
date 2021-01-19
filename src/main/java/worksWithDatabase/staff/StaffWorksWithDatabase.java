@@ -66,6 +66,7 @@ public class StaffWorksWithDatabase {
             accountStaffAdmin.setIntroduce(resultset.getString("gioi_thieu"));
             accountStaffAdmin.setLevel(resultset.getInt("cap_do"));
             accountStaffAdmin.setExists(resultset.getInt("ton_tai"));
+            accountStaffAdmin.setNubmerOfImgInFirebase(resultset.getInt("hinh_anh_trong_firebase"));
 
             resultset.close();
             preparedStatement.close();

@@ -2,6 +2,9 @@ package controllerAdmin.informationAccountAdmin;
 
 import beans.informationAccountAdmin.InformationAccountAdminObject;
 import beans.loginAdmin.UserAdmin;
+import model.importProduct.ImportProductModel;
+import model.importProductInformation.ImportProductInformationModel;
+import model.informationAccountAdmin.InformationAccountAdminModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "InformationAccountAdminController", urlPatterns = "/InformationAccountAdminController")
 public class InformationAccountAdminController extends HttpServlet {
@@ -36,6 +40,18 @@ public class InformationAccountAdminController extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
 
                 InformationAccountAdminObject informationAccountAdminObject = new InformationAccountAdminObject();
+                //  Cập nhật số đơn hàng admin này đã duyệt
+                int orderApproval = InformationAccountAdminModel.getInstance().getOrderApprovalByIdAdmin(userAdmin.getAccount().getId());
+                informationAccountAdminObject.setOrderApproval(orderApproval);
+
+                //  Cập nhật số lựong nhập hàng
+                int numberOfImportProduct = InformationAccountAdminModel.getInstance().getNumberOfImportProductByIdAmin(userAdmin.getAccount().getId());
+                informationAccountAdminObject.setNumberOfImportProduct(numberOfImportProduct);
+
+                //  Cập nhập số lượgn hàng đã nhập
+                int sumImportProduct = InformationAccountAdminModel.getInstance().getSumImportProductByListId(userAdmin.getAccount().getId());
+                informationAccountAdminObject.setSumImportProduct(sumImportProduct);
+
                 informationAccountAdminObject.setReady(true);
                 userAdmin.getListOfFunction().put("informationAccountAdminObject",informationAccountAdminObject);
                 userAdmin.updateReady("informationAccountAdminObject");

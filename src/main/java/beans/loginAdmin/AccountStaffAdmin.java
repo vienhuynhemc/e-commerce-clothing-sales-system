@@ -58,6 +58,9 @@ public class AccountStaffAdmin {
     //  Vai trò của account
     private Role role;
 
+    //  Số hình ảnh đang có trong firebase
+    private int nubmerOfImgInFirebase;
+
     //  Địa chỉ của nhân viên
     private Provincial provincial;
     private District district;
@@ -250,5 +253,13 @@ public class AccountStaffAdmin {
 
     public void setCommune(Commune commune) {
         this.commune = commune;
+    }
+
+    public int getNubmerOfImgInFirebase() {
+        return nubmerOfImgInFirebase;
+    }
+
+    public void setNubmerOfImgInFirebase(int nubmerOfImgInFirebase) {
+        this.nubmerOfImgInFirebase = nubmerOfImgInFirebase;
     }
 }

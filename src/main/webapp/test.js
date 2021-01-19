@@ -45,23 +45,21 @@ function getFile() {
         if (list[i].nodeName == 'FIGURE') {
 
             let theBlob = list[i].children[0].src;
-            if(theBlob.includes('blob')){
+            if (theBlob.startsWith('blob')) {
                 console.log(theBlob)
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', theBlob, true);
+                xhr.responseType = 'blob';
+                xhr.onload = function (e) {
+                    if (this.status == 200) {
+                        var myBlob = this.response;
+                        console.log(myBlob);
+                        const file = new File([myBlob], 'untitled', { type: myBlob.type })
+                        console.log(file);
+                    }
+                };
+                xhr.send();
             }
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', theBlob, true);
-            xhr.responseType = 'blob';
-            xhr.onload = function(e) {
-              if (this.status == 200) {
-                var myBlob = this.response;
-                console.log(myBlob);
-                const file = new File([myBlob], 'untitled', { type:myBlob.type })
-                console.log(file);
-            }
-            };
-            xhr.send();
-
         }
     }
 
