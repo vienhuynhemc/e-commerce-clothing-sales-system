@@ -3,6 +3,7 @@ package worksWithDatabase.account;
 import beans.DateTime;
 import beans.emailNotification.EmailNotification;
 import beans.loginAdmin.AccountStaffAdmin;
+import beans.ringNotification.RingNotification;
 import connectionDatabase.DataSource;
 import worksWithDatabase.staff.StaffDataSource;
 import worksWithDatabase.staff.StaffWorksWithDatabase;
@@ -238,6 +239,30 @@ public class AccountWorksWithDatabase {
         }
 
         DataSource.getInstance().releaseConnection(connection);
+    }
+
+    //  Phương thức nhận vô list Ring notification , cập nhập tên hiển thị và hình đại diện cho nó
+    public void fillNameAndLinkAvatarForListRingNotification(List<RingNotification> ringNotifications){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_dai_dien,ten_hien_thi FROM tai_khoan WHERE ma_tai_khoan = ?");
+            for(RingNotification ringNotification : ringNotifications){
+                preparedStatement.setString(1,ringNotification.getIdSender());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                ringNotification.setNameSender(resultSet.getString("ten_hien_thi"));
+                ringNotification.setLinkImgSender(resultSet.getString("link_hinh_dai_dien"));
+                resultSet.close();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
     }
 
 

@@ -1,8 +1,15 @@
 package controllerAdmin.login;
 
 import beans.ObjectPageAdmin;
+import beans.address.Commune;
+import beans.address.District;
+import beans.address.Provincial;
 import beans.loginAdmin.*;
+import model.address.AddressModel;
+import model.commune.CommuneModel;
+import model.district.DistrictModel;
 import model.loginAdmin.LoginAdminModel;
+import model.provincial.ProvincialModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,6 +92,18 @@ public class LoginAdminController extends HttpServlet {
             //  2. Lấy role của account này và set cho accountStaffAdmin
             Role role = new Role(LoginAdminModel.getInstance().getListRole(ma_tai_khoan));
             accountStaffAdmin.setRole(role);
+
+            //  3. Điền địa chỉ của nhân viên này
+            Provincial provincial = new Provincial();
+            District district = new District();
+            Commune commune = new Commune();
+            AddressModel.getInstance().fillIdToAddressFromId(accountStaffAdmin.getId(),provincial,district,commune);
+            ProvincialModel.getInstance().fillNameById(provincial);
+            DistrictModel.getInstance().fillNameById(district);
+            CommuneModel.getInstance().fillNameById(commune);
+            accountStaffAdmin.setProvincial(provincial);
+            accountStaffAdmin.setDistrict(district);
+            accountStaffAdmin.setCommune(commune);
 
             //  oke . H tạo đối tượng user rồi lưu vào session
             UserAdmin userAdmin = new UserAdmin(accountStaffAdmin, new HashMap<String, ObjectPageAdmin>());

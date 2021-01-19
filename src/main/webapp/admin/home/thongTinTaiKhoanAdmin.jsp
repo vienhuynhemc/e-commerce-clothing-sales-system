@@ -1,4 +1,15 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.informationAccountAdmin.InformationAccountAdminObject" %>
+<%@ page import="model.phoneNumber.PhoneNumberModel" %>
+<%@ page import="model.password.PasswordModel" %>
+<%@ page import="model.salary.SalaryModel" %>
+<%@ page import="model.personalNotice.PersonalNoticeModel" %>
+<%@ page import="beans.personalNotice.PersonalNotice" %>
+<%@ page import="java.util.List" %>
+<%@ page import="beans.address.Provincial" %>
+<%@ page import="beans.address.District" %>
+<%@ page import="beans.address.Commune" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -29,15 +40,38 @@
 
 <body>
 
+<%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
+
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.thongTinTaiKhoanAdmin");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.thongTinTaiKhoanAdmin")){
+
+            InformationAccountAdminObject informationAccountAdminObject  = (InformationAccountAdminObject) userAdmin.getListOfFunction().get("informationAccountAdminObject");
+            if(informationAccountAdminObject == null || !informationAccountAdminObject.isReady()){
+                response.sendRedirect("../../InformationAccountAdminController");
+            }else {
+%>
+
 
 <jsp:include page="../share/_LayoutLeft.jsp">
-    <jsp:param name="activeSelect" value="thongTinTiKhoanAdmin"/>
+    <jsp:param name="activeSelect" value="thongTinTaiKhoanAdmin"/>
 </jsp:include>
 
 <div class="indexright">
-    <jsp:include page="../share/_LayoutTop.jsp"/>
-    <div class="backgroundindexmain">
-    </div>
+
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Admin"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 
@@ -47,7 +81,7 @@
             <div class="div1">
                 <div>
                     <div>
-                        <p>Nguyễn Thị Hoa Hồng</p>
+                        <p><%=userAdmin.getAccount().getDisplayName()%></p>
                         <p>Admin</p>
                     </div>
                 </div>
@@ -65,7 +99,7 @@
                 </div>
                 <div class="hinhdaidien">
                     <div>
-                        <img src="../../img/product/avatar7.jpg" alt="">
+                        <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                     </div>
                 </div>
             </div>
@@ -74,20 +108,20 @@
                     <div>
                         <h3>Giới thiệu: </h3>
                         <div>
-                         <p>Ng&acirc;y thơ trong s&aacute;ng như ch&uacute; m&egrave;o trong ảnh :v&nbsp;</p> <figure class="easyimage easyimage-full"><img alt="" src="https://firebasestorage.googleapis.com/v0/b/ecommerce-b6c08.appspot.com/o/hinh_anh_gioi_thieu%2Fnv_1%2FMS_3.jpg?alt=media&amp;token=1df7945a-df19-4a4b-9c44-2b350d0c598c" width="200" /> <figcaption></figcaption> </figure> <hr/> <p>V&agrave; best dasua 10tr th&ocirc;ng thạo :3&nbsp;</p> <figure class="easyimage easyimage-full"><img alt="" src="https://firebasestorage.googleapis.com/v0/b/ecommerce-b6c08.appspot.com/o/hinh_anh_gioi_thieu%2Fnv_1%2F1.png?alt=media&amp;token=1abc7f1f-eca5-4282-8281-a08e127f1dc1" width="1920" /> <figcaption></figcaption> </figure> <hr /> <p>Contact:&nbsp;<img alt="wink" height="23" src="http://localhost:8080/ltw_thayLong_group5_war_exploded/ckeditor/plugins/smiley/images/wink_smile.png" title="wink" width="23" /><a href="https://www.facebook.com/vientamthuong">www.facebook.com/vientamthuong<img alt="wink" height="23" src="http://localhost:8080/ltw_thayLong_group5_war_exploded/ckeditor/plugins/smiley/images/wink_smile.png" title="wink" width="23" /></a></p>
+                            <p><%=userAdmin.getAccount().getIntroduce()%></p>
                         </div>
                     </div>
                     <div>
                         <div>
-                            <p>370</p>
+                            <p><%=informationAccountAdminObject.getOrderApproval()%></p>
                             <p>Thao tác đơn hàng</p>
                         </div>
                         <div>
-                            <p>42</p>
+                            <p><%=informationAccountAdminObject.getNumberOfImportProduct()%></p>
                             <p>Số lần nhập hàng</p>
                         </div>
                         <div>
-                            <p>4200</p>
+                            <p><%=informationAccountAdminObject.getSumImportProduct()%></p>
                             <p>Số sản phẩm nhập</p>
                         </div>
                     </div>
@@ -95,35 +129,35 @@
                 <div class="div122" id="div122">
                     <div class="div122item">
                         <p>Họ và tên: </p>
-                        <p>Nguyễn Thị Hồng</p>
+                        <p><%=userAdmin.getAccount().getFullName()%></p>
                     </div>
                     <div class="div122item">
                         <p>Email: </p>
-                        <p>nguyenthihoahong@gmail.com</p>
+                        <p><%=userAdmin.getAccount().getEmail()%></p>
                     </div>
                     <div class="div122item">
                         <p>Số điện thoại: </p>
-                        <p>0971-122-209</p>
+                        <p><%=PhoneNumberModel.getInstance().numberToNumberAndDot(userAdmin.getAccount().getPhoneNumber())%></p>
                     </div>
                     <div class="div122item">
                         <p>Tên hiển thị: </p>
-                        <p></p>
+                        <p><%=userAdmin.getAccount().getDisplayName()%></p>
                     </div>
                     <div class="div122item">
                         <p>Tài khoản: </p>
-                        <p>adminhong</p>
+                        <p><%=userAdmin.getAccount().getAccount()%></p>
                     </div>
                     <div class="div122item">
                         <p>Mật khẩu: </p>
-                        <p>Không hiển thị</p>
+                        <p><%=PasswordModel.getInstance().coverPasswordToStars(userAdmin.getAccount().getPassword())%></p>
                     </div>
                     <div class="div122item">
                         <p>Địa chỉ: </p>
-                        <p>Xã Đa Lộc - Huyển Đồng Xuân - Tỉnh Phú Yên</p>
+                        <p><%=userAdmin.getAccount().getCommune().toString()%> - <%=userAdmin.getAccount().getDistrict().toString()%> - <%=userAdmin.getAccount().getProvincial().toString()%></p>
                     </div>
                     <div class="div122item">
                         <p>Lương: </p>
-                        <p>20,000,000 VND</p>
+                        <p><%=SalaryModel.getInstance().coverSalaryToString(userAdmin.getAccount().getSalary())%></p>
                     </div>
                 </div>
             </div>
@@ -137,164 +171,42 @@
                     </h3>
                     <div>
                         <div>
+
+                            <%
+                                //  Lấy list thông báo cá nhân của userNay xong đổ ra
+                                List<PersonalNotice> personalNoticeList = PersonalNoticeModel.getInstance().getAllPersonalNoticeFromId(userAdmin.getAccount().getId());
+                                for(int i =0; i < personalNoticeList.size();i++){
+                            %>
+
                             <div class="div31item">
-                                <div class="div31itemcolor1">
+                                <div class="div31itemcolor<%=i%4+1%>">
                                     <i class="fa fa-circle"></i>
                                     <div></div>
                                 </div>
                                 <div>
-                                    <p>5 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1003</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
+                                    <p><%=personalNoticeList.get(i).getOverTime()%></p>
+                                    <p><strong><%=personalNoticeList.get(i).getContent_1()%></strong> <%=personalNoticeList.get(i).getContent_2()%>
+                                        <strong><%=personalNoticeList.get(i).getContent_3()%></strong> <%=personalNoticeList.get(i).getContent_4()%> <strong><%=personalNoticeList.get(i).getContent_5()%></strong>
                                     </p>
                                 </div>
                             </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>24 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1002</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>58 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1001</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>1 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1000</strong> cho nhân viên kho <strong>Nguyễn Văn B</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor1">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>3 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0999</strong> cho nhân viên kho <strong>Nguyễn Văn C</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>12 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0998</strong> cho nhân viên kho <strong>Nguyễn Văn D</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>14 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0997</strong> cho nhân viên kho <strong>Nguyễn Văn E</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>17 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0996</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor1">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>22 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0995</strong> cho nhân viên kho <strong>Nguyễn Văn B</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>42 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0994</strong> cho nhân viên kho <strong>Nguyễn Văn E</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>58 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0993</strong> cho nhân viên kho <strong>Nguyễn Văn A</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>1 giờ trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0992</strong> cho nhân viên kho <strong>Nguyễn Văn D</strong>
-                                    </p>
-                                </div>
-                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="div3">
+        <div  class="hidden" id="div3">
             <div>
                 <div class="div11">
                     <h3>Hồ sơ của bạn</h3>
                     <input id="fileInput1" type="file" style="display:none;" onchange="loadIMG2(event,this)"/>
                     <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
                         <div>
-                            <img src="../../img/product/avatar7.jpg" alt="">
+                            <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                         </div>
                     </div>
 
@@ -310,62 +222,92 @@
                     <h3>Điền thông tin cá nhân</h3>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây" value="Nguyễn Thị Hoa Hồng">
+                        <label >* Họ và tên</label>
+                        <input type="text" placeholder="Nhập họ và tên ở đây" value="<%=userAdmin.getAccount().getFullName()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="">
+                        <label >Tên hiển thị</label>
+                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="<%=userAdmin.getAccount().getDisplayName()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">* Email</label>
-                        <input type="text" placeholder="Nhập email ở đây" value="nguyenthihoahong@gmail.com"
+                        <label >* Email</label>
+                        <input type="text" placeholder="Nhập email ở đây" value="<%=userAdmin.getAccount().getEmail()%>" required
                                disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0971-122-209">
+                        <label >* Số điện thoại</label>
+                        <input type="number" placeholder="Nhập số điện thoại ở đây" value="<%=userAdmin.getAccount().getPhoneNumber()%>" required>
                     </div>
                     <div class="div12input">
-                        <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây" value="20,000,000">
+                        <label >* Lương</label>
+                        <input type="number" placeholder="Nhập lương ở đây" value="<%=userAdmin.getAccount().getSalary()%>" required>
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
                         <div class="div12inputlv2">
-                            <label for="">Tỉnh / Thành</label>
-                            <select name="" id="">
-                                <option value="">Chọn tỉnh / thành</option>
-                                <option value="" selected>Phú Yên</option>
+                            <label >Tỉnh / Thành</label>
+                            <select name=""  required>
+                                <%
+                                if(informationAccountAdminObject.getProvincial() == null){
+                                %>
+                                <option value="" selected>Chọn tỉnh / thành</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getProvincial().getProvincialId()%>" selected><%=informationAccountAdminObject.getProvincial().getProvincialName()%></option>
+                                <% }
+                                if(informationAccountAdminObject.getProvincials() != null){
+                                for(Provincial provincial : informationAccountAdminObject.getProvincials()){
+                                %>
+                                <option value="<%=provincial.getProvincialId()%>"><%=provincial.getProvincialName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Quận / huyện</label>
-                            <select name="" id="">
-                                <option value="">Chọn quận / huyện</option>
-                                <option value="" selected>Huyện Đồng Xuân</option>
+                            <label >Quận / huyện</label>
+                            <select name="" required>
+                                <%
+                                    if(informationAccountAdminObject.getDistrict() == null){
+                                %>
+                                <option value="" selected>Chọn quận / huyện</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getDistrict().getDistrictId()%>" selected><%=informationAccountAdminObject.getDistrict().getDistrictName()%></option>
+                                <% }
+                                    if(informationAccountAdminObject.getDistricts() != null){
+                                        for(District district : informationAccountAdminObject.getDistricts()){
+                                %>
+                                <option value="<%=district.getDistrictId()%>"><%=district.getDistrictName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Phường / xã</label>
-                            <select name="" id="">
-                                <option value="">Chọn phường / xã</option>
-                                <option value="" selected>Xã Đa Lộc</option>
+                            <label  >Phường / xã</label>
+                            <select name=""  required>
+                                <%
+                                    if(informationAccountAdminObject.getDistrict() == null){
+                                %>
+                                <option value="" selected>Chọn phường / xã</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountAdminObject.getCommune().getCommuneId()%>" selected><%=informationAccountAdminObject.getCommune().getCommuneName()%></option>
+                                <% }
+                                    if(informationAccountAdminObject.getCommunes() != null){
+                                        for(Commune commune : informationAccountAdminObject.getCommunes()){
+                                %>
+                                <option value="<%=commune.getCommuneId()%>"><%=commune.getCommuneName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Tài khoản</label>
-                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="adminhong" disabled>
+                        <label >* Tài khoản</label>
+                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="<%=userAdmin.getAccount().getAccount()%>" disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">* Mật khẩu</label>
-                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Mật khẩu</label>
+                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
                     </div>
                     <div class="div12input">
-                        <label for="">* Xác nhận</label>
-                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Xác nhận</label>
+                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
                     </div>
                 </div>
 
@@ -391,3 +333,16 @@
 </html>
 
 <script src="../../js/thongTinTaiKhoanAdminAdmin.js"></script>
+<%     }
+
+}else{
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>

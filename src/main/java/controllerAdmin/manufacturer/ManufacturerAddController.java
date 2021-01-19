@@ -3,6 +3,7 @@ package controllerAdmin.manufacturer;
 import beans.loginAdmin.UserAdmin;
 import model.manufacturer.ManufacturerInformationModel;
 import model.manufacturer.ManufacturerModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,6 +47,9 @@ public class ManufacturerAddController extends HttpServlet {
             //  Xóa xong thì set một biến cho request biết là thêm một đối tượng để nó cập nhập lại
             request.setAttribute("forward", "add");
             request.setAttribute("more", manufacturerId);
+
+            //  Tạo thông báo cá nhân
+            PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa thêm", "một hãng sản xuất" ,"mới có ID là:", "#"+manufacturerId);
 
             //  Xong foward tới controller đỗ dữ liệu
             request.getRequestDispatcher("ManufacturerController").forward(request, response);

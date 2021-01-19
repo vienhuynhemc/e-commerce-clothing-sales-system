@@ -45,6 +45,16 @@ public class SignUp {
         return "OK";
     }
 
+    public static void main(String[] args) {
+        SignUp s = new SignUp();
+        String username = "nhattruongagtm";
+        String pass = "123456789";
+        String name = "Truong";
+        String phone = "0384458719";
+        String mail = "nhattruongagtm@gmail.com";
+        System.out.println(s.checkUserInput(username,pass,name,phone,mail,"on"));
+    }
+
 
 
 }

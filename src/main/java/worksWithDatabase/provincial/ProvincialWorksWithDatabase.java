@@ -1,13 +1,9 @@
 package worksWithDatabase.provincial;
 
-import beans.address.District;
 import beans.address.Provincial;
 import connectionDatabase.DataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +14,7 @@ public class ProvincialWorksWithDatabase {
     }
 
     //  Phương thức trả về list
-    public List<Provincial> getListProvincial () {
+    public List<Provincial> getListProvincial() {
 
         List<Provincial> provincials = new ArrayList<Provincial>();
 
@@ -26,8 +22,8 @@ public class ProvincialWorksWithDatabase {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM tinh_thanh");
-            while(resultSet.next()){
-                provincials.add(new Provincial(resultSet.getString("ma_tinh_thanh"),resultSet.getString("ten_tinh_thanh")));
+            while (resultSet.next()) {
+                provincials.add(new Provincial(resultSet.getString("ma_tinh_thanh"), resultSet.getString("ten_tinh_thanh")));
             }
             resultSet.close();
             statement.close();
@@ -39,5 +35,27 @@ public class ProvincialWorksWithDatabase {
         return provincials;
 
     }
+
+    //  Phuơng thức nhận vô một Provincial điền tên cho nó
+    public void fillNameById(Provincial provincial) {
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_tinh_thanh FROM tinh_thanh WHERE ma_tinh_thanh = ?");
+            preparedStatement.setString(1,provincial.getProvincialId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            provincial.setProvincialName(resultSet.getString("ten_tinh_thanh"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 
 }

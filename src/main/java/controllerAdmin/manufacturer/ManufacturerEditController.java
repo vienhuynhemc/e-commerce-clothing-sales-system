@@ -3,6 +3,7 @@ package controllerAdmin.manufacturer;
 import beans.loginAdmin.UserAdmin;
 import model.manufacturer.ManufacturerInformationModel;
 import model.manufacturer.ManufacturerModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +48,9 @@ public class ManufacturerEditController extends HttpServlet {
 
                 request.setAttribute("more", "Cập nhật thành công " + manufacturerId);
                 request.setAttribute("more2", "Việc cập nhật đã thay đổi dữ liệu của bạn");
+
+                //  Tạo thông báo cá nhân
+                PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa cập nhật thông tin", "một hãng sản xuất", "có ID là:", "#"+manufacturerId);
 
             } else {
 

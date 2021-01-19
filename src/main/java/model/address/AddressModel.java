@@ -1,6 +1,10 @@
 package model.address;
 
+import beans.address.Commune;
+import beans.address.District;
 import beans.address.Provincial;
+import worksWithDatabase.address.AddressDataSource;
+import worksWithDatabase.address.AddressWorksWithDatabase;
 import worksWithDatabase.provincial.ProvincialDataSource;
 import worksWithDatabase.provincial.ProvincialWorksWithDatabase;
 
@@ -15,15 +19,11 @@ public class AddressModel {
         return addressModel;
     }
 
-    //  Phương thức trả về một list đẩy đủ các tỉnh thành
-    public List<Provincial> getListProvincial() {
-
-        ProvincialWorksWithDatabase provincialWorksWithDatabase = ProvincialDataSource.getInstance().getProvincialWorksWithDatabase();
-        List<Provincial> provincials = provincialWorksWithDatabase.getListProvincial();
-        ProvincialDataSource.getInstance().releaseProvincialWorksWithDatabase(provincialWorksWithDatabase);
-
-        return provincials;
-
+    //  Phương thúc nhận vào mã nhân viên và 3 đối tượgn tỉnh huyện xã, cập nhập mã cho chúng
+    public void fillIdToAddressFromId(String ma_nv, Provincial provincial, District district, Commune commune){
+        AddressWorksWithDatabase addressWorksWithDatabase = AddressDataSource.getInstance().getAddressWorksWithDatabase();
+        addressWorksWithDatabase.fillIdToAddressFromId(ma_nv, provincial, district, commune);
+        AddressDataSource.getInstance().releaseAddressWorksWithDatabase(addressWorksWithDatabase);
     }
 
 }

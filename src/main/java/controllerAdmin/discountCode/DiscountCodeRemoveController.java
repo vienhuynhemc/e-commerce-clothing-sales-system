@@ -3,6 +3,7 @@ package controllerAdmin.discountCode;
 import beans.loginAdmin.UserAdmin;
 import model.discountCode.DiscountCodeModel;
 import model.manufacturer.ManufacturerModel;
+import model.personalNotice.PersonalNoticeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +43,9 @@ public class DiscountCodeRemoveController extends HttpServlet {
                 if (check) {
                     request.setAttribute("more", "Bạn đã xóa thành công #" + id);
                     request.setAttribute("more2", "Việc xóa đã thay đổi dữ liệu của bạn");
+                    //  Tạo thông báo cá nhân
+                    PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa xóa", "một mã giảm giá" ,"có ID là:", "#"+id);
+
                 } else {
                     request.setAttribute("more", "Mã giảm giá không tồn tại");
                     request.setAttribute("more2", "Dữ liệu không có gì thay đổi");

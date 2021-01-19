@@ -321,7 +321,7 @@
                             <div class="header">
                             <form action="LoadCategoryController" method="get">
                                 <div class="leftheader">
-                                    <select name="type" id="typeSelect" onchange="window.location=this.value">
+                                    <select name="type" id="typeSelect" onchange="window.location = this.value">
 
                                         <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Ngày tạo</option>
                                         <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ten_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Tên danh mục</option>
@@ -329,18 +329,20 @@
                                     </select>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
-                                            <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
-                                            <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
+                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=ASC"><i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i></a>
+                                           <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=DESC"> <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i></a>
                                             <input type="checkbox" style="display: none;">
                                             <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
                                         </div>
-
+                                        <form action="../../SearchCategoryController" method="post">
                                         <div class="leftheadersearch">
-                                            <button type="submit" class="timkiem" > <i class="fa fa-search" type="submit" ></i></button>
+                                            <button type="submit" class="timkiem" > <i class="fa fa-search" ></i></button>
+<%--                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%= request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"><i class="fa fa-search" ></i></a>--%>
                                             <input name="page" value="1" type="hidden">
-                                            <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search}">
+                                            <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search == null?"":param.search}">
 
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </form>
@@ -384,7 +386,7 @@
                                             for (int i = 1;i <= listpage;i++){
                                                 if(i == nowpage){
                                         %>
-                                        <li style="background-color: #4162fb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
+                                        <li style="background-color: #4162ffb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
 
                                         <%}else{%>
                                         <li ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
@@ -444,7 +446,7 @@
 
                                             <form action="RemoveCategoryController" method="post">
 
-                                                <button type="submit" name="name_C" value=" ${c.id} "><i class="fa fa-trash"></i>Xóa</button>
+                                                <button type="submit" name="name_C" value="${c.id}"><i class="fa fa-trash"></i>Xóa</button>
                                             </form>
                                         </div>
                                     </div>
@@ -496,6 +498,22 @@
                                    <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                                    </form>
                                </div>
+                                <div class="pop-category">
+                                    <div class="pop-header">
+                                        <p>Quản lý danh mục</p>
+                                    </div>
+                                    <div class="pop-body">
+                                        <div>Bạn có muốn thêm danh mục?</div>
+                                        <div class="btn-ca">
+                                            <button class="submit-ca">Thêm</button>
+                                            <button class="close-ca">Trở về</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class ="overlay">
+
+                                </div>
 
 
                             <div class="div13">

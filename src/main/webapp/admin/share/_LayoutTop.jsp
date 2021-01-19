@@ -1,4 +1,7 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.ringNotification.RingNotification" %>
+<%@ page import="model.headerAdmin.HeaderAdminModel" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 26/12/2020
@@ -6,6 +9,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+
+    UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+    List<RingNotification> ringNotificationList = HeaderAdminModel.getInstance().getListRingNotificationFromId(userAdmin.getAccount().getId());
+
+%>
 
 <div class="indextop">
     <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
@@ -21,126 +31,28 @@
                     <h3>Thông báo</h3>
                     <div class="indextopbellinforcontent">
                         <div>
-                            <a class="indextopbellinforcontentitem">
+
+                            <%
+
+                                for(RingNotification ringNotification : ringNotificationList){
+
+
+                            %>
+
+                            <a class="indextopbellinforcontentitem" href="<%=ringNotification.getLink()%>">
                                 <div>
-                                    <img src="../../img/product/avatar1.jpg" alt="">
+                                    <img src="<%=ringNotification.getLinkImgSender()%>" alt="">
                                 </div>
                                 <div>
-                                    <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar2.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                    <p>14:32 - 12/10/2020</p>
+                                    <p><strong><%=ringNotification.getNameSender()%></strong> <%=ringNotification.getContent()%></p>
+                                    <p><%=ringNotification.getDateCreated().toStrngRingNotification()%></p>
                                 </div>
                             </a>
                             <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar3.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar4.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar5.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar6.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar1.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar2.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar3.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar4.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar5.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
-                            <a class="indextopbellinforcontentitem">
-                                <div>
-                                    <img src="../../img/product/avatar6.jpg" alt="">
-                                </div>
-                                <div>
-                                    <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                    <p>14:32 - 12/10/2020</p>
-                                </div>
-                            </a>
-                            <div class="lineindextopbellinforcontentitem"></div>
+
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
@@ -149,11 +61,11 @@
         </div>
         <a class="indextopaccount">
             <div>
-                <img src="../../img/product/avatar7.jpg" alt="">
+                <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
             </div>
             <div>
-                <h3>Nguyễn Thị Hoa Hồng</h3>
-                <p>Admin</p>
+                <h3><%=userAdmin.getAccount().getDisplayName()%></h3>
+                <p><%=request.getParameter("level")%></p>
             </div>
         </a>
     </div>

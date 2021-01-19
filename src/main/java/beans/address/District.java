@@ -12,6 +12,10 @@ public class District {
         this.districtName = districtName;
     }
 
+    public District(){
+
+    }
+
     public String toString(){
         return districtName;
     }

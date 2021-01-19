@@ -108,7 +108,9 @@
 </jsp:include>
 <div class="indexright">
 
-    <jsp:include page="../share/_LayoutTop.jsp"/>
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Admin"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 

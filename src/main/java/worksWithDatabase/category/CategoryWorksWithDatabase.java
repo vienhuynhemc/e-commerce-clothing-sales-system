@@ -14,35 +14,190 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class CategoryWorksWithDatabase {
+    ArrayList<Category> list;
+    int numberOfPage;
+    int numberCategories;
+
+    public ArrayList<Category> LoadAllCategories(int page, String type, String search, String orderBy,int numberPerPage){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            String sql = "SELECT * from danh_muc where (ma_dm like ? or ten_dm like ? or DAY(ngay_tao) = ?" +
+                    "or MONTH(ngay_tao) = ? or Year(ngay_tao) = ?) " +
+                    " AND ton_tai = 1 ORDER BY "+type+ " "+ orderBy +" LIMIT ?," +numberPerPage;
+            String sql1 = "SELECT * from danh_muc where (ma_dm like ? or ten_dm like ? or DAY(ngay_tao) = ?" +
+                    "or MONTH(ngay_tao) = ? or Year(ngay_tao) = ?) AND ton_tai = 1";
+
+            PreparedStatement s = connection.prepareStatement(sql1);
+            s.setString(1,"%"+search+"%");
+            s.setString(2,"%"+search+"%");
+            s.setString(3,search);
+            s.setString(4,search);
+            s.setString(5,search);
+
+            ResultSet rs = s.executeQuery();
+            rs.last();
+            numberCategories = rs.getRow();
+            rs.beforeFirst();
+
+            if(numberCategories%numberPerPage == 0){
+                setNumberOfPage(numberCategories/numberPerPage);
+            }
+            else{
+                setNumberOfPage((numberCategories/numberPerPage) + 1);
+            }
+            rs.close();
+            s.close();
+
+            PreparedStatement s2 = connection.prepareStatement(sql);
+            int start = (page - 1) * numberPerPage + 1;
+            s2.setString(1,"%"+search+"%");
+            s2.setString(2,"%"+search+"%");
+            s2.setString(3,search);
+            s2.setString(4,search);
+            s2.setString(5,search);
+            s2.setInt(6,start);
+
+
+            ResultSet rss = s2.executeQuery();
+            list = new ArrayList<Category>();
+
+            while(rss.next()){
+
+                // lấy ra ngày để sử lí r cho nào class datetime
+                String date = rss.getString("ngay_tao");
+                String[] split = date.split(" ");
+
+                String[] dmy = split[0].split("-");
+                String[] time = split[1].split(":");
+
+                int year = Integer.parseInt(dmy[0]);
+                int month = Integer.parseInt(dmy[1]);
+                int day = Integer.parseInt(dmy[2]);
+                int hour = Integer.parseInt(time[0]);
+                int minute = Integer.parseInt(time[1]);
+
+                double d = Double.parseDouble(time[2]);
+
+                int second = (int) d;
+
+                DateTime datetime = new DateTime(year, month, day, hour, minute, second);
+
+
+                Category c = new Category();
+                c.setId(rss.getString("ma_dm"));
+                c.setName(rss.getString("ten_dm"));
+                c.setDateCreated(datetime);
+                c.setExist(rss.getInt("ton_tai"));
+                list.add(c);
+
+            }
+            rss.close();
+            s2.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return list;
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+//     } finally {
+//        try {
+//            connection.close();
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return list;
+    }
+
+//    public static void main(String[] args) throws SQLException{
+//        LoadCategoryDAO lao = new LoadCategoryDAO();
+//
+//        ArrayList<Category> list2 = lao.LoadAllCategories(1,"ten_dm","","ASC",3);
+//
+//        for(Category c : list2){
+//            System.out.println(c);
+//        }
+////        System.out.println(list2.toString());
+//        System.out.println(lao.getNumberOfPage());
+//        System.out.println(list2.size());
+//    }
+
+    public ArrayList<Category> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<Category> list) {
+        this.list = list;
+    }
+
+    public int getNumberOfPage() {
+        return numberOfPage;
+    }
+
+    public void setNumberOfPage(int numberOfPage) {
+        this.numberOfPage = numberOfPage;
+    }
+
+    public int getNumberCategories() {
+        return numberCategories;
+    }
+
+    public void setNumberCategories(int numberCategories) {
+        this.numberCategories = numberCategories;
+    }
+
 
     public CategoryWorksWithDatabase() {
     }
     // kiểm tra danh mục đó có tồn tại trong hệ thống chưa
-    public static boolean check(String id) {
+    public boolean check(String id) {
 
         Connection c = DataSource.getInstance().getConnection();
 
         try {
-            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ?");
+            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ? AND ton_tai = 1");
             p.setString(1, id);
             ResultSet rs = p.executeQuery();
+            int count = 0;
             if (rs.next()) {
-                DataSource.getInstance().releaseConnection(c);
-                return true;
+               count++;
+            }
+                if(count > 0){
+                    DataSource.getInstance().releaseConnection(c);
+                    return true;
             }
             rs.close();
             p.close();
-            DataSource.getInstance().releaseConnection(c);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        finally {
-            try{
-                c.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+
+        DataSource.getInstance().releaseConnection(c);
+        return false;
+    }
+    public boolean checkName(String name) {
+
+        Connection c = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement p = c.prepareStatement("SELECT * FROM danh_muc WHERE ten_dm = ? AND ton_tai = 1");
+            p.setString(1, name);
+            ResultSet rs = p.executeQuery();
+            int count = 0;
+            if (rs.next()) {
+                count++;
             }
+            if(count > 0){
+                DataSource.getInstance().releaseConnection(c);
+                rs.close();
+                p.close();
+                return true;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
 
         DataSource.getInstance().releaseConnection(c);
@@ -50,108 +205,105 @@ public class CategoryWorksWithDatabase {
     }
 
     // thêm một danh mục mới
-    public static boolean addCategory(String name){
+    public boolean addCategory(String name){
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
-                if(name.equals("")){
+                PreparedStatement check = connection.prepareStatement("SELECT * FROM danh_muc where ten_dm = ?");
+                check.setString(1,name);
+                ResultSet rsc = check.executeQuery();
+                if(rsc.next()){
+                    System.out.println("Ten danh muc da ton tai!");
                     DataSource.getInstance().releaseConnection(connection);
+                    rsc.close();
+                    check.close();
                     return false;
                 }
-                Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("SELECT * FROM danh_muc");
-                rs.beforeFirst();
-                rs.last();
-                int row = rs.getRow();
+                else {
+                    Statement statement = connection.createStatement();
+                    ResultSet rs = statement.executeQuery("SELECT * FROM danh_muc");
+                    rs.beforeFirst();
+                    rs.last();
+                    int row = rs.getRow();
+                    rs.close();
 
-                LocalDate date = LocalDate.now();
-                LocalDateTime now = LocalDateTime.now();
-                DateTime dateTime = new DateTime(date.getYear(),date.getMonthValue(),date.getDayOfMonth(),now.getHour(),now.getMinute(),now.getSecond());
-                PreparedStatement s = connection.prepareStatement("INSERT INTO danh_muc VALUES (?,?,?,?)");
-                s.setString(1, "dm_" + (row + 1));
-                s.setString(2, name);
-                s.setString(3,dateTime.toString());
-                s.setInt(4,1);
+                    LocalDate date = LocalDate.now();
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTime dateTime = new DateTime(date.getYear(), date.getMonthValue(), date.getDayOfMonth(), now.getHour(), now.getMinute(), now.getSecond());
+                    PreparedStatement s = connection.prepareStatement("INSERT INTO danh_muc VALUES (?,?,?,?)");
+                    s.setString(1, "dm_" + (row + 1));
+                    s.setString(2, name);
+                    s.setString(3, dateTime.toString());
+                    s.setInt(4, 1);
 
-                s.execute();
+                    int a = s.executeUpdate();
 
-                s.close();
-                DataSource.getInstance().releaseConnection(connection);
-                return true;
+                    if (a > 0) {
+                        DataSource.getInstance().releaseConnection(connection);
+                        System.out.println("Them danh muc thanh cong!");
+                        return true;
+                    }
+                    s.close();
+                }
 
         }catch (Exception e){
             e.printStackTrace();
         }
-//        finally {
-//            try{
-//                connection.close();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
-//        }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không thể thêm danh mục do đã tồn tại");
         return false;
     }
     // xóa một danh mục
-    public static boolean removeCategory(String id){
+    public boolean removeCategory(String id){
         // lấy ra 1 connection
         Connection connection = DataSource.getInstance().getConnection();
         try {
-                if(check(id)) {
-                    PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
-                    s.setString(1, id);
-                    s.execute();
+                    if(!check(id)){
+                        DataSource.getInstance().releaseConnection(connection);
+                        System.out.println("Khong ton tai danh muc!");
+                        return false;
+                    }
+                    else {
+                        PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ton_tai = 0 where ma_dm = ?");
+                        s.setString(1, id);
+                        int a = s.executeUpdate();
+                        s.close();
+                        if (a > 0) {
+                            DataSource.getInstance().releaseConnection(connection);
+                            System.out.println("Xoa thanh cong");
+                            return true;
+                        }
+                    }
 
-                    s.close();
-                    DataSource.getInstance().releaseConnection(connection);
-                    return true;
-                }
-                else{
-                    DataSource.getInstance().releaseConnection(connection);
-                    return false;
-
-                }
 
         }catch (Exception e){
             e.printStackTrace();
-        }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không thể xóa danh mục!");
         return false;
     }
     // cập nhật danh mục sản phẩm
-    public static boolean updateCategory(String id, String newName){
+    public boolean updateCategory(String id, String newName){
         Connection connection = DataSource.getInstance().getConnection();
-        try{
-                PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ten_dm = ? WHERE ma_dm = ?");
-                s.setString(1,newName);
-                s.setString(2,id);
-                s.execute();
-
-                DataSource.getInstance().releaseConnection(connection);
+        try {
+                PreparedStatement s = connection.prepareStatement("UPDATE danh_muc SET ten_dm = ? WHERE ma_dm = ? AND ton_tai = 1");
+                s.setString(1, newName);
+                s.setString(2, id);
+                int a = s.executeUpdate();
+                if(a > 0) {
+                    DataSource.getInstance().releaseConnection(connection);
+                    System.out.println("Cap nhat thanh cong!");
+                    return true;
+                }
                 s.close();
 
-                return true;
         }
         catch (Exception e){
             e.printStackTrace();
         }
-//        finally {
-//            try{
-//                connection.close();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
-//        }
         DataSource.getInstance().releaseConnection(connection);
+        System.out.println("Khong the cap nhat danh muc!");
         return false;
     }
     // hiển thị danh sách danh mục sản phẩm
@@ -233,13 +385,6 @@ public class CategoryWorksWithDatabase {
         }
         catch (Exception e){
             e.printStackTrace();
-        }
-        finally {
-            try{
-                connection.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         }
         DataSource.getInstance().releaseConnection(connection);
         System.out.println("Không tồn tại danh mục trong hệ thống");
@@ -691,8 +836,9 @@ public class CategoryWorksWithDatabase {
 //        for(Category ca : categoryDAO.getCategoriesByIndex(1,3)){
 //            System.out.println(ca);
 //        }
+        System.out.println(test.updateCategory("dm_10","ao nu"));
 
-        System.out.println(removeCategory("dm_10"));
+
 
 
 

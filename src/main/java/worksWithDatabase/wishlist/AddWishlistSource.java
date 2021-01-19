@@ -12,9 +12,9 @@ public class AddWishlistSource {
         }
         return wishlistSource;
     }
-    public AddWishlistDAO getAddWishlist(){ return wishlistPool.getAccount();}
+    public static AddWishlistDAO getAddWishlist(){ return wishlistPool.getAccount();}
 
-    public void releaseAddWishlist(AddWishlistDAO wishlistDAO){ wishlistPool.releaseAddWishlist(wishlistDAO);}
+    public static void releaseAddWishlist(AddWishlistDAO wishlistDAO){ wishlistPool.releaseAddWishlist(wishlistDAO);}
 
     public static void main(String[] args) {
 
