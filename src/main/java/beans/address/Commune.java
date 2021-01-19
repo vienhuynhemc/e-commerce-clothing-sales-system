@@ -10,6 +10,10 @@ public class Commune {
         this.communeId = communeId;
     }
 
+    public Commune(){
+
+    }
+
     public String toString(){
         return communeName;
     }

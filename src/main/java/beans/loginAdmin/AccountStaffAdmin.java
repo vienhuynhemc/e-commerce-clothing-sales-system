@@ -1,6 +1,9 @@
 package beans.loginAdmin;
 
 import beans.DateTime;
+import beans.address.Commune;
+import beans.address.District;
+import beans.address.Provincial;
 
 public class AccountStaffAdmin {
 
@@ -54,6 +57,11 @@ public class AccountStaffAdmin {
 
     //  Vai trò của account
     private Role role;
+
+    //  Địa chỉ của nhân viên
+    private Provincial provincial;
+    private District district;
+    private Commune commune;
 
     //  Constructor đầy đủ thông tin trừ mã quên mật khẩu và hạn sử dụng của mã quên mật khẩu
     public AccountStaffAdmin(String id, int salary, String introduce, int level, int exists, String account, String password, String email, String phoneNumber, String avatar, String avatarLink, String displayName, String fullName, DateTime dateCreated, Role role) {
@@ -220,4 +228,27 @@ public class AccountStaffAdmin {
         this.role = role;
     }
 
+    public Provincial getProvincial() {
+        return provincial;
+    }
+
+    public void setProvincial(Provincial provincial) {
+        this.provincial = provincial;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+
+    public Commune getCommune() {
+        return commune;
+    }
+
+    public void setCommune(Commune commune) {
+        this.commune = commune;
+    }
 }

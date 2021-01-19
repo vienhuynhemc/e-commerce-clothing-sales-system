@@ -35,13 +35,13 @@ function removeIMG2() {
 }
 
 function trove() {
-    document.getElementById("div3").style.display = "none";
-    document.getElementById("div2").style.display = "block";
+    document.getElementById("div3").classList.add("hidden");
+    document.getElementById("div2").classList.remove("hidden");
 }
 
 function thaydoithongtin() {
-    document.getElementById("div2").style.display = "none";
-    document.getElementById("div3").style.display = "block";
+    document.getElementById("div2").classList.add("hidden");
+    document.getElementById("div3").classList.remove("hidden");
 }
 
 //  Khai báo editor

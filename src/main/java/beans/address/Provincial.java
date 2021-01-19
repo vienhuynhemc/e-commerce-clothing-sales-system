@@ -12,6 +12,10 @@ public class Provincial {
         this.provincialName = provincialName;
     }
 
+    public Provincial(){
+
+    }
+
     public String getProvincialId() {
         return provincialId;
     }

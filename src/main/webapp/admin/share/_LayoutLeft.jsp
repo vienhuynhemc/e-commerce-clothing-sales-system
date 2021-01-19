@@ -161,7 +161,7 @@
                 <input type="checkbox" style="display: none;">
                 <%}%>
             </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
+            <a href="../home/thongTinTaiKhoanAdmin.jsp" class="indexleftselectitem  ">
                 <div
                         <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("thongTinTaiKhoanAdmin")) {%>
                         class="active"

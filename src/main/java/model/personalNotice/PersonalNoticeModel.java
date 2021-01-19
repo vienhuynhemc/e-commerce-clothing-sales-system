@@ -1,7 +1,10 @@
 package model.personalNotice;
 
+import beans.personalNotice.PersonalNotice;
 import worksWithDatabase.personalNotice.PersonalNoticeDataSource;
 import worksWithDatabase.personalNotice.PersonalNoticeWorksWithDatabase;
+
+import java.util.List;
 
 public class PersonalNoticeModel {
 
@@ -26,6 +29,14 @@ public class PersonalNoticeModel {
         PersonalNoticeWorksWithDatabase personalNoticeWorksWithDatabase = PersonalNoticeDataSource.getInstance().getPersonalNoticeWorksWithDatabase();
         personalNoticeWorksWithDatabase.addNewPersonalNoticeToDatabase(ma_nv, nd1, nd2, nd3, nd4, nd5);
         PersonalNoticeDataSource.getInstance().releasePersonalNoticeWorksWithDatabase(personalNoticeWorksWithDatabase);
+    }
+
+    //  Phương thức nhận vô mã nhân viên, trả về list đối tượng thông báo cá nhân
+    public List<PersonalNotice> getAllPersonalNoticeFromId(String ma_nv) {
+        PersonalNoticeWorksWithDatabase personalNoticeWorksWithDatabase = PersonalNoticeDataSource.getInstance().getPersonalNoticeWorksWithDatabase();
+        List<PersonalNotice> result = personalNoticeWorksWithDatabase.getAllPersonalNoticeFromId(ma_nv);
+        PersonalNoticeDataSource.getInstance().releasePersonalNoticeWorksWithDatabase(personalNoticeWorksWithDatabase);
+        return result;
     }
 
 }
