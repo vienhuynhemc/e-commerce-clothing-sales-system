@@ -281,6 +281,73 @@ public class AccountWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
     }
 
+    //  Phương thức nhận vô mã tài khoản, mật khẩu cập nhật lại
+    public void updatePassword(String ma_tai_khoan,String mat_khau){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,mat_khau);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
+    //  Phương thức nhận vô mã tài khoản. số điện thoại cập nhật lại
+    public void updatePhoneNumber(String ma_tai_khoan,String so_dien_thoai){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET so_dien_thoai = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,so_dien_thoai);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
+    // Phương thức nhậ nvoo mã tài khoản và tên đầy đủ, cập nhật lại
+    public void updateFullName(String ma_tai_khoan,String ten_day_du){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET ten_day_du = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,ten_day_du);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
+    // Phương thức nhậ nvoo mã tài khoản và tên hiển thị, cập nhật lại
+    public void updateDisplayName(String ma_tai_khoan,String ten_hien_thi){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET ten_hien_thi = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,ten_hien_thi);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
 
 }
 

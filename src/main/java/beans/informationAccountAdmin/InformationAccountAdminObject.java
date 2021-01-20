@@ -45,6 +45,14 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
     private District district;
     private Commune commune;
 
+    //  Các thông tin để sửa đổi
+    private String fullName;
+    private String displayName;
+    private String phoneNumber;
+    private String password;
+    private String checkPassword;
+    private String introduct;
+
     public InformationAccountAdminObject() {
     }
 
@@ -162,6 +170,54 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCheckPassword() {
+        return checkPassword;
+    }
+
+    public void setCheckPassword(String checkPassword) {
+        this.checkPassword = checkPassword;
+    }
+
+    public String getIntroduct() {
+        return introduct;
+    }
+
+    public void setIntroduct(String introduct) {
+        this.introduct = introduct;
     }
 
 }

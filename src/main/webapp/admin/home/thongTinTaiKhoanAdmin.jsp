@@ -144,7 +144,7 @@
                         <button id="thongtinchitiet" onclick="thongtinchitiet()">Thông tin chi tiết</button>
                     </div>
                     <div>
-                        <a href="../../InformationAccountAdminController?action=goToEdit"><i class="fa fa-cog"></i>Thay đổi thông tin</a>
+                        <span onclick="thayDoiThongTin()"><i class="fa fa-cog"></i>Thay đổi thông tin</span>
                     </div>
                 </div>
                 <div class="hinhdaidien">
@@ -158,7 +158,7 @@
                     <div>
                         <h3>Giới thiệu: </h3>
                         <div id="introductuser">
-                           <%=userAdmin.getAccount().getIntroduce()%>
+                           <%=informationAccountAdminObject.getIntroduct()%>
                         </div>
                     </div>
                     <div>
@@ -277,12 +277,14 @@
                     <div class="linediv12"></div>
                     <div class="div12input">
                         <label >* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây" value="<%=userAdmin.getAccount().getFullName()%>" required>
+                        <input type="text" placeholder="Nhập họ và tên ở đây" name="fullName" id="fullName" value="<%=informationAccountAdminObject.getFullName()%>" required>
                     </div>
+                    <p class="notifyError hidden" id="error1">Tên không được bỏ trống</p>
                     <div class="div12input">
                         <label >Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="<%=userAdmin.getAccount().getDisplayName()%>" required>
+                        <input type="text" placeholder="Nhập tên hiển thị ở đây" name="displayName" id="displayName" value="<%=informationAccountAdminObject.getDisplayName()%>" required>
                     </div>
+                    <p class="notifyError hidden" id="error2">Tên hiển thị không được bỏ trống</p>
                     <div class="div12input">
                         <label >* Email</label>
                         <input type="text" placeholder="Nhập email ở đây" value="<%=userAdmin.getAccount().getEmail()%>" required
@@ -290,21 +292,22 @@
                     </div>
                     <div class="div12input">
                         <label >* Số điện thoại</label>
-                        <input type="number" placeholder="Nhập số điện thoại ở đây" value="<%=userAdmin.getAccount().getPhoneNumber()%>" required>
+                        <input type="number" placeholder="Nhập số điện thoại ở đây" name="phoneNumber" id="phoneNumber" value="<%=informationAccountAdminObject.getPhoneNumber()%>" required>
                     </div>
+                    <p class="notifyError hidden" id="error3">Số điện thoại không được bỏ trống</p>
                     <div class="div12input">
                         <label >* Lương</label>
-                        <input type="number" placeholder="Nhập lương ở đây" value="<%=userAdmin.getAccount().getSalary()%>" required>
+                        <input type="number" placeholder="Nhập lương ở đây" value="<%=userAdmin.getAccount().getSalary()%>" required disabled>
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
                         <div class="div12inputlv2">
                             <label >Tỉnh / Thành</label>
-                            <select name="provincial"  required onchange="loadTinh()">
+                            <select name="provincial" id="provincial"  required onchange="loadTinh()">
                                 <%
                                 if(informationAccountAdminObject.getProvincial() == null){
                                 %>
-                                <option value="" selected>Chọn tỉnh / thành</option>
+                                <option value="none" selected>Chọn tỉnh / thành</option>
                                 <% } else { %>
                                 <option value="<%=informationAccountAdminObject.getProvincial().getProvincialId()%>" selected><%=informationAccountAdminObject.getProvincial().getProvincialName()%></option>
                                 <% }
@@ -317,11 +320,11 @@
                         </div>
                         <div class="div12inputlv2">
                             <label >Quận / huyện</label>
-                            <select name="district" required onchange="loadHuyen()">
+                            <select name="district" id="district" required onchange="loadHuyen()">
                                 <%
                                     if(informationAccountAdminObject.getDistrict() == null){
                                 %>
-                                <option value="" selected>Chọn quận / huyện</option>
+                                <option value="none" selected>Chọn quận / huyện</option>
                                 <% } else { %>
                                 <option value="<%=informationAccountAdminObject.getDistrict().getDistrictId()%>" selected><%=informationAccountAdminObject.getDistrict().getDistrictName()%></option>
                                 <% }
@@ -331,14 +334,15 @@
                                 <option value="<%=district.getDistrictId()%>"><%=district.getDistrictName()%></option>
                                 <% }} %>
                             </select>
+                            <p class="notifyError2 hidden" id="error4">Chọn huyện đi nào</p>
                         </div>
                         <div class="div12inputlv2">
-                            <label  >Phường / xã</label>
-                            <select name="commune"  required >
+                            <label >Phường / xã</label>
+                            <select name="commune" id="commune"  required >
                                 <%
                                     if(informationAccountAdminObject.getCommune() == null){
                                 %>
-                                <option value="" selected>Chọn phường / xã</option>
+                                <option value="none" selected>Chọn phường / xã</option>
                                 <% } else { %>
                                 <option value="<%=informationAccountAdminObject.getCommune().getCommuneId()%>" selected><%=informationAccountAdminObject.getCommune().getCommuneName()%></option>
                                 <% }
@@ -348,6 +352,7 @@
                                 <option value="<%=commune.getCommuneId()%>"><%=commune.getCommuneName()%></option>
                                 <% }} %>
                             </select>
+                            <p class="notifyError2 hidden" id="error5">Chọn xã đi nào</p>
                         </div>
                     </div>
                     <div class="linediv12"></div>
@@ -357,12 +362,14 @@
                     </div>
                     <div class="div12input">
                         <label >* Mật khẩu</label>
-                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
+                        <input type="password" name="password" id="password" placeholder="Nhập mật khẩu ở đây" value="<%=informationAccountAdminObject.getPassword()%>">
                     </div>
+                    <p class="notifyError hidden" id="error6">Mật khẩu không được để trống</p>
                     <div class="div12input">
                         <label >* Xác nhận</label>
-                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="<%=userAdmin.getAccount().getPassword()%>">
+                        <input type="password" name="checkPassword" id="checkPassword"  placeholder="Xác nhận mật khẩu ở đây" value="<%=informationAccountAdminObject.getCheckPassword()%>">
                     </div>
+                    <p class="notifyError hidden" id="error7">Mật khẩu xác thực không trùng khớp</p>
                 </div>
 
                 <div class="div13">
@@ -370,18 +377,30 @@
                     <div class="div12input formckgioithieu">
                         <textarea name="gioiThieu" id="gioiThieu" placeholder="Nhập giới thiệu ở đây"></textarea>
                     </div>
-                    <button onclick="getData()"><i class="fa fa-save"></i>Lưu</button>
-                    <a href="../../InformationAccountAdminController?action=backEdit"><i class="fa fa-arrow-left"></i> Trở về quản
+                    <span onclick="getData()"><i class="fa fa-save"></i>Lưu</span>
+                    <span onclick="troVeQuanLy()"><i class="fa fa-arrow-left"></i> Trở về quản
                         lý
-                    </a>
+                    </span>
                 </div>
             </div>
             <input type="text" style="display: none" id="action" name="action">
+            <input type="text" name="introduct" id="introduct" style="display: none">
+            <input type="text"  style="display: none" name="hinh_anh_trong_firebase" value="<%=userAdmin.getAccount().getNubmerOfImgInFirebase()%>" id="hinh_anh_trong_firebase">
         </form>
 
         <input type="text" style="display: none" id="ma_nv" value="<%=userAdmin.getAccount().getId()%>">
         <form action="../../InformationAccountAdminChangeAvatarController" style="display: none"  method="POST" id="changeAvatar">
             <input type="text" id="dataSend"  name="data" value="">
+            <input type="text" name="fullName" id="fullName2">
+            <input type="text" name="displayName" id="displayName2">
+            <input type="text" name="phoneNumber" id="phoneNumber2">
+            <input type="text" name="provincial" id="provincial2">
+            <input type="text" name="district" id="district2">
+            <input type="text" name="commune" id="commune2">
+            <input type="text" name="password" id="password2">
+            <input type="text" name="checkPassword" id="checkPassword2">
+            <input type="text" name="introduct" id="introduct2">
+            <input type="text" name="action" id="action2">
         </form>
 
     </div>
