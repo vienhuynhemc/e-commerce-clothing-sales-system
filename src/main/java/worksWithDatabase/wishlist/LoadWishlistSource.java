@@ -30,6 +30,7 @@ public class LoadWishlistSource {
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(5000);
+                    System.out.println(a.getAllWishList(1,"kh001","","ten_sp",0,1,1));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

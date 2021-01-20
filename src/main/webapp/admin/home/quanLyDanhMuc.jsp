@@ -329,8 +329,8 @@
                                     </select>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
-                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=ASC"><i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i></a>
-                                           <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=DESC"> <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i></a>
+                                            <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
+                                            <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
                                             <input type="checkbox" style="display: none;">
                                             <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
                                         </div>
