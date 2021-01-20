@@ -62,6 +62,52 @@
             }else {
 %>
 
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (informationAccountAdminObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        informationAccountAdminObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=informationAccountAdminObject.getTitle()%></p>
+            <p><%=informationAccountAdminObject.getContent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
+
+
 
 <jsp:include page="../share/_LayoutLeft.jsp">
     <jsp:param name="activeSelect" value="thongTinTaiKhoanAdmin"/>
@@ -77,7 +123,11 @@
 
     <div class="indexmain">
 
-        <div id="div2">
+        <div id="div2"
+        <%if(informationAccountAdminObject.isEdit()){%>
+                class="hidden"
+                <%}%>
+        >
             <div class="div1">
                 <div>
                     <div>
@@ -94,7 +144,7 @@
                         <button id="thongtinchitiet" onclick="thongtinchitiet()">Thông tin chi tiết</button>
                     </div>
                     <div>
-                        <button onclick="thaydoithongtin()"><i class="fa fa-cog"></i>Thay đổi thông tin</button>
+                        <a href="../../InformationAccountAdminController?action=goToEdit"><i class="fa fa-cog"></i>Thay đổi thông tin</a>
                     </div>
                 </div>
                 <div class="hinhdaidien">
@@ -107,8 +157,8 @@
                 <div class="div121" id="div121">
                     <div>
                         <h3>Giới thiệu: </h3>
-                        <div>
-                            <p><%=userAdmin.getAccount().getIntroduce()%></p>
+                        <div id="introductuser">
+                           <%=userAdmin.getAccount().getIntroduce()%>
                         </div>
                     </div>
                     <div>
@@ -199,7 +249,11 @@
             </div>
         </div>
 
-        <div  class="hidden" id="div3">
+        <form
+                <%if(!informationAccountAdminObject.isEdit()){%>
+                class="hidden"
+                <%}%> method="POST" action="../../InformationAccountAdminController"
+                id="div3">
             <div>
                 <div class="div11">
                     <h3>Hồ sơ của bạn</h3>
@@ -210,11 +264,11 @@
                         </div>
                     </div>
 
-                    <button onclick="document.getElementById('fileInput1').click()">Thay đổi
+                    <span onclick="document.getElementById('fileInput1').click()">Thay đổi
                         ảnh đại diện
                         mới
-                    </button>
-                    <button onclick="removeIMG2()">Xóa ảnh đại diện</button>
+                    </span>
+                    <span onclick="removeIMG2()">Xóa ảnh đại diện</span>
 
                 </div>
 
@@ -246,7 +300,7 @@
                     <div class="trangthai">
                         <div class="div12inputlv2">
                             <label >Tỉnh / Thành</label>
-                            <select name=""  required>
+                            <select name="provincial"  required onchange="loadTinh()">
                                 <%
                                 if(informationAccountAdminObject.getProvincial() == null){
                                 %>
@@ -263,7 +317,7 @@
                         </div>
                         <div class="div12inputlv2">
                             <label >Quận / huyện</label>
-                            <select name="" required>
+                            <select name="district" required onchange="loadHuyen()">
                                 <%
                                     if(informationAccountAdminObject.getDistrict() == null){
                                 %>
@@ -280,9 +334,9 @@
                         </div>
                         <div class="div12inputlv2">
                             <label  >Phường / xã</label>
-                            <select name=""  required>
+                            <select name="commune"  required >
                                 <%
-                                    if(informationAccountAdminObject.getDistrict() == null){
+                                    if(informationAccountAdminObject.getCommune() == null){
                                 %>
                                 <option value="" selected>Chọn phường / xã</option>
                                 <% } else { %>
@@ -317,12 +371,19 @@
                         <textarea name="gioiThieu" id="gioiThieu" placeholder="Nhập giới thiệu ở đây"></textarea>
                     </div>
                     <button onclick="getData()"><i class="fa fa-save"></i>Lưu</button>
-                    <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                    <a href="../../InformationAccountAdminController?action=backEdit"><i class="fa fa-arrow-left"></i> Trở về quản
                         lý
-                    </button>
+                    </a>
                 </div>
             </div>
-        </div>
+            <input type="text" style="display: none" id="action" name="action">
+        </form>
+
+        <input type="text" style="display: none" id="ma_nv" value="<%=userAdmin.getAccount().getId()%>">
+        <form action="../../InformationAccountAdminChangeAvatarController" style="display: none"  method="POST" id="changeAvatar">
+            <input type="text" id="dataSend"  name="data" value="">
+        </form>
+
     </div>
 
     <!-- Quan tâm nhiêu đây thôi-->
@@ -331,7 +392,14 @@
 </body>
 
 </html>
+!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 <script src="../../js/thongTinTaiKhoanAdminAdmin.js"></script>
 <%     }
 

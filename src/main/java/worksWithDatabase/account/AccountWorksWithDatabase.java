@@ -8,7 +8,6 @@ import connectionDatabase.DataSource;
 import worksWithDatabase.staff.StaffDataSource;
 import worksWithDatabase.staff.StaffWorksWithDatabase;
 
-import javax.validation.constraints.Email;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -263,6 +262,23 @@ public class AccountWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    //  Phương thức dùng ở thông tin tài khoản admin , nhận vô mã nhân viên và link avatar mới, cập nhật lại
+    public void updateAvatarLinkById(String ma_tai_khoan,String link_hinh_dai_dien){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET link_hinh_dai_dien = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,link_hinh_dai_dien);
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
     }
 
 

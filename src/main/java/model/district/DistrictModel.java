@@ -25,9 +25,17 @@ public class DistrictModel {
     }
 
     //  Phương thức nhận vô mã tỉnh, trả về list huyện của nó
-    public List<District> getDistrictByProvincialId(String ma_tinh_thanh){
+    public List<District> getDistrictByProvincialId(String ma_tinh_thanh) {
         DistrictWorksWithDatabase districtWorksWithDatabase = DistrictDataSource.getInstance().getDistrictWorksWithDatabase();
         List<District> result = districtWorksWithDatabase.getDistrictByProvincialId(ma_tinh_thanh);
+        DistrictDataSource.getInstance().releaseDistrictWorksWithDatabase(districtWorksWithDatabase);
+        return result;
+    }
+
+    //  Phương thức nhận vô một mã huyện trả về huyện đó
+    public District getDistrictById(String ma_quan_huyen) {
+        DistrictWorksWithDatabase districtWorksWithDatabase = DistrictDataSource.getInstance().getDistrictWorksWithDatabase();
+        District result = districtWorksWithDatabase.getDistrictById(ma_quan_huyen);
         DistrictDataSource.getInstance().releaseDistrictWorksWithDatabase(districtWorksWithDatabase);
         return result;
     }

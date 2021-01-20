@@ -43,7 +43,7 @@ public class ProvincialWorksWithDatabase {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_tinh_thanh FROM tinh_thanh WHERE ma_tinh_thanh = ?");
-            preparedStatement.setString(1,provincial.getProvincialId());
+            preparedStatement.setString(1, provincial.getProvincialId());
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             provincial.setProvincialName(resultSet.getString("ten_tinh_thanh"));
@@ -55,6 +55,29 @@ public class ProvincialWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    //  Phương thứuc nhận vô một mã tỉnh, trả về tỉnh đó
+    public Provincial getProvincialById(String ma_tinh_thanh) {
+
+        Connection connection = DataSource.getInstance().getConnection();
+        Provincial provincial = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM tinh_thanh WHERE ma_tinh_thanh = ?");
+            preparedStatement.setString(1, ma_tinh_thanh);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            provincial = new Provincial();
+            provincial.setProvincialId(resultSet.getString("ma_tinh_thanh"));
+            provincial.setProvincialName(resultSet.getString("ten_tinh_thanh"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return provincial;
     }
 
 

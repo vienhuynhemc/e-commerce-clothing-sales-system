@@ -33,6 +33,13 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
     //  boolean kiểm tra đang ở chế độ sửa hay
     private boolean isEdit;
 
+    //  boolean kiểm tra có thông báo hay không
+    private boolean isNotify;
+
+    //  Tiêu đề và nội dung thông báo
+    private String title;
+    private String content;
+
     //  Tỉnh thành quận huyện hiện tại
     private Provincial provincial;
     private District district;
@@ -131,6 +138,30 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
 
     public void setCommune(Commune commune) {
         this.commune = commune;
+    }
+
+    public boolean isNotify() {
+        return isNotify;
+    }
+
+    public void setNotify(boolean notify) {
+        isNotify = notify;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
 }

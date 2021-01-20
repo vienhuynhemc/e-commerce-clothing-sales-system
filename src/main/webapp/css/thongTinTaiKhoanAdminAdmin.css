@@ -113,7 +113,22 @@
     margin-top: 5px;
 }
 
-.headeright > div:nth-child(2) button > i {
+.headeright > div:nth-child(2) a{
+    background-color: #f5f5fa;
+    outline: none;
+    border: none;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+
+.headeright > div:nth-child(2) a > i {
     margin-right: 10px;
 }
 
@@ -464,11 +479,23 @@ button:focus {
     cursor: pointer;
 }
 
-.div11 > button:nth-child(5) {
+.div11 > span {
+    margin-top: 15px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    padding: 9px 20px;
+    font-family: sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.div11 > span:nth-child(5) {
     border: 1px solid #d5dee3;
     background-color: white;
     color: #8d97a3;
     margin-bottom: 230px;
+    cursor: pointer;
 }
 
 .div12 {
@@ -568,11 +595,12 @@ button:focus {
     margin-left: -20px !important;
 }
 
-.div11 > button:nth-child(4) {
+.div11 > span:nth-child(4) {
     background-color: #4162fb;
     color: white;
     border: 1px solid #4162fb;
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .div13 button {
@@ -592,6 +620,24 @@ button:focus {
     margin-top: 25px;
 }
 
+.div13 > a {
+    border: none;
+    outline: none;
+    padding: 12px 0px;
+    border-radius: 36px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: white;
+    cursor: pointer;
+    background-color: #4162fb;
+    color: white;
+    box-shadow: 14px 15px 35px 3px #6c82e45e;
+    margin-left: 7px;
+    margin-top: 25px;
+    padding-left: 26px;
+    padding-right: 26px;
+}
+
 .div13 > button:nth-child(6) {
     left: 590px;
     box-shadow: 14px 15px 35px 3px #d3d3d3d6;
@@ -603,6 +649,9 @@ button:focus {
     margin-right: 5px;
 }
 
+.div13 a > i {
+    margin-right: 5px;
+}
 
 .div12input > input::placeholder {
     color: #e0e5e9;
@@ -630,6 +679,237 @@ button:focus {
 
 .matKhauVaLuong > div{
     width: 50%;
+}
+
+#formYesNo {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    transition: 0.2s all ease-in-out;
+    transform: scaleY(0);
+}
+
+.formYesNoHidden {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+#formYesNo > div:nth-child(2) {
+    width: 530px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    margin-left: -265px;
+    margin-top: -170px;
+    z-index: 3;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0 0 20px 0px #191818;
+}
+
+#formYesNo > div:nth-child(2) > p {
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(65, 98, 251);
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+#formYesNo > div:nth-child(2) > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#formYesNo > div:nth-child(2) > div > p:nth-child(1) {
+    color: #36363f;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+#formYesNo > div:nth-child(2) > div > p:nth-child(2) {
+    color: #5e6477;
+    font-size: 14px;
+    text-align: center;
+    width: 350px;
+    margin-top: 35px;
+}
+
+#formYesNo > div:nth-child(2) > div > p:nth-child(2) > i {
+    color: rgb(65, 98, 251);
+}
+
+#formYesNo > div:nth-child(2) > div > div {
+    display: flex;
+}
+
+#formYesNo > div:nth-child(2) > div > div > a {
+    color: white;
+    background-color: rgb(216 216 216);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#formYesNo > div:nth-child(2) > div > div > span {
+    color: white;
+    background-color: rgb(65, 98, 251);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#formYesNo > div:nth-child(2) > div > div > span > i {
+    margin-left: 5px;
+}
+
+#formYesNo > div:nth-child(2) > div > div > a > i {
+    margin-left: 5px;
+}
+
+#notifiSuccess {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4;
+    transition: 0.2s all ease-in-out;
+}
+
+.notifiSuccessHidden {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+#notifiSuccess > div:nth-child(2) {
+    width: 530px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    margin-left: -265px;
+    margin-top: -170px;
+    z-index: 3;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0 0 20px 0px #191818;
+}
+
+#notifiSuccess > div:nth-child(2) > p {
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(65, 98, 251);
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+#notifiSuccess > div:nth-child(2) > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(1) {
+    color: #36363f;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: sans-serif;
+    width: 83%;
+    text-align: center;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(2) {
+    color: #5e6477;
+    font-size: 14px;
+    text-align: center;
+    width: 350px;
+    margin-top: 35px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > p:nth-child(2) > i {
+    color: rgb(65, 98, 251);
+}
+
+#notifiSuccess > div:nth-child(2) > div > div {
+    display: flex;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > a {
+    color: white;
+    background-color: rgb(216 216 216);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > span {
+    color: white;
+    background-color: rgb(65, 98, 251);
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > span > i {
+    margin-left: 5px;
+}
+
+#notifiSuccess > div:nth-child(2) > div > div > a > i {
+    margin-left: 5px;
 }
 
 

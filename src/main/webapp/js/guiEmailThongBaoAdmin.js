@@ -54,10 +54,10 @@ function removeitem(item) {
     itemm.classList.add("fa");
     itemm.classList.add("fa-hand-grab-o");
     document.getElementById("formYesNoLink").style.display = 'flex';
-    document.getElementById("formYesNoLink").href = "../../EmailNotificationRemoveController?id=" + value;
     document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
     document.getElementById("formYesNoTitle2").appendChild(itemm);
     document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+    document.getElementById("formYesNoLink").href = "../../EmailNotificationRemoveController?id=" + value;
 }
 
 var firebaseConfig = {

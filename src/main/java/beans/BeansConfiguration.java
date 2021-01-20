@@ -2,6 +2,9 @@ package beans;
 
 public class BeansConfiguration {
 
+    //  Link hình đại diện mặc định
+    public static final String LINK_AVATAR_DEFAULT = "https://firebasestorage.googleapis.com/v0/b/ecommerce-b6c08.appspot.com/o/hinh_dai_dien_mac_dinh.jpg?alt=media&token=adab4e0c-6c12-45ca-aa56-3984b6c4cf05";
+
     //  Hiệu lực
     public static final int EXIST = 0;
 
