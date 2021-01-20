@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="beans.product.Category" %>
+<%@ page import="beans.product.ProductColor" %>
+<%@ page import="beans.product.Size" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -15,28 +18,28 @@
     <title>TVT Shop | Danh sách sản phẩm</title>
 
     <!-- Font awesome -->
-    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <!-- Top Slider CSS -->
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="../css/product.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/trangChu.css">
-    <link rel="stylesheet" href="../css/banner.css">
-    <script src="../js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/product.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/trangChu.css">
+    <link rel="stylesheet" href="css/banner.css">
+<%--    <script src="js"></script>--%>
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -50,22 +53,44 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
     <![endif]-->
-
+<%request.setCharacterEncoding("utf-8");%>
 </head>
 <!-- !Important notice -->
 <!-- Only for product page body tag have to added .productPage class -->
 
+
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="CartLanguageController"/>
+    <jsp:param name="levelPage" value=""/>
+    <jsp:param name="activeselect" value="index.jsp"/>
+</jsp:include>
+
+
 <body class="productPage">
 <!-- wpf loader Two -->
-<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>
-
-<jsp:include page="../share/_LayoutHeader.jsp"></jsp:include>
-
+<%--<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>--%>
 <%request.setCharacterEncoding("utf-8");%>
 <jsp:include page="../share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Danh sách sản phẩm"/>
+    <jsp:param name="titleVietnamese" value="Sản phẩm"/>
+    <jsp:param name="titleEnglish" value="Product"/>
 </jsp:include>
+
+
+
 <!-- / catg header banner section -->
+
+        <!-------Laod các thuộc tính cần thiết--------------------->
+
+
+<% String type = (String) request.getAttribute("type");
+    ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+    ArrayList<ProductColor> listColer = (ArrayList<ProductColor>) request.getAttribute("listColor");
+    ArrayList<Size> listSize = (ArrayList<Size>) request.getAttribute("listSize");
+%>
+
+
+<!-------Laod các thuộc tính cần thiết--------------------->
+
 
 <!-- product category -->
 <section id="aa-product-category">
@@ -76,20 +101,20 @@
                     <div class="aa-product-catg-head">
                         <div class="aa-product-catg-head-left headerproduct">
                             <form action="" class="aa-sort-form">
-                                <label for="">XẾP THEO</label>
-                                <select name="">
-                                    <option value="1" selected="Default">Mặc định</option>
-                                    <option value="2">Tên sản phẩm</option>
-                                    <option value="3">Giá</option>
-                                    <option value="4">Ngày cập nhập</option>
+                                <label for="" >XẾP THEO</label>
+                                <select name="" id="selectOrder"onchange="changeListProduct()">
+                                    <option value="mac-dinh" selected>Mặc định</option>
+                                    <option value="ten_sp" >Tên sản phẩm</option>
+                                    <option value="gia">Giá</option>
+                                    <option value="ngay_tao">Ngày cập nhập</option>
                                 </select>
                             </form>
                             <form action="" class="aa-show-form">
                                 <label for="">XEM</label>
-                                <select name="">
-                                    <option value="1" selected="15">15</option>
-                                    <option value="2">10</option>
-                                    <option value="3">5</option>
+                                <select name="" id="xem_sl_sp" onchange="changeListProduct()">
+                                    <option value="6" selected>6</option>
+                                    <option value="12">12</option>
+                                    <option value="18">18</option>
                                 </select>
                             </form>
                         </div>
@@ -99,671 +124,13 @@
                             <a id="list-catg" href="#" class="color2li"><span class="fa fa-list"></span></a>
                         </div>
                     </div>
-                    <div class="aa-product-catg-body">
-                        <ul class="aa-product-catg">
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html">
-                                        <img
-                                            src="../img/product/pro1.webp"
-                                            alt="polo shirt img">
-                                    </a>
-                                    <button class="aa-add-card-btn" onclick="addCart(this)">
-                                        <input type="hidden" name="" id="sp_1">
-                                        <input type="hidden" name="" id="mau_1">
-                                        <span
-                                            class="fa fa-shopping-cart">
-                                        </span>
-                                        Thêm vào giỏ
 
-                                    </button>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Stay
-                                            Together MSW
-                                            1006</a></h4>
-                                        <span class="aa-product-price sprice">300,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo sweater nam Stay Together rằn ri MSW 1006
-                                            Couple TX là item được
-                                            yêu thích và sử dụng phổ biến trong giới trẻ, mang hơi hướng thời trang
-                                            đường phổ trẻ trung và
-                                            hiện đại. Áo được thiết kế với form oversize rộng rãi, phù hợp với mọi dáng
-                                            người cùng họa tiết
-                                            rằn ri tạo điểm nhấn.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro2.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Stay
-                                            Together Cánh Đồng
-                                            MSW 1005</a></h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span>
-                                        <p class="aa-product-descrip">Áo sweater nam Stay Together Cánh đồng MSW 1005
-                                            Couple TX là item
-                                            được yêu thích và sử dụng phổ biến trong giới trẻ, mang hơi hướng thời trang
-                                            đường phổ trẻ trung
-                                            và hiện đại. Áo được thiết kế với form oversize rộng rãi, phù hợp với mọi
-                                            dáng người cùng họa
-                                            tiết cánh đồng tạo điểm nhấn.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro3.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Nam Basic
-                                            MSW 1004</a></h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sweater Nam Basic MSW 1004 Couple TX chắc chắn
-                                            là sản phẩm phải
-                                            có trong tủ đồ của các chàng trai năng động, cá tính. Form áo oversize đơn
-                                            giản nhưng cá tính,
-                                            có thể dể dàng kết hợp với quần, giày,... mà ko sợ bị rối mắt. Chất liệu
-                                            cotton 100% giúp Áo
-                                            Sweater Nam Basic MSW 1004 luôn mềm mại, mang lại cảm giác dễ chịu khi
-                                            mặc.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro4.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Sweater Logo Sài
-                                            Gòn MSW 1003</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">299,000 VND</span><span
-                                            class="aa-product-price"><del>300,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Sweater Logo Sài Gòn MSW 1003 là item không thể
-                                            thiếu trong tủ đồ
-                                            của các chàng trai trong mùa thu đông. Chất liệu cotton dày dặn kết hợp với
-                                            form suông năng động
-                                            giúp chiếc áo phù hợp với mọi vóc dáng. Ngực áo được thêu logo chợ Bến Thành
-                                            - biểu tượng của
-                                            Sài Gòn tạo nên điểm nhấn độc đáo cho Áo Sweater Logo Sài Gòn MSW 1003.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-hot" href="#">Mới!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro5.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1011</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span>
-                                        <p class="aa-product-descrip">THÔNG TIN SẢN PHẨM
-                                            Áo Thun Nam MTS 1010 dành cho mọi vóc dáng
+            <!-------------Load danh sách sản phẩm ở đây ---------------->
 
-                                            Màu sắc: Đen, trắng, vàng
-                                            Chất liệu: cotton
-                                            Kiểu dáng: Regular
-                                            Thông điệp COOL FACE cá tính.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro6.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1035</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>599,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1035
+                    <div id="loadProduct"></div>
 
-                                            Màu sắc: Đen, rêu, vàng, trắng, cam.
-                                            Chất liệu: cotton thoáng mát.
-                                            Kiểu dáng: Form slim có độ ôm vừa phải, giúp khoe ưu điểm trên cơ thể.
-                                            Cổ tròn dễ mặc, phù hợp mọi vóc dáng.
-                                            Sản xuất: Việt Nam
-                                            PHÙ HỢP </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro7.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1014</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">199,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1014 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Rêu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro8.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo thun thun in tấm
-                                            MTS 1013</a></h4>
-                                        <span class="aa-product-price sprice">99,000 VND</span>
-                                        <p class="aa-product-descrip">Áo thun Nam in tấm MTS 1013, áo nam form relax cá
-                                            tính.
-                                            Màu sắc: Vàng Chất liệu: Cotton
-                                            Kiểu dáng: Regular.
-                                            Sản xuất: Việt Nam Hình ảnh cánh đồng lúa chín vàng nhìn từ trên cao in cách
-                                            điệu, phối 3 màu
-                                            trắng, vàng, xám.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro9.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="wishlist.html">Áo Thun MTS 1012</a></h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1012 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Vàng, trắng, xám
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam .</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro10.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1011</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">799,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1011 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Trắng, đen, vàng
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Thông điệp: “Sapa Terraced Fields” cùng hình ảnh ruộng bậc thang 2D nổi bật
-                                            giữa ngực áo.
-                                            Sản xuất: Việt Nam </p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro11.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1010</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">199,000 VND</span><span
-                                            class="aa-product-price"><del>399,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1010 dành cho mọi vóc dáng
+                    <!-------------Load danh sách sản phẩm ở đây ---------------->
 
-                                            Màu sắc: Đen, trắng, vàng
-                                            Chất liệu: cotton
-                                            Kiểu dáng: Regular
-                                            Thông điệp COOL FACE cá tính.
-                                            .</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro12.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Nam Raglan
-                                            Tay Dài MTS 1008</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>499,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo thun Nam raglan tay dài MTS 1008 Couple TX với
-                                            thiết kế cổ tròn,
-                                            form suông, tay dài, tay áo raglan tạo điểm nhấn nhá nổi bật.
-                                            Màu sắc: Xanh, vàng.
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Regular
-                                            Sản xuất: Việt Nam</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <span class="aa-badge aa-hot" href="#">Mới!</span>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro13.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun MTS 1009</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span>
-                                        <p class="aa-product-descrip">Áo Thun Nam MTS 1009 chất liệu thun cotton thấm
-                                            hút mồ hôi, thoáng
-                                            mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Trắng, đen, nâu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam </p>
-                                    </figcaption>
-                                </figure>
-
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro14.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun Regular Cổ
-                                            Thêu X MTS 1007</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">399,000 VND</span><span
-                                            class="aa-product-price"><del>599,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo Thun Nam Regular Cổ Thêu X MTS 1007 chất liệu
-                                            thun cotton thấm
-                                            hút mồ hôi, thoáng mát, bền màu và đặc biệt ít nhăn nhàu
-                                            Màu sắc: Đen, trắng, cam, rêu
-                                            Chất liệu: Cotton
-                                            Kiểu dáng: Basic
-                                            Sản xuất: Việt Nam</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                            <!-- start single product item -->
-                            <li>
-                                <figure>
-                                    <a class="aa-product-img" href="detailsProduct.html"><img
-                                            src="../img/product/pro15.webp"
-                                            alt="polo shirt img"></a>
-                                    <a class="aa-add-card-btn" href="cart.html"><span
-                                            class="fa fa-shopping-cart"></span>Thêm vào
-                                        giỏ</a>
-                                    <figcaption>
-                                        <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Len Nam Phối Màu
-                                            Zigzag MOS 1002</a>
-                                        </h4>
-                                        <span class="aa-product-price sprice">529,000 VND</span><span
-                                            class="aa-product-price"><del>699,000
-                          VND</del></span>
-                                        <p class="aa-product-descrip">Áo len nam phối màu Ziczag MOS 1002 Couple TX có
-                                            form suông dễ mặc
-                                            và phù hợp với mọi dáng người. Áo len thường được các bạn nam ưu ái chọn kết
-                                            hợp với quần jeans
-                                            hoặc quần short cho những hoạt động ngày thường vào mùa thu đông.</p>
-                                    </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                    <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                       title="Thêm vào yêu thích"><span
-                                            class="fa fa-heart"></span></a>
-                                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->
-                                    <a href="#" data-toggle2="tooltip" data-placement="top" title="Xem nhanh"
-                                       data-toggle="modal"
-                                       data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- Xem nhanh modal -->
-                        <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog"
-                             aria-labelledby="myModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            &times;
-                                        </button>
-                                        <div class="row">
-                                            <!-- Modal view slider -->
-                                            <div class="col-md-6 col-sm-6 col-xs-12 viewnhanhcol">
-                                                <div class="aa-product-view-slider viewnhanhcol">
-                                                    <div class="simpleLens-gallery-container viewnhanhcol contentviewnhanh"
-                                                         id="demo-1">
-                                                        <div class="simpleLens-container">
-                                                            <div class="simpleLens-big-image-container viewnhanhcol">
-                                                                <a class="simpleLens-lens-image"
-                                                                   data-lens-image="../img/modal1.png">
-                                                                    <img src="../img/modal1.png"
-                                                                         class="simpleLens-big-image">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="simpleLens-thumbnails-container div2scl">
-                                                            <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="../img/modal1.png"
-                                                               data-big-image="../img/modal1.png">
-                                                                <img src="../img/modal1.png">
-                                                            </a>
-                                                            <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="../img/modal2.png"
-                                                               data-big-image="../img/modal2.png">
-                                                                <img src="../img/modal2.png">
-                                                            </a>
-
-                                                            <a href="#" class="simpleLens-thumbnail-wrapper"
-                                                               data-lens-image="../img/modal4.png"
-                                                               data-big-image="../img/modal4.png">
-                                                                <img src="../img/modal4.png">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal view content -->
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <div class="aa-product-view-content">
-                                                    <h3>Váy ngắn cao cấp <span style="color: #ff7315"> MSY</span></h3>
-                                                    <div class="aa-price-block">
-                                                        <div class="rating">
-                                                            <div>
-                                                                <i class="staryellow fa fa-star"></i>
-                                                                <i class="staryellow fa fa-star"></i>
-                                                                <i class="staryellow fa fa-star"></i>
-                                                                <i class="staryellow fa fa-star"></i>
-                                                                <i class="graystar fa fa-star"></i>
-                                                            </div>
-                                                            <a href="">( 14 người đánh giá )</a>
-                                                            <div class="istock">
-                                                                <i class="fa fa-check-circle-o"></i>
-                                                                <span>Còn hàng ( 14 ) </span>
-                                                            </div>
-                                                        </div>
-                                                        <span class="aa-product-view-price">499,000 VND</span>
-                                                    </div>
-                                                    <p>Váy ngắn cao cấp MSY TVT Shop với form ôn vừa vặn và dễ mặc dành
-                                                        cho bạn gái. Chất liệu cotton mang lại cảm giác thoáng mát.
-                                                        In thông điệp Be Stronger tạo điểm nhấn cho các bạn gái.
-                                                    </p>
-                                                    <h4>Size</h4>
-                                                    <div class="aa-prod-view-size">
-                                                        <a href="#">S</a>
-                                                        <a href="#">M</a>
-                                                        <a href="#">L</a>
-                                                        <a href="#">XL</a>
-                                                        <a href="#">XXL</a>
-                                                    </div>
-                                                    <div class="aa-prod-quantity">
-                                                        <div class="inputsl">
-                                                            <button onclick="subtocard()"><span>-</span></button>
-                                                            <input type="text" value="1" id="sladdtocard">
-                                                            <button onclick="plustocard()"><span>+</span></button>
-                                                        </div>
-                                                        <div class="danhmucprod">
-                                                            <p class="aa-prod-category">
-                                                                <span>Danh mục: </span><a href="#">Váy cao cấp SPY</a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="aa-prod-view-bottom">
-                                                        <a href="cart.html"
-                                                           class="aa-add-to-cart-btn addTocardViewQuick"
-                                                           style="color: white;"><span
-                                                                class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
-                                                        <a href="detailsProduct.html" class="aa-add-to-cart-btn"
-                                                           style="color: white;"><span
-                                                                class="fa fa-eye"></span>Xem chi tiết</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- / Xem nhanh modal -->
-                    </div>
-                    <div class="aa-product-catg-pagination">
-                        <nav>
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true" class="nextprebar">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li><a href="#" class="activenextbar">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#" class="none">...</a></li>
-                                <li><a href="#">12</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true" class="nextprebar">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
@@ -776,12 +143,23 @@
                             </div>
                         </h3>
                         <ul class="aa-catg-nav">
-                            <li><a href="#">Áo thun quý tộc</a></li>
-                            <li><a href="">Quần Jean</a></li>
-                            <li><a href="">Áo sơ mi</a></li>
-                            <li><a href="">Quần kaki</a></li>
-                            <li><a href="">Áo thun tay dài</a></li>
+
+
+
+         <!------------------- Load danh mục----------------------------------->
+
+                            <%
+                                for (Category c : listCategory){
+                                %>
+                            <li><button type="button" id="danhmuccho" onclick="loadProductByCategory(this)" value="<%=c.getMa_dm()%>">
+                                <%=c.getTen_dm()%>
+                            </button></li>
+                            <%}%>
+
+                            <input type="hidden" name="" id="laymadm" value="nocategory">
+        <!---------------------------- Load danh mục----------------------------------->
                         </ul>
+
                     </div>
 
                     <h3 class="maintitilefilter">Lọc bởi
@@ -794,13 +172,19 @@
                     <div class="aa-sidebar-widget">
                         <p><span class="red healtitle">Màu</span> sắc</p>
                         <div class="aa-color-tag">
-                            <a class="aa-color-green" href="#"></a>
-                            <a class="aa-color-yellow" href="#"></a>
-                            <a class="aa-color-pink" href="#"></a>
-                            <a class="aa-color-purple" href="#"></a>
-                            <a class="aa-color-blue" href="#"></a>
-                            <a class="aa-color-orange" href="#"></a>
-                            <a class="aa-color-gray" href="#"></a>
+
+                            <!---------Load màu sắc ở đây---->
+
+                            <% for ( ProductColor color : listColer) {
+
+                           %>
+
+                            <button type="button" id="color" onclick="loadProductByColor(this)" value="<%=color.getMa_mau()%>"> <img id="mau" src="<%=color.getLink_hinh()%>" alt=""> </button>
+
+                           <% } %>
+
+                            <input type="hidden" name="" id="laymamau" value="nocolor">
+                            <!---------Load màu sắc ở đây---->
                         </div>
                     </div>
                     <!-- single sidebar -->
@@ -823,11 +207,19 @@
                     <div class="aa-sidebar-widget">
                         <p><span class="red healtitle">Size</span></p>
                         <div class="divsize">
-                            <a href="">S</a>
-                            <a href="">M</a>
-                            <a href="">L</a>
-                            <a href="">XL</a>
-                            <a href="">XXL</a>
+
+                            <!---------Load size ở đây---->
+
+
+
+                            <% for (Size size: listSize) {
+                            %>
+                            <button type="button" value="<%=size.getMa_size()%>" onclick="loadProductBySize(this)"><%=size.getTen_size()%></button>
+                            <%} %>
+
+
+                            <input type="hidden" name="" id="laysize" value="nosize">
+                            <!---------Load size ở đây---->
                         </div>
                     </div>
 
@@ -906,60 +298,38 @@
     </div>
 </section>
 <!-- / product category -->
-
+<input type="hidden" name="" id="ma_sp" value="">
 
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 <!-- Login Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Login or Register</h4>
-                <form class="aa-login-form" action="">
-                    <label for="">Username or Email address<span>*</span></label>
-                    <input type="text" placeholder="Username or email">
-                    <label for="">Password<span>*</span></label>
-                    <input type="password" placeholder="Password">
-                    <button class="aa-browse-btn" type="submit">Login</button>
-                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me
-                    </label>
-                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                    <div class="aa-register-now">
-                        Don't have an account?<a href="account.html">Register now!</a>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
 
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="../js/sequence.js"></script>
-<script src="../js/sequence-theme.modern-slide-in.js"></script>
+<script src="js/sequence.js"></script>
+<script src="js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="../js/slick.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="../js/nouislider.js"></script>
+<script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="../js/custom.js"></script>
-<script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
+<script src="js/custom.js"></script>
+<%--<script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>--%>
 
 <script>
 
@@ -995,8 +365,219 @@
 
     }
 
-        function gobackpassword() {
+    function gobackpassword() {
         document.getElementById('changepassword').style.transform = 'scaleY(0)';
+    }
+
+
+    $(document).ready(function (){
+
+        $.ajax({
+
+            url:'LoadProduct',
+            type: 'get',
+            dataType: 'html',
+            data: {
+                page:1,
+                num:6,
+                type:"Nu",
+                order:"mac-dinh",
+                category:"nocategory",
+                color:"nocolor",
+                price: 0,
+                size:"nosize",
+                search:""
+            },
+
+            success: function (data){
+                $('#loadProduct').html(data);
+            },
+            error: function (){
+                alert("that bai");
+            }
+
+        });
+
+    })
+
+
+    function loadProductByCategory(event) {
+
+        var ma_dm = $(event).val();
+        console.log(ma_dm);
+
+        $("#laymadm").prop("value",ma_dm);
+
+
+        changeListProduct();
+    }
+    function loadProductBySize(event){
+        var ma_size = $(event).val();
+        console.log(ma_size);
+
+        $("#laysize").prop("value",ma_size);
+
+        changeListProduct();
+    }
+    function loadProductByColor(event) {
+
+        var ma_mau = $(event).val();
+
+        console.log(ma_mau);
+
+        $("#laymamau").prop("value",ma_mau);
+
+        changeListProduct();
+    }
+
+
+    function changeListProduct(){
+
+        var order = $("#selectOrder").val();
+        console.log(order);
+
+        var num = $("#xem_sl_sp").val();
+        console.log(num);
+
+        var ma_dm = $("#laymadm").val();
+        console.log(ma_dm);
+
+        var ma_size = $("#laysize").val();
+        console.log(ma_size);
+
+        var ma_mau = $("#laymamau").val();
+        console.log(ma_mau);
+
+        $.ajax({
+
+            url:'LoadProduct',
+            type: 'get',
+            dataType: 'html',
+            data: {
+                page:1,
+                num:num,
+                type:"Nu",
+                order:order,
+                category:ma_dm,
+                color:ma_mau,
+                price: 0,
+                size:ma_size,
+                search:""
+            },
+
+            success: function (data){
+                $('#loadProduct').html(data);
+            },
+            error: function (){
+                alert("that bai");
+            }
+
+        });
+
+
+    }
+
+
+
+</script>
+<script>
+
+    function loadSize(event) {
+
+        var ma_sp = $(event).attr("id");
+
+        $("#ma_sp").attr("value",ma_sp);
+
+        console.log(ma_sp);
+
+        $.ajax({
+
+            url: 'LoadSizeByIDProduct',
+            dataType:'html',
+            type:'get',
+            data:{
+                ma_sp:ma_sp
+            },
+            success: function (data) {
+                $("#loadSizeByID_" + ma_sp).html(data);
+            },
+            error:function (){
+                alert("k load dc size");
+            }
+
+        })
+
+        $.ajax({
+
+            url: 'LoadColorByIDProduct',
+            dataType:'html',
+            type:'get',
+            data:{
+                ma_sp:ma_sp
+            },
+            success: function (data) {
+                $("#loadColor_" + ma_sp).html(data);
+            },
+            error:function (){
+                alert("k load dc size");
+            }
+
+        })
+
+    }
+
+    function changeColor(event){
+
+
+        var ma_sp = $("#ma_sp").attr("value");
+
+        console.log("ma_sp " + ma_sp);
+
+        var ma_size = $(event).attr("id");
+
+        console.log("ma_size " +ma_size);
+
+        let list = document.getElementById("loadColor_" + ma_sp).children;
+
+        $.ajax({
+
+            url: 'LoadColorBySize',
+            dataType:'json',
+            type:'get',
+            data:{
+                ma_sp:ma_sp,
+                ma_size:ma_size
+            },
+            success: function (data) {
+
+
+                console.log(list);
+
+                console.log(data.length);
+
+                console.log(data.getData)
+
+                console.log(data[0].ma_mau)
+
+                for (let i = 0; i < data.length; i++) {
+                    for (let j = 0; j < list.length; j++) {
+                        console.log("data" + data[i].ma_mau)
+                        console.log( "httt" + $(list[j]).attr("id"));
+                        $(list[j]).css("opacity",0.1);
+                        if ($(list[j]).attr("id") == (data[i].ma_mau)){
+                            console.log("ok");
+                            $(list[j]).css("opacity",1);
+                        }
+                    }
+                }
+
+            },
+            error:function (){
+                alert("k load dc mau theo size");
+            }
+
+        })
+
     }
 
 </script>

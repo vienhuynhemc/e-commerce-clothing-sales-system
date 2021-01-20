@@ -174,7 +174,7 @@
 
                                                     ><%=lang.get("6")%>
                                                     </a></li>
-                                                <li><a href="home/product.html"><%=lang.get("7")%><span
+                                                <li><a href="san-pham?type=Nam"><%=lang.get("7")%><span
                                                         class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="home/product.html"><%=lang.get("8")%> <span
@@ -190,7 +190,7 @@
                                                                 </a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="home/product.html"><%=lang.get("13")%><span
+                                                        <li><a href=""><%=lang.get("13")%><span
                                                                 class="caret"></span></a>
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="home/product.html"><%=lang.get("14")%>
@@ -201,7 +201,8 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="home/product2.html"><%=lang.get("16")%><span
+                                                <li><a href="san-pham?type=Nu">
+                                                    <%=lang.get("16")%><span
                                                         class="caret"></span></a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="home/product2.html"><%=lang.get("17")%><span
