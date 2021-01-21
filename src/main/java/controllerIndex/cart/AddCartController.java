@@ -22,27 +22,34 @@ public class AddCartController extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        AccountCustomer user = (AccountCustomer) session.getAttribute("user");
+        if (session.getAttribute("user") == null){
+            request.setAttribute("check",false);
+            request.getRequestDispatcher("notifyAddCart/AddCartStatus.jsp").forward(request,response);
+        }else{
+            AccountCustomer user = (AccountCustomer) session.getAttribute("user");
 
-        String ma_kh = user.getIdUser();
+            String ma_kh = user.getIdUser();
 
-        String ma_sp = request.getParameter("ma_sp");
-        String ma_mau = request.getParameter("ma_mau");
+            String ma_sp = request.getParameter("ma_sp");
+            String ma_mau = request.getParameter("ma_mau");
+            String ma_size = request.getParameter("ma_size");
+            int soluong = Integer.parseInt(request.getParameter("so_luong"));
 
-        System.out.println(ma_kh);
-        System.out.println(ma_sp);
-        System.out.println(ma_mau);
+            System.out.println(ma_kh);
+            System.out.println(ma_sp);
+            System.out.println(ma_mau);
 
 
-        AddCartModel addCartModel = new AddCartModel();
+            AddCartModel addCartModel = new AddCartModel();
 
-        boolean check = addCartModel.executeCart(ma_sp,ma_kh,ma_mau);
+            boolean check = addCartModel.executeCart(ma_sp,ma_kh,ma_mau,ma_size,soluong);
 
-        System.out.println(check);
+            System.out.println(check);
 
-        request.setAttribute("check",check);
+            request.setAttribute("check",check);
 
-        request.getRequestDispatcher("notifyAddCart/AddCartStatus.jsp").forward(request,response);
+            request.getRequestDispatcher("notifyAddCart/AddCartStatus.jsp").forward(request,response);
+        }
 
     }
 }

@@ -60,7 +60,7 @@ public class LoadProduct extends HttpServlet {
         System.out.println(listProduct);
         System.out.println(numPage);
 
-        request.getRequestDispatcher("home/product_Ajax.jsp").forward(request,response);
+        request.getRequestDispatcher("ajax/product_Ajax.jsp").forward(request,response);
 
     }
 }

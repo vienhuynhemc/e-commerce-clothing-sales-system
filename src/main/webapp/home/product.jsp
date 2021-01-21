@@ -1,7 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="beans.product.Category" %>
 <%@ page import="beans.product.ProductColor" %>
-<%@ page import="beans.product.Size" %><%--
+<%@ page import="beans.product.Size" %>
+<%@ page import="beans.product.Product" %>
+<%@ page import="beans.encode.ConvertPrice" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -54,6 +56,19 @@
     <script src="js/Truong/jquery/jquery-3.5.1.min.js" ></script>
     <![endif]-->
 <%request.setCharacterEncoding("utf-8");%>
+
+    <!-------Laod các thuộc tính cần thiết--------------------->
+
+
+    <% String type = (String) request.getAttribute("type");
+        ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
+        ArrayList<ProductColor> listColer = (ArrayList<ProductColor>) request.getAttribute("listColor");
+        ArrayList<Size> listSize = (ArrayList<Size>) request.getAttribute("listSize");
+        ArrayList<Product> listTop = (ArrayList<Product>) request.getAttribute("listTop");
+    %>
+
+
+    <!-------Laod các thuộc tính cần thiết--------------------->
 </head>
 <!-- !Important notice -->
 <!-- Only for product page body tag have to added .productPage class -->
@@ -79,17 +94,7 @@
 
 <!-- / catg header banner section -->
 
-        <!-------Laod các thuộc tính cần thiết--------------------->
 
-
-<% String type = (String) request.getAttribute("type");
-    ArrayList<Category> listCategory = (ArrayList<Category>) request.getAttribute("listCategory");
-    ArrayList<ProductColor> listColer = (ArrayList<ProductColor>) request.getAttribute("listColor");
-    ArrayList<Size> listSize = (ArrayList<Size>) request.getAttribute("listSize");
-%>
-
-
-<!-------Laod các thuộc tính cần thiết--------------------->
 
 
 <!-- product category -->
@@ -102,7 +107,7 @@
                         <div class="aa-product-catg-head-left headerproduct">
                             <form action="" class="aa-sort-form">
                                 <label for="" >XẾP THEO</label>
-                                <select name="" id="selectOrder"onchange="changeListProduct()">
+                                <select name="" id="selectOrder" onchange="changeListProduct()">
                                     <option value="mac-dinh" selected>Mặc định</option>
                                     <option value="ten_sp" >Tên sản phẩm</option>
                                     <option value="gia">Giá</option>
@@ -197,7 +202,8 @@
                                 </div>
                                 <div class="rangespan">
                                     <span id="skip-value-lower" class="example-val">300,000 VND</span>
-                                    <span id="skip-value-upper" class="example-val">1,000,000 VND</span>
+                                    <span id="skip-value-upper"   class="example-val">1,000,000 VND</span>
+                                    <input type="hidden" name="" id="laygia" value="0">
                                 </div>
                             </form>
                         </div>
@@ -234,48 +240,27 @@
                         </h3>
                         <div class="aa-recently-views">
                             <ul>
+
+                                <!-------Load top sản phẩm chỗ này--------------->
+                                <% for (Product p : listTop) {
+                                  %>
+
                                 <li>
                                     <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
                                     <div class="aa-cartbox-info">
                                         <div class="imggddiv">
-                                            <img class="imggd" src="../img/product/pro1.webp" alt="">
+                                            <img class="imggd" src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="">
                                         </div>
-                                        <h4><a href="detailsProduct.html">Áo Len Nam Basic MOS 1001</a></h4>
+                                        <h4><a href="detailsProduct.html"><%=p.getTen_sp()%>%</a></h4>
                                         <div class="gdprice">
-                                            <p>249,000 VND</p>
-                                            <del>399,000
-                                                VND
-                                            </del>
+                                            <p><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</p>
+                                            <del><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</del>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
-                                    <div class="aa-cartbox-info">
-                                        <div class="imggddiv">
-                                            <img class="imggd" src="../img/product/pro9.webp" alt="">
-                                        </div>
-                                        <h4><a href="detailsProduct.html">Áo Thun MTS 1012</a></h4>
-                                        <div class="gdprice">
-                                            <p>399,000 VND</p>
-                                            <del>499,000
-                                                VND
-                                            </del>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="detailsProduct.html" class="aa-cartbox-img g1"></a>
-                                    <div class="aa-cartbox-info">
-                                        <div class="imggddiv">
-                                            <img class="imggd" src="../img/product/pro11.webp" alt="">
-                                        </div>
-                                        <h4><a href="detailsProduct.html">Áo Thun MTS 1010</a></h4>
-                                        <div class="gdprice">
-                                            <p>199,000 VND</p>
-                                        </div>
-                                    </div>
-                                </li>
+
+                               <% } %>
+                                <!-------Load top sản phẩm chỗ này--------------->
                             </ul>
                         </div>
                     </div>
@@ -284,7 +269,7 @@
 
         </div>
     </div>
-    <div id="addCartStatus" style="display:none">
+    <div id="addCartStatus" style="display:none; z-index: 100000;position: relative">
         <div class="changepassword" id="changepassword">
             <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
             <div class="mainchangepassword">
@@ -296,10 +281,32 @@
             </div>
         </div>
     </div>
+
+
+    <div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
+        <div class="changepassword" id="changepassword2">
+            <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+            <div class="mainchangepassword">
+                <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+                <div class="changepasswordsuccess" id="changepasswordsuccess2">
+                    <p> Vui lòng chọn đầy đủ thông tin để thêm sản phẩm vào giỏ hàng </p>
+                    <button onclick="gobackpassword()">Trở về
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </section>
 <!-- / product category -->
-<input type="hidden" name="" id="ma_sp" value="">
+<!-----các thẻ input hiden làm nhiệm vụ lấy dữ liệu------>
 
+<input type="hidden" name="" id="ma_sp" value="">
+<input type="hidden" name="" id="soluongsp" value="1">
+<input type="hidden" name="" id="sexType" value="<%=request.getAttribute("type")%>">
+
+
+<!-----các thẻ input hiden làm nhiệm vụ lấy dữ liệu------>
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
@@ -333,45 +340,64 @@
 
 <script>
 
-    function addCart(event){
-        var list = event.children;
-        console.log(list);
-        var ma_sp = $(list[0]).attr("id");
-        var ma_mau =  $(list[1]).attr("id");
-        console.log(ma_sp);
-        console.log(ma_mau);
-        document.getElementById("addCartStatus").style.display = "none";
-        document.getElementById('changepassword').style.transform = 'scaleY(0)';
-        $.ajax({
-            url:'../AddCartController',
-            type:'get',
-            dataType:'html',
-            data:{
-                ma_sp:ma_sp,
-                ma_mau:ma_mau,
-            },
-            success:function (data){
-                console.log(data);
-                 $('#changepasswordsuccess').html(data);
+    function addCart(){
 
-                 document.getElementById("addCartStatus").style.display = "block";
-                document.getElementById('changepassword').style.transform = 'scaleY(1)';
-            },
-            error:function () {
-                alert("that bai");
-                // window.location.href = 'index.jsp';
-            }
-        });
 
+        var ma_sp = $("#layma_sanphamthemvaogiohang").val();
+        var ma_size =  $("#layma_sizethemvaogiohang").val();
+       var ma_mau = $("#layma_mauthemvaogiohang").val();
+       var soluong = $("#soluongsp").val();
+
+        // console.log(ma_sp);
+        // console.log(ma_size);
+        // console.log(ma_mau);
+        // console.log(soluong);
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+
+        if(ma_sp == "" || ma_size == "" || ma_mau == ""){
+
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+
+        }else{
+            document.getElementById("addCartStatus").style.display = "none";
+            document.getElementById('changepassword').style.transform = 'scaleY(0)';
+            $.ajax({
+                url:'AddCartController',
+                type:'get',
+                dataType:'html',
+                data:{
+                    ma_sp:ma_sp,
+                    ma_mau:ma_mau,
+                    ma_size:ma_size,
+                    so_luong:soluong
+                },
+                success:function (data){
+                    console.log(data);
+                     $('#changepasswordsuccess').html(data);
+
+                     document.getElementById("addCartStatus").style.display = "block";
+                    document.getElementById('changepassword').style.transform = 'scaleY(1)';
+
+                },
+                error:function () {
+                    alert(" them sp that bai");
+                    // window.location.href = 'index.jsp';
+                }
+            });
+
+        }
     }
 
     function gobackpassword() {
         document.getElementById('changepassword').style.transform = 'scaleY(0)';
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
     }
 
 
     $(document).ready(function (){
-
+        var type = $('#sexType').val();
         $.ajax({
 
             url:'LoadProduct',
@@ -380,7 +406,7 @@
             data: {
                 page:1,
                 num:6,
-                type:"Nu",
+                type:type,
                 order:"mac-dinh",
                 category:"nocategory",
                 color:"nocolor",
@@ -393,7 +419,7 @@
                 $('#loadProduct').html(data);
             },
             error: function (){
-                alert("that bai");
+                alert("load sp that bai");
             }
 
         });
@@ -408,6 +434,9 @@
 
         $("#laymadm").prop("value",ma_dm);
 
+        $("#laysize").prop("value","nosize");
+        $("#laymamau").prop("value","nocolor");
+
 
         changeListProduct();
     }
@@ -416,6 +445,8 @@
         console.log(ma_size);
 
         $("#laysize").prop("value",ma_size);
+        $("#laymamau").prop("value","nocolor");
+        $("#laymadm").prop("value","nocategory");
 
         changeListProduct();
     }
@@ -426,27 +457,34 @@
         console.log(ma_mau);
 
         $("#laymamau").prop("value",ma_mau);
+        $("#laymadm").prop("value","nocategory");
+        $("#laysize").prop("value","nosize");
 
         changeListProduct();
     }
 
-
     function changeListProduct(){
 
         var order = $("#selectOrder").val();
-        console.log(order);
+        // console.log(order);
 
         var num = $("#xem_sl_sp").val();
-        console.log(num);
+        // console.log(num);
 
         var ma_dm = $("#laymadm").val();
-        console.log(ma_dm);
+        // console.log(ma_dm);
 
         var ma_size = $("#laysize").val();
-        console.log(ma_size);
+        // console.log(ma_size);
 
         var ma_mau = $("#laymamau").val();
-        console.log(ma_mau);
+        // console.log(ma_mau);
+
+        var gia = $('#laygia').val();
+        // console.log(gia);
+
+        var type = $('#sexType').val();
+
 
         $.ajax({
 
@@ -456,11 +494,11 @@
             data: {
                 page:1,
                 num:num,
-                type:"Nu",
+                type:type,
                 order:order,
                 category:ma_dm,
                 color:ma_mau,
-                price: 0,
+                price: gia,
                 size:ma_size,
                 search:""
             },
@@ -469,7 +507,7 @@
                 $('#loadProduct').html(data);
             },
             error: function (){
-                alert("that bai");
+                alert(" thay doi danh sach sp that bai");
             }
 
         });
@@ -477,14 +515,15 @@
 
     }
 
-
-
 </script>
 <script>
 
     function loadSize(event) {
 
-        var ma_sp = $(event).attr("id");
+
+        var list = event.children;
+
+        var ma_sp = $(list[0]).val();
 
         $("#ma_sp").attr("value",ma_sp);
 
@@ -499,7 +538,7 @@
                 ma_sp:ma_sp
             },
             success: function (data) {
-                $("#loadSizeByID_" + ma_sp).html(data);
+                $(".loadSizeByID_" + ma_sp).html(data);
             },
             error:function (){
                 alert("k load dc size");
@@ -516,61 +555,74 @@
                 ma_sp:ma_sp
             },
             success: function (data) {
-                $("#loadColor_" + ma_sp).html(data);
+                $(".loadColor_" + ma_sp).html(data);
             },
             error:function (){
-                alert("k load dc size");
+                alert("k load dc mau");
             }
 
         })
-
+        $("#layma_sanphamthemvaogiohang").prop("value","");
+        $("#layma_sizethemvaogiohang").prop("value","");
+        $("#layma_mauthemvaogiohang").prop("value","");
+        $('#laymamaudccheck input[type = radio]').prop("checked",false);
+        $(".sladdtocard").prop("value",1);
+         $("#soluongsp").prop("value",1);
     }
 
     function changeColor(event){
 
-
         var ma_sp = $("#ma_sp").attr("value");
+
+        <!-- chỗ này sử lí click hiện cho đẹp thôi  -->
+        let l = document.getElementsByClassName("loadSizeByID_" + ma_sp);
+        let l1 = l[0].children;
+        let l2 = l[1].children;
+        for (i = 0; i < l1.length; i ++){
+            $(l1[i]).css("border","none");
+            $(l2[i]).css("border","none");
+        }
+        $(event).css("border","1px solid red");
+        $(event).css("border-radius","6px");
+        $(event).css("outline","none");
+
+        <!-- chỗ này sử lí click hiện cho đẹp thôi  -->
+
 
         console.log("ma_sp " + ma_sp);
 
         var ma_size = $(event).attr("id");
 
+        <!-- khi click vào thì gán giá trị mã tương ứng để chờ add vào giỏ hàng-->
+
+        $("#layma_sanphamthemvaogiohang").prop("value",ma_sp);
+        $("#layma_sizethemvaogiohang").prop("value",ma_size);
+        $("#layma_mauthemvaogiohang").prop("value","");
+
+        <!-- khi click vào thì gán giá trị mã tương ứng để chờ add vào giỏ hàng-->
         console.log("ma_size " +ma_size);
 
-        let list = document.getElementById("loadColor_" + ma_sp).children;
+
+        let list = document.getElementsByClassName("loadColor_" + ma_sp);
+
+        let list1 = list[0].children;
+        let list2 = list[1].children;
+
+
+        console.log(list1);
+        // console.log(list4);
 
         $.ajax({
 
             url: 'LoadColorBySize',
-            dataType:'json',
+            dataType:'html',
             type:'get',
             data:{
                 ma_sp:ma_sp,
                 ma_size:ma_size
             },
             success: function (data) {
-
-
-                console.log(list);
-
-                console.log(data.length);
-
-                console.log(data.getData)
-
-                console.log(data[0].ma_mau)
-
-                for (let i = 0; i < data.length; i++) {
-                    for (let j = 0; j < list.length; j++) {
-                        console.log("data" + data[i].ma_mau)
-                        console.log( "httt" + $(list[j]).attr("id"));
-                        $(list[j]).css("opacity",0.1);
-                        if ($(list[j]).attr("id") == (data[i].ma_mau)){
-                            console.log("ok");
-                            $(list[j]).css("opacity",1);
-                        }
-                    }
-                }
-
+                $(".loadColor_" + ma_sp).html(data);
             },
             error:function (){
                 alert("k load dc mau theo size");
@@ -578,6 +630,46 @@
 
         })
 
+    }
+
+    function addcolor(event){
+
+        var list = event.children;
+
+         var ma_mau = $(list[0]).val();
+
+             var ma_sp = $("#ma_sp").attr("value");
+            <!-- chỗ này sử lí click hiện cho đẹp thôi  -->
+            let l = document.getElementsByClassName("loadcolor_" + ma_sp);
+            let l1 = l[0].children;
+            let l2 = l[1].children;
+            for (i = 0; i < l1.length; i ++){
+                $(l1[i]).css("border","none");
+                $(l2[i]).css("border","none");
+            }
+            $(event).css("border","1px solid red");
+            $(event).css("border-radius","6px");
+            $(event).css("outline","none");
+
+            <!-- chỗ này sử lí click hiện cho đẹp thôi  -->
+
+             $("#layma_mauthemvaogiohang").prop("value",ma_mau);
+
+        }
+    function plustocard() {
+        var n = $(".sladdtocard").val();
+        const nn = Number(n);
+        $(".sladdtocard").prop("value",nn+1);
+        $("#soluongsp").prop("value",nn+1);
+    }
+
+    function subtocard() {
+        var n = $(".sladdtocard").val();
+        const nn = Number(n);
+        if (nn > 1) {
+            $(".sladdtocard").prop("value",nn-1);
+            $("#soluongsp").prop("value",nn-1);
+        }
     }
 
 </script>

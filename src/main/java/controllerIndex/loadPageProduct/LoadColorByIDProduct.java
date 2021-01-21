@@ -21,6 +21,8 @@ public class LoadColorByIDProduct extends HttpServlet {
 
         String ma_sp = request.getParameter("ma_sp");
 
+        System.out.println(ma_sp);
+
 
         LoadSizeByIDProductModel loadSizeByIDProductModel = new LoadSizeByIDProductModel();
 
@@ -28,6 +30,7 @@ public class LoadColorByIDProduct extends HttpServlet {
         ArrayList<ProductColor> list = loadSizeByIDProductModel.laodColorByID(ma_sp);
 
         request.setAttribute("listColor",list);
+
 
         System.out.println(list);
 

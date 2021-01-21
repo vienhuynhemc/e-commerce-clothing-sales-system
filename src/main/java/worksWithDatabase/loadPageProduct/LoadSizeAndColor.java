@@ -17,6 +17,7 @@ public class LoadSizeAndColor {
 
     }
 
+    // laod tất cả màu dựa trên id sản phẩm
     public ArrayList<ProductColor> laodColorByproduct(String ma_sp){
         ArrayList<ProductColor> result = new ArrayList<>();
 
@@ -24,7 +25,7 @@ public class LoadSizeAndColor {
         try {
             con = DataSource.getInstance().getConnection();
 
-            String sql = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ?";
+            String sql = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ton_tai = 1";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -58,7 +59,7 @@ public class LoadSizeAndColor {
             con = DataSource.getInstance().getConnection();
 
             // load danh sach size dựa vào id sản phẩm
-            String sqlSize = "SELECT DISTINCT s.ma_size, s.ten_size  FROM thong_tin_chi_tiet_sp tt, size s WHERE tt.ma_size = s.ma_size and tt.ma_sp = ?";
+            String sqlSize = "SELECT DISTINCT s.ma_size, s.ten_size  FROM thong_tin_chi_tiet_sp tt, size s WHERE tt.ma_size = s.ma_size and tt.ma_sp = ? and tt.ton_tai = 1 ";
 
             PreparedStatement ps1 = con.prepareStatement(sqlSize);
             ps1.setString(1,ma_sp);
@@ -88,7 +89,7 @@ public class LoadSizeAndColor {
         try {
             con = DataSource.getInstance().getConnection();
 
-            String sqlcolor = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ma_size = ?";
+            String sqlcolor = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ma_size = ? and tt.ton_tai = 1";
 
             PreparedStatement ps = con.prepareStatement(sqlcolor);
 

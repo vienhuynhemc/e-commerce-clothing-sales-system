@@ -22,6 +22,7 @@ public class Product {
     private ProductPriceSale priceSale;
     private int extant;
     private String categoryName;
+    private int so_luong_con_lai;
 
     public Product(String ma_sp, String ten_sp, String ma_hsx, String ma_dm, DateTime ngay_tao, int gioi_tinh, int trang_thai, int so_luong_ban_ra, int ton_tai) {
         this.ma_sp = ma_sp;
@@ -171,6 +172,14 @@ public class Product {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public int getSo_luong_con_lai() {
+        return so_luong_con_lai;
+    }
+
+    public void setSo_luong_con_lai(int so_luong_con_lai) {
+        this.so_luong_con_lai = so_luong_con_lai;
     }
 
     @Override

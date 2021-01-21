@@ -6311,3 +6311,28 @@ button#color {
     border: none;
     background-color: transparent;
 }
+.hienthichonsize{
+    opacity: 0;
+    visibility: hidden;
+}
+.labelcolor{
+    width: 22px;
+    height: 20px;
+}
+.inputcolor{
+    border: none !important;
+    opacity: 0;
+    position: relative;
+    left: 3px;
+    top: -4px;
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+}
+.hinhmau{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    top: -21px;
+}
