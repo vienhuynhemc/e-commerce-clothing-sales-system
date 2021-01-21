@@ -1,15 +1,17 @@
-package controllerAdmin.informationAccountAdmin;
+package controllerAdmin.informationAccountNVK;
 
 import beans.address.Commune;
 import beans.address.District;
 import beans.address.Provincial;
-import beans.informationAccountAdmin.InformationAccountAdminObject;
+import beans.informationAccountNVGH.InformationAccountNVGHObject;
+import beans.informationAccountNVK.InformationAccountNVKObject;
 import beans.loginAdmin.UserAdmin;
 import model.account.AccountModel;
 import model.address.AddressModel;
 import model.commune.CommuneModel;
 import model.district.DistrictModel;
-import model.informationAccountAdmin.InformationAccountAdminModel;
+import model.informationAccountNVGH.InformationAccountNVGHModel;
+import model.informationAccountNVK.InformationAccountNVKModel;
 import model.personalNotice.PersonalNoticeModel;
 import model.provincial.ProvincialModel;
 import model.staff.StaffModel;
@@ -22,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "InformationAccountAdminController", urlPatterns = "/InformationAccountAdminController")
-public class InformationAccountAdminController extends HttpServlet {
+@WebServlet(name = "InformationAccountNVKController", urlPatterns = "/InformationAccountNVKController")
+public class InformationAccountNVKController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -31,7 +33,7 @@ public class InformationAccountAdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
         if (userAdmin == null) {
-            request.getSession().setAttribute("trackPage", "admin.thongTinTaiKhoanAdmin");
+            request.getSession().setAttribute("trackPage", "admin.thongTinTaiKhoanNVK");
             response.sendRedirect("admin/home/login.jsp");
         } else {
 
@@ -42,37 +44,37 @@ public class InformationAccountAdminController extends HttpServlet {
             if (foward != null) {
 
                 //  Lấy đối tượng ra
-                InformationAccountAdminObject informationAccountAdminObject = (InformationAccountAdminObject) userAdmin.getListOfFunction().get("informationAccountAdminObject");
+                InformationAccountNVKObject informationAccountNVKObject = (InformationAccountNVKObject) userAdmin.getListOfFunction().get("informationAccountNVKObject");
 
                 if (foward.equals("removeAvatar")) {
-                    informationAccountAdminObject.setTitle("Bạn đã xóa hình đại diện thành công");
-                    informationAccountAdminObject.setContent("Dữ liệu của bạn đã được thay đổi");
+                    informationAccountNVKObject.setTitle("Bạn đã xóa hình đại diện thành công");
+                    informationAccountNVKObject.setContent("Dữ liệu của bạn đã được thay đổi");
                 } else if (foward.equals("changeAvatar")) {
-                    informationAccountAdminObject.setTitle("Bạn đã thay đổi ảnh đại diện thành công");
-                    informationAccountAdminObject.setContent("Dữ liệu của bạn đã được thay đổi");
+                    informationAccountNVKObject.setTitle("Bạn đã thay đổi ảnh đại diện thành công");
+                    informationAccountNVKObject.setContent("Dữ liệu của bạn đã được thay đổi");
                 }
 
                 //  Cập nhật là thông báo
-                informationAccountAdminObject.setNotify(true);
+                informationAccountNVKObject.setNotify(true);
 
                 //  Cập nhật đang ở trang chỉnh sửa
-                informationAccountAdminObject.setEdit(true);
+                informationAccountNVKObject.setEdit(true);
 
-                informationAccountAdminObject.setReady(true);
-                userAdmin.getListOfFunction().put("informationAccountAdminObject", informationAccountAdminObject);
-                userAdmin.updateReady("informationAccountAdminObject");
+                informationAccountNVKObject.setReady(true);
+                userAdmin.getListOfFunction().put("informationAccountNVKObject", informationAccountNVKObject);
+                userAdmin.updateReady("informationAccountNVKObject");
                 request.getSession().setAttribute("userAdmin", userAdmin);
 
                 // sedirect tới trang của mình thôi nào
-                response.sendRedirect("admin/home/thongTinTaiKhoanAdmin.jsp");
+                response.sendRedirect("admin/home/thongTinTaiKhoanNVK.jsp");
 
 
             } else {
 
                 //  Trước tiên kiểm tra xem thử nó bắt đầu hay đã có và đang gọi một action
-                InformationAccountAdminObject informationAccountAdminObject = (InformationAccountAdminObject) userAdmin.getListOfFunction().get("informationAccountAdminObject");
+                InformationAccountNVKObject informationAccountNVKObject = (InformationAccountNVKObject) userAdmin.getListOfFunction().get("informationAccountNVKObject");
 
-                if (informationAccountAdminObject == null || !informationAccountAdminObject.isReady()) {
+                if (informationAccountNVKObject == null || !informationAccountNVKObject.isReady()) {
 
 
                     // set charset cho cả request và responne
@@ -80,51 +82,43 @@ public class InformationAccountAdminController extends HttpServlet {
                     response.setContentType("text/html; charset=UTF-8");
                     response.setCharacterEncoding("UTF-8");
 
-                    informationAccountAdminObject = new InformationAccountAdminObject();
+                    informationAccountNVKObject = new InformationAccountNVKObject();
                     //  Cập nhật số đơn hàng admin này đã duyệt
-                    int orderApproval = InformationAccountAdminModel.getInstance().getOrderApprovalByIdAdmin(userAdmin.getAccount().getId());
-                    informationAccountAdminObject.setOrderApproval(orderApproval);
-
-                    //  Cập nhật số lựong nhập hàng
-                    int numberOfImportProduct = InformationAccountAdminModel.getInstance().getNumberOfImportProductByIdAmin(userAdmin.getAccount().getId());
-                    informationAccountAdminObject.setNumberOfImportProduct(numberOfImportProduct);
-
-                    //  Cập nhập số lượgn hàng đã nhập
-                    int sumImportProduct = InformationAccountAdminModel.getInstance().getSumImportProductByListId(userAdmin.getAccount().getId());
-                    informationAccountAdminObject.setSumImportProduct(sumImportProduct);
+                    int orderApproval = InformationAccountNVKModel.getInstance().getOrderApprovalByIdNVK(userAdmin.getAccount().getId());
+                    informationAccountNVKObject.setOrderApproval(orderApproval);
 
                     //  Cập nhật list tỉnh thành để đổ dữ liệu ra
                     List<Provincial> provincials = ProvincialModel.getInstance().getListProvincial();
-                    informationAccountAdminObject.setProvincials(provincials);
+                    informationAccountNVKObject.setProvincials(provincials);
 
                     //  Cập nhật tỉnh huyện xã hiện tại là của ông userAdmin
-                    informationAccountAdminObject.setProvincial(userAdmin.getAccount().getProvincial());
-                    informationAccountAdminObject.setDistrict(userAdmin.getAccount().getDistrict());
-                    informationAccountAdminObject.setCommune(userAdmin.getAccount().getCommune());
+                    informationAccountNVKObject.setProvincial(userAdmin.getAccount().getProvincial());
+                    informationAccountNVKObject.setDistrict(userAdmin.getAccount().getDistrict());
+                    informationAccountNVKObject.setCommune(userAdmin.getAccount().getCommune());
 
                     //  Cập nhật list huyện theo tỉnh của userAdmin
                     List<District> districts = DistrictModel.getInstance().getDistrictByProvincialId(userAdmin.getAccount().getProvincial().getProvincialId());
-                    informationAccountAdminObject.setDistricts(districts);
+                    informationAccountNVKObject.setDistricts(districts);
 
                     //  Cập nhật list phường xã theo tỉnh hiện tại của userAdmin
                     List<Commune> communes = CommuneModel.getInstance().getCommuneByDistrictId(userAdmin.getAccount().getDistrict().getDistrictId());
-                    informationAccountAdminObject.setCommunes(communes);
+                    informationAccountNVKObject.setCommunes(communes);
 
                     //  Cập nhật thông tin khasc
-                    informationAccountAdminObject.setFullName(userAdmin.getAccount().getFullName());
-                    informationAccountAdminObject.setDisplayName(userAdmin.getAccount().getDisplayName());
-                    informationAccountAdminObject.setPhoneNumber(userAdmin.getAccount().getPhoneNumber());
-                    informationAccountAdminObject.setPassword(userAdmin.getAccount().getPassword());
-                    informationAccountAdminObject.setCheckPassword(userAdmin.getAccount().getPassword());
-                    informationAccountAdminObject.setIntroduct(userAdmin.getAccount().getIntroduce());
+                    informationAccountNVKObject.setFullName(userAdmin.getAccount().getFullName());
+                    informationAccountNVKObject.setDisplayName(userAdmin.getAccount().getDisplayName());
+                    informationAccountNVKObject.setPhoneNumber(userAdmin.getAccount().getPhoneNumber());
+                    informationAccountNVKObject.setPassword(userAdmin.getAccount().getPassword());
+                    informationAccountNVKObject.setCheckPassword(userAdmin.getAccount().getPassword());
+                    informationAccountNVKObject.setIntroduct(userAdmin.getAccount().getIntroduce());
 
-                    informationAccountAdminObject.setReady(true);
-                    userAdmin.getListOfFunction().put("informationAccountAdminObject", informationAccountAdminObject);
-                    userAdmin.updateReady("informationAccountAdminObject");
+                    informationAccountNVKObject.setReady(true);
+                    userAdmin.getListOfFunction().put("informationAccountNVKObject", informationAccountNVKObject);
+                    userAdmin.updateReady("informationAccountNVKObject");
                     request.getSession().setAttribute("userAdmin", userAdmin);
 
                     // sedirect tới trang của mình thôi nào
-                    response.sendRedirect("admin/home/thongTinTaiKhoanAdmin.jsp");
+                    response.sendRedirect("admin/home/thongTinTaiKhoanNVK.jsp");
 
                 } else {
 
@@ -144,53 +138,53 @@ public class InformationAccountAdminController extends HttpServlet {
                     String checkPassword = request.getParameter("checkPassword");
                     String introduct = request.getParameter("introduct");
 
-                    informationAccountAdminObject.setFullName(fullName);
-                    informationAccountAdminObject.setDisplayName(displayName);
-                    informationAccountAdminObject.setPhoneNumber(phoneNumber);
-                    informationAccountAdminObject.setPassword(password);
-                    informationAccountAdminObject.setCheckPassword(checkPassword);
-                    informationAccountAdminObject.setIntroduct(introduct);
+                    informationAccountNVKObject.setFullName(fullName);
+                    informationAccountNVKObject.setDisplayName(displayName);
+                    informationAccountNVKObject.setPhoneNumber(phoneNumber);
+                    informationAccountNVKObject.setPassword(password);
+                    informationAccountNVKObject.setCheckPassword(checkPassword);
+                    informationAccountNVKObject.setIntroduct(introduct);
                     if (district.equals("none")) {
-                        informationAccountAdminObject.setDistrict(null);
+                        informationAccountNVKObject.setDistrict(null);
                     } else {
                         District districtObject = DistrictModel.getInstance().getDistrictById(district);
-                        informationAccountAdminObject.setDistrict(districtObject);
+                        informationAccountNVKObject.setDistrict(districtObject);
                     }
                     if (commune.equals("none")) {
-                        informationAccountAdminObject.setCommune(null);
+                        informationAccountNVKObject.setCommune(null);
                     } else {
                         Commune communeObject = CommuneModel.getInstance().getCommuneById(commune);
-                        informationAccountAdminObject.setCommune(communeObject);
+                        informationAccountNVKObject.setCommune(communeObject);
                     }
 
                     String action = request.getParameter("action");
                     if (action.equals("goToEdit")) {
-                        informationAccountAdminObject.setEdit(true);
+                        informationAccountNVKObject.setEdit(true);
                     } else if (action.equals("backEdit")) {
-                        informationAccountAdminObject.setEdit(false);
+                        informationAccountNVKObject.setEdit(false);
                     } else if (action.equals("loadProvincial")) {
 
                         // Cap nhat lai tinh hien tai
                         String provincialId = request.getParameter("provincial");
-                        informationAccountAdminObject.setProvincial(ProvincialModel.getInstance().getProvincialById(provincialId));
+                        informationAccountNVKObject.setProvincial(ProvincialModel.getInstance().getProvincialById(provincialId));
 
                         // Cật nhật lại list huyện
-                        informationAccountAdminObject.setDistricts(DistrictModel.getInstance().getDistrictByProvincialId(provincialId));
-                        informationAccountAdminObject.setDistrict(null);
+                        informationAccountNVKObject.setDistricts(DistrictModel.getInstance().getDistrictByProvincialId(provincialId));
+                        informationAccountNVKObject.setDistrict(null);
 
                         // Cho list xã thành null
-                        informationAccountAdminObject.setCommunes(null);
-                        informationAccountAdminObject.setCommune(null);
+                        informationAccountNVKObject.setCommunes(null);
+                        informationAccountNVKObject.setCommune(null);
 
                     } else if (action.equals("loadDistrict")) {
 
                         // Cập nhật lại huyện hiện tại
                         String districtId = request.getParameter("district");
-                        informationAccountAdminObject.setDistrict(DistrictModel.getInstance().getDistrictById(districtId));
+                        informationAccountNVKObject.setDistrict(DistrictModel.getInstance().getDistrictById(districtId));
 
                         // Cập nhât lại list xa
-                        informationAccountAdminObject.setCommunes(CommuneModel.getInstance().getCommuneByDistrictId(districtId));
-                        informationAccountAdminObject.setCommune(null);
+                        informationAccountNVKObject.setCommunes(CommuneModel.getInstance().getCommuneByDistrictId(districtId));
+                        informationAccountNVKObject.setCommune(null);
 
                     }else if(action.equals("save")){
                         int hinh_anh_trong_firebase = Integer.parseInt(request.getParameter("hinh_anh_trong_firebase"));
@@ -202,9 +196,9 @@ public class InformationAccountAdminController extends HttpServlet {
                         userAdmin.getAccount().setPhoneNumber(phoneNumber);
                         userAdmin.getAccount().setFullName(fullName);
                         userAdmin.getAccount().setDisplayName(displayName);
-                        userAdmin.getAccount().setProvincial(informationAccountAdminObject.getProvincial());
-                        userAdmin.getAccount().setDistrict(informationAccountAdminObject.getDistrict());
-                        userAdmin.getAccount().setCommune(informationAccountAdminObject.getCommune());
+                        userAdmin.getAccount().setProvincial(informationAccountNVKObject.getProvincial());
+                        userAdmin.getAccount().setDistrict(informationAccountNVKObject.getDistrict());
+                        userAdmin.getAccount().setCommune(informationAccountNVKObject.getCommune());
 
                         // Update trong csdl luôn
                         StaffModel.getInstance().updateIntroductById(userAdmin.getAccount().getId(),userAdmin.getAccount().getIntroduce());
@@ -213,25 +207,25 @@ public class InformationAccountAdminController extends HttpServlet {
                         AccountModel.getInstance().updatePhoneNumber(userAdmin.getAccount().getId(),userAdmin.getAccount().getPhoneNumber());
                         AccountModel.getInstance().updateFullName(userAdmin.getAccount().getId(),userAdmin.getAccount().getFullName());
                         AccountModel.getInstance().updateDisplayName(userAdmin.getAccount().getId(),userAdmin.getAccount().getDisplayName());
-                        AddressModel.getInstance().updateAddressById(userAdmin.getAccount().getId(),informationAccountAdminObject.getProvincial().getProvincialId(),informationAccountAdminObject.getDistrict().getDistrictId(),informationAccountAdminObject.getCommune().getCommuneId());
+                        AddressModel.getInstance().updateAddressById(userAdmin.getAccount().getId(),informationAccountNVKObject.getProvincial().getProvincialId(),informationAccountNVKObject.getDistrict().getDistrictId(),informationAccountNVKObject.getCommune().getCommuneId());
 
                         //  Tao thông báo cá nhân
                         PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa thay đổi", "thông tin" ,"của mình", "");
 
                         //  Cho biết là thông báo
-                        informationAccountAdminObject.setNotify(true);
-                        informationAccountAdminObject.setTitle("Bạn đã lưu lại dữ liệu thành công");
-                        informationAccountAdminObject.setContent("Dữ liệu của bạn đã được cập nhật");
+                        informationAccountNVKObject.setNotify(true);
+                        informationAccountNVKObject.setTitle("Bạn đã lưu lại dữ liệu thành công");
+                        informationAccountNVKObject.setContent("Dữ liệu của bạn đã được cập nhật");
 
                     }
 
-                    informationAccountAdminObject.setReady(true);
-                    userAdmin.getListOfFunction().put("informationAccountAdminObject", informationAccountAdminObject);
-                    userAdmin.updateReady("informationAccountAdminObject");
+                    informationAccountNVKObject.setReady(true);
+                    userAdmin.getListOfFunction().put("informationAccountNVKObject", informationAccountNVKObject);
+                    userAdmin.updateReady("informationAccountNVKObject");
                     request.getSession().setAttribute("userAdmin", userAdmin);
 
                     // sedirect tới trang của mình thôi nào
-                    response.sendRedirect("admin/home/thongTinTaiKhoanAdmin.jsp");
+                    response.sendRedirect("admin/home/thongTinTaiKhoanNVK.jsp");
                 }
             }
         }

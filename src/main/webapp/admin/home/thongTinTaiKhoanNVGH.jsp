@@ -1,4 +1,15 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.informationAccountNVGH.InformationAccountNVGHObject" %>
+<%@ page import="model.phoneNumber.PhoneNumberModel" %>
+<%@ page import="model.password.PasswordModel" %>
+<%@ page import="model.salary.SalaryModel" %>
+<%@ page import="beans.personalNotice.PersonalNotice" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.personalNotice.PersonalNoticeModel" %>
+<%@ page import="beans.address.Provincial" %>
+<%@ page import="beans.address.District" %>
+<%@ page import="beans.address.Commune" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -15,129 +26,114 @@
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
+    <script src="../../js/Truong/jquery/jquery-3.5.1.min.js"></script>
     <script src="../../js/indexAdmin.js"></script>
 
+
     <link rel="stylesheet" href="../../css/thongTinTaiKhoanNVGHAdmin.css">
-    <script src="../../js/thongTinTaiKhoanNVGHAdmin.js"></script>
+
+    <!-- CKEDitor -->
+    <script src="../../ckeditor/ckeditor.js"></script>
+
 
 </head>
 
 <body>
 
+<%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.thongTinTaiKhoanNVGH");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.thongTinTaiKhoanNVGH")){
+
+            InformationAccountNVGHObject informationAccountNVGHObject  = ( InformationAccountNVGHObject) userAdmin.getListOfFunction().get("informationAccountNVGHObject");
+            if(informationAccountNVGHObject == null || !informationAccountNVGHObject.isReady()){
+                response.sendRedirect("../../InformationAccountNVGHController");
+            }else {
+                request.setCharacterEncoding("UTF-8");
+%>
+
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
         <div>
-            <a href="indexNVGH.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="quanLyDonHangNVGH.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <a href="thongTinTaiKhoanNVGH.html" class="indexleftselectitem  ">
-                <div class="active">
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1022
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Hữu Đa</strong> vừa duyệt cho bạn đơn hàng #DH1015
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (informationAccountNVGHObject.isNotify()) {
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        informationAccountNVGHObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=informationAccountNVGHObject.getTitle()%></p>
+            <p><%=informationAccountNVGHObject.getContent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
             </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar3.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Đại Sơn</h3>
-                    <p>Nhân viên giao hàng</p>
-                </div>
-            </a>
         </div>
     </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
 
-    <div class="backgroundindexmain">
-    </div>
+
+
+<jsp:include page="../share/_LayoutLeftNVGH.jsp">
+    <jsp:param name="activeSelect" value="thongTinTaiKhoanNVGH"/>
+</jsp:include>
+
+<div class="indexright">
+
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Nhân viên giao hàng"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
 
-        <div id="div2">
+        <div id="div2"
+                <%if(informationAccountNVGHObject.isEdit()){%>
+             class="hidden"
+                <%}%>
+        >
             <div class="div1">
                 <div>
                     <div>
-                        <p>Nguyễn Đại Sơn</p>
-                        <p>Nhân viên giao hàng</p>
+                        <p><%=userAdmin.getAccount().getDisplayName()%></p>
+                        <p>Admin</p>
                     </div>
                 </div>
 
@@ -149,12 +145,12 @@
                         <button id="thongtinchitiet" onclick="thongtinchitiet()">Thông tin chi tiết</button>
                     </div>
                     <div>
-                        <button onclick="thaydoithongtin()"><i class="fa fa-cog"></i>Thay đổi thông tin</button>
+                        <span onclick="thayDoiThongTin()"><i class="fa fa-cog"></i>Thay đổi thông tin</span>
                     </div>
                 </div>
                 <div class="hinhdaidien">
                     <div>
-                        <img src="../../img/product/avatar3.jpg" alt="">
+                        <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                     </div>
                 </div>
             </div>
@@ -162,11 +158,13 @@
                 <div class="div121" id="div121">
                     <div>
                         <h3>Giới thiệu: </h3>
-                        <p>Xin chào, tui là một người giao hàng thân thiện đẹp trai provjp :V"</p>
+                        <div id="introductuser">
+                            <%=informationAccountNVGHObject.getIntroduct()%>
+                        </div>
                     </div>
                     <div>
                         <div>
-                            <p>84</p>
+                            <p><%=informationAccountNVGHObject.getOrderApproval()%></p>
                             <p>Thao tác đơn hàng</p>
                         </div>
                     </div>
@@ -174,35 +172,35 @@
                 <div class="div122" id="div122">
                     <div class="div122item">
                         <p>Họ và tên: </p>
-                        <p>Nguyễn Đại Sơn</p>
+                        <p><%=userAdmin.getAccount().getFullName()%></p>
                     </div>
                     <div class="div122item">
                         <p>Email: </p>
-                        <p>daison@gmail.com</p>
+                        <p><%=userAdmin.getAccount().getEmail()%></p>
                     </div>
                     <div class="div122item">
                         <p>Số điện thoại: </p>
-                        <p>0833-369-146</p>
+                        <p><%=PhoneNumberModel.getInstance().numberToNumberAndDot(userAdmin.getAccount().getPhoneNumber())%></p>
                     </div>
                     <div class="div122item">
                         <p>Tên hiển thị: </p>
-                        <p>Đại Sơn</p>
+                        <p><%=userAdmin.getAccount().getDisplayName()%></p>
                     </div>
                     <div class="div122item">
                         <p>Tài khoản: </p>
-                        <p>daisongh</p>
+                        <p><%=userAdmin.getAccount().getAccount()%></p>
                     </div>
                     <div class="div122item">
                         <p>Mật khẩu: </p>
-                        <p>Không hiển thị</p>
+                        <p><%=PasswordModel.getInstance().coverPasswordToStars(userAdmin.getAccount().getPassword())%></p>
                     </div>
                     <div class="div122item">
                         <p>Địa chỉ: </p>
-                        <p>Xã Đa Lộc - Huyển Đồng Xuân - Tỉnh Phú Yên</p>
+                        <p><%=userAdmin.getAccount().getCommune().toString()%> - <%=userAdmin.getAccount().getDistrict().toString()%> - <%=userAdmin.getAccount().getProvincial().toString()%></p>
                     </div>
                     <div class="div122item">
                         <p>Lương: </p>
-                        <p>9,000,000 VND</p>
+                        <p><%=SalaryModel.getInstance().coverSalaryToString(userAdmin.getAccount().getSalary())%></p>
                     </div>
                 </div>
             </div>
@@ -216,172 +214,54 @@
                     </h3>
                     <div>
                         <div>
+
+                            <%
+                                //  Lấy list thông báo cá nhân của userNay xong đổ ra
+                                List<PersonalNotice> personalNoticeList = PersonalNoticeModel.getInstance().getAllPersonalNoticeFromId(userAdmin.getAccount().getId());
+                                for(int i =0; i < personalNoticeList.size();i++){
+                            %>
+
                             <div class="div31item">
-                                <div class="div31itemcolor1">
+                                <div class="div31itemcolor<%=i%4+1%>">
                                     <i class="fa fa-circle"></i>
                                     <div></div>
                                 </div>
                                 <div>
-                                    <p>5 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1003</strong> có trạng thái <strong>Thành Công</strong>
+                                    <p><%=personalNoticeList.get(i).getOverTime()%></p>
+                                    <p><strong><%=personalNoticeList.get(i).getContent_1()%></strong> <%=personalNoticeList.get(i).getContent_2()%>
+                                        <strong><%=personalNoticeList.get(i).getContent_3()%></strong> <%=personalNoticeList.get(i).getContent_4()%> <strong><%=personalNoticeList.get(i).getContent_5()%></strong>
                                     </p>
                                 </div>
                             </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>24 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1002</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>58 giây trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1001</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>1 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH1000</strong> có trạng thái <strong>Không Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor1">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>3 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0999</strong> có trạng thái <strong>Không Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>12 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0998</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>14 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0997</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>17 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0996</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor1">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>22 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0995</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor2">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>42 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0994</strong> có trạng thái <strong>Không Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor3">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>58 phút trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0993</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="div31item">
-                                <div class="div31itemcolor4">
-                                    <i class="fa fa-circle"></i>
-                                    <div></div>
-                                </div>
-                                <div>
-                                    <p>1 giờ trước</p>
-                                    <p><strong>Bạn</strong> vừa duyệt đơn hàng
-                                        <strong>DH0992</strong> có trạng thái <strong>Thành Công</strong>
-                                    </p>
-                                </div>
-                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="div3">
+        <form
+                <%if(!informationAccountNVGHObject.isEdit()){%>
+                class="hidden"
+                <%}%> method="POST" action="../../InformationAccountNVGHController"
+                id="div3">
             <div>
                 <div class="div11">
                     <h3>Hồ sơ của bạn</h3>
                     <input id="fileInput1" type="file" style="display:none;" onchange="loadIMG2(event,this)"/>
                     <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
                         <div>
-                            <img src="../../img/product/avatar3.jpg" alt="">
+                            <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                         </div>
                     </div>
 
-                    <button onclick="document.getElementById('fileInput1').click()">Thay đổi
+                    <span onclick="document.getElementById('fileInput1').click()">Thay đổi
                         ảnh đại diện
                         mới
-                    </button>
-                    <button onclick="removeIMG2()">Xóa ảnh đại diện</button>
+                    </span>
+                    <span onclick="removeIMG2()">Xóa ảnh đại diện</span>
 
                 </div>
 
@@ -389,79 +269,133 @@
                     <h3>Điền thông tin cá nhân</h3>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Họ và tên</label>
-                        <input type="text" placeholder="Nhập họ và tên ở đây" value="Nguyễn Đại Sơn">
+                        <label >* Họ và tên</label>
+                        <input type="text" placeholder="Nhập họ và tên ở đây" name="fullName" id="fullName" value="<%=informationAccountNVGHObject.getFullName()%>" required>
+                    </div>
+                    <p class="notifyError hidden" id="error1">Tên không được bỏ trống</p>
+                    <div class="div12input">
+                        <label >Tên hiển thị</label>
+                        <input type="text" placeholder="Nhập tên hiển thị ở đây" name="displayName" id="displayName" value="<%=informationAccountNVGHObject.getDisplayName()%>" required>
+                    </div>
+                    <p class="notifyError hidden" id="error2">Tên hiển thị không được bỏ trống</p>
+                    <div class="div12input">
+                        <label >* Email</label>
+                        <input type="text" placeholder="Nhập email ở đây" value="<%=userAdmin.getAccount().getEmail()%>" required
+                               disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">Tên hiển thị</label>
-                        <input type="text" placeholder="Nhập tên hiển thị ở đây" value="Đại Sơn">
+                        <label >* Số điện thoại</label>
+                        <input type="number" placeholder="Nhập số điện thoại ở đây" name="phoneNumber" id="phoneNumber" value="<%=informationAccountNVGHObject.getPhoneNumber()%>" required>
                     </div>
+                    <p class="notifyError hidden" id="error3">Số điện thoại không được bỏ trống</p>
                     <div class="div12input">
-                        <label for="">* Email</label>
-                        <input type="text" placeholder="Nhập email ở đây" value="daison@gmail.com" disabled>
-                    </div>
-                    <div class="div12input">
-                        <label for="">* Số điện thoại</label>
-                        <input type="text" placeholder="Nhập số điện thoại ở đây" value="0833-369-146" disabled>
+                        <label >* Lương</label>
+                        <input type="number" placeholder="Nhập lương ở đây" value="<%=userAdmin.getAccount().getSalary()%>" required disabled>
                     </div>
                     <div class="linediv12"></div>
                     <div class="trangthai">
                         <div class="div12inputlv2">
-                            <label for="">Tỉnh / Thành</label>
-                            <select name="" id="">
-                                <option value="">Chọn tỉnh / thành</option>
-                                <option value="" selected>Phú Yên</option>
+                            <label >Tỉnh / Thành</label>
+                            <select name="provincial" id="provincial"  required onchange="loadTinh()">
+                                <%
+                                    if(informationAccountNVGHObject.getProvincial() == null){
+                                %>
+                                <option value="none" selected>Chọn tỉnh / thành</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountNVGHObject.getProvincial().getProvincialId()%>" selected><%=informationAccountNVGHObject.getProvincial().getProvincialName()%></option>
+                                <% }
+                                    if(informationAccountNVGHObject.getProvincials() != null){
+                                        for(Provincial provincial : informationAccountNVGHObject.getProvincials()){
+                                %>
+                                <option value="<%=provincial.getProvincialId()%>"><%=provincial.getProvincialName()%></option>
+                                <% }} %>
                             </select>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Quận / huyện</label>
-                            <select name="" id="">
-                                <option value="">Chọn quận / huyện</option>
-                                <option value="" selected>Huyện Đồng Xuân</option>
+                            <label >Quận / huyện</label>
+                            <select name="district" id="district" required onchange="loadHuyen()">
+                                <%
+                                    if(informationAccountNVGHObject.getDistrict() == null){
+                                %>
+                                <option value="none" selected>Chọn quận / huyện</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountNVGHObject.getDistrict().getDistrictId()%>" selected><%=informationAccountNVGHObject.getDistrict().getDistrictName()%></option>
+                                <% }
+                                    if(informationAccountNVGHObject.getDistricts() != null){
+                                        for(District district : informationAccountNVGHObject.getDistricts()){
+                                %>
+                                <option value="<%=district.getDistrictId()%>"><%=district.getDistrictName()%></option>
+                                <% }} %>
                             </select>
+                            <p class="notifyError2 hidden" id="error4">Chọn huyện đi nào</p>
                         </div>
                         <div class="div12inputlv2">
-                            <label for="">Phường / xã</label>
-                            <select name="" id="">
-                                <option value="">Chọn phường / xã</option>
-                                <option value="" selected>Xã Đa Lộc</option>
+                            <label >Phường / xã</label>
+                            <select name="commune" id="commune"  required >
+                                <%
+                                    if(informationAccountNVGHObject.getCommune() == null){
+                                %>
+                                <option value="none" selected>Chọn phường / xã</option>
+                                <% } else { %>
+                                <option value="<%=informationAccountNVGHObject.getCommune().getCommuneId()%>" selected><%=informationAccountNVGHObject.getCommune().getCommuneName()%></option>
+                                <% }
+                                    if(informationAccountNVGHObject.getCommunes() != null){
+                                        for(Commune commune : informationAccountNVGHObject.getCommunes()){
+                                %>
+                                <option value="<%=commune.getCommuneId()%>"><%=commune.getCommuneName()%></option>
+                                <% }} %>
                             </select>
+                            <p class="notifyError2 hidden" id="error5">Chọn xã đi nào</p>
                         </div>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12input">
-                        <label for="">* Tài khoản</label>
-                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="daisongh" disabled>
+                        <label >* Tài khoản</label>
+                        <input type="text" placeholder="Nhập tên tài khoản ở đây" value="<%=userAdmin.getAccount().getAccount()%>" disabled>
                     </div>
                     <div class="div12input">
-                        <label for="">* Mật khẩu</label>
-                        <input type="password" placeholder="Nhập mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Mật khẩu</label>
+                        <input type="password" name="password" id="password" placeholder="Nhập mật khẩu ở đây" value="<%=informationAccountNVGHObject.getPassword()%>">
                     </div>
+                    <p class="notifyError hidden" id="error6">Mật khẩu không được để trống</p>
                     <div class="div12input">
-                        <label for="">* Xác nhận</label>
-                        <input type="password" placeholder="Xác nhận mật khẩu ở đây" value="mothaiba@@">
+                        <label >* Xác nhận</label>
+                        <input type="password" name="checkPassword" id="checkPassword"  placeholder="Xác nhận mật khẩu ở đây" value="<%=informationAccountNVGHObject.getCheckPassword()%>">
                     </div>
+                    <p class="notifyError hidden" id="error7">Mật khẩu xác thực không trùng khớp</p>
                 </div>
 
                 <div class="div13">
-                    <div class="div12input">
-                        <label for="">* Lương</label>
-                        <input type="text" placeholder="Nhập lương ở đây" value="9,000,000">
+
+                    <div class="div12input formckgioithieu">
+                        <textarea name="gioiThieu" id="gioiThieu" placeholder="Nhập giới thiệu ở đây"></textarea>
                     </div>
-                    <div class="linediv12"></div>
-                    <div class="div12input">
-                        <label for="">Giới thiệu</label>
-                        <input type="text" placeholder="Nhập số giới thiệu ở đây"
-                               value="Xin chào, tui là một người giao hàng thân thiện đẹp trai provjp :V">
-                    </div>
-                    <div class="linediv12"></div>
-                    <button><i class="fa fa-save"></i>Lưu</button>
-                    <button onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                    <span onclick="getData()"><i class="fa fa-save"></i>Lưu</span>
+                    <span onclick="troVeQuanLy()"><i class="fa fa-arrow-left"></i> Trở về quản
                         lý
-                    </button>
+                    </span>
                 </div>
             </div>
-        </div>
+            <input type="text" style="display: none" id="action" name="action">
+            <input type="text" name="introduct" id="introduct" style="display: none">
+            <input type="text"  style="display: none" name="hinh_anh_trong_firebase" value="<%=userAdmin.getAccount().getNubmerOfImgInFirebase()%>" id="hinh_anh_trong_firebase">
+        </form>
+
+        <input type="text" style="display: none" id="ma_nv" value="<%=userAdmin.getAccount().getId()%>">
+        <form action="../../InformationAccountNVGHChangeAvatarController" style="display: none"  method="POST" id="changeAvatar">
+            <input type="text" id="dataSend"  name="data" value="">
+            <input type="text" name="fullName" id="fullName2">
+            <input type="text" name="displayName" id="displayName2">
+            <input type="text" name="phoneNumber" id="phoneNumber2">
+            <input type="text" name="provincial" id="provincial2">
+            <input type="text" name="district" id="district2">
+            <input type="text" name="commune" id="commune2">
+            <input type="text" name="password" id="password2">
+            <input type="text" name="checkPassword" id="checkPassword2">
+            <input type="text" name="introduct" id="introduct2">
+            <input type="text" name="action" id="action2">
+        </form>
+
     </div>
 
     <!-- Quan tâm nhiêu đây thôi-->
@@ -470,3 +404,25 @@
 </body>
 
 </html>
+!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+<script src="../../js/thongTinTaiKhoanNVGHAdmin.js"></script>
+<%     }
+
+}else{
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>

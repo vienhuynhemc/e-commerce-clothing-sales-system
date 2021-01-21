@@ -22,4 +22,20 @@ public class OrderModel {
         return result;
     }
 
+    // Phương thức nhận vô ma_nvgh kiểm tra số đơn ahfng đã được nvgh này duyệt
+    public int getOrderApprovalByIdNVGH(String ma_nvgh){
+        OrderWorksWithDatabase orderWorksWithDatabase = OrderDataSource.getInstance().getOrderWorksWithDatabase();
+        int result = orderWorksWithDatabase.getOrderApprovalByIdNVGH(ma_nvgh);
+        OrderDataSource.getInstance().releaseOrderWorksWithDatabase(orderWorksWithDatabase);
+        return result;
+    }
+
+    // Phương thức nhận vô ma_nvk kiểm tra số đơn ahfng đã được nvgh này duyệt
+    public int getOrderApprovalByIdNVK(String ma_nvk){
+        OrderWorksWithDatabase orderWorksWithDatabase = OrderDataSource.getInstance().getOrderWorksWithDatabase();
+        int result = orderWorksWithDatabase.getOrderApprovalByIdNVK(ma_nvk);
+        OrderDataSource.getInstance().releaseOrderWorksWithDatabase(orderWorksWithDatabase);
+        return result;
+    }
+
 }
