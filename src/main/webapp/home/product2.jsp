@@ -371,7 +371,7 @@
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
-                                    <a href="AddWishlistController" data-toggle="tooltip" data-placement="top"
+                                    <a href="" data-toggle="tooltip" data-placement="top"
                                        title="Thêm vào yêu thích"><span
                                             class="fa fa-heart"></span></a>
                                     <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->

@@ -23,6 +23,12 @@ public class LoadWishlistModel {
             LoadWishlistSource.getInstance().releaseAddWishlist(wishlistDAO);
             return wishlists;
     }
+    public static String getColorbyId(String id){
+        LoadWishlistDAO wishlistDAO = LoadWishlistSource.getInstance().getAddWishlist();
+        String s = wishlistDAO.getColorById(id);
+        LoadWishlistSource.getInstance().releaseAddWishlist(wishlistDAO);
+        return s;
+    }
 
     public static void main(String[] args) {
         System.out.println(loadWishlistById(1, "KH001", "", "ten_sp", 0, 1, 1));
