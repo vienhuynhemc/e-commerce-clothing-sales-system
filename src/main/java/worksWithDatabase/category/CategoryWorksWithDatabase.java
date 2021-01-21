@@ -98,12 +98,6 @@ public class CategoryWorksWithDatabase {
         }
         catch (SQLException throwables) {
             throwables.printStackTrace();
-//     } finally {
-//        try {
-//            connection.close();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
 
         }
         DataSource.getInstance().releaseConnection(connection);

@@ -6,17 +6,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Wishlist {
-
+    private String id;
     private String name;
     private double price;
     private String size;
     private int quantity;
     private String color;
-//    private String img;
     private DateTime dateAdded;
     private int restNumber;
-
-    public Wishlist(String name, double price, String size, int quantity, String color,DateTime dateAdded,int restNumber) {
+    private String img;
+    private String nameSize;
+    public Wishlist(String id,String name, double price, String size, int quantity, String color,DateTime dateAdded,int restNumber,String img,String nameSize) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.size = size;
@@ -26,6 +27,8 @@ public class Wishlist {
 //        this.status = status;
         this.dateAdded = dateAdded;
         this.restNumber = restNumber;
+        this.img = img;
+        this.nameSize = nameSize;
     }
     public Wishlist(){
 
@@ -45,6 +48,23 @@ public class Wishlist {
 //    public void setStatus(int status) {
 //        this.status = status;
 //    }
+
+
+    public String getNameSize() {
+        return nameSize;
+    }
+
+    public void setNameSize(String nameSize) {
+        this.nameSize = nameSize;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public DateTime getDateAdded() {
         return dateAdded;
@@ -93,26 +113,28 @@ public class Wishlist {
     public void setColor(String color) {
         this.color = color;
     }
-//
-//    public String getImg() {
-//        return img;
-//    }
-//
-//    public void setImg(String img) {
-//        this.img = img;
-//    }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     @Override
     public String toString() {
         return "Wishlist{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", price=" + price +
                 ", size='" + size + '\'' +
                 ", quantity=" + quantity +
                 ", color='" + color + '\'' +
                 ", dateAdded=" + dateAdded +
                 ", restNumber=" + restNumber +
+                ", img='" + img + '\'' +
+                ", nameSize='" + nameSize + '\'' +
                 '}';
     }
 }

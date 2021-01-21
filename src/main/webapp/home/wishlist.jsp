@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="beans.account.AccountCustomer" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="beans.wishlist.Wishlist" %><%--
+<%@ page import="beans.wishlist.Wishlist" %>
+<%@ page import="worksWithDatabase.wishlist.LoadWishlistDAO" %>
+<%@ page import="model.wishlist.LoadWishlistModel" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -58,7 +60,7 @@
     %>
     <div class="infor">
         <h3>TVT <span style="color:#ff7315">S</span>hop</h3>
-        <p>Tổng: <%=sumProduct%> phần tử</p>
+        <p>Tổng: <%=list.size()%> phần tử</p>
         <p>Chế độ xem</p>
         <select name="numberPerPage" class="view">
             <option value="">6 phần tử</option>
@@ -100,9 +102,13 @@
         <p>NGÀY THÊM</p>
         <p>TRẠNG THÁI</p>
         <p>SỐ LƯỢNG</p>
+        <p style="font-weight: bold">SIZE</p>
         <div>
-
+            <%if (pageNow > 1 && pageNow <= numPage){ %>
             <button><a href="LoadWishlistController?&page=<%=Integer.parseInt(request.getParameter("page")) - 1 %>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%= request.getParameter("status")%>"><i class="fa fa-caret-left"></i></a></button>
+            <% } else {%>
+            <button><i class="fa fa-caret-left"></i></button>
+            <%}%>
             <ul>
                 <% for(int i = 1; i <= numPage; i++){
                     if(i == pageNow){
@@ -112,26 +118,42 @@
                 <li ><a href="LoadWishlistController?page=<%=i%>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%= request.getParameter("status")%>"><%=i%></a></li>
                 <%}}%>
             </ul>
+            <%if (pageNow >= 1 && pageNow < numPage){ %>
+            <button><a href="LoadWishlistController?&page=<%=Integer.parseInt(request.getParameter("page")) + 1 %>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%= request.getParameter("status")%>"><i class="fa fa-caret-right"></i></a></button>
+            <% } else {%>
             <button><i class="fa fa-caret-right"></i></button>
+            <%}%>
         </div>
     </div>
+   <% if(list.size() == 0){%>
+    <p style="
+    width: 550px;
+    height: 35px;
+    background-color: white;
+    margin: auto;
+    margin-top: 40px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+">Không tìm thấy sản phẩm nào trong danh sách yêu thích.</p>
+   <% } else {%>
     <% for(Wishlist w : list){%>
     <div class="item">
         <label for="cb1" class="lbitem">
             <input type="checkbox" id="cb1" class="checkbox">
             <input name ="idC" type="hidden">
         </label>
-        <a href="detailsProduct.html" class="imgsp"> <img src="../img/product/pro1.webp" alt=""> </a>
+        <a href="detailsProduct.html" class="imgsp"> <img src="<%=w.getImg()%>>" alt=""> </a>
         <a href="detailsProduct.html" class="namesp"><%= w.getName()%> </a>
-        <p class="price"><%= String.format(w.getPrice()+"",000)%></p>
-        <p class="ngaythem"><%=w.getDateAdded().getDay()%>-<%=w.getDateAdded().getMonth()%>-<%=w.getDateAdded().getYear()%></p>
+        <p class="price"><%= w.getPrice()%></p>
+        <p class="ngaythem"><%=w.getDateAdded().getDay()%>/<%=w.getDateAdded().getMonth()%>/<%=w.getDateAdded().getYear()%></p>
         <% if(w.getRestNumber() > 0){%>
         <p class="conhang">Còn hàng</p>
         <%} else{%>
-        <p class="conhang" style="background-color: #e15a2b">Hết hàng</p>
+        <p class="conhang" style="background-color: #d74410; color : white !important">Hết hàng</p>
         <%}%>
         <div class="soluong">
-            <p>1</p>
+            <p id="quantity"><%= w.getQuantity()%></p>
             <button>
                 <p>+</p>
             </button>
@@ -139,12 +161,14 @@
                 <p>-</p>
             </button>
         </div>
-        <button class="addtocart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+        <p style="margin-left: 132px"><%=w.getNameSize()%></p>
+        <a href="AddCartController?ma_sp=<%=w.getId()%>&ma_mau=<%=w.getColor()%>&ma_size=<%=w.getSize()%>&so_luong=<%=w.getQuantity()%>"><button class="addtocart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button></a>
+
         <div class="remove">
-            <i class="fa fa-close"></i>
+            <a href="RemoveWishlistController?ma_sp=<%=w.getId()%>&ma_mau=<%=w.getColor()%>&size=<%=w.getSize()%>&page=<%= request.getParameter("page")%>&search=<%=request.getParameter("search")%>&type=<%=request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%=request.getParameter("status")%>"><i class="fa fa-close"></i></a>
         </div>
     </div>
-    <%}%>
+    <%}}%>
 
 </div>
 <!--End main-->
