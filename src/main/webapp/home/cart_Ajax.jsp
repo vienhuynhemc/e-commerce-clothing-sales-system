@@ -19,7 +19,10 @@
 
 %>
 
-<% ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("listCart"); %>
+<% ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("listProduct");
+
+
+%>
 
 <div class="cartleft" id="">
 
@@ -39,11 +42,17 @@
 
             <%
                 int count= 0;
-                int sum = 0;
+                int tong_gia = 0;
                 int soluong = 0;
                 for (Cart c: carts) {
                 count ++;
-                sum += (int)c.getGia();
+
+                if(c.getGia_km() == 0){
+                    tong_gia += (int)c.getGia();
+                }else{
+                    tong_gia += (int)c.getGia_km();
+                }
+
                 soluong += c.getSo_luong();
             %>
             <div class="cartleftmainitem">
@@ -57,21 +66,46 @@
                     </a>
                     <p class="cartleftmainitemcolor"><%=c.getMau_sp()%></p>
                     <div class="cartleftmainitemsl">
+
+                        <!-- tại s sử dụng biến count? để có id không trùng -->
+
                         <p id="so_luong_sp_<%=count%>"><%=c.getSo_luong()%></p>
+
+                        <!-- tại s sử dụng biến count? để có id không trùng -->
                         <div>
+
+                            <!-- khi thằng này dc click thì gọi hàm để tăng hàm này sẽ set lại số lượng sp
+                             sau khi tăng hoặc giảm ? thếm biến count để nó nhận biết, à id nào đc sét lại
+                              để value bằng biến count, khi set lại chỉ đơn giản là lấy id thẻ p + count(value) là dc-->
                             <button id="tang" value="<%=count%>" onclick="increase(this)">+
 
-                                <input type="hidden" value="<%=c.getMa_sp()%>">
-                                <input type="hidden" value="<%=c.getMa_mau()%>">
+                                <input type="hidden" value="<%=c.getMa_sp()%>" disabled>
+                                <input type="hidden" value="<%=c.getMa_mau()%>" disabled>
+                                <input type="hidden" value="<%=c.getMa_size()%>" disabled>
 
                             </button>
                             <button id="giam" value="<%=count%>" onclick="increase(this)">-
-                                <input type="hidden" value="<%=c.getMa_sp()%>">
-                                <input type="hidden" value="<%=c.getMa_mau()%>">
+                                <input type="hidden" value="<%=c.getMa_sp()%>" disabled>
+                                <input type="hidden" value="<%=c.getMa_mau()%>" disabled>
+                                <input type="hidden" value="<%=c.getMa_size()%>" disabled>
                             </button>
                         </div>
                     </div>
-                    <p class="cartleftmainitemprice" id="gia_<%=count%>"> <%=  ConvertPrice.convertPrice((int)c.getGia()) %> VND</p>
+                    <p class="cartleftmainitemprice" id="gia_<%=count%>">
+
+
+                        <!--------- hiển thị giá khuyến mãi -------->
+                        <% if(c.getGia_km() != 0){ %>
+
+                        <%=ConvertPrice.convertPrice((int)c.getGia_km())%>
+
+                        <%}else {%>
+
+                        <%=ConvertPrice.convertPrice((int)c.getGia())%>
+
+                        <%}%>
+
+                     VND</p>
                 </div>
                 <div class="cartleftmainitemright">
                     <div></div>
@@ -92,7 +126,7 @@
         </a>
         <div class="footertongtien">
             <p><%=lang.get("3")%></p>
-            <p id="total_all_2"  > <%=  ConvertPrice.convertPrice(sum) %>  VND </p>
+            <p id="total_all_2"  > <%=  ConvertPrice.convertPrice(tong_gia) %>  VND </p>
         </div>
 
     </div>
@@ -111,8 +145,8 @@
         </div>
         <div class="pricedivright">
             <p><%=lang.get("6")%> </p>
-            <input type="hidden" name="" id="getgia" value="<%=sum%>">
-            <p id="total_all_1"><%= ConvertPrice.convertPrice(sum) %> VND</p>
+
+            <p id="total_all_1"><%= ConvertPrice.convertPrice(tong_gia) %> VND</p>
         </div>
     </div>
     <div class="linecr"></div>
@@ -158,18 +192,25 @@
     </div>
 </div>
 
+<input type="hidden" name="" id="getgia" value="<%=tong_gia%>">
+<input type="hidden" name="" id="conver" value="<%=ConvertPrice.convertPrice(tong_gia)%>">
+
 <script>
 
     function increase(event) {
 
         var list = event.children;
         console.log(list);
+
         var ma_sp = $(list[0]).attr("value");
         var ma_mau =  $(list[1]).attr("value");
+        var ma_size = $(list[2]).attr("value");
+
         var active = $(event).attr("id");
 
         console.log(ma_sp);
         console.log(ma_mau);
+        console.log(ma_size);
 
         $.ajax({
             url:'ChangeProductInCartController',
@@ -178,31 +219,55 @@
             data:{
                 ma_sp:ma_sp,
                 ma_mau:ma_mau,
+                ma_size: ma_size,
                 active: active
             },
             success:function (data){
+
                 var c = $(event).val();
-                   <!-- sét lại số lượng-->
+                   <!-- sét lại số lượng và giá-->
 
-                document.getElementById("so_luong_sp_"+c).innerText = data.so_luong;
-                document.getElementById("so_luong_right").innerText = data.so_luong;
+                var sltrcthaydoi = parseInt($('#so_luong_sp_' + c).text()) ;
+                var slsauthaydoi = data.so_luong;
+                var tongsl = parseInt($("#so_luong_right").text());
 
-                   <!-- sét lại giá-->
+                var total = $('#getgia').val();
 
-                document.getElementById("gia_"+c).innerText = data.gia.toLocaleString("vi-VN") + " VND";
-
-                 var total = $('#getgia').val();
-
-                 var tonggia = parseInt(total);
-
-                 console.log(tonggia);
+                var tonggia = parseInt(total);
                 var giamoi;
-                 if (active == "tang"){
-                     giamoi  = tonggia + data.gia/data.so_luong;
-                 }else {
-                     giamoi  = tonggia - data.gia/data.so_luong;
-                 }
-                var convert = giamoi.toLocaleString('vi-VN')
+
+                if(slsauthaydoi > sltrcthaydoi){
+                // nếu số lượng trc thay đổi lơn hơn số lượng sau thay đổi thì + 1 cho tổng số lương thôi
+                    document.getElementById("so_luong_right").innerText = tongsl + 1;
+
+                    //sét lại giá nếu có khuyến mãi thì sét theo giá khuyến mãi
+                    if(data.gia_km > 0){
+                        giamoi  = tonggia + data.gia_km/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia_km.toLocaleString("vi-VN") + " VND";
+                    }else{
+                        giamoi  = tonggia + data.gia/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia.toLocaleString("vi-VN") + " VND";
+                    }
+
+                }else if(slsauthaydoi < sltrcthaydoi){
+                    // nếu số lượng trc thay đổi nhỏ hơn số lượng sau thay đổi thì - 1 cho tổng số lương thôi
+                    document.getElementById("so_luong_right").innerText = tongsl - 1;
+                        //sét lại giá nếu có khuyến mãi thì sét theo giá khuyến mãi
+                    if(data.gia_km > 0){
+                        giamoi  = tonggia - data.gia_km/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia_km.toLocaleString("vi-VN") + " VND";
+                    }else{
+                        giamoi  = tonggia - data.gia/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia.toLocaleString("vi-VN") + " VND";
+                    }
+                }else{
+                    giamoi = tonggia;
+                }
+
+                // sét lại số lượng cho thằng sản phẩm đã
+                document.getElementById("so_luong_sp_"+c).innerText = data.so_luong;
+
+                var convert = giamoi.toLocaleString('vi-VN');
 
                 document.getElementById("total_all_1").innerText = convert + " VND";
                 document.getElementById("total_all_2").innerText = convert+ " VND";
@@ -214,12 +279,5 @@
         });
 
     }
-
-    // $(document).ready(function (){
-    //     var total = $('#getgia').val();
-    //     document.getElementById("total_all_1").innerText = total + " VND";
-    //     document.getElementById("total_all_2").innerText = total+ " VND";
-    //
-    // })
 
 </script>

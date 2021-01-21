@@ -15,11 +15,11 @@ public class ChangeCartModel {
         return cartModel;
     }
 
-    public Cart executeCart(String ma_sp, String ma_kh, String ma_mau,String active){
+    public Cart executeCart(String ma_sp, String ma_kh, String ma_mau,String ma_size,String active){
 
         ChangeCartDAO cartDAO = ChangeCartSource.getInstance().getAddCart();
 
-        Cart result = cartDAO.increaseCart(ma_sp,ma_kh,ma_mau,active);
+        Cart result = cartDAO.increaseCart(ma_sp,ma_kh,ma_mau,ma_size,active);
 
         ChangeCartSource.getInstance().releaseRemoveCart(cartDAO);
 
