@@ -46,7 +46,7 @@
                                 <li class="iconRound"><a href="thong-tin"><i class="fa fa-user"
                                                                                                  aria-hidden="true"></i></a>
                                 </li>
-                                <li class="hidden-xs iconRound"><a href="wishlist.jsp"><i class="fa fa-heart"></i></a>
+                                <li class="hidden-xs iconRound"><a href="LoadWishlistController?page=1&search=&type=ten_sp&sex=0&status=1"><i class="fa fa-heart"></i></a>
                                 </li>
                                 <li class="hidden-xs iconRoundLenght"><a href="gio-hang"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>

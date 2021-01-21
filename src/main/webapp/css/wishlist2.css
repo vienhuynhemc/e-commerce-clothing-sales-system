@@ -304,7 +304,7 @@
 }
 
 .titletable > div ul li:nth-child(1) {
-    background-color: #ff9751;
+    /*background-color: #ff9751;*/
     color: white;
 }
 

@@ -14,14 +14,15 @@ public class AddWishlistDAO {
 
     }
     // kiểm tra xem sp có nằm trong trong wishlist chưa?
-    public boolean isExist(String idProduct, String idCustomer, String color){
+    public boolean isExist(String idProduct, String idCustomer, String color,String size){
         Connection connection = DataSource.getInstance().getConnection();
         try{
             PreparedStatement s = connection.prepareStatement("" +
-                    "SELECT * FROM yeu_thich where ma_sp = ? AND ma_kh = ? AND ma_mau = ?");
+                    "SELECT * FROM yeu_thich where ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND size = ?");
             s.setString(1,idProduct);
             s.setString(2,idCustomer);
             s.setString(3,color);
+            s.setString(4,size);
 
             ResultSet rs = s.executeQuery();
             if(rs.next()){
@@ -38,10 +39,10 @@ public class AddWishlistDAO {
         return false;
     }
     // them san pham moi vao wishlist
-    public boolean insertWishlist(String idProduct, String idCustomer, String color){
+    public boolean insertWishlist(String idProduct, String idCustomer, String color,String size){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            PreparedStatement s = connection.prepareStatement("INSERT INTO yeu_thich VALUES(?,?,?,?,1)");
+            PreparedStatement s = connection.prepareStatement("INSERT INTO yeu_thich VALUES(?,?,?,1,?,?)");
             s.setString(1,idProduct);
             s.setString(2,idCustomer);
             s.setString(3,color);
@@ -49,6 +50,7 @@ public class AddWishlistDAO {
                     LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),LocalTime.now().getSecond());
 
             s.setString(4,now.toString());
+            s.setString(5,size);
 
             int row = s.executeUpdate();
             if(row > 0) {
@@ -64,11 +66,11 @@ public class AddWishlistDAO {
         return false;
     }
     // cap nhap san pham da co trong wishlist
-    public boolean updateWishlist(String idProduct, String idCustomer, String color){
+    public boolean updateWishlist(String idProduct, String idCustomer, String color,String size){
         Connection connection = DataSource.getInstance().getConnection();
         try{
             PreparedStatement s = connection.prepareStatement("UPDATE yeu_thich SET so_luong = so_luong + 1,ngay_them = ? WHERE" +
-                    " ma_sp = ? AND ma_kh = ? AND ma_mau = ?");
+                    " ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND size = ?");
 
             DateTime now = new DateTime(LocalDate.now().getYear(),LocalDate.now().getMonthValue(),
                     LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),LocalTime.now().getSecond());
@@ -76,7 +78,7 @@ public class AddWishlistDAO {
             s.setString(2,idProduct);
             s.setString(3,idCustomer);
             s.setString(4,color);
-
+            s.setString(5,size);
             int row = s.executeUpdate();
             if(row > 0){
                 DataSource.getInstance().releaseConnection(connection);
@@ -92,17 +94,17 @@ public class AddWishlistDAO {
         return false;
     }
     // them san pham vao wishlist
-    public boolean addWishlist(String idProduct, String idCustomer, String color){
+    public boolean addWishlist(String idProduct, String idCustomer, String color, String size){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            if(!isExist(idProduct,idCustomer,color)){
-                if(insertWishlist(idProduct,idCustomer,color)){
+            if(!isExist(idProduct,idCustomer,color,size)){
+                if(insertWishlist(idProduct,idCustomer,color,size)){
                     DataSource.getInstance().releaseConnection(connection);
                     return true;
                 }
             }
             else{
-                if(updateWishlist(idProduct,idCustomer,color)){
+                if(updateWishlist(idProduct,idCustomer,color,size)){
                     DataSource.getInstance().releaseConnection(connection);
                     return true;
                 }
