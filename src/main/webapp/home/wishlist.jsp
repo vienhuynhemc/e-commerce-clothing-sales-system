@@ -3,7 +3,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="beans.wishlist.Wishlist" %>
 <%@ page import="worksWithDatabase.wishlist.LoadWishlistDAO" %>
-<%@ page import="model.wishlist.LoadWishlistModel" %><%--
+<%@ page import="model.wishlist.LoadWishlistModel" %>
+<%@ page import="beans.wishlist.WishlistToCart" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -103,6 +104,7 @@
         <p>TRẠNG THÁI</p>
         <p>SỐ LƯỢNG</p>
         <p style="font-weight: bold">SIZE</p>
+<%--        load số trang--%>
         <div>
             <%if (pageNow > 1 && pageNow <= numPage){ %>
             <button><a href="LoadWishlistController?&page=<%=Integer.parseInt(request.getParameter("page")) - 1 %>&search=<%= request.getParameter("search")%>&type=<%= request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%= request.getParameter("status")%>"><i class="fa fa-caret-left"></i></a></button>
@@ -125,6 +127,10 @@
             <%}%>
         </div>
     </div>
+
+<%--    <% ArrayList<WishlistToCart> ws = new ArrayList<WishlistToCart>();--%>
+<%--    %>--%>
+<%--    --%>
    <% if(list.size() == 0){%>
     <p style="
     width: 550px;
@@ -137,10 +143,12 @@
     border-radius: 5px;
 ">Không tìm thấy sản phẩm nào trong danh sách yêu thích.</p>
    <% } else {%>
+<%--    load danh sách wishlist--%>
     <% for(Wishlist w : list){%>
     <div class="item">
+
         <label for="cb1" class="lbitem">
-            <input type="checkbox" id="cb1" class="checkbox">
+            <input type="checkbox" id="cb1" name="cb1" class="checkbox" value="">
             <input name ="idC" type="hidden">
         </label>
         <a href="detailsProduct.html" class="imgsp"> <img src="<%=w.getImg()%>>" alt=""> </a>

@@ -49,7 +49,7 @@
 
                 <figcaption>
                     <!-------Load giá và giá khuyến mãi  ------->
-                    <h4 class="aa-product-title"><a href="detailsProduct.html"><%=p.getTen_sp()%></a></h4>
+                    <h4 class="aa-product-title"><a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>"><%=p.getTen_sp()%></a></h4>
                     <span class="aa-product-price sprice">
                         <%= ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</span>
                     <span class="aa-product-price"><del>
@@ -303,7 +303,7 @@
                                            class="aa-add-to-cart-btn addTocardViewQuick"
                                            style="color: white;" onclick="addCart()"><span
                                                 class="fa fa-shopping-cart" ></span>Thêm vào giỏ hàng</a>
-                                        <a href="detailsProduct.html" class="aa-add-to-cart-btn"
+                                        <a href="LoadDetailProductController?idProduct=<%= p.getMa_sp()%>" class="aa-add-to-cart-btn"
                                            style="color: white;"><span
                                                 class="fa fa-eye"></span>Xem chi tiết</a>
                                     </div>

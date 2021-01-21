@@ -48,7 +48,7 @@ public class DetailProductDataSource {
     public void releaseDetailProduct(DetailProductDAO detailProductDAO) {
 
         //  Trả EmailWorksWithDatabase về cho mailPool
-        detailProductDataSource.releaseDetailProduct(detailProductDAO);
+        detailProductPool.releaseDetailProduct(detailProductDAO);
 
     }
 //    public static void main(String[] args) {
