@@ -1,9 +1,10 @@
-package controllerAdmin.informationAccountAdmin;
+package controllerAdmin.informationAccountNVK;
 
 import beans.BeansConfiguration;
 import beans.address.Commune;
 import beans.address.District;
-import beans.informationAccountAdmin.InformationAccountAdminObject;
+import beans.informationAccountNVGH.InformationAccountNVGHObject;
+import beans.informationAccountNVK.InformationAccountNVKObject;
 import beans.loginAdmin.UserAdmin;
 import model.account.AccountModel;
 import model.commune.CommuneModel;
@@ -17,10 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "InformationAccountAdminChangeAvatarController", urlPatterns = "/InformationAccountAdminChangeAvatarController")
-public class InformationAccountAdminChangeAvatarController extends HttpServlet {
+@WebServlet(name = "InformationAccountNVKChangeAvatarController", urlPatterns = "/InformationAccountNVKChangeAvatarController")
+public class InformationAccountNVKChangeAvatarController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         // set charset cho cả request và responne
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -68,32 +68,32 @@ public class InformationAccountAdminChangeAvatarController extends HttpServlet {
         String introduct = request.getParameter("introduct");
 
 
-        InformationAccountAdminObject informationAccountAdminObject = (InformationAccountAdminObject) userAdmin.getListOfFunction().get("informationAccountAdminObject");
-        informationAccountAdminObject.setFullName(fullName);
-        informationAccountAdminObject.setDisplayName(displayName);
-        informationAccountAdminObject.setPhoneNumber(phoneNumber);
-        informationAccountAdminObject.setPassword(password);
-        informationAccountAdminObject.setCheckPassword(checkPassword);
-        informationAccountAdminObject.setIntroduct(introduct);
+        InformationAccountNVKObject informationAccountNVKObject = (InformationAccountNVKObject) userAdmin.getListOfFunction().get("informationAccountNVKObject");
+        informationAccountNVKObject.setFullName(fullName);
+        informationAccountNVKObject.setDisplayName(displayName);
+        informationAccountNVKObject.setPhoneNumber(phoneNumber);
+        informationAccountNVKObject.setPassword(password);
+        informationAccountNVKObject.setCheckPassword(checkPassword);
+        informationAccountNVKObject.setIntroduct(introduct);
 
         if(district.equals("none")){
-            informationAccountAdminObject.setDistrict(null);
+            informationAccountNVKObject.setDistrict(null);
         }else{
             District districtObject = DistrictModel.getInstance().getDistrictById(district);
-            informationAccountAdminObject.setDistrict(districtObject);
+            informationAccountNVKObject.setDistrict(districtObject);
         }
         if(commune.equals("none")){
-            informationAccountAdminObject.setCommune(null);
+            informationAccountNVKObject.setCommune(null);
         }else{
             Commune communeObject = CommuneModel.getInstance().getCommuneById(commune);
-            informationAccountAdminObject.setCommune(communeObject);
+            informationAccountNVKObject.setCommune(communeObject);
         }
 
-        userAdmin.getListOfFunction().put("informationAccountAdminObject",informationAccountAdminObject);
+        userAdmin.getListOfFunction().put("informationAccountNVKObject",informationAccountNVKObject);
         request.getSession().setAttribute("userAdmin", userAdmin);
 
         request.setAttribute("forward", "changeAvatar");
-        request.getRequestDispatcher("InformationAccountAdminController").forward(request, response);
+        request.getRequestDispatcher("InformationAccountNVKController").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -29,4 +29,19 @@ public class StaffModel {
         StaffDataSource.getInstance().releaseStaffWorksWithDatabase(staffWorksWithDatabase);
         return result;
     }
+
+    //  Phương thức nhận vô mã nhân viên và giới thiệu, cập nhập lại
+    public void updateIntroductById(String ma_nv,String gioi_thieu){
+        StaffWorksWithDatabase staffWorksWithDatabase = StaffDataSource.getInstance().getStaffWorksWithDatabase();
+        staffWorksWithDatabase.updateIntroductById(ma_nv,gioi_thieu);
+        StaffDataSource.getInstance().releaseStaffWorksWithDatabase(staffWorksWithDatabase);
+    }
+
+    //  Phương thức nhận vô mã nhân viên và số hình ảnh trong firebase
+    public void updateNumberOfPictureInFirebaseById(String ma_nv,int hinh_anh_trong_firebase){
+        StaffWorksWithDatabase staffWorksWithDatabase = StaffDataSource.getInstance().getStaffWorksWithDatabase();
+        staffWorksWithDatabase.updateNumberOfPictureInFirebaseById(ma_nv,hinh_anh_trong_firebase);
+        StaffDataSource.getInstance().releaseStaffWorksWithDatabase(staffWorksWithDatabase);
+    }
+
 }

@@ -2,19 +2,19 @@ package worksWithDatabase.wishlist;
 
 public class AddWishlistSource {
     private static AddWishlistSource wishlistSource;
-    private static AddWishlistPool wishlistPool;
+    private AddWishlistPool wishlistPool;
 
     private AddWishlistSource(){ wishlistPool = new AddWishlistPool();}
 
-    private static synchronized AddWishlistSource getInstance(){
+    public static synchronized AddWishlistSource getInstance(){
         if(wishlistSource == null){
             wishlistSource =  new AddWishlistSource();
         }
         return wishlistSource;
     }
-    public static AddWishlistDAO getAddWishlist(){ return wishlistPool.getAccount();}
+    public AddWishlistDAO getAddWishlist(){ return wishlistPool.getAccount();}
 
-    public static void releaseAddWishlist(AddWishlistDAO wishlistDAO){ wishlistPool.releaseAddWishlist(wishlistDAO);}
+    public void releaseAddWishlist(AddWishlistDAO wishlistDAO){ wishlistPool.releaseAddWishlist(wishlistDAO);}
 
     public static void main(String[] args) {
 
@@ -25,7 +25,7 @@ public class AddWishlistSource {
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
                     Thread.sleep(2000);
-                    a.addWishlist("sp012","kh002","vang02");
+                    System.out.println(a.addWishlist("sp_5","kh002","vang","m"));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

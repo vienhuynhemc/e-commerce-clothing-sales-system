@@ -12,12 +12,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class LoadWishlistDAO {
-    private ArrayList<Wishlist> list;
+    public static ArrayList<Wishlist> list;
     // so luong trang 1,2,3,...4,5,6
-    static int numberPage;
-    static int sumProduct;
+    public static int numberPage;
+    public static int sumProduct;
 
-    public ArrayList<Wishlist> getAllWishList(int page,String idCustomer,String search,String type,String sex, String status, int numberPerPage){
+    public ArrayList<Wishlist> getAllWishList(int page,String idCustomer,String search,String type,int sex, int status, int numberPerPage){
 
         Connection connection = DataSource.getInstance().getConnection();
         try {
@@ -45,9 +45,18 @@ public class LoadWishlistDAO {
             rs.close();
             s.close();
 
+            String stt = "";
+
+            if(status == 0){
+                stt = "t.so_luong_con_lai = " + status;
+            }
+            else{
+                stt = "t.so_luong_con_lai >= " + status;
+            }
+
             String sql = "SELECT s.ten_sp, g.gia_sp, t.ma_size,y.so_luong, t.ma_mau, t.so_luong_con_lai, y.ngay_them from yeu_thich y,san_pham s, gia_sp g, thong_tin_chi_tiet_sp t where " +
                     "y.ma_sp = t.ma_sp AND s.ma_sp = g.ma_sp AND t.ma_mau = y.ma_mau AND  t.ma_sp = s.ma_sp AND (s.ma_sp like ? or y.ma_kh like ? or DAY(y.ngay_them) = ?" +
-                    " or MONTH(y.ngay_them) = ? or Year(y.ngay_them) = ? or g.gia_sp LIKE ?) AND y.ma_kh = ?" +
+                    " or MONTH(y.ngay_them) = ? or Year(y.ngay_them) = ? or g.gia_sp LIKE ?) AND y.ma_kh = ? AND "+ stt +" AND gioi_tinh = ?" +
                     " ORDER BY s." + type + " LIMIT ?," + numberPerPage;
 
 //            SELECT  s.ten_sp, g.gia_sp, t.ma_size, y.so_luong, t.ma_mau, s.trang_thai, y.ngay_them from yeu_thich y,
@@ -63,7 +72,8 @@ public class LoadWishlistDAO {
             s2.setString(5, search);
             s2.setString(6, search);
             s2.setString(7,idCustomer);
-            s2.setInt(8, start - 1);
+            s2.setInt(8,sex);
+            s2.setInt(9, start - 1);
 
 
             ResultSet rss = s2.executeQuery();
@@ -98,7 +108,7 @@ public class LoadWishlistDAO {
                 p.setQuantity(rss.getInt(4));
                 p.setColor(rss.getString(5));
                 p.setDateAdded(datetime);
-                p.setStatus(rss.getInt(6));
+                p.setRestNumber(rss.getInt(6));
 
                 list.add(p);
             }
@@ -143,7 +153,7 @@ public class LoadWishlistDAO {
 
     public static void main(String[] args) {
         LoadWishlistDAO dao = new LoadWishlistDAO();
-        for (Wishlist w : dao.getAllWishList(1, "kh001", "", "ten_sp", "", "", 1)) {
+        for (Wishlist w : dao.getAllWishList(1, "kh001", "", "ngay_tao", 0, 1, 1)) {
             System.out.println(w);
         }
         //System.out.println(dao.getQuantity("sp_1","mau_1","size_1"));

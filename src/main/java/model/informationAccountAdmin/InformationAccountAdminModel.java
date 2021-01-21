@@ -29,7 +29,6 @@ public class InformationAccountAdminModel {
         return result;
     }
 
-
     // phương thứuc nhận vào mã admin, kiểm tra xem admin này nhập mấy đơn hàng rồi
     public int getNumberOfImportProductByIdAmin(String ma_nv){
         return ImportProductModel.getInstance().getNumberOfImportProductByIdAmin(ma_nv);

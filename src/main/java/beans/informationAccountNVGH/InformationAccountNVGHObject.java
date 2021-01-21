@@ -1,4 +1,4 @@
-package beans.informationAccountAdmin;
+package beans.informationAccountNVGH;
 
 import beans.ObjectPageAdmin;
 import beans.address.Commune;
@@ -7,19 +7,12 @@ import beans.address.Provincial;
 
 import java.util.List;
 
-public class InformationAccountAdminObject implements ObjectPageAdmin {
-
+public class InformationAccountNVGHObject implements ObjectPageAdmin {
 
     private boolean ready;
 
     //  Số đơn hàng đã duyệt
     private int orderApproval;
-
-    //  Số lần nhập hàng
-    private int numberOfImportProduct;
-
-    //  Số hàng đã nhập
-    private int sumImportProduct;
 
     //  List full tinh thành
     private List<Provincial> provincials;
@@ -53,7 +46,7 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
     private String checkPassword;
     private String introduct;
 
-    public InformationAccountAdminObject() {
+    public InformationAccountNVGHObject() {
     }
 
     // GETTER AND SETTER
@@ -63,22 +56,6 @@ public class InformationAccountAdminObject implements ObjectPageAdmin {
 
     public void setOrderApproval(int orderApproval) {
         this.orderApproval = orderApproval;
-    }
-
-    public int getNumberOfImportProduct() {
-        return numberOfImportProduct;
-    }
-
-    public void setNumberOfImportProduct(int numberOfImportProduct) {
-        this.numberOfImportProduct = numberOfImportProduct;
-    }
-
-    public int getSumImportProduct() {
-        return sumImportProduct;
-    }
-
-    public void setSumImportProduct(int sumImportProduct) {
-        this.sumImportProduct = sumImportProduct;
     }
 
     @Override

@@ -26,4 +26,11 @@ public class AddressModel {
         AddressDataSource.getInstance().releaseAddressWorksWithDatabase(addressWorksWithDatabase);
     }
 
+    //  Phuong thuc nhan vo ma nhan vien, tinh quan huyen cap nhat no lai trong csdl
+    public void updateAddressById(String ma_nv, String ma_tinh, String ma_huyen, String ma_xa) {
+        AddressWorksWithDatabase addressWorksWithDatabase = AddressDataSource.getInstance().getAddressWorksWithDatabase();
+        addressWorksWithDatabase.updateAddressById(ma_nv,ma_tinh,ma_huyen,ma_xa);
+        AddressDataSource.getInstance().releaseAddressWorksWithDatabase(addressWorksWithDatabase);
+    }
+
 }

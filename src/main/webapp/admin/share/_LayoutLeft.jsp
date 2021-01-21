@@ -171,7 +171,7 @@
                     <p>Thông tin tài khoản</p>
                 </div>
             </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
+            <a href="../../index.jsp" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-shopping-cart"></i>
                     <p>Trở về trang mua sắm</p>

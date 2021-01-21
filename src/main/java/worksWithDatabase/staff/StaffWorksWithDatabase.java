@@ -102,5 +102,39 @@ public class StaffWorksWithDatabase {
         return result;
     }
 
+    //  Phương thức nhận vô mã nhân viên và giới thiệu, cập nhập lại
+    public void updateIntroductById(String ma_nv,String gioi_thieu){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE nhan_vien SET gioi_thieu = ? WHERE ma_nv = ?");
+            preparedStatement.setString(1,gioi_thieu);
+            preparedStatement.setString(2,ma_nv);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
+    //  Phương thức nhận vô mã nhân viên và số hình ảnh trong firebase
+    public void updateNumberOfPictureInFirebaseById(String ma_nv,int hinh_anh_trong_firebase){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE nhan_vien SET hinh_anh_trong_firebase = ? WHERE ma_nv = ?");
+            preparedStatement.setInt(1,hinh_anh_trong_firebase);
+            preparedStatement.setString(2,ma_nv);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
 }
 

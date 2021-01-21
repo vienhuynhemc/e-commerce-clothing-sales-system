@@ -67,6 +67,31 @@ public class CommuneWorksWithDatabase {
 
     }
 
+    //  Phuong thuc nhan vo ma phuong xa tra ve phuong xa do
+    public Commune getCommuneById(String ma_phuong_xa){
+
+        Commune commune = null;
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_phuong_xa,ten_phuong_xa FROM phuong_xa WHERE ma_phuong_xa = ?");
+            preparedStatement.setString(1,ma_phuong_xa);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            commune = new Commune();
+            commune.setCommuneName(resultSet.getString("ten_phuong_xa"));
+            commune.setCommuneId(resultSet.getString("ma_phuong_xa"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return commune;
+
+    }
+
 
 
 }

@@ -6,16 +6,21 @@ import worksWithDatabase.wishlist.AddWishlistSource;
 public class AddWishlistModel {
     private static AddWishlistModel wishlistModel;
 
-    private static AddWishlistModel getInstanse(){
+    public static AddWishlistModel getInstanse(){
         if(wishlistModel == null){
             wishlistModel = new AddWishlistModel();
         }
         return wishlistModel;
     }
-    public static boolean addWishlist(String idProduct, String idCustomer, String color){
-        AddWishlistDAO addWishlistDAO = AddWishlistSource.getAddWishlist();
-        boolean check = addWishlistDAO.addWishlist(idProduct,idCustomer,color);
-        AddWishlistSource.releaseAddWishlist(addWishlistDAO);
+    public static boolean addWishlist(String idProduct, String idCustomer, String color,String size){
+        AddWishlistDAO addWishlistDAO = AddWishlistSource.getInstance().getAddWishlist();
+        boolean check = addWishlistDAO.addWishlist(idProduct,idCustomer,color,size);
+        AddWishlistSource.getInstance().releaseAddWishlist(addWishlistDAO);
         return check;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(addWishlist("sp_1","kh001","vang","s"));
     }
 }

@@ -1,9 +1,10 @@
-package controllerAdmin.informationAccountAdmin;
+package controllerAdmin.informationAccountNVGH;
 
 import beans.BeansConfiguration;
 import beans.address.Commune;
 import beans.address.District;
 import beans.informationAccountAdmin.InformationAccountAdminObject;
+import beans.informationAccountNVGH.InformationAccountNVGHObject;
 import beans.loginAdmin.UserAdmin;
 import model.account.AccountModel;
 import model.commune.CommuneModel;
@@ -17,10 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "InformationAccountAdminChangeAvatarController", urlPatterns = "/InformationAccountAdminChangeAvatarController")
-public class InformationAccountAdminChangeAvatarController extends HttpServlet {
+@WebServlet(name = "InformationAccountNVGHChangeAvatarController", urlPatterns = "/InformationAccountNVGHChangeAvatarController")
+public class InformationAccountNVGHChangeAvatarController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         // set charset cho cả request và responne
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
@@ -68,32 +68,32 @@ public class InformationAccountAdminChangeAvatarController extends HttpServlet {
         String introduct = request.getParameter("introduct");
 
 
-        InformationAccountAdminObject informationAccountAdminObject = (InformationAccountAdminObject) userAdmin.getListOfFunction().get("informationAccountAdminObject");
-        informationAccountAdminObject.setFullName(fullName);
-        informationAccountAdminObject.setDisplayName(displayName);
-        informationAccountAdminObject.setPhoneNumber(phoneNumber);
-        informationAccountAdminObject.setPassword(password);
-        informationAccountAdminObject.setCheckPassword(checkPassword);
-        informationAccountAdminObject.setIntroduct(introduct);
+        InformationAccountNVGHObject informationAccountNVGHObject = (InformationAccountNVGHObject) userAdmin.getListOfFunction().get("informationAccountNVGHObject");
+        informationAccountNVGHObject.setFullName(fullName);
+        informationAccountNVGHObject.setDisplayName(displayName);
+        informationAccountNVGHObject.setPhoneNumber(phoneNumber);
+        informationAccountNVGHObject.setPassword(password);
+        informationAccountNVGHObject.setCheckPassword(checkPassword);
+        informationAccountNVGHObject.setIntroduct(introduct);
 
         if(district.equals("none")){
-            informationAccountAdminObject.setDistrict(null);
+            informationAccountNVGHObject.setDistrict(null);
         }else{
             District districtObject = DistrictModel.getInstance().getDistrictById(district);
-            informationAccountAdminObject.setDistrict(districtObject);
+            informationAccountNVGHObject.setDistrict(districtObject);
         }
         if(commune.equals("none")){
-            informationAccountAdminObject.setCommune(null);
+            informationAccountNVGHObject.setCommune(null);
         }else{
             Commune communeObject = CommuneModel.getInstance().getCommuneById(commune);
-            informationAccountAdminObject.setCommune(communeObject);
+            informationAccountNVGHObject.setCommune(communeObject);
         }
 
-        userAdmin.getListOfFunction().put("informationAccountAdminObject",informationAccountAdminObject);
+        userAdmin.getListOfFunction().put("informationAccountNVGHObject",informationAccountNVGHObject);
         request.getSession().setAttribute("userAdmin", userAdmin);
 
         request.setAttribute("forward", "changeAvatar");
-        request.getRequestDispatcher("InformationAccountAdminController").forward(request, response);
+        request.getRequestDispatcher("InformationAccountNVGHController").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

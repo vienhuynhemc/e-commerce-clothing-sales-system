@@ -14,29 +14,37 @@ public class Wishlist {
     private String color;
 //    private String img;
     private DateTime dateAdded;
-    private int status;
+    private int restNumber;
 
-    public Wishlist(String name, double price, String size, int quantity, String color,int status,DateTime dateAdded) {
+    public Wishlist(String name, double price, String size, int quantity, String color,DateTime dateAdded,int restNumber) {
         this.name = name;
         this.price = price;
         this.size = size;
         this.quantity = quantity;
         this.color = color;
 //        this.img = img;
-        this.status = status;
+//        this.status = status;
         this.dateAdded = dateAdded;
+        this.restNumber = restNumber;
     }
     public Wishlist(){
 
     }
 
-    public int getStatus() {
-        return status;
+    public int getRestNumber() {
+        return restNumber;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setRestNumber(int restNumber) {
+        this.restNumber = restNumber;
     }
+    //    public int getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(int status) {
+//        this.status = status;
+//    }
 
     public DateTime getDateAdded() {
         return dateAdded;
@@ -104,7 +112,7 @@ public class Wishlist {
                 ", quantity=" + quantity +
                 ", color='" + color + '\'' +
                 ", dateAdded=" + dateAdded +
-                ", status=" + status +
+                ", restNumber=" + restNumber +
                 '}';
     }
 }
