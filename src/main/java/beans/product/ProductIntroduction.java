@@ -29,4 +29,12 @@ public class ProductIntroduction {
     public void setGioi_thieu(ArrayList<String> gioi_thieu) {
         this.gioi_thieu = gioi_thieu;
     }
+
+    @Override
+    public String toString() {
+        return "ProductIntroduction{" +
+                "ma_sp='" + ma_sp + '\'' +
+                ", gioi_thieu=" + gioi_thieu +
+                '}';
+    }
 }

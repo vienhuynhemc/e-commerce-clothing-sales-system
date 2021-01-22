@@ -1,7 +1,6 @@
-<%@ page import="beans.product.Product" %>
-<%@ page import="beans.product.Size" %>
-<%@ page import="beans.product.ProductColor" %>
-<%@ page import="beans.product.ProductImage" %><%--
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="beans.product.*" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -54,6 +53,8 @@
     <link rel="stylesheet" href="css/chitietsanpham.css">
     <%
         Product p = (Product) request.getAttribute("product");
+        ArrayList<ProductDetailInformation> pd = (ArrayList<ProductDetailInformation>) request.getAttribute("listSize");
+        System.out.println(pd);
     %>
 </head>
 
@@ -232,9 +233,10 @@
             </div>
 
             <div class="dpright">
-                <p class="hangsanxuat">JUNO - Thương hiệu thời trang cao cấp</p>
+                <p class="hangsanxuat"><%=p.getHang_san_xuat().getTen_hsx()%></p>
                 <p class="tensanpham"><%=p.getTen_sp()%></p>
                 <div class="giasanphamgiamgia">
+
                     <span><del><%=p.getPrice().getGia_sp()%> VND</del></span>
                     <span>(GIẢM GIÁ <%= Math.round(((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp())*100) %>%)</span>
                 </div>
@@ -242,10 +244,10 @@
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">
                     <p>CHỌN MÀU</p>
-<%--                    <% for(ProductColor pc : p.getListColor()){%>--%>
-<%--                    <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>--%>
-<%--                    <%}%>--%>
-                    <span class="colordpdx" id="colordpdx">Đỏ</span>
+                    <% for(ProductColor pc : p.getListColor()){%>
+                    <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>
+                    <%}%>
+<%--                    <span class="colordpdx" id="colordpdx">Đỏ</span>--%>
 
                 </div>
                 <div class="selectcolor">
@@ -259,9 +261,11 @@
 <%--                    </label>--%>
                     <%for(ProductColor pc : p.getListColor()){%>
                     <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></div>
+                        <div><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=pc.getMa_mau()%>"><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></a></div>
                     </label>
                     <%}%>
+<%--                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>--%>
+<%--                    <span class="colordpxn" id="colordpxn">Xanh nhạt</span>--%>
                 </div>
                 <div class="guidesize">
                     <p>CHỌN SIZE</p>
@@ -273,23 +277,27 @@
                     <input type="radio" name="size" id="size3" style="display: none;">
                     <input type="radio" name="size" id="size4" style="display: none;">
                     <input type="radio" name="size" id="size5" style="display: none;">
-                    <% for(Size s : p.getListSize()){%>
+                    <% if(pd != null){%>
+                    <% for(ProductDetailInformation ps : pd){%>
+                    <label for="size1" class="labelsize1"><%=ps.getTen_size()%></label>
+                    <%}} else{%>
+                    <% for(Size s: p.getListSize()){%>
                     <label for="size1" class="labelsize1"><%=s.getTen_size()%></label>
-                    <%}%>
+                    <%}}%>
 <%--                    <label for="size2" class="labelsize2">M</label>--%>
 <%--                    <label for="size3" class="labelsize3">L</label>--%>
 <%--                    <label for="size4" class="labelsize4">XL</label>--%>
 <%--                    <label for="size5" class="labelsize5">XXL</label>--%>
                 </div>
-                <p class="dpconlai">Còn lại 7 sản phẩm</p>
+                <p class="dpconlai">Còn lại 1 sản phẩm</p>
                 <div class="inputsl">
                     <button onclick="subtocard2()"><span>-</span></button>
-                    <input type="text" value="1" id="sladdtocard2">
+                    <input type="text" value="1" id="sladdtocard2" name="so_luong">
                     <button onclick="plustocard2()"><span>+</span></button>
                 </div>
                 <div class="wlaatc">
                     <button><i class="fa fa-heart"></i> YÊU THÍCH</button>
-                    <button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button>
+                    <a href="AddCartController?id"><button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button></a>
                 </div>
             </div>
         </div>
@@ -299,27 +307,29 @@
 
     <div class="dtp">
         <p class="dtptitle">Thông tin sản phẩm</p>
-        <p class="dtpinfor1">Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011 với lai ống trước lệch và tưa nhẹ tạo nên nét
-            phá cách cho bạn nữ
-            khi mặc.</p>
+        <%for(ProductInfomation s : p.getListInfo()){%>
+        <p class="dtpinfor1"><%=s.getThong_tin()%></p>
+        <%}%>
         <p class="dtptitle">Vật liệu & sản xuất</p>
         <ul>
-            <li>Chất liệu: Jean</li>
-            <li>Form: Lưng cao</li>
-            <li>Màu sắc: Xanh nhạt, xanh đậm</li>
-            <li>Sản xuất: Việt Nam</li>
+            <%for(String ps : p.getCau_tao_sp().getCau_tao()){%>
+            <li><%=ps%></li>
+            <%}%>
+
         </ul>
         <p class="dtptitle">Phù hợp cho</p>
         <ul>
-            <li>Style năng động khi phối với các dòng trang phục áo thun, áo polo, sơ mi</li>
-            <li>Các dịp đi cafe, đi chơi hoặc đi du lịch biển,...</li>
+            <%for(String pi : p.getGioi_thieu_sp().getGioi_thieu()){%>
+            <li><%=pi%></li>
+            <%}%>
+
         </ul>
         <p class="dtptitle">Cung cấp bởi</p>
-        <p class="hangsanxuat">JUNO - Thương hiệu thời trang cao cấp</p>
+        <p class="hangsanxuat"><%=p.getHang_san_xuat().getTen_hsx()%></p>
         <ul>
-            <li>90% phản hồi tích cực</li>
-            <li>63 sản phẩm</li>
-            <li>Tất cả sản phẩm đều được bảo hành 3 tháng</li>
+            <%for(String s : p.getHang_san_xuat().getThong_tin()){%>
+            <li><%=s%></li>
+            <%}%>
         </ul>
     </div>
 

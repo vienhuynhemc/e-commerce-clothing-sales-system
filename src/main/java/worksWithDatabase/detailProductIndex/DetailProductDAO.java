@@ -153,6 +153,74 @@ public class DetailProductDAO {
                 p.setListColor(colors);
                 rColor.close();
                 color.close();
+                // lấy cấu tạo sản phẩm
+                PreparedStatement material = connection.prepareStatement("SELECT cau_tao FROM `cau_tao_sp` WHERE ma_sp = ?");
+                material.setString(1,id);
+                ResultSet rMaterials = material.executeQuery();
+                ArrayList<String> materials = new ArrayList<>();
+                ProductStructure pc = new ProductStructure();
+                pc.setMa_sp(id);
+                    while (rMaterials.next()) {
+                        materials.add(rMaterials.getString(1));
+                    }
+                pc.setCau_tao(materials);
+                p.setCau_tao_sp(pc);
+                rMaterials.close();
+                material.close();
+
+                //lấy thông tin sản phẩm
+                PreparedStatement info = connection.prepareStatement("SELECT * FROM `thong_tin_sp` WHERE ma_sp = ?");
+                info.setString(1,id);
+                ResultSet rInfo = info.executeQuery();
+
+                ArrayList<ProductInfomation> pis = new ArrayList<>();
+                while (rInfo.next()) {
+                    ProductInfomation pi = new ProductInfomation();
+                    pi.setMa_sp(rInfo.getString(1));
+                    pi.setThong_tin(rInfo.getString(2));
+                    pis.add(pi);
+                }
+                p.setListInfo(pis);
+                rInfo.close();
+                info.close();
+                // lấy giới thiệu sản phẩm
+                PreparedStatement intro = connection.prepareStatement("SELECT gioi_thieu FROM `gioi_thieu_sp` WHERE ma_sp = ?");
+                intro.setString(1,id);
+                ResultSet rIntro = intro.executeQuery();
+                ArrayList<String> piss = new ArrayList<>();
+                ProductIntroduction pi = new ProductIntroduction();
+                pi.setMa_sp(id);
+                while (rIntro.next()) {
+                    piss.add(rIntro.getString(1));
+                }
+                pi.setGioi_thieu(piss);
+                p.setGioi_thieu_sp(pi);
+                rIntro.close();
+                intro.close();
+
+//                lấy hãng sản xuất
+                PreparedStatement manuf = connection.prepareStatement("SELECT s.ma_hsx,h.ten_hsx, c.chi_tiet FROM san_pham " +
+                        "s, chi_tiet_hsx c, hang_san_xuat h WHERE s.ma_hsx = c.ma_hsx AND h.ma_hsx = c.ma_hsx " +
+                        "AND s.ma_sp = ?");
+                manuf.setString(1,id);
+                ResultSet rMa = manuf.executeQuery();
+                ArrayList<String> manufactutrer = new ArrayList<>();
+                Manufacturer manu = new Manufacturer();
+                if(rMa.next()) {
+                    manu.setMa_hsx(rMa.getString(1));
+                    manu.setTen_hsx(rMa.getString(2));
+                    rMa.beforeFirst();
+                    while (rMa.next()) {
+                        manufactutrer.add(rMa.getString(3));
+                    }
+                }
+//
+                manu.setThong_tin(manufactutrer);
+
+                p.setHang_san_xuat(manu);
+                rMa.close();
+                manuf.close();
+
 
 
                 DataSource.getInstance().releaseConnection(connection);
@@ -184,10 +252,48 @@ public class DetailProductDAO {
         DateTime sd = new DateTime(year,month,day,hour,minute,second);
         return sd;
     }
+//    lấy mã size và số lượng còn lại thông qua masp và ma_mau
+    public ArrayList<ProductDetailInformation> getInfoDetailProduct(String id, String color){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+
+
+            String sql = "SELECT s.ma_sp, t.ma_mau, t.ma_size,t.so_luong_con_lai,t.ton_tai,si.ten_size from thong_tin_chi_tiet_sp" +
+                    " t, san_pham s,size si where t.ma_sp = s.ma_sp AND si.ma_size = t.ma_size AND s.ton_tai = 1 AND " +
+                    "s.ma_sp = ? AND t.ma_mau = ?";
+            PreparedStatement s = connection.prepareStatement(sql);
+            s.setString(1,id);
+            s.setString(2,color);
+            ResultSet rs = s.executeQuery();
+            ArrayList<ProductDetailInformation> info = new ArrayList<>();
+            while(rs.next()){
+                ProductDetailInformation p = new ProductDetailInformation();
+                p.setMa_sp(rs.getString(1));
+                p.setMa_mau(rs.getString(2));
+                p.setMa_size(rs.getString(3));
+                p.setSo_luong_con_lai(rs.getInt(4));
+                p.setTon_tai(rs.getInt(5));
+                p.setTen_size(rs.getString(6));
+
+                info.add(p);
+
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return info;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
+    }
 
     public static void main(String[] args) {
         DetailProductDAO test = new DetailProductDAO();
-        System.out.println(test.getProductById("sp_1").getListColor());
+       System.out.println(test.getProductById("sp_1").getHang_san_xuat().getThong_tin());
+       // System.out.println(test.getInfoDetailProduct("sp_1","mau_1"));
     }
 
 }
