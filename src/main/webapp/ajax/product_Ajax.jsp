@@ -27,7 +27,7 @@
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="detailsProduct.html">
+                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=1">
 
 
                     <!-------Load hình đầu tiên ------->
@@ -50,7 +50,7 @@
 
                 <figcaption>
                     <!-------Load giá và giá khuyến mãi  ------->
-                    <h4 class="aa-product-title"><a href="detailsProduct.html"><%=p.getTen_sp()%></a></h4>
+                    <h4 class="aa-product-title"><a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>"><%=p.getTen_sp()%></a></h4>
                     <span class="aa-product-price sprice">
                         <%= ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</span>
                     <span class="aa-product-price"><del>
@@ -315,7 +315,7 @@
                                            class="aa-add-to-cart-btn addTocardViewQuick"
                                            style="color: white;" onclick="addCart()"><span
                                                 class="fa fa-shopping-cart" ></span>Thêm vào giỏ hàng</a>
-                                        <a href="detailsProduct.html" class="aa-add-to-cart-btn"
+                                        <a href="LoadDetailProductController?idProduct=<%= p.getMa_sp()%>" class="aa-add-to-cart-btn"
                                            style="color: white;"><span
                                                 class="fa fa-eye"></span>Xem chi tiết</a>
                                     </div>
