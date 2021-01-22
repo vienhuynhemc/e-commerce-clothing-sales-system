@@ -32,7 +32,7 @@
         <div>
             <div class="div12inputlv2">
                 <div>
-                    <label for="">Tên màu</label>
+                    <label >Tên màu</label>
                 </div>
                 <input type="text" placeholder="Nhập tên màu ở đây">
             </div>
@@ -332,7 +332,7 @@
             <div>
                 <div class="header">
                     <div class="leftheader">
-                        <select name="" id="">
+                        <select name="">
                             <option value="" selected>Ngày tạo</option>
                             <option value="">Tên danh mục</option>
                             <option value="">Mã sản phẩm</option>
@@ -439,220 +439,6 @@
                             </div>
                         </div>
 
-                        <div>
-                            <div class="div11">
-                                <h3>Thông tin sản phẩm</h3>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Tên sản phẩm</label>
-                                    </div>
-                                    <input type="text" placeholder="Nhập tên sản phẩm ở đây">
-                                </div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Hãng sản xuất</label>
-                                        <div style="width: 10px;height: 25px;"></div>
-                                    </div>
-                                    <select name="" id="">
-                                        <option value="" selected>Chọn hãng sản xuất</option>
-                                    </select>
-                                </div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Danh mục</label>
-                                        <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
-                                    </div>
-                                    <select name="" id="">
-                                        <option value="" selected>Chọn danh mục</option>
-                                    </select>
-                                </div>
-                                <div class="gioitinh">
-                                    <h3>Giới tính</h3>
-                                    <div>
-                                        <span class="activebutton" id="gioitinhnam" onclick="nam2()">Nam</span>
-                                        <span onclick="nu2()" id="gioitinhnu">Nữ</span>
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div11submit">
-                                    <span><i class="fa fa-plus"></i>Thêm sản phẩm</span>
-                                    <span onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</span>
-                                </div>
-                            </div>
-
-                            <div class="div12">
-                                <h3>Thêm thông tin cho sản phẩm</h3>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Size</label>
-                                    </div>
-                                    <select name="" id="valuemau">
-                                        <option value="img/den.webp" selected>Đen</option>
-                                    </select>
-                                </div>
-                                <div class="buttondiv12">
-                                        <span class="buttonthemmau" onclick="themmau2(this)"><i class="fa fa-plus"></i>
-                                            Thêm
-                                            màu
-                                        </span>
-                                    <span onclick="taomaumoi()">Tạo màu mới</span>
-                                </div>
-                                <div class="maudachon">
-                                    <h3>Màu đã chọn</h3>
-                                    <div class="listMau">
-                                        <!-- <div class="listMauItem">
-                                        <div class="listMauItemleft">
-                                            <div>
-                                                <p>Xanh đậm</p>
-                                                <div>
-                                                    <img src="img/xanhdam.webp" alt="">
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="listHinh">
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp1.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp1.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp1.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp1.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp4.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp2.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp3.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp4.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp2.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp3.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                    <div class="listHinhitem">
-                                                        <img src="../../img/product/dp4.webp" alt="">
-                                                        <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                                    </div>
-                                                </div>
-                                                <i class="fa fa-angle-left" onclick="movehinhleft(this)"></i>
-                                                <i class="fa fa-angle-right" onclick="movehinhright(this)"></i>
-                                                <input type="number" style="display: none;" value="0">
-                                            </div>
-                                        </div>
-                                        <div class="removecolor">
-                                            <button onclick="themhinh(this)"><i class="fa fa-plus"></i></button>
-                                            <button onclick="removecolor(this)"><i class="fa fa-trash"></i></button>
-                                            <input type="file" style="display:none;" onchange="loadIMG(event,this)" />
-                                        </div>
-                                    </div> -->
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="" style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
-                                    </div>
-                                    <span class="buttonthemmau" onclick="themGioiThieu2()"> <i class="fa fa-plus"></i> Thêm giới thiệu</span>
-                                    <div class="listGioiThieu">
-                                        <!-- <div class="itemGioiThieu">
-                                            <input type="text" placeholder="Nhập giới thiệu ở đây">
-                                            <i class="fa fa-remove" onclick="removeGioiThieu2(this)"></i>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="" style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
-                                    </div>
-                                    <span class="buttonthemmau" onclick="themCauTao2()">  <i class="fa fa-plus"></i>Thêm cấu tạo</span>
-                                    <div class="listGioiThieu">
-                                        <!-- <div class="itemGioiThieu">
-                                            <input type="text" placeholder="Nhập cấu tạo ở đây">
-                                            <i class="fa fa-remove" onclick="removeCauTao2(this)"></i>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="" style="margin-bottom: 10px;">Thông tin sản phẩm</label>
-                                    </div>
-                                    <span class="buttonthemmau" onclick="themThongTin2()"> <i class="fa fa-plus"></i>Thêm thông tin</span>
-                                    <div class="listGioiThieu">
-                                        <!-- <div class="itemGioiThieu">
-                                            <input type="text" placeholder="Nhập thông tin ở đây">
-                                            <i class="fa fa-remove" onclick="removeThongTin2(this)"></i>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="div13">
-                                <h3>Chọn size</h3>
-                                <div class="linediv12"></div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Loại sản phẩm</label>
-                                    </div>
-                                    <select name="" id="valuemau">
-                                        <option value="img/den.webp" selected>Áo</option>
-                                        <option value="">Quần</option>
-                                    </select>
-                                </div>
-                                <div class="div12inputlv2">
-                                    <div>
-                                        <label for="">Size</label>
-                                    </div>
-                                    <select name="">
-                                        <option value="S" selected>S</option>
-                                        <option value="M">M</option>
-                                        <option value="L">L</option>
-                                        <option value="XL">XL</option>
-                                        <option value="XXL">XXL</option>
-                                        <option value="XXXL">XXXL</option>
-                                    </select>
-                                </div>
-                                <span onclick="themsize2(this)"><i class="fa fa-plus"></i> Thêm size</span>
-                                <div class="sizedachon">
-                                    <h3>Size đã chọn</h3>
-                                    <div class="listSize">
-                                        <!-- <div class="listSizeItem">
-                                        <div>
-                                            <i class="fa fa-circle"></i>
-                                            <p>M</p>
-                                        </div>
-                                        <button onclick="removeSize(this)"><i class="fa fa-trash"></i></button>
-                                    </div> -->
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
 
 
@@ -667,25 +453,25 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Tên sản phẩm</label>
+                            <label >Tên sản phẩm</label>
                         </div>
                         <input type="text" placeholder="Nhập tên sản phẩm ở đây">
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Hãng sản xuất</label>
+                            <label >Hãng sản xuất</label>
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
-                        <select name="" id="">
+                        <select name="" >
                             <option value="" selected>Chọn hãng sản xuất</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Danh mục</label>
+                            <label >Danh mục</label>
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
-                        <select name="" id="">
+                        <select name="">
                             <option value="" selected>Chọn danh mục</option>
                         </select>
                     </div>
@@ -708,9 +494,9 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Size</label>
+                            <label>Size</label>
                         </div>
-                        <select name="" id="valuemau">
+                        <select name="">
                             <option value="img/den.webp" selected>Đen</option>
                         </select>
                     </div>
@@ -795,7 +581,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themGioiThieu()"> <i class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu" id="listGioiThieu">
@@ -808,7 +594,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
+                            <label  style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themCauTao()"> <i class="fa fa-plus"></i>Thêm cấu tạo</span>
                         <div class="listGioiThieu" id="listCauTao">
@@ -821,7 +607,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Thông tin sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Thông tin sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themThongTin()"> <i class="fa fa-plus"></i>Thêm thông tin</span>
                         <div class="listGioiThieu" id="listThongTin">
@@ -838,16 +624,16 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Loại sản phẩm</label>
+                            <label >Loại sản phẩm</label>
                         </div>
-                        <select name="" id="valuemau">
+                        <select name="" >
                             <option value="img/den.webp" selected>Áo</option>
                             <option value="">Quần</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Size</label>
+                            <label >Size</label>
                         </div>
                         <select name="">
                             <option value="S" selected>S</option>
@@ -883,33 +669,33 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Tên sản phẩm</label>
+                            <label >Tên sản phẩm</label>
                         </div>
                         <input type="text" placeholder="Nhập tên sản phẩm ở đây">
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Hãng sản xuất</label>
+                            <label >Hãng sản xuất</label>
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
-                        <select name="" id="">
+                        <select name="" >
                             <option value="" selected>Chọn hãng sản xuất</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Danh mục</label>
+                            <label >Danh mục</label>
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
-                        <select name="" id="">
+                        <select name="" >
                             <option value="" selected>Chọn danh mục</option>
                         </select>
                     </div>
                     <div class="gioitinh">
                         <h3>Giới tính</h3>
                         <div>
-                            <span class="activebutton" id="gioitinhnam" onclick="nam2()">Nam</span>
-                            <span onclick="nu2()" id="gioitinhnu">Nữ</span>
+                            <span class="activebutton"  onclick="nam2()">Nam</span>
+                            <span onclick="nu2()">Nữ</span>
                         </div>
                     </div>
                     <div class="linediv12"></div>
@@ -924,7 +710,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Size</label>
+                            <label >Size</label>
                         </div>
                         <select name="" id="valuemau">
                             <option value="img/den.webp" selected>Đen</option>
@@ -1011,7 +797,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
+                            <label  style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themGioiThieu2()"> <i class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu">
@@ -1024,7 +810,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
+                            <label  style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themCauTao2()"> <i class="fa fa-plus"></i>Thêm cấu tạo</span>
                         <div class="listGioiThieu">
@@ -1037,7 +823,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="" style="margin-bottom: 10px;">Thông tin sản phẩm</label>
+                            <label  style="margin-bottom: 10px;">Thông tin sản phẩm</label>
                         </div>
                         <span class="buttonthemmau" onclick="themThongTin2()"> <i class="fa fa-plus"></i>Thêm thông tin</span>
                         <div class="listGioiThieu">
@@ -1054,16 +840,16 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Loại sản phẩm</label>
+                            <label >Loại sản phẩm</label>
                         </div>
-                        <select name="" id="valuemau">
+                        <select name="">
                             <option value="img/den.webp" selected>Áo</option>
                             <option value="">Quần</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label for="">Size</label>
+                            <label >Size</label>
                         </div>
                         <select name="">
                             <option value="S" selected>S</option>
@@ -1105,7 +891,7 @@
                         <div class="div3size">
                             <div class="div12inputlv2">
                                 <div>
-                                    <label for="" style="margin-top: 20px;">Size</label>
+                                    <label  style="margin-top: 20px;">Size</label>
                                 </div>
                                 <select name="" id="valueSize">
                                     <option value="S" selected>S</option>
