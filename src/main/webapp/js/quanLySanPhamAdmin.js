@@ -88,7 +88,7 @@ function removekhachhang(item) {
         let list = listItem[i].children;
         let list2 = list[9].children;
         let list3 = list2[4].children;
-        if (list3[1] == item) {
+        if (list3[2] == item) {
             document.getElementById("maindiv2").removeChild(listItem[i]);
             capnhaphienthi();
             return;
@@ -452,7 +452,7 @@ function themsize(item) {
             div2.appendChild(p);
             div.appendChild(div2);
 
-            let button = document.createElement("button");
+            let button = document.createElement("span");
             let i2 = document.createElement("i");
             i2.classList.add("fa");
             i2.classList.add("fa-trash");
@@ -466,6 +466,59 @@ function themsize(item) {
         }
     }
 }
+
+function themsize3() {
+
+    let check = 0;
+    let value = document.getElementById("valueSize").value;
+    let list = document.getElementById("listSizeDiv3").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[0].children[1].innerText == value) {
+            check = 1;
+            break;
+        }
+    }
+
+
+
+    if (check == 0) {
+        let div = document.createElement("div");
+        div.classList.add("listSizeItem");
+
+        let div2 = document.createElement("div");
+        let i = document.createElement("i");
+        i.classList.add("fa");
+        i.classList.add("fa-circle");
+        let p = document.createElement("p");
+        p.innerText = value;
+        div2.appendChild(i);
+        div2.appendChild(p);
+        div.appendChild(div2);
+
+        let button = document.createElement("span");
+        let i2 = document.createElement("i");
+        i2.classList.add("fa");
+        i2.classList.add("fa-trash");
+        button.appendChild(i2);
+        button.onclick = function () {
+            removeSize3(button)
+        };
+        div.appendChild(button);
+
+        document.getElementById("listSizeDiv3").appendChild(div);
+    }
+}
+
+function removeSize3(item) {
+    let list = document.getElementById("listSizeDiv3").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == item) {
+            document.getElementById("listSizeDiv3").removeChild(list[i]);
+            break;
+        }
+    }
+}
+
 
 function themsize2(item) {
 
@@ -510,7 +563,7 @@ function themsize2(item) {
             div2.appendChild(p);
             div.appendChild(div2);
 
-            let button = document.createElement("button");
+            let button = document.createElement("span");
             let i2 = document.createElement("i");
             i2.classList.add("fa");
             i2.classList.add("fa-trash");
@@ -975,8 +1028,8 @@ function themmau(item) {
 
             let div3 = document.createElement("div");
             div3.classList.add("removecolor");
-            let button1 = document.createElement("button");
-            let button2 = document.createElement("button");
+            let button1 = document.createElement("span");
+            let button2 = document.createElement("span");
             let i4 = document.createElement("i");
             let i5 = document.createElement("i");
             i4.classList.add("fa");
@@ -1080,8 +1133,8 @@ function themmau2(item) {
 
             let div3 = document.createElement("div");
             div3.classList.add("removecolor");
-            let button1 = document.createElement("button");
-            let button2 = document.createElement("button");
+            let button1 = document.createElement("span");
+            let button2 = document.createElement("span");
             let i4 = document.createElement("i");
             let i5 = document.createElement("i");
             i4.classList.add("fa");
@@ -1124,5 +1177,226 @@ function loadIMGMau(event) {
     if (event.target.files.length > 0) {
         var src = URL.createObjectURL(event.target.files[0]);
         document.getElementById("psm").src = src;
+    }
+}
+
+function themGioiThieu() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeGioiThieu(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listGioiThieu").appendChild(div);
+}
+
+function removeGioiThieu(item) {
+    let list = document.getElementById("listGioiThieu").children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            document.getElementById("listGioiThieu").removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function themCauTao() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeCauTao(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listCauTao").appendChild(div);
+}
+
+function removeCauTao(item) {
+    let list = document.getElementById("listCauTao").children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            document.getElementById("listCauTao").removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function themThongTin() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeThongTin(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listThongTin").appendChild(div);
+}
+
+function removeThongTin(item) {
+    let list = document.getElementById("listThongTin").children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            document.getElementById("listThongTin").removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function themGioiThieu2() {
+
+    let l1 = document.getElementById("div3").children[0].children[1].children[6].children[2];
+
+
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeGioiThieu2(this);
+    }
+    div.appendChild(i);
+    l1.appendChild(div);
+}
+
+function removeGioiThieu2(item) {
+    let l1 = document.getElementById("div3").children[0].children[1].children[6].children[2];
+    let list = l1.children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            l1.removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function themCauTao2() {
+
+    let l1 = document.getElementById("div3").children[0].children[1].children[8].children[2];
+
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeCauTao2(this);
+    }
+    div.appendChild(i);
+    l1.appendChild(div);
+}
+
+function removeCauTao2(item) {
+
+    let l1 = document.getElementById("div3").children[0].children[1].children[8].children[2];
+
+    let list = l1.children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            l1.removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function themThongTin2() {
+
+    let l1 = document.getElementById("div3").children[0].children[1].children[10].children[2];
+
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeThongTin2(this);
+    }
+    div.appendChild(i);
+    l1.appendChild(div);
+}
+
+function removeThongTin2(item) {
+    let l1 = document.getElementById("div3").children[0].children[1].children[10].children[2];
+    let list = l1.children;
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].children[1] == item) {
+            l1.removeChild(list[i]);
+            return;
+        }
+
+    }
+}
+
+function removeHinh(item) {
+    let list = document.getElementById("listHinh").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == item) {
+            document.getElementById("listHinh").removeChild(list[i]);
+        }
+    }
+}
+
+function themHinhMoi(even) {
+    if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+            
+
+        let div = document.createElement("div");
+        div.classList.add("hinhItem");
+        let i = document.createElement("i");
+        i.classList.add("fa");
+        i.classList.add("fa-close");
+        i.onclick = function(){
+            removeHinh(i);
+        }
+        let img = document.createElement("img");
+        img.src = src;
+        div.appendChild(img);
+        div.appendChild(i);
+
+        document.getElementById("listHinh").appendChild(div);
+
     }
 }
