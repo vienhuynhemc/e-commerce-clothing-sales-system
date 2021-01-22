@@ -36,7 +36,7 @@ public class LoadCategoryByTypeDAO {
                 break;
         }
     String sql = "SELECT DISTINCT dm.ma_dm,dm.ten_dm,dm.ngay_tao,dm.ton_tai FROM  danh_muc dm, san_pham sp " +
-            "WHERE sp.ma_dm = dm.ma_dm and sp.gioi_tinh = ? and sp.ton_tai = 1 and sp.trang_thai = 1";
+            "WHERE sp.ma_dm = dm.ma_dm and sp.gioi_tinh = ? and sp.ton_tai = 1 and dm.ton_tai = 1";
 
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,sex);

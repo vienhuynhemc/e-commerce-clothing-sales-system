@@ -35,15 +35,15 @@ public class LoadProduct extends HttpServlet {
         String size = request.getParameter("size");
         String search = request.getParameter("search");
 
-        System.out.println(page);
-        System.out.println(num);
-        System.out.println(type);
-        System.out.println(orderby);
-        System.out.println(category);
-        System.out.println(color);
-        System.out.println(price);
-        System.out.println(size);
-        System.out.println("search " + search );
+//        System.out.println(page);
+//        System.out.println(num);
+//        System.out.println(type);
+//        System.out.println(orderby);
+//        System.out.println(category);
+//        System.out.println(color);
+//        System.out.println(price);
+//        System.out.println(size);
+//        System.out.println("search " + search );
 
 
         LoadProductModel loadProductModel = new LoadProductModel();
@@ -56,9 +56,11 @@ public class LoadProduct extends HttpServlet {
 
         request.setAttribute("listProduct",listProduct);
         request.setAttribute("numPage",numPage);
+        request.setAttribute("page",page);
 
-        System.out.println(listProduct);
-        System.out.println(numPage);
+//        System.out.println(listProduct);
+//        System.out.println(numPage);
+//        System.out.println(page);
 
         request.getRequestDispatcher("ajax/product_Ajax.jsp").forward(request,response);
 

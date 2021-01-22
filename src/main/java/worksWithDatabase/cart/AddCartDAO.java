@@ -20,18 +20,20 @@ public class AddCartDAO {
 
             // tính số lượng còn lại của sản phẩm đó trong data
             int so_luong_con_lai;
-            String sl = "SELECT tt.so_luong_con_lai FROM thong_tin_chi_tiet_sp tt " +
+            String slcl = "SELECT tt.so_luong_con_lai FROM thong_tin_chi_tiet_sp tt " +
                     "WHERE tt.ma_sp = ? and tt.ma_size = ? and tt.ma_mau = ? ";
 
-            PreparedStatement pst = con.prepareStatement(sl);
+            PreparedStatement pst = con.prepareStatement(slcl);
             pst.setString(1,ma_sp);
             pst.setString(2,ma_size);
             pst.setString(3,ma_mau);
             ResultSet rst = pst.executeQuery();
 
+
             if (rst.next()){
                 so_luong_con_lai = rst.getInt(1);
             }else {
+
                 DataSource.getInstance().releaseConnection(con);
                 return false;
             }
@@ -39,12 +41,31 @@ public class AddCartDAO {
             pst.close();
 
 
+            // tính số lượng còn lại của sản phẩm đó trong data
+            int so_luong_hien_tai = 0;
+            String slht = "SELECT gio.so_luong FROM gio_hang gio " +
+                    "WHERE gio.ma_sp = ? and gio.ma_size = ? and gio.ma_mau = ? and gio.ma_kh = ?";
+
+            PreparedStatement psc = con.prepareStatement(slht);
+            psc.setString(1,ma_sp);
+            psc.setString(2,ma_size);
+            psc.setString(3,ma_mau);
+            psc.setString(4,ma_kh);
+
+            ResultSet rsc = psc.executeQuery();
+
+            if (rsc.next()){
+                so_luong_hien_tai = rsc.getInt(1);
+            }
+            rsc.close();
+            psc.close();
+
 
             // check thử sản phẩm đó có trong giỏ chưa  ?
             String check = "SELECT gio.ma_sp,gio.ma_kh,gio.ma_mau,gio.so_luong,gio.ma_size " +
                     "FROM gio_hang gio, san_pham sp,thong_tin_chi_tiet_sp tt" +
                     " WHERE gio.ma_sp = sp.ma_sp and tt.ma_sp = gio.ma_sp and tt.ma_size = gio.ma_size and tt.ma_mau = gio.ma_mau and tt.ton_tai = 1" +
-                    " and sp.ma_sp = ? and gio.ma_kh = ? and gio.ma_mau = ? and gio.ma_size = ? and sp.ton_tai =1 and sp.trang_thai = 1 ";
+                    " and sp.ma_sp = ? and gio.ma_kh = ? and gio.ma_mau = ? and gio.ma_size = ? and sp.ton_tai =1 and sp.trang_thai != 2 ";
 
 
             PreparedStatement ps = con.prepareStatement(check);
@@ -57,9 +78,10 @@ public class AddCartDAO {
             ResultSet rs = ps.executeQuery();
             String exe;
             int tong;
+
             if (rs.next()){
                 // nếu có trong giỏ, thì check số lượng còn lại
-                if (so_luong_con_lai < so_luong){
+                if (so_luong_con_lai < so_luong_hien_tai + so_luong){
                     DataSource.getInstance().releaseConnection(con);
                     return false;
                 }else{
@@ -70,7 +92,7 @@ public class AddCartDAO {
             }else{
                 // tới đây sảy ra 2 trường hợp, một là sản phẩm chưa có trong giỏ hàng, hoặc là sản phẩm đó không hoạt động
                 String checkExit = "SELECT * FROM san_pham sp, thong_tin_chi_tiet_sp tt WHERE sp.ma_sp = tt.ma_sp " +
-                        " and tt.ma_sp = ? and tt.ma_size = ? and tt.ma_mau = ? and tt.ton_tai = 1 and sp.ton_tai = 1 and sp.trang_thai = 1";
+                        " and tt.ma_sp = ? and tt.ma_size = ? and tt.ma_mau = ? and tt.ton_tai = 1 and sp.ton_tai = 1 and sp.trang_thai != 2";
 
                 PreparedStatement ps1 = con.prepareStatement(checkExit);
                 ps1.setString(1,ma_sp);
@@ -81,12 +103,13 @@ public class AddCartDAO {
 
                 if (rs1.next()){
                     // check số lượng còn lại
-                    if (so_luong_con_lai < so_luong){
+                    if (so_luong_con_lai < so_luong_hien_tai + so_luong){
                         DataSource.getInstance().releaseConnection(con);
                         return false;
                     }else{
                         tong =so_luong;
                     }
+
                     exe = "INSERT INTO gio_hang(so_luong,ma_sp,ma_kh,ma_mau,ma_size) VALUES (?,?,?,?,?);";
                 }else{
                     DataSource.getInstance().releaseConnection(con);
@@ -131,6 +154,6 @@ public class AddCartDAO {
 
     public static void main(String[] args) {
         AddCartDAO cartDAO = new AddCartDAO();
-        System.out.println(cartDAO.addCart("sp_2","kh001","mau_2","size_2",5));
+        System.out.println(cartDAO.addCart("sp_1","KH001","mau_1","size_1",1));
     }
 }

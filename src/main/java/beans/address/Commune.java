@@ -33,4 +33,6 @@ public class Commune {
     public void setCommuneId(String communeId) {
         this.communeId = communeId;
     }
+
+
 }

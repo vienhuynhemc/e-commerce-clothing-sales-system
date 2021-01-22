@@ -195,6 +195,8 @@ public class Product {
                 ", so_luong_ban_ra=" + so_luong_ban_ra +
                 ", ton_tai=" + ton_tai +
                 ", danh muc =" + categoryName +
+                ", gia =" + price.getGia_sp() +
+                ", gia km =" + priceSale.getGia_sp_km() +
                 '}' + "\n";
     }
 }

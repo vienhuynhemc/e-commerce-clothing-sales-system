@@ -248,7 +248,7 @@
                         </section>
                         <!-- cart box -->
                         <div class="aa-cartbox" id="cart_hover">
-                            <a class="aa-cart-link" href="home/cart.html">
+                            <a class="aa-cart-link" href="ChessSessionCartController">
                                 <span class="fa fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title"><%=lang.get("27")%></span>
                                 <span class="aa-cart-notify" id="soluonggiohang">0</span>
@@ -258,10 +258,21 @@
                                 <!--danh sách sẽ add vào chỗ này-->
 
 
+
+
+
+
+
+                                    <!--danh sách sẽ add vào chỗ này-->
                                 </ul>
-                                <span id="sumprice" class="aa-cartbox-total-price"> 0  VND</span>
+
+                                <p>
+
+                                    <span id="sumprice" class="aa-cartbox-total-price"> 0</span>
+                                </p>
+
                                 <a class="aa-cartbox-checkout aa-primary-btn tinhtien"
-                                   href="home/checkout.html"><%=lang.get("28")%>
+                                   href="ChessSessionCheckoutController"><%=lang.get("28")%>
                                 </a>
                             </div>
                         </div>
@@ -292,7 +303,6 @@
             dataType:'html',
             success: function (data) {
                 $('#cart_hover_data').html(data);
-                console.log("b2");
                 var sl = $('#soluongsp').val();
                 $('#soluonggiohang').text(sl);
 
@@ -305,27 +315,73 @@
 
     });
     $('#cart_hover').hover(function (){
-        console.log("b1");
+        loadCartHover();
+
+        // $.ajax({
+        //     url:'HoverCartController',
+        //     type:'get',
+        //     dataType:'html',
+        //     success: function (data) {
+        //         $('#cart_hover_data').html(data);
+        //         var sl = $('#soluongsp').val();
+        //         $('#soluonggiohang').text(sl);
+        //         var tt = $('#tongtien').val();
+        //         $('#sumprice').text( "Tổng tiền : " + tt + " VND");
+        //     } ,
+        //     error: function () {
+        //
+        //     }
+        // });
+
+    },function (){});
+
+    function loadCartHover(){
         $.ajax({
             url:'HoverCartController',
             type:'get',
             dataType:'html',
             success: function (data) {
                 $('#cart_hover_data').html(data);
-                console.log("b2");
                 var sl = $('#soluongsp').val();
                 $('#soluonggiohang').text(sl);
-
                 var tt = $('#tongtien').val();
-                $('#sumprice').text(tt);
-
-
+                $('#sumprice').text( "Tổng tiền : " + tt + " VND");
             } ,
             error: function () {
 
             }
         });
+    }
 
-    },function (){});
+    function removeCartHover(event){
+
+        var list = event.children;
+        console.log(list);
+
+        var ma_sp = $(list[1]).attr("value");
+        var ma_mau =  $(list[2]).attr("value");
+        var ma_size = $(list[3]).attr("value");
+
+        $.ajax({
+            url:'RemoveCartController',
+            type:'get',
+            dataType:'json',
+            data:{
+                ma_sp:ma_sp,
+                ma_mau:ma_mau,
+                ma_size: ma_size,
+            },
+            success:function (data){
+
+                if(data == true){
+                   loadCartHover();
+                }
+            },
+            error:function () {
+                alert("that bai");
+            }
+        });
+
+    }
 
 </script>

@@ -14,11 +14,11 @@ public class RemoveCartModel {
         return cartModel;
     }
 
-    public boolean executeCart(String ma_sp,String ma_kh,String ma_mau){
+    public boolean executeCart(String ma_sp,String ma_kh,String ma_mau,String ma_size){
 
         RemoveCartDAO cartDAO = RemoveCartSource.getInstance().getAddCart();
 
-        boolean result = cartDAO.remove(ma_sp,ma_kh,ma_mau);
+        boolean result = cartDAO.remove(ma_sp,ma_kh,ma_mau,ma_size);
 
         RemoveCartSource.getInstance().releaseRemoveCart(cartDAO);
 

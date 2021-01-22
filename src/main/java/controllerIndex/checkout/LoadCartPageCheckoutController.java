@@ -1,4 +1,4 @@
-package controllerIndex.cart;
+package controllerIndex.checkout;
 
 import beans.account.AccountCustomer;
 import beans.cart.Cart;
@@ -13,13 +13,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "HoverCartController",urlPatterns = "/HoverCartController")
-public class HoverCartController extends HttpServlet {
+@WebServlet(name = "LoadCartPageCheckoutController",urlPatterns = "/LoadCartPageCheckoutController")
+public class LoadCartPageCheckoutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -31,10 +32,14 @@ public class HoverCartController extends HttpServlet {
         // System.out.println(acc);
 
         ArrayList<Cart> listCart = CartModel.getInstance().loadCartByID(acc.getIdUser());
+
 //        System.out.println(acc.getIdUser());
 //        System.out.println(listCart);
-        request.setAttribute("listCart",listCart);
 
-        request.getRequestDispatcher("ajax/cart_Hover.jsp").forward(request,response);
+        request.setAttribute("listProduct",listCart);
+
+        request.getRequestDispatcher("ajax/cart_pageCheckout.jsp").forward(request,response);
+
+
     }
 }

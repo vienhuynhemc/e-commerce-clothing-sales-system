@@ -19,10 +19,7 @@
 
 %>
 
-<% ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("listProduct");
-
-
-%>
+<% ArrayList<Cart> carts = (ArrayList<Cart>) request.getAttribute("listProduct");%>
 
 <div class="cartleft" id="">
 
@@ -32,6 +29,9 @@
         <h3> T<span style="color:#ff7315">V</span>T</h3>
         <h5>|</h5>
         <p><%=lang.get("1")%></p>
+        <button class="reload" type="button" onclick="loadCart()">
+            <i class="fas fa-sync-alt"></i>
+        </button>
     </div>
 
     <div class="scrollmain">
@@ -107,9 +107,13 @@
 
                      VND</p>
                 </div>
-                <div class="cartleftmainitemright">
+                <div class="cartleftmainitemright" onclick="removeCart(this)">
+
                     <div></div>
                     <div></div>
+                    <input type="hidden" value="<%=c.getMa_sp()%>" disabled>
+                    <input type="hidden" value="<%=c.getMa_mau()%>" disabled>
+                    <input type="hidden" value="<%=c.getMa_size()%>" disabled>
                 </div>
             </div>
             <% } %>
@@ -178,7 +182,7 @@
         <p><%=lang.get("11")%></p>
         <textarea name="" id="a" cols="30" rows="10"></textarea>
     </div>
-    <a href="checkout.html" class="submit">
+    <a href="ChessSessionCheckoutController" class="submit">
         <%=lang.get("12")%>
     </a>
 
@@ -200,7 +204,7 @@
     function increase(event) {
 
         var list = event.children;
-        console.log(list);
+
 
         var ma_sp = $(list[0]).attr("value");
         var ma_mau =  $(list[1]).attr("value");
@@ -208,9 +212,6 @@
 
         var active = $(event).attr("id");
 
-        console.log(ma_sp);
-        console.log(ma_mau);
-        console.log(ma_size);
 
         $.ajax({
             url:'ChangeProductInCartController',
@@ -272,6 +273,37 @@
                 document.getElementById("total_all_1").innerText = convert + " VND";
                 document.getElementById("total_all_2").innerText = convert+ " VND";
                 $('#getgia').prop("value",giamoi);
+            },
+            error:function () {
+                alert("that bai");
+            }
+        });
+
+    }
+
+    function removeCart(event){
+
+        var list = event.children;
+        console.log(list);
+
+        var ma_sp = $(list[2]).attr("value");
+        var ma_mau =  $(list[3]).attr("value");
+        var ma_size = $(list[4]).attr("value");
+
+        $.ajax({
+            url:'RemoveCartController',
+            type:'get',
+            dataType:'json',
+            data:{
+                ma_sp:ma_sp,
+                ma_mau:ma_mau,
+                ma_size: ma_size,
+            },
+            success:function (data){
+
+                if(data == true){
+                    loadCart();
+                }
             },
             error:function () {
                 alert("that bai");

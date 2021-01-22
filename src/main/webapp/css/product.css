@@ -2337,6 +2337,9 @@ li
 .pagination {
     border: 1px solid #ccc;
     border-radius: 0;
+    display: flex;
+
+    margin-left: 309px;
 }
 
 #aa-product-category
@@ -6157,7 +6160,7 @@ ul.aa-catg-nav li {
     border: none !important;
 }
 
-.pagination li a {
+.pagination li button {
     width: 43px;
     height: 43px;
     box-shadow: 1px 6px 11px 0px #9e9c9c;
@@ -6169,6 +6172,9 @@ ul.aa-catg-nav li {
     justify-content: center;
     font-size: 14px;
     font-family: sans-serif;
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 .none {

@@ -1,9 +1,9 @@
-package controllerIndex.cart;
+package controllerIndex.checkout;
 
 import beans.account.AccountCustomer;
 import beans.cart.Cart;
 import com.google.gson.Gson;
-import model.cart.ChangeCartModel;
+import model.checkout.PayModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,44 +12,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet(name = "ChangeProductInCartController",urlPatterns = "/ChangeProductInCartController")
-public class ChangeProductInCartController extends HttpServlet {
+@WebServlet(name = "PayController",urlPatterns = "/PayController")
+public class PayController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html; charset=UTF-8");
+
+        request.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession();
 
         AccountCustomer user = (AccountCustomer) session.getAttribute("user");
 
+        ArrayList<Cart> carts = (ArrayList<Cart>) session.getAttribute("carts");
+
         String ma_kh = user.getIdUser();
 
-        String ma_sp = request.getParameter("ma_sp");
-        String ma_mau = request.getParameter("ma_mau");
-        String ma_size = request.getParameter("ma_size");
-        String active = request.getParameter("active");
+        String ghi_chu = request.getParameter("ghi_chu");
 
-//        System.out.println(ma_kh);
-//        System.out.println(ma_sp);
-//        System.out.println(ma_mau);
-//        System.out.println(ma_size);
+        String ma_gg = request.getParameter("ma_gg");
 
-        ChangeCartModel addCartModel = new ChangeCartModel();
+        int trang_thai = Integer.parseInt(request.getParameter("trang_thai"));
 
-        Cart cart = addCartModel.executeCart(ma_sp,ma_kh,ma_mau,ma_size,active);
+        String ma_tinh = request.getParameter("ma_tinh");
+        String ma_huyen = request.getParameter("ma_huyen");
+        String ma_xa = request.getParameter("ma_xa");
 
-//        System.out.println(cart);
+        PayModel payModel = new PayModel();
 
-        String json = new Gson().toJson(cart);
+        boolean check = payModel.pay(ma_kh,ghi_chu,ma_gg,trang_thai,carts,ma_tinh,ma_huyen,ma_xa);
 
-//        System.out.println(json);
+        String json = new Gson().toJson(check);
+
+        System.out.println(json);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
+
 
     }
 }

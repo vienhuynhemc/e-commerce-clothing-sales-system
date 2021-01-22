@@ -253,8 +253,8 @@
                                         </div>
                                         <h4><a href="detailsProduct.html"><%=p.getTen_sp()%>%</a></h4>
                                         <div class="gdprice">
-                                            <p><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</p>
-                                            <del><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</del>
+                                            <p><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</p>
+                                            <del><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</del>
                                         </div>
                                     </div>
                                 </li>
@@ -304,6 +304,7 @@
 <input type="hidden" name="" id="ma_sp" value="">
 <input type="hidden" name="" id="soluongsp" value="1">
 <input type="hidden" name="" id="sexType" value="<%=request.getAttribute("type")%>">
+<input type="hidden" name="" id="page" value="1">
 
 
 <!-----các thẻ input hiden làm nhiệm vụ lấy dữ liệu------>
@@ -485,6 +486,8 @@
 
         var type = $('#sexType').val();
 
+        var page = $('#page').val();
+
 
         $.ajax({
 
@@ -492,7 +495,7 @@
             type: 'get',
             dataType: 'html',
             data: {
-                page:1,
+                page:page,
                 num:num,
                 type:type,
                 order:order,
@@ -670,6 +673,11 @@
             $(".sladdtocard").prop("value",nn-1);
             $("#soluongsp").prop("value",nn-1);
         }
+    }
+    function changePage(event){
+        var page = $(event).attr("id");
+        document.getElementById("page").value = page;
+        changeListProduct();
     }
 
 </script>

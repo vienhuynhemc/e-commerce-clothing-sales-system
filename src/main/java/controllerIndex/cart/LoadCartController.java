@@ -33,12 +33,12 @@ public class LoadCartController extends HttpServlet {
 
         ArrayList<Cart> listCart = CartModel.getInstance().loadCartByID(acc.getIdUser());
 
-        System.out.println(acc.getIdUser());
-        System.out.println(listCart);
+//        System.out.println(acc.getIdUser());
+//        System.out.println(listCart);
 
         request.setAttribute("listProduct",listCart);
 
-        request.getRequestDispatcher("home/cart_Ajax.jsp").forward(request,response);
+        request.getRequestDispatcher("ajax/cart_Ajax.jsp").forward(request,response);
 
     }
 }
