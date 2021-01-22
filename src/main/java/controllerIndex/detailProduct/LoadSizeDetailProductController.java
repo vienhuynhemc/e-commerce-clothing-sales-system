@@ -24,12 +24,15 @@ public class LoadSizeDetailProductController extends HttpServlet {
 
         String color = request.getParameter("ma_mau");
 
+        int page = Integer.parseInt(request.getParameter("page"));
+        String type = request.getParameter("type");
+
         LoadDetailProductModel p = new LoadDetailProductModel();
         ArrayList<ProductDetailInformation> pe =  p.getSizeById(id,color);
         System.out.println("size size size: "+pe);
         request.setAttribute("listSize",pe);
 
-        request.getRequestDispatcher("LoadDetailProductController?idProduct="+id).forward(request,response);
+        request.getRequestDispatcher("LoadDetailProductController?idProduct="+id+"&type="+type+"&page="+page).forward(request,response);
 
 
 

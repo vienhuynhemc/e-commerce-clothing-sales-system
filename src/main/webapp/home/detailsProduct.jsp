@@ -1,6 +1,8 @@
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="beans.product.*" %><%--
+<%@ page import="beans.product.*" %>
+<%@ page import="beans.account.AccountCustomer" %>
+<%@ page import="beans.rate.Rate" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -52,9 +54,15 @@
     <link rel="stylesheet" href="css/banner.css">
     <link rel="stylesheet" href="css/chitietsanpham.css">
     <%
+        AccountCustomer accountCustomer = (AccountCustomer)session.getAttribute("user");
+
         Product p = (Product) request.getAttribute("product");
+
         ArrayList<ProductDetailInformation> pd = (ArrayList<ProductDetailInformation>) request.getAttribute("listSize");
         System.out.println(pd);
+
+
+
     %>
 </head>
 
@@ -236,11 +244,16 @@
                 <p class="hangsanxuat"><%=p.getHang_san_xuat().getTen_hsx()%></p>
                 <p class="tensanpham"><%=p.getTen_sp()%></p>
                 <div class="giasanphamgiamgia">
-
+                    <%if(p.getPriceSale().getGia_sp_km() != 0){%>
                     <span><del><%=p.getPrice().getGia_sp()%> VND</del></span>
                     <span>(GIẢM GIÁ <%= Math.round(((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp())*100) %>%)</span>
+                <%}%>
                 </div>
+                <%if(p.getPriceSale().getGia_sp_km() != 0){%>
                 <p class="giasanphamgiachinh"><%=p.getPriceSale().getGia_sp_km()%> VND</p>
+                <%} else{%>
+                <p class="giasanphamgiachinh"><%=p.getPrice().getGia_sp()%> VND</p>
+                <%}%>
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">
                     <p>CHỌN MÀU</p>
@@ -261,7 +274,7 @@
 <%--                    </label>--%>
                     <%for(ProductColor pc : p.getListColor()){%>
                     <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=pc.getMa_mau()%>"><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></a></div>
+                        <div><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=pc.getMa_mau()%>&type=<%=request.getParameter("type")%>&page=<%=request.getParameter("page")%>"><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></a></div>
                     </label>
                     <%}%>
 <%--                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>--%>
@@ -335,6 +348,8 @@
 
     <div class="linesesstion"></div>
     <div class="danhgiasanpham">
+        <%if(accountCustomer != null){%>
+        <%System.out.println(accountCustomer.getFullName());%>
         <div class="danhgia" id="danhgia">
             <p class="dgsptitle">Đánh giá sản phẩm này</p>
             <p>Cho người khác biết suy nghĩ của bạn</p>
@@ -346,6 +361,9 @@
                 <i class="fa fa-star-o"></i>
             </div>
             <p onclick="vietdanhgia()">Viết đánh giá</p>
+
+
+
         </div>
         <div id="danhgia2">
             <p class="dgsptitle">Bài đánh giá của bạn</p>
@@ -356,7 +374,7 @@
                             <img src="../img/product/avatar7.jpg" alt="">
                         </div>
                         <div class="danhgia2infor2">
-                            <p>Nguyễn Thị Hoa Hồng</p>
+                            <p><%=accountCustomer.getFullName()%></p>
                             <div>
                                 <div>
                                     <i class="fa fa-star"></i>
@@ -390,7 +408,7 @@
                 Shop giao nhanh, về giá cả săn sale nên cũng ok vớ tầm giá</p>
             <p onclick="vietdanhgia()">Chỉnh sửa bài đánh giá của bạn</p>
         </div>
-
+        <%}%>
         <div class="linexephang"></div>
 
         <div class="xephangdanhgia">
@@ -468,7 +486,14 @@
             <button>2 <i class="fa fa-star"></i></button>
             <button> 1<i class="fa fa-star"></i></button>
         </div>
+        <input type="hidden" name="page" value="1">
+        <input type="hidden" name="type" value="">
 
+
+<%--        load danh sách đánh giá--%>
+        <% ArrayList<Rate> list = (ArrayList<Rate>) request.getAttribute("listRate");%>
+
+        <% for(Rate r : list){%>
         <div class="binhluanitem">
             <div class="headerbinhluanitem">
                 <div>
@@ -496,236 +521,21 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
+<%--                    <% for(int i = 1 ; i <= r.getNumberStar();i++){%>--%>
                     <div>
                         <i class="fa fa-star"></i>
                     </div>
+<%--                    <%}%>--%>
+
                 </div>
-                <p>08/10/2020</p>
+                <p><%=r.getDateCreated()%></p>
             </div>
-            <p>Quần ko giống mô tả, shop ghi 87-90cm, mình còn mua size L nhưng quần shop giao dài có 82cm, mình cao
-                1m58 mà mặc nó thành quần ngố lun á, cũng khá chật chứ ko rộng các vòng như shop báo. Shop kêu gửi
-                lại shop đổi cho cái khác nhưng thủ tục của ghtk quá rườm rà nên thôi chấp nhận bỏ cái quần này vậy
-            </p>
+            <p><%=r.getContent()%></p>
         </div>
 
         <div class="linexephang"></div>
+        <%}%>
 
-        <div class="binhluanitem">
-            <div class="headerbinhluanitem">
-                <div>
-                    <div>
-                        <img src="../img/product/avatar2.jpg" alt="">
-                    </div>
-                    <p>Cao Anh</p>
-                </div>
-                <div onclick="report(this)">
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <div class="report">
-                        <p>Báo cáo</p>
-                    </div>
-                    <input type="checkbox" style="display: none;">
-                </div>
-            </div>
-            <div class="inforbinhluanitem">
-                <div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>08/10/2020</p>
-            </div>
-            <p>Hàng về thì thấy là quần màu xanh đậm chứ kp xanh nhạt nữa :)) Quần mỏng, mềm nhưng bên trong hơi xù
-                và ngứa, chắc giặt thì hết
-                Mình m58 eo 64 46kg mặc quần vừa khít, ôm bụng nhưng mỗi tội là bị cộc =)) 4 sao
-            </p>
-        </div>
-
-        <div class="linexephang"></div>
-
-        <div class="binhluanitem">
-            <div class="headerbinhluanitem">
-                <div>
-                    <div>
-                        <img src="../img/product/avatar3.jpg" alt="">
-                    </div>
-                    <p>Nguyễn Minh Châu</p>
-                </div>
-                <div onclick="report(this)">
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <div class="report">
-                        <p>Báo cáo</p>
-                    </div>
-                    <input type="checkbox" style="display: none;">
-                </div>
-            </div>
-            <div class="inforbinhluanitem">
-                <div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>07/10/2020</p>
-            </div>
-            <p>Chán<br>
-                Bảo shop kiểm tra kĩ cho mình rồi<br>
-                Vừa mặc lên sờ vào cúc thì bị rụng. Kb dùng khuy thay vào được k nhỉ
-            </p>
-        </div>
-
-        <div class="linexephang"></div>
-
-        <div class="binhluanitem">
-            <div class="headerbinhluanitem">
-                <div>
-                    <div>
-                        <img src="../img/product/avatar4.jpg" alt="">
-                    </div>
-                    <p>Lưu Thị Ánh</p>
-                </div>
-                <div onclick="report(this)">
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <div class="report">
-                        <p>Báo cáo</p>
-                    </div>
-                    <input type="checkbox" style="display: none;">
-                </div>
-            </div>
-            <div class="inforbinhluanitem">
-                <div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>07/10/2020</p>
-            </div>
-            <p>Quần màu đen rộng hơn quần xanh cùng size. quần đen này size S nhưng rộng lắm. giặt 2 lần đã xù lông
-                rồi. giao hàng nhanhhhhhhhhhhhhhhhhhh
-            </p>
-        </div>
-
-        <div class="linexephang"></div>
-
-        <div class="binhluanitem">
-            <div class="headerbinhluanitem">
-                <div>
-                    <div>
-                        <img src="../img/product/avatar5.jpg" alt="">
-                    </div>
-                    <p>Khương Hồng Nhan</p>
-                </div>
-                <div onclick="report(this)">
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <div class="report">
-                        <p>Báo cáo</p>
-                    </div>
-                    <input type="checkbox" style="display: none;">
-                </div>
-            </div>
-            <div class="inforbinhluanitem">
-                <div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>07/10/2020</p>
-            </div>
-            <p>Quần đẹp lắm nhưng chắc do mình cao hay sao ấy đặt size M nhưng lại bị ngắn nhưng k sao quần đẹp nên
-                bỏ qua<br>
-                Mình cũng rất thích cách shop chốt đơn nha❤️❤️
-                <br>
-                Sẽ ủng hộ shop dài dài😍
-            </p>
-        </div>
-
-        <div class="linexephang"></div>
-
-        <div class="binhluanitem">
-            <div class="headerbinhluanitem">
-                <div>
-                    <div>
-                        <img src="../img/product/avatar6.jpg" alt="">
-                    </div>
-                    <p>Tran Trần Xinh Gái</p>
-                </div>
-                <div onclick="report(this)">
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <i class="fa fa-circle"></i>
-                    <div class="report">
-                        <p>Báo cáo</p>
-                    </div>
-                    <input type="checkbox" style="display: none;">
-                </div>
-            </div>
-            <div class="inforbinhluanitem">
-                <div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <div>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-                <p>01/10/2020</p>
-            </div>
-            <p>Ảnh 1 kiểu hàng về 1 kiểu. Đc cái shipper thân thiện. Chất vải cx đc nhưng mà quá ngắn, k mặc đc.
-                Shop phục vụ kém :(((
-            </p>
-        </div>
 
     </div>
 
@@ -1192,6 +1002,7 @@
 </section>
 
 <!--Viết đánh giá-->
+<% if(accountCustomer != null){%>
 <div class="vietdanhgia" id="vietdanhgia">
     <div class="hiddenvdg" onclick="closedanhgia()"></div>
     <div class="formvietdanhgia">
@@ -1199,35 +1010,42 @@
             <i class="fa fa-pencil-square-o"></i>
             <div>
                 <h3>Đánh giá sản phẩm</h3>
-                <p>Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011</p>
+                <input type="hidden" name="idProduct" value="<%= p.getMa_sp()%>">
+                <p><%=p.getTen_sp()%>></p>
             </div>
         </div>
         <div style="background: white;">
             <div class="contentformvietdanhgia">
                 <div>
-                    <img src="../img/product/avatar7.jpg" alt="">
+                    <img src="<%=accountCustomer.getAvatar()%>" alt="">
                 </div>
                 <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
+                    <h3><%=accountCustomer.getFullName()%></h3>
                     <p>
                         Đánh giá của bạn sẽ được công khai cho mọi người cùng thấy</p>
                 </div>
             </div>
             <div class="vdgstar">
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
+                <%for(int i = 1 ;i <=5;i++){%>
+                <label for="vote">
+                    <input id="vote" name="vote" value ="<%=i%>" type="hidden"><i class="fa fa-star-o"></i>
+                </label>
+                <%}%>
+<%--                <input type="hidden" name =><i class="fa fa-star-o" name="vote" value="2"></i>--%>
+<%--                <i class="fa fa-star-o" name="vote" value="3"></i>--%>
+<%--                <i class="fa fa-star-o" name="vote" value="4"></i>--%>
+<%--                <i class="fa fa-star-o" name="vote" value="5"></i>--%>
             </div>
             <textarea placeholder="Mô tả đánh giá của bạn về sản phẩm (không bắt buộc)"></textarea>
             <div class="vdgsubmit">
                 <button onclick="closedanhgia()">Hủy</button>
-                <button onclick="dangdanhgia()">Đăng</button>
+<%--                <button onclick="dangdanhgia()">Đăng</button>--%>
+                <button>Đăng</button>
             </div>
         </div>
     </div>
 </div>
+<%}%>
 
 
 <!--End main-->

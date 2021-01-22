@@ -57,7 +57,7 @@ public class DetailProductDAO {
                 s.close();
 
 //                lấy danh sách ảnh
-                PreparedStatement img = connection.prepareStatement("SELECT s.ma_sp, h.ma_mau, h.hinh_anh, " +
+                PreparedStatement img = connection.prepareStatement("SELECT s.ma_sp, h.ma_mau, " +
                         "h.link_hinh_anh from san_pham s,hinh_anh_sp h WHERE s.ma_sp = ? AND s.ma_sp = h.ma_sp" +
                         " AND s.ton_tai = 1 ");
                 img.setString(1,id);
@@ -67,8 +67,7 @@ public class DetailProductDAO {
                     ProductImage pi = new ProductImage();
                     pi.setMa_sp(rImg.getString(1));
                     pi.setMa_mau(rImg.getString(2));
-                    pi.setHinh_anh(rImg.getString(3));
-                    pi.setLink_hinh(rImg.getString(4));
+                    pi.setLink_hinh(rImg.getString(3));
                     imgs.add(pi);
                 }
                 p.setListIMG(imgs);
@@ -146,8 +145,7 @@ public class DetailProductDAO {
                     ProductColor pc = new ProductColor();
                     pc.setMa_mau(rColor.getString(1));
                     pc.setTen_mau(rColor.getString(2));
-                    pc.setHinh_anh_mau(rColor.getString(3));
-                    pc.setLink_hinh(rColor.getString(4));
+                    pc.setLink_hinh(rColor.getString(3));
                     colors.add(pc);
                 }
                 p.setListColor(colors);
@@ -292,8 +290,10 @@ public class DetailProductDAO {
 
     public static void main(String[] args) {
         DetailProductDAO test = new DetailProductDAO();
-       System.out.println(test.getProductById("sp_1").getHang_san_xuat().getThong_tin());
-       // System.out.println(test.getInfoDetailProduct("sp_1","mau_1"));
+//       for(ProductColor s : test.getProductById("sp_1").getListColor()){
+//           System.out.println(s.getLink_hinh());
+//       }
+        System.out.println(test.getProductById("sp_1").getListColor());
     }
 
 }

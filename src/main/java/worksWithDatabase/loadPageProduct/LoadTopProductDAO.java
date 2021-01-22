@@ -72,7 +72,7 @@ public class LoadTopProductDAO {
                 ArrayList<ProductImage> listI = new ArrayList<ProductImage>();
                 while (rs2.next()){
                     listI.add(new ProductImage(rs2.getString(1),rs2.getString(2)
-                            ,rs2.getString(3),rs2.getString(4)));
+                            ,rs2.getString(3)));
                 }
                 listProduct.get(i).setListIMG(listI);
                 rs2.close();
@@ -127,6 +127,6 @@ public class LoadTopProductDAO {
         LoadTopProductDAO dao = new LoadTopProductDAO();
 
         System.out.println(dao.loadTopProduct("Nu"));
-        System.out.println(dao.loadTopProduct("Nu").get(0).getListIMG().get(0).getHinh_anh());
+       // System.out.println(dao.loadTopProduct("Nu").get(0).getListIMG().get(0));
     }
 }
