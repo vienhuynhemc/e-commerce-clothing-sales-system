@@ -1,10 +1,7 @@
 package worksWithDatabase.detailProductIndex;
 
 import beans.DateTime;
-import beans.product.Product;
-import beans.product.ProductImage;
-import beans.product.ProductPrice;
-import beans.product.Size;
+import beans.product.*;
 import connectionDatabase.DataSource;
 
 import java.sql.Connection;
@@ -108,25 +105,54 @@ public class DetailProductDAO {
 
                     String dateTim = rPrice.getString(3);
 
-                    String[] dayTim = dateTim.split(" ");
-                    String[] dat = dayTim[0].split("-");
-                    String[] tim = dayTim[1].split(":");
-                    int yea = Integer.parseInt(dat[0]);
-                    int mont = Integer.parseInt(dat[1]);
-                    int da = Integer.parseInt(dat[2]);
+                    DateTime dt = changrDateTime(dateTim);
 
-                    int hou = Integer.parseInt(tim[0]);
-                    int minut = Integer.parseInt(tim[1]);
-                    double seco = Double.parseDouble(tim[2]);
-                    int secons = (int)seco;
-
-                    DateTime sd = new DateTime(yea,mont,da,hou,minut,secons);
-
-                    pr.setNgay_cap_nhat(sd);
+                    pr.setNgay_cap_nhat(dt);
                 }
                 p.setPrice(pr);
                 rPrice.close();
                 price.close();
+
+//                lấy giá sản phẩm khuyến mãi
+                PreparedStatement priceS = connection.prepareStatement("SELECT s.ma_sp,g.gia_km,g.ngay_cap_nhat from " +
+                        "san_pham s, gia_sp_khuyen_mai g WHERE g.ma_sp = s.ma_sp AND s.ton_tai = 1\n" +
+                        " AND s.ma_sp = ?");
+                priceS.setString(1,id);
+                ResultSet rPriceS = priceS.executeQuery();
+                ProductPriceSale prs = new ProductPriceSale();
+                if(rPriceS.next()){
+                    prs.setMa_sp(rPriceS.getString(1));
+                    prs.setGia_sp_km(rPriceS.getDouble(2));
+
+                    String dateTim = rPriceS.getString(3);
+
+                    DateTime dt = changrDateTime(dateTim);
+
+                    prs.setNgay_cap_nhat(dt);
+                }
+                p.setPriceSale(prs);
+                rPriceS.close();
+                priceS.close();
+
+
+                // lấy danh sách màu sản phẩm
+                PreparedStatement color = connection.prepareStatement("SELECT * from mau m, thong_tin_chi_tiet_sp t," +
+                        " san_pham s where m.ma_mau = t.ma_mau AND t.ma_sp = s.ma_sp AND s.ton_tai = 1 AND s.ma_sp = ?" +
+                        " GROUP BY m.ma_mau, m.ten_mau");
+                color.setString(1,id);
+                ResultSet rColor = color.executeQuery();
+                ArrayList<ProductColor> colors = new ArrayList<>();
+                while(rColor.next()){
+                    ProductColor pc = new ProductColor();
+                    pc.setMa_mau(rColor.getString(1));
+                    pc.setTen_mau(rColor.getString(2));
+                    pc.setHinh_anh_mau(rColor.getString(3));
+                    pc.setLink_hinh(rColor.getString(4));
+                    colors.add(pc);
+                }
+                p.setListColor(colors);
+                rColor.close();
+                color.close();
 
 
                 DataSource.getInstance().releaseConnection(connection);
@@ -142,10 +168,26 @@ public class DetailProductDAO {
         return p;
 
     }
+    public DateTime changrDateTime(String dateTime){
+        String[] dayTime = dateTime.split(" ");
+        String[] date = dayTime[0].split("-");
+        String[] time = dayTime[1].split(":");
+        int year = Integer.parseInt(date[0]);
+        int month = Integer.parseInt(date[1]);
+        int day = Integer.parseInt(date[2]);
+
+        int hour = Integer.parseInt(time[0]);
+        int minute = Integer.parseInt(time[1]);
+        double secon = Double.parseDouble(time[2]);
+        int second = (int)secon;
+
+        DateTime sd = new DateTime(year,month,day,hour,minute,second);
+        return sd;
+    }
 
     public static void main(String[] args) {
         DetailProductDAO test = new DetailProductDAO();
-        System.out.println(test.getProductById("sp_1").getPrice());
+        System.out.println(test.getProductById("sp_1").getListColor());
     }
 
 }

@@ -26,7 +26,7 @@
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="detailsProduct.html">
+                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>">
 
 
                     <!-------Load hình đầu tiên ------->

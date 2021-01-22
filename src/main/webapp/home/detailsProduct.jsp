@@ -1,5 +1,7 @@
 <%@ page import="beans.product.Product" %>
-<%@ page import="beans.product.Size" %><%--
+<%@ page import="beans.product.Size" %>
+<%@ page import="beans.product.ProductColor" %>
+<%@ page import="beans.product.ProductImage" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -183,37 +185,39 @@
             <div class="dpleft">
                 <div class="dpmainimg">
                     <div>
-                        <img src="../img/product/dp1.webp" alt="" id="img1">
+                        <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img1">
                         <p>Mã sản phẩm: <%= p.getMa_sp()%></p>
                     </div>
-                    <img src="../img/product/dp1.webp" alt="" id="img2">
+                    <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img2">
                 </div>
                 <div>
                     <div class="dplistitem" id="dplistitem">
+                        <% for(ProductImage pi : p.getListIMG()){%>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp1.webp" alt="" id="doiHinhChinh1">
+                                <img src="<%=pi.getLink_hinh()%>" alt="" id="doiHinhChinh1">
                             </div>
-                            <img src="../img/product/dp1.webp" alt="">
+                            <img src="<%=pi.getLink_hinh()%>" alt="">
                         </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp2.webp" alt="" id="doiHinhChinh2">
-                            </div>
-                            <img src="../img/product/dp2.webp" alt="">
-                        </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp3.webp" alt="" id="doiHinhChinh3">
-                            </div>
-                            <img src="../img/product/dp3.webp" alt="">
-                        </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp4.webp" alt="" id="doiHinhChinh4">
-                            </div>
-                            <img src="../img/product/dp4.webp" alt="">
-                        </div>
+                        <%}%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp2.webp" alt="" id="doiHinhChinh2">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp2.webp" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp3.webp" alt="" id="doiHinhChinh3">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp3.webp" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp4.webp" alt="" id="doiHinhChinh4">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp4.webp" alt="">--%>
+<%--                        </div>--%>
                     </div>
                 </div>
                 <div class="nextdplistitem" style="display: none">
@@ -231,26 +235,33 @@
                 <p class="hangsanxuat">JUNO - Thương hiệu thời trang cao cấp</p>
                 <p class="tensanpham"><%=p.getTen_sp()%></p>
                 <div class="giasanphamgiamgia">
-<%--                    <span><del><%=p.getPrice().getGia_sp()%></del></span>--%>
-<%--                    <span>(GIẢM GIÁ <%= Math.round((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp()) %>%)</span>--%>
+                    <span><del><%=p.getPrice().getGia_sp()%> VND</del></span>
+                    <span>(GIẢM GIÁ <%= Math.round(((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp())*100) %>%)</span>
                 </div>
-                <p class="giasanphamgiachinh"><%=p.getPrice().getGia_sp()%></p>
+                <p class="giasanphamgiachinh"><%=p.getPriceSale().getGia_sp_km()%> VND</p>
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">
                     <p>CHỌN MÀU</p>
-
-                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>
+<%--                    <% for(ProductColor pc : p.getListColor()){%>--%>
+<%--                    <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>--%>
+<%--                    <%}%>--%>
+                    <span class="colordpdx" id="colordpdx">Đỏ</span>
 
                 </div>
                 <div class="selectcolor">
                     <input type="radio" name="color" id="color1" style="display: none;" checked>
                     <input type="radio" name="color" id="color2" style="display: none;">
+<%--                    <label for="color1" class="labelcolor1" onclick="damXanh()">--%>
+<%--                        <div><img src="../img/product/damxanh.webp" alt=""></div>--%>
+<%--                    </label>--%>
+<%--                    <label for="color2" class="labelcolor2" onclick="xanhNhat()">--%>
+<%--                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>--%>
+<%--                    </label>--%>
+                    <%for(ProductColor pc : p.getListColor()){%>
                     <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><img src="../img/product/damxanh.webp" alt=""></div>
+                        <div><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></div>
                     </label>
-                    <label for="color2" class="labelcolor2" onclick="xanhNhat()">
-                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>
-                    </label>
+                    <%}%>
                 </div>
                 <div class="guidesize">
                     <p>CHỌN SIZE</p>

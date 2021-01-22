@@ -23,6 +23,7 @@ public class Product {
     private int extant;
     private String categoryName;
     private int so_luong_con_lai;
+    private ArrayList<ProductColor> listColor;
 
     public Product(String ma_sp, String ten_sp, String ma_hsx, String ma_dm, DateTime ngay_tao, int gioi_tinh, int trang_thai, int so_luong_ban_ra, int ton_tai) {
         this.ma_sp = ma_sp;
@@ -182,6 +183,14 @@ public class Product {
         this.so_luong_con_lai = so_luong_con_lai;
     }
 
+    public ArrayList<ProductColor> getListColor() {
+        return listColor;
+    }
+
+    public void setListColor(ArrayList<ProductColor> listColor) {
+        this.listColor = listColor;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -197,5 +206,6 @@ public class Product {
                 ", danh muc =" + categoryName +
                 '}' + "\n";
     }
+
 
 }
