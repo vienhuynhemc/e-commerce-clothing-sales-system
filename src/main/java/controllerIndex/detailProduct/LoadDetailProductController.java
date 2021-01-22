@@ -3,6 +3,7 @@ package controllerIndex.detailProduct;
 import beans.account.AccountCustomer;
 import beans.product.Product;
 import beans.rate.Rate;
+import beans.rate.Star;
 import model.loadDetailProduct.LoadDetailProductModel;
 import model.rateProduct.RateProductModel;
 
@@ -41,6 +42,9 @@ public class LoadDetailProductController extends HttpServlet {
 
             int numPage = rateProductModel.getNumPage();
             request.setAttribute("numPage",numPage);
+
+            Star star = rateProductModel.getAvgStar(id);
+            request.setAttribute("star",star);
 
 
             request.getRequestDispatcher("home/detailsProduct.jsp").forward(request,response);

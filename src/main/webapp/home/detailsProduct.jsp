@@ -2,7 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="beans.product.*" %>
 <%@ page import="beans.account.AccountCustomer" %>
-<%@ page import="beans.rate.Rate" %><%--
+<%@ page import="beans.rate.Rate" %>
+<%@ page import="beans.rate.Star" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -320,8 +321,8 @@
 
     <div class="dtp">
         <p class="dtptitle">Thông tin sản phẩm</p>
-        <%for(ProductInfomation s : p.getListInfo()){%>
-        <p class="dtpinfor1"><%=s.getThong_tin()%></p>
+        <%for(String s : p.getGioi_thieu_sp().getGioi_thieu()){%>
+        <p class="dtpinfor1"><%=s%></p>
         <%}%>
         <p class="dtptitle">Vật liệu & sản xuất</p>
         <ul>
@@ -332,8 +333,8 @@
         </ul>
         <p class="dtptitle">Phù hợp cho</p>
         <ul>
-            <%for(String pi : p.getGioi_thieu_sp().getGioi_thieu()){%>
-            <li><%=pi%></li>
+            <%for(ProductInfomation pi : p.getListInfo()){%>
+            <li><%=pi.getThong_tin()%></li>
             <%}%>
 
         </ul>
@@ -410,12 +411,13 @@
         </div>
         <%}%>
         <div class="linexephang"></div>
-
+<%--        tính sao trung bình--%>
+       <%Star star = (Star) request.getAttribute("star");%>
         <div class="xephangdanhgia">
             <p class="dgsptitle">Xếp hạng đánh giá</p>
             <div class="xephang">
                 <div class="xephangleft">
-                    <p>4,3</p>
+                    <p><%=star.getAvgStar()%></p>
                     <div>
                         <div>
                             <i class="fa fa-star"></i>
@@ -425,14 +427,20 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div>
+                            <% if(star.getAvgStar() % 2 == 0 || star.getAvgStar() % 2 <= 0.4){
+                                for(int i = 0;i < (int)star.getAvgStar();i++){
+                            }%>
                             <i class="fa fa-star"></i>
+                            <%} else {
+                                for(int i = 0;i < (int)star.getAvgStar();i++){
+                            %>
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                            <%}%>
                             <i class="fa fa-star-half"></i>
+                            <%}%>
                         </div>
                     </div>
-                    <p>62 đánh giá</p>
+                    <p><%=star.getSumRate()%> đánh giá</p>
                 </div>
                 <div class="xephangright">
                     <div class="xephangrightitem">
@@ -477,22 +485,74 @@
         <div class="linexephang"></div>
 
         <div class="bolocbinhluan">
-            <button class="activeboloc">Tất cả</button>
-            <button>Tích cực</button>
-            <button>Tiêu cực</button>
-            <button>5 <i class="fa fa-star"></i></button>
-            <button>4 <i class="fa fa-star"></i></button>
-            <button>3 <i class="fa fa-star"></i></button>
-            <button>2 <i class="fa fa-star"></i></button>
-            <button> 1<i class="fa fa-star"></i></button>
+            <% String a = request.getParameter("type");%>
+
+
+            <% if(a.equals("")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tất cả</button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>"><button>Tất cả</button></a>
+            <%}%>
+
+
+               <% if(a.equals("tich_cuc")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tích cực</button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>"><button>Tích cực</button></a>
+            <%}%>
+
+            <% if(a.equals("tieu_cuc")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tiêu cực</button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>"><button>Tiêu cực</button></a>
+            <%}%>
+
+<%--            <% for (int i = 5; i >=1 ; i--){%>--%>
+<%--            <% if(a.equals(i)){%>--%>
+<%--            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=i%>&page=<%= request.getParameter("page")%>"><button  style="border: 1px solid #fff1e8 !important;--%>
+<%--                                                                                        background-color: #fff1e8 !important;--%>
+<%--                                                                                color: #ff7315 !important;"><%=i%> <i class="fa fa-star"></i></button></a>--%>
+<%--            <%} else {%>--%>
+<%--            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=i%>&page=<%= request.getParameter("page")%>"><button><%=i%> <i class="fa fa-star"></i></button></a>--%>
+<%--            <%}}%>--%>
+            <% if(a.equals("5")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>"><button class="activeboloc">5<i class="fa fa-star"></i></button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>"><button>5<i class="fa fa-star"></i></button></a>
+            <%}%>
+
+            <% if(a.equals("4")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>"><button class="activeboloc">4<i class="fa fa-star"></i></button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>"><button>4<i class="fa fa-star"></i></button></a>
+            <%}%>
+
+            <% if(a.equals("3")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>"><button class="activeboloc">3<i class="fa fa-star"></i></button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>"><button>3<i class="fa fa-star"></i></button></a>
+            <%}%>
+
+            <% if(a.equals("2")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>"><button class="activeboloc">2<i class="fa fa-star"></i></button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>"><button>2<i class="fa fa-star"></i></button></a>
+            <%}%>
+
+            <% if(a.equals("1")){%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>"><button class="activeboloc">1<i class="fa fa-star"></i></button></a>
+            <%} else {%>
+            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>"><button>1<i class="fa fa-star"></i></button></a>
+            <%}%>
+
+
         </div>
         <input type="hidden" name="page" value="1">
         <input type="hidden" name="type" value="">
 
 
 <%--        load danh sách đánh giá--%>
-        <% ArrayList<Rate> list = (ArrayList<Rate>) request.getAttribute("listRate");%>
-
+        <%  ArrayList<Rate> list = (ArrayList<Rate>) request.getAttribute("listRate");%>
         <% for(Rate r : list){%>
         <div class="binhluanitem">
             <div class="headerbinhluanitem">
@@ -521,11 +581,13 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                     </div>
-<%--                    <% for(int i = 1 ; i <= r.getNumberStar();i++){%>--%>
+
                     <div>
+                     <% for(int i = 1 ; i <= r.getNumberStar();i++){%>
                         <i class="fa fa-star"></i>
+                        <%}%>
                     </div>
-<%--                    <%}%>--%>
+
 
                 </div>
                 <p><%=r.getDateCreated()%></p>
@@ -540,17 +602,32 @@
     </div>
 
     <div class="dpnextpage">
+        <%
+            int pageNow = Integer.parseInt(request.getParameter("page"));
+            int numPage = (int)request.getAttribute("numPage");
+        %>
+        <% if(pageNow <= numPage && pageNow > 1){%>
+        <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>"><button><i class="fa fa-caret-left"></i></button></a>
+        <%} else{%>
         <button><i class="fa fa-caret-left"></i></button>
+        <%}%>
+
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li class="none">...</li>
-            <li>11</li>
+
+            <% for(int i = 1; i <= numPage;i++){
+                if(i==pageNow){
+            %>
+            <li style="background-color: #ff6600"><%=i%></li>
+            <%} else{%>
+            <li><%=i%></li>
+            <%}}%>
         </ul>
+
+        <% if(pageNow < numPage && pageNow >= 1){%>
+        <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>"><button><i class="fa fa-caret-right"></i></button></a>
+        <%} else{%>
         <button><i class="fa fa-caret-right"></i></button>
+        <%}%>
     </div>
 
     <div class="linesesstion"></div>

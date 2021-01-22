@@ -3,6 +3,7 @@ package worksWithDatabase.rateProduct;
 import beans.DateTime;
 import beans.category.Category;
 import beans.rate.Rate;
+import beans.rate.Star;
 import connectionDatabase.DataSource;
 
 import java.sql.Connection;
@@ -109,6 +110,32 @@ public class RateDAO {
     }
         DataSource.getInstance().releaseConnection(connection);
         return list;
+    }
+    public Star getAvgStar(String idProduct){
+        Star star = null;
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            PreparedStatement s = connection.prepareStatement("SELECT ma_sp, COUNT(*), ROUND(SUM(so_sao)/COUNT(*),1) FROM " +
+                    "danh_gia_sp WHERE ma_sp = ?");
+            s.setString(1,idProduct);
+            ResultSet rs = s.executeQuery();
+            star = new Star();
+            if(rs.next()){
+                star.setIdProduct(rs.getString(1));
+                star.setSumRate(rs.getInt(2));
+                star.setAvgStar(rs.getDouble(3));
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return star;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return star;
+
     }
 
     public static void main(String[] args) throws SQLException{

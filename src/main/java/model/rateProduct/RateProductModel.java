@@ -1,6 +1,7 @@
 package model.rateProduct;
 
 import beans.rate.Rate;
+import beans.rate.Star;
 import worksWithDatabase.rateProduct.RateDAO;
 import worksWithDatabase.rateProduct.RateDataSource;
 
@@ -19,6 +20,12 @@ public class RateProductModel {
     }
     public int getNumPage(){
         return RateDAO.getNumberOfPage();
+    }
+    public Star getAvgStar(String idProduct){
+        RateDAO rateDAO = RateDataSource.getInstance().getRateDAO();
+        Star star = rateDAO.getAvgStar(idProduct);
+        RateDataSource.getInstance().releaseRateDAO(rateDAO);
+        return star;
     }
     public ArrayList<Rate>loadListRate(int page, String type, int numberPerPage,String idProduct){
         RateDAO rateDAO = RateDataSource.getInstance().getRateDAO();
