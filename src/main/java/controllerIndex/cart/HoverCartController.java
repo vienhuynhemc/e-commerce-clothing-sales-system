@@ -31,8 +31,8 @@ public class HoverCartController extends HttpServlet {
         // System.out.println(acc);
 
         ArrayList<Cart> listCart = CartModel.getInstance().loadCartByID(acc.getIdUser());
-        System.out.println(acc.getIdUser());
-        System.out.println(listCart);
+//        System.out.println(acc.getIdUser());
+//        System.out.println(listCart);
         request.setAttribute("listCart",listCart);
 
         request.getRequestDispatcher("home/cart_Hover.jsp").forward(request,response);

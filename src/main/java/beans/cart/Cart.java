@@ -7,26 +7,46 @@ public class Cart implements Serializable {
     private String ma_sp;
     private String ma_kh;
     private String ma_mau;
+    private String ma_size;
     private String hinh_sp;
     private String ten_sp;
     private String size;
     private String mau_sp;
     private int so_luong;
     private double gia;
+    private double gia_km;
 
     public Cart() {
     }
 
-    public Cart(String ma_sp, String ma_kh, String ma_mau, String hinh_sp, String ten_sp, String size, String mau_sp, int so_luong, double gia) {
+    public Cart(String ma_sp, String ma_kh, String ma_mau, String ma_size, String hinh_sp, String ten_sp, String size, String mau_sp, int so_luong, double gia, double gia_km) {
         this.ma_sp = ma_sp;
         this.ma_kh = ma_kh;
         this.ma_mau = ma_mau;
+        this.ma_size = ma_size;
         this.hinh_sp = hinh_sp;
         this.ten_sp = ten_sp;
         this.size = size;
         this.mau_sp = mau_sp;
         this.so_luong = so_luong;
         this.gia = gia;
+        this.gia_km = gia_km;
+    }
+
+    public double getGia_km() {
+        return gia_km;
+    }
+
+    public void setGia_km(double gia_km) {
+        this.gia_km = gia_km;
+    }
+
+    public String getMa_size() {
+        return ma_size;
+    }
+
+    public void setMa_size(String ma_size) {
+        this.ma_size = ma_size;
     }
 
     public String getHinh_sp() {
@@ -113,6 +133,7 @@ public class Cart implements Serializable {
                 ", mau_sp='" + mau_sp + '\'' +
                 ", so_luong=" + so_luong +
                 ", gia=" + gia +
+                ", giakm=" + gia_km +
                 '}' + "\n";
     }
 }

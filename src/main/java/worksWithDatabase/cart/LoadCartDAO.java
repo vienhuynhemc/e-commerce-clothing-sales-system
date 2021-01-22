@@ -15,24 +15,28 @@ public class LoadCartDAO {
 
     public ArrayList<Cart> listCartByID(String ID){
      ArrayList<Cart> result = new ArrayList<Cart>();
+        Connection con = null;
         try {
-        Connection con = DataSource.getInstance().getConnection();
+         con = DataSource.getInstance().getConnection();
 
-        String sql = "SELECT g.ma_sp,g.ma_kh,g.ma_mau, sp.ten_sp,h.link_hinh_anh,s.ten_size, m.ten_mau,g.so_luong,g.so_luong*gsp.gia_sp as gia\n" +
-                "from gio_hang g, hinh_anh_sp h,san_pham sp,thong_tin_chi_tiet_sp tt,gia_sp gsp,size s,mau m \n" +
-                "WHERE g.ma_kh = ?\n" +
-                "and g.ma_sp = h.ma_sp \n" +
-                "and g.ma_mau = h.ma_mau \n" +
-                "and g.ma_sp = sp.ma_sp \n" +
-                "and sp.ma_sp = tt.ma_sp\n" +
-                "and g.ma_sp = tt.ma_sp \n" +
-                "and g.ma_mau = tt.ma_mau \n" +
-                "and s.ma_size = tt.ma_size\n" +
-                "and g.ma_mau = m.ma_mau\n" +
-                "and g.ma_sp = gsp.ma_sp\n" +
-                "\n" +
-                "group by m.ten_mau, sp.ten_sp,s.ten_size,g.so_luong\n" +
-                "; ";
+        String sql = "SELECT gio.ma_sp, gio.ma_kh, gio.ma_mau, gio.ma_size, hinh.link_hinh_anh, sp.ten_sp, s.ten_size,m.ten_mau,gio.so_luong, gia.gia_sp*gio.so_luong,giakm.gia_km*gio.so_luong from gio_hang gio, san_pham sp, thong_tin_chi_tiet_sp tt, hinh_anh_sp hinh, gia_sp gia, gia_sp_khuyen_mai giakm,\n" +
+                "size s, mau m\n" +
+                " WHERE sp.ma_sp = gio.ma_sp and\n" +
+                "tt.ma_sp = gio.ma_sp and \n" +
+                "tt.ma_mau = gio.ma_mau and\n" +
+                "tt.ma_size = gio.ma_size and\n" +
+                "hinh.ma_sp = sp.ma_sp and\n" +
+                "hinh.ma_sp = gio.ma_sp and\n" +
+                "gio.ma_mau= hinh.ma_mau and \n" +
+                "sp.ma_sp = gia.ma_sp and\n" +
+                "sp.ma_sp = giakm.ma_sp and \n" +
+                "m.ma_mau = gio.ma_mau and \n" +
+                "s.ma_size = tt.ma_size and \n" +
+                "tt.ton_tai = 1 and\n" +
+                "sp.ton_tai = 1 and\n" +
+                "sp.trang_thai = 1 and\n" +
+                "gio.ma_kh = ? \n" +
+                "GROUP BY gio.ma_sp, gio.ma_kh , gio.ma_mau,gio.ma_size";
 
             PreparedStatement ps = ps = con.prepareStatement(sql);
 
@@ -43,8 +47,8 @@ public class LoadCartDAO {
 
             while (rs.next()){
                 result.add(new Cart(rs.getString(1),rs.getString(2)
-                ,rs.getString(3),rs.getString(5),rs.getString(4),rs.getString(6)
-                ,rs.getString(7),rs.getInt(8),rs.getDouble(9)));
+                ,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                ,rs.getString(7),rs.getString(8),rs.getInt(9),rs.getDouble(10),rs.getDouble(11)));
             }
             rs.close();
             ps.close();
@@ -54,6 +58,7 @@ public class LoadCartDAO {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            DataSource.getInstance().releaseConnection(con);
         }
 
     return result;

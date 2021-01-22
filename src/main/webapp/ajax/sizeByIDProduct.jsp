@@ -6,5 +6,5 @@
     <% for (Size s: list) {
 
      %>
-        <button type="button" id="<%=s.getMa_size()%>" onclick="changeColor(this)"><%=s.getTen_size()%></button>
+        <button style="background-color: transparent;border: none;" type="button" id="<%=s.getMa_size()%>" onclick="changeColor(this)"><%=s.getTen_size()%></button>
   <%}%>

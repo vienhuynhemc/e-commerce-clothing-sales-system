@@ -30,6 +30,11 @@ public class ProductStructure {
         this.cau_tao = cau_tao;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "ProductStructure{" +
+                "ma_sp='" + ma_sp + '\'' +
+                ", cau_tao=" + cau_tao +
+                '}';
+    }
 }

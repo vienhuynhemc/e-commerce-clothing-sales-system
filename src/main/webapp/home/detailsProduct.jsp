@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="beans.product.*" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -14,24 +16,24 @@
     <title>TVT SHOP | Chi tiết sản phẩm</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
     <!-- Top Slider CSS -->
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -43,12 +45,17 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="../css/trangChu.css">
-    <script src="../js/index.js"></script>
+    <link rel="stylesheet" href="css/trangChu.css">
+    <script src="js/index.js"></script>
 
 
-    <link rel="stylesheet" href="../css/banner.css">
-    <link rel="stylesheet" href="../css/chitietsanpham.css">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="css/chitietsanpham.css">
+    <%
+        Product p = (Product) request.getAttribute("product");
+        ArrayList<ProductDetailInformation> pd = (ArrayList<ProductDetailInformation>) request.getAttribute("listSize");
+        System.out.println(pd);
+    %>
 </head>
 
 <body>
@@ -165,46 +172,53 @@
     <div class="dpcontent">
 
         <div class="dpheader">
-            <p>Trang chủ <i class="fa fa-circle"></i> Nữ <i class="fa fa-circle"></i> Quần dài <i
+            <% if(p.getGioi_tinh() == 0){%>
+            <p>Trang chủ <i class="fa fa-circle"></i> Nữ
+                <% } else {%>
+            <p>Trang chủ <i class="fa fa-circle"></i> Nam
+            <%}%>
+                <i class="fa fa-circle"></i><%= p.getCategoryName()%> <i
                     class="fa fa-circle"></i></p>
-            <p>Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011</p>
+            <p><%= p.getTen_sp()%></p>
         </div>
 
         <div class="dpbody">
             <div class="dpleft">
                 <div class="dpmainimg">
                     <div>
-                        <img src="../img/product/dp1.webp" alt="" id="img1">
-                        <p>Mã sản phẩm: SP1753419</p>
+                        <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img1">
+                        <p>Mã sản phẩm: <%= p.getMa_sp()%></p>
                     </div>
-                    <img src="../img/product/dp1.webp" alt="" id="img2">
+                    <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img2">
                 </div>
                 <div>
                     <div class="dplistitem" id="dplistitem">
+                        <% for(ProductImage pi : p.getListIMG()){%>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp1.webp" alt="" id="doiHinhChinh1">
+                                <img src="<%=pi.getLink_hinh()%>" alt="" id="doiHinhChinh1">
                             </div>
-                            <img src="../img/product/dp1.webp" alt="">
+                            <img src="<%=pi.getLink_hinh()%>" alt="">
                         </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp2.webp" alt="" id="doiHinhChinh2">
-                            </div>
-                            <img src="../img/product/dp2.webp" alt="">
-                        </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp3.webp" alt="" id="doiHinhChinh3">
-                            </div>
-                            <img src="../img/product/dp3.webp" alt="">
-                        </div>
-                        <div class="dpitem">
-                            <div onclick="doiHinhChinh(this)">
-                                <img src="../img/product/dp4.webp" alt="" id="doiHinhChinh4">
-                            </div>
-                            <img src="../img/product/dp4.webp" alt="">
-                        </div>
+                        <%}%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp2.webp" alt="" id="doiHinhChinh2">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp2.webp" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp3.webp" alt="" id="doiHinhChinh3">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp3.webp" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="dpitem">--%>
+<%--                            <div onclick="doiHinhChinh(this)">--%>
+<%--                                <img src="../img/product/dp4.webp" alt="" id="doiHinhChinh4">--%>
+<%--                            </div>--%>
+<%--                            <img src="../img/product/dp4.webp" alt="">--%>
+<%--                        </div>--%>
                     </div>
                 </div>
                 <div class="nextdplistitem" style="display: none">
@@ -219,32 +233,43 @@
             </div>
 
             <div class="dpright">
-                <p class="hangsanxuat">JUNO - Thương hiệu thời trang cao cấp</p>
-                <p class="tensanpham">Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011</p>
+                <p class="hangsanxuat"><%=p.getHang_san_xuat().getTen_hsx()%></p>
+                <p class="tensanpham"><%=p.getTen_sp()%></p>
                 <div class="giasanphamgiamgia">
-                    <span><del>400,000 VND</del></span>
-                    <span>(GIẢM GIÁ 20%)</span>
+
+                    <span><del><%=p.getPrice().getGia_sp()%> VND</del></span>
+                    <span>(GIẢM GIÁ <%= Math.round(((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp())*100) %>%)</span>
                 </div>
-                <p class="giasanphamgiachinh">319,000 VND</p>
+                <p class="giasanphamgiachinh"><%=p.getPriceSale().getGia_sp_km()%> VND</p>
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">
                     <p>CHỌN MÀU</p>
-                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>
-                    <span class="colordpxn" id="colordpxn">Xanh nhạt</span>
+                    <% for(ProductColor pc : p.getListColor()){%>
+                    <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>
+                    <%}%>
+<%--                    <span class="colordpdx" id="colordpdx">Đỏ</span>--%>
+
                 </div>
                 <div class="selectcolor">
                     <input type="radio" name="color" id="color1" style="display: none;" checked>
                     <input type="radio" name="color" id="color2" style="display: none;">
+<%--                    <label for="color1" class="labelcolor1" onclick="damXanh()">--%>
+<%--                        <div><img src="../img/product/damxanh.webp" alt=""></div>--%>
+<%--                    </label>--%>
+<%--                    <label for="color2" class="labelcolor2" onclick="xanhNhat()">--%>
+<%--                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>--%>
+<%--                    </label>--%>
+                    <%for(ProductColor pc : p.getListColor()){%>
                     <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><img src="../img/product/damxanh.webp" alt=""></div>
+                        <div><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=pc.getMa_mau()%>"><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></a></div>
                     </label>
-                    <label for="color2" class="labelcolor2" onclick="xanhNhat()">
-                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>
-                    </label>
+                    <%}%>
+<%--                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>--%>
+<%--                    <span class="colordpxn" id="colordpxn">Xanh nhạt</span>--%>
                 </div>
                 <div class="guidesize">
                     <p>CHỌN SIZE</p>
-                    <a href="chooseSize.html">Hướng dẫn chọn size</a>
+                    <a href="chooseSize.jsp">Hướng dẫn chọn size</a>
                 </div>
                 <div class="selectsize">
                     <input type="radio" name="size" id="size1" style="display: none;" checked>
@@ -252,21 +277,27 @@
                     <input type="radio" name="size" id="size3" style="display: none;">
                     <input type="radio" name="size" id="size4" style="display: none;">
                     <input type="radio" name="size" id="size5" style="display: none;">
-                    <label for="size1" class="labelsize1">S</label>
-                    <label for="size2" class="labelsize2">M</label>
-                    <label for="size3" class="labelsize3">L</label>
-                    <label for="size4" class="labelsize4">XL</label>
-                    <label for="size5" class="labelsize5">XXL</label>
+                    <% if(pd != null){%>
+                    <% for(ProductDetailInformation ps : pd){%>
+                    <label for="size1" class="labelsize1"><%=ps.getTen_size()%></label>
+                    <%}} else{%>
+                    <% for(Size s: p.getListSize()){%>
+                    <label for="size1" class="labelsize1"><%=s.getTen_size()%></label>
+                    <%}}%>
+<%--                    <label for="size2" class="labelsize2">M</label>--%>
+<%--                    <label for="size3" class="labelsize3">L</label>--%>
+<%--                    <label for="size4" class="labelsize4">XL</label>--%>
+<%--                    <label for="size5" class="labelsize5">XXL</label>--%>
                 </div>
-                <p class="dpconlai">Còn lại 7 sản phẩm</p>
+                <p class="dpconlai">Còn lại 1 sản phẩm</p>
                 <div class="inputsl">
                     <button onclick="subtocard2()"><span>-</span></button>
-                    <input type="text" value="1" id="sladdtocard2">
+                    <input type="text" value="1" id="sladdtocard2" name="so_luong">
                     <button onclick="plustocard2()"><span>+</span></button>
                 </div>
                 <div class="wlaatc">
                     <button><i class="fa fa-heart"></i> YÊU THÍCH</button>
-                    <button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button>
+                    <a href="AddCartController?id"><button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button></a>
                 </div>
             </div>
         </div>
@@ -276,27 +307,29 @@
 
     <div class="dtp">
         <p class="dtptitle">Thông tin sản phẩm</p>
-        <p class="dtpinfor1">Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011 với lai ống trước lệch và tưa nhẹ tạo nên nét
-            phá cách cho bạn nữ
-            khi mặc.</p>
+        <%for(ProductInfomation s : p.getListInfo()){%>
+        <p class="dtpinfor1"><%=s.getThong_tin()%></p>
+        <%}%>
         <p class="dtptitle">Vật liệu & sản xuất</p>
         <ul>
-            <li>Chất liệu: Jean</li>
-            <li>Form: Lưng cao</li>
-            <li>Màu sắc: Xanh nhạt, xanh đậm</li>
-            <li>Sản xuất: Việt Nam</li>
+            <%for(String ps : p.getCau_tao_sp().getCau_tao()){%>
+            <li><%=ps%></li>
+            <%}%>
+
         </ul>
         <p class="dtptitle">Phù hợp cho</p>
         <ul>
-            <li>Style năng động khi phối với các dòng trang phục áo thun, áo polo, sơ mi</li>
-            <li>Các dịp đi cafe, đi chơi hoặc đi du lịch biển,...</li>
+            <%for(String pi : p.getGioi_thieu_sp().getGioi_thieu()){%>
+            <li><%=pi%></li>
+            <%}%>
+
         </ul>
         <p class="dtptitle">Cung cấp bởi</p>
-        <p class="hangsanxuat">JUNO - Thương hiệu thời trang cao cấp</p>
+        <p class="hangsanxuat"><%=p.getHang_san_xuat().getTen_hsx()%></p>
         <ul>
-            <li>90% phản hồi tích cực</li>
-            <li>63 sản phẩm</li>
-            <li>Tất cả sản phẩm đều được bảo hành 3 tháng</li>
+            <%for(String s : p.getHang_san_xuat().getThong_tin()){%>
+            <li><%=s%></li>
+            <%}%>
         </ul>
     </div>
 
@@ -1213,22 +1246,22 @@
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <!-- SmartMenus jQuery plugin -->
-<script type="text/javascript" src="../js/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.js"></script>
 <!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="../js/jquery.smartmenus.bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.smartmenus.bootstrap.js"></script>
 <!-- To Slider JS -->
-<script src="../js/sequence.js"></script>
-<script src="../js/sequence-theme.modern-slide-in.js"></script>
+<script src="js/sequence.js"></script>
+<script src="js/sequence-theme.modern-slide-in.js"></script>
 <!-- Product view slider -->
-<script type="text/javascript" src="../js/jquery.simpleGallery.js"></script>
-<script type="text/javascript" src="../js/jquery.simpleLens.js"></script>
+<script type="text/javascript" src="js/jquery.simpleGallery.js"></script>
+<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 <!-- slick slider -->
-<script type="text/javascript" src="../js/slick.js"></script>
+<script type="text/javascript" src="js/slick.js"></script>
 <!-- Price picker slider -->
-<script type="text/javascript" src="../js/nouislider.js"></script>
+<script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
-<script src="../js/custom.js"></script>
+<script src="js/custom.js"></script>
 
-<script src="../js/chitietsanpham.js"></script>
+<script src="js/chitietsanpham.js"></script>

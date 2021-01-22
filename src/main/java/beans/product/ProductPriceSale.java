@@ -39,4 +39,13 @@ public class ProductPriceSale {
     public void setNgay_cap_nhat(DateTime ngay_cap_nhat) {
         this.ngay_cap_nhat = ngay_cap_nhat;
     }
+
+    @Override
+    public String toString() {
+        return "ProductPriceSale{" +
+                "ma_sp='" + ma_sp + '\'' +
+                ", gia_sp_km=" + gia_sp_km +
+                ", ngay_cap_nhat=" + ngay_cap_nhat +
+                '}';
+    }
 }

@@ -27,15 +27,15 @@ public class LoadListProductDAO {
     public void loadProduct(int trang,int xem,String type,String xeptheo,String danhmuc,String mau
     , double gia,String size,String search){
 
-        System.out.println(trang);
-        System.out.println(xem);
-        System.out.println(type);
-        System.out.println(xeptheo);
-        System.out.println(danhmuc);
-        System.out.println(mau);
-        System.out.println(gia);
-        System.out.println(size);
-        System.out.println("s " + search);
+//        System.out.println(trang);
+//        System.out.println(xem);
+//        System.out.println(type);
+//        System.out.println(xeptheo);
+//        System.out.println(danhmuc);
+//        System.out.println(mau);
+//        System.out.println(gia);
+//        System.out.println(size);
+//        System.out.println("s " + search);
 
 
 
@@ -56,7 +56,7 @@ public class LoadListProductDAO {
                     break;
             }
             String sql = "SELECT DISTINCT sp.ma_sp,sp.ten_sp,sp.ma_hsx,sp.ma_dm,sp.ngay_tao,sp.gioi_tinh,sp.trang_thai,sp.so_luong_ban_ra,sp.ton_tai,dm.ten_dm FROM san_pham sp, gia_sp gia, thong_tin_chi_tiet_sp tt, hang_san_xuat hsx,danh_muc dm\n" +
-                    " WHERE sp.ma_sp = tt.ma_sp and sp.ma_hsx = hsx.ma_hsx and sp.ma_dm = dm.ma_dm and sp.ma_sp = gia.ma_sp and sp.gioi_tinh = ?";
+                    " WHERE sp.ma_sp = tt.ma_sp and sp.ma_hsx = hsx.ma_hsx and sp.ma_dm = dm.ma_dm and sp.ma_sp = gia.ma_sp and sp.gioi_tinh = ? and tt.ton_tai = 1 and sp.ton_tai = 1 and sp.trang_thai = 1";
 
 
             if(!danhmuc.equals("nocategory")){
@@ -75,6 +75,7 @@ public class LoadListProductDAO {
             if(gia == 0){
                 sql += " and gia.gia_sp > 0";
             }else{
+                System.out.println("dok");
                 sql += " and gia.gia_sp > 0 and gia.gia_sp < " + gia +" ";
             }
 
@@ -190,7 +191,7 @@ public class LoadListProductDAO {
             String sqlImg = "SELECT DISTINCT hinh.ma_sp,hinh.ma_mau,hinh.hinh_anh,hinh.link_hinh_anh FROM " +
                     "hinh_anh_sp hinh, san_pham sp, thong_tin_chi_tiet_sp tt" +
                     " WHERE hinh.ma_sp = sp.ma_sp and sp.ma_sp = tt.ma_sp " +
-                    "and tt.ma_mau = hinh.ma_mau and sp.ma_sp = ?";
+                    "and tt.ma_mau = hinh.ma_mau and sp.ma_sp = ? and tt.ton_tai = 1 and sp.ton_tai = 1 and sp.trang_thai = 1";
 
             for (int i = 0; i < listProduct.size(); i++) {
                 PreparedStatement ps2 = con.prepareStatement(sqlImg);
@@ -253,8 +254,19 @@ public class LoadListProductDAO {
                 ps2.close();
             }
 
+            String sqlsoluongconlai = "SELECT SUM(tt.so_luong_con_lai) FROM thong_tin_chi_tiet_sp tt WHERE tt.ma_sp = ? and tt.ton_tai = 1 GROUP BY tt.ma_sp";
+            for (int i = 0; i < listProduct.size(); i++) {
+                PreparedStatement ps2 = con.prepareStatement(sqlsoluongconlai);
+                ps2.setString(1,listProduct.get(i).getMa_sp());
 
+                ResultSet rs2 = ps2.executeQuery();
 
+                if (rs2.next()){
+                    listProduct.get(i).setSo_luong_con_lai(rs2.getInt(1));
+                }
+                rs2.close();
+                ps2.close();
+            }
 
             DataSource.getInstance().releaseConnection(con);
 
@@ -294,10 +306,19 @@ public class LoadListProductDAO {
         loadListProductDAO.loadProduct(1,6,"Nu","mac-dinh","nocategory",
                 "nocolor",0,"nosize","");
 
-        System.out.println(loadListProductDAO.getListProduct());
 
-        System.out.println(loadListProductDAO.sumProduct);
-        System.out.println(loadListProductDAO.getNumPage());
-        System.out.println(loadListProductDAO.getListProduct().get(1).getListInfo().get(0).getThong_tin());
+
+        for (int i = 0; i < loadListProductDAO.getListProduct().size(); i++) {
+            System.out.println(loadListProductDAO.getListProduct().get(i));
+            System.out.println(loadListProductDAO.getListProduct().get(i).getListIMG());
+            System.out.println(loadListProductDAO.getListProduct().get(i).getListInfo());
+            System.out.println( "slcl" +  loadListProductDAO.getListProduct().get(i).getSo_luong_con_lai());
+
+
+        }
+
+       // System.out.println(loadListProductDAO.sumProduct);
+       // System.out.println(loadListProductDAO.getNumPage());
+       // System.out.println(loadListProductDAO.getListProduct().get(1).getListInfo().get(0).getThong_tin());
     }
 }

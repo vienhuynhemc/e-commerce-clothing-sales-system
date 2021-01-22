@@ -22,6 +22,13 @@ public class Product {
     private ProductPriceSale priceSale;
     private int extant;
     private String categoryName;
+    private int so_luong_con_lai;
+    private ArrayList<ProductColor> listColor;
+    private ArrayList<ProductDetailInformation> listDetailInfo;
+    private ProductStructure cau_tao_sp;
+    private ProductIntroduction gioi_thieu_sp;
+    private Manufacturer hang_san_xuat;
+
 
     public Product(String ma_sp, String ten_sp, String ma_hsx, String ma_dm, DateTime ngay_tao, int gioi_tinh, int trang_thai, int so_luong_ban_ra, int ton_tai) {
         this.ma_sp = ma_sp;
@@ -173,6 +180,38 @@ public class Product {
         this.categoryName = categoryName;
     }
 
+    public int getSo_luong_con_lai() {
+        return so_luong_con_lai;
+    }
+
+    public void setSo_luong_con_lai(int so_luong_con_lai) {
+        this.so_luong_con_lai = so_luong_con_lai;
+    }
+
+    public Manufacturer getHang_san_xuat() {
+        return hang_san_xuat;
+    }
+
+    public void setHang_san_xuat(Manufacturer hang_san_xuat) {
+        this.hang_san_xuat = hang_san_xuat;
+    }
+
+    public ArrayList<ProductColor> getListColor() {
+        return listColor;
+    }
+
+    public void setListColor(ArrayList<ProductColor> listColor) {
+        this.listColor = listColor;
+    }
+
+    public ArrayList<ProductDetailInformation> getListDetailInfo() {
+        return listDetailInfo;
+    }
+
+    public void setListDetailInfo(ArrayList<ProductDetailInformation> listDetailInfo) {
+        this.listDetailInfo = listDetailInfo;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -187,5 +226,21 @@ public class Product {
                 ", ton_tai=" + ton_tai +
                 ", danh muc =" + categoryName +
                 '}' + "\n";
+    }
+
+    public ProductStructure getCau_tao_sp() {
+        return cau_tao_sp;
+    }
+
+    public void setCau_tao_sp(ProductStructure cau_tao_sp) {
+        this.cau_tao_sp = cau_tao_sp;
+    }
+
+    public ProductIntroduction getGioi_thieu_sp() {
+        return gioi_thieu_sp;
+    }
+
+    public void setGioi_thieu_sp(ProductIntroduction gioi_thieu_sp) {
+        this.gioi_thieu_sp = gioi_thieu_sp;
     }
 }

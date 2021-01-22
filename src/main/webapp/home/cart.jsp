@@ -149,7 +149,7 @@
 
 <!--ajax để load danh sách sản phẩm trong giỏ hàng-->
 <script>
-    $(function (){
+    $(document).ready(function (){
         $.ajax({
             url: 'LoadCartController',
             dataType:'html',
@@ -158,7 +158,9 @@
                 $('#loadCart').html(data);
             },
             error: function (e) {
-                window.location.href = "index.jsp";
+                alert("loi load sp");
+                console.log(e);
+               // window.location.href = "index.jsp";
             }
         });
 

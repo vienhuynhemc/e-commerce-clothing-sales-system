@@ -1,11 +1,13 @@
 package model.loadProduct;
 
 import beans.product.Category;
+import beans.product.Product;
 import beans.product.ProductColor;
 import beans.product.Size;
 import worksWithDatabase.loadPageProduct.LoadCategoryByTypeDAO;
 import worksWithDatabase.loadPageProduct.LoadColorByTypeDAO;
 import worksWithDatabase.loadPageProduct.LoadSizeByTypeDAO;
+import worksWithDatabase.loadPageProduct.LoadTopProductDAO;
 
 import java.util.ArrayList;
 
@@ -29,5 +31,7 @@ public class LoadCategoryModel {
     }
     public ArrayList<Size> loadSize(String type){
         return new LoadSizeByTypeDAO().loadColorBytype(type);
+    }
+    public ArrayList<Product> loadTopProduct(String type){return new LoadTopProductDAO().loadTopProduct(type);
     }
 }

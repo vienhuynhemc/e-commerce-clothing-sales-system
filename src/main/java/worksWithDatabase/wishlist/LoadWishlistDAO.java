@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoadWishlistDAO {
@@ -54,10 +55,17 @@ public class LoadWishlistDAO {
                 stt = "t.so_luong_con_lai >= " + status;
             }
 
-            String sql = "SELECT s.ten_sp, g.gia_sp, t.ma_size,y.so_luong, t.ma_mau, t.so_luong_con_lai, y.ngay_them from yeu_thich y,san_pham s, gia_sp g, thong_tin_chi_tiet_sp t where " +
-                    "y.ma_sp = t.ma_sp AND s.ma_sp = g.ma_sp AND t.ma_mau = y.ma_mau AND  t.ma_sp = s.ma_sp AND (s.ma_sp like ? or y.ma_kh like ? or DAY(y.ngay_them) = ?" +
-                    " or MONTH(y.ngay_them) = ? or Year(y.ngay_them) = ? or g.gia_sp LIKE ?) AND y.ma_kh = ? AND "+ stt +" AND gioi_tinh = ?" +
-                    " ORDER BY s." + type + " LIMIT ?," + numberPerPage;
+//            String sql = "SELECT s.ten_sp, g.gia_sp, t.ma_size,y.so_luong, t.ma_mau, t.so_luong_con_lai, y.ngay_them, h.link_hinh_anh, s.ma_sp from yeu_thich y,san_pham s, gia_sp g, thong_tin_chi_tiet_sp t, hinh_anh_sp h where " +
+//                    "y.ma_sp = t.ma_sp AND s.ma_sp = g.ma_sp AND t.ma_mau = y.ma_mau AND t.ma_size = y.size AND t.ma_sp = s.ma_sp AND h.ma_sp = s.ma_sp  AND (s.ma_sp like ? or y.ma_kh like ? or DAY(y.ngay_them) = ?" +
+//                    " or MONTH(y.ngay_them) = ? or Year(y.ngay_them) = ? or g.gia_sp LIKE ?) AND y.ma_kh = ? AND "+ stt +" AND gioi_tinh = ?" +
+//                    " ORDER BY s." + type + " LIMIT ?," + numberPerPage;
+            String sql ="SELECT s.ten_sp, g.gia_sp, si.ma_size,y.so_luong, m.ma_mau, t.so_luong_con_lai, y.ngay_them," +
+                    " h.link_hinh_anh, s.ma_sp, si.ten_size from yeu_thich y,san_pham s, gia_sp g, thong_tin_chi_tiet_sp t," +
+                    " hinh_anh_sp h, size si, mau m where y.ma_sp = s.ma_sp AND y.ma_mau = t.ma_mau AND" +
+                    " t.ma_sp = s.ma_sp AND h.ma_sp = y.ma_sp AND s.ma_sp = g.ma_sp AND si.ma_size = y.ma_size " +
+                    "AND m.ma_mau = h.ma_mau AND (s.ma_sp like ? or y.ma_kh like ? or DAY(y.ngay_them) = ? or MONTH(y.ngay_them) = ? " +
+                    "or Year(y.ngay_them) = ? or g.gia_sp LIKE ?) AND y.ma_kh = ? AND "+ stt +" AND gioi_tinh = ? AND h.ma_mau = y.ma_mau AND t.ma_mau = " +
+                    "y.ma_mau AND h.mac_dinh = 1 group by s.ten_sp, si.ten_size,m.ten_mau ORDER BY s."+type+" LIMIT ?,"+numberPerPage;
 
 //            SELECT  s.ten_sp, g.gia_sp, t.ma_size, y.so_luong, t.ma_mau, s.trang_thai, y.ngay_them from yeu_thich y,
 //                    san_pham s, gia_sp g, thong_tin_chi_tiet_sp t where y.ma_sp = t.ma_sp AND s.ma_sp = g.ma_sp AND
@@ -74,6 +82,8 @@ public class LoadWishlistDAO {
             s2.setString(7,idCustomer);
             s2.setInt(8,sex);
             s2.setInt(9, start - 1);
+
+
 
 
             ResultSet rss = s2.executeQuery();
@@ -109,6 +119,9 @@ public class LoadWishlistDAO {
                 p.setColor(rss.getString(5));
                 p.setDateAdded(datetime);
                 p.setRestNumber(rss.getInt(6));
+                p.setImg(rss.getString(8));
+                p.setId(rss.getString(9));
+                p.setNameSize(rss.getString(10));
 
                 list.add(p);
             }
@@ -124,6 +137,25 @@ public class LoadWishlistDAO {
         return new ArrayList<>();
 
 
+    }
+    public String getColorById(String id){
+        String result ="";
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            PreparedStatement s = connection.prepareStatement("SELECT ten_mau FROM mau where ma_mau = ?");
+            s.setString(1,id);
+            ResultSet rs = s.executeQuery();
+            if(rs.next()){
+                result = rs.getString(1);
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
     }
 
     public ArrayList<Wishlist> getList() {
@@ -153,9 +185,11 @@ public class LoadWishlistDAO {
 
     public static void main(String[] args) {
         LoadWishlistDAO dao = new LoadWishlistDAO();
-        for (Wishlist w : dao.getAllWishList(1, "kh001", "", "ngay_tao", 0, 1, 1)) {
+        for (Wishlist w : dao.getAllWishList(1, "kh001", "", "ten_sp", 0, 1, 10)) {
             System.out.println(w);
         }
+        System.out.println(list.size());
         //System.out.println(dao.getQuantity("sp_1","mau_1","size_1"));
+        System.out.println(dao.getColorById("mau_1"));
     }
 }

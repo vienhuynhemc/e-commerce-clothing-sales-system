@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="beans.fproduct.FProduct" %>
+<%@ page import="beans.detailProduct.Product" %>
 <%@ page import="worksWithDatabase.femaleProducts.FProductDAO" %>
 <%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
 <%@ page import="beans.account.AccountCustomer" %><%--
@@ -55,7 +55,7 @@
     <![endif]-->
 
     <!-- lấy danh sách sản phẩm nữ
-    <% ArrayList<FProduct> list = (ArrayList<FProduct>) request.getAttribute("list");
+    <% ArrayList<Product> list = (ArrayList<Product>) request.getAttribute("list");
     AccountCustomer user = (AccountCustomer) session.getAttribute("user");
 
     %>
@@ -346,7 +346,7 @@
                     <div class="aa-product-catg-body">
                         <ul class="aa-product-catg">
 
-                            <% for(FProduct p : list){%>
+                            <% for(Product p : list){%>
                             <!-- start single product item -->
                             <li>
                                 <figure>
@@ -371,7 +371,7 @@
                                     </figcaption>
                                 </figure>
                                 <div class="aa-product-hvr-content">
-                                    <a href="AddWishlistController" data-toggle="tooltip" data-placement="top"
+                                    <a href="" data-toggle="tooltip" data-placement="top"
                                        title="Thêm vào yêu thích"><span
                                             class="fa fa-heart"></span></a>
                                     <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->

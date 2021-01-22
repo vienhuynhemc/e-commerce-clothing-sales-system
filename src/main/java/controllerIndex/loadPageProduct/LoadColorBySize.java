@@ -27,13 +27,17 @@ public class LoadColorBySize extends HttpServlet {
 
         ArrayList<ProductColor> list = loadSizeByIDProductModel.laodColorBySize(ma_sp,ma_size);
 
-       String json = new Gson().toJson(list);
+//       String json = new Gson().toJson(list);
+//
+//       System.out.println(json);
 
-       System.out.println(json);
+        request.setAttribute("listColor",list);
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+//        response.setContentType("application/json");
+//        response.setCharacterEncoding("UTF-8");
+//        response.getWriter().write(json);
+
+        request.getRequestDispatcher("ajax/colorByIDProduct.jsp").forward(request,response);
 
     }
 }

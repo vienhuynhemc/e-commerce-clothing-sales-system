@@ -26,32 +26,37 @@ public class LoadWishlistController extends HttpServlet {
         HttpSession session = request.getSession();
         AccountCustomer accountCustomer = (AccountCustomer) session.getAttribute("user");
 
-        String search = request.getParameter("search");
-        String type = request.getParameter("type");
-        int page = Integer.parseInt(request.getParameter("page")) ;
-        int sex = Integer.parseInt(request.getParameter("sex"));
-        int status = Integer.parseInt(request.getParameter("status"));
+        if (accountCustomer != null){
+            String search = request.getParameter("search");
+            String type = request.getParameter("type");
+            int page = Integer.parseInt(request.getParameter("page")) ;
+            int sex = Integer.parseInt(request.getParameter("sex"));
+            int status = Integer.parseInt(request.getParameter("status"));
 
-         ArrayList<Wishlist> list = LoadWishlistModel.loadWishlistById(page,accountCustomer.getIdUser(),search,type,sex,status,1);
-         request.setAttribute("list",list);
+            ArrayList<Wishlist> list = LoadWishlistModel.loadWishlistById(page,accountCustomer.getIdUser(),search,type,sex,status,3);
+            request.setAttribute("list",list);
 
-         int numPage = LoadWishlistDAO.getNumberPage();
-         request.setAttribute("numPage",numPage);
+            int numPage = LoadWishlistDAO.getNumberPage();
+            request.setAttribute("numPage",numPage);
 
-         int sumProduct = LoadWishlistDAO.getSumProduct();
-         request.setAttribute("sumProduct",sumProduct);
+            int sumProduct = LoadWishlistDAO.getSumProduct();
+            request.setAttribute("sumProduct",sumProduct);
 
-        System.out.println("id: "+accountCustomer.getIdUser());
-        System.out.println("search: "+search);
-        System.out.println("page: "+page);
-        System.out.println("type: "+ type);
-        System.out.println("sex: "+sex);
-        System.out.print("status: "+status);
+            System.out.println("id: "+accountCustomer.getIdUser());
+            System.out.println("search: "+search);
+            System.out.println("page: "+page);
+            System.out.println("type: "+ type);
+            System.out.println("sex: "+sex);
+            System.out.print("status: "+status);
 
-        System.out.println("numPage: "+numPage);
+            System.out.println("numPage: "+numPage);
 
 
-         request.getRequestDispatcher("home/wishlist.jsp").forward(request,response);
+            request.getRequestDispatcher("home/wishlist.jsp").forward(request,response);
+        }
+        else{
+            request.getRequestDispatcher("home/login.jsp").forward(request,response);
+        }
 
     }
 }

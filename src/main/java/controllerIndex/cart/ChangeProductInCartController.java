@@ -29,15 +29,17 @@ public class ChangeProductInCartController extends HttpServlet {
 
         String ma_sp = request.getParameter("ma_sp");
         String ma_mau = request.getParameter("ma_mau");
+        String ma_size = request.getParameter("ma_size");
         String active = request.getParameter("active");
 
         System.out.println(ma_kh);
         System.out.println(ma_sp);
         System.out.println(ma_mau);
+        System.out.println(ma_size);
 
         ChangeCartModel addCartModel = new ChangeCartModel();
 
-        Cart cart = addCartModel.executeCart(ma_sp,ma_kh,ma_mau,active);
+        Cart cart = addCartModel.executeCart(ma_sp,ma_kh,ma_mau,ma_size,active);
 
         System.out.println(cart);
 

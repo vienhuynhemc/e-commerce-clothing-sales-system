@@ -34,7 +34,7 @@ public class LoadColorByTypeDAO {
                     break;
             }
             String sql = "SELECT DISTINCT m.ma_mau , m.ten_mau , m.hinh_anh_mau,m.link_hinh_anh FROM san_pham sp,mau m,thong_tin_chi_tiet_sp tt " +
-                    "WHERE sp.ma_sp = tt.ma_sp and m.ma_mau = tt.ma_mau and sp.gioi_tinh = ?;";
+                    "WHERE sp.ma_sp = tt.ma_sp and m.ma_mau = tt.ma_mau and sp.gioi_tinh = ? and tt.ton_tai = 1;";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,sex);

@@ -256,7 +256,7 @@ jQuery(function ($) {
                 },
                 snap: true,
                 connect: true,
-                start: [0, 100]
+                start: [0, 0]
             });
             // for value print
             var skipValues = [
@@ -267,6 +267,8 @@ jQuery(function ($) {
             skipSlider.noUiSlider.on('update', function (values, handle) {
 
                 let valuee = parseInt(values[handle]) * 10000 + '';
+                $("#laygia").prop("value",valuee);
+               // changeListProduct();
                 let newValue = '';
                 if (valuee.length > 3) {
                     let count = 0;
@@ -284,6 +286,7 @@ jQuery(function ($) {
                 }
 
                 skipValues[handle].innerHTML = newValue + ' VND';
+
             });
         }
     });

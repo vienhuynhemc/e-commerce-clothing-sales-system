@@ -61,4 +61,15 @@ public class Manufacturer {
     public void setThong_tin(ArrayList<String> thong_tin) {
         this.thong_tin = thong_tin;
     }
+
+    @Override
+    public String toString() {
+        return "Manufacturer{" +
+                "ma_hsx='" + ma_hsx + '\'' +
+                ", ten_hsx='" + ten_hsx + '\'' +
+                ", ngay_tao=" + ngay_tao +
+                ", ton_tai=" + ton_tai +
+                ", thong_tin=" + thong_tin +
+                '}';
+    }
 }
