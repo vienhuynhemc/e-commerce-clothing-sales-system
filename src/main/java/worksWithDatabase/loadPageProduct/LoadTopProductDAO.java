@@ -33,7 +33,7 @@ public class LoadTopProductDAO {
                     break;
             }
             String sql = "SELECT * FROM san_pham sp where gioi_tinh = ? and sp.ton_tai = 1 " +
-                    " and sp.trang_thai = 1 ORDER BY so_luong_ban_ra DESC LIMIT 3";
+                    " ORDER BY so_luong_ban_ra DESC LIMIT 3";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,sex);
@@ -52,16 +52,15 @@ public class LoadTopProductDAO {
                 p.setSo_luong_ban_ra(rs.getInt(8));
                 p.setTon_tai(rs.getInt(9));
                 listProduct.add(p);
-
             }
             rs.close();
             ps.close();
 
 
-            String sqlImg = "SELECT DISTINCT hinh.ma_sp,hinh.ma_mau,hinh.hinh_anh,hinh.link_hinh_anh FROM " +
+            String sqlImg = "SELECT DISTINCT hinh.ma_sp,hinh.ma_mau,hinh.link_hinh_anh,hinh.mac_dinh FROM " +
                     "hinh_anh_sp hinh, san_pham sp, thong_tin_chi_tiet_sp tt" +
                     " WHERE hinh.ma_sp = sp.ma_sp and sp.ma_sp = tt.ma_sp " +
-                    "and tt.ma_mau = hinh.ma_mau and sp.ma_sp = ? and tt.ton_tai = 1";
+                    "and tt.ma_mau = hinh.ma_mau and sp.ma_sp = ? and tt.ton_tai = 1 and sp.ton_tai = 1";
 
             for (int i = 0; i < listProduct.size(); i++) {
                 PreparedStatement ps2 = con.prepareStatement(sqlImg);
@@ -72,7 +71,7 @@ public class LoadTopProductDAO {
                 ArrayList<ProductImage> listI = new ArrayList<ProductImage>();
                 while (rs2.next()){
                     listI.add(new ProductImage(rs2.getString(1),rs2.getString(2)
-                            ,rs2.getString(3),rs2.getString(4)));
+                            ,rs2.getString(3),rs2.getInt(4)));
                 }
                 listProduct.get(i).setListIMG(listI);
                 rs2.close();
@@ -111,8 +110,6 @@ public class LoadTopProductDAO {
             }
 
 
-
-
             DataSource.getInstance().releaseConnection(con);
             return listProduct;
 
@@ -127,6 +124,6 @@ public class LoadTopProductDAO {
         LoadTopProductDAO dao = new LoadTopProductDAO();
 
         System.out.println(dao.loadTopProduct("Nu"));
-        System.out.println(dao.loadTopProduct("Nu").get(0).getListIMG().get(0).getHinh_anh());
+        System.out.println(dao.loadTopProduct("Nu").get(0).getListIMG().get(0).getLink_hinh());
     }
 }

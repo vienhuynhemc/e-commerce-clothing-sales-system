@@ -20,7 +20,7 @@ public class ChessSessionCartController extends HttpServlet {
         if (session.getAttribute("user") != null){
             request.getRequestDispatcher("home/cart.jsp").forward(request,response);
         }else{
-            request.getRequestDispatcher("home/login.jsp").forward(request,response);
+            request.getRequestDispatcher("dang-nhap").forward(request,response);
         }
     }
 }

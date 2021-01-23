@@ -24,7 +24,7 @@ public class RemoveAccountHKController extends HttpServlet {
         ArrayList<String> listRemove = new ArrayList<String>();
         listRemove = ConvertArrayString.convertString(list);
 
-        System.out.println(listRemove);
+       // System.out.println(listRemove);
 
         RemoveAccountKHModel removeAccountKHModel = RemoveAccountKHModel.getInstance();
 

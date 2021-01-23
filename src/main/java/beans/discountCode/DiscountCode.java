@@ -51,6 +51,20 @@ public class DiscountCode {
         this.dateCreated = dateCreated;
         this.deadline = deadline;
     }
+    public DiscountCode(String id, String name, String type, int value, int numberOfUse, int maximunNumberOfUse, int status, int exists, DateTime dateCreated, DateTime deadline) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.value = value;
+        this.numberOfUse = numberOfUse;
+        this.maximunNumberOfUse = maximunNumberOfUse;
+        this.status = status;
+        this.exists = exists;
+        this.dateCreated = dateCreated;
+        this.deadline = deadline;
+    }
+    public DiscountCode() {
+    }
 
     //  Phương thức getValue()
     public String getStringValue() {
@@ -169,4 +183,20 @@ public class DiscountCode {
         this.deadline = deadline;
     }
 
+    @Override
+    public String toString() {
+        return "DiscountCode{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", value=" + value +
+                ", numberOfUse=" + numberOfUse +
+                ", maximunNumberOfUse=" + maximunNumberOfUse +
+                ", remainNumberOfUse=" + remainNumberOfUse +
+                ", status=" + status +
+                ", exists=" + exists +
+                ", dateCreated=" + dateCreated +
+                ", deadline=" + deadline +
+                '}';
+    }
 }

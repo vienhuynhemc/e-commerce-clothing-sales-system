@@ -458,3 +458,9 @@ p#total_all_1 {
     font-size: 19px;
     font-weight: bold;
 }
+button.reload {
+    margin-left: 20px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}

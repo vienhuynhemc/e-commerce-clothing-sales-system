@@ -21,7 +21,7 @@ public class LoadColorByIDProduct extends HttpServlet {
 
         String ma_sp = request.getParameter("ma_sp");
 
-        System.out.println(ma_sp);
+       // System.out.println(ma_sp);
 
 
         LoadSizeByIDProductModel loadSizeByIDProductModel = new LoadSizeByIDProductModel();
@@ -32,7 +32,7 @@ public class LoadColorByIDProduct extends HttpServlet {
         request.setAttribute("listColor",list);
 
 
-        System.out.println(list);
+       // System.out.println(list);
 
         request.getRequestDispatcher("ajax/colorByIDProduct.jsp").forward(request,response);
 

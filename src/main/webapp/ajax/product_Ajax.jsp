@@ -10,6 +10,7 @@
     ArrayList<Product> listProduct = (ArrayList<Product>) request.getAttribute("listProduct");
     int count = 0;
     int numPage = (int) request.getAttribute("numPage");
+    int nowpage = (int) request.getAttribute("page");
 %>
 
 
@@ -26,7 +27,7 @@
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>">
+                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=1">
 
 
                     <!-------Load hình đầu tiên ------->
@@ -51,9 +52,9 @@
                     <!-------Load giá và giá khuyến mãi  ------->
                     <h4 class="aa-product-title"><a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>"><%=p.getTen_sp()%></a></h4>
                     <span class="aa-product-price sprice">
-                        <%= ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</span>
+                        <%= ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</span>
                     <span class="aa-product-price"><del>
-                    <%=ConvertPrice.convertPrice(p.getPrice().getGia_sp()) %>VND</del></span>
+                    <%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km()) %>VND</del></span>
 
                     <!-------Load giá và giá khuyến mãi ------->
 
@@ -67,7 +68,6 @@
                     %>
                     <p class="aa-product-descrip">
                       <%=p.getListInfo().get(i).getThong_tin()%>
-                        <br>
                     </p>
                     <%} %>
 
@@ -245,7 +245,19 @@
                                             </div>
                                         </div>
                                         <!-------Load giá------->
-                                        <span class="aa-product-view-price"><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</span>
+                                        <span class="aa-product-view-price">
+
+                                            <%if(p.getPriceSale().getGia_sp_km() != 0) {%>
+
+                                            <%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%>
+
+                                             <%}else{%>
+
+                                            <%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%>
+
+                                            <%}%>
+                                            VND
+                                        </span>
                                     </div>
                                     <p>
                                         <!-------Load danh sách thông tin ------->
@@ -334,24 +346,53 @@
 <div class="aa-product-catg-pagination">
     <nav>
         <ul class="pagination">
+
+
+            <%if(nowpage == 1){
+            %>
             <li>
-                <a href="#" aria-label="Previous">
+                <button type="button" aria-label="Previous">
                     <span aria-hidden="true" class="nextprebar">&laquo;</span>
-                </a>
+                </button>
             </li>
+            <%}else{%>
+            <li>
+                <button type="button" aria-label="Previous" id="<%=nowpage-1%>" onclick="changePage(this)">
+                    <span aria-hidden="true" class="nextprebar">&laquo;</span>
+                </button>
+            </li>
+            <%}%>
+
 
             <% for(int i= 1; i <= numPage;i ++){
-
+                if (i == nowpage){
               %>
 
-            <li><a href="#" class="activenextbar"><%=i%></a></li>
+            <li><button type="button" onclick="changePage(this)" id="<%=i%>" class="activenextbar"><%=i%></button></li>
 
-           <% }%>
+            <%}else{%>
+
+            <li><button type="button" onclick="changePage(this)" id="<%=i%>" class=""><%=i%></button></li>
+
+           <% }}%>
+
+            <%if(nowpage == numPage){
+            %>
+
             <li>
-                <a href="#" aria-label="Next">
+                <button type="button" aria-label="Next">
                     <span aria-hidden="true" class="nextprebar">&raquo;</span>
-                </a>
+                </button>
             </li>
+
+            <%}else{%>
+
+            <li>
+                <button type="button" aria-label="Next" id="<%=nowpage-1%>" onclick="changePage(this)">
+                    <span aria-hidden="true" class="nextprebar">&raquo;</span>
+                </button>
+            </li>
+            <%}%>
         </ul>
     </nav>
 </div>

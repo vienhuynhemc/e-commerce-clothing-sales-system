@@ -35,7 +35,7 @@ public class LoadSizeByTypeDAO {
                     break;
             }
             String sql = "SELECT DISTINCT s.ma_size , s.ten_size FROM san_pham sp,size s,thong_tin_chi_tiet_sp tt " +
-                    "WHERE sp.ma_sp = tt.ma_sp and tt.ma_size = s.ma_size and sp.gioi_tinh = ? and tt.ton_tai = 1;";
+                    "WHERE sp.ma_sp = tt.ma_sp and tt.ma_size = s.ma_size and sp.gioi_tinh = ? and tt.ton_tai = 1 and sp.ton_tai = 1;";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,sex);

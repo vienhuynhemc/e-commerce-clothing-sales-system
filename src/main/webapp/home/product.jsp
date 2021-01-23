@@ -253,8 +253,8 @@
                                         </div>
                                         <h4><a href="detailsProduct.html"><%=p.getTen_sp()%>%</a></h4>
                                         <div class="gdprice">
-                                            <p><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</p>
-                                            <del><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</del>
+                                            <p><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</p>
+                                            <del><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</del>
                                         </div>
                                     </div>
                                 </li>
@@ -269,6 +269,9 @@
 
         </div>
     </div>
+
+    <!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
+
     <div id="addCartStatus" style="display:none; z-index: 100000;position: relative">
         <div class="changepassword" id="changepassword">
             <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
@@ -296,6 +299,7 @@
             </div>
         </div>
     </div>
+    <!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
 
 </section>
 <!-- / product category -->
@@ -304,6 +308,7 @@
 <input type="hidden" name="" id="ma_sp" value="">
 <input type="hidden" name="" id="soluongsp" value="1">
 <input type="hidden" name="" id="sexType" value="<%=request.getAttribute("type")%>">
+<input type="hidden" name="" id="page" value="1">
 
 
 <!-----các thẻ input hiden làm nhiệm vụ lấy dữ liệu------>
@@ -374,7 +379,7 @@
                     so_luong:soluong
                 },
                 success:function (data){
-                    console.log(data);
+                    //console.log(data);
                      $('#changepasswordsuccess').html(data);
 
                      document.getElementById("addCartStatus").style.display = "block";
@@ -462,6 +467,11 @@
 
         changeListProduct();
     }
+    function changePage(event){
+        var page = $(event).attr("id");
+        document.getElementById("page").value = page;
+        changeListProduct();
+    }
 
     function changeListProduct(){
 
@@ -485,6 +495,8 @@
 
         var type = $('#sexType').val();
 
+        var page = $('#page').val();
+
 
         $.ajax({
 
@@ -492,7 +504,7 @@
             type: 'get',
             dataType: 'html',
             data: {
-                page:1,
+                page:page,
                 num:num,
                 type:type,
                 order:order,
@@ -671,6 +683,7 @@
             $("#soluongsp").prop("value",nn-1);
         }
     }
+
 
 
 </script>

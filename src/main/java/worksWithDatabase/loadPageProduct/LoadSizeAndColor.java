@@ -25,7 +25,7 @@ public class LoadSizeAndColor {
         try {
             con = DataSource.getInstance().getConnection();
 
-            String sql = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ton_tai = 1";
+            String sql = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ton_tai = 1";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -34,7 +34,7 @@ public class LoadSizeAndColor {
             ResultSet rs1 = ps.executeQuery();
 
             while (rs1.next()){
-                result.add(new ProductColor(rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4)));
+                result.add(new ProductColor(rs1.getString(1), rs1.getString(2), rs1.getString(3)));
             }
 
             rs1.close();
@@ -51,6 +51,7 @@ public class LoadSizeAndColor {
     }
 
 
+    // laod tất cả size dựa trên mã sản phẩm
     public ArrayList<Size> loadSizeByIDProduct(String ma_sp){
         ArrayList<Size> result = new ArrayList<Size>();
 
@@ -83,13 +84,14 @@ public class LoadSizeAndColor {
         }
     }
 
+    // load màu dựa trên mã size
     public ArrayList<ProductColor> loadColorBySize(String ma_sp,String ma_zise){
         ArrayList<ProductColor> result = new ArrayList<ProductColor>();
         Connection con = null;
         try {
             con = DataSource.getInstance().getConnection();
 
-            String sqlcolor = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.hinh_anh_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ma_size = ? and tt.ton_tai = 1";
+            String sqlcolor = "SELECT DISTINCT m.ma_mau,m.ten_mau,m.link_hinh_anh  FROM thong_tin_chi_tiet_sp tt, mau m WHERE tt.ma_mau = m.ma_mau and tt.ma_sp = ? and tt.ma_size = ? and tt.ton_tai = 1";
 
             PreparedStatement ps = con.prepareStatement(sqlcolor);
 
@@ -99,7 +101,7 @@ public class LoadSizeAndColor {
             ResultSet rs1 = ps.executeQuery();
 
             while(rs1.next()){
-                result.add(new ProductColor(rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4)));
+                result.add(new ProductColor(rs1.getString(1), rs1.getString(2), rs1.getString(3)));
             }
             rs1.close();
             ps.close();
@@ -118,7 +120,8 @@ public class LoadSizeAndColor {
 
     public static void main(String[] args) {
         LoadSizeAndColor loadSizeAndColor = new LoadSizeAndColor();
-        System.out.println(loadSizeAndColor.loadColorBySize("sp_1","size_1"));
-        System.out.println(loadSizeAndColor.loadSizeByIDProduct("sp_1"));
+        System.out.println(loadSizeAndColor.loadColorBySize("sp_5","size_2"));
+       // System.out.println(loadSizeAndColor.loadSizeByIDProduct("sp_1"));
+       // System.out.println(loadSizeAndColor.laodColorByproduct("sp_1"));
     }
 }

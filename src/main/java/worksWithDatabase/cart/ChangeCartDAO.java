@@ -14,9 +14,9 @@ public class ChangeCartDAO {
 
     public Cart increaseCart(String ma_sp, String ma_kh, String ma_mau,String ma_size,String active) {
 
-        System.out.println(ma_sp);
-        System.out.println(ma_mau);
-        System.out.println(ma_size);
+//        System.out.println(ma_sp);
+//        System.out.println(ma_mau);
+//        System.out.println(ma_size);
 
 
         Connection con = null;
@@ -132,7 +132,7 @@ public class ChangeCartDAO {
                     "s.ma_size = tt.ma_size and \n" +
                     "tt.ton_tai = 1 and\n" +
                     "sp.ton_tai = 1 and\n" +
-                    "sp.trang_thai = 1 and\n" +
+                    "sp.trang_thai != 2 and\n" +
                     "gio.ma_kh = ? and gio.ma_mau = ? and gio.ma_sp = ? and gio.ma_size = ? " +
                     "GROUP BY gio.ma_sp, gio.ma_kh , gio.ma_mau,gio.ma_size";
 

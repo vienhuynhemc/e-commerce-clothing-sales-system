@@ -674,7 +674,7 @@ button:hover {
     width: 304px;
     z-index: 9999;
     overflow: hidden;
-    height: 275px;
+    height: 356px;
 }
 
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary:after,
@@ -6711,7 +6711,8 @@ span.fa.fa-cart-arrow-down {
     background-color: #232020;
     color: white;
     position: relative;
-    top: -116px;
+    top: -7px;
+    left: 1px;
 }
 
 .tinhtien:hover {
@@ -7039,11 +7040,12 @@ span.red {
 }
 ul#cart_hover_data {
     overflow: scroll;
-    height: 300px;
+    height: 243px;
     width: 299px;
     font-size: 18px;
     font-family: sans-serif;
     font-weight: bold;
+    overflow-x: hidden;
 }
 
 span.aa-cartbox-total-title {
@@ -7074,4 +7076,9 @@ img {
     letter-spacing: 0.5px;
     font-size: 15px;
     font-family: system-ui;
+}
+span#sumprice {
+    font-size: 20px;
+    position: relative;
+    left: 10px;
 }

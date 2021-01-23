@@ -34,7 +34,7 @@ public class LoadCartDAO {
                 "s.ma_size = tt.ma_size and \n" +
                 "tt.ton_tai = 1 and\n" +
                 "sp.ton_tai = 1 and\n" +
-                "sp.trang_thai = 1 and\n" +
+                "sp.trang_thai != 2 and\n" +
                 "gio.ma_kh = ? \n" +
                 "GROUP BY gio.ma_sp, gio.ma_kh , gio.ma_mau,gio.ma_size";
 

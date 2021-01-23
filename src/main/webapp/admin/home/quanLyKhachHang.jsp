@@ -575,10 +575,10 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         var type = $('#typeSelect').val();
         var search = $('#resultSearch').val();
         var orderBy = $('#checkSort').val();
-        console.log(page);
-        console.log(type);
-        console.log(search);
-        console.log(orderBy);
+        // console.log(page);
+        // console.log(type);
+        // console.log(search);
+        // console.log(orderBy);
 
         $.ajax({
             url: 'LoadAccountKH_AjaxController',
