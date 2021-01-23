@@ -248,9 +248,4 @@ public class ProductDetailInformationWorksWithDatabase {
 
     }
 
-    public static void main(String[] args) {
-        ProductAdminModel.getInstance().getListProductByAll("ten_mau","DESC","",0);
-    }
-
-
 }
