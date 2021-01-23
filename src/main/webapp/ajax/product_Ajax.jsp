@@ -27,7 +27,7 @@
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=1">
+                <a class="aa-product-img" href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(0).getMa_mau()%>&ma_size=<%=p.getListSize().get(0).getMa_size()%>&type=&page=1">
 
 
                     <!-------Load hình đầu tiên ------->

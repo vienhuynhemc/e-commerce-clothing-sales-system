@@ -9,18 +9,38 @@ public class Rate {
     private int numberStar;
     private int status;
     private DateTime dateCreated;
+    private String nameCustomer;
+    private String imgCustomer;
 
     public Rate(){
 
     }
 
-    public Rate(String idProduct, String idCustomer, String content, int numberStar, int status, DateTime dateCreated) {
+    public Rate(String idProduct, String idCustomer, String content, int numberStar, int status, DateTime dateCreated, String nameCustomer, String imgCustomer) {
         this.idProduct = idProduct;
         this.idCustomer = idCustomer;
         this.content = content;
         this.numberStar = numberStar;
         this.status = status;
         this.dateCreated = dateCreated;
+        this.nameCustomer = nameCustomer;
+        this.imgCustomer = imgCustomer;
+    }
+
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
+    }
+
+    public String getImgCustomer() {
+        return imgCustomer;
+    }
+
+    public void setImgCustomer(String imgCustomer) {
+        this.imgCustomer = imgCustomer;
     }
 
     public String getIdProduct() {
@@ -77,9 +97,11 @@ public class Rate {
                 "idProduct='" + idProduct + '\'' +
                 ", idCustomer='" + idCustomer + '\'' +
                 ", content='" + content + '\'' +
-                ", numberStart=" + numberStar +
+                ", numberStar=" + numberStar +
                 ", status=" + status +
                 ", dateCreated=" + dateCreated +
+                ", nameCustomer='" + nameCustomer + '\'' +
+                ", imgCustomer='" + imgCustomer + '\'' +
                 '}';
     }
 }
