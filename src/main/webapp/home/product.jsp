@@ -269,6 +269,9 @@
 
         </div>
     </div>
+
+    <!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
+
     <div id="addCartStatus" style="display:none; z-index: 100000;position: relative">
         <div class="changepassword" id="changepassword">
             <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
@@ -296,6 +299,7 @@
             </div>
         </div>
     </div>
+    <!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
 
 </section>
 <!-- / product category -->
@@ -375,7 +379,7 @@
                     so_luong:soluong
                 },
                 success:function (data){
-                    console.log(data);
+                    //console.log(data);
                      $('#changepasswordsuccess').html(data);
 
                      document.getElementById("addCartStatus").style.display = "block";
@@ -461,6 +465,11 @@
         $("#laymadm").prop("value","nocategory");
         $("#laysize").prop("value","nosize");
 
+        changeListProduct();
+    }
+    function changePage(event){
+        var page = $(event).attr("id");
+        document.getElementById("page").value = page;
         changeListProduct();
     }
 
@@ -674,11 +683,7 @@
             $("#soluongsp").prop("value",nn-1);
         }
     }
-    function changePage(event){
-        var page = $(event).attr("id");
-        document.getElementById("page").value = page;
-        changeListProduct();
-    }
+
 
 
 </script>

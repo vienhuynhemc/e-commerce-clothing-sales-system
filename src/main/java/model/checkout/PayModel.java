@@ -17,11 +17,11 @@ public class PayModel {
     }
 
 
-    public boolean pay(String ma_kh, String ghi_chu, String ma_gg, int trangthai, ArrayList<Cart> carts, String ma_tinh, String ma_huyen, String ma_xa){
+    public boolean pay(String ma_kh, String ghi_chu, String ma_gg, int trangthai, ArrayList<Cart> carts,double tongtien, String ma_tinh, String ma_huyen, String ma_xa){
 
     Pay pay = PaySource.getInstance().getPay();
 
-    boolean check = pay.pay(ma_kh,ghi_chu,ma_gg,trangthai,carts,ma_tinh,ma_huyen,ma_xa);
+    boolean check = pay.pay(ma_kh,ghi_chu,ma_gg,trangthai,carts,tongtien,ma_tinh,ma_huyen,ma_xa);
 
     PaySource.getInstance().releasePay(pay);
 

@@ -92,6 +92,7 @@
 
 <input type="hidden" name="" id="tongtiensp" value="<%= tong_gia + 70000 %>">
 <input type="hidden" name="" id="giohang" value="<%=carts%>">
+<input type="hidden" name="" id="tongtiensp2" value="<%= tong_gia + 70000 %>">
 
 <%  HttpSession session1 = request.getSession();
         session1.setAttribute("carts",carts);

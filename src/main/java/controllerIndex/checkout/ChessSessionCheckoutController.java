@@ -20,7 +20,7 @@ public class ChessSessionCheckoutController extends HttpServlet {
         if (session.getAttribute("user") != null){
             request.getRequestDispatcher("home/checkout.jsp").forward(request,response);
         }else{
-            request.getRequestDispatcher("home/login.jsp").forward(request,response);
+            request.getRequestDispatcher("dang-nhap").forward(request,response);
         }
     }
 }

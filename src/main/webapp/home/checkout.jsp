@@ -25,6 +25,7 @@
 <%--    <script src="js"></script>--%>
     <link rel="stylesheet" href="css/banner.css">
     <link rel="stylesheet" href="css/checkout2.css">
+    <link rel="stylesheet" href="css/hienthiform.css">
 
 
     <% AccountCustomer user = (AccountCustomer) session.getAttribute("user"); %>
@@ -93,7 +94,7 @@
                     <div class="inputitem">
                         <p>Tỉnh / thành</p>
                         <select name="" id="loadtinhthanh" onchange="loadDistric()">
-                            <option data-code="null" value="null" selected=""> Chọn tỉnh / thành</option>
+                            <option data-code="null" value="" selected=""> Chọn tỉnh / thành</option>
 
                         </select>
                     </div>
@@ -129,9 +130,9 @@
             <div class="phuongthucthanhtoan">
                 <p class="title">Phương thức thanh toán</p>
                 <div id="phuongthuctt">
-                    <input type="radio" id="rd1" name="tt" checked>
-                    <input type="radio" id="rd2" name="tt">
-                    <input type="radio" id="rd3" name="tt">
+                    <input type="radio" id="rd1" value="0" name="tt" checked>
+                    <input type="radio" id="rd2" value="1" name="tt">
+                    <input type="radio" id="rd3" value="1" name="tt">
                     <label for="rd1" class="lbtt1">
                         <div class="ptttdiv">
                             <img src="img/thanhtoan/tttructiep.png" alt="">
@@ -167,7 +168,7 @@
                 <a href="gio-hang" class="buttonpress">Trở về giỏ hàng</a>
 
                 <div>
-                    <a href="san_pham?type=nu">Trở về mua sắm</a>
+                    <a href="san-pham?type=nu">Trở về mua sắm</a>
                     <button type="button" class="buttonpress" onclick="pay()">Thanh toán</button>
                 </div>
             </div>
@@ -185,6 +186,43 @@
     </div>
 </div>
 <!--End main-->
+
+
+<!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
+
+<div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
+    <div class="changepassword" id="changepassword2">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword" style="height: 332px;">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess2">
+                <p> Vui lòng chọn đầy đủ thông tin để thực hiện chức năng thanh toán </p>
+                <button onclick="gobackpassword()">Trở về
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="addCartStatus" style="display:none; z-index: 100000;position: relative">
+    <div class="changepassword" id="changepassword">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess" style="margin-top: 55px;">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- form hiển thị thông báo nhập chưa đầy đủ thông tin-->
 
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
@@ -226,11 +264,11 @@
 
         var list = $("#loadquanhuyen").empty();
 
-        $("#loadquanhuyen").append("<option value=null selected> Chọn quận / huyện </option>");
+        $("#loadquanhuyen").append("<option value='' selected> Chọn quận / huyện </option>");
 
         var list = $("#loadphuongxa").empty();
 
-        $("#loadphuongxa").append("<option value=null selected> Chọn phường / xã </option>");
+        $("#loadphuongxa").append("<option value='' selected> Chọn phường / xã </option>");
 
         $.ajax({
             url: 'LoadDistricController',
@@ -257,7 +295,7 @@
 
         var list = $("#loadphuongxa").empty();
 
-        $("#loadphuongxa").append("<option value=null selected> Chọn phường / xã </option>");
+        $("#loadphuongxa").append("<option value='' selected> Chọn phường / xã </option>");
 
         $.ajax({
             url: 'LoadCommuneController',
@@ -313,6 +351,7 @@
                 var convert = data.toLocaleString('vi-VN');
 
                 $("#tongcong").text(convert + " VND");
+                $('#tongtiensp2').prop("value",data);
 
             },
             error:function () {
@@ -328,42 +367,64 @@
 
         var ma = $('#ma_gg').val();
         var ghi_chu = $('#ghichu_sp').val();
-        var trang_thai =  $("#phuongthuctt input[type = radio]").prop("checked",true);
+        var trang_thai =  $("#phuongthuctt input[type = radio]:checked").val();
 
         var ma_tinh = $("#loadtinhthanh").val();
         var ma_huyen = $("#loadquanhuyen").val();
         var ma_xa = $("#loadphuongxa").val();
 
-        console.log( ma);
-        console.log( ghi_chu);
-        console.log( trang_thai);
-        console.log( ma_tinh);
-        console.log( ma_huyen);
-        console.log( ma_xa);
+        var tong_tien = $('#tongtiensp2').val();
+
+        console.log(tong_tien);
 
 
-        $.ajax({
-            url:'PayController',
-            type:'get',
-            dataType:'json',
-            data:{
-                ma_gg:ma,
-                trang_thai:trang_thai,
-                ma_tinh:ma_tinh,
-                ma_huyen:ma_huyen,
-                ma_xa:ma_xa,
-                ghi_chu:ghi_chu
+        // console.log( ma);
+        // console.log( ghi_chu);
+        // console.log( trang_thai);
+        // console.log( ma_tinh);
+        // console.log( ma_huyen);
+        // console.log( ma_xa);
 
-            },
-            success:function (data){
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
 
-                alert("mua thanh cong");
+        if (ma_tinh == "" || ma_huyen == "" || ma_xa ==  "" ){
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+        }else{
 
-            },
-            error:function () {
-                alert(" mua that bai");
-            }
-        });
+            document.getElementById("addCartStatus").style.display = "none";
+            document.getElementById('changepassword').style.transform = 'scaleY(0)';
+            $.ajax({
+                url:'PayController',
+                type:'get',
+                dataType:'html',
+                data:{
+                    ma_gg:ma,
+                    trang_thai:trang_thai,
+                    ma_tinh:ma_tinh,
+                    ma_huyen:ma_huyen,
+                    ma_xa:ma_xa,
+                    ghi_chu:ghi_chu,
+                    tong_tien:tong_tien
+
+                },
+                success:function (data){
+                    $('#changepasswordsuccess').html(data);
+
+                    document.getElementById("addCartStatus").style.display = "block";
+                    document.getElementById('changepassword').style.transform = 'scaleY(1)';
+
+                },
+                error:function () {
+                    alert(" mua that bai");
+                }
+            });
+        }
+    }
+    function gobackpassword() {
+        document.getElementById('changepassword').style.transform = 'scaleY(0)';
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
     }
 
 </script>

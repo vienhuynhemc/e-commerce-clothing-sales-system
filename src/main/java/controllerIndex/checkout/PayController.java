@@ -42,17 +42,23 @@ public class PayController extends HttpServlet {
         String ma_huyen = request.getParameter("ma_huyen");
         String ma_xa = request.getParameter("ma_xa");
 
+        double tong_tien = Double.parseDouble(request.getParameter("tong_tien"));
+
         PayModel payModel = new PayModel();
 
-        boolean check = payModel.pay(ma_kh,ghi_chu,ma_gg,trang_thai,carts,ma_tinh,ma_huyen,ma_xa);
+        boolean check = payModel.pay(ma_kh,ghi_chu,ma_gg,trang_thai,carts,tong_tien,ma_tinh,ma_huyen,ma_xa);
 
-        String json = new Gson().toJson(check);
+        request.setAttribute("check",check);
 
-        System.out.println(json);
+        request.getRequestDispatcher("notifyCheckout/checkPay.jsp").forward(request,response);
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+       // String json = new Gson().toJson(check);
+
+        //System.out.println(json);
+
+//        response.setContentType("application/json");
+//        response.setCharacterEncoding("UTF-8");
+//        response.getWriter().write(json);
 
 
     }

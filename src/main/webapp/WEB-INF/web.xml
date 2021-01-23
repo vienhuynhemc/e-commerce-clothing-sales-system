@@ -60,6 +60,26 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>ChessSessionCheckoutController</servlet-name>
+        <servlet-class>controllerIndex.checkout.ChessSessionCheckoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChessSessionCheckoutController</servlet-name>
+        <url-pattern>/thanh-toan</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>PageLoginController</servlet-name>
+        <servlet-class>controllerIndex.loginUser.PageLoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PageLoginController</servlet-name>
+        <url-pattern>/dang-nhap</url-pattern>
+    </servlet-mapping>
+
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

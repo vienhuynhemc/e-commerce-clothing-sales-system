@@ -182,7 +182,7 @@
         <p><%=lang.get("11")%></p>
         <textarea name="" id="a" cols="30" rows="10"></textarea>
     </div>
-    <a href="ChessSessionCheckoutController" class="submit">
+    <a href="thanh-toan" class="submit">
         <%=lang.get("12")%>
     </a>
 

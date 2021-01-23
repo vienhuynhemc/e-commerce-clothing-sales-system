@@ -51,6 +51,7 @@ public class PromoPay {
                 }else if(code.getType().equals("1")){
                     result = giatien - code.getValue();
                 }else if (code.getType().equals("2")){
+
                     result = giatien - giatien*code.getValue()/100;
                 }else{
                     result = giatien;
@@ -70,7 +71,7 @@ public class PromoPay {
     public static void main(String[] args) {
         PromoPay promoPay = new PromoPay();
 
-        System.out.println(promoPay.priceAfter(200000,"33JDH32S"));
+        System.out.println(promoPay.priceAfter(200000,"P2UIDEK3J"));
 
     }
 

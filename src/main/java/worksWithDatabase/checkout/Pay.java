@@ -12,7 +12,7 @@ public class Pay {
     public Pay() {
     }
 
-    public boolean pay(String ma_kh, String ghi_chu, String ma_gg, int trangthai, ArrayList<Cart> carts, String ma_tinh,String ma_huyen,String ma_xa){
+    public boolean pay(String ma_kh, String ghi_chu, String ma_gg, int trangthai, ArrayList<Cart> carts,double tongtien, String ma_tinh,String ma_huyen,String ma_xa){
 
         Connection con = null;
         try {
@@ -25,6 +25,40 @@ public class Pay {
             String ma_dh = "donhang_" + ma_kh + n + n1;
 
             String sqldh = "";
+
+
+            // check thử 1 lượt coi còn số lượng trong kho k đã, nếu số lượng trong kho hết r` thì return false luôn;
+            for (Cart c: carts ) {
+
+                String slspcl = "Select so_luong_con_lai from thong_tin_chi_tiet_sp where ma_sp = ? and ma_mau = ? and ma_size = ? and ton_tai = 1";
+
+                PreparedStatement ps5 = con.prepareStatement(slspcl);
+                ps5.setString(1,c.getMa_sp());
+                ps5.setString(2,c.getMa_mau());
+                ps5.setString(3,c.getMa_size());
+
+                ResultSet rs5 = ps5.executeQuery();
+
+                int soluong = 0;
+                if(rs5.next()){
+                    soluong  = rs5.getInt(1);
+                    rs5.close();
+                    ps5.close();
+                }else{
+                   // System.out.println("ok2");
+                    // nếu sp đó k tồn tại (có thể admin xóa sp), thì false
+                    rs5.close();
+                    ps5.close();
+                    DataSource.getInstance().releaseConnection(con);
+                    return false;
+                }
+
+                if(soluong < c.getSo_luong()) {
+                    //System.out.println("ok3");
+                    DataSource.getInstance().releaseConnection(con);
+                    return false;
+                }
+            }
 
 
             // giảm số lượng sản phẩm xuống, làm cái này trc cho chắc cái đã, lỡ đâu đang tạo đơn hàng mà thằng khác mua thì toang
@@ -41,10 +75,12 @@ public class Pay {
                 ResultSet rs5 = ps5.executeQuery();
                 int soluong = 0;
                 if(rs5.next()){
+                   // System.out.println("ok1");
                    soluong  = rs5.getInt(1);
                     rs5.close();
                     ps5.close();
                 }else{
+                    //System.out.println("ok2");
                     // nếu sp đó k tồn tại (có thể admin xóa sp), thì false
                     rs5.close();
                     ps5.close();
@@ -54,9 +90,11 @@ public class Pay {
 
                 // nếu số lượng sp trong giỏ hàng mà nhỏ hơn số lượng mua ?
                 if(soluong < c.getSo_luong()){
+                   // System.out.println("ok3");
                     DataSource.getInstance().releaseConnection(con);
                     return false;
-                }else {
+                }else if (soluong >= c.getSo_luong()){
+                    //System.out.println("ok4");
                     // nếu nhỏ hơn thì có thể mua, update lại số lượng
                     String sqlupdate = "Update thong_tin_chi_tiet_sp set so_luong_con_lai = ? where ma_sp = ? and ma_mau = ? and ma_size = ?";
                     PreparedStatement ps6 = con.prepareStatement(sqlupdate);
@@ -70,6 +108,7 @@ public class Pay {
                         DataSource.getInstance().releaseConnection(con);
                         return false;
                     }
+
                 }
 
             }
@@ -80,7 +119,7 @@ public class Pay {
             // nếu thanh toán online coi như sản phẩm đã mua rồi, thì phải sét lại giá trị sản phẩm đã mua trong bản sản phâm
 
             if(trangthai == 1){
-                String soluonghientai = "select so_luong_ban_ra from san_pham where ma_sp = ? and trang_thai = 1 and ton_tai = 1";
+                String soluonghientai = "select so_luong_ban_ra from san_pham where ma_sp = ? and trang_thai != 2 and ton_tai = 1";
                 for ( Cart c: carts ) {
 
                     PreparedStatement ps8 = con.prepareStatement(soluonghientai);
@@ -119,11 +158,11 @@ public class Pay {
 
             // nếu trang thái vận chuyển là online thì thanh toán luôn
             if (trangthai == 1) {
-                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,70000,null,null,null,null,null,null,?,1,?,1)";
+                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,70000,null,null,null,null,null,null,?,1,?,1,?)";
 
             }else {
                 // nếu trạng thái vận chuyển là thanh toán khi nhận hàng
-                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, null,70000,null,null,null,null,null,null,?,0,?,0)";
+                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, null,70000,null,null,null,null,null,null,?,0,?,0,?)";
             }
 
                 PreparedStatement ps = con.prepareStatement(sqldh);
@@ -131,6 +170,7 @@ public class Pay {
                 ps.setString(2,ma_kh);
                 ps.setString(3,ghi_chu);
                 ps.setString(4,ma_gg);
+                ps.setInt(5,(int)tongtien);
 
                 int r1 = ps.executeUpdate();
                 ps.close();
@@ -152,6 +192,7 @@ public class Pay {
                             value += " (\"" + ma_dh +"\",\""+c.getMa_sp() + "\",\"" + c.getMa_mau() + "\",\"" +c.getMa_size() + "\"," + c.getSo_luong()+ ")";
                         }
 
+                        count++;
                     }
 //                    System.out.println(sqlct + value);
                     sm.executeUpdate(sqlct + value);
@@ -174,11 +215,58 @@ public class Pay {
                     return false;
                 }
 
+                // tiếp theo là check mã giảm giá
+
+            String sqlmm = "select * from ma_giam_gia where ma_nhap = ?";
+            PreparedStatement ps10 = con.prepareStatement(sqlmm);
+
+            ps10.setString(1,ma_gg);
+
+            ResultSet rs10 = ps10.executeQuery();
 
 
+            if (rs10.next()){
+
+                int solansd = rs10.getInt("so_lan_su_dung");
+                int solantoida = rs10.getInt("so_lan_su_dung_toi_da");
+
+                rs10.close();
+                ps10.close();
+
+                String sqlmgg1 = "update ma_giam_gia set so_lan_su_dung = ? where ma_nhap = ?";
+
+                if (solansd < solantoida){
+                    PreparedStatement ps11 = con.prepareStatement(sqlmgg1);
+                    ps11.setInt(1,solansd+1);
+                    ps11.setString(2,ma_gg);
+                    ps11.executeUpdate();
+                    ps11.close();
+                }
 
 
+            }
+            // tiếp theo là update lại tình trạng của sản phẩm
+            String upsp = "select sum(so_luong_con_lai) from thong_tin_chi_tiet_sp where ";
 
+            Statement sm1 = con.createStatement();
+
+            for (Cart c: carts) {
+
+                String up2 = "ma_sp = \"" +c.getMa_sp()+ "\" group by ma_sp";
+
+                ResultSet rs2 = sm1.executeQuery(upsp+up2);
+
+                rs2.next();
+                int soluongup = rs2.getInt(1);
+
+                // = 0 chứng tỏ hết hàng , thì set trang thái 2: hết hàng. để tránh ng khác zô mua nhầm
+                if(soluongup == 0){
+                    String sql = "update san_pham set trang_thai = 2 where ma_sp = ?";
+                        PreparedStatement ps12 = con.prepareStatement(sql);
+                        ps12.setString(1,c.getMa_sp());
+                        ps12.executeUpdate();
+                }
+            }
             DataSource.getInstance().releaseConnection(con);
             return true;
         } catch (SQLException throwables) {
@@ -191,12 +279,12 @@ public class Pay {
     public static void main(String[] args) {
         Pay pay = new Pay();
 
-        Cart c = new Cart("sp_1","KH001","mau_1","size_1","ads","ao thun đẹp","S","DO",2,20000,30000);
+        Cart c = new Cart("sp_1","KH001","mau_1","size_1","ads","ao thun đẹp","S","DO",1,20000,30000);
 
         ArrayList<Cart> carts = new ArrayList<>();
         carts.add(c);
 
-        System.out.println(pay.pay("KH001","Giao nhanh nha","KF12ADBVD",1,carts,"KHOD","dsd","sdDS"));
+        System.out.println(pay.pay("KH001","Giao nhanh nha","KF12ADBVD",1,carts,200000,"dsd","sdDS","KHI"));
 
     }
 }

@@ -50,7 +50,7 @@
                                 </li>
                                 <li class="hidden-xs iconRoundLenght"><a href="gio-hang"><%=lang.get("4")%>
                                     <span class="fa fa-shopping-cart"></span></a></li>
-                                <li class="hidden-xs iconRoundLenght"><a href="checkout.jsp"><%=lang.get("5")%>
+                                <li class="hidden-xs iconRoundLenght"><a href="thanh-toan"><%=lang.get("5")%>
                                     <span
                                             class="fa fa-credit-card"></span></a></li>
                                 <!-- <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
@@ -176,62 +176,10 @@
                                                     </a></li>
                                                 <li><a href="san-pham?type=Nam"><%=lang.get("7")%><span
                                                         class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="home/product.html"><%=lang.get("8")%> <span
-                                                                class="caret"></span></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="home/product.html"><%=lang.get("9")%>
-                                                                </a></li>
-                                                                <li><a href="home/product.html"><%=lang.get("10")%>
-                                                                </a></li>
-                                                                <li><a href="home/product.html"><%=lang.get("11")%>
-                                                                </a></li>
-                                                                <li><a href="home/product.html"><%=lang.get("12")%>
-                                                                </a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href=""><%=lang.get("13")%><span
-                                                                class="caret"></span></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="home/product.html"><%=lang.get("14")%>
-                                                                </a></li>
-                                                                <li><a href="home/product.html"><%=lang.get("15")%>
-                                                                </a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
                                                 </li>
                                                 <li><a href="san-pham?type=Nu">
                                                     <%=lang.get("16")%><span
                                                         class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="home/product2.html"><%=lang.get("17")%><span
-                                                                class="caret"></span></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="home/product2.html"><%=lang.get("9")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("10")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("11")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("12")%>
-                                                                </a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="home/product2.html"><%=lang.get("18")%><span
-                                                                class="caret"></span></a>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="home/product2.html"><%=lang.get("19")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("26")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("14")%>
-                                                                </a></li>
-                                                                <li><a href="home/product2.html"><%=lang.get("15")%>
-                                                                </a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
                                                 </li>
                                                 <li><a href="home/contact.html"><%=lang.get("21")%>
                                                 </a></li>
@@ -272,7 +220,7 @@
                                 </p>
 
                                 <a class="aa-cartbox-checkout aa-primary-btn tinhtien"
-                                   href="ChessSessionCheckoutController"><%=lang.get("28")%>
+                                   href="thanh-toan"><%=lang.get("28")%>
                                 </a>
                             </div>
                         </div>
