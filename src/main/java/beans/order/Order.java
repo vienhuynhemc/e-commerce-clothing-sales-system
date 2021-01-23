@@ -2,6 +2,8 @@ package beans.order;
 
 import beans.DateTime;
 
+import java.util.ArrayList;
+
 public class Order {
 
     private String ma_don_hang;
@@ -35,6 +37,13 @@ public class Order {
     private int trang_thai_thanh_toan;
 
     private int tong_tien;
+
+
+
+    private ArrayList<DetailOrder> listDetail = new ArrayList<DetailOrder>();
+
+    public Order() {
+    }
 
     public Order(String ma_don_hang, String ma_khach_hang, DateTime ngay_tao, DateTime ngay_giao_hang, double phi_van_chuyen, DateTime ngay_admin_duyet, DateTime ngay_nvk_duyet, DateTime ngay_nvvc_duyet, String ma_nvk, String ma_nvvc, String ma_admin, String ghi_chu, int trang_thai_van_chuyen, String ma_giam_gia, int trang_thai_thanh_toan, int tong_tien) {
         this.ma_don_hang = ma_don_hang;
@@ -175,11 +184,41 @@ public class Order {
         this.trang_thai_thanh_toan = trang_thai_thanh_toan;
     }
 
+    public ArrayList<DetailOrder> getListDetail() {
+        return listDetail;
+    }
+
+    public void setListDetail(ArrayList<DetailOrder> listDetail) {
+        this.listDetail = listDetail;
+    }
+
     public int getTong_tien() {
         return tong_tien;
     }
 
     public void setTong_tien(int tong_tien) {
         this.tong_tien = tong_tien;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "ma_don_hang='" + ma_don_hang + '\'' +
+                ", ma_khach_hang='" + ma_khach_hang + '\'' +
+                ", ngay_tao=" + ngay_tao +
+                ", ngay_giao_hang=" + ngay_giao_hang +
+                ", phi_van_chuyen=" + phi_van_chuyen +
+                ", ngay_admin_duyet=" + ngay_admin_duyet +
+                ", ngay_nvk_duyet=" + ngay_nvk_duyet +
+                ", ngay_nvvc_duyet=" + ngay_nvvc_duyet +
+                ", ma_nvk='" + ma_nvk + '\'' +
+                ", ma_nvvc='" + ma_nvvc + '\'' +
+                ", ma_admin='" + ma_admin + '\'' +
+                ", ghi_chu='" + ghi_chu + '\'' +
+                ", trang_thai_van_chuyen=" + trang_thai_van_chuyen +
+                ", ma_giam_gia='" + ma_giam_gia + '\'' +
+                ", trang_thai_thanh_toan=" + trang_thai_thanh_toan +
+                ", tong_tien=" + tong_tien +
+                '}';
     }
 }

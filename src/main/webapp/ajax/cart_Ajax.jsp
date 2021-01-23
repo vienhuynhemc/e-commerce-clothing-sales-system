@@ -178,10 +178,10 @@
         </div>
     </div>
     <div class="linecr"></div>
-    <div class="note">
-        <p><%=lang.get("11")%></p>
-        <textarea name="" id="a" cols="30" rows="10"></textarea>
-    </div>
+<%--    <div class="note">--%>
+<%--        <p><%=lang.get("11")%></p>--%>
+<%--        <textarea name="" id="a" cols="30" rows="10"></textarea>--%>
+<%--    </div>--%>
     <a href="thanh-toan" class="submit">
         <%=lang.get("12")%>
     </a>

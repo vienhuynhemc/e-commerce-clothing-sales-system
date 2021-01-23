@@ -174,12 +174,10 @@
 
                                                     ><%=lang.get("6")%>
                                                     </a></li>
-                                                <li><a href="san-pham?type=Nam"><%=lang.get("7")%><span
-                                                        class="caret"></span></a>
+                                                <li><a href="san-pham?type=Nam"><%=lang.get("7")%></a>
                                                 </li>
                                                 <li><a href="san-pham?type=Nu">
-                                                    <%=lang.get("16")%><span
-                                                        class="caret"></span></a>
+                                                    <%=lang.get("16")%></a>
                                                 </li>
                                                 <li><a href="home/contact.html"><%=lang.get("21")%>
                                                 </a></li>

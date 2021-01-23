@@ -97,13 +97,13 @@
                     <div class="form">
                         <div class="tk">
                             <p class="titletk"><%=lang.get("4")%></p>
-                            <input name="userName" value="${param["userName"]}" type="text" placeholder="&#xf2bd;    <%=lang.get("5")%>"
-                                   style="font-family:Arial, FontAwesome">
+                            <input name="userName" id="nhaptk" title="Tài khoản không được bỏ trống"  value="${param["userName"]}" type="text" placeholder="&#xf2bd;    <%=lang.get("5")%>"
+                                   style="font-family:Arial, FontAwesome" autofocus>
                             <div class="lineinput1"></div>
                         </div>
                         <div class="mk">
                             <p class="titletk"><%=lang.get("6")%></p>
-                            <input name="passWord" type="password" placeholder="&#xf13e;     <%=lang.get("7")%>"
+                            <input name="passWord" id="nhappass" type="password"  title="Mật khẩu phải trên 6 kí tự" placeholder="&#xf13e;     <%=lang.get("7")%>"
                                    style="font-family:Arial, FontAwesome">
                             <button class="eye"><i class="fa fa-eye-slash"></i></button>
                             <div class="lineinput2"></div>
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="divsubmit">
-                            <button type="submit" onclick="toAccount()"><%=lang.get("10")%></button>
+                            <button type="submit"><%=lang.get("10")%></button>
                             <button type="button" onclick="dangky()"><%=lang.get("11")%></button>
                         </div>
 
@@ -215,6 +215,9 @@
 
                     </div>
                 </form>
+
+
+
 
 
                 <%
@@ -427,3 +430,19 @@
 <script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
 <script src="js/custom.js"></script>
+
+
+<script>
+
+
+    // var tentk = document.getElementById("nhaptk");
+    // tentk.oninvalid = function(event) {
+    //     event.target.setCustomValidity('Nhập tài khoản của bạn');
+    // }
+    //
+    // var matkhau = document.getElementById("nhappass");
+    // matkhau.oninvalid = function(event) {
+    //     event.target.setCustomValidity('Nhập mật khẩu của bạn, mật khẩu phải trên 6 kí tự');
+    // }
+
+</script>

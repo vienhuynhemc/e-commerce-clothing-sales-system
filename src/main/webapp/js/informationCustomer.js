@@ -79,21 +79,21 @@ function checkSlide() {
     }
 }
 
-setInterval(() => {
-    checkSlide();
-    if (!slide) {
-        slide = true;
-        let step = 33 * countImg - 100;
-        if (countImg > 1) {
-            if (now >= step) {
-                now = 0;
-            } else {
-                now += 33;
-            }
-        }
-        document.getElementById('listhinh').style.left = `-${now}%`;
-    }
-}, 2000);
+// setInterval(() => {
+//     checkSlide();
+//     if (!slide) {
+//         slide = true;
+//         let step = 33 * countImg - 100;
+//         if (countImg > 1) {
+//             if (now >= step) {
+//                 now = 0;
+//             } else {
+//                 now += 33;
+//             }
+//         }
+//         document.getElementById('listhinh').style.left = `-${now}%`;
+//     }
+// }, 2000);
 
 function trangthai() {
     document.getElementById('leftaccount').style.height = '1225px';
@@ -106,6 +106,9 @@ function trangthai() {
 }
 
 function lichsumua() {
+
+    loadHistory();
+
     document.getElementById('leftaccount').style.height = '940px';
     document.getElementById('rightaccount').style.height = '720px';
     document.getElementById('contentaccount').style.height = '1040px';
@@ -121,6 +124,7 @@ function trovetaikhoan() {
 }
 
 function xemchitiet() {
+    loadDetailByID();
     document.getElementById('inforcart').style.transform = 'scaleY(1)';
 }
 

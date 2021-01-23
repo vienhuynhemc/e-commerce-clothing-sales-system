@@ -17,7 +17,13 @@ public class ErrorLogin {
         if (status.equals("error3")){
             return "Sai mật khẩu";
         }
-        else {
+        if (status.equals("error4")){
+            return "Vui lòng nhập tài khoản";
+        }
+        if (status.equals("error5")){
+            return "Vui lòng nhập mật khẩu";
+        }
+        else  {
             return "Đăng nhập thành công";
         }
 
@@ -31,6 +37,12 @@ public class ErrorLogin {
         }
         if(status.equals("error3")) {
             return "Có vẻ như bạn nhầm lẫn gì đó về mật khẩu, vui lòng nhập lại mật khẩu, hoặc lấy lại mật khẩu đã quên";
+        }
+        if(status.equals("error4")) {
+            return "Tài khoản không được để trống";
+        }
+        if(status.equals("error5")) {
+            return "Mật khẩu không được để trống";
         }
         else{
             return "Chúc mừng bạn đã đăng nhập thành công, Chào mừng bạn đã đến với TVTShop chúng tôi, Chúng tôi luôn giành những điều tốt đẹp nhất đến với bạn, hãy thỏa sức mua sắm nhé";

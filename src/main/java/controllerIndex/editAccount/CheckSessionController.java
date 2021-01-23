@@ -1,4 +1,4 @@
-package controllerIndex.loginUser;
+package controllerIndex.editAccount;
 
 import javax.mail.Session;
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class CheckSessionController extends HttpServlet {
         if (session.getAttribute("user") != null){
             request.getRequestDispatcher("home/changeInforCustomer.jsp").forward(request,response);
         }else{
-            request.getRequestDispatcher("dang-nhap").forward(request,response);
+            response.sendRedirect("dang-nhap");
         }
 
     }

@@ -23,7 +23,6 @@ public class MD5 {
     }
 
     public static void main(String[] args) {
-
-        System.out.println(MD5.md5("khso1"));
+        System.out.println(MD5.md5("admin5"));
     }
 }

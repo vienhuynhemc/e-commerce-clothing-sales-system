@@ -21,6 +21,18 @@ public class LoginUserModel {
 
         LoginUserDAO loginUserDAO = LoginUserSource.getInstance().getAccount();
 
+        if (userName.equals("")){
+            status = "error4";
+            LoginUserSource.getInstance().releaseLoginAccount(loginUserDAO);
+            return null;
+        }
+
+        if (passWord.equals("")){
+            status = "error5";
+            LoginUserSource.getInstance().releaseLoginAccount(loginUserDAO);
+            return null;
+        }
+
         if(!loginUserDAO.isUserInDatabase(userName)){
             status = "error1";
             LoginUserSource.getInstance().releaseLoginAccount(loginUserDAO);
@@ -34,6 +46,7 @@ public class LoginUserModel {
         }
 
         AccountCustomer accountCustomer = loginUserDAO.checkLogin(userName,passWord);
+
         if (accountCustomer == null){
             status = "error3";
             LoginUserSource.getInstance().releaseLoginAccount(loginUserDAO);

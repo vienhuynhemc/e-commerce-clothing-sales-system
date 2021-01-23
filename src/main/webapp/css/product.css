@@ -6176,6 +6176,9 @@ ul.aa-catg-nav li {
     background-color: transparent;
     outline: none;
 }
+.pagination li button:hover{
+    background-color:#ff7315 !important;
+}
 
 .none {
     box-shadow: none !important;
