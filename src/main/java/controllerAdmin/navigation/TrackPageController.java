@@ -37,6 +37,9 @@ public class TrackPageController extends HttpServlet {
             }else if(trackPage.equals("admin.thongTinTaiKhoanNVGH")){
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/thongTinTaiKhoanNVGH.jsp");
+            }else if(trackPage.equals("admin.quanLySanPham")){
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/quanLySanPham.jsp");
             }
         } else {
             response.sendRedirect("AdminIndexNavigation");

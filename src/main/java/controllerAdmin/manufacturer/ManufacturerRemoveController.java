@@ -69,6 +69,7 @@ public class ManufacturerRemoveController extends HttpServlet {
                     request.setAttribute("more", "Không xóa được hãng nào hết vì nó không tồn tại");
                     request.setAttribute("more2", "Dữ liệu không có gì thay đổi");
                 } else {
+                    PersonalNoticeModel.getInstance().addNewPersonalNoticeToDatabase(userAdmin.getAccount().getId(), "Bạn", "vừa xóa", row+" sản phẩm" ,"","");
                     request.setAttribute("more", "Bạn đã xóa thành công " + row + " hãng sản xuất");
                     request.setAttribute("more2", "Việc xóa đã thay đổi dữ liệu của bạn");
                 }

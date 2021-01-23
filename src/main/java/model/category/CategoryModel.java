@@ -2,6 +2,7 @@ package model.category;
 
 import beans.category.Category;
 
+import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 import worksWithDatabase.category.CategoryDataSource;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryModel {
     private static CategoryModel categoryModel;
@@ -50,6 +52,15 @@ public class CategoryModel {
         CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryDAO);
 
         return false;
+    }
+
+    //  Phuơng thức nhận vô list product admin, điền tên danh mục cho nó
+    public void fillNameForProductAdmin(List<ProductAdmin> products){
+
+        CategoryWorksWithDatabase categoryWorksWithDatabase = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        categoryWorksWithDatabase.fillNameForProductAdmin(products);
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
+
     }
 
 

@@ -1,6 +1,16 @@
-<%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.productAdmin.ProductAdminObject" %>
+<%@ page import="beans.nextPage.NextPageObject" %>
+<%@ page import="java.util.List" %>
+<%@ page import="beans.nextPage.NextPageConfiguration" %>
+<%@ page import="beans.productAdmin.ProductAdmin" %>
+<%@ page import="beans.productAdmin.ProductAdminColor" %>
+<%@ page import="beans.productAdmin.ProductAdminSize" %>
+<%@ page import="model.informationAccountAdmin.InformationAccountAdminModel" %>
+<%@ page import="model.salary.SalaryModel" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
     Settings | File Templates. --%>
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
@@ -19,20 +29,88 @@
 
 <body>
 
+<%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if (request.getSession().getAttribute("userAdmin") == null) {
+
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage", "admin.quanLySanPham");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    } else {
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if (accountStaffAdmin.accept("admin.quanLySanPham")) {
+
+            ProductAdminObject productAdminObject = (ProductAdminObject) userAdmin.getListOfFunction().get("productAdminObject");
+            if (productAdminObject == null || !productAdminObject.isReady()) {
+                response.sendRedirect("../../ProductController");
+            } else {
+%>
+
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------- Form yes no ------------------------------------------------->
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (productAdminObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        productAdminObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=productAdminObject.getTitle()%>
+            </p>
+            <p><%=productAdminObject.getContent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!------------------------------------------------------------------------------------------------------------------->
+
 <div id="taomaumoi">
     <div onclick="taomauxong()"></div>
     <div class="divmau">
         <div>
-            <input id="sm" type="file" style="display:none;" onchange="loadIMGMau(event)" />
+            <input id="sm" type="file" style="display:none;" onchange="loadIMGMau(event)"/>
             <div>
-                <img id="psm" src="img/den.webp" alt="">
+                <img id="psm" src="../img/RYB.png" alt="">
             </div>
             <button onclick="document.getElementById('sm').click()">Chọn màu</button>
         </div>
         <div>
             <div class="div12inputlv2">
                 <div>
-                    <label >Tên màu</label>
+                    <label>Tên màu</label>
                 </div>
                 <input type="text" placeholder="Nhập tên màu ở đây">
             </div>
@@ -42,342 +120,169 @@
     </div>
 </div>
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="thuNhap.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-money"></i>
-                    <p>Thu nhập</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <p>Quản lý tài khoản</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="quanLyNVGH.html"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="quanLyNVK.html"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="quanLyKhachHang.html"><i class="fa fa-users"></i>Khách hàng</a>
-                    </li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-comment-o"></i>
-                    <p>Quản lý đánh giá</p>
-                </div>
-            </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-object-group"></i>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a>
-                    </li>
-                    <li><a href="quanLyHangSanXuat.html"><i class="fa fa-viadeo-square"></i>Hãng sản xuất</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;" checked>
-            </div>
-            <a href="quanLyMaGiamGia.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-balance-scale"></i>
-                    <p>Mã giảm giá</p>
-                </div>
-            </a>
-            <div class="indexleftselectitemlv2" onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-wpforms"></i>
-                        <p>Quản lý sản phẩm</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li class="activelv2"><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản
-                        phẩm</a></li>
-                    <li><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
-                        mục</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;" checked>
-            </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
-                <div class="indexleftselectitem">
-                    <div>
-                        <i class="fa fa-envelope-o"></i>
-                        <p>Liên hệ</p>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-                <ul>
-                    <li><a href="guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
-                </ul>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a href="thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+<jsp:include page="../share/_LayoutLeft.jsp">
+    <jsp:param name="activeSelect" value="quanLySanPham"/>
+</jsp:include>
 
 <div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar7.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
-                    <p>Admin</p>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="backgroundindexmain">
-    </div>
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Admin"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
-        <div id="div2">
+        <div id="div2"
+        <% if(productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don() || productAdminObject.isIs_them_moi()){ %>
+                style="display: none;"
+        <%  } %>
+        >
             <div>
-                <div class="header">
+                <form class="header" method="post" action="../../ProductController" id="mainForm"
+                      onsubmit="return false">
                     <div class="leftheader">
-                        <select name="">
-                            <option value="" selected>Ngày tạo</option>
-                            <option value="">Tên danh mục</option>
-                            <option value="">Mã sản phẩm</option>
-                            <option value="">Tên sản phẩm</option>
-                            <option value="">Số lượng còn lại</option>
-                            <option value="">Giá</option>
-                            <option value="">Màu</option>
-                            <option value="">Size</option>
+                        <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
+
+                            <% String selectSearchAndSort = productAdminObject.getSelectSearchAndSort(); %>
+
+                            <option value="sp.ngay_tao" selected
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("sp.ngay_tao")) {%>
+                                    selected
+                                    <%}%>
+                            >Ngày tạo
+                            </option>
+                            <option value="ten_dm"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ten_dm")) {%>
+                                    selected
+                                    <%}%>
+                            >Tên danh mục
+                            </option>
+                            <option value="ten_sp"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ten_sp")) {%>
+                                    selected
+                                    <%}%>
+                            >Tên sản phẩm
+                            </option>
+                            <option value="so_luong_con_lai"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("so_luong_con_lai")) {%>
+                                    selected
+                                    <%}%>
+                            >Số lượng còn lại
+                            </option>
+                            <option value="(SELECT s.gia_sp FROM gia_sp s WHERE s.ma_sp = t.ma_sp ORDER BY s.ngay_cap_nhat DESC LIMIT 0,1)"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("(SELECT s.gia_sp FROM gia_sp s WHERE s.ma_sp = t.ma_sp ORDER BY s.ngay_cap_nhat DESC LIMIT 0,1)")) {%>
+                                    selected
+                                    <%}%>
+                            >Giá
+                            </option>
+                            <option value="ten_mau"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ten_mau")) {%>
+                                    selected
+                                    <%}%>
+                            >Màu
+                            </option>
+                            <option value="ten_size"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ten_size")) {%>
+                                    selected
+                                    <%}%>
+                            >Size
+                            </option>
+                            <option value="ma_sp"
+                                    <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ma_sp")) {%>
+                                    selected
+                                    <%}%>
+                            >Mã sản phẩm
+                            </option>
                         </select>
                         <div>
-                            <div class="leftheadersort" onclick="changesort2(this)">
+                            <% String sort = productAdminObject.getSort(); %>
+
+                            <% if (sort.equals("DESC")) {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
                                 <i class=" fa fa-sort-amount-desc"></i>
-                                <i class=" fa fa-sort-amount-asc"></i>
-                                <input type="checkbox" style="display: none;">
                             </div>
+                            <%} else {%>
+                            <div class="leftheadersort" id="leftheadersort" onclick="changesort()"
+                                 style="margin-top:4px">
+                                <i class=" fa fa-sort-amount-asc" style="margin-top: -10px"></i>
+                            </div>
+                            <%}%>
+
                             <div class="leftheadersearch">
-                                <i class="fa fa-search" onclick="showsearch2(this)"></i>
                                 <div>
-                                    <i class="fa fa-search" onclick="hiddensearch2(this)"></i>
-                                    <input type="text" placeholder="Tìm kiếm">
+                                    <i class="fa fa-search" onclick="searchByClick()"></i>
+                                    <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
+                                           value="<%=productAdminObject.getSearch()%>">
+                                    <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="leftnextpage">
-                        <p>Hiển thị <strong> 10 </strong> trên tổng 98 sản pẩm</p>
-                        <button><i class="fa fa-caret-left"></i></button>
+                    <div class="leftnextpage" id="leftnextpage">
+                        <p>Hiển thị <strong><%= productAdminObject.getNumberOfShow() %>
+                        </strong> trên tổng <%=productAdminObject.getMaximumProduct()%> sản phẩm</p>
+                        <span onclick="prePage(<%=productAdminObject.getNowPage()%>)"><i
+                                class="fa fa-caret-left"></i></span>
                         <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li class="none">...</li>
-                            <li>9</li>
+
+                            <%
+                                //  Lấy list next page đổ next page ra
+                                List<NextPageObject> nextPages = productAdminObject.getNextPages();
+                                for (NextPageObject n : nextPages) {
+                            %>
+                            <li
+                                    <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
+                                    class="activeli"
+                                    <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
+                                    class="none"
+                                    <%} else {%>
+                                    onclick="pageNavigation(<%=n.getValue()%>)"
+                                    <%}%>
+                            >
+                                <%if(n.getType() == NextPageConfiguration.NONE){%>
+                                <p onclick="showselectgopage(this)"><%=n.getValue()%></p>
+                                <%}else{%>
+                                <%=n.getValue()%>
+                                <%}%>
+                                <div class="gopage">
+                                    <input type="checkbox" style="display: none;">
+                                    <input type="text">
+                                    <i class="fa fa-angle-right" onclick="gopagefast(this)"></i>
+                                </div>
+
+                            </li>
+                            <%
+                                    //  Kết thúc đổ next page
+                                }
+                            %>
                         </ul>
-                        <button><i class="fa fa-caret-right"></i></button>
+                        <span onclick="nextPage(<%=productAdminObject.getNowPage()%>,<%=productAdminObject.getMaximumPage()%>)"><i
+                                class="fa fa-caret-right"></i></span>
+                        <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
+                               value="<%=productAdminObject.getNowPage()%>">
+                        <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
+                               value="<%=productAdminObject.getMaximumPage()%>">
                     </div>
-                    <button onclick="themsanphammoi()"><i class="fa fa-plus"></i>Thêm sản phẩm mới</button>
-                    <button onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã
-                        chọn</button>
-                </div>
+                    <span onclick="themsanphammoi()"><i class="fa fa-plus"></i>Thêm sản phẩm mới</span>
+                    <span onclick="xoacacmuadachon()"><i class="fa fa-trash-o"></i>Xóa các mục đã
+                        chọn
+                    </span>
+
+                    <!-- action -->
+                    <input type="text" name="action" style="display: none" id="action" value="">
+
+                    <!-- sort -->
+                    <% if (sort.equals("DESC")) {%>
+                    <input type="checkbox" style="display: none" name="sort" id="sort">
+                    <% } else {%>
+                    <input type="checkbox" style="display: none" name="sort" id="sort" checked>
+                    <%}%>
+
+                </form>
                 <div class="maindiv2" id="maindiv2">
                     <div class="maindiv2header">
                         <button onclick="allselect()">+</button>
+                        <p>Mã SP</p>
                         <p>Tên sản phẩm</p>
                         <p>Tên danh mục</p>
                         <p>Size</p>
@@ -387,43 +292,54 @@
                         <p>Ngày tạo</p>
                     </div>
 
+                    <%
+                        List<ProductAdmin> productAdmins = productAdminObject.getProducts();
+                        for(ProductAdmin productAdmin : productAdmins){
+                            for(ProductAdminColor productAdminColor : productAdmin.getDanh_sach_mau()){
+                            for(ProductAdminSize productAdminSize : productAdminColor.getDanh_sach_size()){
+                    %>
+
                     <div class="item">
                         <label for="c1">
                             <input type="checkbox" name="" id="c1">
+                            <input type="text" value="<%=productAdmin.getMa_sp()%>" style="display: none">
+                            <input type="text" value="<%=productAdminColor.getMa_mau()%>" style="display: none">
+                            <input type="text" value="<%=productAdminSize.getId()%>" style="display: none">
                         </label>
 
                         <div class="itemhdd">
-                            <img src="../../img/product/dp1.webp" alt="">
+                            <img src="<%=productAdminColor.getLink_hinh_anh().get(0)%>" alt="">
                         </div>
 
                         <p class="itemname">
-                            Quần Jeans Nữ Tưa Lai Túi Lệch WJL 4011
+                            <span>#<%=productAdmin.getMa_sp()%></span>
+                            <%=productAdmin.getTen_sp()%>
                         </p>
 
                         <p class="itemtdm">
-                            Quần jean
+                            <%=productAdmin.getDanh_muc().getName()%>
                         </p>
 
                         <div class="itemsize">
                             <div>
-                                <p>S</p>
+                                <p><%=productAdminSize.getName()%></p>
                             </div>
                         </div>
 
                         <div class="itemsize">
                             <div>
-                                <img src="../../img/product/damxanh.webp" alt="">
+                                <img src="<%=productAdminColor.getHinh_anh_mau()%>" alt="">
                             </div>
                         </div>
 
                         <p class="itemgia">
-                            319,000 VND
+                          <%=SalaryModel.getInstance().coverSalaryToString(productAdmin.getGia_sp())%>
                         </p>
 
-                        <p class="itemsol">38</p>
+                        <p class="itemsol"><%=productAdminSize.getSo_luong_con_lai()%></p>
 
                         <p class="itemngaytao">
-                            20 Tháng Mưới 2020
+                           <%=productAdmin.getNgay_tao().toStringDateTypeNumberStringNumber()%>
                         </p>
 
 
@@ -434,41 +350,75 @@
                             <i class="fa fa-circle"></i>
                             <div>
                                 <button onclick="editkhachhang(this)"><i class="fa fa-pencil"></i>Sửa</button>
-                                <button onclick="editkhachhang(this)"><i class="fa fa-plus"></i>Thêm</button>
+                                <button onclick="editkhachhangDa(this)"><i class="fa fa-plus"></i>Thêm</button>
                                 <button onclick="removekhachhang(this)"><i class="fa fa-trash"></i>Xóa</button>
+                                <input type="text" value="<%=productAdmin.getMa_sp()%>" style="display: none">
+                                <input type="text" value="<%=productAdminColor.getMa_mau()%>" style="display: none">
+                                <input type="text" value="<%=productAdminSize.getId()%>" style="display: none">
+                                <input type="text" value="<%=productAdminColor.getTen_mau()%>" style="display: none">
+                                <input type="text" value="<%=productAdminSize.getName()%>" style="display: none">
                             </div>
                         </div>
 
                     </div>
 
+                    <%
+                                }
+                            }
+                        }
+                    %>
 
                 </div>
             </div>
         </div>
 
-        <div id="div1">
+        <div id="div1"
+                <% if( productAdminObject.isIs_them_moi()){ %>
+
+                <%  }else{ %>
+             style="display: none;"
+                <%}%>
+        >
             <div>
                 <div class="div11">
                     <h3>Thông tin sản phẩm</h3>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Tên sản phẩm</label>
+                            <label>Tên sản phẩm</label>
                         </div>
                         <input type="text" placeholder="Nhập tên sản phẩm ở đây">
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Hãng sản xuất</label>
+                            <label>Giá</label>
+                        </div>
+                        <input type="number" placeholder="Nhập giá sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Giá khuyến mãi</label>
+                        </div>
+                        <input type="text" placeholder="Nhập giá khuyến mãi sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Giá nhập</label>
+                        </div>
+                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Hãng sản xuất</label>
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
-                        <select name="" >
+                        <select name="">
                             <option value="" selected>Chọn hãng sản xuất</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Danh mục</label>
+                            <label>Danh mục</label>
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
                         <select name="">
@@ -583,7 +533,8 @@
                         <div>
                             <label style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themGioiThieu()"> <i class="fa fa-plus"></i>Thêm giới thiệu</span>
+                        <span class="buttonthemmau" onclick="themGioiThieu()"> <i
+                                class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu" id="listGioiThieu">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập giới thiệu ở đây">
@@ -594,9 +545,10 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label  style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themCauTao()"> <i class="fa fa-plus"></i>Thêm cấu tạo</span>
+                        <span class="buttonthemmau" onclick="themCauTao()"> <i
+                                class="fa fa-plus"></i>Thêm cấu tạo</span>
                         <div class="listGioiThieu" id="listCauTao">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập cấu tạo ở đây">
@@ -609,7 +561,8 @@
                         <div>
                             <label style="margin-bottom: 10px;">Thông tin sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themThongTin()"> <i class="fa fa-plus"></i>Thêm thông tin</span>
+                        <span class="buttonthemmau" onclick="themThongTin()"> <i
+                                class="fa fa-plus"></i>Thêm thông tin</span>
                         <div class="listGioiThieu" id="listThongTin">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập thông tin ở đây">
@@ -624,16 +577,16 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Loại sản phẩm</label>
+                            <label>Loại sản phẩm</label>
                         </div>
-                        <select name="" >
+                        <select name="">
                             <option value="img/den.webp" selected>Áo</option>
                             <option value="">Quần</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Size</label>
+                            <label>Size</label>
                         </div>
                         <select name="">
                             <option value="S" selected>S</option>
@@ -662,39 +615,69 @@
             </div>
         </div>
 
-        <div id="div3" class="hidden">
-            <div>
+        <div id="div3"
+
+                <% if(productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don()){ %>
+                <%  }else {%>
+             style="display: none;"
+                <%}%>
+
+        >
+            <div
+                    <% if(productAdminObject.isIs_sua_da()){ %>
+                    <%  }else {%>
+                    style="display: none;"
+                    <%}%>
+            >
                 <div class="div11">
                     <h3>Thông tin sản phẩm</h3>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Tên sản phẩm</label>
+                            <label>Tên sản phẩm</label>
                         </div>
                         <input type="text" placeholder="Nhập tên sản phẩm ở đây">
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Hãng sản xuất</label>
+                            <label>Giá</label>
+                        </div>
+                        <input type="number" placeholder="Nhập giá sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Giá khuyến mãi</label>
+                        </div>
+                        <input type="text" placeholder="Nhập giá khuyến mãi sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Giá nhập</label>
+                        </div>
+                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây">
+                    </div>
+                    <div class="div12inputlv2">
+                        <div>
+                            <label>Hãng sản xuất</label>
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
-                        <select name="" >
+                        <select name="">
                             <option value="" selected>Chọn hãng sản xuất</option>
                         </select>
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Danh mục</label>
+                            <label>Danh mục</label>
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
-                        <select name="" >
+                        <select name="">
                             <option value="" selected>Chọn danh mục</option>
                         </select>
                     </div>
                     <div class="gioitinh">
                         <h3>Giới tính</h3>
                         <div>
-                            <span class="activebutton"  onclick="nam2()">Nam</span>
+                            <span class="activebutton" onclick="nam2()">Nam</span>
                             <span onclick="nu2()">Nữ</span>
                         </div>
                     </div>
@@ -710,7 +693,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Size</label>
+                            <label>Size</label>
                         </div>
                         <select name="" id="valuemau">
                             <option value="img/den.webp" selected>Đen</option>
@@ -797,9 +780,10 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label  style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Giới thiệu sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themGioiThieu2()"> <i class="fa fa-plus"></i>Thêm giới thiệu</span>
+                        <span class="buttonthemmau" onclick="themGioiThieu2()"> <i
+                                class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập giới thiệu ở đây">
@@ -810,9 +794,10 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label  style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Cấu tạo sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themCauTao2()"> <i class="fa fa-plus"></i>Thêm cấu tạo</span>
+                        <span class="buttonthemmau" onclick="themCauTao2()"> <i
+                                class="fa fa-plus"></i>Thêm cấu tạo</span>
                         <div class="listGioiThieu">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập cấu tạo ở đây">
@@ -823,9 +808,10 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label  style="margin-bottom: 10px;">Thông tin sản phẩm</label>
+                            <label style="margin-bottom: 10px;">Thông tin sản phẩm</label>
                         </div>
-                        <span class="buttonthemmau" onclick="themThongTin2()"> <i class="fa fa-plus"></i>Thêm thông tin</span>
+                        <span class="buttonthemmau" onclick="themThongTin2()"> <i
+                                class="fa fa-plus"></i>Thêm thông tin</span>
                         <div class="listGioiThieu">
                             <!-- <div class="itemGioiThieu">
                                 <input type="text" placeholder="Nhập thông tin ở đây">
@@ -840,7 +826,7 @@
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Loại sản phẩm</label>
+                            <label>Loại sản phẩm</label>
                         </div>
                         <select name="">
                             <option value="img/den.webp" selected>Áo</option>
@@ -849,7 +835,7 @@
                     </div>
                     <div class="div12inputlv2">
                         <div>
-                            <label >Size</label>
+                            <label>Size</label>
                         </div>
                         <select name="">
                             <option value="S" selected>S</option>
@@ -876,7 +862,15 @@
                 </div>
 
             </div>
-            <div class="hidden">
+            <div
+
+                    <% if(productAdminObject.isIs_sua_don()){ %>
+
+                    <%  }else {%>
+                    style="display: none;"
+                    <%}%>
+
+            >
                 <div class="changeImg">
                     <div class="changeImgTitle">
                         <h3>#sp_1</h3>
@@ -884,6 +878,7 @@
                         <h3>Color: Vàng</h3>
                         <input type="file" id="themHinhMoi" style="display: none;" onchange="themHinhMoi(this)">
                         <span onclick="document.getElementById('themHinhMoi').click()"> <i class="fa fa-plus"></i> Thêm hình mới</span>
+                        <span onclick="trove()"> <i class="fa fa-back"></i> Trở về</span>
                         <span> <i class="fa fa-save"></i> Lưu</span>
                     </div>
                     <div class="linediv12"></div>
@@ -891,7 +886,7 @@
                         <div class="div3size">
                             <div class="div12inputlv2">
                                 <div>
-                                    <label  style="margin-top: 20px;">Size</label>
+                                    <label style="margin-top: 20px;">Size</label>
                                 </div>
                                 <select name="" id="valueSize">
                                     <option value="S" selected>S</option>
@@ -936,3 +931,18 @@
 </html>
 
 <script src="../../js/quanLySanPhamAdmin.js"></script>
+<!---------------------------------------------------------------------------------------------------------------------->
+
+<% }
+
+} else {
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>

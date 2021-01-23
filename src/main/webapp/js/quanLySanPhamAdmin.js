@@ -58,7 +58,7 @@ function showselect(item) {
         }
     }
 
-    if (index < 9) {
+    if (index < 8) {
         let listItem = item.children;
         if (listItem[0].checked == true) {
             listItem[0].checked = false;
@@ -71,7 +71,7 @@ function showselect(item) {
 
 
         let listItem = item.children;
-        listItem[4].style.top = "-115px"
+        listItem[4].style.top = "-155px"
         if (listItem[0].checked == true) {
             listItem[0].checked = false;
             listItem[4].style.display = "none";
@@ -89,9 +89,23 @@ function removekhachhang(item) {
         let list2 = list[9].children;
         let list3 = list2[4].children;
         if (list3[2] == item) {
-            document.getElementById("maindiv2").removeChild(listItem[i]);
-            capnhaphienthi();
+            list2[1].checked = false;
+            let ma_sp = list3[3].value;
+            let ma_mau = list3[4].value;
+            let ma_size = list3[5].value;
+            let ten_mau = list3[6].value;
+            let ten_size = list3[7].value;
+
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #' +ma_sp+", Size: "+ten_size+", Màu: "+ten_mau;
+            document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+            let item = document.createElement("i");
+            item.classList.add("fa");
+            item.classList.add("fa-hand-grab-o");
+            document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=single&&ma_sp=" + ma_sp+"&&ma_mau="+ma_mau+"&&ma_size="+ma_size+"&&ten_mau="+ten_mau+"&&ten_size="+ten_size;
+            document.getElementById("formYesNoTitle2").appendChild(item);
+            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
+
         }
     }
 }
@@ -109,17 +123,26 @@ function capnhaphienthi() {
 
 function xoacacmuadachon() {
     let listItem = document.getElementById("maindiv2").children;
-    let array = [];
+    let danh_sach_thong_tin = '';
     for (let i = 1; i < listItem.length; i++) {
         let list2 = listItem[i].children;
         let list3 = list2[0].children;
         if (list3[0].checked == true) {
-            array.push(listItem[i]);
+           danh_sach_thong_tin+=list3[1].value+":"+list3[2].value+":"+list3[3].value+" ";
         }
     }
+    if (danh_sach_thong_tin.length > 0) {
+        danh_sach_thong_tin = danh_sach_thong_tin.trim();
+        let size = danh_sach_thong_tin.split(" ").length;
 
-    for (let i = 0; i < array.length; i++) {
-        document.getElementById("maindiv2").removeChild(array[i]);
+        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa ' + size + ' mục';
+        document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
+        let item = document.createElement("i");
+        item.classList.add("fa");
+        item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=group&&danh_sach_thong_tin=" + danh_sach_thong_tin;
+        document.getElementById("formYesNoTitle2").appendChild(item);
+        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
     }
 }
 
@@ -153,22 +176,16 @@ function allselect() {
 }
 
 function themsanphammoi() {
-    document.getElementById("div1").style.display = "block";
-    document.getElementById("div2").style.display = "none";
-    document.getElementById("div3").style.display = "none";
+    document.getElementById("action").value = "them_moi";
+    document.getElementById("mainForm").submit();
 }
 
 function trove() {
-    document.getElementById("div2").style.display = "block";
-    document.getElementById("div1").style.display = "none";
-    document.getElementById("div3").style.display = "none";
+    document.getElementById("action").value = "tro_ve";
+    document.getElementById("mainForm").submit();
 }
 
 function editkhachhang(item) {
-
-    if (document.getElementById("div3").children.length > 0) {
-        document.getElementById("div3").removeChild(document.getElementById("div3").children[0]);
-    }
 
     let listItem = document.getElementById("maindiv2").children;
     for (let i = 1; i < listItem.length; i++) {
@@ -176,10 +193,27 @@ function editkhachhang(item) {
         let list2 = list[9].children;
         let list3 = list2[4].children;
         if (list3[0] == item) {
-            document.getElementById("div3").appendChild(list[10].cloneNode(true));
-            document.getElementById("div3").style.display = "block";
-            document.getElementById("div1").style.display = "none";
-            document.getElementById("div2").style.display = "none";
+
+            document.getElementById("action").value = "sua_don";
+            document.getElementById("mainForm").submit();
+            
+            return;
+        }
+    }
+}
+
+function editkhachhangDa(item) {
+
+    let listItem = document.getElementById("maindiv2").children;
+    for (let i = 1; i < listItem.length; i++) {
+        let list = listItem[i].children;
+        let list2 = list[9].children;
+        let list3 = list2[4].children;
+        if (list3[1] == item) {
+
+            document.getElementById("action").value = "sua_da";
+            document.getElementById("mainForm").submit();
+
             return;
         }
     }
@@ -1400,3 +1434,132 @@ function themHinhMoi(even) {
 
     }
 }
+
+function hiddenFormYesNo() {
+    document.getElementById("formYesNo").style.transform = 'scaleY(0)';
+}
+
+function hiddenNotifiSuccess() {
+    document.getElementById("notifiSuccess").style.transform = 'scaleY(0)';
+}
+
+function changeFilter() {
+    document.getElementById("action").value = "changeFilter";
+    document.getElementById("mainForm").submit();
+}
+
+function changesort() {
+    document.getElementById("action").value = "sort";
+    document.getElementById("mainForm").submit();
+}
+
+function searchByClick(){
+    document.getElementById("action").value = "search";
+    document.getElementById("mainForm").submit();
+}
+
+function loadPage() {
+    document.getElementById("action").value = "load";
+    document.getElementById("mainForm").submit();
+}
+
+function prePage(nowPage) {
+    let n = parseInt(nowPage);
+    if (n > 1) {
+        document.getElementById("numberOfPage").value = parseInt(nowPage) - 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+function pageNavigation(nowPage) {
+    document.getElementById("numberOfPage").value = parseInt(nowPage);
+    document.getElementById("action").value = "nextPage";
+    document.getElementById("mainForm").submit();
+}
+
+function showselectgopage(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        let list = listUl[i].children;
+        if (list[0] == item) {
+
+            let l = list[1].children;
+            if (l[0].checked == true) {
+                list[1].style.display = "none";
+                l[0].checked = false;
+            } else {
+                list[1].style.display = "flex";
+                l[1].click();
+                l[0].checked = true;
+            }
+        }
+    }
+}
+
+function gopagefast(item) {
+
+    let listItem = document.getElementById("leftnextpage").children;
+
+    let listUl = listItem[2].children;
+
+    for (let i = 0; i < listUl.length; i++) {
+
+        let l = listUl[i].children;
+
+        if (l.length == 2) {
+            l = l[1].children;
+            if (l[2] == item) {
+                let value = l[1].value;
+
+                let maxPage = parseInt(document.getElementById("maximunNumberOfPage").value);
+                let nowPage = parseInt(document.getElementById("numberOfPage").value);
+
+                if (Number.isInteger(value)) {
+
+                    if (value != nowPage && value >= 1 && value <= maxPage) {
+                        document.getElementById("numberOfPage").value = value;
+                        document.getElementById("action").value = "nextPage";
+                        document.getElementById("mainForm").submit();
+                    }
+
+                } else {
+                    if (value.match(/^-{0,1}\d+$/)) {
+
+                        let number = parseInt(value);
+
+                        if (number != nowPage && number >= 1 && number <= maxPage) {
+                            document.getElementById("numberOfPage").value = number;
+                            document.getElementById("action").value = "nextPage";
+                            document.getElementById("mainForm").submit();
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+function nextPage(nowPage, maximumPage, item) {
+    let n = parseInt(nowPage);
+    let m = parseInt(maximumPage);
+    if (n < m) {
+        document.getElementById("numberOfPage").value = n + 1;
+        document.getElementById("action").value = "nextPage";
+        document.getElementById("mainForm").submit();
+    }
+}
+
+const node = document.getElementsByClassName("searchsubmit")[0];
+node.addEventListener("keyup", function (event) {
+    if (event.key == "Enter" || event.keyCode == 13) {
+        document.getElementById("action").value = "search";
+        document.getElementById("mainForm").submit();
+    }
+});

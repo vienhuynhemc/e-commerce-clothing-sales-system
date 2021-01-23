@@ -2,9 +2,11 @@ package worksWithDatabase.category;
 
 import beans.DateTime;
 import beans.category.Category;
+import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 import model.category.CategoryModel;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.sql.Date;
 import java.text.DateFormatSymbols;
@@ -821,6 +823,29 @@ public class CategoryWorksWithDatabase {
         }
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
+    }
+
+    //  Phuơng thức nhận vô list product admin, điền tên danh mục cho nó
+    public void fillNameForProductAdmin(List<ProductAdmin> products){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_dm FROM danh_muc WHERE ma_dm = ?");
+            for(ProductAdmin productAdmin:products){
+                preparedStatement.setString(1,productAdmin.getDanh_muc().getId());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                productAdmin.getDanh_muc().setName(resultSet.getString("ten_dm"));
+                resultSet.close();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package worksWithDatabase.manufacturer;
 import beans.BeansConfiguration;
 import beans.DateTime;
 import beans.manufacturer.Manufacturer;
+import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 import worksWithDatabase.manufacturerInformation.ManufacturerInformationDataSource;
 import worksWithDatabase.manufacturerInformation.ManufacturerInformationWorksWithDatabase;
@@ -824,6 +825,29 @@ public class ManufacturerWorksWithDatabase {
 
         //  Trả về kết quả
         return result;
+
+    }
+
+    //  Phương thức nhận vô list product admin fill tên hãng sản xuất
+    public void fillNameManufactureProductAdmin(List<ProductAdmin> products){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_hsx FROM hang_san_xuat WHERE ma_hsx = ?");
+            for(ProductAdmin productAdmin: products){
+                preparedStatement.setString(1,productAdmin.getHang_san_xuat().getId());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                productAdmin.getHang_san_xuat().setName(resultSet.getString("ten_hsx"));
+                resultSet.close();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
 
     }
 
