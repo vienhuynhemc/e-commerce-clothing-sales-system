@@ -122,6 +122,12 @@ public class DateTime {
 
     }
 
+    //  Phương thức chuyển về dạng long
+    public long getTime(int day){
+        Date date = new Date(year-1900,month-1,this.day,hour,minute,second);
+        return date.getTime()+DateTimeConfiguration.ONE_MINUTE_IN_MILLIS*60*24*day;
+    }
+
 
     //  To string dạng 26 Tháng Tám 2020
     public String toStringDateTypeNumberStringNumber() {
@@ -239,5 +245,6 @@ public class DateTime {
     public void setSecond(int second) {
         this.second = second;
     }
+
 
 }

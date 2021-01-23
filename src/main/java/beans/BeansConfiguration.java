@@ -20,4 +20,7 @@ public class BeansConfiguration {
     //  Số dòng một trang trong trang gửi email thông báo
     public static final int LINE_OF_ON_PAGE_GUI_EMAIL_THONG_BAO = 5;
 
+    //  Số dòng một trang quản lý sản phẩm
+    public static final int LINE_OF_ON_PAGE_QUAN_LY_SAN_PHAM = 10;
+
 }

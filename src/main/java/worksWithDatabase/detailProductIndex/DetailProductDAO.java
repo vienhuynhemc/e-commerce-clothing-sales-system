@@ -4,11 +4,15 @@ import beans.DateTime;
 import beans.product.*;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class DetailProductDAO {
@@ -58,7 +62,7 @@ public class DetailProductDAO {
 
 //                lấy danh sách ảnh
                 PreparedStatement img = connection.prepareStatement("SELECT s.ma_sp, h.ma_mau, " +
-                        "h.link_hinh_anh from san_pham s,hinh_anh_sp h WHERE s.ma_sp = ? AND s.ma_sp = h.ma_sp" +
+                        "h.link_hinh_anh from san_pham s,hinh_anh_sp h WHERE s.ma_sp = h.ma_sp AND s.ma_sp = ?" +
                         " AND s.ton_tai = 1 ");
                 img.setString(1,id);
                 ResultSet rImg = img.executeQuery();
@@ -71,6 +75,7 @@ public class DetailProductDAO {
                     imgs.add(pi);
                 }
                 p.setListIMG(imgs);
+
                 rImg.close();
                 img.close();
 
@@ -93,7 +98,7 @@ public class DetailProductDAO {
 
 //                lấy giá sản phẩm
                 PreparedStatement price = connection.prepareStatement("SELECT s.ma_sp,g.gia_sp,g.ngay_cap_nhat from " +
-                        "san_pham s, gia_sp g WHERE g.ma_sp = s.ma_sp AND s.ton_tai = 1\n" +
+                        "san_pham s, gia_sp g WHERE g.ma_sp = s.ma_sp AND s.ton_tai = 1" +
                         " AND s.ma_sp = ?");
                 price.setString(1,id);
                 ResultSet rPrice = price.executeQuery();
@@ -221,6 +226,11 @@ public class DetailProductDAO {
 
 
 
+
+
+
+
+
                 DataSource.getInstance().releaseConnection(connection);
                 return p;
 
@@ -254,28 +264,67 @@ public class DetailProductDAO {
     public ArrayList<ProductDetailInformation> getInfoDetailProduct(String id, String color){
         Connection connection = DataSource.getInstance().getConnection();
         try{
+//            lấy số lượng size và danh sách hình ảnh của size đó
+            String sql1 = "SELECT s.ma_sp, t.ma_mau, t.ma_size,si.ten_size, h.link_hinh_anh,count(h.link_hinh_anh) " +
+                    "as sl,t.so_luong_con_lai, t.ton_tai from thong_tin_chi_tiet_sp\n" +
+                    "t, san_pham s,size si, hinh_anh_sp h where t.ma_sp = s.ma_sp AND si.ma_size = t.ma_size AND" +
+                    " s.ton_tai = 1 AND s.ma_sp = ? AND t.ma_mau = ? AND h.ma_sp = s.ma_sp AND h.ma_mau" +
+                    " = t.ma_mau GROUP BY s.ma_sp,h.ma_mau,t.ma_size,si.ten_size";
+            PreparedStatement size = connection.prepareStatement(sql1);
+            size.setString(1,id);
+            size.setString(2,color);
+
+            ResultSet rSize = size.executeQuery();
+            // hashmap<size,sl>
+            HashMap<String,Integer> mapSize = new HashMap<>();
+            ArrayList<ProductDetailInformation> info = new ArrayList<>();
+            ProductDetailInformation p = null;
+            while(rSize.next()){
+                p = new ProductDetailInformation();
+                p.setMa_sp(rSize.getString("ma_sp"));
+                p.setMa_mau(rSize.getString("ma_mau"));
+                p.setMa_size(rSize.getString("ma_size"));
+                p.setSo_luong_con_lai(rSize.getInt("so_luong_con_lai"));
+                p.setTon_tai(rSize.getInt("ton_tai"));
+                p.setTen_size(rSize.getString("ten_size"));
+                info.add(p);
+            }
+
+            rSize.beforeFirst();
+            while(rSize.next()){
+                mapSize.put(rSize.getString(4),rSize.getInt(6));
+            }
+
+            rSize.close();
+            size.close();
 
 
-            String sql = "SELECT s.ma_sp, t.ma_mau, t.ma_size,t.so_luong_con_lai,t.ton_tai,si.ten_size from thong_tin_chi_tiet_sp" +
-                    " t, san_pham s,size si where t.ma_sp = s.ma_sp AND si.ma_size = t.ma_size AND s.ton_tai = 1 AND " +
-                    "s.ma_sp = ? AND t.ma_mau = ?";
+
+            String sql = "SELECT s.ma_sp, t.ma_mau, t.ma_size,t.so_luong_con_lai,t.ton_tai,si.ten_size, h.link_hinh_anh from thong_tin_chi_tiet_sp\n" +
+                    "t, san_pham s,size si, hinh_anh_sp h where t.ma_sp = s.ma_sp AND si.ma_size = t.ma_size AND s.ton_tai = 1 AND\n" +
+                    "s.ma_sp = ? AND t.ma_mau = ? AND h.ma_sp = s.ma_sp AND h.ma_mau = t.ma_mau";
             PreparedStatement s = connection.prepareStatement(sql);
             s.setString(1,id);
             s.setString(2,color);
             ResultSet rs = s.executeQuery();
-            ArrayList<ProductDetailInformation> info = new ArrayList<>();
-            while(rs.next()){
-                ProductDetailInformation p = new ProductDetailInformation();
-                p.setMa_sp(rs.getString(1));
-                p.setMa_mau(rs.getString(2));
-                p.setMa_size(rs.getString(3));
-                p.setSo_luong_con_lai(rs.getInt(4));
-                p.setTon_tai(rs.getInt(5));
-                p.setTen_size(rs.getString(6));
 
-                info.add(p);
+            for(ProductDetailInformation pp : info){
+                for(Map.Entry<String,Integer> m : mapSize.entrySet()){
+                    if(rs.next()) {
+                        ArrayList<String> imgs = new ArrayList<>();
+                        for (int i = 0; i < m.getValue(); i++) {
+                            imgs.add(rs.getString("link_hinh_anh"));
+                            if (i != m.getValue() - 1) {
+                                rs.next();
+                            }
+                        }
+                    pp.setListIMG(imgs);
+                    rs.beforeFirst();
+                    }
+                    }
+                }
 
-            }
+
             rs.close();
             s.close();
             DataSource.getInstance().releaseConnection(connection);
@@ -287,13 +336,88 @@ public class DetailProductDAO {
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
+    public ArrayList<String> loadImgById(String id, String color){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            PreparedStatement s = connection.prepareStatement("SELECT h.link_hinh_anh from " +
+                    "san_pham s, hinh_anh_sp h WHERE h.ma_sp = s.ma_sp and s.ma_sp = ? AND h.ma_mau = ?");
+
+            ArrayList<String> list = new ArrayList<>();
+            s.setString(1,id);
+            s.setString(2,color);
+            ResultSet rs = s.executeQuery();
+            while(rs.next()){
+                list.add(rs.getString(1));
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return list;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
+    }
+    public ArrayList<String> loadColorById(String id){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            PreparedStatement s = connection.prepareStatement("SELECT DISTINCT h.ma_mau FROM san_pham s, " +
+                    "hinh_anh_sp h  WHERE h.ma_sp = s.ma_sp AND s.ma_sp = ?");
+
+            ArrayList<String> list = new ArrayList<>();
+            s.setString(1,id);
+
+            ResultSet rs = s.executeQuery();
+            while(rs.next()){
+                list.add(rs.getString(1));
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return list;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return new ArrayList<>();
+    }
+    // hiển thị số lượng còn lại
+    public int getRestNumber(String id, String color, String size){
+        Connection connection = DataSource.getInstance().getConnection();
+        int a = 0;
+        try{
+            PreparedStatement s = connection.prepareStatement("select so_luong_con_lai from thong_tin_chi_tiet_sp " +
+                    "WHERE ma_sp = ? AND ma_mau = ? AND ma_size = ?");
+            s.setString(1,id);
+            s.setString(2,color);
+            s.setString(3,size);
+            ResultSet rs = s.executeQuery();
+            if (rs.next()){
+                a = rs.getInt(1);
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return a;
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return a;
+
+    }
 
     public static void main(String[] args) {
         DetailProductDAO test = new DetailProductDAO();
-//       for(ProductColor s : test.getProductById("sp_1").getListColor()){
-//           System.out.println(s.getLink_hinh());
+//       for(ProductDetailInformation s : test.getInfoDetailProduct("sp_2", "mau_1")){
+//           System.out.println(s);
 //       }
-        System.out.println(test.getProductById("sp_1").getListColor());
+       System.out.println(test.getInfoDetailProduct("sp_1","mau_1"));
     }
 
 }

@@ -2,6 +2,7 @@ package model.loadDetailProduct;
 
 import beans.product.Product;
 import beans.product.ProductDetailInformation;
+
 import model.loadProduct.LoadProductModel;
 import worksWithDatabase.detailProductIndex.DetailProductDAO;
 import worksWithDatabase.detailProductIndex.DetailProductDataSource;
@@ -9,7 +10,7 @@ import worksWithDatabase.detailProductIndex.DetailProductDataSource;
 import java.util.ArrayList;
 
 public class LoadDetailProductModel {
-    private static LoadProductModel loadProductModel;
+    public static LoadProductModel loadProductModel;
 
     public static LoadProductModel getInstanse() {
         if (loadProductModel != null) {
@@ -31,14 +32,34 @@ public class LoadDetailProductModel {
         DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
         return list;
     }
+    public ArrayList<String> loadImgById(String id, String color){
+        DetailProductDAO detailProductDAO = DetailProductDataSource.getInstance().getDetailProduct();
+        ArrayList<String> list = detailProductDAO.loadImgById(id,color);
+        DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
+        return list;
+    }
+    public ArrayList<String> loadColorById(String id){
+        DetailProductDAO detailProductDAO = DetailProductDataSource.getInstance().getDetailProduct();
+        ArrayList<String> list = detailProductDAO.loadColorById(id);
+        DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
+        return list;
+    }
+    public int getRestNumber(String id, String color, String size){
+        DetailProductDAO detailProductDAO = DetailProductDataSource.getInstance().getDetailProduct();
+        int a = detailProductDAO.getRestNumber(id,color,size);
+        DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
+        return a;
+    }
 
     public static void main(String[] args) {
         LoadDetailProductModel d = new LoadDetailProductModel();
         //System.out.println(d.loadProductById("sp_1"));
 
-        for(ProductDetailInformation p : d.getSizeById("sp_1","mau_1")){
-            System.out.println(p.getTen_size());
-        }
+//        for(ProductDetailInformation p : d.getSizeById("sp_1","mau_1")){
+//            System.out.println(p.getTen_size());
+//        }
+
+        System.out.println(d.getRestNumber("sp_1","mau_1","size_1"));
 
     }
 

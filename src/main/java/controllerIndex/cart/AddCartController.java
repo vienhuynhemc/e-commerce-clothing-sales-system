@@ -35,11 +35,11 @@ public class AddCartController extends HttpServlet {
             String ma_size = request.getParameter("ma_size");
             int soluong = Integer.parseInt(request.getParameter("so_luong"));
 
-//            System.out.println(ma_kh);
-//            System.out.println(ma_sp);
-//            System.out.println(ma_mau);
-//            System.out.println(ma_size);
-//            System.out.println(soluong);
+            System.out.println(ma_kh);
+            System.out.println(ma_sp);
+            System.out.println(ma_mau);
+            System.out.println(ma_size);
+            System.out.println(soluong);
 
 
             AddCartModel addCartModel = new AddCartModel();

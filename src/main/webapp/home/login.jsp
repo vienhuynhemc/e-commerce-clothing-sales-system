@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/trangChu.css">
     <script src="js"></script>

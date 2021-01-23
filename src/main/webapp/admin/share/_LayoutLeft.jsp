@@ -92,7 +92,7 @@
                             <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham")) {%>
                             class="activelv2"
                             <%}%>
-                    ><a href="quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
+                    ><a href="../home/quanLySanPham.jsp"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
                     <li
                             <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) {%>
                             class="activelv2"
