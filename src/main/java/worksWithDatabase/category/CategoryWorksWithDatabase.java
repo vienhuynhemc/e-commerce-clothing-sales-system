@@ -3,9 +3,11 @@ package worksWithDatabase.category;
 import beans.DateTime;
 import beans.category.Category;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminCategory;
 import connectionDatabase.DataSource;
 import model.category.CategoryModel;
 
+import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
 import java.sql.*;
 import java.sql.Date;
@@ -845,6 +847,32 @@ public class CategoryWorksWithDatabase {
         }
 
         DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    //  Phuownmg thuwc laya all dm
+    public List<ProductAdminCategory> getAllCategory(){
+
+        List<ProductAdminCategory> result = new ArrayList<ProductAdminCategory>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1");
+            while(resultSet.next()){
+                ProductAdminCategory productAdminCategory = new ProductAdminCategory();
+                productAdminCategory.setName(resultSet.getString("ten_dm"));
+                productAdminCategory.setId(resultSet.getString("ma_dm"));
+                result.add(productAdminCategory);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+
+        return result;
 
     }
 

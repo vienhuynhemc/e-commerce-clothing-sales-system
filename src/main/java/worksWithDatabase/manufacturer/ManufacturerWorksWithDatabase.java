@@ -4,12 +4,14 @@ import beans.BeansConfiguration;
 import beans.DateTime;
 import beans.manufacturer.Manufacturer;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminManufacturer;
 import connectionDatabase.DataSource;
 import worksWithDatabase.manufacturerInformation.ManufacturerInformationDataSource;
 import worksWithDatabase.manufacturerInformation.ManufacturerInformationWorksWithDatabase;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSource;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -848,6 +850,32 @@ public class ManufacturerWorksWithDatabase {
         }
 
         DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public List<ProductAdminManufacturer> getAllManufacturer(){
+
+        List<ProductAdminManufacturer> result = new ArrayList<ProductAdminManufacturer>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM hang_san_xuat WHERE ton_tai = 0");
+            while(resultSet.next()){
+                ProductAdminManufacturer productAdminManufacturer = new ProductAdminManufacturer();
+                productAdminManufacturer.setName(resultSet.getString("ten_hsx"));
+                productAdminManufacturer.setId(resultSet.getString("ma_hsx"));
+                result.add(productAdminManufacturer);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
 
     }
 

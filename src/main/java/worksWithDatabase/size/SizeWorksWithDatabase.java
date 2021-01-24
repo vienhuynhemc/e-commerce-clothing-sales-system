@@ -3,13 +3,13 @@ package worksWithDatabase.size;
 import beans.productAdmin.ProductAdmin;
 import beans.productAdmin.ProductAdminColor;
 import beans.productAdmin.ProductAdminSize;
+import beans.productAdmin.ProductAdminSizeAdd;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import javax.xml.transform.Result;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SizeWorksWithDatabase {
@@ -42,6 +42,36 @@ public class SizeWorksWithDatabase {
             throwables.printStackTrace();
         }
         DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public List<ProductAdminSizeAdd> getAllSize(){
+
+        List<ProductAdminSizeAdd> result = new ArrayList<ProductAdminSizeAdd>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM size");
+
+            while(resultSet.next()){
+                ProductAdminSizeAdd productAdminSizeAdd = new ProductAdminSizeAdd();
+                productAdminSizeAdd.setId(resultSet.getString("ma_size"));
+                productAdminSizeAdd.setName(resultSet.getString("ten_size"));
+                result.add(productAdminSizeAdd);
+            }
+
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+        return result;
 
     }
 

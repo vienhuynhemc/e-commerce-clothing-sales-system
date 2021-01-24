@@ -1,14 +1,11 @@
 <%@ page import="beans.loginAdmin.UserAdmin" %>
 <%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
-<%@ page import="beans.productAdmin.ProductAdminObject" %>
 <%@ page import="beans.nextPage.NextPageObject" %>
 <%@ page import="java.util.List" %>
 <%@ page import="beans.nextPage.NextPageConfiguration" %>
-<%@ page import="beans.productAdmin.ProductAdmin" %>
-<%@ page import="beans.productAdmin.ProductAdminColor" %>
-<%@ page import="beans.productAdmin.ProductAdminSize" %>
 <%@ page import="model.informationAccountAdmin.InformationAccountAdminModel" %>
-<%@ page import="model.salary.SalaryModel" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
+<%@ page import="model.salary.SalaryModel" %>
+<%@ page import="beans.productAdmin.*" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
     Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -64,7 +61,7 @@
             <p id="formYesNoTitle2"></p>
             <div>
                 <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
-                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
             </div>
         </div>
     </div>
@@ -112,12 +109,13 @@
                 <div>
                     <label>Tên màu</label>
                 </div>
-                <input type="text" placeholder="Nhập tên màu ở đây">
+                <input type="text" id="tenmaumoi" placeholder="Nhập tên màu ở đây">
             </div>
-            <button>Tạo màu</button>
+            <button onclick="taoMotMauMoi()">Tạo màu</button>
             <button onclick="taomauxong()">Trở lại</button>
         </div>
     </div>
+    <input type="text" id="ma_mau_tiep_theo" style="display: none" value="<%=productAdminObject.getMa_mau_tiep_theo()%>">
 </div>
 
 <jsp:include page="../share/_LayoutLeft.jsp">
@@ -413,7 +411,14 @@
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
                         <select name="">
-                            <option value="" selected>Chọn hãng sản xuất</option>
+                            <%
+                                if(productAdminObject.getDanh_sach_hang_san_xuat() != null){
+                                    for(ProductAdminManufacturer productAdminManufacturer : productAdminObject.getDanh_sach_hang_san_xuat()){
+                            %>
+
+                            <option value="<%=productAdminManufacturer.getId()%>"><%=productAdminManufacturer.getName()%></option>
+
+                            <%}}%>
                         </select>
                     </div>
                     <div class="div12inputlv2">
@@ -422,15 +427,24 @@
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
                         <select name="">
-                            <option value="" selected>Chọn danh mục</option>
+                            <%
+                                if(productAdminObject.getDanh_sach_danh_muc() != null){
+                                    for(ProductAdminCategory productAdminCategory : productAdminObject.getDanh_sach_danh_muc()){
+                            %>
+
+                            <option value="<%=productAdminCategory.getId()%>"><%=productAdminCategory.getName()%></option>
+
+                            <%}}%>
                         </select>
                     </div>
-                    <div class="gioitinh">
-                        <h3>Giới tính</h3>
+                    <div class="div12inputlv2">
                         <div>
-                            <span class="activebutton" id="gioitinhnam" onclick="nam()">Nam</span>
-                            <span onclick="nu()" id="gioitinhnu">Nữ</span>
+                            <label>Giới tính</label>
                         </div>
+                        <select name="">
+                            <option value="" selected="">Nam</option>
+                            <option value="">Nữ</option>
+                        </select>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div11submit">
@@ -447,7 +461,14 @@
                             <label>Size</label>
                         </div>
                         <select name="">
-                            <option value="img/den.webp" selected>Đen</option>
+                            <%
+                                if(productAdminObject.getDanh_sach_mau() != null){
+                                    for(ProductAdminColorAdd productAdminColorAdd : productAdminObject.getDanh_sach_mau()){
+                            %>
+
+                            <option value="<%=productAdminColorAdd.getMa_mau()%>"><%=productAdminColorAdd.getTen_mau()%></option>
+
+                            <%}}%>
                         </select>
                     </div>
                     <div class="buttondiv12">
@@ -589,12 +610,14 @@
                             <label>Size</label>
                         </div>
                         <select name="">
-                            <option value="S" selected>S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                            <option value="XXXL">XXXL</option>
+                            <%
+                                if(productAdminObject.getDanh_sach_size() != null){
+                                    for(ProductAdminSizeAdd  productAdminSizeAdd: productAdminObject.getDanh_sach_size()){
+                            %>
+
+                            <option value="<%=productAdminSizeAdd.getId()%>"><%=productAdminSizeAdd.getName()%></option>
+
+                            <%}}%>
                         </select>
                     </div>
                     <span onclick="themsize(this)"><i class="fa fa-plus"></i> Thêm size</span>
@@ -674,12 +697,14 @@
                             <option value="" selected>Chọn danh mục</option>
                         </select>
                     </div>
-                    <div class="gioitinh">
-                        <h3>Giới tính</h3>
+                    <div class="div12inputlv2">
                         <div>
-                            <span class="activebutton" onclick="nam2()">Nam</span>
-                            <span onclick="nu2()">Nữ</span>
+                            <label>Giới tính</label>
                         </div>
+                        <select name="">
+                            <option value="" selected="">Nam</option>
+                            <option value="">Nữ</option>
+                        </select>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div11submit">
@@ -923,13 +948,26 @@
         </div>
     </div>
 
+    <form action="../../ProductAddColorController" method="post" style="display: none" id="formthemmau">
+        <input type="text" name="tenmauthem" id="tenmauthem">
+        <input type="text" name="mamauthem" id="mamauthem">
+        <input type="text" name="linkmauthem" id="linkmauthem">
+    </form>
+
     <!-- Quan tâm nhiêu đây thôi-->
 </div>
 
 </body>
 
 </html>
+!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 <script src="../../js/quanLySanPhamAdmin.js"></script>
 <!---------------------------------------------------------------------------------------------------------------------->
 

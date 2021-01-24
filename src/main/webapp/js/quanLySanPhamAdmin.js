@@ -101,6 +101,9 @@ function removekhachhang(item) {
             let item = document.createElement("i");
             item.classList.add("fa");
             item.classList.add("fa-hand-grab-o");
+
+            document.getElementById("formYesNoLink").style.display = 'flex';
+            document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
             document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=single&&ma_sp=" + ma_sp+"&&ma_mau="+ma_mau+"&&ma_size="+ma_size+"&&ten_mau="+ten_mau+"&&ten_size="+ten_size;
             document.getElementById("formYesNoTitle2").appendChild(item);
             document.getElementById("formYesNo").style.transform = 'scaleY(1)';
@@ -140,6 +143,8 @@ function xoacacmuadachon() {
         let item = document.createElement("i");
         item.classList.add("fa");
         item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").style.display = 'flex';
+        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
         document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=group&&danh_sach_thong_tin=" + danh_sach_thong_tin;
         document.getElementById("formYesNoTitle2").appendChild(item);
         document.getElementById("formYesNo").style.transform = 'scaleY(1)';
@@ -1207,10 +1212,13 @@ function taomauxong() {
     document.getElementById("taomaumoi").style.display = "none";
 }
 
+let arrayMau = [];
 function loadIMGMau(event) {
     if (event.target.files.length > 0) {
         var src = URL.createObjectURL(event.target.files[0]);
         document.getElementById("psm").src = src;
+        arrayMau = [];
+        arrayMau.push(event.target.files[0]);
     }
 }
 
@@ -1563,3 +1571,119 @@ node.addEventListener("keyup", function (event) {
         document.getElementById("mainForm").submit();
     }
 });
+
+var arrayMauHoanThanh = [];
+var actionMau = 0;
+var interVelMau;
+var countRefreshMau;
+var countRefreshMauMax = 3;
+function taoMotMauMoi(){
+
+    let src = document.getElementById("psm");
+    let ten_mau = document.getElementById("tenmaumoi").value;
+
+    if(arrayMau.length == 1 && ten_mau.length > 0){
+        taomauxong();
+        taiMauMoi(arrayMau[0]);
+        actionMau =0;
+        choTaiHinhMau();
+    }
+}
+
+function choTaiHinhMau() {
+    if (actionMau == 1) {
+        if (interVelMau) {
+            window.clearInterval(interVelMau);
+            interVelMau = null;
+            countRefreshMau = 0;
+            arrayMau = [];
+            arrayMauHoanThanh = [];
+        }
+    } else {
+        if (!interVelMau) {
+            interVelMau = window.setInterval(
+                function () {
+                    if (arrayMauHoanThanh.length == 1) {
+
+                        actionMau = 1;
+                        window.clearInterval(interVelMau);
+                        interVelMau = null;
+                        countRefreshMau = 0;
+
+                        let link= arrayMauHoanThanh.pop();
+                        let name = document.getElementById("tenmaumoi").value;
+                        let id = document.getElementById("ma_mau_tiep_theo").value;
+
+                        document.getElementById("tenmauthem").value = name;
+                        document.getElementById("mamauthem").value = id;
+                        document.getElementById("linkmauthem").value= link;
+
+                        let itemm = document.createElement("i");
+                        itemm.classList.add("fa");
+                        itemm.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm màu này';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
+                        document.getElementById("formYesNoLink").style.display = 'flex';
+                        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+                        document.getElementById("formYesNoTitle2").appendChild(itemm);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                        document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+                        document.getElementById("formYesNoLink").onclick = function () {
+                           document.getElementById("formthemmau").submit();
+                        }
+
+
+                    } else {
+                        countRefreshMau++;
+                        if (countRefreshMau == countRefreshMauMax) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionMau = 1;
+                            choTaiHinhMau();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+var firebaseConfig = {
+    apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+    authDomain: "ecommerce-b6c08.firebaseapp.com",
+    databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+    projectId: "ecommerce-b6c08",
+    storageBucket: "ecommerce-b6c08.appspot.com",
+    messagingSenderId: "390576423583",
+    appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+    measurementId: "G-LR0V7PWKZN"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+function taiMauMoi(img) {
+    let nextId = document.getElementById("ma_mau_tiep_theo").value+"/" + "mau.jpg";
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = "mau/" + nextId;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayMauHoanThanh.push(link);
+        });
+}
