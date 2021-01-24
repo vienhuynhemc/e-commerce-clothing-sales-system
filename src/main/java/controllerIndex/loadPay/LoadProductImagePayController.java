@@ -1,8 +1,7 @@
-package controllerIndex.loadPageProduct;
+package controllerIndex.loadPay;
 
-import beans.product.Size;
-import model.loadProduct.LoadSizeByIDProductModel;
-import model.signUp.SignUp;
+import beans.product.ProductImage;
+import worksWithDatabase.loadPageHistory.ProductImageByIDOrderDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "LoadSizeByIDProduct",urlPatterns = "/LoadSizeByIDProduct")
-public class LoadSizeByIDProduct extends HttpServlet {
+@WebServlet(name = "LoadProductImagePayController",urlPatterns = "/LoadProductImagePayController")
+public class LoadProductImagePayController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     doGet(request, response);
     }
@@ -24,17 +23,13 @@ public class LoadSizeByIDProduct extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String ma_sp = request.getParameter("ma_sp");
+        String ma_don_hang = request.getParameter("ma_dh");
 
+        ArrayList<ProductImage> list = new ProductImageByIDOrderDAO().listDetail(ma_don_hang);
 
-        ArrayList<Size> list = new LoadSizeByIDProductModel().loadSizeByID(ma_sp);
+        request.setAttribute("listI",list);
 
-        request.setAttribute("listSize",list);
-
-        System.out.println(list);
-
-        request.getRequestDispatcher("ajax/sizeByIDProduct.jsp").forward(request,response);
-
+        request.getRequestDispatcher("ajax/loadImageDetailOrder.jsp").forward(request,response);
 
 
     }

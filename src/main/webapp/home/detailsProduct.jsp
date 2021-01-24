@@ -194,20 +194,23 @@
         <div class="dpbody">
             <div class="dpleft">
                 <div class="dpmainimg">
+                    <% ArrayList<String> list = (ArrayList<String>) request.getAttribute("colors");%>
                     <div>
-                        <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img1">
+                        <img src="<%=list.get(0)%>" alt="" id="img1">
                         <p>Mã sản phẩm: <%= p.getMa_sp()%></p>
                     </div>
-                    <img src="<%=p.getListIMG().get(0).getLink_hinh()%>" alt="" id="img2">
+                    <img src="<%=list.get(0)%>" alt="" id="img2">
                 </div>
                 <div>
                     <div class="dplistitem" id="dplistitem">
-                        <% for(ProductImage pi : p.getListIMG()){%>
+
+                        <% for(String pi : list){
+                        %>
                         <div class="dpitem">
                             <div onclick="doiHinhChinh(this)">
-                                <img src="<%=pi.getLink_hinh()%>" alt="" id="doiHinhChinh1">
+                                <img src="<%=pi%>" alt="" id="doiHinhChinh1">
                             </div>
-                            <img src="<%=pi.getLink_hinh()%>" alt="">
+                            <img src="<%=pi%>" alt="">
                         </div>
                         <%}%>
 <%--                        <div class="dpitem">--%>
@@ -258,26 +261,42 @@
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">
                     <p>CHỌN MÀU</p>
-                    <% for(ProductColor pc : p.getListColor()){%>
+<%--                    <% for(ProductColor pc : p.getListColor()){%>--%>
+<%--                    <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>--%>
+<%--                    <%}%>--%>
+                    <%
+                        for(ProductColor pc : p.getListColor()){
+                            if(request.getParameter("ma_mau").equals(pc.getMa_mau())){
+                    %>
                     <span class="colordpdx" id="colordpdx"><%=pc.getTen_mau()%></span>
-                    <%}%>
-<%--                    <span class="colordpdx" id="colordpdx">Đỏ</span>--%>
+                    <%} else {%>
 
+                    <%}}%>
                 </div>
                 <div class="selectcolor">
-                    <input type="radio" name="color" id="color1" style="display: none;" checked>
-                    <input type="radio" name="color" id="color2" style="display: none;">
+
+                    <%for(int i = 0; i < p.getListColor().size();i++){
+                        if(request.getParameter("ma_mau").equals(p.getListColor().get(i).getMa_mau())){
+                    %>
+                    <input type="radio" name="color" id="color<%=(i+1)%>" style="display: none;" checked></a>
+                    <%} else {%>
+                    <input type="radio" name="color" id="color<%=(i+1)%>" style="display: none;">
+                    <%}}%>
 <%--                    <label for="color1" class="labelcolor1" onclick="damXanh()">--%>
 <%--                        <div><img src="../img/product/damxanh.webp" alt=""></div>--%>
 <%--                    </label>--%>
 <%--                    <label for="color2" class="labelcolor2" onclick="xanhNhat()">--%>
 <%--                        <div><img src="../img/product/xanhnhat.webp" alt=""></div>--%>
 <%--                    </label>--%>
-                    <%for(ProductColor pc : p.getListColor()){%>
-                    <label for="color1" class="labelcolor1" onclick="damXanh()">
-                        <div><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=pc.getMa_mau()%>&type=<%=request.getParameter("type")%>&page=<%=request.getParameter("page")%>"><img src="<%=pc.getLink_hinh()%>" alt="" style="width: 45px"></a></div>
+
+
+                    <%for(int i = 0; i<p.getListColor().size();i++){%>
+                    <label for="color<%=(i+1)%>" class="labelcolor<%=(i+1)%>">
+                      <div> <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(i).getMa_mau()%>&ma_size=<%=p.getListSize().get(0).getMa_size()%>&type=<%=request.getParameter("type")%>&page=<%=request.getParameter("page")%>"><img src="<%=p.getListColor().get(i).getLink_hinh()%>" alt="" style="width: 49px"></a></div>
                     </label>
                     <%}%>
+
+
 <%--                    <span class="colordpdx" id="colordpdx">Đậm xanh</span>--%>
 <%--                    <span class="colordpxn" id="colordpxn">Xanh nhạt</span>--%>
                 </div>
@@ -286,33 +305,57 @@
                     <a href="chooseSize.jsp">Hướng dẫn chọn size</a>
                 </div>
                 <div class="selectsize">
-                    <input type="radio" name="size" id="size1" style="display: none;" checked>
-                    <input type="radio" name="size" id="size2" style="display: none;">
-                    <input type="radio" name="size" id="size3" style="display: none;">
-                    <input type="radio" name="size" id="size4" style="display: none;">
-                    <input type="radio" name="size" id="size5" style="display: none;">
-                    <% if(pd != null){%>
-                    <% for(ProductDetailInformation ps : pd){%>
-                    <label for="size1" class="labelsize1"><%=ps.getTen_size()%></label>
-                    <%}} else{%>
-                    <% for(Size s: p.getListSize()){%>
-                    <label for="size1" class="labelsize1"><%=s.getTen_size()%></label>
+                    <%
+                        for(int i = 0; i < pd.size();i++){
+                        if(pd.get(i).getMa_size().equals(request.getParameter("ma_size"))){
+                    %>
+                    <input type="radio" name="sizeP" id="size<%=(i+1)%>" style="display: none;" checked>
+                    <%}else{%>
+                    <input type="radio" name="sizeP" id="size<%=(i+1)%>" style="display: none;" >
+                   <%}}%>
+
+<%--                    <% if(pd != null){%>--%>
+<%--                    <% for(int i = 0; i < pd.size();i++){%>--%>
+<%--                    <label for="size<%=(i+1)%>" class="labelsize<%=(i+1)%>"><div><a href=""> <%=pd.get(i).getTen_size()%></a></div></label>--%>
+<%--                    <%}} else{%>--%>
+                    <% int rest = (int) request.getAttribute("rest");%>
+                    <% for(int i = 0;i < pd.size();i++){
+                        if(pd.get(i).getSo_luong_con_lai()==0){
+                            continue;
+                        }else{
+                    %>
+                    <label for="size<%=(i+1)%>" class="labelsize<%=(i+1)%>"><a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=pd.get(i).getMa_size()%>&type=<%=request.getParameter("type")%>&page=<%=request.getParameter("page")%>"> <%=p.getListSize().get(i).getTen_size()%></a></label>
                     <%}}%>
 <%--                    <label for="size2" class="labelsize2">M</label>--%>
 <%--                    <label for="size3" class="labelsize3">L</label>--%>
 <%--                    <label for="size4" class="labelsize4">XL</label>--%>
 <%--                    <label for="size5" class="labelsize5">XXL</label>--%>
                 </div>
-                <p class="dpconlai">Còn lại 1 sản phẩm</p>
+
+                <p class="dpconlai">Còn lại <%=rest%> sản phẩm</p>
+                <form action="AddCartController" method="get">
                 <div class="inputsl">
-                    <button onclick="subtocard2()"><span>-</span></button>
+                    <button type="button" onclick="subtocard2()"><span>-</span></button>
+                    <input type="hidden" name="ma_sp" value="<%=p.getMa_sp()%>">
                     <input type="text" value="1" id="sladdtocard2" name="so_luong">
-                    <button onclick="plustocard2()"><span>+</span></button>
+                    <input type="hidden" name="mau_sp" value="<%=request.getParameter("ma_mau")%>">
+                    <input type="hidden" name="ma_size" value="<%=request.getParameter("ma_size")%>">
+
+                    <button type="button" onclick="plustocard2()"><span>+</span></button>
                 </div>
                 <div class="wlaatc">
-                    <button><i class="fa fa-heart"></i> YÊU THÍCH</button>
-                    <a href="AddCartController?id"><button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button></a>
+<%--                    <button><i class="fa fa-heart"></i> YÊU THÍCH</button>--%>
+                    <% if(accountCustomer == null){%>
+
+                        <a href="CheckLoginController"> <button><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button></a>
+
+                    <%}else {%>
+
+<%--                   <a href="AddCartController?ma_sp=<%=p.getMa_sp()%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>&so_luong=<%=request.getParameter("so_luong")%>"> <button ><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button></a>--%>
+                        <button type="submit"><i class=" fa fa-cart-plus"></i> THÊM VÀO GIỎ HÀNG</button>
+                    <%}%>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -429,9 +472,9 @@
                         <div>
                             <% if(star.getAvgStar() % 2 == 0 || star.getAvgStar() % 2 <= 0.4){
                                 for(int i = 0;i < (int)star.getAvgStar();i++){
-                            }%>
+                            %>
                             <i class="fa fa-star"></i>
-                            <%} else {
+                            <%}} else {
                                 for(int i = 0;i < (int)star.getAvgStar();i++){
                             %>
                             <i class="fa fa-star"></i>
@@ -489,22 +532,22 @@
 
 
             <% if(a.equals("")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tất cả</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">Tất cả</button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>"><button>Tất cả</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>Tất cả</button></a>
             <%}%>
 
 
                <% if(a.equals("tich_cuc")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tích cực</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">Tích cực</button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>"><button>Tích cực</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tich_cuc&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>Tích cực</button></a>
             <%}%>
 
             <% if(a.equals("tieu_cuc")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>"><button class="activeboloc">Tiêu cực</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">Tiêu cực</button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>"><button>Tiêu cực</button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=tieu_cuc&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>Tiêu cực</button></a>
             <%}%>
 
 <%--            <% for (int i = 5; i >=1 ; i--){%>--%>
@@ -516,33 +559,33 @@
 <%--            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=i%>&page=<%= request.getParameter("page")%>"><button><%=i%> <i class="fa fa-star"></i></button></a>--%>
 <%--            <%}}%>--%>
             <% if(a.equals("5")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>"><button class="activeboloc">5<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">5<i class="fa fa-star"></i></button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>"><button>5<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=5&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>5<i class="fa fa-star"></i></button></a>
             <%}%>
 
             <% if(a.equals("4")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>"><button class="activeboloc">4<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">4<i class="fa fa-star"></i></button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>"><button>4<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=4&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>4<i class="fa fa-star"></i></button></a>
             <%}%>
 
             <% if(a.equals("3")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>"><button class="activeboloc">3<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">3<i class="fa fa-star"></i></button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>"><button>3<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=3&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>3<i class="fa fa-star"></i></button></a>
             <%}%>
 
             <% if(a.equals("2")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>"><button class="activeboloc">2<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">2<i class="fa fa-star"></i></button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>"><button>2<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=2&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>2<i class="fa fa-star"></i></button></a>
             <%}%>
 
             <% if(a.equals("1")){%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>"><button class="activeboloc">1<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button class="activeboloc">1<i class="fa fa-star"></i></button></a>
             <%} else {%>
-            <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>"><button>1<i class="fa fa-star"></i></button></a>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=1&page=<%= request.getParameter("page")%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button>1<i class="fa fa-star"></i></button></a>
             <%}%>
 
 
@@ -552,15 +595,15 @@
 
 
 <%--        load danh sách đánh giá--%>
-        <%  ArrayList<Rate> list = (ArrayList<Rate>) request.getAttribute("listRate");%>
-        <% for(Rate r : list){%>
+        <%  ArrayList<Rate> lists = (ArrayList<Rate>) request.getAttribute("listRate");%>
+        <% for(Rate r : lists){%>
         <div class="binhluanitem">
             <div class="headerbinhluanitem">
                 <div>
                     <div>
-                        <img src="../img/product/avatar1.jpg" alt="">
+                        <img src="<%=r.getImgCustomer()%>" alt="">
                     </div>
-                    <p>Diệu Đặng</p>
+                    <p><%= r.getNameCustomer()%></p>
                 </div>
                 <div onclick="report(this)">
                     <i class="fa fa-circle"></i>
@@ -607,7 +650,7 @@
             int numPage = (int)request.getAttribute("numPage");
         %>
         <% if(pageNow <= numPage && pageNow > 1){%>
-        <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>"><button><i class="fa fa-caret-left"></i></button></a>
+        <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button><i class="fa fa-caret-left"></i></button></a>
         <%} else{%>
         <button><i class="fa fa-caret-left"></i></button>
         <%}%>
@@ -617,14 +660,14 @@
             <% for(int i = 1; i <= numPage;i++){
                 if(i==pageNow){
             %>
-            <li style="background-color: #ff6600"><%=i%></li>
+            <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%=i%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><li style="background-color: #ff6600"><%=i%></li></a>
             <%} else{%>
             <li><%=i%></li>
             <%}}%>
         </ul>
 
         <% if(pageNow < numPage && pageNow >= 1){%>
-        <a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>"><button><i class="fa fa-caret-right"></i></button></a>
+        <a href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&type=<%=request.getParameter("type")%>&page=<%= Integer.parseInt(request.getParameter("page")) -1%>&ma_mau=<%=request.getParameter("ma_mau")%>&ma_size=<%=request.getParameter("ma_size")%>"><button><i class="fa fa-caret-right"></i></button></a>
         <%} else{%>
         <button><i class="fa fa-caret-right"></i></button>
         <%}%>
@@ -1115,9 +1158,36 @@
             </div>
             <textarea placeholder="Mô tả đánh giá của bạn về sản phẩm (không bắt buộc)"></textarea>
             <div class="vdgsubmit">
-                <button onclick="closedanhgia()">Hủy</button>
+                <button onclick="closedanshgia()">Hủy</button>
 <%--                <button onclick="dangdanhgia()">Đăng</button>--%>
                 <button>Đăng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addCartStatus">
+    <div class="changepassword" id="changepassword">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="addCartStatus2">
+    <div class="changepassword" id="changepassword2">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess2">
+                <p> Vui lòng chọn đầy đủ thông tin để thêm sản phẩm vào giỏ hàng </p>
+                <button onclick="gobackpassword()">Trở về
+                </button>
             </div>
         </div>
     </div>

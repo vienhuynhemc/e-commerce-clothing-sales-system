@@ -1,5 +1,9 @@
 package beans.order;
 
+import beans.product.ProductImage;
+
+import java.util.ArrayList;
+
 public class DetailOrder {
 
     private String ma_don_hang;
@@ -12,12 +16,17 @@ public class DetailOrder {
 
     private int so_luong_san_pham;
 
+    private ArrayList<ProductImage> listImage = new ArrayList<ProductImage>();
+
     public DetailOrder(String ma_don_hang, String ma_san_pham, String ma_mau, String ma_size, int so_luong_san_pham) {
         this.ma_don_hang = ma_don_hang;
         this.ma_san_pham = ma_san_pham;
         this.ma_mau = ma_mau;
         this.ma_size = ma_size;
         this.so_luong_san_pham = so_luong_san_pham;
+    }
+
+    public DetailOrder() {
     }
 
     public String getMa_don_hang() {
@@ -58,6 +67,14 @@ public class DetailOrder {
 
     public void setSo_luong_san_pham(int so_luong_san_pham) {
         this.so_luong_san_pham = so_luong_san_pham;
+    }
+
+    public ArrayList<ProductImage> getListImage() {
+        return listImage;
+    }
+
+    public void setListImage(ArrayList<ProductImage> listImage) {
+        this.listImage = listImage;
     }
 
     @Override

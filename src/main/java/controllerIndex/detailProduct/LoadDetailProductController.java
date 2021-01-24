@@ -46,6 +46,14 @@ public class LoadDetailProductController extends HttpServlet {
             Star star = rateProductModel.getAvgStar(id);
             request.setAttribute("star",star);
 
+            String color = request.getParameter("ma_mau");
+            ArrayList<String> colors = loadDetailProductModel.loadImgById(id,color);
+            request.setAttribute("colors",colors);
+
+            String size = request.getParameter("ma_size");
+            int rest = loadDetailProductModel.getRestNumber(id,color,size);
+            request.setAttribute("rest",rest);
+
 
             request.getRequestDispatcher("home/detailsProduct.jsp").forward(request,response);
     }

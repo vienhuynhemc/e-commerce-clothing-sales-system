@@ -476,7 +476,7 @@
     function changeListProduct(){
 
         var order = $("#selectOrder").val();
-        // console.log(order);
+         //console.log(order);
 
         var num = $("#xem_sl_sp").val();
         // console.log(num);

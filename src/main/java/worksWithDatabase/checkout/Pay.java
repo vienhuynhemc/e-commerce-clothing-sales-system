@@ -19,10 +19,10 @@ public class Pay {
             con = DataSource.getInstance().getConnection();
 
             Random rd = new Random();
-             int n =  rd.nextInt(100000);
-             int n1 = rd.nextInt(100000);
+             int n =  rd.nextInt(1000);
+             int n1 = rd.nextInt(1000);
 
-            String ma_dh = "donhang_" + ma_kh + n + n1;
+            String ma_dh = "dh_" + n + n1;
 
             String sqldh = "";
 
@@ -152,8 +152,6 @@ public class Pay {
 
                 }
             }
-
-
 
 
             // nếu trang thái vận chuyển là online thì thanh toán luôn

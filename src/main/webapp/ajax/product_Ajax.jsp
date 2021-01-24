@@ -27,7 +27,7 @@
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>&type=&page=1">
+                <a class="aa-product-img" href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(0).getMa_mau()%>&ma_size=<%=p.getListSize().get(0).getMa_size()%>&type=&page=1">
 
 
                     <!-------Load hình đầu tiên ------->
@@ -52,9 +52,27 @@
                     <!-------Load giá và giá khuyến mãi  ------->
                     <h4 class="aa-product-title"><a href="LoadDetailProductController?idProduct=<%=p.getMa_sp()%>"><%=p.getTen_sp()%></a></h4>
                     <span class="aa-product-price sprice">
-                        <%= ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</span>
+
+                        <%if (p.getPriceSale().getGia_sp_km() != 0){%>
+
+                        <%= ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%>
+
+                        <%}else{%>
+                        <%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%>
+                        <%}%>
+
+                        VND</span>
                     <span class="aa-product-price"><del>
-                    <%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km()) %>VND</del></span>
+
+
+                    <%if (p.getPriceSale().getGia_sp_km() != 0){%>
+
+                    <%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND
+
+                    <%}%>
+
+
+                    </del></span>
 
                     <!-------Load giá và giá khuyến mãi ------->
 
@@ -388,7 +406,7 @@
             <%}else{%>
 
             <li>
-                <button type="button" aria-label="Next" id="<%=nowpage-1%>" onclick="changePage(this)">
+                <button type="button" aria-label="Next" id="<%=nowpage+1%>" onclick="changePage(this)">
                     <span aria-hidden="true" class="nextprebar">&raquo;</span>
                 </button>
             </li>

@@ -64,8 +64,9 @@ public class RateDAO {
             }
 
 //            hiển thị danh sách đánh giá
-            String sql = "SELECT * FROM danh_gia_sp WHERE " +
-                    " trang_thai = 1 AND ma_sp = ? "+t+" LIMIT ?," +numberPerPage;
+            String sql = "SELECT d.ma_sp, d.ma_kh, d.noi_dung, d.so_sao, d.trang_thai,d.ngay_tao, t.ten_hien_thi," +
+                    "t.link_hinh_dai_dien from danh_gia_sp d, tai_khoan t WHERE d.ma_kh = t.ma_tai_khoan AND" +
+                    " ma_sp = ? "+t+" LIMIT ?," +numberPerPage;
 
             PreparedStatement s = connection.prepareStatement(sql);
 
@@ -98,6 +99,8 @@ public class RateDAO {
 
                 DateTime datetime = new DateTime(year, month, day, hour, minute, second);
                 rate.setDateCreated(datetime);
+                rate.setNameCustomer(rs.getString("ten_hien_thi"));
+                rate.setImgCustomer(rs.getString("link_hinh_dai_dien"));
                 list.add(rate);
             }
             rs.close();

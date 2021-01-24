@@ -21,7 +21,7 @@ public class LoginUserDAO {
             con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "SELECT * FROM tai_khoan WHERE tai_khoan = ? and kieu_tai_khoan = 3";
+            String sql = "SELECT * FROM tai_khoan WHERE tai_khoan = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -38,8 +38,7 @@ public class LoginUserDAO {
         } catch (Exception e) {
             e.printStackTrace();
             DataSource.getInstance().releaseConnection(con);
-        } finally {
-            DataSource.getInstance().releaseConnection(con);
+            return false;
         }
         DataSource.getInstance().releaseConnection(con);
         return false;
@@ -53,7 +52,7 @@ public class LoginUserDAO {
               con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "select * from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ?";
+            String sql = "select * from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and a.kieu_tai_khoan = 3 and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ? ";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -62,7 +61,6 @@ public class LoginUserDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-
                 rs.close();
                 ps.close();
                  DataSource.getInstance().releaseConnection(con);
@@ -70,9 +68,9 @@ public class LoginUserDAO {
 
             }
         } catch (Exception e) {
+            e.printStackTrace();
             DataSource.getInstance().releaseConnection(con);
-        } finally {
-            DataSource.getInstance().releaseConnection(con);
+            return false;
         }
         DataSource.getInstance().releaseConnection(con);
         return false;
@@ -137,8 +135,8 @@ public class LoginUserDAO {
     public static void main(String[] args) {
         LoginUserDAO  loginUserDAO = new LoginUserDAO();
 
-       //System.out.println(loginUserDAO.isUserInDatabase("kh001"));
-       System.out.println(loginUserDAO.checkLogin("kh001","khso1"));
+      // System.out.println(loginUserDAO.isUserInDatabase("kh001"));
+      // System.out.println(loginUserDAO.checkLogin("kh001","khso1"));
       // System.out.println(loginUserDAO.checkActiveStatus("kh001"));
     }
 
