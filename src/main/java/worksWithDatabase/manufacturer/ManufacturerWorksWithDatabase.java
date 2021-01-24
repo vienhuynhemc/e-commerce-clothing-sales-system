@@ -879,4 +879,28 @@ public class ManufacturerWorksWithDatabase {
 
     }
 
+    //  Phương thức nhận vào một mã giảm giá , trả về ProductAdminManufacturer
+    public ProductAdminManufacturer getProductAdminManufacturerByI(String id){
+
+        ProductAdminManufacturer productAdminManufacturer = new ProductAdminManufacturer();
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM hang_san_xuat WHERE ma_hsx = ?");
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminManufacturer.setId(resultSet.getString("ma_hsx"));
+            productAdminManufacturer.setName(resultSet.getString("ten_hsx"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return productAdminManufacturer;
+    }
+
 }

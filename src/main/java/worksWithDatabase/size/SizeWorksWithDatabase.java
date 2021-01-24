@@ -75,5 +75,28 @@ public class SizeWorksWithDatabase {
 
     }
 
+    public ProductAdminSizeAdd getProductAdminSizeAddById(String id){
+
+        ProductAdminSizeAdd productAdminSizeAdd = new ProductAdminSizeAdd();
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM size WHERE ma_size = ?");
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminSizeAdd.setName(resultSet.getString("ten_size"));
+            productAdminSizeAdd.setId(resultSet.getString("ma_size"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return productAdminSizeAdd;
+
+    }
+
 
 }

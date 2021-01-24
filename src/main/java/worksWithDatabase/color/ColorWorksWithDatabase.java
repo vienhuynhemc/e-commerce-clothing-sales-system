@@ -5,6 +5,7 @@ import beans.productAdmin.ProductAdminColor;
 import beans.productAdmin.ProductAdminColorAdd;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +109,31 @@ public class ColorWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
         return result;
+    }
+
+    //  Phuowng thuc tra ve productadmincoloradd
+    public ProductAdminColorAdd getProductAdminColorAddById(String ma_mau){
+
+        ProductAdminColorAdd productAdminColorAdd = new ProductAdminColorAdd();
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mau WHERE ma_mau = ?");
+            preparedStatement.setString(1,ma_mau);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminColorAdd.setTen_mau(resultSet.getString("ten_mau"));
+            productAdminColorAdd.setMa_mau(resultSet.getString("ma_mau"));
+            productAdminColorAdd.setHinh_anh_mau(resultSet.getString("link_hinh_anh"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+        return productAdminColorAdd;
+
     }
 
 }

@@ -187,7 +187,7 @@ public class ManufacturerModel {
     }
 
     //  Phương thức nhận vô list product admin fill tên hãng sản xuất
-    public void fillNameManufactureProductAdmin(List<ProductAdmin> products){
+    public void fillNameManufactureProductAdmin(List<ProductAdmin> products) {
         //  Mượn manufacturer works with database
         ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
@@ -197,11 +197,23 @@ public class ManufacturerModel {
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
     }
 
-    public List<ProductAdminManufacturer> getAllManufacturer(){
+    public List<ProductAdminManufacturer> getAllManufacturer() {
         ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
 
         //  Lấy kết quả edit
-      List<ProductAdminManufacturer> result =   manufacturerWorksWithDatabase.getAllManufacturer();
+        List<ProductAdminManufacturer> result = manufacturerWorksWithDatabase.getAllManufacturer();
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
+
+        return result;
+    }
+
+    //  Phương thức nhận vào một mã giảm giá , trả về ProductAdminManufacturer
+    public ProductAdminManufacturer getProductAdminManufacturerByI(String id) {
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+        //  Lấy kết quả edit
+        ProductAdminManufacturer result = manufacturerWorksWithDatabase.getProductAdminManufacturerByI(id);
         //  Có mượn thì có trả
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
 

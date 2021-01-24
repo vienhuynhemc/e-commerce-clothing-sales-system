@@ -68,6 +68,14 @@ public class CategoryModel {
         return result;
     }
 
+    //  Phương thứuc nhận vào mã dm trả về danh mục
+    public ProductAdminCategory getProductAdminCategoryById(String id){
+        CategoryWorksWithDatabase categoryWorksWithDatabase = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        ProductAdminCategory result = categoryWorksWithDatabase.getProductAdminCategoryById(id);
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
+        return result;
+    }
+
 
     public static void main(String[] args) {
         //System.out.println(CategoryWorksWithDatabase.numberOfPage());

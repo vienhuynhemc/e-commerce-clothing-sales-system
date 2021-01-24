@@ -65,6 +65,9 @@ public class ProductAdminObject implements ObjectPageAdmin {
     //  Mã màu tiếp theo
     private String ma_mau_tiep_theo;
 
+    //  Đối tượng sở hữu bác thêm sản phẩm tiếp theo
+    private ProductAdminAdd productAdminAdd;
+
     public ProductAdminObject() {
     }
 
@@ -236,6 +239,14 @@ public class ProductAdminObject implements ObjectPageAdmin {
 
     public void setMa_mau_tiep_theo(String ma_mau_tiep_theo) {
         this.ma_mau_tiep_theo = ma_mau_tiep_theo;
+    }
+
+    public ProductAdminAdd getProductAdminAdd() {
+        return productAdminAdd;
+    }
+
+    public void setProductAdminAdd(ProductAdminAdd productAdminAdd) {
+        this.productAdminAdd = productAdminAdd;
     }
 
 }

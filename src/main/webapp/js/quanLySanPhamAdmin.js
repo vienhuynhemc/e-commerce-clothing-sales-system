@@ -423,7 +423,12 @@ function removeSize(button) {
     for (let i = 0; i < list7.length; i++) {
         list8 = list7[i].children;
         if (list8[1] == button) {
-            list6[1].removeChild(list7[i]);
+            let id = list8[2].value;
+
+            document.getElementById("actionDiv1").value = "removeSize";
+            document.getElementById("idDiv1").value = id;
+            document.getElementById("div1").submit();
+
             return;
         }
     }
@@ -469,8 +474,7 @@ function themsize(item) {
         let check = 0;
         for (let i = 0; i < list7.length; i++) {
             let l1 = list7[i].children;
-            let l2 = l1[0].children;
-            if (l2[1].innerText == value) {
+            if (l1[2].value == value) {
                 check = 1;
                 break;
             }
@@ -478,31 +482,11 @@ function themsize(item) {
 
 
         if (check == 0) {
-            let div = document.createElement("div");
-            div.classList.add("listSizeItem");
-
-            let div2 = document.createElement("div");
-            let i = document.createElement("i");
-            i.classList.add("fa");
-            i.classList.add("fa-circle");
-            let p = document.createElement("p");
-            p.innerText = value;
-            div2.appendChild(i);
-            div2.appendChild(p);
-            div.appendChild(div2);
-
-            let button = document.createElement("span");
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-trash");
-            button.appendChild(i2);
-            button.onclick = function () {
-                removeSize(button)
-            };
-            div.appendChild(button);
-
-            list6[1].appendChild(div);
+            document.getElementById("actionDiv1").value = "addSize";
+            document.getElementById("idDiv1").value = value;
+            document.getElementById("div1").submit();
         }
+
     }
 }
 
@@ -638,19 +622,23 @@ function removehinhitem(item) {
         for (let j = 0; j < list14.length; j++) {
             list15 = list14[j].children;
             if (list15[1] == item) {
-                list13[0].removeChild(list14[j]);
 
-                let newValue = parseInt(list13[3].value);
-                if (newValue < 0) {
-                    newValue += 50;
-                    let space = newValue / -50;
-                    list13[3].value = newValue;
-                    if (space > 0) {
-                        list13[0].style.marginLeft = `${newValue - space * 10}px`;
-                    } else {
-                        list13[0].style.marginLeft = `${newValue}px`;
-                    }
-                }
+                document.getElementById("actionDiv1").value = "removeImage";
+                document.getElementById("idDiv1").value = list15[2].value;
+                document.getElementById("idDiv12").value = list15[0].src;
+                document.getElementById("div1").submit();
+
+                // let newValue = parseInt(list13[3].value);
+                // if (newValue < 0) {
+                //     newValue += 50;
+                //     let space = newValue / -50;
+                //     list13[3].value = newValue;
+                //     if (space > 0) {
+                //         list13[0].style.marginLeft = `${newValue - space * 10}px`;
+                //     } else {
+                //         list13[0].style.marginLeft = `${newValue}px`;
+                //     }
+                // }
 
                 return;
             }
@@ -855,7 +843,11 @@ function removecolor(item) {
         list11 = list10[i].children;
         list12 = list11[1].children;
         if (list12[1] == item) {
-            list9[1].removeChild(list10[i]);
+
+            document.getElementById("actionDiv1").value = "removeColor";
+            document.getElementById("idDiv1").value = list12[3].value;
+            document.getElementById("div1").submit();
+
         }
     }
 }
@@ -914,46 +906,6 @@ function themhinh2(item) {
     }
 }
 
-function loadIMG(event, item) {
-    //---
-    let list1 = document.getElementById("div1").children;
-    let list2 = list1[0].children;
-
-    //color
-    let list8 = list2[1].children;
-    let list9 = list8[4].children;
-    let list10 = list9[1].children;
-    for (let i = 0; i < list10.length; i++) {
-        list11 = list10[i].children;
-        list12 = list11[1].children;
-        if (list12[2] == item) {
-            if (event.target.files.length > 0) {
-                var src = URL.createObjectURL(event.target.files[0]);
-
-                list13 = list11[0].children;
-
-                // listhinh va 2 angle
-                list14 = list13[1].children;
-
-                let div1 = document.createElement("div");
-                div1.classList.add("listHinhitem");
-                let i1 = document.createElement("i");
-                i1.classList.add("fa");
-                i1.classList.add("fa-close");
-                i1.onclick = function () {
-                    removehinhitem(i1)
-                };
-                let img = document.createElement("img");
-                img.src = src;
-                div1.appendChild(img);
-                div1.appendChild(i1);
-                list14[0].appendChild(div1);
-                return;
-            }
-        }
-    }
-}
-
 function loadIMG2(event, item) {
     //---
     let list1 = document.getElementById("div3").children;
@@ -1007,7 +959,6 @@ function themmau(item) {
         //lay du lieu
         let l6 = l3[2].children;
         let value = l6[1].value;
-        let namecolor = l6[1].options[l6[1].selectedIndex].text;
 
         let check = 0;
         let listMau = l5[1].children;
@@ -1015,86 +966,16 @@ function themmau(item) {
             let a1 = listMau[j].children;
             let a2 = a1[0].children;
             let a3 = a2[0].children;
-            if (a3[0].innerText == namecolor) {
+            if (a3[2].value == value) {
                 check = 1;
             }
         }
         if (check == 0) {
-            // tao phan tu
-            let div1 = document.createElement("div");
-            div1.classList.add("listMauItem");
 
-            let div2 = document.createElement("div");
-            div2.classList.add("listMauItemleft");
-            let div4 = document.createElement("div");
-            let div5 = document.createElement("div");
-            let p1 = document.createElement("p");
-            p1.innerText = namecolor;
-            let div6 = document.createElement("div");
-            let img1 = document.createElement("img");
-            img1.src = value;
-            div6.appendChild(img1);
-            div4.appendChild(p1);
-            div4.appendChild(div6);
-            div2.appendChild(div4);
+            document.getElementById("actionDiv1").value = "addColor";
+            document.getElementById("idDiv1").value = value;
+            document.getElementById("div1").submit();
 
-            //div5
-            let div7 = document.createElement("div");
-            div7.classList.add("listHinh")
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-angle-left");
-            i2.onclick = function () {
-                movehinhleft(i2)
-            };
-            let i3 = document.createElement("i");
-            i3.classList.add("fa");
-            i3.classList.add("fa-angle-right");
-            i3.onclick = function () {
-                movehinhright(i3)
-            };
-            let input1 = document.createElement("input");
-            input1.value = "0";
-            input1.type = "number";
-            input1.style.display = "none";
-            div5.appendChild(div7);
-            div5.appendChild(i2);
-            div5.appendChild(i3);
-            div5.appendChild(input1);
-
-            div2.appendChild(div5);
-            div1.appendChild(div2);
-
-            let div3 = document.createElement("div");
-            div3.classList.add("removecolor");
-            let button1 = document.createElement("span");
-            let button2 = document.createElement("span");
-            let i4 = document.createElement("i");
-            let i5 = document.createElement("i");
-            i4.classList.add("fa");
-            i5.classList.add("fa");
-            i4.classList.add("fa-plus");
-            i5.classList.add("fa-trash");
-            button1.appendChild(i4);
-            button2.appendChild(i5);
-            button1.onclick = function () {
-                themhinh(this)
-            };
-            button2.onclick = function () {
-                removecolor(this)
-            };
-            let input2 = document.createElement("input");
-            input2.type = "file";
-            input2.style.display = "none";
-            input2.onchange = function () {
-                loadIMG(event, input2)
-            };
-            div3.appendChild(button1);
-            div3.appendChild(button2);
-            div3.appendChild(input2);
-            div1.appendChild(div3);
-
-            l5[1].appendChild(div1);
         }
     }
 }
@@ -1228,6 +1109,8 @@ function themGioiThieu() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "gioi_thieu"+(parseInt(document.getElementById("size_gioi_thieu").value)+1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1237,18 +1120,25 @@ function themGioiThieu() {
     }
     div.appendChild(i);
     document.getElementById("listGioiThieu").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_gioi_thieu").value)+1;
+    document.getElementById("size_gioi_thieu").value = newValue;
 }
 
 function removeGioiThieu(item) {
     let list = document.getElementById("listGioiThieu").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listGioiThieu").removeChild(list[i]);
-            return;
+            break;
         }
-
     }
+    list = document.getElementById("listGioiThieu").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "gioi_thieu"+(i+1);
+    }
+    let newValue = parseInt(document.getElementById("size_gioi_thieu").value)-1;
+    document.getElementById("size_gioi_thieu").value = newValue;
 }
 
 function themCauTao() {
@@ -1257,6 +1147,8 @@ function themCauTao() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "cau_tao"+(parseInt(document.getElementById("size_cau_tao").value)+1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1266,18 +1158,24 @@ function themCauTao() {
     }
     div.appendChild(i);
     document.getElementById("listCauTao").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_cau_tao").value)+1;
+    document.getElementById("size_cau_tao").value = newValue;
 }
 
 function removeCauTao(item) {
     let list = document.getElementById("listCauTao").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listCauTao").removeChild(list[i]);
-            return;
         }
-
     }
+    list = document.getElementById("listCauTao").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "cau_tao"+(i+1);
+    }
+    let newValue = parseInt(document.getElementById("size_cau_tao").value)-1;
+    document.getElementById("size_cau_tao").value = newValue;
 }
 
 function themThongTin() {
@@ -1286,6 +1184,8 @@ function themThongTin() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "thong_tin"+(parseInt(document.getElementById("size_thong_tin").value)+1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1295,18 +1195,24 @@ function themThongTin() {
     }
     div.appendChild(i);
     document.getElementById("listThongTin").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_thong_tin").value)+1;
+    document.getElementById("size_thong_tin").value = newValue;
 }
 
 function removeThongTin(item) {
     let list = document.getElementById("listThongTin").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listThongTin").removeChild(list[i]);
-            return;
         }
-
     }
+    list = document.getElementById("listThongTin").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "thong_tin"+(i+1);
+    }
+    let newValue = parseInt(document.getElementById("size_thong_tin").value)-1;
+    document.getElementById("size_thong_tin").value = newValue;
 }
 
 function themGioiThieu2() {
@@ -1328,6 +1234,7 @@ function themGioiThieu2() {
     }
     div.appendChild(i);
     l1.appendChild(div);
+
 }
 
 function removeGioiThieu2(item) {
@@ -1341,6 +1248,7 @@ function removeGioiThieu2(item) {
         }
 
     }
+
 }
 
 function themCauTao2() {
@@ -1685,5 +1593,106 @@ function taiMauMoi(img) {
         .then(url => {
             link = url;
             arrayMauHoanThanh.push(link);
+        });
+}
+
+var arrayHinhHoanThanh = [];
+var actionHinh = 0;
+var interVelHinh;
+var countRefreshHinh;
+var countRefreshHinhMax = 3;
+var ma_mau_khi_tai_hinh;
+
+function loadIMG(event, item) {
+    //---
+    let list1 = document.getElementById("div1").children;
+    let list2 = list1[0].children;
+
+    //color
+    let list8 = list2[1].children;
+    let list9 = list8[4].children;
+    let list10 = list9[1].children;
+    for (let i = 0; i < list10.length; i++) {
+        list11 = list10[i].children;
+        list12 = list11[1].children;
+        if (list12[2] == item) {
+            if (event.target.files.length > 0) {
+
+                let ma_mau = list12[3].value;
+                let ma_sp = list12[4].value;
+                let name_img = list12[5].value;
+
+                let link_hinh = 'san_pham/'+ma_sp+"/"+ma_mau+"/"+name_img;
+                taiHinhMoi(event.target.files[0],link_hinh)
+                actionHinh =0;
+                ma_mau_khi_tai_hinh = ma_mau;
+                choTaiHinhHinh();
+
+                return;
+            }
+        }
+    }
+}
+
+function choTaiHinhHinh() {
+    if (actionHinh == 1) {
+        if (interVelHinh) {
+            window.clearInterval(interVelHinh);
+            interVelHinh = null;
+            countRefreshHinh = 0;
+            arrayHinhHoanThanh = [];
+        }
+    } else {
+        if (!interVelHinh) {
+            interVelHinh = window.setInterval(
+                function () {
+                    if (arrayHinhHoanThanh.length == 1) {
+
+                        actionHinh = 1;
+                        window.clearInterval(interVelHinh);
+                        interVelHinh = null;
+                        countRefreshHinh = 0;
+
+                        document.getElementById("actionDiv1").value = "addImage";
+                        document.getElementById("idDiv1").value = ma_mau_khi_tai_hinh;
+                        document.getElementById("idDiv12").value = arrayHinhHoanThanh.pop();
+                        document.getElementById("div1").submit();
+
+                    } else {
+                        countRefreshHinh++;
+                        if (countRefreshHinh == countRefreshHinhMax) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionHinh = 1;
+                            choTaiHinhHinh();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+function taiHinhMoi(img,linkImg) {
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = linkImg;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayHinhHoanThanh.push(link);
         });
 }

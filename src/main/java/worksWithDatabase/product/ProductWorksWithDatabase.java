@@ -4,6 +4,7 @@ import beans.DateTime;
 import beans.productAdmin.*;
 import connectionDatabase.DataSource;
 
+import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
 import javax.xml.transform.Result;
 import java.sql.*;
@@ -95,6 +96,24 @@ public class ProductWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    //  Phuơng thức lấy mã sản phẩm tiếp theo
+    public String getNextId(){
+
+        String result = null;
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ma_sp) AS so_luong FROM san_pham");
+            resultSet.next();
+            result = "sp_"+(resultSet.getInt("so_luong")+1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
     }
 
 

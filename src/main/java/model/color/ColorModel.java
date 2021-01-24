@@ -44,5 +44,13 @@ public class ColorModel {
         ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
         return result;
     }
+    //  Phuowng thuc tra ve productadmincoloradd
+    public ProductAdminColorAdd getProductAdminColorAddById(String ma_mau){
+        ColorWorksWithDatabase colorWorksWithDatabase = ColorDataSource.getInstance().getColorWorksWithDatabase();
+        ProductAdminColorAdd result = colorWorksWithDatabase.getProductAdminColorAddById(ma_mau);
+        ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
+        return result;
+    }
+
 
 }

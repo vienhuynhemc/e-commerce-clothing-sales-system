@@ -876,6 +876,31 @@ public class CategoryWorksWithDatabase {
 
     }
 
+    //  Phương thứuc nhận vào mã dm trả về danh mục
+    public ProductAdminCategory getProductAdminCategoryById(String id){
+
+        ProductAdminCategory productAdminCategory = new ProductAdminCategory();
+
+        Connection connection =DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ?");
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminCategory.setId(resultSet.getString("ma_dm"));
+            productAdminCategory.setName(resultSet.getString("ten_dm"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+        return productAdminCategory;
+    }
+
     public static void main(String[] args) {
         CategoryWorksWithDatabase test = new CategoryWorksWithDatabase();
 

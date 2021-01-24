@@ -31,4 +31,12 @@ public class ProductModel {
         ProductDataSource.getInstance().releaseProductWorksWithDatabase(productWorksWithDatabase);
     }
 
+    //  Phuơng thức lấy mã sản phẩm tiếp theo
+    public String getNextId(){
+        ProductWorksWithDatabase productWorksWithDatabase = ProductDataSource.getInstance().getProductWorksWithDatabase();
+      String result = productWorksWithDatabase.getNextId();
+        ProductDataSource.getInstance().releaseProductWorksWithDatabase(productWorksWithDatabase);
+        return result;
+    }
+
 }

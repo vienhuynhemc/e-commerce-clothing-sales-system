@@ -1,6 +1,7 @@
 package model.size;
 
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminSizeAdd;
 import worksWithDatabase.size.SizeDataSource;
 import worksWithDatabase.size.SizeWorksWithDatabase;
@@ -28,6 +29,13 @@ public class SizeModel {
         List<ProductAdminSizeAdd> result = sizeWorksWithDatabase.getAllSize();
         SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
         return result;
+    }
+
+    public ProductAdminSizeAdd getProductAdminSizeAddById(String id){
+        SizeWorksWithDatabase sizeWorksWithDatabase = SizeDataSource.getInstance().getSizeWorksWithDatabase();
+        ProductAdminSizeAdd productAdminAdd = sizeWorksWithDatabase.getProductAdminSizeAddById(id);
+        SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
+        return productAdminAdd;
     }
 
 }
