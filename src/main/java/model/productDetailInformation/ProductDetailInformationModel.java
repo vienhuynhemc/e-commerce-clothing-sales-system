@@ -1,6 +1,8 @@
 package model.productDetailInformation;
 
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminColorAddProduct;
+import beans.productAdmin.ProductAdminSizeAdd;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSource;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
@@ -26,7 +28,7 @@ public class ProductDetailInformationModel {
 
 
     //  Phương thức lấy số sản phẩm tối đa đầu tiên
-    public int getNumberOfMaxProductFirst(){
+    public int getNumberOfMaxProductFirst() {
         ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
         int result = productDetailInformationWorksWithDatabase.getNumberOfMaxProductFirst();
         ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
@@ -35,15 +37,21 @@ public class ProductDetailInformationModel {
 
     public void fillProductAdminFromALl(List<ProductAdmin> products, String selectSearchAndSort, String sort, String search, int lineOfOnPageQuanLySanPham, int nowPage) {
         ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
-        productDetailInformationWorksWithDatabase.fillProductAdminFromAll(products, selectSearchAndSort,sort,search,lineOfOnPageQuanLySanPham,nowPage);
+        productDetailInformationWorksWithDatabase.fillProductAdminFromAll(products, selectSearchAndSort, sort, search, lineOfOnPageQuanLySanPham, nowPage);
         ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
     }
 
-    public int getNumberOfMaxProductFromAll( String selectSearchAndSort, String search){
+    public int getNumberOfMaxProductFromAll(String selectSearchAndSort, String search) {
         ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
-        int result = productDetailInformationWorksWithDatabase.getNumberOfMaxProductFromAll(selectSearchAndSort,search);
+        int result = productDetailInformationWorksWithDatabase.getNumberOfMaxProductFromAll(selectSearchAndSort, search);
         ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
         return result;
+    }
+
+    public void addToDatabae(String ma_sp, List<ProductAdminColorAddProduct> listColor, List<ProductAdminSizeAdd> listSize) {
+        ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+        productDetailInformationWorksWithDatabase.addToDatabae(ma_sp, listColor, listSize);
+        ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
     }
 
 }

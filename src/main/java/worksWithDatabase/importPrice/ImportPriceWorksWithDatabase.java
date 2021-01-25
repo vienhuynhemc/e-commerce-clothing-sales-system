@@ -1,5 +1,6 @@
 package worksWithDatabase.importPrice;
 
+import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 
@@ -37,4 +38,24 @@ public class ImportPriceWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
 
     }
+
+    public void addToDatabse(String ma_sp, int gia_sp, DateTime ngay_cap_nhat){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO gia_nhap VALUES(?,?,?)");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.setInt(2,gia_sp);
+            preparedStatement.setString(3,ngay_cap_nhat.toString());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 }

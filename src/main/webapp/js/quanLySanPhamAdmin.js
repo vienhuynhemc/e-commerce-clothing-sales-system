@@ -1696,3 +1696,64 @@ function taiHinhMoi(img,linkImg) {
             arrayHinhHoanThanh.push(link);
         });
 }
+
+function themsanpham(){
+
+    let ten_sp = document.getElementById("ten_sp_add").value;
+    if(ten_sp.length == 0){
+        document.getElementById("erroradd1").classList.remove("hidden");
+    }else{
+        if( !document.getElementById("erroradd1").classList.contains("hidden")){
+            document.getElementById("erroradd1").classList.add("hidden");
+        }
+        let gia = document.getElementById("gia_sp_add").value;
+        if(gia.length == 0){
+            document.getElementById("erroradd2").classList.remove("hidden");
+        }else{
+            if( !document.getElementById("erroradd2").classList.contains("hidden")){
+                document.getElementById("erroradd2").classList.add("hidden");
+            }
+            let gia_nha= document.getElementById("gia_nhap_add").value;
+            if(gia_nha.length == 0){
+                document.getElementById("erroradd3").classList.remove("hidden");
+            }else{
+                if( !document.getElementById("erroradd3").classList.contains("hidden")){
+                    document.getElementById("erroradd3").classList.add("hidden");
+                }
+                let listMau = document.getElementById("listMauAdd").children;
+                if(listMau.length == 0){
+                    document.getElementById("erroradd4").classList.remove("hidden");
+                }else{
+                    if( !document.getElementById("erroradd4").classList.contains("hidden")){
+                        document.getElementById("erroradd4").classList.add("hidden");
+                    }
+                    let listSize = document.getElementById("listSizeAdd").children;
+                    if(listSize.length == 0){
+                        document.getElementById("erroradd5").classList.remove("hidden");
+                    }else{
+                        if( !document.getElementById("erroradd5").classList.contains("hidden")){
+                            document.getElementById("erroradd5").classList.add("hidden");
+                        }
+
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm sản phẩm này không ?'
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+
+                        document.getElementById("formYesNoLink").style.display = 'flex';
+                        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+                        document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+                        document.getElementById("formYesNoLink").onclick = function () {
+                            document.getElementById("actionDiv1").value = "addProduct";
+                            document.getElementById("div1").submit();
+                        }
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+
+                    }
+                }
+            }
+        }
+    }
+}

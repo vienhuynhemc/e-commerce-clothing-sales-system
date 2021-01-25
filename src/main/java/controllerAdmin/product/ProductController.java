@@ -84,9 +84,32 @@ public class ProductController extends HttpServlet {
                     productAdminObject.setContent((String) request.getAttribute("more2"));
 
                     //  Nếu là từ trang thêm thì làm như thế này
-                } else if (foward.equals("add")) {
+                } else if (foward.equals("addProduct")) {
 
+                    //  Cập nhập lại số lượng hiển thị
+                    productAdminObject.setNumberOfShow(ProductAdminModel.getInstance().getNumberOfShow(productAdmins));
 
+                    //  Cập nhập lại số sản phẩm tối đa
+                    int maximumProduct = ProductAdminModel.getInstance().getNumberOfMaxProductFromAll(productAdminObject.getSelectSearchAndSort(), productAdminObject.getSearch());
+                    productAdminObject.setMaximumProduct(maximumProduct);
+
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage =ProductAdminModel.getInstance().getMaximunNumberOfPage(maximumProduct);
+                    productAdminObject.setMaximumPage(maximumPage);
+
+                    //  Cập nhập lại list Next page
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(productAdminObject.getNowPage(), productAdminObject.getMaximumPage());
+                    productAdminObject.setNextPages(nextPages);
+
+                    productAdminObject.setNotify(true);
+                    productAdminObject.setTitle((String) request.getAttribute("more"));
+                    productAdminObject.setContent((String) request.getAttribute("more2"));
+
+                    //  Chuyển về trạng thái ban đầu, cho đối tượng thêm thành null
+                    productAdminObject.setProductAdminAdd(null);
+                    productAdminObject.setIs_them_moi(false);
+                    productAdminObject.setIs_sua_da(false);
+                    productAdminObject.setIs_sua_don(false);
 
                 } else if (foward.equals("edit")) {
 

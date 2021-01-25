@@ -39,4 +39,9 @@ public class ProductInformationModel {
         return result;
     }
 
+    public void addToDatabase(String ma_sp, List<String> thong_tins) {
+        ProductInformationWorksWithDatabase productInformationWorksWithDatabase = ProductInformationDataSource.getInstance().getProductInformationWorksWithDatabase();
+        productInformationWorksWithDatabase.addToDatabase(ma_sp, thong_tins);
+        ProductInformationDataSource.getInstance().releaseProductInformationWorksWithDatabase(productInformationWorksWithDatabase);
+    }
 }

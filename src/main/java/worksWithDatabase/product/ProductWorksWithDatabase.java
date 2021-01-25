@@ -116,6 +116,32 @@ public class ProductWorksWithDatabase {
         return result;
     }
 
+    //  Phương thức thêm một sản phẩm vô csdl
+    public void addSpToDatabase(String ma_sp,String ten_sp,String ma_hsx,String ma_dm,DateTime ngay_tao,int gioi_tinh,int trang_thai,int so_luong_ban_ra,int ton_tai){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO san_pham VALUES(?,?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.setString(2,ten_sp);
+            preparedStatement.setString(3,ma_hsx);
+            preparedStatement.setString(4,ma_dm);
+            preparedStatement.setString(5,ngay_tao.toString());
+            preparedStatement.setInt(6,gioi_tinh);
+            preparedStatement.setInt(7,trang_thai);
+            preparedStatement.setInt(8,so_luong_ban_ra);
+            preparedStatement.setInt(9,ton_tai);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 
 
 }

@@ -23,4 +23,11 @@ public class ProductIntroductionModel {
         ProductIntroductionDataSource.getInstance().releaseProductIntroductionWorksWithDatabase(productIntroductionWorksWithDatabase);
     }
 
+    //  Phương thức nhận vô list giới thiệu và masp, cho vô csdl
+    public void addIntroductToDabase(String ma_sp,List<String> gioiThieus){
+        ProductIntroductionWorksWithDatabase productIntroductionWorksWithDatabase = ProductIntroductionDataSource.getInstance().getProductIntroductionWorksWithDatabase();
+       productIntroductionWorksWithDatabase.addIntroductToDabase(ma_sp,gioiThieus);
+        ProductIntroductionDataSource.getInstance().releaseProductIntroductionWorksWithDatabase(productIntroductionWorksWithDatabase);
+    }
+
 }

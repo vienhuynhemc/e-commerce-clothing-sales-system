@@ -391,15 +391,17 @@
                         <div>
                             <label>Tên sản phẩm</label>
                         </div>
-                        <input type="text" placeholder="Nhập tên sản phẩm ở đây" name="ten_sp"
+                        <input type="text" placeholder="Nhập tên sản phẩm ở đây" name="ten_sp" id="ten_sp_add"
                                value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getTen_sp()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd1">Tên không được bỏ trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
                             <label>Giá</label>
                         </div>
-                        <input type="number" placeholder="Nhập giá sản phẩm ở đây" name="gia_sp"
+                        <input type="number" placeholder="Nhập giá sản phẩm ở đây" name="gia_sp" id="gia_sp_add"
                                value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getGia_sp()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd2">Giá sản phẩm không được để trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
@@ -412,8 +414,9 @@
                         <div>
                             <label>Giá nhập</label>
                         </div>
-                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây" name="gia_nhap"
+                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây" name="gia_nhap" id="gia_nhap_add"
                                value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getGia_nhap()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd3">Giá nhập không được bỏ trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
@@ -492,7 +495,7 @@
                     </div>
                     <div class="linediv12"></div>
                     <div class="div11submit">
-                        <span><i class="fa fa-plus"></i>Thêm sản phẩm</span>
+                        <span onclick="themsanpham()"><i class="fa fa-plus"></i>Thêm sản phẩm</span>
                         <span onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</span>
                     </div>
                 </div>
@@ -528,7 +531,7 @@
                     </div>
                     <div class="maudachon">
                         <h3>Màu đã chọn</h3>
-                        <div class="listMau">
+                        <div class="listMau" id="listMauAdd">
                             <%
                             if(productAdminObject.getProductAdminAdd() !=null && productAdminObject.getProductAdminAdd().getList_mau_kem_hinh_anh() != null){
                                 for(ProductAdminColorAddProduct productAdminColorAddProduct : productAdminObject.getProductAdminAdd().getList_mau_kem_hinh_anh()){
@@ -575,6 +578,7 @@
                                 }
                             %>
                         </div>
+                        <p class="notifyError hidden" id="erroradd4">Màu không được bỏ trống</p>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
@@ -656,24 +660,14 @@
                 <div class="div13">
                     <h3>Chọn size</h3>
                     <div class="linediv12"></div>
-                    <div class="div12inputlv2">
+                    <div class="div12inputlv2" style="display: none">
                         <div>
                             <label>Loại sản phẩm</label>
                         </div>
                         <select name="loai_sp">
-                            <option value="ao"
-                                    <%if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getLoai_sp().equals("ao")){%>
-                                    selected
-                                    <%}%>
-                                    d>Áo</option>
-                            <option value="quan"
-                                    <%if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getLoai_sp().equals("quan")){%>
-                                    selected
-                                    <%}%>
-                            >Quần</option>
                         </select>
                     </div>
-                    <div class="div12inputlv2">
+                    <div class="div12inputlv2" >
                         <div>
                             <label>Size</label>
                         </div>
@@ -695,7 +689,7 @@
                     <span onclick="themsize(this)"><i class="fa fa-plus"></i> Thêm size</span>
                     <div class="sizedachon">
                         <h3>Size đã chọn</h3>
-                        <div class="listSize">
+                        <div class="listSize" id="listSizeAdd">
 
                             <%
                                 if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_size() != null) {
@@ -717,6 +711,7 @@
 
                         </div>
                     </div>
+                    <p class="notifyError hidden" id="erroradd5">Size không được bỏ trống</p>
                 </div>
 
             </div>

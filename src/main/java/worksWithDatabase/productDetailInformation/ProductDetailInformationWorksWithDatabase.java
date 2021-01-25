@@ -248,4 +248,30 @@ public class ProductDetailInformationWorksWithDatabase {
 
     }
 
+    public void addToDatabae(String ma_sp, List<ProductAdminColorAddProduct> listColor, List<ProductAdminSizeAdd> listSize){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO thong_tin_chi_tiet_sp VALUES(?,?,?,?,?,?)");
+            for(ProductAdminColorAddProduct productAdminColorAdd : listColor){
+                for(ProductAdminSizeAdd productAdminSize : listSize){
+                    preparedStatement.setString(1,ma_sp);
+                    preparedStatement.setString(2,productAdminColorAdd.getMa_mau());
+                    preparedStatement.setString(3,productAdminSize.getId());
+                    preparedStatement.setInt(4,0);
+                    preparedStatement.setInt(5,1);
+                    preparedStatement.setInt(6,productAdminColorAdd.getList_hinh_anh_sp().size());
+                    preparedStatement.executeUpdate();
+                }
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 }
