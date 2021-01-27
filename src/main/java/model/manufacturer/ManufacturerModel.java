@@ -3,6 +3,7 @@ package model.manufacturer;
 import beans.BeansConfiguration;
 import beans.manufacturer.Manufacturer;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminManufacturer;
 import worksWithDatabase.manufacturer.ManufacturerDataSource;
 import worksWithDatabase.manufacturer.ManufacturerWorksWithDatabase;
@@ -218,6 +219,14 @@ public class ManufacturerModel {
         ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
 
         return result;
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        ManufacturerWorksWithDatabase manufacturerWorksWithDatabase = ManufacturerDataSource.getInstance().getManufacturerWorksWithDatabase();
+
+      manufacturerWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
+        //  Có mượn thì có trả
+        ManufacturerDataSource.getInstance().releaseManufacturerWorksWithDatabase(manufacturerWorksWithDatabase);
     }
 
 }

@@ -2,6 +2,7 @@ package worksWithDatabase.importPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import connectionDatabase.DataSource;
 
 import java.sql.Connection;
@@ -56,6 +57,24 @@ public class ImportPriceWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT gia_sp FROM gia_nhap WHERE ma_sp = ? ORDER BY ngay_cap_nhat DESC LIMIT 0,1");
+            preparedStatement.setString(1,productAdminEditGroup.getMa_sp());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.setGia_nhap(resultSet.getInt("gia_sp")+"");
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
     }
 
 }

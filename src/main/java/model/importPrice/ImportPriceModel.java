@@ -2,6 +2,7 @@ package model.importPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import worksWithDatabase.importPrice.ImportPriceDataSource;
 import worksWithDatabase.importPrice.ImportPriceWorksWithDatabase;
 
@@ -28,6 +29,12 @@ public class ImportPriceModel {
     public void addToDatabse(String ma_sp, int gia_sp, DateTime ngay_cap_nhat){
         ImportPriceWorksWithDatabase importPriceWorksWithDatabase = ImportPriceDataSource.getInstance().getImportPriceWorksWithDatabase();
         importPriceWorksWithDatabase.addToDatabse(ma_sp, gia_sp, ngay_cap_nhat);
+        ImportPriceDataSource.getInstance().releaseImportPriceWorksWithDatabase(importPriceWorksWithDatabase);
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        ImportPriceWorksWithDatabase importPriceWorksWithDatabase = ImportPriceDataSource.getInstance().getImportPriceWorksWithDatabase();
+        importPriceWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
         ImportPriceDataSource.getInstance().releaseImportPriceWorksWithDatabase(importPriceWorksWithDatabase);
     }
 

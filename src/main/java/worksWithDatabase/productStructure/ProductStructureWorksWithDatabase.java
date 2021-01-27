@@ -66,4 +66,51 @@ public class ProductStructureWorksWithDatabase {
 
     }
 
+    public void editToDatabase(String ma_sp, List<String> cau_tao){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM cau_tao_sp WHERE ma_sp = ?");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("INSERT INTO cau_tao_sp VALUES(?,?)");
+            for(String s : cau_tao){
+                preparedStatement.setString(1,ma_sp);
+                preparedStatement.setString(2,s);
+                preparedStatement.executeUpdate();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public  List<String> getListById(String ma_sp){
+
+        List<String> result = new ArrayList<String>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT cau_tao FROM cau_tao_sp WHERE ma_sp = ?");
+            preparedStatement.setString(1,ma_sp);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                result.add(resultSet.getString("cau_tao"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+        return result;
+    }
+
 }

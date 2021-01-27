@@ -2,8 +2,10 @@ package worksWithDatabase.productPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,6 +58,24 @@ public class ProductPriceWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
 
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT gia_sp FROM gia_sp WHERE ma_sp = ? ORDER BY ngay_cap_nhat DESC LIMIT 0,1");
+            preparedStatement.setString(1,productAdminEditGroup.getMa_sp());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.setGia_sp(resultSet.getInt("gia_sp")+"");
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
     }
 
 }

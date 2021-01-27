@@ -2,6 +2,7 @@ package model.productPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import worksWithDatabase.productPrice.ProductPriceDataSource;
 import worksWithDatabase.productPrice.ProductPriceWorksWithDatabase;
 
@@ -28,6 +29,12 @@ public class ProductPriceModel {
     public void addToDatabse(String ma_sp, int gia_sp, DateTime ngay_cap_nhat){
         ProductPriceWorksWithDatabase productPriceWorksWithDatabase = ProductPriceDataSource.getInstance().getProductPriceWorksWithDatabase();
         productPriceWorksWithDatabase.addToDatabse(ma_sp, gia_sp, ngay_cap_nhat);
+        ProductPriceDataSource.getInstance().releaseProductPriceWorksWithDatabase(productPriceWorksWithDatabase);
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        ProductPriceWorksWithDatabase productPriceWorksWithDatabase = ProductPriceDataSource.getInstance().getProductPriceWorksWithDatabase();
+        productPriceWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
         ProductPriceDataSource.getInstance().releaseProductPriceWorksWithDatabase(productPriceWorksWithDatabase);
     }
 

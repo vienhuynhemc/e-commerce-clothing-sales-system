@@ -4,15 +4,23 @@ import beans.loginAdmin.UserAdmin;
 import beans.nextPage.NextPageObject;
 import beans.product.Size;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminEditSingle;
 import beans.productAdmin.ProductAdminObject;
 import model.category.CategoryModel;
 import model.color.ColorModel;
+import model.importPrice.ImportPriceModel;
 import model.manufacturer.ManufacturerModel;
 import model.nextPage.NextPageModel;
+import model.product.ProductModel;
 import model.productAdmin.ProductAdminModel;
 import model.productDetailInformation.ProductDetailInformationModel;
 import model.productImage.ProductImageModel;
+import model.productInformation.ProductInformationModel;
+import model.productIntroduction.ProductIntroductionModel;
+import model.productPrice.ProductPriceModel;
+import model.productStructure.ProductStructureModel;
+import model.promotionalPrice.PromotionalPriceModel;
 import model.size.SizeModel;
 
 import javax.servlet.ServletException;
@@ -20,6 +28,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -115,7 +124,34 @@ public class ProductController extends HttpServlet {
                     productAdminObject.setIs_sua_da(false);
                     productAdminObject.setIs_sua_don(false);
 
-                } else if (foward.equals("editSingle")) {
+                } else if (foward.equals("editProductGroup")) {
+
+                    //  Cập nhập lại số lượng hiển thị
+                    productAdminObject.setNumberOfShow(ProductAdminModel.getInstance().getNumberOfShow(productAdmins));
+
+                    //  Cập nhập lại số sản phẩm tối đa
+                    int maximumProduct = ProductAdminModel.getInstance().getNumberOfMaxProductFromAll(productAdminObject.getSelectSearchAndSort(), productAdminObject.getSearch());
+                    productAdminObject.setMaximumProduct(maximumProduct);
+
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage =ProductAdminModel.getInstance().getMaximunNumberOfPage(maximumProduct);
+                    productAdminObject.setMaximumPage(maximumPage);
+
+                    //  Cập nhập lại list Next page
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(productAdminObject.getNowPage(), productAdminObject.getMaximumPage());
+                    productAdminObject.setNextPages(nextPages);
+
+                    productAdminObject.setNotify(true);
+                    productAdminObject.setTitle((String) request.getAttribute("more"));
+                    productAdminObject.setContent((String) request.getAttribute("more2"));
+
+                    //  Chuyển về trạng thái ban đầu, cho đối tượng thêm thành null
+                    productAdminObject.setProductEditGroup(null);
+                    productAdminObject.setIs_them_moi(false);
+                    productAdminObject.setIs_sua_da(false);
+                    productAdminObject.setIs_sua_don(false);
+
+                }else if (foward.equals("editSingle")) {
 
                     //  Cập nhập lại số lượng hiển thị
                     productAdminObject.setNumberOfShow(ProductAdminModel.getInstance().getNumberOfShow(productAdmins));
@@ -318,6 +354,33 @@ public class ProductController extends HttpServlet {
                         response.sendRedirect("admin/home/quanLySanPham.jsp");
                     }else if(action.equals("sua_da")){
                         ProductAdminObject productAdminObject = (ProductAdminObject) userAdmin.getListOfFunction().get("productAdminObject");
+                        //  Lấy mã sản phẩm
+                        String ma_sp = request.getParameter("id1");
+
+                        //-------------------------------------------------------------------
+                        ProductAdminAdd productAdminEditGroup = new ProductAdminAdd();
+
+                        productAdminEditGroup.setMa_sp(ma_sp);
+                        ProductModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        ManufacturerModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        CategoryModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        ProductPriceModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        PromotionalPriceModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        ImportPriceModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        SizeModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        productAdminEditGroup.setList_thong_tin(ProductInformationModel.getInstance().getListById(ma_sp));
+                        productAdminEditGroup.setList_gioi_thieu(ProductIntroductionModel.getInstance().getListById(ma_sp));
+                        productAdminEditGroup.setList_cau_tao(ProductStructureModel.getInstance().getListById(ma_sp));
+                        ProductDetailInformationModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        ColorModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        ProductImageModel.getInstance().fillDataProductAdminEditGroup(productAdminEditGroup);
+                        productAdminObject.setProductEditGroup(productAdminEditGroup);
+                        //--------------------------------------------------------------------
+                        productAdminObject.setDanh_sach_size(SizeModel.getInstance().getAllSize());
+                        productAdminObject.setDanh_sach_mau(ColorModel.getInstance().getAllColor());
+                        productAdminObject.setDanh_sach_hang_san_xuat(ManufacturerModel.getInstance().getAllManufacturer());
+                        productAdminObject.setDanh_sach_danh_muc(CategoryModel.getInstance().getAllCategory());
+                        //--------------------------------------------------------------------
 
                         productAdminObject.setIs_them_moi(false);
                         productAdminObject.setIs_sua_da(true);

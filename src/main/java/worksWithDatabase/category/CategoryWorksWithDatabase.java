@@ -3,6 +3,7 @@ package worksWithDatabase.category;
 import beans.DateTime;
 import beans.category.Category;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminCategory;
 import connectionDatabase.DataSource;
 import model.category.CategoryModel;
@@ -899,6 +900,26 @@ public class CategoryWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
 
         return productAdminCategory;
+    }
+
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_dm FROM danh_muc WHERE ma_dm = ?");
+            preparedStatement.setString(1,productAdminEditGroup.getDanh_muc().getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.getDanh_muc().setName(resultSet.getString("ten_dm"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
     }
 
     public static void main(String[] args) {

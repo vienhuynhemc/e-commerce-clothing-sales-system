@@ -1,9 +1,6 @@
 package worksWithDatabase.color;
 
-import beans.productAdmin.ProductAdmin;
-import beans.productAdmin.ProductAdminColor;
-import beans.productAdmin.ProductAdminColorAdd;
-import beans.productAdmin.ProductAdminEditSingle;
+import beans.productAdmin.*;
 import connectionDatabase.DataSource;
 
 import javax.xml.crypto.Data;
@@ -148,6 +145,29 @@ public class ColorWorksWithDatabase {
             resultSet.next();
             productAdminEditSingle.setTen_mau(resultSet.getString("ten_mau"));
             resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_mau,link_hinh_anh FROM mau WHERE ma_mau = ?");
+            for(ProductAdminColorAddProduct productAdminColorAddProduct : productAdminAdd.getList_mau_kem_hinh_anh()){
+                preparedStatement.setString(1,productAdminColorAddProduct.getMa_mau());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                productAdminColorAddProduct.setTen_mau(resultSet.getString("ten_mau"));
+                productAdminColorAddProduct.setLink_hinh_anh(resultSet.getString("link_hinh_anh"));
+                resultSet.close();
+            }
             preparedStatement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

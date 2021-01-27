@@ -4,6 +4,7 @@ import beans.BeansConfiguration;
 import beans.DateTime;
 import beans.manufacturer.Manufacturer;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminManufacturer;
 import connectionDatabase.DataSource;
 import worksWithDatabase.manufacturerInformation.ManufacturerInformationDataSource;
@@ -901,6 +902,26 @@ public class ManufacturerWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
         return productAdminManufacturer;
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_hsx FROM hang_san_xuat WHERE ma_hsx = ?");
+            preparedStatement.setString(1,productAdminEditGroup.getHang_san_xuat().getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.getHang_san_xuat().setName(resultSet.getString("ten_hsx"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
     }
 
 }

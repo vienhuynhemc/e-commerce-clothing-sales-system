@@ -2,6 +2,7 @@ package model.product;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import worksWithDatabase.product.ProductDataSource;
 import worksWithDatabase.product.ProductWorksWithDatabase;
 
@@ -42,7 +43,20 @@ public class ProductModel {
     //  Phương thức thêm một sản phẩm vô csdl
     public void addSpToDatabase(String ma_sp, String ten_sp, String ma_hsx, String ma_dm, DateTime ngay_tao, int gioi_tinh, int trang_thai, int so_luong_ban_ra, int ton_tai) {
         ProductWorksWithDatabase productWorksWithDatabase = ProductDataSource.getInstance().getProductWorksWithDatabase();
-       productWorksWithDatabase.addSpToDatabase(ma_sp, ten_sp, ma_hsx, ma_dm, ngay_tao, gioi_tinh, trang_thai, so_luong_ban_ra, ton_tai);
+        productWorksWithDatabase.addSpToDatabase(ma_sp, ten_sp, ma_hsx, ma_dm, ngay_tao, gioi_tinh, trang_thai, so_luong_ban_ra, ton_tai);
         ProductDataSource.getInstance().releaseProductWorksWithDatabase(productWorksWithDatabase);
     }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup) {
+        ProductWorksWithDatabase productWorksWithDatabase = ProductDataSource.getInstance().getProductWorksWithDatabase();
+        productWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
+        ProductDataSource.getInstance().releaseProductWorksWithDatabase(productWorksWithDatabase);
+    }
+
+    public void editSpToDatabase(String ma_sp,String ten_sp,String ma_hsx,String ma_dm,int gioi_tinh){
+        ProductWorksWithDatabase productWorksWithDatabase = ProductDataSource.getInstance().getProductWorksWithDatabase();
+        productWorksWithDatabase.editSpToDatabase(ma_sp, ten_sp, ma_hsx, ma_dm, gioi_tinh);
+        ProductDataSource.getInstance().releaseProductWorksWithDatabase(productWorksWithDatabase);
+    }
+
 }

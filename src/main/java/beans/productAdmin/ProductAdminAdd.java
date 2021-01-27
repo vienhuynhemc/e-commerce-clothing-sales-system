@@ -11,6 +11,9 @@ public class ProductAdminAdd {
     //  Hãng sản xuất hiện tại được chọn
     private ProductAdminManufacturer hang_san_xuat;
 
+    //  Mã sản phẩm
+    private String ma_sp;
+
     //  Tên sản phẩm
     private String ten_sp;
 
@@ -187,5 +190,14 @@ public class ProductAdminAdd {
     public void setLoai_sp(String loai_sp) {
         this.loai_sp = loai_sp;
     }
+
+    public String getMa_sp() {
+        return ma_sp;
+    }
+
+    public void setMa_sp(String ma_sp) {
+        this.ma_sp = ma_sp;
+    }
+
 }
 

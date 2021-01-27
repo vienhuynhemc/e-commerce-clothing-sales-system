@@ -219,6 +219,7 @@ function editkhachhangDa(item) {
         if (list3[1] == item) {
 
             document.getElementById("action").value = "sua_da";
+            document.getElementById("mainForm1").value = list3[3].value;
             document.getElementById("mainForm").submit();
 
             return;
@@ -436,6 +437,30 @@ function removeSize(button) {
     }
 }
 
+function removeSize2(button) {
+    //---
+    let list1 = document.getElementById("div3").children;
+    let list2 = list1[0].children;
+    //--
+    let list3 = list2[2].children;
+
+    list6 = list3[5].children;
+
+    list7 = list6[1].children;
+    for (let i = 0; i < list7.length; i++) {
+        list8 = list7[i].children;
+        if (list8[1] == button) {
+            let id = list8[2].value;
+
+            document.getElementById("actionDiv2").value = "removeSize";
+            document.getElementById("idDiv2").value = id;
+            document.getElementById("div31").submit();
+
+            return;
+        }
+    }
+}
+
 function removeSizeChangeImg(button) {
     let list = document.getElementById("listSizeDiv3").children;
     for (let i = 0; i < list.length; i++) {
@@ -451,24 +476,6 @@ function removeSizeChangeImg(button) {
     }
 }
 
-function removeSize2(button) {
-    //---
-    let list1 = document.getElementById("div3").children;
-    let list2 = list1[0].children;
-    //--
-    let list3 = list2[2].children;
-
-    list6 = list3[5].children;
-
-    list7 = list6[1].children;
-    for (let i = 0; i < list7.length; i++) {
-        list8 = list7[i].children;
-        if (list8[1] == button) {
-            list6[1].removeChild(list7[i]);
-            return;
-        }
-    }
-}
 
 function themsize(item) {
 
@@ -507,6 +514,43 @@ function themsize(item) {
     }
 }
 
+function themsize2(item) {
+
+    //---
+    let list1 = document.getElementById("div3").children;
+    let list2 = list1[0].children;
+    //--
+    let list3 = list2[2].children;
+    if (item == list3[4]) {
+
+        //lấy value size
+        let list4 = list3[3].children;
+        let select = list4[1];
+        let value = select.value;
+
+        // lấy listItemsize
+        list6 = list3[5].children;
+        list7 = list6[1].children;
+
+        let check = 0;
+        for (let i = 0; i < list7.length; i++) {
+            let l1 = list7[i].children;
+            if (l1[2].value == value) {
+                check = 1;
+                break;
+            }
+        }
+
+
+        if (check == 0) {
+            document.getElementById("actionDiv2").value = "addSize";
+            document.getElementById("idDiv2").value = value;
+            document.getElementById("div31").submit();
+        }
+
+    }
+}
+
 function themsize3() {
 
     let check = 0;
@@ -537,64 +581,6 @@ function removeSize3(item) {
 }
 
 
-function themsize2(item) {
-
-    //---
-    let list1 = document.getElementById("div3").children;
-    let list2 = list1[0].children;
-    //--
-    let list3 = list2[2].children;
-    if (item == list3[4]) {
-
-        //lấy value size
-        let list4 = list3[3].children;
-        let select = list4[1];
-        let value = select.value;
-
-        // lấy listItemsize
-        list6 = list3[5].children;
-        list7 = list6[1].children;
-
-        let check = 0;
-        for (let i = 0; i < list7.length; i++) {
-            let l1 = list7[i].children;
-            let l2 = l1[0].children;
-            if (l2[1].innerText == value) {
-                check = 1;
-                break;
-            }
-        }
-
-
-        if (check == 0) {
-            let div = document.createElement("div");
-            div.classList.add("listSizeItem");
-
-            let div2 = document.createElement("div");
-            let i = document.createElement("i");
-            i.classList.add("fa");
-            i.classList.add("fa-circle");
-            let p = document.createElement("p");
-            p.innerText = value;
-            div2.appendChild(i);
-            div2.appendChild(p);
-            div.appendChild(div2);
-
-            let button = document.createElement("span");
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-trash");
-            button.appendChild(i2);
-            button.onclick = function () {
-                removeSize2(button)
-            };
-            div.appendChild(button);
-
-            list6[1].appendChild(div);
-        }
-    }
-}
-
 function removehinhitem(item) {
     //---
     let list1 = document.getElementById("div1").children;
@@ -621,6 +607,51 @@ function removehinhitem(item) {
                 document.getElementById("idDiv1").value = list15[2].value;
                 document.getElementById("idDiv12").value = list15[0].src;
                 document.getElementById("div1").submit();
+
+                // let newValue = parseInt(list13[3].value);
+                // if (newValue < 0) {
+                //     newValue += 50;
+                //     let space = newValue / -50;
+                //     list13[3].value = newValue;
+                //     if (space > 0) {
+                //         list13[0].style.marginLeft = `${newValue - space * 10}px`;
+                //     } else {
+                //         list13[0].style.marginLeft = `${newValue}px`;
+                //     }
+                // }
+
+                return;
+            }
+        }
+    }
+}
+
+function removehinhitem2(item) {
+    //---
+    let list1 = document.getElementById("div3").children;
+    let list2 = list1[0].children;
+
+    //color
+    let list8 = list2[1].children;
+    let list9 = list8[4].children;
+    let list10 = list9[1].children;
+    for (let i = 0; i < list10.length; i++) {
+        list11 = list10[i].children;
+        list12 = list11[0].children;
+
+        // listhinh va 2 angle
+        list13 = list12[1].children;
+
+        // listhinh
+        list14 = list13[0].children;
+        for (let j = 0; j < list14.length; j++) {
+            list15 = list14[j].children;
+            if (list15[1] == item) {
+
+                document.getElementById("actionDiv2").value = "removeImage";
+                document.getElementById("idDiv2").value = list15[2].value;
+                document.getElementById("idDiv22").value = list15[0].src;
+                document.getElementById("div31").submit();
 
                 // let newValue = parseInt(list13[3].value);
                 // if (newValue < 0) {
@@ -859,7 +890,11 @@ function removecolor2(item) {
         list11 = list10[i].children;
         list12 = list11[1].children;
         if (list12[1] == item) {
-            list9[1].removeChild(list10[i]);
+
+            document.getElementById("actionDiv2").value = "removeColor";
+            document.getElementById("idDiv2").value = list12[3].value;
+            document.getElementById("div31").submit();
+
         }
     }
 }
@@ -896,46 +931,6 @@ function themhinh2(item) {
         list12 = list11[1].children;
         if (list12[0] == item) {
             list12[2].click();
-        }
-    }
-}
-
-function loadIMG2(event, item) {
-    //---
-    let list1 = document.getElementById("div3").children;
-    let list2 = list1[0].children;
-
-    //color
-    let list8 = list2[1].children;
-    let list9 = list8[4].children;
-    let list10 = list9[1].children;
-    for (let i = 0; i < list10.length; i++) {
-        list11 = list10[i].children;
-        list12 = list11[1].children;
-        if (list12[2] == item) {
-            if (event.target.files.length > 0) {
-                var src = URL.createObjectURL(event.target.files[0]);
-
-                list13 = list11[0].children;
-
-                // listhinh va 2 angle
-                list14 = list13[1].children;
-
-                let div1 = document.createElement("div");
-                div1.classList.add("listHinhitem");
-                let i1 = document.createElement("i");
-                i1.classList.add("fa");
-                i1.classList.add("fa-close");
-                i1.onclick = function () {
-                    removehinhitem2(i1)
-                };
-                let img = document.createElement("img");
-                img.src = src;
-                div1.appendChild(img);
-                div1.appendChild(i1);
-                list14[0].appendChild(div1);
-                return;
-            }
         }
     }
 }
@@ -987,7 +982,6 @@ function themmau2(item) {
         //lay du lieu
         let l6 = l3[2].children;
         let value = l6[1].value;
-        let namecolor = l6[1].options[l6[1].selectedIndex].text;
 
         let check = 0;
         let listMau = l5[1].children;
@@ -995,86 +989,16 @@ function themmau2(item) {
             let a1 = listMau[j].children;
             let a2 = a1[0].children;
             let a3 = a2[0].children;
-            if (a3[0].innerText == namecolor) {
+            if (a3[2].value == value) {
                 check = 1;
             }
         }
         if (check == 0) {
-            // tao phan tu
-            let div1 = document.createElement("div");
-            div1.classList.add("listMauItem");
 
-            let div2 = document.createElement("div");
-            div2.classList.add("listMauItemleft");
-            let div4 = document.createElement("div");
-            let div5 = document.createElement("div");
-            let p1 = document.createElement("p");
-            p1.innerText = namecolor;
-            let div6 = document.createElement("div");
-            let img1 = document.createElement("img");
-            img1.src = value;
-            div6.appendChild(img1);
-            div4.appendChild(p1);
-            div4.appendChild(div6);
-            div2.appendChild(div4);
+            document.getElementById("actionDiv2").value = "addColor";
+            document.getElementById("idDiv2").value = value;
+            document.getElementById("div31").submit();
 
-            //div5
-            let div7 = document.createElement("div");
-            div7.classList.add("listHinh")
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-angle-left");
-            i2.onclick = function () {
-                movehinhleft2(i2)
-            };
-            let i3 = document.createElement("i");
-            i3.classList.add("fa");
-            i3.classList.add("fa-angle-right");
-            i3.onclick = function () {
-                movehinhright2(i3)
-            };
-            let input1 = document.createElement("input");
-            input1.value = "0";
-            input1.type = "number";
-            input1.style.display = "none";
-            div5.appendChild(div7);
-            div5.appendChild(i2);
-            div5.appendChild(i3);
-            div5.appendChild(input1);
-
-            div2.appendChild(div5);
-            div1.appendChild(div2);
-
-            let div3 = document.createElement("div");
-            div3.classList.add("removecolor");
-            let button1 = document.createElement("span");
-            let button2 = document.createElement("span");
-            let i4 = document.createElement("i");
-            let i5 = document.createElement("i");
-            i4.classList.add("fa");
-            i5.classList.add("fa");
-            i4.classList.add("fa-plus");
-            i5.classList.add("fa-trash");
-            button1.appendChild(i4);
-            button2.appendChild(i5);
-            button1.onclick = function () {
-                themhinh2(this)
-            };
-            button2.onclick = function () {
-                removecolor2(this)
-            };
-            let input2 = document.createElement("input");
-            input2.type = "file";
-            input2.style.display = "none";
-            input2.onchange = function () {
-                loadIMG2(event, input2)
-            };
-            div3.appendChild(button1);
-            div3.appendChild(button2);
-            div3.appendChild(input2);
-            div1.appendChild(div3);
-
-            l5[1].appendChild(div1);
         }
     }
 }
@@ -1120,6 +1044,28 @@ function themGioiThieu() {
     document.getElementById("size_gioi_thieu").value = newValue;
 }
 
+function themGioiThieu2() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "gioi_thieu" + (parseInt(document.getElementById("size_gioi_thieu_edit").value) + 1);
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeGioiThieu2(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listGioiThieuEdit").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_gioi_thieu_edit").value) + 1;
+    document.getElementById("size_gioi_thieu_edit").value = newValue;
+}
+
 function removeGioiThieu(item) {
     let list = document.getElementById("listGioiThieu").children;
     for (let i = 0; i < list.length; i++) {
@@ -1135,6 +1081,23 @@ function removeGioiThieu(item) {
     let newValue = parseInt(document.getElementById("size_gioi_thieu").value) - 1;
     document.getElementById("size_gioi_thieu").value = newValue;
 }
+
+function removeGioiThieu2(item) {
+    let list = document.getElementById("listGioiThieuEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == item) {
+            document.getElementById("listGioiThieuEdit").removeChild(list[i]);
+            break;
+        }
+    }
+    list = document.getElementById("listGioiThieuEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "gioi_thieu" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_gioi_thieu_edit").value) - 1;
+    document.getElementById("size_gioi_thieu_edit").value = newValue;
+}
+
 
 function themCauTao() {
     let div = document.createElement("div");
@@ -1158,6 +1121,28 @@ function themCauTao() {
     document.getElementById("size_cau_tao").value = newValue;
 }
 
+function themCauTao2() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "cau_tao" + (parseInt(document.getElementById("size_cau_tao_edit").value) + 1);
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeCauTao2(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listCauTaoEdit").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_cau_tao_edit").value) + 1;
+    document.getElementById("size_cau_tao_edit").value = newValue;
+}
+
 function removeCauTao(item) {
     let list = document.getElementById("listCauTao").children;
     for (let i = 0; i < list.length; i++) {
@@ -1171,6 +1156,21 @@ function removeCauTao(item) {
     }
     let newValue = parseInt(document.getElementById("size_cau_tao").value) - 1;
     document.getElementById("size_cau_tao").value = newValue;
+}
+
+function removeCauTao2(item) {
+    let list = document.getElementById("listCauTaoEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == item) {
+            document.getElementById("listCauTaoEdit").removeChild(list[i]);
+        }
+    }
+    list = document.getElementById("listCauTaoEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "cau_tao" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_cau_tao_edit").value) - 1;
+    document.getElementById("size_cau_tao_edit").value = newValue;
 }
 
 function themThongTin() {
@@ -1195,6 +1195,44 @@ function themThongTin() {
     document.getElementById("size_thong_tin").value = newValue;
 }
 
+function themThongTin2() {
+    let div = document.createElement("div");
+    div.classList.add("itemGioiThieu");
+    let input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "thong_tin" + (parseInt(document.getElementById("size_thong_tin_edit").value) + 1);
+    div.appendChild(input);
+    let i = document.createElement("i");
+    i.classList.add("fa");
+    i.classList.add("fa-close");
+    i.onclick = function () {
+        removeThongTin2(this);
+    }
+    div.appendChild(i);
+    document.getElementById("listThongTinEdit").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_thong_tin_edit").value) + 1;
+    document.getElementById("size_thong_tin_edit").value = newValue;
+}
+
+
+function removeThongTin2(item) {
+    let list = document.getElementById("listThongTinEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == item) {
+            document.getElementById("listThongTinEdit").removeChild(list[i]);
+        }
+    }
+    list = document.getElementById("listThongTinEdit").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "thong_tin" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_thong_tin_edit").value) - 1;
+    document.getElementById("size_thong_tin_edit").value = newValue;
+}
+
 function removeThongTin(item) {
     let list = document.getElementById("listThongTin").children;
     for (let i = 0; i < list.length; i++) {
@@ -1210,109 +1248,6 @@ function removeThongTin(item) {
     document.getElementById("size_thong_tin").value = newValue;
 }
 
-function themGioiThieu2() {
-
-    let l1 = document.getElementById("div3").children[0].children[1].children[6].children[2];
-
-
-    let div = document.createElement("div");
-    div.classList.add("itemGioiThieu");
-    let input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Nhập giới thiệu ở đây";
-    div.appendChild(input);
-    let i = document.createElement("i");
-    i.classList.add("fa");
-    i.classList.add("fa-close");
-    i.onclick = function () {
-        removeGioiThieu2(this);
-    }
-    div.appendChild(i);
-    l1.appendChild(div);
-
-}
-
-function removeGioiThieu2(item) {
-    let l1 = document.getElementById("div3").children[0].children[1].children[6].children[2];
-    let list = l1.children;
-    for (let i = 0; i < list.length; i++) {
-
-        if (list[i].children[1] == item) {
-            l1.removeChild(list[i]);
-            return;
-        }
-
-    }
-
-}
-
-function themCauTao2() {
-
-    let l1 = document.getElementById("div3").children[0].children[1].children[8].children[2];
-
-    let div = document.createElement("div");
-    div.classList.add("itemGioiThieu");
-    let input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Nhập giới thiệu ở đây";
-    div.appendChild(input);
-    let i = document.createElement("i");
-    i.classList.add("fa");
-    i.classList.add("fa-close");
-    i.onclick = function () {
-        removeCauTao2(this);
-    }
-    div.appendChild(i);
-    l1.appendChild(div);
-}
-
-function removeCauTao2(item) {
-
-    let l1 = document.getElementById("div3").children[0].children[1].children[8].children[2];
-
-    let list = l1.children;
-    for (let i = 0; i < list.length; i++) {
-
-        if (list[i].children[1] == item) {
-            l1.removeChild(list[i]);
-            return;
-        }
-
-    }
-}
-
-function themThongTin2() {
-
-    let l1 = document.getElementById("div3").children[0].children[1].children[10].children[2];
-
-    let div = document.createElement("div");
-    div.classList.add("itemGioiThieu");
-    let input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Nhập giới thiệu ở đây";
-    div.appendChild(input);
-    let i = document.createElement("i");
-    i.classList.add("fa");
-    i.classList.add("fa-close");
-    i.onclick = function () {
-        removeThongTin2(this);
-    }
-    div.appendChild(i);
-    l1.appendChild(div);
-}
-
-function removeThongTin2(item) {
-    let l1 = document.getElementById("div3").children[0].children[1].children[10].children[2];
-    let list = l1.children;
-    for (let i = 0; i < list.length; i++) {
-
-        if (list[i].children[1] == item) {
-            l1.removeChild(list[i]);
-            return;
-        }
-
-    }
-}
 
 function removeHinh(item) {
     let list = document.getElementById("listHinh").children;
@@ -1722,6 +1657,168 @@ function themsanpham() {
                         document.getElementById("formYesNoLink").onclick = function () {
                             document.getElementById("actionDiv1").value = "addProduct";
                             document.getElementById("div1").submit();
+                        }
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+var arrayHinhHoanThanh5 = [];
+var actionHinh5 = 0;
+var interVelHinh5;
+var countRefreshHinh5;
+var countRefreshHinhMax5 = 3;
+var ma_mau_khi_tai_hinh5;
+
+function loadIMG2(event, item) {
+    //---
+    let list1 = document.getElementById("div3").children;
+    let list2 = list1[0].children;
+
+    //color
+    let list8 = list2[1].children;
+    let list9 = list8[4].children;
+    let list10 = list9[1].children;
+    for (let i = 0; i < list10.length; i++) {
+        list11 = list10[i].children;
+        list12 = list11[1].children;
+        if (list12[2] == item) {
+            if (event.target.files.length > 0) {
+
+                let ma_mau = list12[3].value;
+                let ma_sp = list12[4].value;
+                let name_img = list12[5].value;
+
+                let link_hinh = 'san_pham/' + ma_sp + "/" + ma_mau + "/" + name_img;
+                taiHinhMoi5(event.target.files[0], link_hinh)
+                actionHinh5 = 0;
+                ma_mau_khi_tai_hinh5 = ma_mau;
+                choTaiHinhHinh5();
+
+                return;
+            }
+        }
+    }
+}
+
+function choTaiHinhHinh5() {
+    if (actionHinh5 == 1) {
+        if (interVelHinh5) {
+            window.clearInterval(interVelHinh5);
+            interVelHinh5 = null;
+            countRefreshHinh5 = 0;
+            arrayHinhHoanThanh5 = [];
+        }
+    } else {
+        if (!interVelHinh5) {
+            interVelHinh5 = window.setInterval(
+                function () {
+                    if (arrayHinhHoanThanh5.length == 1) {
+
+                        actionHinh5 = 1;
+                        window.clearInterval(interVelHinh5);
+                        interVelHinh5 = null;
+                        countRefreshHinh5 = 0;
+
+                        document.getElementById("actionDiv2").value = "addImage";
+                        document.getElementById("idDiv2").value = ma_mau_khi_tai_hinh5;
+                        document.getElementById("idDiv22").value = arrayHinhHoanThanh5.pop();
+                        document.getElementById("div31").submit();
+
+                    } else {
+                        countRefreshHinh5++;
+                        if (countRefreshHinh5 == countRefreshHinhMax5) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionHinh5 = 1;
+                            choTaiHinhHinh5();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+function taiHinhMoi5(img, linkImg) {
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = linkImg;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayHinhHoanThanh5.push(link);
+        });
+}
+
+function luueditgroup() {
+
+    let ten_sp = document.getElementById("ten_sp_edit").value;
+    if (ten_sp.length == 0) {
+        document.getElementById("erroredit1").classList.remove("hidden");
+    } else {
+        if (!document.getElementById("erroredit1").classList.contains("hidden")) {
+            document.getElementById("erroredit1").classList.add("hidden");
+        }
+        let gia = document.getElementById("gia_sp_edit").value;
+        if (gia.length == 0) {
+            document.getElementById("erroredit2").classList.remove("hidden");
+        } else {
+            if (!document.getElementById("erroredit2").classList.contains("hidden")) {
+                document.getElementById("erroredit2").classList.add("hidden");
+            }
+            let gia_nha = document.getElementById("gia_nhap_edit").value;
+            if (gia_nha.length == 0) {
+                document.getElementById("erroredit3").classList.remove("hidden");
+            } else {
+                if (!document.getElementById("erroredit3").classList.contains("hidden")) {
+                    document.getElementById("erroredit3").classList.add("hidden");
+                }
+                let listMau = document.getElementById("listMauEdit").children;
+                if (listMau.length == 0) {
+                    document.getElementById("erroredit4").classList.remove("hidden");
+                } else {
+                    if (!document.getElementById("erroredit4").classList.contains("hidden")) {
+                        document.getElementById("erroredit4").classList.add("hidden");
+                    }
+                    let listSize = document.getElementById("listSizeEdit").children;
+                    if (listSize.length == 0) {
+                        document.getElementById("erroredit5").classList.remove("hidden");
+                    } else {
+                        if (!document.getElementById("erroredit5").classList.contains("hidden")) {
+                            document.getElementById("erroredit5").classList.add("hidden");
+                        }
+
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm sản phẩm này không ?'
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+
+                        document.getElementById("formYesNoLink").style.display = 'flex';
+                        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+                        document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+                        document.getElementById("formYesNoLink").onclick = function () {
+                            document.getElementById("actionDiv2").value = "editProduct";
+                            document.getElementById("div31").submit();
                         }
                         document.getElementById("formYesNoTitle2").appendChild(item);
                         document.getElementById("formYesNo").style.transform = 'scaleY(1)';

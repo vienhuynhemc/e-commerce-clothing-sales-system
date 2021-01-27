@@ -1,9 +1,6 @@
 package worksWithDatabase.productImage;
 
-import beans.productAdmin.ProductAdmin;
-import beans.productAdmin.ProductAdminColor;
-import beans.productAdmin.ProductAdminColorAddProduct;
-import beans.productAdmin.ProductAdminEditSingle;
+import beans.productAdmin.*;
 import connectionDatabase.DataSource;
 
 import java.sql.Connection;
@@ -74,6 +71,33 @@ public class ProductImageWorksWithDatabase {
 
     }
 
+    public void editToDatbase(String ma_sp, List<ProductAdminColorAddProduct> list) {
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM hinh_anh_sp WHERE ma_sp = ?");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.executeUpdate();
+             preparedStatement = connection.prepareStatement("INSERT INTO hinh_anh_sp VALUES(?,?,?,?)");
+            for (ProductAdminColorAddProduct productAdminColorAddProduct : list) {
+                for (String s : productAdminColorAddProduct.getList_hinh_anh_sp()) {
+                    preparedStatement.setString(1, ma_sp);
+                    preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
+                    preparedStatement.setString(3, s);
+                    preparedStatement.setInt(4,0);
+                    preparedStatement.executeUpdate();
+                }
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
     public void fillImageByProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
 
         Connection connection = DataSource.getInstance().getConnection();
@@ -126,4 +150,29 @@ public class ProductImageWorksWithDatabase {
 
     }
 
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_anh FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
+            for(ProductAdminColorAddProduct productAdminColorAddProduct : productAdminAdd.getList_mau_kem_hinh_anh()){
+                List<String> list = new ArrayList<String>();
+                preparedStatement.setString(1,productAdminAdd.getMa_sp());
+                preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while(resultSet.next()){
+                    list.add(resultSet.getString("link_hinh_anh"));
+                }
+                resultSet.close();
+                productAdminColorAddProduct.setList_hinh_anh_sp(list);
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
 }

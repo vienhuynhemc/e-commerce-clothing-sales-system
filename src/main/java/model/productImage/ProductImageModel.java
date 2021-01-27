@@ -1,6 +1,7 @@
 package model.productImage;
 
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminColorAddProduct;
 import beans.productAdmin.ProductAdminEditSingle;
 import worksWithDatabase.productImage.ProductImageDataSource;
@@ -33,6 +34,12 @@ public class ProductImageModel {
         ProductImageDataSource.getInstance().releaseProductImageWorksWithDatabase(productImageWorksWithDatabase);
     }
 
+    public void editToDatbase(String ma_sp, List<ProductAdminColorAddProduct> list) {
+        ProductImageWorksWithDatabase productImageWorksWithDatabase = ProductImageDataSource.getInstance().getProductImageWorksWithDatabase();
+        productImageWorksWithDatabase.editToDatbase(ma_sp,list);
+        ProductImageDataSource.getInstance().releaseProductImageWorksWithDatabase(productImageWorksWithDatabase);
+    }
+
     public void fillImageByProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
         ProductImageWorksWithDatabase productImageWorksWithDatabase = ProductImageDataSource.getInstance().getProductImageWorksWithDatabase();
         productImageWorksWithDatabase.fillImageByProductAdminEditSingle(productAdminEditSingle);
@@ -42,6 +49,12 @@ public class ProductImageModel {
     public void updateImgProductSingleEdit(String ma_sp,String ma_mau,List<String> list_hinh_anh){
         ProductImageWorksWithDatabase productImageWorksWithDatabase = ProductImageDataSource.getInstance().getProductImageWorksWithDatabase();
         productImageWorksWithDatabase.updateImgProductSingleEdit(ma_sp, ma_mau, list_hinh_anh);
+        ProductImageDataSource.getInstance().releaseProductImageWorksWithDatabase(productImageWorksWithDatabase);
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+        ProductImageWorksWithDatabase productImageWorksWithDatabase = ProductImageDataSource.getInstance().getProductImageWorksWithDatabase();
+        productImageWorksWithDatabase.fillDataProductAdminEditGroup(productAdminAdd);
         ProductImageDataSource.getInstance().releaseProductImageWorksWithDatabase(productImageWorksWithDatabase);
     }
 
