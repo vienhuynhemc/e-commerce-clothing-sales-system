@@ -29,15 +29,15 @@ public class SignUp {
             SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
             return "error1";
         }
-        // kiểm tra email có tồn tại không
-        if(SignUpDAO.isEmail(mail)){
-            SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
-            return "error3";
-        }
         // kiểm tra xem người dùng có đồng ý thỏa thuận chưa
         if(check == null){
             SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
             return "error4";
+        }
+        // kiểm tra email có tồn tại không
+        if(!SignUpDAO.isEmail(mail)){
+            SignUpDataSource.getInstance().releaseSignUpDAO(signUpDAO);
+            return "error3";
         }
 
         SignUpDAO.addUser(username, pass, name, phone, mail);
@@ -51,8 +51,9 @@ public class SignUp {
         String pass = "123456789";
         String name = "Truong";
         String phone = "0384458719";
-        String mail = "nhattruongagtm@gmail.com";
-        System.out.println(s.checkUserInput(username,pass,name,phone,mail,"on"));
+        String mail = "nhattruongagtm752129@gmail.com";
+
+        System.out.println(s.checkUserInput(username,pass,name,phone,mail,"check"));
     }
 
 

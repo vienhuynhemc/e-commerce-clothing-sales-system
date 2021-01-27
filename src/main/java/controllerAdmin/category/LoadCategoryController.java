@@ -2,6 +2,7 @@ package controllerAdmin.category;
 
 import beans.account.AccountCustomer;
 import beans.category.Category;
+import model.category.CategoryModel;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 import worksWithDatabase.category.LoadCategoryDAO;
 import worksWithDatabase.loadAccount.LoadKHDAO;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @WebServlet(name = "LoadCategoryController",urlPatterns = "/LoadCategoryController")
@@ -22,11 +24,13 @@ public class LoadCategoryController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+
         int page = Integer.parseInt(request.getParameter("page"));
 
         String type = request.getParameter("type");
 
-        String s = (String)request.getAttribute("search");
+        String s = (String)request.getParameter("search");
+
         String search;
         if(s == null){
             search = "";
@@ -34,14 +38,15 @@ public class LoadCategoryController extends HttpServlet {
         else{
             search = s;
         }
+        System.out.println("search: "+s);
         String orderby = request.getParameter("orderBy");
 
         System.out.println(page);
         System.out.println(type);
         System.out.println(search);
         System.out.println(orderby);
-        CategoryWorksWithDatabase loadCategoryDAO = new CategoryWorksWithDatabase();
-        Collection<Category> listDM = loadCategoryDAO.LoadAllCategories(page,type,search,orderby,3);
+        CategoryModel loadCategoryDAO = new CategoryModel();
+        ArrayList<Category> listDM = loadCategoryDAO.getAllCategories(page,type,search,orderby,3);
 
 
         int numberPage = loadCategoryDAO.getNumberOfPage();

@@ -1,9 +1,7 @@
-package worksWithDatabase.rateProduct;
+package worksWithDatabase.ralatedProducts;
 
 
-import beans.rate.Rate;
-
-public class RateDataSource {
+public class RalatedProductDataSource {
 
     /*
      *  Ở đây chúng ta sẽ áp dụng mẫu singleton, có 2 nhiệm vụ có thể thực hiện khi getInstance ở đây
@@ -12,45 +10,45 @@ public class RateDataSource {
      */
 
     //  Khai báo instance
-    private static RateDataSource rateDataSource;
+    private static RalatedProductDataSource ralatedProductDataSource;
 
     //  Khai báo categoryPool
-    private RatePool ratePool;
+    private RalatedProductPool ralatedProductPool;
 
     //  Constructor thì khởi tạo categoryPool
-    private RateDataSource() {
-        ratePool = new RatePool();
+    private RalatedProductDataSource() {
+        ralatedProductPool = new RalatedProductPool();
     }
 
     //  Trả về thể hiện của categorydatasource
-    public static synchronized RateDataSource getInstance() {
+    public static synchronized RalatedProductDataSource getInstance() {
 
         //  Kiểm tra thử categorydatasource có null?
-        if (rateDataSource == null) {
+        if (ralatedProductDataSource == null) {
 
             //  null thì khởi tạo nó
-            rateDataSource = new RateDataSource();
+            ralatedProductDataSource = new RalatedProductDataSource();
 
         }
 
         //  return về instance
-        return rateDataSource;
+        return ralatedProductDataSource;
 
     }
 
     //  Phương thúc lấy CategoryWorksWithDatabase
-    public RateDAO getRateDAO() {
+    public RalatedProductDAO getRalatedProductDAO() {
 
         //  Lấy CategoryWorksWithDatabase từ categoryPool
-        return ratePool.getRateDAO();
+        return ralatedProductPool.getRateDAO();
 
     }
 
     //  Phương thức trả CategoryWorksWithDatabase cho categoryPool
-    public void releaseRateDAO(RateDAO rateDAO) {
+    public void releaseRalatedProductDAO(RalatedProductDAO ralatedProductDAO) {
 
         //  Trả EmailWorksWithDatabase về cho mailPool
-        ratePool.releaseRateDAO(rateDAO);
+        ralatedProductPool.releaseRalatedProductDAO(ralatedProductDAO);
 
     }
     public static void main(String[] args) {
@@ -58,16 +56,16 @@ public class RateDataSource {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-                RateDAO a = RateDataSource.getInstance().getRateDAO();
+                RalatedProductDAO a = RalatedProductDataSource.getInstance().getRalatedProductDAO();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
-                    System.out.println(a.checkRatePermission("sp_5","kh001"));
+//                    System.out.println(a.checkRatePermission("sp_5","kh001"));
                     Thread.sleep(2500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                RateDataSource.getInstance().releaseRateDAO(a);
+                RalatedProductDataSource.getInstance().releaseRalatedProductDAO(a);
                 System.out.println(Thread.currentThread().getName() + "end");
             }
         };

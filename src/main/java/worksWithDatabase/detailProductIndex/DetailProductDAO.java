@@ -417,7 +417,7 @@ public class DetailProductDAO {
 //       for(ProductDetailInformation s : test.getInfoDetailProduct("sp_2", "mau_1")){
 //           System.out.println(s);
 //       }
-       System.out.println(test.getInfoDetailProduct("sp_1","mau_1"));
+       System.out.println(test.getProductById("sp_1"));
     }
 
 }

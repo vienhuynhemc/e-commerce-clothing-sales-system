@@ -21,6 +21,17 @@ function subtocard2() {
         inputsl.value = `${parseInt(inputsl.value) - 1}`;
     }
 }
+function plustocarda() {
+    let inputsl = document.getElementById('quantity');
+         inputsl.value = `${parseInt(inputsl.value) - 1}`;
+}
+
+function subtocarda() {
+    let inputsl = document.getElementById('quantity');
+    if (inputsl.value > 1) {
+        inputsl.value = `${parseInt(inputsl.value) - 1}`;
+    }
+}
 
 function report(item) {
     let listItem = item.children;

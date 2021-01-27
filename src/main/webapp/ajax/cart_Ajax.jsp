@@ -104,7 +104,7 @@
                         <%=ConvertPrice.convertPrice((int)c.getGia())%>
 
                         <%}%>
-
+                        <!--------- hiển thị giá khuyến mãi -------->
                      VND</p>
                 </div>
                 <div class="cartleftmainitemright" onclick="removeCart(this)">
@@ -204,7 +204,6 @@
     function increase(event) {
 
         var list = event.children;
-
 
         var ma_sp = $(list[0]).attr("value");
         var ma_mau =  $(list[1]).attr("value");

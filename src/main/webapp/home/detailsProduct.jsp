@@ -63,6 +63,11 @@
         System.out.println(pd);
 
 
+        HttpSession pdNow = request.getSession();
+        pdNow.setAttribute("pdNow",p.getPrice().getGia_sp());
+        System.out.println(pdNow.getAttribute("pdNow"));
+
+
 
     %>
 </head>
@@ -195,11 +200,22 @@
             <div class="dpleft">
                 <div class="dpmainimg">
                     <% ArrayList<String> list = (ArrayList<String>) request.getAttribute("colors");%>
+
                     <div>
+<%--                        <% for(Pro c : p.getListIMG()){--%>
+<%--//                                if(c.getLink_hinh() != null){--%>
+<%--                        %>--%>
                         <img src="<%=list.get(0)%>" alt="" id="img1">
+<%--                        <% }else{%>--%>
+<%--                        <img src="" alt="" id="img1">--%>
+<%--                        <%}%>--%>
                         <p>Mã sản phẩm: <%= p.getMa_sp()%></p>
                     </div>
-                    <img src="<%=list.get(0)%>" alt="" id="img2">
+                        <% for(ProductColor c : p.getListColor()){
+                        %>
+                    <img src="<%=c.getLink_hinh()%>" alt="" id="img2">
+                    <% }%>
+
                 </div>
                 <div>
                     <div class="dplistitem" id="dplistitem">
@@ -394,7 +410,7 @@
     <div class="danhgiasanpham">
         <%if(accountCustomer != null){%>
         <%System.out.println(accountCustomer.getFullName());%>
-        <div class="danhgia" id="danhgia">
+        <div class="danhgia" style="display: block !important;" id="danhgia">
             <p class="dgsptitle">Đánh giá sản phẩm này</p>
             <p>Cho người khác biết suy nghĩ của bạn</p>
             <div>
@@ -409,7 +425,7 @@
 
 
         </div>
-        <div id="danhgia2">
+        <div id="danhgia2" style="display: block !important;">
             <p class="dgsptitle">Bài đánh giá của bạn</p>
             <div>
                 <div class="danhgia2infor">
@@ -692,214 +708,45 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <!-- Start men popular category -->
-                            <div class="tab-pane fade in active" id="popular">
-                                <ul class="aa-product-catg aa-popular-slider">
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/16.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Sweater Nữ Logo Sài Gòn WSW 2003</a></h4>
-                                                <span class="aa-product-price sprice">349,000 VND</span><span
-                                                    class="aa-product-price"><del>569,000
-                                                            VND</del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/15.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Thun
-                                                    Relax Thêu Ngực WTS 2006</a></h4>
-                                                <span class="aa-product-price sprice">229,000 VND</span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/14.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                        </figure>
-                                        <figcaption>
-                                            <h4 class="aa-product-title"><a href="detailsProduct.html">Áo Thun
-                                                Regular Think Less WTS 2004</a></h4>
-                                            <span class="aa-product-price sprice">229,000 VND</span>
-                                        </figcaption>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-sold-out" href="#">Hết hàng!</span>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/13.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Thun
-                                                    Dây Kéo WTS 2011</a></h4>
-                                                <span class="aa-product-price sprice">299,000 VND</span><span
-                                                    class="aa-product-price"><del>499,000
-                                                            VND
-                                                        </del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/12.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Thun
-                                                    Nữ WTS 2016
-                                                </a></h4>
-                                                <span class="aa-product-price sprice"> 219,000 VND</span><span
-                                                    class="aa-product-price"><del> 349,000
-                                                            VND</del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
+<%--                            <div class="tab-pane fade in active" id="popular">--%>
+<%--                                <ul class="aa-product-catg aa-popular-slider">--%>
+<%--                                    <!-- start single product item -->--%>
+<%--                                    <% ArrayList<Product> pds = (ArrayList<Product>) request.getAttribute("listRalated");%>--%>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/11.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Quần
-                                                    Jeans Dài Ống Rộng WJE 2002</a></h4>
-                                                <span class="aa-product-price sprice">499,000 VND</span><span
-                                                    class="aa-product-price"><del>659,000
-                                                            VND</del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
+<%--                                    <%for(Product pr : pds){%>--%>
+<%--                                    <li>--%>
+<%--                                        <figure>--%>
+<%--                                            <a class="aa-product-img" href="detailsProduct.html"><img--%>
+<%--                                                    src="<%=pr.getListIMG().get(0).getLink_hinh()%>" alt="polo shirt img"></a>--%>
+<%--                                            <a class="aa-add-card-btn" href="cart.html"><span--%>
+<%--                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>--%>
+<%--                                            <figcaption>--%>
+<%--                                                <h4 class="aa-product-title"><a href="detailsProduct.html"><%=pr.getTen_sp()%>></a></h4>--%>
+<%--                                                <% if(pr.getPriceSale().getGia_sp_km() != 0){%>--%>
+<%--                                                <span class="aa-product-price sprice"><%=pr.getPriceSale().getGia_sp_km()%>> VND</span><span--%>
+<%--                                                    <%}%>--%>
+<%--                                                    class="aa-product-price"><del><%=pr.getPrice().getGia_sp()%>--%>
+<%--                                                            VND</del></span>--%>
+<%--                                            </figcaption>--%>
+<%--                                        </figure>--%>
+<%--                                        <div class="aa-product-hvr-content">--%>
+<%--                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"--%>
+<%--                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>--%>
+<%--                                            <a href="#" data-toggle2="tooltip" data-placement="top"--%>
+<%--                                               title="Xem nhanh" data-toggle="modal"--%>
+<%--                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>--%>
+<%--                                        </div>--%>
+<%--                                        <!-- product badge -->--%>
+<%--                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>--%>
+<%--                                    </li>--%>
+<%--                                    <!-- start single product item -->--%>
+<%--                                    <%}%>--%>
+<%--                                </ul>--%>
+<%--                            </div>--%>
+<%--                            </div>--%>
+<%--                            --%>
 
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/10.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Thun
-                                                    Nữ WTS 2035
-                                                </a></h4>
-                                                <span class="aa-product-price sprice"> 139,000 VND</span><span
-                                                    class="aa-product-price"><del> 259,000
-                                                            VND</del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
-
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-hot" href="#">Mới!</span>
-                                    </li>
-                                    <!-- start single product item -->
-                                    <li>
-                                        <figure>
-                                            <a class="aa-product-img" href="detailsProduct.html"><img
-                                                    src="../img/do/nu/9.jpg" alt="polo shirt img"></a>
-                                            <a class="aa-add-card-btn" href="cart.html"><span
-                                                    class="fa fa-shopping-cart"></span>Thêm vào giỏ</a>
-                                            <figcaption>
-                                                <h4 class="aa-product-title"><a href="detailsProduct.html">Áo
-                                                    Sweater Nữ Stay Together WSW 2006</a></h4>
-                                                <span class="aa-product-price sprice">379,000 VND</span><span
-                                                    class="aa-product-price"><del>419,000
-                                                            VND</del></span>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="aa-product-hvr-content">
-                                            <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
-                                               title="Thêm vào yêu thích"><span class="fa fa-heart"></span></a>
-
-                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                               title="Xem nhanh" data-toggle="modal"
-                                               data-target="#quick-view-modal"><span class="fa fa-eye"></span></a>
-                                        </div>
-                                        <!-- product badge -->
-                                        <span class="aa-badge aa-sale" href="#">Giảm giá!</span>
-                                    </li>
-                                </ul>
-                            </div>
                             <!-- / popular product category -->
 
                             <!-- start featured product category -->
@@ -1159,39 +1006,39 @@
             <textarea placeholder="Mô tả đánh giá của bạn về sản phẩm (không bắt buộc)"></textarea>
             <div class="vdgsubmit">
                 <button onclick="closedanshgia()">Hủy</button>
-<%--                <button onclick="dangdanhgia()">Đăng</button>--%>
-                <button>Đăng</button>
+
+                <button onclick="dangdanhgia()">Đăng</button>
             </div>
         </div>
     </div>
 </div>
-<div id="addCartStatus">
-    <div class="changepassword" id="changepassword">
-        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
-        <div class="mainchangepassword">
-            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
-            <div class="changepasswordsuccess" id="changepasswordsuccess">
+<%--<div id="addCartStatus">--%>
+<%--    <div class="changepassword" id="changepassword">--%>
+<%--        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>--%>
+<%--        <div class="mainchangepassword">--%>
+<%--            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>--%>
+<%--            <div class="changepasswordsuccess" id="changepasswordsuccess">--%>
 
 
-            </div>
-        </div>
-    </div>
-</div>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 
-<div id="addCartStatus2">
-    <div class="changepassword" id="changepassword2">
-        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
-        <div class="mainchangepassword">
-            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
-            <div class="changepasswordsuccess" id="changepasswordsuccess2">
-                <p> Vui lòng chọn đầy đủ thông tin để thêm sản phẩm vào giỏ hàng </p>
-                <button onclick="gobackpassword()">Trở về
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div id="addCartStatus2">--%>
+<%--    <div class="changepassword" id="changepassword2">--%>
+<%--        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>--%>
+<%--        <div class="mainchangepassword">--%>
+<%--            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>--%>
+<%--            <div class="changepasswordsuccess" id="changepasswordsuccess2">--%>
+<%--                <p> Vui lòng chọn đầy đủ thông tin để thêm sản phẩm vào giỏ hàng </p>--%>
+<%--                <button onclick="gobackpassword()">Trở về--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <%}%>
 
 

@@ -1,10 +1,12 @@
 package model.category;
 
+import beans.category.Category;
 import beans.productAdmin.ProductAdmin;
 import beans.productAdmin.ProductAdminCategory;
 import worksWithDatabase.category.CategoryDataSource;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryModel {
@@ -75,6 +77,20 @@ public class CategoryModel {
         CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
         return result;
     }
+    public ArrayList<Category> getAllCategories(int page,String type,String search, String orderBy, int numberPerPage){
+        CategoryWorksWithDatabase categoryWorksWithDatabase = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        ArrayList<Category> list = categoryWorksWithDatabase.LoadAllCategories(page,type,search,orderBy,numberPerPage);
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
+        return list;
+    }
+    public int getNumberOfPage(){
+        return CategoryWorksWithDatabase.getNumberOfPage();
+    }
+    public int getNumberCategories(){
+        return CategoryWorksWithDatabase.getNumberCategories();
+    }
+
+
 
 
     public static void main(String[] args) {

@@ -319,35 +319,46 @@
                     <div id="div2">
                         <div>
                             <div class="header">
-                            <form action="LoadCategoryController" method="get">
+<%--                            <form action="LoadCategoryController" method="get">--%>
                                 <div class="leftheader">
-                                    <select name="type" id="typeSelect" onchange="window.location = this.value">
-
-                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Ngày tạo</option>
-                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ten_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Tên danh mục</option>
-                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ma_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>">Mã danh mục</option>
+                                    <select name="type" id="typeSelect" onchange="if (this.value) window.location.href=this.value">
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"
+                                        <% if(request.getParameter("type").equals("ngay_tao")){%>
+                                         selected <%}%> >Ngày tạo</option>
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ten_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"
+                                        <% if(request.getParameter("type").equals("ten_dm")){%>
+                                        selected <%}%> >Tên danh mục</option>
+                                        <option value="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ma_dm&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"
+                                        <% if(request.getParameter("type").equals("ma_dm")){%>
+                                        selected <%}%> > Mã danh mục</option>
                                     </select>
                                     <div>
                                         <div class="leftheadersort" onclick="changesort2(this)">
-                                            <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>
-                                            <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>
-                                            <input type="checkbox" style="display: none;">
-                                            <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">
+                                            <% if(request.getParameter("orderBy").equals("desc")){%>
+                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ma_dm&search=<%=request.getParameter("search")%>&orderBy=asc"> <i class=" fa fa-sort-amount-desc"></i></a>
+                                            <%} else {%>
+                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ma_dm&search=<%=request.getParameter("search")%>&orderBy=desc"> <i class=" fa fa-sort-amount-asc"></i></a>
+                                            <%}%>
+<%--                                            <i class=" fa fa-sort-amount-desc" onclick="setOrderBy()"></i>--%>
+<%--                                            <i class=" fa fa-sort-amount-asc" onclick="setOrderBy()"></i>--%>
+<%--                                            <input type="checkbox" style="display: none;">--%>
+<%--                                            <input type="hidden" id="checkSort" name="orderBy" value="${param.orderBy}">--%>
                                         </div>
-                                        <form action="../../SearchCategoryController" method="post">
+                                        <form action="SearchCategoryController" method="get">
                                         <div class="leftheadersearch">
-                                            <button type="submit" class="timkiem" > <i class="fa fa-search" ></i></button>
-<%--                                            <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))%>&type=ngay_tao&search=<%= request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"><i class="fa fa-search" ></i></a>--%>
-                                            <input name="page" value="1" type="hidden">
-                                            <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search == null?"":param.search}">
+                                            <input name="page" value="<%=request.getParameter("page")%>" type="hidden" type="input">
+                                            <input name="type" value="<%=request.getParameter("type")%>" type="hidden"type="input">
 
+                                            <button type="submit" class="timkiem" > <i class="fa fa-search" ></i></button>
+                                            <input type="text" name="search" class="search2" placeholder="Tìm kiếm" value="${param.search == null?"":param.search}">
+                                            <input name="orderBy" value="<%=request.getParameter("orderBy")%>" type="hidden"type="input">
                                         </div>
                                         </form>
                                     </div>
                                 </div>
-                            </form>
+<%--                            </form>--%>
                                 <div class="leftnextpage">
-                                    <p>Hiển thị <strong> <%= list.size() %> </strong> trên tổng <%= request.getAttribute("sumCategory")%> danh mục</p>
+                                    <p>Hiển thị <strong> <%= list.size() %> </strong> trên tổng <%= (int)request.getAttribute("sumCategory")%> danh mục</p>
 <%--                                    <button><i class="fa fa-caret-left"></i></button>--%>
                                     <% // nut qua trai trang hien tai  <-- 2 %>
                                     <a href="LoadCategoryController?page=<%= Integer.parseInt(request.getParameter("page"))  - 1%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>" >
@@ -386,7 +397,7 @@
                                             for (int i = 1;i <= listpage;i++){
                                                 if(i == nowpage){
                                         %>
-                                        <li style="background-color: #4162ffb; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
+                                        <li style="background-color: #4162ff; box-shadow: 0 3px 5px #90a3ff;" ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
 
                                         <%}else{%>
                                         <li ><a href="LoadCategoryController?page=<%=i%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>"> <%=i%> </a></li>
@@ -414,25 +425,42 @@
 
 <%--                                <%--%>
 <%--                                    for(Category c : CategoryWorksWithDatabase.getCategoriesByIdASC()){%>--%>
-                                <c:forEach items="${listDM}" var="c">
+<%--                              <  <c:forEach items="${listDM}" var="c">>--%>
+                                <%
+                                   ArrayList<Category> listDM =  (ArrayList<Category>)request.getAttribute("listDM");
+                                %>
+                                <% if(listDM.size() == 0){%>
+                                <div><p style="    width: 29%;
+                                text-align: center;
+                                height: 25px;
+                                margin: auto;
+                                margin-top: 30px;
+                                background-color: white;
+                                line-height: 25px;
+                                border-radius: 8px;
+                                font-family: serif;"> Không tìm thấy danh mục sản phẩm!</p></div>
+                                <%
+                                }else{
+                                        for(Category c : listDM){%>
+                                <%System.out.println(list.size());%>
                                 <div class="item">
                                     <label for="c1">
                                         <input type="checkbox" name="" id="c1">
                                     </label>
                                     <p>
-<%--                                        #<%= c.id%>--%>
-                                        #${c.id}
+                                        #<%= c.getId()%>
+<%--                                        #${c.id}--%>
                                     </p>
                                     <p>
-<%--                                            <%= c.name %>--%>
-                                        ${c.name}
+                                            <%= c.getName() %>
+<%--                                        ${c.name}--%>
                                     </p>
                                     <p>
-                                        24
+                                        <%=c.getNumberOfProduct()%>
                                     </p>
                                     <p>
-                                         ${c.dateCreated}
-<%--                                        <%= c.dateCreated %>--%>
+<%--                                         ${c.dateCreated}--%>
+                                        <%= c.getDateCreated() %>
                                     </p>
 
                                     <div class="itemsubmit" onclick="showselect(this)">
@@ -472,8 +500,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                </c:forEach>
-<%--                                <% }%>--%>
+
+                                <% }}%>
 
                             </div>
                         </div>
