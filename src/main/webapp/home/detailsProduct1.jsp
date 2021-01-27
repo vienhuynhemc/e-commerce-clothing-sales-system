@@ -3,7 +3,9 @@
 <%@ page import="beans.product.*" %>
 <%@ page import="beans.account.AccountCustomer" %>
 <%@ page import="beans.rate.Rate" %>
-<%@ page import="beans.rate.Star" %><%--
+<%@ page import="beans.rate.Star" %>
+<%@ page import="beans.account.ConvertDate" %>
+<%@ page import="beans.encode.ConvertPrice" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -283,14 +285,14 @@
                 <p class="tensanpham"><%=p.getTen_sp()%></p>
                 <div class="giasanphamgiamgia">
                     <%if(p.getPriceSale().getGia_sp_km() != 0){%>
-                    <span><del><%=p.getPrice().getGia_sp()%> VND</del></span>
+                    <span><del><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</del></span>
                     <span>(GIẢM GIÁ <%= Math.round(((p.getPrice().getGia_sp()-p.getPriceSale().getGia_sp_km())/p.getPrice().getGia_sp())*100) %>%)</span>
                 <%}%>
                 </div>
                 <%if(p.getPriceSale().getGia_sp_km() != 0){%>
-                <p class="giasanphamgiachinh"><%=p.getPriceSale().getGia_sp_km()%> VND</p>
+                <p class="giasanphamgiachinh"><%=ConvertPrice.convertPrice(p.getPriceSale().getGia_sp_km())%> VND</p>
                 <%} else{%>
-                <p class="giasanphamgiachinh"><%=p.getPrice().getGia_sp()%> VND</p>
+                <p class="giasanphamgiachinh"><%=ConvertPrice.convertPrice(p.getPrice().getGia_sp())%> VND</p>
                 <%}%>
                 <p class="thongtinghichu">(Giá có thể tăng lên khi thanh toán vì có phí vận chuyển)</p>
                 <div class="guidecolor">

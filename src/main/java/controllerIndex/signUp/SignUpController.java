@@ -1,5 +1,6 @@
 package controllerIndex.signUp;
 
+import beans.encode.MD5;
 import model.signUp.SignUp;
 import worksWithDatabase.signUpUser.SignUpDAO;
 
@@ -24,7 +25,9 @@ public class SignUpController extends HttpServlet {
         String mail = request.getParameter("mail");
         String check = request.getParameter("check");
 
-        String exe = SignUp.getInstance().checkUserInput(username, pass, name, phone, mail, check);
+        String password = MD5.md5(pass);
+
+        String exe = SignUp.getInstance().checkUserInput(username, password, name, phone, mail, check);
 
         System.out.println(exe);
 
