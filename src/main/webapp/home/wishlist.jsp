@@ -220,7 +220,7 @@
         </a>
 
         <div class="remove">
-            <a href="RemoveWishlistController?ma_sp=<%=w.getMa_sp()%>&ma_mau=<%=w.getMa_sp()%>&size=<%=w.getSize()%>&page=<%= request.getParameter("page")%>&search=<%=request.getParameter("search")%>&type=<%=request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%=request.getParameter("status")%>"><i class="fa fa-close"></i></a>
+            <a href="RemoveWishlistController?ma_sp=<%=w.getMa_sp()%>&ma_mau=<%=w.getMa_mau()%>&size=<%=w.getMa_size()%>&page=<%= request.getParameter("page")%>&search=<%=request.getParameter("search")%>&type=<%=request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%=request.getParameter("status")%>"><i class="fa fa-close"></i></a>
         </div>
     </div>
     <%}}%>

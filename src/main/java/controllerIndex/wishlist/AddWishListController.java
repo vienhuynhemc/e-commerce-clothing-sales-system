@@ -18,18 +18,23 @@ public class AddWishListController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         AccountCustomer user = (AccountCustomer) session.getAttribute("user");
 
-        String idCustomer = user.getIdUser();
+        if (session.getAttribute("user") == null){
+            response.sendRedirect("dang-nhap");
+        }else{
 
+        String idCustomer = user.getIdUser();
         String color = request.getParameter("color-w");
         String idProduct = request.getParameter("ma_sp");
         String size = request.getParameter("size-w");
-
         boolean check = AddWishlistModel.addWishlist(idProduct,idCustomer,color,size);
-        request.setAttribute("check",check);
-
-        request.getRequestDispatcher("notifyAddWishlist/AddWishlistStatus.jsp").forward(request,response);
+        System.out.println(check);
+        if (check){
+            response.sendRedirect("LoadWishlistController?page=1&search=&type=ngay_tao&sex=0&status=1");
+        }
+    }
     }
 }

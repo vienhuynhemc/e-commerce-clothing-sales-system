@@ -13,6 +13,7 @@ function subtocard() {
 function plustocard2() {
     let inputsl = document.getElementById('sladdtocard2');
     inputsl.value = `${parseInt(inputsl.value) + 1}`;
+
 }
 
 function subtocard2() {

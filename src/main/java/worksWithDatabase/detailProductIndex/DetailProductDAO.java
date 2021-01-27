@@ -1,6 +1,7 @@
 package worksWithDatabase.detailProductIndex;
 
 import beans.DateTime;
+import beans.account.ConvertDate;
 import beans.product.*;
 import connectionDatabase.DataSource;
 
@@ -20,9 +21,9 @@ public class DetailProductDAO {
         Product p = new Product();
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            String sql ="SELECT s.ma_sp, s.ten_sp, s.ma_hsx, s.ngay_tao, s.gioi_tinh, s.trang_thai," +
-                    "s.so_luong_ban_ra, s.ton_tai, g.gia_sp, gk.gia_km, d.ten_dm from san_pham s,gia_sp g," +
-                    "gia_sp_khuyen_mai gk,danh_muc d WHERE s.ma_sp = g.ma_sp AND d.ma_dm = s.ma_dm AND s.ma_sp = ? \n" +
+            String sql ="SELECT s.ma_sp, s.ten_sp, s.ma_hsx,s.ma_dm, s.ngay_tao, s.gioi_tinh, s.trang_thai," +
+                    "s.so_luong_ban_ra, s.ton_tai, d.ten_dm from san_pham s," +
+                    "gia_sp_khuyen_mai gk,danh_muc d WHERE  d.ma_dm = s.ma_dm AND s.ma_sp = ? \n" +
                     "GROUP BY s.ma_sp, s.ten_sp, s.ma_hsx";
 //            masp tensp mahsx ngaytao gioitinh trangthai soluongbanra tontai giasp giakm tendm
             PreparedStatement s = connection.prepareStatement(sql);
@@ -32,30 +33,17 @@ public class DetailProductDAO {
                 p.setMa_sp(rs.getString(1));
                 p.setTen_sp(rs.getString(2));
                 p.setMa_hsx(rs.getString(3));
+                p.setMa_dm(rs.getString(4));
 
-                String dateTime = rs.getString(4);
 
-                String[] dayTime = dateTime.split(" ");
-                String[] date = dayTime[0].split("-");
-                String[] time = dayTime[1].split(":");
-                int year = Integer.parseInt(date[0]);
-                int month = Integer.parseInt(date[1]);
-                int day = Integer.parseInt(date[2]);
+                p.setNgay_tao(ConvertDate.changeDate(rs.getString(5)));
+                p.setGioi_tinh(rs.getInt(6));
+                p.setTrang_thai(rs.getInt(7));
+                p.setSo_luong_ban_ra(rs.getInt(8));
+                p.setTon_tai(rs.getInt(9));
 
-                int hour = Integer.parseInt(time[0]);
-                int minute = Integer.parseInt(time[1]);
-                double secon = Double.parseDouble(time[2]);
-                int second = (int)secon;
 
-                DateTime d = new DateTime(year,month,day,hour,minute,second);
-
-                p.setNgay_tao(d);
-                p.setGioi_tinh(rs.getInt(5));
-                p.setTrang_thai(rs.getInt(6));
-                p.setSo_luong_ban_ra(rs.getInt(7));
-                p.setTon_tai(rs.getInt(8));
-
-                p.setCategoryName(rs.getString(11));
+                p.setCategoryName(rs.getString(10));
 
                 rs.close();
                 s.close();
@@ -360,18 +348,21 @@ public class DetailProductDAO {
         DataSource.getInstance().releaseConnection(connection);
         return new ArrayList<>();
     }
-    public ArrayList<String> loadColorById(String id){
+    public ArrayList<ProductColor> loadColorById(String id){
         Connection connection = DataSource.getInstance().getConnection();
         try{
-            PreparedStatement s = connection.prepareStatement("SELECT DISTINCT h.ma_mau FROM san_pham s, " +
-                    "hinh_anh_sp h  WHERE h.ma_sp = s.ma_sp AND s.ma_sp = ?");
+            PreparedStatement s = connection.prepareStatement("SELECT * FROM thong_tin_chi_tiet_sp t, " +
+                    "mau m, san_pham s  WHERE m.mau_mau = t.ma_mau AND s.ma_sp = t.ma_sp AND s.ma_sp = ?");
 
-            ArrayList<String> list = new ArrayList<>();
+            ArrayList<ProductColor> list = new ArrayList<>();
             s.setString(1,id);
-
             ResultSet rs = s.executeQuery();
             while(rs.next()){
-                list.add(rs.getString(1));
+                ProductColor pc = new ProductColor();
+                pc.setMa_mau(rs.getString("ma_mau"));
+                pc.setTen_mau(rs.getString("ten_mau"));
+                pc.setLink_hinh(rs.getString("link_hinh_anh"));
+                list.add(pc);
             }
             rs.close();
             s.close();
@@ -414,10 +405,10 @@ public class DetailProductDAO {
 
     public static void main(String[] args) {
         DetailProductDAO test = new DetailProductDAO();
-//       for(ProductDetailInformation s : test.getInfoDetailProduct("sp_2", "mau_1")){
+//      for(ProductDetailInformation s : test.getInfoDetailProduct("sp_2", "mau_1")){
 //           System.out.println(s);
 //       }
-       System.out.println(test.getProductById("sp_1"));
+       System.out.println(test.getRestNumber("sp_12","mau_2","size_2"));
     }
 
 }

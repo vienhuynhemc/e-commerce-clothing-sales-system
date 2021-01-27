@@ -1,6 +1,7 @@
 package model.loadDetailProduct;
 
 import beans.product.Product;
+import beans.product.ProductColor;
 import beans.product.ProductDetailInformation;
 
 import model.loadProduct.LoadProductModel;
@@ -38,9 +39,9 @@ public class LoadDetailProductModel {
         DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
         return list;
     }
-    public ArrayList<String> loadColorById(String id){
+    public ArrayList<ProductColor> loadColorById(String id){
         DetailProductDAO detailProductDAO = DetailProductDataSource.getInstance().getDetailProduct();
-        ArrayList<String> list = detailProductDAO.loadColorById(id);
+        ArrayList<ProductColor> list = detailProductDAO.loadColorById(id);
         DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
         return list;
     }
@@ -49,6 +50,12 @@ public class LoadDetailProductModel {
         int a = detailProductDAO.getRestNumber(id,color,size);
         DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
         return a;
+    }
+    public ArrayList<ProductDetailInformation> getInfoDetailProduct(String id, String color){
+        DetailProductDAO detailProductDAO = DetailProductDataSource.getInstance().getDetailProduct();
+        ArrayList<ProductDetailInformation> list = detailProductDAO.getInfoDetailProduct(id,color);
+        DetailProductDataSource.getInstance().releaseDetailProduct(detailProductDAO);
+        return list;
     }
 
     public static void main(String[] args) {
