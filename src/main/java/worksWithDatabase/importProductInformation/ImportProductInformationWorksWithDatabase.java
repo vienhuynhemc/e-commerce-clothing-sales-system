@@ -1,7 +1,10 @@
 package worksWithDatabase.importProductInformation;
 
+import beans.productAdmin.ProductAdminEditSingle;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

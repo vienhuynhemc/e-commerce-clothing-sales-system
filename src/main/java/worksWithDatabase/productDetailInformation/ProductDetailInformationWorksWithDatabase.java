@@ -9,6 +9,7 @@ import model.productAdmin.ProductAdminModel;
 import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDetailInformationWorksWithDatabase {
@@ -243,6 +244,122 @@ public class ProductDetailInformationWorksWithDatabase {
        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public void addToDatabae(String ma_sp, List<ProductAdminColorAddProduct> listColor, List<ProductAdminSizeAdd> listSize){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO thong_tin_chi_tiet_sp VALUES(?,?,?,?,?,?)");
+            for(ProductAdminColorAddProduct productAdminColorAdd : listColor){
+                for(ProductAdminSizeAdd productAdminSize : listSize){
+                    preparedStatement.setString(1,ma_sp);
+                    preparedStatement.setString(2,productAdminColorAdd.getMa_mau());
+                    preparedStatement.setString(3,productAdminSize.getId());
+                    preparedStatement.setInt(4,0);
+                    preparedStatement.setInt(5,1);
+                    preparedStatement.setInt(6,productAdminColorAdd.getList_hinh_anh_sp().size());
+                    preparedStatement.executeUpdate();
+                }
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public void fillProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ma_size,hinh_anh_trong_firebase FROM thong_tin_chi_tiet_sp WHERE ton_tai = ? AND ma_sp = ? AND ma_mau = ?");
+            preparedStatement.setInt(1,1);
+            preparedStatement.setString(2, productAdminEditSingle.getMa_sp());
+            preparedStatement.setString(3, productAdminEditSingle.getMa_mau());
+
+            ResultSet resuletSet = preparedStatement.executeQuery();
+            while(resuletSet.next()){
+                ProductAdminSizeAdd productAdminSizeAdd = new ProductAdminSizeAdd();
+                productAdminSizeAdd.setId(resuletSet.getString("ma_size"));
+                productAdminEditSingle.getList_size().add(productAdminSizeAdd);
+                productAdminEditSingle.setHinh_anh_trong_firebase(resuletSet.getInt("hinh_anh_trong_firebase"));
+            }
+            resuletSet.close();
+            preparedStatement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public void updateEditSingle(String ma_sp,String ma_mau,List<ProductAdminSizeAdd> list_size, int hinh_anh_trong_firebase){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement =connection.prepareStatement("UPDATE thong_tin_chi_tiet_sp SET hinh_anh_trong_firebase = ? WHERE ma_sp = ? AND ma_mau = ?");
+            preparedStatement.setInt(1,hinh_anh_trong_firebase);
+            preparedStatement.setString(2,ma_sp);
+            preparedStatement.setString(3,ma_mau);
+            preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("SELECT ma_size FROM thong_tin_chi_tiet_sp WHERE ma_sp = ? AND ma_mau = ?");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.setString(2,ma_mau);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<String> ids = new ArrayList<String>();
+            List<String> ids2 = new ArrayList<String>();
+            while(resultSet.next()){
+                String id = resultSet.getString("ma_size");
+                ids.add(id);
+            }
+            resultSet.close();
+            preparedStatement = connection.prepareStatement("INSERT INTO thong_tin_chi_tiet_sp VALUES(?,?,?,?,?,?)");
+            for(ProductAdminSizeAdd productAdminSizeAdd : list_size){
+                if(!ids.contains(productAdminSizeAdd.getId())){
+                    preparedStatement.setString(1,ma_sp);
+                    preparedStatement.setString(2,ma_mau);
+                    preparedStatement.setString(3,productAdminSizeAdd.getId());
+                    preparedStatement.setInt(4,0);
+                    preparedStatement.setInt(5,1);
+                    preparedStatement.setInt(6,hinh_anh_trong_firebase);
+                    preparedStatement.executeUpdate();
+                    ids.remove(productAdminSizeAdd.getId());
+                }else{
+                    ids2.add(productAdminSizeAdd.getId());
+                }
+            }
+            preparedStatement = connection.prepareStatement("UPDATE thong_tin_chi_tiet_sp SET ton_tai = ? WHERE ma_sp = ? AND ma_size = ? AND ma_mau = ?");
+            for(String s : ids){
+                preparedStatement.setInt(1,0);
+                preparedStatement.setString(2,ma_sp);
+                preparedStatement.setString(3,s);
+                preparedStatement.setString(4,ma_mau);
+                preparedStatement.executeUpdate();
+            }
+            for(String s : ids2){
+                preparedStatement.setInt(1,1);
+                preparedStatement.setString(2,ma_sp);
+                preparedStatement.setString(3,s);
+                preparedStatement.setString(4,ma_mau);
+                preparedStatement.executeUpdate();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
         DataSource.getInstance().releaseConnection(connection);
 

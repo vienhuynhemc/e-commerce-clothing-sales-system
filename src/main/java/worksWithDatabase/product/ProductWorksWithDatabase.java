@@ -4,6 +4,7 @@ import beans.DateTime;
 import beans.productAdmin.*;
 import connectionDatabase.DataSource;
 
+import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
 import javax.xml.transform.Result;
 import java.sql.*;
@@ -89,6 +90,50 @@ public class ProductWorksWithDatabase {
             }
             preparedStatement.close();
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    //  Phuơng thức lấy mã sản phẩm tiếp theo
+    public String getNextId(){
+
+        String result = null;
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(ma_sp) AS so_luong FROM san_pham");
+            resultSet.next();
+            result = "sp_"+(resultSet.getInt("so_luong")+1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return result;
+    }
+
+    //  Phương thức thêm một sản phẩm vô csdl
+    public void addSpToDatabase(String ma_sp,String ten_sp,String ma_hsx,String ma_dm,DateTime ngay_tao,int gioi_tinh,int trang_thai,int so_luong_ban_ra,int ton_tai){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO san_pham VALUES(?,?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1,ma_sp);
+            preparedStatement.setString(2,ten_sp);
+            preparedStatement.setString(3,ma_hsx);
+            preparedStatement.setString(4,ma_dm);
+            preparedStatement.setString(5,ngay_tao.toString());
+            preparedStatement.setInt(6,gioi_tinh);
+            preparedStatement.setInt(7,trang_thai);
+            preparedStatement.setInt(8,so_luong_ban_ra);
+            preparedStatement.setInt(9,ton_tai);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

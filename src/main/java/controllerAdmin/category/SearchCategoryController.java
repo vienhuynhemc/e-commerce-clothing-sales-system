@@ -9,16 +9,21 @@ import java.io.IOException;
 
 @WebServlet(name = "SearchCategoryController", urlPatterns = "/SearchCategoryController")
 public class SearchCategoryController extends HttpServlet {
-
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String keyword = request.getParameter("search");
-        request.setAttribute("search",keyword);
 
-        request.getRequestDispatcher("LoadCategoryController").forward(request,response);
+
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("search");
+        String orderBy = request.getParameter("orderBy");
+
+        System.out.println("keyword = " + keyword);
+
+
+        request.getRequestDispatcher("LoadCategoryController?page=1&type="+type+"&search="+keyword+"&orderBy="+orderBy).forward(request,response);
+
     }
 }

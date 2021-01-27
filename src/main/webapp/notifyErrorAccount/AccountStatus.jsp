@@ -140,17 +140,23 @@
     <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
     <div class="mainchangepassword">
         <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
-        <div class="changepasswordsuccess" id="changepasswordsuccess">
-            <p> ${param.title} </p>
-            <p> <%=request.getParameter("content")%></p>
-            <button onclick="gobackpassword()">Trở về
+        <div class="changepasswordsuccess" id="changepasswordsuccess2">
+            <p>  ${param.title}%</p>
+<%--            <% System.out.println(request.getParameter("content"));%>--%>
+            <p> ${param.content}</p>
+            <button onclick="gobackpassword1()">Trở về
             </button>
         </div>
     </div>
 </div>
 
 <script>
-    function gobackpassword() {
+
+    $(document).ready(function (){
+        dangky();
+    })
+
+    function gobackpassword1() {
         document.getElementById('changepassword').style.transform = 'scaleY(0)';
     }
 </script>

@@ -3,6 +3,7 @@ package worksWithDatabase.productInformation;
 import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -92,6 +93,26 @@ public class ProductInformationWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
         return result;
+    }
+
+    public void addToDatabase(String ma_sp,List<String> thong_tins){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO thong_tin_sp VALUES(?,?)");
+            for(String s: thong_tins){
+                preparedStatement.setString(1,ma_sp);
+                preparedStatement.setString(2,s);
+                preparedStatement.executeUpdate();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
     }
 
 }

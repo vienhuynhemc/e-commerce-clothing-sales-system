@@ -140,6 +140,53 @@ public class RateDAO {
         return star;
 
     }
+    // kiểm tra xem khách hàng có quyền viết đánh giá không false nếu khách hàng chưa mua sản phẩm hoặc đã mua
+    // và đánh giá sản phẩm đó rồi.
+    public String checkRatePermission(String idProduct,String idCustomer){
+            Connection connection = DataSource.getInstance().getConnection();
+            try{
+                String sql = "SELECT DISTINCT d.ma_khach_hang,c.ma_san_pham FROM `don_hang` d, chi_tiet_don_hang c" +
+                " WHERE d.ma_don_hang = c.ma_don_hang AND d.ma_khach_hang = ? AND c.ma_san_pham = ?";
+                int count = 0;
+                PreparedStatement c = connection.prepareStatement(sql);
+                c.setString(1,idCustomer);
+                c.setString(2,idProduct);
+                ResultSet rc = c.executeQuery();
+                if(rc.next()){
+                    // khách hàng đã mua sp đó
+                    count++;
+                }
+                rc.close();
+                c.close();
+                PreparedStatement s = connection.prepareStatement("SELECT * FROM `danh_gia_sp` where ma_sp = ? AND" +
+                        " ma_kh = ? OR trang_thai = 1");
+                s.setString(1,idProduct);
+                s.setString(2,idProduct);
+                ResultSet rs = s.executeQuery();
+                if(rs.next()){
+                    DataSource.getInstance().releaseConnection(connection);
+                    count++;
+                }
+                if(count==2){
+                    DataSource.getInstance().releaseConnection(connection);
+                    return "da_danh_gia";
+                }
+                else if(count==1){
+                    DataSource.getInstance().releaseConnection(connection);
+                    return "chua_danh_gia";
+                }
+                else if(count==0) {
+                    return "chua_mua_hang";
+                }
+                rs.close();
+                s.close();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            DataSource.getInstance().releaseConnection(connection);
+            return "";
+    }
 
     public static void main(String[] args) throws SQLException{
         RateDAO lao = new RateDAO();

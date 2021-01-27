@@ -2,10 +2,18 @@ package controllerAdmin.product;
 
 import beans.loginAdmin.UserAdmin;
 import beans.nextPage.NextPageObject;
+import beans.product.Size;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminEditSingle;
 import beans.productAdmin.ProductAdminObject;
+import model.category.CategoryModel;
+import model.color.ColorModel;
+import model.manufacturer.ManufacturerModel;
 import model.nextPage.NextPageModel;
 import model.productAdmin.ProductAdminModel;
+import model.productDetailInformation.ProductDetailInformationModel;
+import model.productImage.ProductImageModel;
+import model.size.SizeModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -80,13 +88,68 @@ public class ProductController extends HttpServlet {
                     productAdminObject.setContent((String) request.getAttribute("more2"));
 
                     //  Nếu là từ trang thêm thì làm như thế này
-                } else if (foward.equals("add")) {
+                } else if (foward.equals("addProduct")) {
 
+                    //  Cập nhập lại số lượng hiển thị
+                    productAdminObject.setNumberOfShow(ProductAdminModel.getInstance().getNumberOfShow(productAdmins));
 
+                    //  Cập nhập lại số sản phẩm tối đa
+                    int maximumProduct = ProductAdminModel.getInstance().getNumberOfMaxProductFromAll(productAdminObject.getSelectSearchAndSort(), productAdminObject.getSearch());
+                    productAdminObject.setMaximumProduct(maximumProduct);
 
-                } else if (foward.equals("edit")) {
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage =ProductAdminModel.getInstance().getMaximunNumberOfPage(maximumProduct);
+                    productAdminObject.setMaximumPage(maximumPage);
 
+                    //  Cập nhập lại list Next page
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(productAdminObject.getNowPage(), productAdminObject.getMaximumPage());
+                    productAdminObject.setNextPages(nextPages);
 
+                    productAdminObject.setNotify(true);
+                    productAdminObject.setTitle((String) request.getAttribute("more"));
+                    productAdminObject.setContent((String) request.getAttribute("more2"));
+
+                    //  Chuyển về trạng thái ban đầu, cho đối tượng thêm thành null
+                    productAdminObject.setProductAdminAdd(null);
+                    productAdminObject.setIs_them_moi(false);
+                    productAdminObject.setIs_sua_da(false);
+                    productAdminObject.setIs_sua_don(false);
+
+                } else if (foward.equals("editSingle")) {
+
+                    //  Cập nhập lại số lượng hiển thị
+                    productAdminObject.setNumberOfShow(ProductAdminModel.getInstance().getNumberOfShow(productAdmins));
+
+                    //  Cập nhập lại số sản phẩm tối đa
+                    int maximumProduct = ProductAdminModel.getInstance().getNumberOfMaxProductFromAll(productAdminObject.getSelectSearchAndSort(), productAdminObject.getSearch());
+                    productAdminObject.setMaximumProduct(maximumProduct);
+
+                    //  Cập nhập lại số trang tối đa
+                    int maximumPage =ProductAdminModel.getInstance().getMaximunNumberOfPage(maximumProduct);
+                    productAdminObject.setMaximumPage(maximumPage);
+
+                    //  Cập nhập lại list Next page
+                    List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(productAdminObject.getNowPage(), productAdminObject.getMaximumPage());
+                    productAdminObject.setNextPages(nextPages);
+
+                    productAdminObject.setNotify(true);
+                    productAdminObject.setTitle((String) request.getAttribute("more"));
+                    productAdminObject.setContent((String) request.getAttribute("more2"));
+
+                    //  Chuyển về trạng thái ban đầu, cho đối tượng edit single thành null
+                    productAdminObject.setProductAdminEditSingle(null);
+                    productAdminObject.setIs_them_moi(false);
+                    productAdminObject.setIs_sua_da(false);
+                    productAdminObject.setIs_sua_don(false);
+
+                } else if(foward.equals("addColor")){
+
+                    //  Lấy lại danh sách các màu
+                    productAdminObject.setDanh_sach_mau(ColorModel.getInstance().getAllColor());
+
+                    productAdminObject.setNotify(true);
+                    productAdminObject.setTitle((String) request.getAttribute("more"));
+                    productAdminObject.setContent((String) request.getAttribute("more2"));
                 }
 
                 //  Gán lại cho sesstion
@@ -147,6 +210,7 @@ public class ProductController extends HttpServlet {
                     productAdminObject.setIs_sua_don(false);
                     productAdminObject.setIs_sua_da(false);
                     productAdminObject.setIs_them_moi(false);
+                    productAdminObject.setMa_mau_tiep_theo(ColorModel.getInstance().getNextId());
 
                     productAdminObject.setReady(true);
                     userAdmin.getListOfFunction().put("productAdminObject", productAdminObject);
@@ -187,6 +251,8 @@ public class ProductController extends HttpServlet {
                         List<NextPageObject> nextPages = NextPageModel.getInstance().getListNextPageObjectAdmin(productAdminObject.getNowPage(), productAdminObject.getMaximumPage());
                         productAdminObject.setNextPages(nextPages);
 
+                        productAdminObject.setMa_mau_tiep_theo(ColorModel.getInstance().getNextId());
+
                         //  Gán lại cho sesstion
                         productAdminObject.setReady(true);
                         userAdmin.getListOfFunction().put("productAdminObject", productAdminObject);
@@ -203,6 +269,12 @@ public class ProductController extends HttpServlet {
                         productAdminObject.setIs_sua_da(false);
                         productAdminObject.setIs_sua_don(false);
 
+                        // Thêm mới thì cập nhật 4 list lại prodcutAdminObject
+                        productAdminObject.setDanh_sach_size(SizeModel.getInstance().getAllSize());
+                        productAdminObject.setDanh_sach_mau(ColorModel.getInstance().getAllColor());
+                        productAdminObject.setDanh_sach_hang_san_xuat(ManufacturerModel.getInstance().getAllManufacturer());
+                        productAdminObject.setDanh_sach_danh_muc(CategoryModel.getInstance().getAllCategory());
+
                         //  Gán lại cho sesstion
                         productAdminObject.setReady(true);
                         userAdmin.getListOfFunction().put("productAdminObject", productAdminObject);
@@ -217,6 +289,24 @@ public class ProductController extends HttpServlet {
                         productAdminObject.setIs_them_moi(false);
                         productAdminObject.setIs_sua_da(false);
                         productAdminObject.setIs_sua_don(true);
+
+                        //  Tạo một đối tượng sửa đơn lưu vô productAdminObject
+                        //  Lấy mã sản phẩm
+                        String ma_sp = request.getParameter("id1");
+                        String ma_mau = request.getParameter("id2");
+                        ProductAdminEditSingle productAdminEditSingle = new ProductAdminEditSingle();
+                        productAdminEditSingle.setMa_sp(ma_sp);
+                        productAdminEditSingle.setMa_mau(ma_mau);
+                        // fill productAdminEditSingle o bang thong_tin_chi_tiet_sp
+                        ProductDetailInformationModel.getInstance().fillProductAdminEditSingle(productAdminEditSingle);
+                        //  fill hình ảnh ở bảng hinh_anh_sp
+                        ProductImageModel.getInstance().fillImageByProductAdminEditSingle(productAdminEditSingle);
+                        //  fill tên size từ bảng size
+                        SizeModel.getInstance().fillNameSizeToProductAdminEditSingle(productAdminEditSingle);
+                        //  Fill teen mau
+                        ColorModel.getInstance().fillNameColorForProductAdminSingle(productAdminEditSingle);
+                        productAdminEditSingle.setList_size_do_du_lieu(SizeModel.getInstance().getAllSize());
+                        productAdminObject.setProductAdminEditSingle(productAdminEditSingle);
 
                         //  Gán lại cho sesstion
                         productAdminObject.setReady(true);

@@ -96,12 +96,15 @@ function removekhachhang(item) {
             let ten_mau = list3[6].value;
             let ten_size = list3[7].value;
 
-            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #' +ma_sp+", Size: "+ten_size+", Màu: "+ten_mau;
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn xóa #' + ma_sp + ", Size: " + ten_size + ", Màu: " + ten_mau;
             document.getElementById("formYesNoTitle2").innerText = 'Việc xóa sẽ thay đổi dữ liệu của bạn ';
             let item = document.createElement("i");
             item.classList.add("fa");
             item.classList.add("fa-hand-grab-o");
-            document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=single&&ma_sp=" + ma_sp+"&&ma_mau="+ma_mau+"&&ma_size="+ma_size+"&&ten_mau="+ten_mau+"&&ten_size="+ten_size;
+
+            document.getElementById("formYesNoLink").style.display = 'flex';
+            document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+            document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=single&&ma_sp=" + ma_sp + "&&ma_mau=" + ma_mau + "&&ma_size=" + ma_size + "&&ten_mau=" + ten_mau + "&&ten_size=" + ten_size;
             document.getElementById("formYesNoTitle2").appendChild(item);
             document.getElementById("formYesNo").style.transform = 'scaleY(1)';
             return;
@@ -128,7 +131,7 @@ function xoacacmuadachon() {
         let list2 = listItem[i].children;
         let list3 = list2[0].children;
         if (list3[0].checked == true) {
-           danh_sach_thong_tin+=list3[1].value+":"+list3[2].value+":"+list3[3].value+" ";
+            danh_sach_thong_tin += list3[1].value + ":" + list3[2].value + ":" + list3[3].value + " ";
         }
     }
     if (danh_sach_thong_tin.length > 0) {
@@ -140,6 +143,8 @@ function xoacacmuadachon() {
         let item = document.createElement("i");
         item.classList.add("fa");
         item.classList.add("fa-hand-grab-o");
+        document.getElementById("formYesNoLink").style.display = 'flex';
+        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
         document.getElementById("formYesNoLink").href = "../../ProductRemoveController?type=group&&danh_sach_thong_tin=" + danh_sach_thong_tin;
         document.getElementById("formYesNoTitle2").appendChild(item);
         document.getElementById("formYesNo").style.transform = 'scaleY(1)';
@@ -195,8 +200,10 @@ function editkhachhang(item) {
         if (list3[0] == item) {
 
             document.getElementById("action").value = "sua_don";
+            document.getElementById("mainForm1").value = list3[3].value;
+            document.getElementById("mainForm2").value = list3[4].value;
             document.getElementById("mainForm").submit();
-            
+
             return;
         }
     }
@@ -418,8 +425,28 @@ function removeSize(button) {
     for (let i = 0; i < list7.length; i++) {
         list8 = list7[i].children;
         if (list8[1] == button) {
-            list6[1].removeChild(list7[i]);
+            let id = list8[2].value;
+
+            document.getElementById("actionDiv1").value = "removeSize";
+            document.getElementById("idDiv1").value = id;
+            document.getElementById("div1").submit();
+
             return;
+        }
+    }
+}
+
+function removeSizeChangeImg(button) {
+    let list = document.getElementById("listSizeDiv3").children;
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].children[1] == button) {
+
+            let id = list[i].children[2].value;
+
+            document.getElementById("changeImgAction").value = "removeSize";
+            document.getElementById("changeImgData").value = id;
+            document.getElementById("changImg").submit();
+
         }
     }
 }
@@ -464,8 +491,7 @@ function themsize(item) {
         let check = 0;
         for (let i = 0; i < list7.length; i++) {
             let l1 = list7[i].children;
-            let l2 = l1[0].children;
-            if (l2[1].innerText == value) {
+            if (l1[2].value == value) {
                 check = 1;
                 break;
             }
@@ -473,31 +499,11 @@ function themsize(item) {
 
 
         if (check == 0) {
-            let div = document.createElement("div");
-            div.classList.add("listSizeItem");
-
-            let div2 = document.createElement("div");
-            let i = document.createElement("i");
-            i.classList.add("fa");
-            i.classList.add("fa-circle");
-            let p = document.createElement("p");
-            p.innerText = value;
-            div2.appendChild(i);
-            div2.appendChild(p);
-            div.appendChild(div2);
-
-            let button = document.createElement("span");
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-trash");
-            button.appendChild(i2);
-            button.onclick = function () {
-                removeSize(button)
-            };
-            div.appendChild(button);
-
-            list6[1].appendChild(div);
+            document.getElementById("actionDiv1").value = "addSize";
+            document.getElementById("idDiv1").value = value;
+            document.getElementById("div1").submit();
         }
+
     }
 }
 
@@ -507,39 +513,16 @@ function themsize3() {
     let value = document.getElementById("valueSize").value;
     let list = document.getElementById("listSizeDiv3").children;
     for (let i = 0; i < list.length; i++) {
-        if (list[i].children[0].children[1].innerText == value) {
+        if (list[i].children[2].value == value) {
             check = 1;
             break;
         }
     }
 
-
-
     if (check == 0) {
-        let div = document.createElement("div");
-        div.classList.add("listSizeItem");
-
-        let div2 = document.createElement("div");
-        let i = document.createElement("i");
-        i.classList.add("fa");
-        i.classList.add("fa-circle");
-        let p = document.createElement("p");
-        p.innerText = value;
-        div2.appendChild(i);
-        div2.appendChild(p);
-        div.appendChild(div2);
-
-        let button = document.createElement("span");
-        let i2 = document.createElement("i");
-        i2.classList.add("fa");
-        i2.classList.add("fa-trash");
-        button.appendChild(i2);
-        button.onclick = function () {
-            removeSize3(button)
-        };
-        div.appendChild(button);
-
-        document.getElementById("listSizeDiv3").appendChild(div);
+        document.getElementById("changeImgAction").value = "addSize";
+        document.getElementById("changeImgData").value = value;
+        document.getElementById("changImg").submit();
     }
 }
 
@@ -633,19 +616,23 @@ function removehinhitem(item) {
         for (let j = 0; j < list14.length; j++) {
             list15 = list14[j].children;
             if (list15[1] == item) {
-                list13[0].removeChild(list14[j]);
 
-                let newValue = parseInt(list13[3].value);
-                if (newValue < 0) {
-                    newValue += 50;
-                    let space = newValue / -50;
-                    list13[3].value = newValue;
-                    if (space > 0) {
-                        list13[0].style.marginLeft = `${newValue - space * 10}px`;
-                    } else {
-                        list13[0].style.marginLeft = `${newValue}px`;
-                    }
-                }
+                document.getElementById("actionDiv1").value = "removeImage";
+                document.getElementById("idDiv1").value = list15[2].value;
+                document.getElementById("idDiv12").value = list15[0].src;
+                document.getElementById("div1").submit();
+
+                // let newValue = parseInt(list13[3].value);
+                // if (newValue < 0) {
+                //     newValue += 50;
+                //     let space = newValue / -50;
+                //     list13[3].value = newValue;
+                //     if (space > 0) {
+                //         list13[0].style.marginLeft = `${newValue - space * 10}px`;
+                //     } else {
+                //         list13[0].style.marginLeft = `${newValue}px`;
+                //     }
+                // }
 
                 return;
             }
@@ -850,7 +837,11 @@ function removecolor(item) {
         list11 = list10[i].children;
         list12 = list11[1].children;
         if (list12[1] == item) {
-            list9[1].removeChild(list10[i]);
+
+            document.getElementById("actionDiv1").value = "removeColor";
+            document.getElementById("idDiv1").value = list12[3].value;
+            document.getElementById("div1").submit();
+
         }
     }
 }
@@ -909,46 +900,6 @@ function themhinh2(item) {
     }
 }
 
-function loadIMG(event, item) {
-    //---
-    let list1 = document.getElementById("div1").children;
-    let list2 = list1[0].children;
-
-    //color
-    let list8 = list2[1].children;
-    let list9 = list8[4].children;
-    let list10 = list9[1].children;
-    for (let i = 0; i < list10.length; i++) {
-        list11 = list10[i].children;
-        list12 = list11[1].children;
-        if (list12[2] == item) {
-            if (event.target.files.length > 0) {
-                var src = URL.createObjectURL(event.target.files[0]);
-
-                list13 = list11[0].children;
-
-                // listhinh va 2 angle
-                list14 = list13[1].children;
-
-                let div1 = document.createElement("div");
-                div1.classList.add("listHinhitem");
-                let i1 = document.createElement("i");
-                i1.classList.add("fa");
-                i1.classList.add("fa-close");
-                i1.onclick = function () {
-                    removehinhitem(i1)
-                };
-                let img = document.createElement("img");
-                img.src = src;
-                div1.appendChild(img);
-                div1.appendChild(i1);
-                list14[0].appendChild(div1);
-                return;
-            }
-        }
-    }
-}
-
 function loadIMG2(event, item) {
     //---
     let list1 = document.getElementById("div3").children;
@@ -1002,7 +953,6 @@ function themmau(item) {
         //lay du lieu
         let l6 = l3[2].children;
         let value = l6[1].value;
-        let namecolor = l6[1].options[l6[1].selectedIndex].text;
 
         let check = 0;
         let listMau = l5[1].children;
@@ -1010,86 +960,16 @@ function themmau(item) {
             let a1 = listMau[j].children;
             let a2 = a1[0].children;
             let a3 = a2[0].children;
-            if (a3[0].innerText == namecolor) {
+            if (a3[2].value == value) {
                 check = 1;
             }
         }
         if (check == 0) {
-            // tao phan tu
-            let div1 = document.createElement("div");
-            div1.classList.add("listMauItem");
 
-            let div2 = document.createElement("div");
-            div2.classList.add("listMauItemleft");
-            let div4 = document.createElement("div");
-            let div5 = document.createElement("div");
-            let p1 = document.createElement("p");
-            p1.innerText = namecolor;
-            let div6 = document.createElement("div");
-            let img1 = document.createElement("img");
-            img1.src = value;
-            div6.appendChild(img1);
-            div4.appendChild(p1);
-            div4.appendChild(div6);
-            div2.appendChild(div4);
+            document.getElementById("actionDiv1").value = "addColor";
+            document.getElementById("idDiv1").value = value;
+            document.getElementById("div1").submit();
 
-            //div5
-            let div7 = document.createElement("div");
-            div7.classList.add("listHinh")
-            let i2 = document.createElement("i");
-            i2.classList.add("fa");
-            i2.classList.add("fa-angle-left");
-            i2.onclick = function () {
-                movehinhleft(i2)
-            };
-            let i3 = document.createElement("i");
-            i3.classList.add("fa");
-            i3.classList.add("fa-angle-right");
-            i3.onclick = function () {
-                movehinhright(i3)
-            };
-            let input1 = document.createElement("input");
-            input1.value = "0";
-            input1.type = "number";
-            input1.style.display = "none";
-            div5.appendChild(div7);
-            div5.appendChild(i2);
-            div5.appendChild(i3);
-            div5.appendChild(input1);
-
-            div2.appendChild(div5);
-            div1.appendChild(div2);
-
-            let div3 = document.createElement("div");
-            div3.classList.add("removecolor");
-            let button1 = document.createElement("span");
-            let button2 = document.createElement("span");
-            let i4 = document.createElement("i");
-            let i5 = document.createElement("i");
-            i4.classList.add("fa");
-            i5.classList.add("fa");
-            i4.classList.add("fa-plus");
-            i5.classList.add("fa-trash");
-            button1.appendChild(i4);
-            button2.appendChild(i5);
-            button1.onclick = function () {
-                themhinh(this)
-            };
-            button2.onclick = function () {
-                removecolor(this)
-            };
-            let input2 = document.createElement("input");
-            input2.type = "file";
-            input2.style.display = "none";
-            input2.onchange = function () {
-                loadIMG(event, input2)
-            };
-            div3.appendChild(button1);
-            div3.appendChild(button2);
-            div3.appendChild(input2);
-            div1.appendChild(div3);
-
-            l5[1].appendChild(div1);
         }
     }
 }
@@ -1207,10 +1087,14 @@ function taomauxong() {
     document.getElementById("taomaumoi").style.display = "none";
 }
 
+let arrayMau = [];
+
 function loadIMGMau(event) {
     if (event.target.files.length > 0) {
         var src = URL.createObjectURL(event.target.files[0]);
         document.getElementById("psm").src = src;
+        arrayMau = [];
+        arrayMau.push(event.target.files[0]);
     }
 }
 
@@ -1220,6 +1104,8 @@ function themGioiThieu() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "gioi_thieu" + (parseInt(document.getElementById("size_gioi_thieu").value) + 1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1229,18 +1115,25 @@ function themGioiThieu() {
     }
     div.appendChild(i);
     document.getElementById("listGioiThieu").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_gioi_thieu").value) + 1;
+    document.getElementById("size_gioi_thieu").value = newValue;
 }
 
 function removeGioiThieu(item) {
     let list = document.getElementById("listGioiThieu").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listGioiThieu").removeChild(list[i]);
-            return;
+            break;
         }
-
     }
+    list = document.getElementById("listGioiThieu").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "gioi_thieu" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_gioi_thieu").value) - 1;
+    document.getElementById("size_gioi_thieu").value = newValue;
 }
 
 function themCauTao() {
@@ -1249,6 +1142,8 @@ function themCauTao() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "cau_tao" + (parseInt(document.getElementById("size_cau_tao").value) + 1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1258,18 +1153,24 @@ function themCauTao() {
     }
     div.appendChild(i);
     document.getElementById("listCauTao").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_cau_tao").value) + 1;
+    document.getElementById("size_cau_tao").value = newValue;
 }
 
 function removeCauTao(item) {
     let list = document.getElementById("listCauTao").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listCauTao").removeChild(list[i]);
-            return;
         }
-
     }
+    list = document.getElementById("listCauTao").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "cau_tao" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_cau_tao").value) - 1;
+    document.getElementById("size_cau_tao").value = newValue;
 }
 
 function themThongTin() {
@@ -1278,6 +1179,8 @@ function themThongTin() {
     let input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Nhập giới thiệu ở đây";
+    input.value = "";
+    input.name = "thong_tin" + (parseInt(document.getElementById("size_thong_tin").value) + 1);
     div.appendChild(input);
     let i = document.createElement("i");
     i.classList.add("fa");
@@ -1287,18 +1190,24 @@ function themThongTin() {
     }
     div.appendChild(i);
     document.getElementById("listThongTin").appendChild(div);
+
+    let newValue = parseInt(document.getElementById("size_thong_tin").value) + 1;
+    document.getElementById("size_thong_tin").value = newValue;
 }
 
 function removeThongTin(item) {
     let list = document.getElementById("listThongTin").children;
     for (let i = 0; i < list.length; i++) {
-
         if (list[i].children[1] == item) {
             document.getElementById("listThongTin").removeChild(list[i]);
-            return;
         }
-
     }
+    list = document.getElementById("listThongTin").children;
+    for (let i = 0; i < list.length; i++) {
+        list[i].children[0].name = "thong_tin" + (i + 1);
+    }
+    let newValue = parseInt(document.getElementById("size_thong_tin").value) - 1;
+    document.getElementById("size_thong_tin").value = newValue;
 }
 
 function themGioiThieu2() {
@@ -1320,6 +1229,7 @@ function themGioiThieu2() {
     }
     div.appendChild(i);
     l1.appendChild(div);
+
 }
 
 function removeGioiThieu2(item) {
@@ -1333,6 +1243,7 @@ function removeGioiThieu2(item) {
         }
 
     }
+
 }
 
 function themCauTao2() {
@@ -1407,31 +1318,10 @@ function removeHinh(item) {
     let list = document.getElementById("listHinh").children;
     for (let i = 0; i < list.length; i++) {
         if (list[i].children[1] == item) {
-            document.getElementById("listHinh").removeChild(list[i]);
+            document.getElementById("changeImgAction").value = "removeImg";
+            document.getElementById("changeImgData").value = list[i].children[0].src;
+            document.getElementById("changImg").submit();
         }
-    }
-}
-
-function themHinhMoi(even) {
-    if (event.target.files.length > 0) {
-        var src = URL.createObjectURL(event.target.files[0]);
-            
-
-        let div = document.createElement("div");
-        div.classList.add("hinhItem");
-        let i = document.createElement("i");
-        i.classList.add("fa");
-        i.classList.add("fa-close");
-        i.onclick = function(){
-            removeHinh(i);
-        }
-        let img = document.createElement("img");
-        img.src = src;
-        div.appendChild(img);
-        div.appendChild(i);
-
-        document.getElementById("listHinh").appendChild(div);
-
     }
 }
 
@@ -1453,7 +1343,7 @@ function changesort() {
     document.getElementById("mainForm").submit();
 }
 
-function searchByClick(){
+function searchByClick() {
     document.getElementById("action").value = "search";
     document.getElementById("mainForm").submit();
 }
@@ -1563,3 +1453,406 @@ node.addEventListener("keyup", function (event) {
         document.getElementById("mainForm").submit();
     }
 });
+
+var arrayMauHoanThanh = [];
+var actionMau = 0;
+var interVelMau;
+var countRefreshMau;
+var countRefreshMauMax = 3;
+
+function taoMotMauMoi() {
+
+    let src = document.getElementById("psm");
+    let ten_mau = document.getElementById("tenmaumoi").value;
+
+    if (arrayMau.length == 1 && ten_mau.length > 0) {
+        taomauxong();
+        taiMauMoi(arrayMau[0]);
+        actionMau = 0;
+        choTaiHinhMau();
+    }
+}
+
+function choTaiHinhMau() {
+    if (actionMau == 1) {
+        if (interVelMau) {
+            window.clearInterval(interVelMau);
+            interVelMau = null;
+            countRefreshMau = 0;
+            arrayMau = [];
+            arrayMauHoanThanh = [];
+        }
+    } else {
+        if (!interVelMau) {
+            interVelMau = window.setInterval(
+                function () {
+                    if (arrayMauHoanThanh.length == 1) {
+
+                        actionMau = 1;
+                        window.clearInterval(interVelMau);
+                        interVelMau = null;
+                        countRefreshMau = 0;
+
+                        let link = arrayMauHoanThanh.pop();
+                        let name = document.getElementById("tenmaumoi").value;
+                        let id = document.getElementById("ma_mau_tiep_theo").value;
+
+                        document.getElementById("tenmauthem").value = name;
+                        document.getElementById("mamauthem").value = id;
+                        document.getElementById("linkmauthem").value = link;
+
+                        let itemm = document.createElement("i");
+                        itemm.classList.add("fa");
+                        itemm.classList.add("fa-hand-grab-o");
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm màu này';
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
+                        document.getElementById("formYesNoLink").style.display = 'flex';
+                        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+                        document.getElementById("formYesNoTitle2").appendChild(itemm);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                        document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+                        document.getElementById("formYesNoLink").onclick = function () {
+                            document.getElementById("formthemmau").submit();
+                        }
+
+
+                    } else {
+                        countRefreshMau++;
+                        if (countRefreshMau == countRefreshMauMax) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionMau = 1;
+                            choTaiHinhMau();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+var firebaseConfig = {
+    apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+    authDomain: "ecommerce-b6c08.firebaseapp.com",
+    databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+    projectId: "ecommerce-b6c08",
+    storageBucket: "ecommerce-b6c08.appspot.com",
+    messagingSenderId: "390576423583",
+    appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+    measurementId: "G-LR0V7PWKZN"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+function taiMauMoi(img) {
+    let nextId = document.getElementById("ma_mau_tiep_theo").value + "/" + "mau.jpg";
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = "mau/" + nextId;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayMauHoanThanh.push(link);
+        });
+}
+
+var arrayHinhHoanThanh = [];
+var actionHinh = 0;
+var interVelHinh;
+var countRefreshHinh;
+var countRefreshHinhMax = 3;
+var ma_mau_khi_tai_hinh;
+
+function loadIMG(event, item) {
+    //---
+    let list1 = document.getElementById("div1").children;
+    let list2 = list1[0].children;
+
+    //color
+    let list8 = list2[1].children;
+    let list9 = list8[4].children;
+    let list10 = list9[1].children;
+    for (let i = 0; i < list10.length; i++) {
+        list11 = list10[i].children;
+        list12 = list11[1].children;
+        if (list12[2] == item) {
+            if (event.target.files.length > 0) {
+
+                let ma_mau = list12[3].value;
+                let ma_sp = list12[4].value;
+                let name_img = list12[5].value;
+
+                let link_hinh = 'san_pham/' + ma_sp + "/" + ma_mau + "/" + name_img;
+                taiHinhMoi(event.target.files[0], link_hinh)
+                actionHinh = 0;
+                ma_mau_khi_tai_hinh = ma_mau;
+                choTaiHinhHinh();
+
+                return;
+            }
+        }
+    }
+}
+
+function choTaiHinhHinh() {
+    if (actionHinh == 1) {
+        if (interVelHinh) {
+            window.clearInterval(interVelHinh);
+            interVelHinh = null;
+            countRefreshHinh = 0;
+            arrayHinhHoanThanh = [];
+        }
+    } else {
+        if (!interVelHinh) {
+            interVelHinh = window.setInterval(
+                function () {
+                    if (arrayHinhHoanThanh.length == 1) {
+
+                        actionHinh = 1;
+                        window.clearInterval(interVelHinh);
+                        interVelHinh = null;
+                        countRefreshHinh = 0;
+
+                        document.getElementById("actionDiv1").value = "addImage";
+                        document.getElementById("idDiv1").value = ma_mau_khi_tai_hinh;
+                        document.getElementById("idDiv12").value = arrayHinhHoanThanh.pop();
+                        document.getElementById("div1").submit();
+
+                    } else {
+                        countRefreshHinh++;
+                        if (countRefreshHinh == countRefreshHinhMax) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionHinh = 1;
+                            choTaiHinhHinh();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+function taiHinhMoi(img, linkImg) {
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = linkImg;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayHinhHoanThanh.push(link);
+        });
+}
+
+function themsanpham() {
+
+    let ten_sp = document.getElementById("ten_sp_add").value;
+    if (ten_sp.length == 0) {
+        document.getElementById("erroradd1").classList.remove("hidden");
+    } else {
+        if (!document.getElementById("erroradd1").classList.contains("hidden")) {
+            document.getElementById("erroradd1").classList.add("hidden");
+        }
+        let gia = document.getElementById("gia_sp_add").value;
+        if (gia.length == 0) {
+            document.getElementById("erroradd2").classList.remove("hidden");
+        } else {
+            if (!document.getElementById("erroradd2").classList.contains("hidden")) {
+                document.getElementById("erroradd2").classList.add("hidden");
+            }
+            let gia_nha = document.getElementById("gia_nhap_add").value;
+            if (gia_nha.length == 0) {
+                document.getElementById("erroradd3").classList.remove("hidden");
+            } else {
+                if (!document.getElementById("erroradd3").classList.contains("hidden")) {
+                    document.getElementById("erroradd3").classList.add("hidden");
+                }
+                let listMau = document.getElementById("listMauAdd").children;
+                if (listMau.length == 0) {
+                    document.getElementById("erroradd4").classList.remove("hidden");
+                } else {
+                    if (!document.getElementById("erroradd4").classList.contains("hidden")) {
+                        document.getElementById("erroradd4").classList.add("hidden");
+                    }
+                    let listSize = document.getElementById("listSizeAdd").children;
+                    if (listSize.length == 0) {
+                        document.getElementById("erroradd5").classList.remove("hidden");
+                    } else {
+                        if (!document.getElementById("erroradd5").classList.contains("hidden")) {
+                            document.getElementById("erroradd5").classList.add("hidden");
+                        }
+
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm sản phẩm này không ?'
+                        document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
+                        let item = document.createElement("i");
+                        item.classList.add("fa");
+                        item.classList.add("fa-hand-grab-o");
+
+                        document.getElementById("formYesNoLink").style.display = 'flex';
+                        document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+                        document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+                        document.getElementById("formYesNoLink").onclick = function () {
+                            document.getElementById("actionDiv1").value = "addProduct";
+                            document.getElementById("div1").submit();
+                        }
+                        document.getElementById("formYesNoTitle2").appendChild(item);
+                        document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+var arrayHinhHoanThanh2 = [];
+var actionHinh2 = 0;
+var interVelHinh2;
+var countRefreshHinh2;
+var countRefreshHinhMax2 = 3;
+
+function themHinhMoi2(event) {
+    if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+
+        let ma_mau = document.getElementById("changeImgMa_mau").value;
+        let ma_sp = document.getElementById("changeImgMa_sp").value;
+        let name_img = document.getElementById("changeImgHinh_anh_trong_firebase").value;
+
+        let link_hinh = 'san_pham/' + ma_sp + "/" + ma_mau + "/" + name_img;
+        taiHinhMoi2(event.target.files[0], link_hinh)
+        actionHinh2 = 0;
+        choTaiHinhHinh2();
+
+        return;
+
+    }
+}
+
+function taiHinhMoi2(img, linkImg) {
+    const ref = firebase.storage().ref();
+    const file = img;
+    const name = file.name;
+    let link;
+    let nameData = name.split('.')[0];
+    const folder = linkImg;
+    const metadata = {contentType: file.type};
+    const task = ref.child(folder).put(file, metadata);
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            link = url;
+            arrayHinhHoanThanh2.push(link);
+        });
+}
+
+function choTaiHinhHinh2() {
+    if (actionHinh2 == 1) {
+        if (interVelHinh2) {
+            window.clearInterval(interVelHinh2);
+            interVelHinh2 = null;
+            countRefreshHinh2 = 0;
+            arrayHinhHoanThanh2 = [];
+        }
+    } else {
+        if (!interVelHinh2) {
+            interVelHinh2 = window.setInterval(
+                function () {
+                    if (arrayHinhHoanThanh2.length == 1) {
+
+                        actionHinh2 = 1;
+                        window.clearInterval(interVelHinh2);
+                        interVelHinh2 = null;
+                        countRefreshHinh2 = 0;
+
+
+                        document.getElementById("changeImgData").value = arrayHinhHoanThanh2.pop();
+                        document.getElementById("changeImgAction").value = "addImage";
+                        document.getElementById("changImg").submit();
+
+                    } else {
+                        countRefreshHinh2++;
+                        if (countRefreshHinh2 == countRefreshHinhMax2) {
+                            document.getElementById("formYesNoTitle").innerText = 'Tải hình lên server không thành công';
+                            document.getElementById("formYesNoTitle2").innerText = 'Đây là một lỗi nhỏ khi chúng tôi sử dụng firebase, hãy thử lại nhé  ';
+                            let itemm = document.createElement("i");
+                            itemm.classList.add("fa");
+                            itemm.classList.add("fa-hand-grab-o");
+                            document.getElementById("formYesNoLink").style.display = "none";
+                            document.getElementById("buttonNoFormYesNo").innerHTML = 'OK';
+                            document.getElementById("formYesNoTitle2").appendChild(itemm);
+                            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+                            actionHinh2 = 1;
+                            choTaiHinhHinh2();
+                        }
+                    }
+                }, 1000
+            )
+        }
+    }
+}
+
+function luuEditSingle() {
+    let sizeSize = document.getElementById("listSizeDiv3").children.length;
+    let sizeImg = document.getElementById("listHinh").children.length;
+    if (sizeSize == 0) {
+        document.getElementById("errorEditSingle1").classList.remove("hidden");
+    } else {
+        if (!document.getElementById("errorEditSingle1").classList.contains("hidden")) {
+            document.getElementById("errorEditSingle1").classList.add("hidden");
+        }
+
+        if (sizeImg == 0) {
+            document.getElementById("errorEditSingle2").classList.remove("hidden");
+        } else {
+            if (!document.getElementById("errorEditSingle2").classList.contains("hidden")) {
+                document.getElementById("errorEditSingle2").classList.add("hidden");
+            }
+
+            document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn cập nhật phẩm này không ?'
+            document.getElementById("formYesNoTitle2").innerText = 'Việc cập nhật sẽ thay đổi dữ liệu của bạn ';
+            let item = document.createElement("i");
+            item.classList.add("fa");
+            item.classList.add("fa-hand-grab-o");
+
+            document.getElementById("formYesNoLink").style.display = 'flex';
+            document.getElementById("buttonNoFormYesNo").innerHTML = 'Không, suy nghĩ thêm <i class="fa fa-close"></i>';
+            document.getElementById("formYesNoLink").href = 'javascript:void(0)';
+            document.getElementById("formYesNoLink").onclick = function () {
+                document.getElementById("changeImgAction").value = "save";
+                document.getElementById("changImg").submit();
+            }
+            document.getElementById("formYesNoTitle2").appendChild(item);
+            document.getElementById("formYesNo").style.transform = 'scaleY(1)';
+        }
+    }
+}

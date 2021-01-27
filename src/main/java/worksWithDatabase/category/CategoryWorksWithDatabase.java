@@ -3,9 +3,11 @@ package worksWithDatabase.category;
 import beans.DateTime;
 import beans.category.Category;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminCategory;
 import connectionDatabase.DataSource;
 import model.category.CategoryModel;
 
+import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
 import java.sql.*;
 import java.sql.Date;
@@ -17,8 +19,8 @@ import java.util.*;
 
 public class CategoryWorksWithDatabase {
     ArrayList<Category> list;
-    int numberOfPage;
-    int numberCategories;
+    static int numberOfPage;
+    static int numberCategories;
 
     public ArrayList<Category> LoadAllCategories(int page, String type, String search, String orderBy,int numberPerPage){
         Connection connection = DataSource.getInstance().getConnection();
@@ -57,7 +59,7 @@ public class CategoryWorksWithDatabase {
             s2.setString(3,search);
             s2.setString(4,search);
             s2.setString(5,search);
-            s2.setInt(6,start);
+            s2.setInt(6,start-1);
 
 
             ResultSet rss = s2.executeQuery();
@@ -86,10 +88,12 @@ public class CategoryWorksWithDatabase {
 
 
                 Category c = new Category();
-                c.setId(rss.getString("ma_dm"));
+                String id = rss.getString("ma_dm");
+                c.setId(id);
                 c.setName(rss.getString("ten_dm"));
                 c.setDateCreated(datetime);
                 c.setExist(rss.getInt("ton_tai"));
+                c.setNumberOfProduct(getProductNumberById(id));
                 list.add(c);
 
             }
@@ -104,6 +108,27 @@ public class CategoryWorksWithDatabase {
         }
         DataSource.getInstance().releaseConnection(connection);
         return list;
+    }
+    public int getProductNumberById(String id){
+        Connection connection = DataSource.getInstance().getConnection();
+        try{
+            String sql = "SELECT COUNT(*) FROM san_pham s, danh_muc d WHERE d.ma_dm = s.ma_dm AND d.ma_dm = ?";
+            PreparedStatement s = connection.prepareStatement(sql);
+            s.setString(1,id);
+            ResultSet rs = s.executeQuery();
+            int a = 0;
+            if(rs.next()){
+                a = rs.getInt(1);
+            }
+            rs.close();
+            s.close();
+            DataSource.getInstance().releaseConnection(connection);
+            return a;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+        return 0;
     }
 
 //    public static void main(String[] args) throws SQLException{
@@ -127,22 +152,21 @@ public class CategoryWorksWithDatabase {
         this.list = list;
     }
 
-    public int getNumberOfPage() {
+    public static int getNumberOfPage() {
         return numberOfPage;
     }
 
-    public void setNumberOfPage(int numberOfPage) {
-        this.numberOfPage = numberOfPage;
+    public static void setNumberOfPage(int numberOfPage) {
+        CategoryWorksWithDatabase.numberOfPage = numberOfPage;
     }
 
-    public int getNumberCategories() {
+    public static int getNumberCategories() {
         return numberCategories;
     }
 
-    public void setNumberCategories(int numberCategories) {
-        this.numberCategories = numberCategories;
+    public static void setNumberCategories(int numberCategories) {
+        CategoryWorksWithDatabase.numberCategories = numberCategories;
     }
-
 
     public CategoryWorksWithDatabase() {
     }
@@ -848,6 +872,58 @@ public class CategoryWorksWithDatabase {
 
     }
 
+    //  Phuownmg thuwc laya all dm
+    public List<ProductAdminCategory> getAllCategory(){
+
+        List<ProductAdminCategory> result = new ArrayList<ProductAdminCategory>();
+
+        Connection connection = DataSource.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM danh_muc WHERE ton_tai = 1");
+            while(resultSet.next()){
+                ProductAdminCategory productAdminCategory = new ProductAdminCategory();
+                productAdminCategory.setName(resultSet.getString("ten_dm"));
+                productAdminCategory.setId(resultSet.getString("ma_dm"));
+                result.add(productAdminCategory);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        DataSource.getInstance().releaseConnection(connection);
+
+        return result;
+
+    }
+
+    //  Phương thứuc nhận vào mã dm trả về danh mục
+    public ProductAdminCategory getProductAdminCategoryById(String id){
+
+        ProductAdminCategory productAdminCategory = new ProductAdminCategory();
+
+        Connection connection =DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM danh_muc WHERE ma_dm = ?");
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminCategory.setId(resultSet.getString("ma_dm"));
+            productAdminCategory.setName(resultSet.getString("ten_dm"));
+            resultSet.close();
+            preparedStatement.close();
+            DataSource.getInstance().releaseConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+        return productAdminCategory;
+    }
+
     public static void main(String[] args) {
         CategoryWorksWithDatabase test = new CategoryWorksWithDatabase();
 
@@ -855,7 +931,8 @@ public class CategoryWorksWithDatabase {
 //        for(Category ca : categoryDAO.getCategoriesByIndex(1,3)){
 //            System.out.println(ca);
 //        }
-        System.out.println(test.updateCategory("dm_10","ao nu"));
+       // System.out.println(test.updateCategory("dm_10","ao nu"));
+        System.out.print(test.getProductNumberById("dm_1"));
 
 
 

@@ -1,6 +1,7 @@
 <%@ page import="beans.loginAdmin.LoginAdminObject" %>
 <%@ page import="beans.loginAdmin.RememberAccount" %>
-<%@ page import="beans.loginAdmin.ForgotPasswordAdminObject" %><%--
+<%@ page import="beans.loginAdmin.ForgotPasswordAdminObject" %>
+<%@ page import="beans.reCAPTCHA.ReCAPTCHAConfiguration" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -29,7 +30,7 @@
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/loginvienAdmin.css">
 
-
+    <script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
 
 </head>
 
@@ -105,11 +106,12 @@
                         <span class="eye" onclick="showPassword()"><i class="fa fa-eye-slash" id="iconshowpassword"></i></span>
                         <div class="lineinput2"></div>
                     </div>
-
                     <%if (loginAdminObject != null && loginAdminObject.isNotifyPassword()) {%>
                     <p class="error"><%=loginAdminObject.getContent()%>
                     </p>
                     <%}%>
+                    <div class="col-md-6 g-recaptcha" data-callback="recaptchaCallback" data-sitekey="<%=ReCAPTCHAConfiguration.SITE_KEY%>">
+                    </div>
 
                     <div class="helpLogin">
                         <div>

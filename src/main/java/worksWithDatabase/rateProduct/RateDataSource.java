@@ -61,9 +61,7 @@ public class RateDataSource {
                 RateDAO a = RateDataSource.getInstance().getRateDAO();
                 System.out.println(Thread.currentThread().getName() + "start");
                 try {
-                    for(Rate r : a.LoadAllRates(1,"",3,"sp_1")){
-                        System.out.println(r);
-                    }
+                    System.out.println(a.checkRatePermission("sp_5","kh001"));
                     Thread.sleep(2500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

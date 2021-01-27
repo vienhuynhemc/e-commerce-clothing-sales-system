@@ -43,4 +43,25 @@ public class ProductIntroductionWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
     }
 
+    //  Phương thức nhận vô list giới thiệu và masp, cho vô csdl
+    public void addIntroductToDabase(String ma_sp,List<String> gioiThieus){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO gioi_thieu_sp VALUES(?,?)");
+            for(String s : gioiThieus){
+                preparedStatement.setString(1,ma_sp);
+                preparedStatement.setString(2,s);
+                preparedStatement.executeUpdate();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 }

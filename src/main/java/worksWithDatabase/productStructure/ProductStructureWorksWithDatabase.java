@@ -3,6 +3,7 @@ package worksWithDatabase.productStructure;
 import beans.productAdmin.ProductAdmin;
 import connectionDatabase.DataSource;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,6 +38,26 @@ public class ProductStructureWorksWithDatabase {
 
             preparedStatement.close();
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+    public void addToDatabase(String ma_sp, List<String> cau_tao){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cau_tao_sp VALUES(?,?)");
+            for(String s : cau_tao){
+                preparedStatement.setString(1,ma_sp);
+                preparedStatement.setString(2,s);
+                preparedStatement.executeUpdate();
+            }
+            preparedStatement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

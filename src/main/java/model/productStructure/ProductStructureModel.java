@@ -24,4 +24,11 @@ public class ProductStructureModel {
         ProductStructureDataSource.getInstance().releaseProductStructureWorksWithDatabase(productStructureWorksWithDatabase);
     }
 
+    public void addToDatabase(String ma_sp, List<String> cau_tao){
+        ProductStructureWorksWithDatabase productStructureWorksWithDatabase = ProductStructureDataSource.getInstance().getProductStructureWorksWithDatabase();
+        productStructureWorksWithDatabase.addToDatabase(ma_sp,cau_tao);
+        ProductStructureDataSource.getInstance().releaseProductStructureWorksWithDatabase(productStructureWorksWithDatabase);
+    }
+
+
 }

@@ -11,9 +11,13 @@ button {
     cursor: pointer;
 }
 
+.col-md-6.g-recaptcha {
+    margin-top: 34px;
+}
+
 .login {
     position: relative;
-    height: 650px;
+    height: 740px;
     margin: 100px auto;
     width: 80%;
     box-shadow: 0 0.5em 4em -0.125em rgb(162 160 160), 0 0 0 1px white;

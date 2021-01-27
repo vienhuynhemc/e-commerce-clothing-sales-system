@@ -54,11 +54,11 @@ public class LoadCategoryDAO {
             s2.setString(3,search);
             s2.setString(4,search);
             s2.setString(5,search);
-            s2.setInt(6,start);
+            s2.setInt(6,start-1);
 
 
             ResultSet rss = s2.executeQuery();
-            list = new ArrayList<Category>();
+
 
             while(rss.next()){
 
@@ -97,12 +97,6 @@ public class LoadCategoryDAO {
         }
      catch (SQLException throwables) {
         throwables.printStackTrace();
-//     } finally {
-//        try {
-//            connection.close();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
 
     }
         DataSource.getInstance().releaseConnection(connection);
@@ -112,14 +106,14 @@ public class LoadCategoryDAO {
     public static void main(String[] args) throws SQLException{
         LoadCategoryDAO lao = new LoadCategoryDAO();
 
-        ArrayList<Category> list2 = lao.LoadAllCategories(1,"ten_dm","","ASC",3);
+        ArrayList<Category> list2 = lao.LoadAllCategories(1,"ten_dm","ao","ASC",10);
 
         for(Category c : list2){
             System.out.println(c);
         }
 //        System.out.println(list2.toString());
-        System.out.println(lao.getNumberOfPage());
-        System.out.println(list2.size());
+     //   System.out.println(lao.getNumberOfPage());
+       // System.out.println(list2.size());
     }
 
     public ArrayList<Category> getList() {

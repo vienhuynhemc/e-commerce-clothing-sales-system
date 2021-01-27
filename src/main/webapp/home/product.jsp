@@ -671,6 +671,9 @@
              $("#layma_mauthemvaogiohang").prop("value",ma_mau);
 
         }
+
+
+
     function plustocard() {
         var n = $(".sladdtocard").val();
         const nn = Number(n);

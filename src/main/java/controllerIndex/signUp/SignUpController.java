@@ -16,6 +16,7 @@ public class SignUpController extends HttpServlet {
         doPost(request,response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         String username = request.getParameter("username");
         String pass = request.getParameter("pass");
         String name = request.getParameter("name");
@@ -29,7 +30,7 @@ public class SignUpController extends HttpServlet {
 
 
         if (exe.equals("OK")) {
-            request.setAttribute("statuss", exe);
+            request.setAttribute("statuss", "OK");
             request.getRequestDispatcher("home/login.jsp").forward(request, response);
         }
         else {

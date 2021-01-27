@@ -1,14 +1,12 @@
 <%@ page import="beans.loginAdmin.UserAdmin" %>
 <%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
-<%@ page import="beans.productAdmin.ProductAdminObject" %>
 <%@ page import="beans.nextPage.NextPageObject" %>
 <%@ page import="java.util.List" %>
 <%@ page import="beans.nextPage.NextPageConfiguration" %>
-<%@ page import="beans.productAdmin.ProductAdmin" %>
-<%@ page import="beans.productAdmin.ProductAdminColor" %>
-<%@ page import="beans.productAdmin.ProductAdminSize" %>
 <%@ page import="model.informationAccountAdmin.InformationAccountAdminModel" %>
-<%@ page import="model.salary.SalaryModel" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
+<%@ page import="model.salary.SalaryModel" %>
+<%@ page import="beans.productAdmin.*" %>
+<%@ page import="model.product.ProductModel" %><%-- Created by IntelliJ IDEA. User: Administrator Date: 22/12/2020 Time: 9:10 CH To change this template use File |
     Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -64,7 +62,8 @@
             <p id="formYesNoTitle2"></p>
             <div>
                 <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
-                <span onclick="hiddenFormYesNo()">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i
+                        class="fa fa-close"></i></span>
             </div>
         </div>
     </div>
@@ -112,12 +111,14 @@
                 <div>
                     <label>Tên màu</label>
                 </div>
-                <input type="text" placeholder="Nhập tên màu ở đây">
+                <input type="text" id="tenmaumoi" placeholder="Nhập tên màu ở đây">
             </div>
-            <button>Tạo màu</button>
+            <button onclick="taoMotMauMoi()">Tạo màu</button>
             <button onclick="taomauxong()">Trở lại</button>
         </div>
     </div>
+    <input type="text" id="ma_mau_tiep_theo" style="display: none"
+           value="<%=productAdminObject.getMa_mau_tiep_theo()%>">
 </div>
 
 <jsp:include page="../share/_LayoutLeft.jsp">
@@ -133,9 +134,9 @@
 
     <div class="indexmain">
         <div id="div2"
-        <% if(productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don() || productAdminObject.isIs_them_moi()){ %>
-                style="display: none;"
-        <%  } %>
+                <% if (productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don() || productAdminObject.isIs_them_moi()) { %>
+             style="display: none;"
+                <% } %>
         >
             <div>
                 <form class="header" method="post" action="../../ProductController" id="mainForm"
@@ -239,9 +240,10 @@
                                     onclick="pageNavigation(<%=n.getValue()%>)"
                                     <%}%>
                             >
-                                <%if(n.getType() == NextPageConfiguration.NONE){%>
-                                <p onclick="showselectgopage(this)"><%=n.getValue()%></p>
-                                <%}else{%>
+                                <%if (n.getType() == NextPageConfiguration.NONE) {%>
+                                <p onclick="showselectgopage(this)"><%=n.getValue()%>
+                                </p>
+                                <%} else {%>
                                 <%=n.getValue()%>
                                 <%}%>
                                 <div class="gopage">
@@ -270,6 +272,8 @@
 
                     <!-- action -->
                     <input type="text" name="action" style="display: none" id="action" value="">
+                    <input type="text" name="id1" style="display: none" id="mainForm1">
+                    <input type="text" name="id2" style="display: none" id="mainForm2">
 
                     <!-- sort -->
                     <% if (sort.equals("DESC")) {%>
@@ -294,9 +298,9 @@
 
                     <%
                         List<ProductAdmin> productAdmins = productAdminObject.getProducts();
-                        for(ProductAdmin productAdmin : productAdmins){
-                            for(ProductAdminColor productAdminColor : productAdmin.getDanh_sach_mau()){
-                            for(ProductAdminSize productAdminSize : productAdminColor.getDanh_sach_size()){
+                        for (ProductAdmin productAdmin : productAdmins) {
+                            for (ProductAdminColor productAdminColor : productAdmin.getDanh_sach_mau()) {
+                                for (ProductAdminSize productAdminSize : productAdminColor.getDanh_sach_size()) {
                     %>
 
                     <div class="item">
@@ -322,7 +326,8 @@
 
                         <div class="itemsize">
                             <div>
-                                <p><%=productAdminSize.getName()%></p>
+                                <p><%=productAdminSize.getName()%>
+                                </p>
                             </div>
                         </div>
 
@@ -333,13 +338,14 @@
                         </div>
 
                         <p class="itemgia">
-                          <%=SalaryModel.getInstance().coverSalaryToString(productAdmin.getGia_sp())%>
+                            <%=SalaryModel.getInstance().coverSalaryToString(productAdmin.getGia_sp())%>
                         </p>
 
-                        <p class="itemsol"><%=productAdminSize.getSo_luong_con_lai()%></p>
+                        <p class="itemsol"><%=productAdminSize.getSo_luong_con_lai()%>
+                        </p>
 
                         <p class="itemngaytao">
-                           <%=productAdmin.getNgay_tao().toStringDateTypeNumberStringNumber()%>
+                            <%=productAdmin.getNgay_tao().toStringDateTypeNumberStringNumber()%>
                         </p>
 
 
@@ -372,11 +378,11 @@
             </div>
         </div>
 
-        <div id="div1"
-                <% if( productAdminObject.isIs_them_moi()){ %>
+        <form id="div1" method="post" action="../../ProductAddProductController"
+                <% if (productAdminObject.isIs_them_moi()) { %>
 
-                <%  }else{ %>
-             style="display: none;"
+                <% } else { %>
+              style="display: none;"
                 <%}%>
         >
             <div>
@@ -387,33 +393,59 @@
                         <div>
                             <label>Tên sản phẩm</label>
                         </div>
-                        <input type="text" placeholder="Nhập tên sản phẩm ở đây">
+                        <input type="text" placeholder="Nhập tên sản phẩm ở đây" name="ten_sp" id="ten_sp_add"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getTen_sp()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd1">Tên không được bỏ trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
                             <label>Giá</label>
                         </div>
-                        <input type="number" placeholder="Nhập giá sản phẩm ở đây">
+                        <input type="number" placeholder="Nhập giá sản phẩm ở đây" name="gia_sp" id="gia_sp_add"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getGia_sp()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd2">Giá sản phẩm không được để trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
                             <label>Giá khuyến mãi</label>
                         </div>
-                        <input type="text" placeholder="Nhập giá khuyến mãi sản phẩm ở đây">
+                        <input type="text" placeholder="Nhập giá khuyến mãi sản phẩm ở đây" name="gia_km"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getGia_khuyen_mai()%><%}%>">
                     </div>
                     <div class="div12inputlv2">
                         <div>
                             <label>Giá nhập</label>
                         </div>
-                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây">
+                        <input type="text" placeholder="Nhập giá nhập sản phẩm ở đây" name="gia_nhap" id="gia_nhap_add"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null){%><%=productAdminObject.getProductAdminAdd().getGia_nhap()%><%}%>">
+                        <p class="notifyError hidden" id="erroradd3">Giá nhập không được bỏ trống</p>
                     </div>
                     <div class="div12inputlv2">
                         <div>
                             <label>Hãng sản xuất</label>
                             <div style="width: 10px;height: 25px;"></div>
                         </div>
-                        <select name="">
-                            <option value="" selected>Chọn hãng sản xuất</option>
+                        <select name="hang_san_xuat">
+                            <%
+                                if (productAdminObject.getDanh_sach_hang_san_xuat() != null) {
+                                    for (ProductAdminManufacturer productAdminManufacturer : productAdminObject.getDanh_sach_hang_san_xuat()) {
+                            %>
+
+                            <option value="<%=productAdminManufacturer.getId()%>"
+
+                                    <%
+                                        if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getHang_san_xuat() != null && productAdminObject.getProductAdminAdd().getHang_san_xuat().getId().equals(productAdminManufacturer.getId())) {
+                                    %>
+                                    selected
+                                    <%}%>
+
+                            ><%=productAdminManufacturer.getName()%><%=productAdminManufacturer.getName()%>
+                            </option>
+
+                            <%
+                                    }
+                                }
+                            %>
                         </select>
                     </div>
                     <div class="div12inputlv2">
@@ -421,20 +453,51 @@
                             <label>Danh mục</label>
                             <span style="opacity: 0;margin-top: -10px;">Thêm danh mục</span>
                         </div>
-                        <select name="">
-                            <option value="" selected>Chọn danh mục</option>
+                        <select name="danh_muc">
+                            <%
+                                if (productAdminObject.getDanh_sach_danh_muc() != null) {
+                                    for (ProductAdminCategory productAdminCategory : productAdminObject.getDanh_sach_danh_muc()) {
+                            %>
+
+                            <option value="<%=productAdminCategory.getId()%>"
+
+                                    <%
+                                        if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getDanh_muc() != null && productAdminObject.getProductAdminAdd().getDanh_muc().getId().equals(productAdminCategory.getId())) {
+                                    %>
+                                    selected
+                                    <%}%>
+
+                            ><%=productAdminCategory.getName()%>
+                            </option>
+
+                            <%
+                                    }
+                                }
+                            %>
                         </select>
                     </div>
-                    <div class="gioitinh">
-                        <h3>Giới tính</h3>
+                    <div class="div12inputlv2">
                         <div>
-                            <span class="activebutton" id="gioitinhnam" onclick="nam()">Nam</span>
-                            <span onclick="nu()" id="gioitinhnu">Nữ</span>
+                            <label>Giới tính</label>
                         </div>
+                        <select name="gioi_tinh">
+                            <option value="nam"
+                                    <%if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getGioi_tinh().equals("nam")) {%>
+                                    selected
+                                    <%}%>
+                            >Nam
+                            </option>
+                            <option value="nu"
+                                    <%if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getGioi_tinh().equals("nu")) {%>
+                                    selected
+                                    <%}%>
+                            >Nữ
+                            </option>
+                        </select>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div11submit">
-                        <span><i class="fa fa-plus"></i>Thêm sản phẩm</span>
+                        <span onclick="themsanpham()"><i class="fa fa-plus"></i>Thêm sản phẩm</span>
                         <span onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</span>
                     </div>
                 </div>
@@ -447,7 +510,18 @@
                             <label>Size</label>
                         </div>
                         <select name="">
-                            <option value="img/den.webp" selected>Đen</option>
+                            <%
+                                if (productAdminObject.getDanh_sach_mau() != null) {
+                                    for (ProductAdminColorAdd productAdminColorAdd : productAdminObject.getDanh_sach_mau()) {
+                            %>
+
+                            <option value="<%=productAdminColorAdd.getMa_mau()%>"><%=productAdminColorAdd.getTen_mau()%>
+                            </option>
+
+                            <%
+                                    }
+                                }
+                            %>
                         </select>
                     </div>
                     <div class="buttondiv12">
@@ -459,74 +533,60 @@
                     </div>
                     <div class="maudachon">
                         <h3>Màu đã chọn</h3>
-                        <div class="listMau">
-                            <!-- <div class="listMauItem">
-                            <div class="listMauItemleft">
-                                <div>
-                                    <p>Xanh đậm</p>
+                        <div class="listMau" id="listMauAdd">
+                            <%
+                                if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_mau_kem_hinh_anh() != null) {
+                                    for (ProductAdminColorAddProduct productAdminColorAddProduct : productAdminObject.getProductAdminAdd().getList_mau_kem_hinh_anh()) {
+                            %>
+                            <div class="listMauItem">
+                                <div class="listMauItemleft">
                                     <div>
-                                        <img src="img/xanhdam.webp" alt="">
+                                        <p><%=productAdminColorAddProduct.getTen_mau()%>
+                                        </p>
+                                        <div>
+                                            <img src="<%=productAdminColorAddProduct.getLink_hinh_anh()%>" alt="">
+                                        </div>
+                                        <input type="text" style="display: none"
+                                               value="<%=productAdminColorAddProduct.getMa_mau()%>">
+                                    </div>
+                                    <div>
+                                        <div class="listHinh">
+                                            <%
+                                                for (String string : productAdminColorAddProduct.getList_hinh_anh_sp()) {
+                                            %>
+                                            <div class="listHinhitem">
+                                                <img src="<%=string%>" alt="">
+                                                <i class="fa fa-close" onclick="removehinhitem(this)"></i>
+                                                <input type="text" style="display: none"
+                                                       value="<%=productAdminColorAddProduct.getMa_mau()%>">
+                                            </div>
+                                            <%
+                                                }
+                                            %>
+                                        </div>
+                                        <i class="fa fa-angle-left" onclick="movehinhleft(this)"></i>
+                                        <i class="fa fa-angle-right" onclick="movehinhright(this)"></i>
+                                        <input type="number" style="display: none;" value="0">
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="listHinh">
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp1.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp1.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp1.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp1.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp4.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp2.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp3.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp4.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp2.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp3.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                        <div class="listHinhitem">
-                                            <img src="../../img/product/dp4.webp" alt="">
-                                            <i class="fa fa-close" onclick="removehinhitem(this)"></i>
-                                        </div>
-                                    </div>
-                                    <i class="fa fa-angle-left" onclick="movehinhleft(this)"></i>
-                                    <i class="fa fa-angle-right" onclick="movehinhright(this)"></i>
-                                    <input type="number" style="display: none;" value="0">
+                                <div class="removecolor">
+                                    <span onclick="themhinh(this)"><i class="fa fa-plus"></i></span>
+                                    <span onclick="removecolor(this)"><i class="fa fa-trash"></i></span>
+                                    <input type="file" style="display:none;" onchange="loadIMG(event,this)"/>
+                                    <input type="text" style="display: none"
+                                           value="<%=productAdminColorAddProduct.getMa_mau()%>">
+                                    <input type="text" style="display: none"
+                                           value="<%=ProductModel.getInstance().getNextId()%>">
+                                    <input type="text" style="display: none"
+                                           value="<%=productAdminColorAddProduct.getHinh_anh_trong_firebase()%>">
                                 </div>
                             </div>
-                            <div class="removecolor">
-                                <button onclick="themhinh(this)"><i class="fa fa-plus"></i></button>
-                                <button onclick="removecolor(this)"><i class="fa fa-trash"></i></button>
-                                <input type="file" style="display:none;" onchange="loadIMG(event,this)" />
-                            </div>
-                        </div> -->
+                            <%
+                                    }
+                                }
+                            %>
                         </div>
+                        <p class="notifyError hidden" id="erroradd4">Màu không được bỏ trống</p>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
@@ -536,11 +596,24 @@
                         <span class="buttonthemmau" onclick="themGioiThieu()"> <i
                                 class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu" id="listGioiThieu">
-                            <!-- <div class="itemGioiThieu">
-                                <input type="text" placeholder="Nhập giới thiệu ở đây">
+                            <%
+                                if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_gioi_thieu() != null) {
+                                    int count = 0;
+                                    for (String string : productAdminObject.getProductAdminAdd().getList_gioi_thieu()) {
+                                        count++;
+                            %>
+                            <div class="itemGioiThieu">
+                                <input type="text" name="<%="gioi_thieu"+count%>" placeholder="Nhập giới thiệu ở đây"
+                                       value="<%=string%>">
                                 <i class="fa fa-remove" onclick="removeGioiThieu(this)"></i>
-                            </div> -->
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
                         </div>
+                        <input type="text" style="display: none" name="size_gioi_thieu" id="size_gioi_thieu"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_gioi_thieu() != null){%><%=productAdminObject.getProductAdminAdd().getList_gioi_thieu().size()%><%}else{%>0<%}%>">
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
@@ -550,11 +623,24 @@
                         <span class="buttonthemmau" onclick="themCauTao()"> <i
                                 class="fa fa-plus"></i>Thêm cấu tạo</span>
                         <div class="listGioiThieu" id="listCauTao">
-                            <!-- <div class="itemGioiThieu">
-                                <input type="text" placeholder="Nhập cấu tạo ở đây">
+                            <%
+                                if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_cau_tao() != null) {
+                                    int count = 0;
+                                    for (String string : productAdminObject.getProductAdminAdd().getList_cau_tao()) {
+                                        count++;
+                            %>
+                            <div class="itemGioiThieu">
+                                <input type="text" name="<%="cau_tao"+count%>" placeholder="Nhập cấu tạo ở đây"
+                                       value="<%=string%>">
                                 <i class="fa fa-remove" onclick="removeCauTao(this)"></i>
-                            </div> -->
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
                         </div>
+                        <input type="text" style="display: none" name="size_cau_tao" id="size_cau_tao"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_cau_tao() != null){%><%=productAdminObject.getProductAdminAdd().getList_cau_tao().size()%><%}else{%>0<%}%>">
                     </div>
                     <div class="linediv12"></div>
                     <div class="div12inputlv2">
@@ -564,24 +650,35 @@
                         <span class="buttonthemmau" onclick="themThongTin()"> <i
                                 class="fa fa-plus"></i>Thêm thông tin</span>
                         <div class="listGioiThieu" id="listThongTin">
-                            <!-- <div class="itemGioiThieu">
-                                <input type="text" placeholder="Nhập thông tin ở đây">
+                            <%
+                                if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_thong_tin() != null) {
+                                    int count = 0;
+                                    for (String string : productAdminObject.getProductAdminAdd().getList_thong_tin()) {
+                                        count++;
+                            %>
+                            <div class="itemGioiThieu">
+                                <input type="text" name="<%="thong_tin"+count%>" placeholder="Nhập thông tin ở đây"
+                                       value="<%=string%>">
                                 <i class="fa fa-remove" onclick="removeThongTin(this)"></i>
-                            </div> -->
+                            </div>
+                            <%
+                                    }
+                                }
+                            %>
                         </div>
+                        <input type="text" style="display: none" name="size_thong_tin" id="size_thong_tin"
+                               value="<%if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_thong_tin() != null){%><%=productAdminObject.getProductAdminAdd().getList_thong_tin().size()%><%}else{%>0<%}%>">
                     </div>
                 </div>
 
                 <div class="div13">
                     <h3>Chọn size</h3>
                     <div class="linediv12"></div>
-                    <div class="div12inputlv2">
+                    <div class="div12inputlv2" style="display: none">
                         <div>
                             <label>Loại sản phẩm</label>
                         </div>
-                        <select name="">
-                            <option value="img/den.webp" selected>Áo</option>
-                            <option value="">Quần</option>
+                        <select name="loai_sp">
                         </select>
                     </div>
                     <div class="div12inputlv2">
@@ -589,43 +686,65 @@
                             <label>Size</label>
                         </div>
                         <select name="">
-                            <option value="S" selected>S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                            <option value="XXXL">XXXL</option>
+                            <%
+                                if (productAdminObject.getDanh_sach_size() != null) {
+                                    for (ProductAdminSizeAdd productAdminSizeAdd : productAdminObject.getDanh_sach_size()) {
+                            %>
+
+                            <option value="<%=productAdminSizeAdd.getId()%>"><%=productAdminSizeAdd.getName()%>
+                            </option>
+
+                            <%
+                                    }
+                                }
+                            %>
                         </select>
                     </div>
                     <span onclick="themsize(this)"><i class="fa fa-plus"></i> Thêm size</span>
                     <div class="sizedachon">
                         <h3>Size đã chọn</h3>
-                        <div class="listSize">
-                            <!-- <div class="listSizeItem">
-                            <div>
-                                <i class="fa fa-circle"></i>
-                                <p>M</p>
+                        <div class="listSize" id="listSizeAdd">
+
+                            <%
+                                if (productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_size() != null) {
+                                    for (ProductAdminSizeAdd productAdminSizeAdd : productAdminObject.getProductAdminAdd().getList_size()) {
+                            %>
+                            <div class="listSizeItem">
+                                <div>
+                                    <i class="fa fa-circle"></i>
+                                    <p><%=productAdminSizeAdd.getName()%>
+                                    </p>
+                                </div>
+                                <span onclick="removeSize(this)"><i class="fa fa-trash"></i></span>
+                                <input type="text" style="display: none" value="<%=productAdminSizeAdd.getId()%>">
                             </div>
-                            <button onclick="removeSize(this)"><i class="fa fa-trash"></i></button>
-                        </div> -->
+                            <%
+                                    }
+                                }
+                            %>
+
                         </div>
                     </div>
+                    <p class="notifyError hidden" id="erroradd5">Size không được bỏ trống</p>
                 </div>
 
             </div>
-        </div>
+            <input type="text" id="actionDiv1" name="action" style="display: none">
+            <input type="text" id="idDiv1" name="id" style="display: none">
+            <input type="text" id="idDiv12" name="id2" style="display: none">
+        </form>
 
         <div id="div3"
 
-                <% if(productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don()){ %>
-                <%  }else {%>
+                <% if (productAdminObject.isIs_sua_da() || productAdminObject.isIs_sua_don()) { %>
+                <% } else {%>
              style="display: none;"
                 <%}%>
 
         >
             <div
-                    <% if(productAdminObject.isIs_sua_da()){ %>
-                    <%  }else {%>
+                    <% if (productAdminObject.isIs_sua_da()) { %>
+                    <% } else {%>
                     style="display: none;"
                     <%}%>
             >
@@ -674,12 +793,14 @@
                             <option value="" selected>Chọn danh mục</option>
                         </select>
                     </div>
-                    <div class="gioitinh">
-                        <h3>Giới tính</h3>
+                    <div class="div12inputlv2">
                         <div>
-                            <span class="activebutton" onclick="nam2()">Nam</span>
-                            <span onclick="nu2()">Nữ</span>
+                            <label>Giới tính</label>
                         </div>
+                        <select name="">
+                            <option value="" selected="">Nam</option>
+                            <option value="">Nữ</option>
+                        </select>
                     </div>
                     <div class="linediv12"></div>
                     <div class="div11submit">
@@ -785,10 +906,20 @@
                         <span class="buttonthemmau" onclick="themGioiThieu2()"> <i
                                 class="fa fa-plus"></i>Thêm giới thiệu</span>
                         <div class="listGioiThieu">
-                            <!-- <div class="itemGioiThieu">
-                                <input type="text" placeholder="Nhập giới thiệu ở đây">
-                                <i class="fa fa-remove" onclick="removeGioiThieu2(this)"></i>
-                            </div> -->
+                            <%--                            <%--%>
+                            <%--                                if(productAdminObject.getProductAdminAdd() != null && productAdminObject.getProductAdminAdd().getList_gioi_thieu() != null){--%>
+                            <%--                                    int count = 0;--%>
+                            <%--                                    for(String string : productAdminObject.getProductAdminAdd().getList_gioi_thieu()){--%>
+                            <%--                                    count++;--%>
+                            <%--                            %>--%>
+                            <%--                             <div class="itemGioiThieu">--%>
+                            <%--                                <input type="text" name="<%="gioi_thieu"+count%>" placeholder="Nhập giới thiệu ở đây" value="<%=string%>">--%>
+                            <%--                                <i class="fa fa-remove" onclick="removeGioiThieu2(this)"></i>--%>
+                            <%--                            </div>--%>
+                            <%--                            <%--%>
+                            <%--                                    }--%>
+                            <%--                                }--%>
+                            <%--                            %>--%>
                         </div>
                     </div>
                     <div class="linediv12"></div>
@@ -864,22 +995,25 @@
             </div>
             <div
 
-                    <% if(productAdminObject.isIs_sua_don()){ %>
+                    <% if (productAdminObject.isIs_sua_don()) { %>
 
-                    <%  }else {%>
+                    <% } else {%>
                     style="display: none;"
                     <%}%>
 
             >
-                <div class="changeImg">
+                <% if (productAdminObject.getProductAdminEditSingle() != null) {
+                    ProductAdminEditSingle productAdminEditSingle = productAdminObject.getProductAdminEditSingle();%>
+                <form class="changeImg" id="changImg" method="post" action="../../ProductEditSingleController">
                     <div class="changeImgTitle">
-                        <h3>#sp_1</h3>
-                        <h3>Size: M</h3>
-                        <h3>Color: Vàng</h3>
-                        <input type="file" id="themHinhMoi" style="display: none;" onchange="themHinhMoi(this)">
+                        <h3>#<%=productAdminEditSingle.getMa_sp()%>
+                        </h3>
+                        <h3>Color: <%=productAdminEditSingle.getTen_mau()%>
+                        </h3>
+                        <input type="file" id="themHinhMoi" style="display: none;" onchange="themHinhMoi2(event)">
                         <span onclick="document.getElementById('themHinhMoi').click()"> <i class="fa fa-plus"></i> Thêm hình mới</span>
                         <span onclick="trove()"> <i class="fa fa-back"></i> Trở về</span>
-                        <span> <i class="fa fa-save"></i> Lưu</span>
+                        <span onclick="luuEditSingle()"> <i class="fa fa-save"></i> Lưu</span>
                     </div>
                     <div class="linediv12"></div>
                     <div>
@@ -888,40 +1022,65 @@
                                 <div>
                                     <label style="margin-top: 20px;">Size</label>
                                 </div>
-                                <select name="" id="valueSize">
-                                    <option value="S" selected>S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="XXXL">XXXL</option>
+                                <select id="valueSize">
+                                    <%
+                                            for (ProductAdminSizeAdd productAdminSizeAdd : productAdminEditSingle.getList_size_do_du_lieu()) {
+                                    %>
+
+                                    <option value="<%=productAdminSizeAdd.getId()%>"><%=productAdminSizeAdd.getName()%>
+                                    </option>
+                                    <%
+                                        }
+                                    %>
                                 </select>
                             </div>
                             <span onclick="themsize3()"><i class="fa fa-plus"></i> Thêm size</span>
+                            <p class="notifyError hidden" id="errorEditSingle1">Size không được bỏ trống</p>
                             <div class="sizedachon">
                                 <h3>Size đã chọn</h3>
                                 <div class="listSize" id="listSizeDiv3">
-                                    <!-- <div class="listSizeItem">
-                                    <div>
-                                        <i class="fa fa-circle"></i>
-                                        <p>M</p>
+                                    <%
+                                        for (ProductAdminSizeAdd productAdminSizeAdd : productAdminEditSingle.getList_size()) {
+                                    %>
+                                    <div class="listSizeItem">
+                                        <div>
+                                            <i class="fa fa-circle"></i>
+                                            <p><%=productAdminSizeAdd.getName()%>
+                                            </p>
+                                        </div>
+                                        <span onclick="removeSizeChangeImg(this)"><i class="fa fa-trash"></i></span>
+                                        <input type="text" style="display: none" value="<%=productAdminSizeAdd.getId()%>">
                                     </div>
-                                    <span onclick="removeSize(this)"><i class="fa fa-trash"></i></span>
-                                </div> -->
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
                         <div id="listHinh">
+                            <% for (String s : productAdminEditSingle.getList_hinh_anh_sp()) {%>
                             <div class="hinhItem">
-                                <img src="../../img/1.jpg" alt="">
+                                <img src="<%=s%>" alt="">
                                 <i class="fa fa-close" onclick="removeHinh(this)"></i>
                             </div>
+                            <%}%>
                         </div>
+                        <p class="notifyError notifyError3 hidden" id="errorEditSingle2">Hình không được bỏ trống</p>
                     </div>
-                </div>
+                    <input type="text" name="action" id="changeImgAction" style="display: none">
+                    <input type="text" name="data" id="changeImgData" style="display: none">
+                    <input type="text" id="changeImgMa_sp" style="display: none" value="<%=productAdminEditSingle.getMa_sp()%>">
+                    <input type="text" id="changeImgMa_mau" style="display: none" value="<%=productAdminEditSingle.getMa_mau()%>">
+                    <input type="text" id="changeImgHinh_anh_trong_firebase" style="display: none" value="<%=productAdminEditSingle.getHinh_anh_trong_firebase()%>">
+                </form>
+                <%}%>
             </div>
         </div>
     </div>
+
+    <form action="../../ProductAddColorController" method="post" style="display: none" id="formthemmau">
+        <input type="text" name="tenmauthem" id="tenmauthem">
+        <input type="text" name="mamauthem" id="mamauthem">
+        <input type="text" name="linkmauthem" id="linkmauthem">
+    </form>
 
     <!-- Quan tâm nhiêu đây thôi-->
 </div>
@@ -929,7 +1088,14 @@
 </body>
 
 </html>
+!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 <script src="../../js/quanLySanPhamAdmin.js"></script>
 <!---------------------------------------------------------------------------------------------------------------------->
 

@@ -50,6 +50,27 @@ public class ProductAdminObject implements ObjectPageAdmin {
     //  List sản phẩm
     private List<ProductAdmin> products;
 
+    //  List hãng sản xuất
+    private List<ProductAdminManufacturer> danh_sach_hang_san_xuat;
+
+    //  List danh mục
+    private List<ProductAdminCategory> danh_sach_danh_muc;
+
+    //  List màu
+    private List<ProductAdminColorAdd> danh_sach_mau;
+
+    //  List size
+    private List<ProductAdminSizeAdd> danh_sach_size;
+
+    //  Mã màu tiếp theo
+    private String ma_mau_tiep_theo;
+
+    //  Đối tượng sở hữu bác thêm sản phẩm tiếp theo
+    private ProductAdminAdd productAdminAdd;
+
+    //  Dối tượng sửa đơn
+    private ProductAdminEditSingle productAdminEditSingle;
+
     public ProductAdminObject() {
     }
 
@@ -182,4 +203,61 @@ public class ProductAdminObject implements ObjectPageAdmin {
     public void setReady(boolean ready) {
         this.ready = ready;
     }
+
+    public List<ProductAdminManufacturer> getDanh_sach_hang_san_xuat() {
+        return danh_sach_hang_san_xuat;
+    }
+
+    public void setDanh_sach_hang_san_xuat(List<ProductAdminManufacturer> danh_sach_hang_san_xuat) {
+        this.danh_sach_hang_san_xuat = danh_sach_hang_san_xuat;
+    }
+
+    public List<ProductAdminCategory> getDanh_sach_danh_muc() {
+        return danh_sach_danh_muc;
+    }
+
+    public void setDanh_sach_danh_muc(List<ProductAdminCategory> danh_sach_danh_muc) {
+        this.danh_sach_danh_muc = danh_sach_danh_muc;
+    }
+
+    public List<ProductAdminColorAdd> getDanh_sach_mau() {
+        return danh_sach_mau;
+    }
+
+    public void setDanh_sach_mau(List<ProductAdminColorAdd> danh_sach_mau) {
+        this.danh_sach_mau = danh_sach_mau;
+    }
+
+    public List<ProductAdminSizeAdd> getDanh_sach_size() {
+        return danh_sach_size;
+    }
+
+    public void setDanh_sach_size(List<ProductAdminSizeAdd> danh_sach_size) {
+        this.danh_sach_size = danh_sach_size;
+    }
+
+    public String getMa_mau_tiep_theo() {
+        return ma_mau_tiep_theo;
+    }
+
+    public void setMa_mau_tiep_theo(String ma_mau_tiep_theo) {
+        this.ma_mau_tiep_theo = ma_mau_tiep_theo;
+    }
+
+    public ProductAdminAdd getProductAdminAdd() {
+        return productAdminAdd;
+    }
+
+    public void setProductAdminAdd(ProductAdminAdd productAdminAdd) {
+        this.productAdminAdd = productAdminAdd;
+    }
+
+    public ProductAdminEditSingle getProductAdminEditSingle() {
+        return productAdminEditSingle;
+    }
+
+    public void setProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle) {
+        this.productAdminEditSingle = productAdminEditSingle;
+    }
+
 }
