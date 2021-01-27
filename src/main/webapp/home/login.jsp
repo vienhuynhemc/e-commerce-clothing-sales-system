@@ -120,7 +120,7 @@
                         </div>
 
                         <div class="divsubmit">
-                            <button type="submit"><%=lang.get("10")%></button>
+                            <button type="submit" ><%=lang.get("10")%></button>
                             <button type="button" onclick="dangky()"><%=lang.get("11")%></button>
                         </div>
 
@@ -168,31 +168,32 @@
                 <p class="title"><%=lang.get("11")%></p>
                 <p class="info"><%=lang.get("18")%></p>
 
+                    <%--                  Đăng ký                   --%>
                 <form action="SignUpController" method="post">
                     <div class="form">
                         <div class="tk">
                             <p class="titletk"><%=lang.get("4")%></p>
                             <input type="text" name="username" placeholder="&#xf2bd; <%=lang.get("5")%>"
-                                   style="font-family:Arial, FontAwesome">
+                                   style="font-family:Arial, FontAwesome" value="<%= request.getParameter("username") == null ?"" : request.getParameter("username")%>">
                             <div class="lineinput1"></div>
                         </div>
                         <div class="mk">
                             <p class="titletk"><%=lang.get("6")%></p>
                             <input type="password" name="pass" placeholder="&#xf13e;     <%=lang.get("7")%>"
                                    style="font-family:Arial, FontAwesome">
-                            <button class="eye"><i class="fa fa-eye-slash"></i></button>
+                            <button type="button" class="eye"><i class="fa fa-eye-slash"></i></button>
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
                             <p class="titletk"><%=lang.get("19")%></p>
                             <input type="text" name="name" placeholder="&#xf2bc;    <%=lang.get("20")%>"
-                                   style="font-family:Arial, FontAwesome">
+                                   style="font-family:Arial, FontAwesome" value="<%= request.getParameter("name") == null ?"" : request.getParameter("name")%>">
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
                             <p class="titletk"><%=lang.get("21")%></p>
                             <input type="text" name="phone"placeholder="&#xf10b;    <%=lang.get("22")%>"
-                                   style="font-family:Arial, FontAwesome">
+                                   style="font-family:Arial, FontAwesome" value="<%= request.getParameter("phone") == null ?"" : request.getParameter("phone")%>">
                             <div class="lineinput2"></div>
                         </div>
                         <div class="tk">
@@ -225,10 +226,14 @@
                     //lấy status ra
 
                     String statusSignUP = (String) request.getAttribute("statuss");
+                    System.out.println(statusSignUP);
+
 
                     if (statusSignUP != null) {
                         //truyển status vào để sử lí
-                        ErrorSignUpAccount errorAccount = new ErrorSignUpAccount(statusSignUP);
+                        ErrorSignUpAccount errorSignUp = new ErrorSignUpAccount(statusSignUP);
+                        System.out.println(errorSignUp.getContent() + "adasd");
+
 
                 %>
 
@@ -236,10 +241,9 @@
                 <!--lúc request lại thì về lại cái form-->
                 <%request.setCharacterEncoding("utf-8");%>
                 <jsp:include page="../notifyErrorAccount/AccountStatus.jsp">
-                    <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>
-                    <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>
+                    <jsp:param name="title" value="<%=errorSignUp.getTitle()%>"/>
+                    <jsp:param name="content" value="<%=errorSignUp.getContent()%>"/>
                 </jsp:include>
-
 
 
                 <%
@@ -255,13 +259,13 @@
         <div class="contentright" id="contentright">
             <p><%=lang.get("13")%></p>
             <p><%=lang.get("14")%></p>
-            <button onclick="dangky()"><%=lang.get("15")%></button>
+            <button type="button" onclick="dangky()"><%=lang.get("15")%></button>
         </div>
 
         <div class="contentright ctl" id="ctl">
             <p><%=lang.get("16")%></p>
             <p><%=lang.get("17")%></p>
-            <button onclick="dangnhap()"><%=lang.get("10")%></button>
+            <button type="button" onclick="dangnhap()"><%=lang.get("10")%></button>
         </div>
 
     </div>

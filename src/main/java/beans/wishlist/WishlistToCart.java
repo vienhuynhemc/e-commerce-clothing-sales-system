@@ -1,6 +1,8 @@
 package beans.wishlist;
 
-public class WishlistToCart {
+import java.io.Serializable;
+
+public class WishlistToCart implements Serializable {
     private String idProduct;
     private String color;
     private String size;

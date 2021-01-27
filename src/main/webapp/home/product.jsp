@@ -132,7 +132,9 @@
 
             <!-------------Load danh sách sản phẩm ở đây ---------------->
 
-                    <div id="loadProduct"></div>
+                    <div id="loadProduct">
+
+                    </div>
 
                     <!-------------Load danh sách sản phẩm ở đây ---------------->
 
@@ -403,6 +405,7 @@
 
     $(document).ready(function (){
         var type = $('#sexType').val();
+        console.log(type);
         $.ajax({
 
             url:'LoadProduct',
@@ -668,6 +671,9 @@
              $("#layma_mauthemvaogiohang").prop("value",ma_mau);
 
         }
+
+
+
     function plustocard() {
         var n = $(".sladdtocard").val();
         const nn = Number(n);

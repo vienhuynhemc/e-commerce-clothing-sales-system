@@ -61,7 +61,7 @@ for ( AccountCustomer k : list  ) {
         </div>
         <%}else{%>
         <div>
-            <i class="fa fa-clock-o"></i>
+            <i class="fa fa-times-circle"></i>
         </div>
         <%}%>
 
@@ -80,7 +80,7 @@ for ( AccountCustomer k : list  ) {
         </div>
         <%}else{%>
         <div>
-            <i class="fa fa-clock-o"></i>
+            <i class="fa fa-times-circle"></i>
         </div>
         <%}%>
     </div>
@@ -207,7 +207,7 @@ for ( AccountCustomer k : list  ) {
     <%int nowpage = Integer.parseInt(request.getParameter("page"));
         if(nowpage == 1){
     %>
-    <button type="button" id="<%=nowpage%>" onclick="changePage(this)" ><i class="fa fa-caret-left"></i></button>
+    <button type="button"  ><i class="fa fa-caret-left"></i></button>
     <%}else{%>
     <button type="button" id="<%=nowpage-1%>" onclick="changePage(this)" ><i class="fa fa-caret-left"></i></button
     <%}%>
@@ -222,7 +222,7 @@ for ( AccountCustomer k : list  ) {
         <li style="background-color: #4162fb; box-shadow: 0 3px 5px #90a3ff;" ><button type="button" id="<%=i%>" onclick="changePage(this)"> <%=i%> </button></li>
 
         <%}else{%>
-        <li ><button type="button" id="<%=i%>" onclick="changePage(this)">  </button></li>
+        <li ><button type="button" id="<%=i%>" onclick="changePage(this)"> <%=i%> </button></li>
         <%}
         }%>
 
@@ -230,7 +230,7 @@ for ( AccountCustomer k : list  ) {
     <%
         if(nowpage == listpage){
     %>
-    <button type="button" id="<%=nowpage%>" onclick="changePage(this)" ><i class="fa fa-caret-right"></i></button>
+    <button type="button" id="" ><i class="fa fa-caret-right"></i></button>
     <%}else{%>
     <button type="button" id="<%=nowpage+1%>" onclick="changePage(this)" ><i class="fa fa-caret-right"></i></button>
         <%}%>

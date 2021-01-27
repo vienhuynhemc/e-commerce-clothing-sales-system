@@ -10,7 +10,7 @@ public class ErrorAddAccount {
 
     public String getTitle(){
         if(status.equals("error1")){
-            return "Xác nhận mật khẩu sai";
+            return "Xác nhận mật khẩu không chính xác";
         }else if(status.equals("error2")){
             return "Email đã tồn tại trong cơ sở dữ liệu";
         }else if(status.equals("error3")){

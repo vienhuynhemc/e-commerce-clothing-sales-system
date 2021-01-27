@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="beans.order.DetailOrder1" %>
 <%@ page import="beans.encode.ConvertPrice" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ArrayList<DetailOrder1> list = (ArrayList<DetailOrder1>) request.getAttribute("listO");
     String madh = (String) request.getAttribute("donhang");
@@ -34,7 +35,7 @@
 
             <div class="cartleftmainitem">
                 <div class="cartleftmainitemleft">
-                    <a href="" class="cartleftmainimg"> <img src="../img/product/pro11.webp" alt=""></a>
+                    <a href="" class="cartleftmainimg"> <img src="<%=order.getHinh_anh()%>" alt=""></a>
                     <a href="">
                         <div class="cartleftmainiteminfor">
                             <p><%=order.getTen_sp()%></p>

@@ -27,6 +27,8 @@
 
     <link rel="stylesheet" href="css/quanLyKhachHangAdmin.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" >
+    <link rel="stylesheet" href="css/hienthiform2.css">
 
     <% ArrayList<AccountCustomer> list = (ArrayList<AccountCustomer>) request.getAttribute("listKH");%>
 
@@ -239,35 +241,27 @@
 
 
                     <button onclick="themkhachhang()" style="position: absolute;left: 350px;"><i class="fa fa-plus"></i>Thêm khách hàng mới</button>
-                    <button id="btDelete" style="position: absolute;left: 535px; background-color: #80808061;"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <button id="btDelete" style="position: absolute;left: 535px; background-color: #80808061;" onclick="xoataikhoan()"><i class="fa fa-trash-o"></i>Xóa các mục đã chọn</button>
+                    <button type="button" class="reload" onclick="loadKH()"><i class="fa fa-sync font"></i></button>
                 </div>
                 <div class="maindiv2" id="maindiv2">
 
 
-
-<%--                    <%--%>
-
-<%--                        for ( AccountCustomer k : list  ) {--%>
-<%--                    %>--%>
-
-<%--                    --%>
-
-<%--                    <%}%>--%>
                 </div>
             </div>
         </div>
 
-        <input type="hidden" name="" id="page" value="1">
 
-        <form action="../../them-tai-khoan-khach-hang" method="post">
+
+<%--        <form action="them-tai-khoan-khach-hang" method="post">--%>
             <div id="div1">
                 <div>
                     <div class="div11">
-                        <h3>Hồ sơ của bạn</h3>
-                        <input name="avatar" value="../../img/user.jpg" id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event)"/>
+                        <h3>Nhập hồ sợ khách hàng</h3>
+                        <input name="avatar" value="img/user.jpg" id="fileInput12" type="file" style="display:none;" onchange="loadIMG(event)"/>
                         <div class="div11daidien" onclick="document.getElementById('fileInput12').click()">
                             <div>
-                                <img id="avatar" src="../../img/user.jpg" alt="">
+                                <img id="avatar" src="img/user.jpg" alt="">
                             </div>
                         </div>
 
@@ -283,33 +277,33 @@
                         <div class="linediv12"></div>
                         <div class="div12input">
                             <label for="">* Họ và tên</label>
-                            <input name="full-name" value="${param["full-name"]}" type="text" placeholder="Nhập họ và tên ở đây">
+                            <input name="full-name" id="addfullName"  type="text" placeholder="Nhập họ và tên ở đây">
                         </div>
                         <div class="div12input">
-                            <label for="">Tên hiển thị</label>
-                            <input name="dispaly-name" value="${param["display-name"]}" type="text" placeholder="Nhập tên hiển thị ở đây">
+                            <label for="">*Tên hiển thị</label>
+                            <input name="dispaly-name" id="adddisplayName"  type="text" placeholder="Nhập tên hiển thị ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Email</label>
-                            <input name="email" value="${param["email"]}" type="text" placeholder="Nhập email ở đây">
+                            <input name="email" id="addemail"  type="email" placeholder="Nhập email ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Số điện thoại</label>
-                            <input name="phone" value="${param["phone"]}" type="text" placeholder="Nhập số điện thoại ở đây">
+                            <input name="phone" id="addphone"  type="text" placeholder="Nhập số điện thoại ở đây">
                         </div>
                         <div class="linediv12"></div>
                         <div class="trangthai">
                             <div class="div12inputlv2">
-                                <label for="">Trạng thái kích hoạt</label>
-                                <select name="ttkh" id="">
-                                    <option value="1">Đã kích hoạt</option>
+                                <label for="" >Trạng thái kích hoạt</label>
+                                <select name="ttkh" id="ttkh">
+                                    <option value="1" selected>Đã kích hoạt</option>
                                     <option value="0">Chưa kích hoạt</option>
                                 </select>
                             </div>
                             <div class="div12inputlv2">
                                 <label for="">Trạng thái đánh giá</label>
-                                <select name="ttdg" id="">
-                                    <option value="1">Cho phép đánh giá</option>
+                                <select name="ttdg" id="ttdg">
+                                    <option value="1" selected>Cho phép đánh giá</option>
                                     <option value="0">Cấm đánh giá</option>
                                 </select>
                             </div>
@@ -317,57 +311,57 @@
                         <div class="linediv12"></div>
                         <div class="div12input">
                             <label for="">* Tài khoản</label>
-                            <input name="userName" value="${param["userName"]}" type="text" placeholder="Nhập tên tài khoản ở đây">
+                            <input name="userName" id="addusername" type="text" placeholder="Nhập tên tài khoản ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Mật khẩu</label>
-                            <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây">
+                            <input name="passWord" id="addpass" type="password" placeholder="Nhập mật khẩu ở đây">
                         </div>
                         <div class="div12input">
                             <label for="">* Xác nhận</label>
-                            <input name="rePassWord" type="text" placeholder="Xác nhận mật khẩu ở đây">
+                            <input name="rePassWord" id="addrepass" type="password" placeholder="Xác nhận mật khẩu ở đây">
                         </div>
                     </div>
 
                     <div class="div13">
-                        <button type="submit"><i class="fa fa-plus"></i>Thêm khách hàng</button>
+                        <button type="button" onclick="addNewAccount()"><i class="fa fa-plus"></i>Thêm khách hàng</button>
                         <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản lý</button>
                     </div>
                 </div>
             </div>
-        </form>
+<%--        </form>--%>
 
 
 
 <!---------------------------------------check--------------------------->
-        <%
-        //lấy status ra
-            if (request.getAttribute("status") != null) {
+<%--        <%--%>
+<%--        //lấy status ra--%>
+<%--            if (request.getAttribute("status") != null) {--%>
 
-                String status = (String) request.getAttribute("status");
+<%--                String status = (String) request.getAttribute("status");--%>
 
-                //truyển status vào để sử lí
-                ErrorAddAccount errorAccount = new ErrorAddAccount(status);
+<%--                //truyển status vào để sử lí--%>
+<%--                ErrorAddAccount errorAccount = new ErrorAddAccount(status);--%>
 
-        %>
-        <%request.setCharacterEncoding("utf-8");%>
+<%--        %>--%>
+<%--        <%request.setCharacterEncoding("utf-8");%>--%>
 
-        <!--lúc request lại thì về lại cái form-->
-        <script>
-            document.getElementById("div1").style.display = "flex";
-        document.getElementById("div2").style.display = "none";
-        document.getElementById("div3").style.display = "none";
-        </script>
+<%--        <!--lúc request lại thì về lại cái form-->--%>
+<%--        <script>--%>
+<%--            document.getElementById("div1").style.display = "flex";--%>
+<%--        document.getElementById("div2").style.display = "none";--%>
+<%--        document.getElementById("div3").style.display = "none";--%>
+<%--        </script>--%>
 
 
-        <jsp:include page="../NotifyErrorAccount/AccountStatus.jsp">
-            <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>
-            <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>
-        </jsp:include>
+<%--        <jsp:include page="../NotifyErrorAccount/AccountStatus.jsp">--%>
+<%--            <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>--%>
+<%--            <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>--%>
+<%--        </jsp:include>--%>
 
-        <%
-            }
-        %>
+<%--        <%--%>
+<%--            }--%>
+<%--        %>--%>
 
 
         <div id="div3">
@@ -377,6 +371,55 @@
     <!-- Quan tâm nhiêu đây thôi-->
 </div>
 
+<!-----thẻ input trung gian lấy và giữ giá trị------->
+<input type="hidden" name="" id="page" value="1">
+<input type="hidden" name="" id="addavatar" value="img/user.jpg">
+
+<!--------form hiển thị thông báo-------->
+<div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
+    <div class="changepassword2" id="changepassword2">
+        <div class="hiddenchangepassword2" onclick="gobackpassword1()"></div>
+        <div class="mainchangepassword2">
+            <p class="changepasswordtitle2"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess2" id="changepasswordsuccess2">
+                <p id="changepassstatus">  </p>
+                <button onclick="gobackpassword1()">Trở về
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="changepassword" id="changepassword">
+    <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+    <div class="mainchangepassword">
+        <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+        <div class="changepassworddiv" id="changepassworddiv">
+            <p></p>
+            <button type="button" onclick="changePass()">Cho tui đi lại nước này</button>
+            <button type="button" onclick="changePass()">Tui quyết định xóa</button>
+        </div>
+    </div>
+</div>
+
+<div id="addCartStatus3" style="display:none; z-index: 10000;position: relative">
+    <div class="changepassword2" id="changepassword3">
+        <div class="hiddenchangepassword2" onclick="gobackpassword2()"></div>
+        <div class="mainchangepassword2">
+            <p class="changepasswordtitle2"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess2" id="changepasswordsuccess3">
+                <p id="changepassstatus3" class="formxoa">
+                    Bạn có chắc chắc muốn xóa những tài khoản này, việc xóa sẽ không hổi phục lại được,
+                    hãy suy nghĩ kĩ bạn nhé!
+                </p>
+                <button onclick="gobackpassword2()">Cho tui đi lại nước này</button>
+                <button class="hienxoa" onclick="deleteAccount()">Tui quyết định xóa </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------form hiển thị thông báo-------->
 </body>
 
 </html>
@@ -459,6 +502,103 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 </script>
 
 <script>
+
+    function addNewAccount() {
+
+        var fullname = $('#addfullName').val();
+        var displayname = $('#adddisplayName').val();
+        var email = $('#addemail').val();
+        var phone = $('#addphone').val();
+        var username = $('#addusername').val();
+        var pass = $('#addpass').val();
+        var repass = $('#addrepass').val();
+        var ttdg = $("#ttdg").val();
+        var ttkh = $("#ttkh").val();
+        var avatar = $("#addavatar").val();
+
+        // console.log(fullname);
+        // console.log(displayname);
+        // console.log(email);
+        // console.log(phone);
+        // console.log(username);
+        // console.log(pass);
+        // console.log(repass);
+        // console.log(ttkh);
+        // console.log(ttdg);
+
+
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+
+        if (fullname == "" || displayname == "" || email == "" || phone =="" ||
+        username =="" || pass == "" || repass ==""){
+
+            $("#changepassstatus").text("Vui lòng nhập đầy đủ thông tin để thêm khách hàng mới");
+
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+
+        }else if (pass != repass) {
+            $("#changepassstatus").text("Mật khẩu mới và xác nhận mật khẩu không trùng khớp");
+
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+        }else{
+            $.ajax({
+                url:'them-tai-khoan-khach-hang',
+                dataType:'json',
+                type:'post',
+                data:{
+                    fullName:fullname,
+                    displayName:displayname,
+                    email:email,
+                    phone:phone,
+                    userName:username,
+                    passWord:pass,
+                    rePassWord:repass,
+                    avatar:avatar,
+                    ttdg:ttdg,
+                    ttkh:ttkh
+                },
+                success:function (data){
+
+                    if(data == "error1"){
+                        $("#changepassstatus").text("Email đã được sử dụng bởi một tài khoản khác!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+
+                    }else if(data == "error2"){
+                        $("#changepassstatus").text("Tài khoản đã được sử dụng bởi một tài khoản khác!!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                    }else if(data == "error3"){
+                        $("#changepassstatus").text("Email này không tồn tại!!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                    }else if (data == "OK") {
+                        $("#changepassstatus").text("Đã thêm tài khoản thành công!!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                    }else if (data == "KO"){
+                        $("#changepassstatus").text("Thêm tài khoản thất bại!!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                    }
+                },
+                error:function (){
+                    $("#changepassstatus").text("Lỗi thêm khách hàng");
+                    document.getElementById("addCartStatus2").style.display = "block";
+                    document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                }
+            })
+        }
+
+
+
+
+    }
+
+
     function changesort2(item) {
         let list = item.children;
         if (list[2].checked == false) {
@@ -483,81 +623,46 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
     loadKH();
     }
     <!-- sử lí cự kiện onlick xóa nhiều mục-->
-    $('#btDelete').click(function (){
+   function deleteAccount (){
         var data = {};
         var dis = $('#maindiv2 input[type = checkbox]:checked').map(function (){
             return $(this).val();
-
         }).get();
-
         data = dis;
-
-        console.log(data);
-
-        deleteE(data);
-    });
+        console.log(data)
+        deleteMulti(data);
+        gobackpassword2();
+    }
     <!-- sử lí cự kiện onlick button xóa 1 nhân viên cụ thể-->
     function deleteOne(event){
         var data = $(event).attr('id');
-        deleteE(data);
+        deleteMulti(data);
     }
 
-    function deleteE(data){
+    function deleteMulti(data){
         console.log(data);
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
         $.ajax({
             url:'RemoveAccountHKController',
-            contentType:'application/json',
+           dataType:"json",
             type:'get',
             data: {
                 list: JSON.stringify(data)
             },
             success: function (result){
-                alert("Xóa thành công");
-                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
-            },
+                loadKH();
+                    $("#changepassstatus").text("Đã xóa thành công " + result +" khách hàng");
+                    document.getElementById("addCartStatus2").style.display = "block";
+                    document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                },
             error: function (){
-                alert("Xóa thất bại");
-                window.location.href = "LoadAccountKHController?page=<%=request.getParameter("page")%>&type=<%=request.getParameter("type")%>&search=<%=request.getParameter("search")%>&orderBy=<%=request.getParameter("orderBy")%>";
+                $("#changepassstatus").text("Lỗi xóa khách hàng");
+                document.getElementById("addCartStatus2").style.display = "block";
+                document.getElementById('changepassword2').style.transform = 'scaleY(1)';
             }
         });
     }
-
-    <!--sử lí load lại thì có giá trị trước cho cho cái select -->
-    // $(function (){
-    //     var typename = $('#typeName').attr('value');
-    //     let list =  document.getElementById("typeSelect").children;
-    //
-    //     if(typename == "RegisDate"){
-    //         $('select#typeSelect option[value= "RegisDate" ]').prop('selected', true);
-    //     }else if(typename == "FullName"){
-    //         $('select#typeSelect option[value= "FullName" ]').prop('selected', true);
-    //     }else if(typename == "UserName"){
-    //         $('select#typeSelect option[value= "UserName" ]').prop('selected', true);
-    //     }
-    // });
-
-    // $(function (){
-    //     var order = $('#checkSort').attr('value') ;
-    //     let list =  document.getElementById("order").children;
-    //
-    //     if(order == "DESC"){
-    //
-    //         if (list[2].checked == true) {
-    //             list[2].checked = false;
-    //             list[1].style.display = "none";
-    //             list[0].style.display = "block";
-    //             //list[0].style.marginTop = "0px";
-    //         }
-    //     }else{
-    //         if (list[2].checked == false) {
-    //             list[2].checked = true;
-    //             list[0].style.display = "none";
-    //             list[1].style.display = "block";
-    //             //list[1].style.marginTop = "-9px";
-    //         }
-    //     }
-    //
-    // });
 
 </script>
 
@@ -594,34 +699,26 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                 $('#maindiv2').html(data);
             },
             error:function (){
-                alert("loi r");
+                alert("loi k load dc danh sach khach hang");
             }
         })
     };
 
 
-
   $(document).ready(function (){
+      loadKH();
+  })
 
-        $.ajax({
-            url: 'LoadAccountKH_AjaxController',
-            type: 'get',
-            dataType:'html',
-            data:{
-                page:1,
-                type:'ngay_tao',
-                search:'',
-                orderBy:'DESC'
-            },
-            success:function (data){
-                $('#maindiv2').html(data);
-            },
-            error:function (){
-                alert("loi r");
-            }
-        })
-    });
-
+    function gobackpassword2(){
+        document.getElementById('changepassword3').style.transform = 'scaleY(0)';
+    }
+    function gobackpassword1(){
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+    }
+    function xoataikhoan(){
+        document.getElementById("addCartStatus3").style.display = "block";
+        document.getElementById('changepassword3').style.transform = 'scaleY(1)';
+    }
 </script>
 
 

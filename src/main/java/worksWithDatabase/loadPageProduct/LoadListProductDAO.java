@@ -307,14 +307,14 @@ public class LoadListProductDAO {
 
         for (int i = 0; i < loadListProductDAO.getListProduct().size(); i++) {
             System.out.println(loadListProductDAO.getListProduct().get(i));
-//            System.out.println(loadListProductDAO.getListProduct().get(i).getListIMG());
-//            System.out.println(loadListProductDAO.getListProduct().get(i).getListInfo());
-//            System.out.println( "slcl" +  loadListProductDAO.getListProduct().get(i).getSo_luong_con_lai());
+            System.out.println(loadListProductDAO.getListProduct().get(i).getListIMG());
+            System.out.println(loadListProductDAO.getListProduct().get(i).getListInfo());
+            System.out.println( "slcl" +  loadListProductDAO.getListProduct().get(i).getSo_luong_con_lai());
 
         }
-
-        System.out.println(loadListProductDAO.sumProduct);
-        System.out.println(loadListProductDAO.getNumPage());
-        System.out.println(loadListProductDAO.getListProduct().get(1).getListInfo().get(0).getThong_tin());
+//
+//        System.out.println(loadListProductDAO.sumProduct);
+//        System.out.println(loadListProductDAO.getNumPage());
+//        System.out.println(loadListProductDAO.getListProduct().get(1).getListInfo().get(0).getThong_tin());
     }
 }

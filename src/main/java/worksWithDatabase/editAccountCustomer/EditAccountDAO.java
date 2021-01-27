@@ -14,19 +14,19 @@ public class EditAccountDAO {
     public EditAccountDAO(){}
 
 
-    public AccountCustomer changeInfoCustomer(String userName, String displayName, String fullName, String avatar){
+    public AccountCustomer changeInfoCustomer(String userName, String displayName, String fullName){
         Connection con = null;
         AccountCustomer acc = null;
         try {
              con = DataSource.getInstance().getConnection();
 
-             String sql = "UPDATE tai_khoan a set a.ten_hien_thi = ?, a.ten_day_du = ?,a.link_hinh_dai_dien = ?  WHERE a.ma_tai_khoan = ?";
+             String sql = "UPDATE tai_khoan a set a.ten_hien_thi = ?, a.ten_day_du = ? WHERE a.ma_tai_khoan = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,displayName);
             ps.setString(2,fullName);
-            ps.setString(3,avatar);
-            ps.setString(4,userName);
+
+            ps.setString(3,userName);
 
             int check = ps.executeUpdate();
             ps.close();
@@ -34,7 +34,7 @@ public class EditAccountDAO {
             if (check == 1){
                 String sql1 = "select a.ma_tai_khoan, a.kieu_tai_khoan,a.tai_khoan, a.mat_khau,a.email,a.so_dien_thoai, a.link_hinh_dai_dien, a.ten_hien_thi,\n" +
                         "a.ten_day_du,a.ngay_tao,a.han_su_dung_ma_qmk ,c.trang_thai_kich_hoat,c.trang_thai_danh_gia,c.ton_tai,c.ngon_ngu \n" +
-                        "from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ?";
+                        "from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and c.trang_thai_kich_hoat = 1 and a.ma_tai_khoan = ?";
 
                 PreparedStatement ps1 = con.prepareStatement(sql1);
                 ps1.setString(1,userName);
@@ -42,6 +42,7 @@ public class EditAccountDAO {
                 ResultSet rs = ps1.executeQuery();
 
                 if (rs.next()){
+                    System.out.println("ok");
                     acc = new AccountCustomer();
                     acc.setIdUser(rs.getString("ma_tai_khoan"));
                     acc.setType(rs.getInt("kieu_tai_khoan"));
@@ -78,7 +79,7 @@ public class EditAccountDAO {
         EditAccountDAO editAccountDAO = new EditAccountDAO();
       //  System.out.println(editAccountDAO.checkOldPassWord("kh005","andeptrai"));
 
-        System.out.println(editAccountDAO.changeInfoCustomer("KH002","An NoPro","Nguyễn Văn An","kook"));
+        System.out.println(editAccountDAO.changeInfoCustomer("KH004","ZU ka","Zuka Béo"));
 
 
     }

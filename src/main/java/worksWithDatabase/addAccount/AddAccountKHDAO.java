@@ -1,9 +1,12 @@
 package worksWithDatabase.addAccount;
 
+import beans.encode.MD5;
 import connectionDatabase.DataSource;
 import mail.MailModel;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.*;
+import java.util.Random;
 
 public class AddAccountKHDAO implements AddAccountInterface{
     public AddAccountKHDAO(){}
@@ -20,7 +23,7 @@ public class AddAccountKHDAO implements AddAccountInterface{
             connection = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "SELECT * FROM account WHERE Email = ? AND Type = 3";
+            String sql = "SELECT * FROM tai_khoan WHERE email = ? AND kieu_tai_khoan = 3";
 
             PreparedStatement ps = connection.prepareStatement(sql);
 
@@ -50,7 +53,7 @@ public class AddAccountKHDAO implements AddAccountInterface{
 
             connection = DataSource.getInstance().getConnection();
 
-            String sql = "SELECT * FROM account WHERE UserName = ? AND Type = 3";
+            String sql = "SELECT * FROM tai_khoan WHERE tai_khoan = ? AND kieu_tai_khoan = 3";
 
             PreparedStatement ps = connection.prepareStatement(sql);
 
@@ -71,51 +74,67 @@ public class AddAccountKHDAO implements AddAccountInterface{
         }
         return false;
     }
-    public static void addAccount(String userName,String passWord,String email,String avatar,String phone,String displayName,String fullName,String ttdg,String ttkh){
+    public boolean addAccount(String userName,String passWord,String email,String avatar,String phone,String displayName,String fullName,String ttdg,String ttkh){
 
         Connection con = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
 
-            // con = DataSource.getInstance().getConnection();
-            String count = "Select count(*) from account where type = 3";
+             con = DataSource.getInstance().getConnection();
+            String count = "Select count(*) from tai_khoan where kieu_tai_khoan = 3";
             Statement sm = con.createStatement();
             ResultSet rs = sm.executeQuery(count);
 
             rs.next();
-            int sum = rs.getInt(1) + 1;
+            Random random = new Random();
+
+            int sum = rs.getInt(1) + random.nextInt(1000);
+            String ma_kh = "KH" + sum;
 
             rs.close();
+            //CURRENT_TIMESTAMP
 
-            String sql =  "INSERT INTO account VALUES (\"KH0" + sum + "\"" + "," + 3 + ",\"" + userName + "\""
-                    + ",\"" + passWord + "\"" + ",\"" + email + "\"" + ",\"" + phone + "\"" + ",\"" + avatar +"\"," + null
-                    +",\"" + displayName + "\"" + ",\"" + fullName + "\"," + "CURRENT_TIMESTAMP" +"," + null + ")";
+            String hinh_dai_dien = "hinh_dai_dien_kh/" + ma_kh +".jpg";
 
-            sm.executeUpdate(sql);
+            String sql =  "INSERT INTO tai_khoan VALUES (?,3,?,?,?,?,null,?,?,?,?,CURRENT_TIMESTAMP,null,null)";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,ma_kh);
+            ps.setString(2,userName);
+            ps.setString(3, MD5.md5(passWord));
+            ps.setString(4,email);
+            ps.setString(5,phone);
+            ps.setString(6,hinh_dai_dien);
+            ps.setString(7,avatar);
+            ps.setString(8,displayName);
+            ps.setString(9,fullName);
+
+            ps.executeUpdate();
+
 
             int n1 = Integer.parseInt(ttdg) ;
             int n2 = Integer.parseInt(ttkh);
-            String sql2 = "INSERT INTO customer VALUES (\"KH0" + sum + "\"" + "," + "CURRENT_TIMESTAMP" + "," + n1
-                        + "," + n2  + ")";
-            sm.executeUpdate(sql2);
+            String sql2 = "INSERT INTO khach_hang VALUES (?,CURRENT_TIMESTAMP,?,?,1,null)";
 
-            sm.close();
+            PreparedStatement ps1 = con.prepareStatement(sql2);
+            ps1.setString(1,ma_kh);
+            ps1.setInt(2, Integer.parseInt(ttkh));
+            ps1.setInt(3, Integer.parseInt(ttdg));
 
+            ps1.executeUpdate();
+
+            DataSource.getInstance().releaseConnection(con);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            //  DataSource.getInstance().releaseConnection(con);
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            DataSource.getInstance().releaseConnection(con);
+            return false;
         }
     }
 
     public static void main(String[] args) {
-        addAccount("kh014","123","thaha@gmail.com","hinhdep","huhu","sasa","nguyen van a","1","1");
+       // addAccount("kh014","123","thaha@gmail.com","hinhdep","huhu","sasa","nguyen van a","1","1");
+        AddAccountKHDAO addAccountKHDAO = new AddAccountKHDAO();
+        System.out.println(addAccountKHDAO.isEmail("18108868678678699@st.hcmuaf.edu.vn"));
     }
 }

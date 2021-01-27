@@ -20,12 +20,16 @@ public class Category implements Serializable {
     //  Trạng thái hiệu lục
     private int exist;
 
+    // số lượng sản phẩm
+    private int numberOfProduct;
+
     //  Constructor
-    public Category(String id, String name, DateTime dateCreated, int exist) {
+    public Category(String id, String name, DateTime dateCreated, int exist,int numberOfProduct) {
         setId(id);
         this.name = name;
         this.dateCreated = dateCreated;
         this.exist = exist;
+        this.numberOfProduct = numberOfProduct;
     }
     public Category(){
 
@@ -68,5 +72,17 @@ public class Category implements Serializable {
 
     public void setDateCreated(DateTime dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public int getExist() {
+        return exist;
+    }
+
+    public int getNumberOfProduct() {
+        return numberOfProduct;
+    }
+
+    public void setNumberOfProduct(int numberOfProduct) {
+        this.numberOfProduct = numberOfProduct;
     }
 }

@@ -1,5 +1,6 @@
 package controllerAdmin.addAccount;
 
+import com.google.gson.Gson;
 import model.addAccount.*;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,8 @@ public class AddAccountKHController extends HttpServlet {
         doPost(request, response);
     }
     public void execute(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-        String fullName = request.getParameter("full-name");
-        String displayName = request.getParameter("display-name");
+        String fullName = request.getParameter("fullName");
+        String displayName = request.getParameter("displayName");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String user = request.getParameter("userName");
@@ -31,9 +32,13 @@ public class AddAccountKHController extends HttpServlet {
 
         String exe = AddAccountKHModel.getInstance().addAccount( user, pass, rePass, email, avatar, phone, displayName, fullName, ttdg, ttkh);
 
-        request.setAttribute("status",exe);
+        String json = new Gson().toJson(exe);
 
-        request.getRequestDispatcher("admin/home/quanLyKhachHang.jsp").forward(request,response);
+        System.out.println(json);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
 
     }
 }

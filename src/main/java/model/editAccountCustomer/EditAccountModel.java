@@ -16,10 +16,10 @@ public class EditAccountModel {
         return editAccountNVKModel;
 
     }
-    public AccountCustomer editAccount(String userName, String displayName, String fullName, String avatar){
+    public AccountCustomer editAccount(String userName, String displayName, String fullName){
         EditAccountDAO editAccountDAO = EditAccountSource.getInstance().getEditAccount();
 
-        AccountCustomer accountCustomer =  editAccountDAO.changeInfoCustomer(userName,displayName,fullName,avatar);
+        AccountCustomer accountCustomer =  editAccountDAO.changeInfoCustomer(userName,displayName,fullName);
 
         EditAccountSource.getInstance().releaseEditAccount(editAccountDAO);
         return accountCustomer;

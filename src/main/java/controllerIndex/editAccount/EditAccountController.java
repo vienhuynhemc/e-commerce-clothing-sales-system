@@ -23,13 +23,13 @@ public class EditAccountController extends HttpServlet {
         AccountCustomer user = (AccountCustomer) session.getAttribute("user");
 
         String idUser = user.getIdUser();
-        String avatar = request.getParameter("avatar");
+
         String displayName = request.getParameter("displayName");
         String fullName = request.getParameter("fullName");
 
        EditAccountModel editAccountModel = new EditAccountModel();
 
-       AccountCustomer acc = editAccountModel.editAccount(idUser,displayName,fullName,avatar);
+       AccountCustomer acc = editAccountModel.editAccount(idUser,displayName,fullName);
 
        boolean check = false;
 

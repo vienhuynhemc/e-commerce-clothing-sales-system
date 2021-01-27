@@ -4,7 +4,8 @@
 <%@ page import="beans.wishlist.Wishlist" %>
 <%@ page import="worksWithDatabase.wishlist.LoadWishlistDAO" %>
 <%@ page import="model.wishlist.LoadWishlistModel" %>
-<%@ page import="beans.wishlist.WishlistToCart" %><%--
+<%@ page import="beans.wishlist.WishlistToCart" %>
+<%@ page import="beans.encode.ConvertPrice" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -31,6 +32,8 @@
     <script src="js"></script>
     <link rel="stylesheet" href="css/banner.css">
     <link rel="stylesheet" href="css/wishlist2.css">
+    <link rel="stylesheet" href="css/hienthiform.css">
+    <link rel="stylesheet" href="css/hienthiform2.css">
 
     <% AccountCustomer account = (AccountCustomer) session.getAttribute("user");
         ArrayList<Wishlist> list = (ArrayList<Wishlist>) request.getAttribute("list");
@@ -144,41 +147,117 @@
 ">Không tìm thấy sản phẩm nào trong danh sách yêu thích.</p>
    <% } else {%>
 <%--    load danh sách wishlist--%>
-    <% for(Wishlist w : list){%>
+    <%
+        int count= 0;
+
+        for(Wishlist w : list){
+
+        count++;
+    %>
     <div class="item">
 
         <label for="cb1" class="lbitem">
             <input type="checkbox" id="cb1" name="cb1" class="checkbox" value="">
             <input name ="idC" type="hidden">
         </label>
-        <a href="detailsProduct.html" class="imgsp"> <img src="<%=w.getImg()%>>" alt=""> </a>
-        <a href="detailsProduct.html" class="namesp"><%= w.getName()%> </a>
-        <p class="price"><%= w.getPrice()%></p>
-        <p class="ngaythem"><%=w.getDateAdded().getDay()%>/<%=w.getDateAdded().getMonth()%>/<%=w.getDateAdded().getYear()%></p>
-        <% if(w.getRestNumber() > 0){%>
+        <a href="detailsProduct.html" class="imgsp"> <img src="<%=w.getHinh_sp()%>>" alt=""> </a>
+        <a href="detailsProduct.html" class="namesp"><%= w.getTen_sp()%> </a>
+        <p id="gia_<%=count%>">
+
+
+            <!--------- hiển thị giá khuyến mãi -------->
+            <% if(w.getGia_km() != 0){ %>
+
+            <%=ConvertPrice.convertPrice((int)w.getGia_km())%>
+
+            <%}else {%>
+
+            <%=ConvertPrice.convertPrice((int)w.getGia())%>
+
+            <%}%>
+            <!--------- hiển thị giá khuyến mãi -------->
+
+
+
+        </p>
+        <p class="ngaythem"><%=w.getNgay_them().getDay()%>/<%=w.getNgay_them().getMonth()%>/<%=w.getNgay_them().getYear()%></p>
+        <% if(w.getTrang_thai() != 2){%>
         <p class="conhang">Còn hàng</p>
         <%} else{%>
         <p class="conhang" style="background-color: #d74410; color : white !important">Hết hàng</p>
         <%}%>
         <div class="soluong">
-            <p id="quantity"><%= w.getQuantity()%></p>
-            <button>
-                <p>+</p>
+
+
+            <p id="so_luong_sp_<%=count%>"><%=w.getSo_luong()%></p>
+
+            <button id="tang" value="<%=count%>" onclick="increase(this)">+
+
+                <input type="hidden" value="<%=w.getMa_sp()%>" disabled>
+                <input type="hidden" value="<%=w.getMa_mau()%>" disabled>
+                <input type="hidden" value="<%=w.getMa_size()%>" disabled>
+
             </button>
-            <button>
-                <p>-</p>
+<%--            <input type="text" value="1" class="sladdtocard">--%>
+            <button id="giam" value="<%=count%>" onclick="increase(this)">-
+                <input type="hidden" value="<%=w.getMa_sp()%>" disabled>
+                <input type="hidden" value="<%=w.getMa_mau()%>" disabled>
+                <input type="hidden" value="<%=w.getMa_size()%>" disabled>
             </button>
         </div>
-        <p style="margin-left: 132px"><%=w.getNameSize()%></p>
-        <a href="AddCartController?ma_sp=<%=w.getId()%>&ma_mau=<%=w.getColor()%>&ma_size=<%=w.getSize()%>&so_luong=<%=w.getQuantity()%>"><button class="addtocart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button></a>
+        <p style="margin-left: 132px"><%=w.getSize()%></p>
+<%--        AddCartController?ma_sp=<%=w.getId()%>&ma_mau=<%=w.getColor()%>&ma_size=<%=w.getSize()%>&so_luong=<%=w.getQuantity()%>--%>
+        <a href="#">
+            <button class="addtocart" onclick="addCart(this)">
+
+                <input type="hidden" name="" id="laymau" value="<%=w.getMa_mau()%>">
+                <input type="hidden" name="" id="laysize" value="<%=w.getMa_size()%>">
+                <input type="hidden" name="" id="laymasp" value="<%=w.getMa_sp()%>">
+                <input type="hidden" name="" id="laysoluong" value="<%=w.getSo_luong()%>">
+
+            <i class="fa fa-shopping-cart"></i>
+            Thêm vào giỏ hàng</button>
+        </a>
 
         <div class="remove">
-            <a href="RemoveWishlistController?ma_sp=<%=w.getId()%>&ma_mau=<%=w.getColor()%>&size=<%=w.getSize()%>&page=<%= request.getParameter("page")%>&search=<%=request.getParameter("search")%>&type=<%=request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%=request.getParameter("status")%>"><i class="fa fa-close"></i></a>
+            <a href="RemoveWishlistController?ma_sp=<%=w.getMa_sp()%>&ma_mau=<%=w.getMa_sp()%>&size=<%=w.getSize()%>&page=<%= request.getParameter("page")%>&search=<%=request.getParameter("search")%>&type=<%=request.getParameter("type")%>&sex=<%=request.getParameter("sex")%>&status=<%=request.getParameter("status")%>"><i class="fa fa-close"></i></a>
         </div>
     </div>
     <%}}%>
 
 </div>
+
+
+<div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
+    <div class="changepassword" id="changepassword2">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess2">
+                <p> Vui lòng chọn đầy đủ thông tin để thêm sản phẩm vào giỏ hàng </p>
+                <button onclick="gobackpassword()">Trở về
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addCartStatus" style="display:none; z-index: 100000;position: relative">
+    <div class="changepassword" id="changepassword">
+        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+        <div class="mainchangepassword">
+            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess" id="changepasswordsuccess">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" name="" id="soluongsp" value="1">
+<%--</script>--%>
 <!--End main-->
 
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
@@ -188,6 +267,7 @@
 <!-- / footer -->
 
 </body>
+
 
 </html>
 
@@ -212,3 +292,173 @@
 <script type="text/javascript" src="js/nouislider.js"></script>
 <!-- Custom js -->
 <script src="js/custom.js"></script>
+
+
+<script>
+    function increase(event) {
+
+        var list = event.children;
+
+        var ma_sp = $(list[0]).attr("value");
+        var ma_mau =  $(list[1]).attr("value");
+        var ma_size = $(list[2]).attr("value");
+        console.log(ma_sp);
+        console.log(ma_mau);
+        console.log(ma_size);
+
+        var active = $(event).attr("id");
+
+        $.ajax({
+            url:'ChangeWishlistController',
+            type:'get',
+            dataType:'json',
+            data:{
+                ma_sp:ma_sp,
+                ma_mau:ma_mau,
+                ma_size: ma_size,
+                active: active
+            },
+            success:function (data){
+
+                console.log(data);
+
+                var c = $(event).val();
+                <!-- sét lại số lượng và giá-->
+
+                var sltrcthaydoi = parseInt($('#so_luong_sp_' + c).text()) ;
+
+                console.log("soluongtrcthaydoi"+sltrcthaydoi);
+                console.log(data.so_luong);
+
+
+                var slsauthaydoi = data.so_luong;
+
+                // var total = $('#getgia').val();
+
+               // var tonggia = parseInt(total);
+                var giamoi;
+
+                if(slsauthaydoi > sltrcthaydoi){
+                    // nếu số lượng trc thay đổi lơn hơn số lượng sau thay đổi thì + 1 cho tổng số lương thôi
+                    //document.getElementById("so_luong_right").innerText = tongsl + 1;
+
+                    //sét lại giá nếu có khuyến mãi thì sét theo giá khuyến mãi
+                    if(data.gia_km > 0){
+                       // giamoi  = tonggia + data.gia_km/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia_km.toLocaleString("vi-VN") + " VND";
+                    }else{
+                      //  giamoi  = tonggia + data.gia/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia.toLocaleString("vi-VN") + " VND";
+                    }
+
+                }else if(slsauthaydoi < sltrcthaydoi){
+                    // nếu số lượng trc thay đổi nhỏ hơn số lượng sau thay đổi thì - 1 cho tổng số lương thôi
+                    //document.getElementById("so_luong_right").innerText = tongsl - 1;
+                    //sét lại giá nếu có khuyến mãi thì sét theo giá khuyến mãi
+                    if(data.gia_km > 0){
+                        //giamoi  = tonggia - data.gia_km/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia_km.toLocaleString("vi-VN") + " VND";
+                    }else{
+                       // giamoi  = tonggia - data.gia/data.so_luong;
+                        document.getElementById("gia_"+c).innerText = data.gia.toLocaleString("vi-VN") + " VND";
+                    }}
+                // }else{
+                //     giamoi = tonggia;
+                // }
+
+                // sét lại số lượng cho thằng sản phẩm đã
+                document.getElementById("so_luong_sp_"+c).innerText = data.so_luong;
+
+               // var convert = giamoi.toLocaleString('vi-VN');
+
+               // document.getElementById("total_all_1").innerText = convert + " VND";
+               // document.getElementById("total_all_2").innerText = convert+ " VND";
+               // $('#getgia').prop("value",giamoi);
+            },
+            error:function () {
+                alert("that bai");
+            }
+        });
+
+    }
+
+    function addCart(event){
+
+        var list = event.children;
+        console.log(list);
+
+        var ma_sp = $(list[2]).val();
+        var ma_size =  $(list[1]).val();
+        var ma_mau = $(list[0]).val();
+        var soluong = $(list[3]).val();
+
+        console.log(ma_mau);
+        console.log(ma_size);
+        console.log(ma_sp);
+        console.log(soluong);
+
+
+        // console.log(ma_sp);
+        // console.log(ma_size);
+        // console.log(ma_mau);
+        // console.log(soluong);
+        // document.getElementById("addCartStatus2").style.display = "none";
+        // document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+
+        // if(ma_sp == "" || ma_size == "" || ma_mau == ""){
+        //
+        //     document.getElementById("addCartStatus2").style.display = "block";
+        //     document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+        //
+        // }else{
+            document.getElementById("addCartStatus").style.display = "none";
+            document.getElementById('changepassword').style.transform = 'scaleY(0)';
+            $.ajax({
+                url:'AddCartController',
+                type:'get',
+                dataType:'html',
+                data:{
+                    ma_sp:ma_sp,
+                    ma_mau:ma_mau,
+                    ma_size:ma_size,
+                    so_luong:soluong
+                },
+                success:function (data){
+                    //console.log(data);
+                    $('#changepasswordsuccess').html(data);
+
+                    document.getElementById("addCartStatus").style.display = "block";
+                    document.getElementById('changepassword').style.transform = 'scaleY(1)';
+
+                },
+                error:function () {
+                    alert(" them sp that bai");
+                    // window.location.href = 'index.jsp';
+                }
+            });
+
+        // }
+    }
+
+    function plustocard() {
+        var n = $(".sladdtocard").val();
+        const nn = Number(n);
+        $(".sladdtocard").prop("value",nn+1);
+        $("#soluongsp").prop("value",nn+1);
+    }
+
+    function subtocard() {
+        var n = $(".sladdtocard").val();
+        const nn = Number(n);
+        if (nn > 1) {
+            $(".sladdtocard").prop("value",nn-1);
+            $("#soluongsp").prop("value",nn-1);
+        }
+    }
+
+    function gobackpassword() {
+        document.getElementById('changepassword').style.transform = 'scaleY(0)';
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+    }
+
+</script>

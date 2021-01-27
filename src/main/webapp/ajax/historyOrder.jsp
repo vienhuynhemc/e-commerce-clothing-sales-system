@@ -4,6 +4,7 @@
 <%@ page import="beans.order.Order" %>
 <%@ page import="beans.order.DetailOrder" %>
 <%@ page import="beans.encode.ConvertPrice" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
     //  Chuyển về UTF-8
