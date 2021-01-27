@@ -530,6 +530,19 @@ p.itemngaytao {
     overflow: hidden;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    background: white;
+}
+
+#div3 > form:nth-child(1) {
+    width: 96%;
+    margin: auto;
+    display: flex;
+    margin-top: 70px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    background: white;
 }
 
 div#listSize {

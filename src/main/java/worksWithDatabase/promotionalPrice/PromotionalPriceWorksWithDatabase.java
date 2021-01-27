@@ -2,6 +2,7 @@ package worksWithDatabase.promotionalPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import connectionDatabase.DataSource;
 import worksWithDatabase.productPrice.ProductPriceWorksWithDatabase;
 
@@ -58,5 +59,24 @@ public class PromotionalPriceWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
 
     }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT gia_km FROM gia_sp_khuyen_mai WHERE ma_sp = ? ORDER BY ngay_cap_nhat DESC LIMIT 0,1");
+            preparedStatement.setString(1,productAdminEditGroup.getMa_sp());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.setGia_khuyen_mai(resultSet.getInt("gia_km")+"");
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
+
 
 }

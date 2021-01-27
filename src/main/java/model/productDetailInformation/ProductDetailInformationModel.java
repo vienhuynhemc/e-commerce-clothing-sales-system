@@ -1,9 +1,6 @@
 package model.productDetailInformation;
 
-import beans.productAdmin.ProductAdmin;
-import beans.productAdmin.ProductAdminColorAddProduct;
-import beans.productAdmin.ProductAdminEditSingle;
-import beans.productAdmin.ProductAdminSizeAdd;
+import beans.productAdmin.*;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationDataSource;
 import worksWithDatabase.productDetailInformation.ProductDetailInformationWorksWithDatabase;
 
@@ -55,6 +52,12 @@ public class ProductDetailInformationModel {
         ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
     }
 
+    public void editToDatabae(String ma_sp, List<ProductAdminColorAddProduct> listColor, List<ProductAdminSizeAdd> listSize) {
+        ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+        productDetailInformationWorksWithDatabase.editToDatabae(ma_sp, listColor, listSize);
+        ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
+    }
+
     public void fillProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle) {
         ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
         productDetailInformationWorksWithDatabase.fillProductAdminEditSingle(productAdminEditSingle);
@@ -64,6 +67,12 @@ public class ProductDetailInformationModel {
     public void updateEditSingle(String ma_sp, String ma_mau, List<ProductAdminSizeAdd> list_size, int hinh_anh_trong_firebase) {
         ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
         productDetailInformationWorksWithDatabase.updateEditSingle(ma_sp, ma_mau, list_size, hinh_anh_trong_firebase);
+        ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+        ProductDetailInformationWorksWithDatabase productDetailInformationWorksWithDatabase = ProductDetailInformationDataSource.getInstance().getProductDetailInformationWorksWithDatabase();
+       productDetailInformationWorksWithDatabase.fillDataProductAdminEditGroup(productAdminAdd);
         ProductDetailInformationDataSource.getInstance().releaseProductDetailInformationWorksWithDatabase(productDetailInformationWorksWithDatabase);
     }
 

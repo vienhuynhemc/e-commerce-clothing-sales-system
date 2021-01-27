@@ -2,6 +2,7 @@ package model.category;
 
 import beans.category.Category;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminCategory;
 import worksWithDatabase.category.CategoryDataSource;
 import worksWithDatabase.category.CategoryWorksWithDatabase;
@@ -91,6 +92,13 @@ public class CategoryModel {
     }
 
 
+
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        CategoryWorksWithDatabase categoryWorksWithDatabase = CategoryDataSource.getInstance().getCategoryWorksWithDatabase();
+        categoryWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
+        CategoryDataSource.getInstance().releaseCategoryWorksWithDatabase(categoryWorksWithDatabase);
+    }
 
 
     public static void main(String[] args) {

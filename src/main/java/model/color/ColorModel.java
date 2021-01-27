@@ -1,6 +1,7 @@
 package model.color;
 
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import beans.productAdmin.ProductAdminColorAdd;
 import beans.productAdmin.ProductAdminEditSingle;
 import worksWithDatabase.color.ColorDataSource;
@@ -57,6 +58,12 @@ public class ColorModel {
     public void fillNameColorForProductAdminSingle(ProductAdminEditSingle productAdminEditSingle) {
         ColorWorksWithDatabase colorWorksWithDatabase = ColorDataSource.getInstance().getColorWorksWithDatabase();
         colorWorksWithDatabase.fillNameColorForProductAdminSingle(productAdminEditSingle);
+        ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
+    }
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+        ColorWorksWithDatabase colorWorksWithDatabase = ColorDataSource.getInstance().getColorWorksWithDatabase();
+        colorWorksWithDatabase.fillDataProductAdminEditGroup(productAdminAdd);
         ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
     }
 

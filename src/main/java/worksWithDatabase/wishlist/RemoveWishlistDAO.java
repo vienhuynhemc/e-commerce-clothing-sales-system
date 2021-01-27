@@ -73,7 +73,7 @@ public class RemoveWishlistDAO {
 
     public static void main(String[] args) {
         RemoveWishlistDAO dao = new RemoveWishlistDAO();
-        System.out.println(dao.removeWishlist("sp_2","kh001","mau_2","size_1"));
+        System.out.println(dao.removeWishlist("sp_1","kh001","mau_1","size_1"));
 
     }
 

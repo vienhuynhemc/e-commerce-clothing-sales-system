@@ -45,4 +45,10 @@ public class SizeModel {
         SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
     }
 
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup) {
+        SizeWorksWithDatabase sizeWorksWithDatabase = SizeDataSource.getInstance().getSizeWorksWithDatabase();
+        sizeWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
+        SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
+    }
+
 }

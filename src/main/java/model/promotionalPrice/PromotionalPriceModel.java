@@ -2,6 +2,7 @@ package model.promotionalPrice;
 
 import beans.DateTime;
 import beans.productAdmin.ProductAdmin;
+import beans.productAdmin.ProductAdminAdd;
 import worksWithDatabase.promotionalPrice.PromotionalPriceDataSource;
 import worksWithDatabase.promotionalPrice.PromotionalPriceWorksWithDatabase;
 
@@ -30,5 +31,10 @@ public class PromotionalPriceModel {
         PromotionalPriceDataSource.getInstance().releasePromotionalPriceWorksWithDatabase(promotionalPriceWorksWithDatabase);
     }
 
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        PromotionalPriceWorksWithDatabase promotionalPriceWorksWithDatabase = PromotionalPriceDataSource.getInstance().getPromotionalPriceWorksWithDatabase();
+        promotionalPriceWorksWithDatabase.fillDataProductAdminEditGroup(productAdminEditGroup);
+        PromotionalPriceDataSource.getInstance().releasePromotionalPriceWorksWithDatabase(promotionalPriceWorksWithDatabase);
+    }
 
 }

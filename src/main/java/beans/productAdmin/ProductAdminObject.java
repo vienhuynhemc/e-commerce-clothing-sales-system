@@ -71,6 +71,9 @@ public class ProductAdminObject implements ObjectPageAdmin {
     //  Dối tượng sửa đơn
     private ProductAdminEditSingle productAdminEditSingle;
 
+    //  Đối tượng sửa đa
+    private ProductAdminAdd productEditGroup;
+
     public ProductAdminObject() {
     }
 
@@ -258,6 +261,14 @@ public class ProductAdminObject implements ObjectPageAdmin {
 
     public void setProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle) {
         this.productAdminEditSingle = productAdminEditSingle;
+    }
+
+    public ProductAdminAdd getProductEditGroup() {
+        return productEditGroup;
+    }
+
+    public void setProductEditGroup(ProductAdminAdd productEditGroup) {
+        this.productEditGroup = productEditGroup;
     }
 
 }

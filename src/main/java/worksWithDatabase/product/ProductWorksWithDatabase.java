@@ -142,6 +142,52 @@ public class ProductWorksWithDatabase {
 
     }
 
+    //  Phương thức thêm một sản phẩm vô csdl
+        public void editSpToDatabase(String ma_sp,String ten_sp,String ma_hsx,String ma_dm,int gioi_tinh){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE san_pham SET ten_sp = ?, ma_hsx = ?,ma_dm=?,gioi_tinh=? WHERE ma_sp = ?");
+            preparedStatement.setString(1,ten_sp);
+            preparedStatement.setString(2,ma_hsx);
+            preparedStatement.setString(3,ma_dm);
+            preparedStatement.setInt(4,gioi_tinh);
+            preparedStatement.setString(5,ma_sp);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
+
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminEditGroup){
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM san_pham WHERE ma_sp = ?");
+            preparedStatement.setString(1, productAdminEditGroup.getMa_sp());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditGroup.setTen_sp(resultSet.getString("ten_sp"));
+            ProductAdminManufacturer productAdminManufacturer = new ProductAdminManufacturer();
+            productAdminManufacturer.setId(resultSet.getString("ma_hsx"));
+            productAdminEditGroup.setHang_san_xuat(productAdminManufacturer);
+            ProductAdminCategory productAdminCategory = new ProductAdminCategory();
+            productAdminCategory.setId(resultSet.getString("ma_dm"));
+            productAdminEditGroup.setDanh_muc(productAdminCategory);
+            productAdminEditGroup.setGioi_tinh(resultSet.getInt("gioi_tinh")==0?"nu":"nam");
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+    }
 
 
 }

@@ -44,4 +44,18 @@ public class ProductInformationModel {
         productInformationWorksWithDatabase.addToDatabase(ma_sp, thong_tins);
         ProductInformationDataSource.getInstance().releaseProductInformationWorksWithDatabase(productInformationWorksWithDatabase);
     }
+
+    public List<String> getListById(java.lang.String ma_sp) {
+        ProductInformationWorksWithDatabase productInformationWorksWithDatabase = ProductInformationDataSource.getInstance().getProductInformationWorksWithDatabase();
+        List<String> result = productInformationWorksWithDatabase.getListById(ma_sp);
+        ProductInformationDataSource.getInstance().releaseProductInformationWorksWithDatabase(productInformationWorksWithDatabase);
+        return result;
+    }
+
+    public void editToDatabase(String ma_sp, List<String> thong_tins) {
+        ProductInformationWorksWithDatabase productInformationWorksWithDatabase = ProductInformationDataSource.getInstance().getProductInformationWorksWithDatabase();
+        productInformationWorksWithDatabase.editToDatabase(ma_sp, thong_tins);
+        ProductInformationDataSource.getInstance().releaseProductInformationWorksWithDatabase(productInformationWorksWithDatabase);
+    }
+
 }

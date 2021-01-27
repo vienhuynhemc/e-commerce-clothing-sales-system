@@ -37,7 +37,7 @@ public class RemoveWishlistController extends HttpServlet {
         String sex = request.getParameter("sex");
         String status = request.getParameter("status");
 
-        RemoveWishlistModel.removeWishlist(idProduct,accountCustomer.getIdUser(),color,size);
+        System.out.println(RemoveWishlistModel.removeWishlist(idProduct,accountCustomer.getIdUser(),color,size));
 
         response.sendRedirect("LoadWishlistController?page="+page+"&search=&type=ngay_tao&sex="+sex+"&status="+status);
 
