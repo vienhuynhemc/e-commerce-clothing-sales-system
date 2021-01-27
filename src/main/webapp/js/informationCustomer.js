@@ -36,6 +36,11 @@ function doimatkhau() {
     document.getElementById('changepassworddiv').style.transform = 'scaleY(1)';
     document.getElementById('changepassword').style.transform = 'scaleY(1)';
 }
+function xoataikhoan(){
+
+    document.getElementById("addCartStatus3").style.display = "block";
+    document.getElementById('changepassword3').style.transform = 'scaleY(1)';
+}
 
 function left() {
     checkSlide();

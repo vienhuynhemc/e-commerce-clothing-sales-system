@@ -731,3 +731,14 @@ p.itemphone {
 #loadKH{
     display: none !important;
 }
+button.reload {
+    width: 30px;
+    height: 32px;
+    position: absolute;
+    left: 736px !important;
+    top: 1px;
+}
+i.fa.fa-sync.font {
+    margin: 0;
+    font-size: 20px;
+}

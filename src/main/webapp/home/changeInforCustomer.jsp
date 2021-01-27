@@ -97,23 +97,40 @@
     </div>
 
 
-<!---------2 form hiển thị thông báo ----------->
-<div class="changepassword" id="changepassword">
-        <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
-        <div class="mainchangepassword">
-            <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
-            <div class="changepassworddiv" id="changepassworddiv">
-                <p>Đổi mật khẩu của bạn</p>
-                <label for="matkhaucu">Mật khẩu cũ</label>
-                <input name="oldPass" type="password" id="matkhaucu" placeholder="Nhập mật khẩu cũ">
-                <label for="matkhaumoi">Mật khẩu mới</label>
-                <input name="newPass" type="password" id="matkhaumoi" placeholder="Nhập mật khẩu mới">
-                <label for="rematkhau">Xác nhận mật khẩu mới</label>
-                <input name="rePass" type="password" id="rematkhau" placeholder="Xác nhận mật khẩu mới của bạn">
-                <button type="button" onclick="changePass()">Thay đổi mật khẩu</button>
+
+
+
+<!--cart-->
+<div class="inforcart" id="inforcart">
+    <div class="hiddencart" onclick="trovetaikhoan()"></div>
+    <div class="informationinforcart">
+        <section class="contentcart" id="contentcart">
+            <div class="cart" id="loadDetailOrder" >
+
             </div>
+        </section>
+    </div>
+</div>
+<!--End main-->
+
+
+<!--------- form hiển thị thông báo ----------->
+<div class="changepassword" id="changepassword">
+    <div class="hiddenchangepassword" onclick="gobackpassword()"></div>
+    <div class="mainchangepassword">
+        <p class="changepasswordtitle"><i class="fa fa-cogs"></i>TVT Shop</p>
+        <div class="changepassworddiv" id="changepassworddiv">
+            <p>Đổi mật khẩu của bạn</p>
+            <label for="matkhaucu">Mật khẩu cũ</label>
+            <input name="oldPass" type="password" id="matkhaucu" placeholder="Nhập mật khẩu cũ">
+            <label for="matkhaumoi">Mật khẩu mới</label>
+            <input name="newPass" type="password" id="matkhaumoi" placeholder="Nhập mật khẩu mới">
+            <label for="rematkhau">Xác nhận mật khẩu mới</label>
+            <input name="rePass" type="password" id="rematkhau" placeholder="Xác nhận mật khẩu mới của bạn">
+            <button type="button" onclick="changePass()">Thay đổi mật khẩu</button>
         </div>
     </div>
+</div>
 
 
 <div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
@@ -130,48 +147,29 @@
     </div>
 </div>
 
-<!---------2 form hiển thị thông báo ----------->
+<div id="addCartStatus3" style="display:none; z-index: 10000;position: relative">
+    <div class="changepassword2" id="changepassword3">
+        <div class="hiddenchangepassword2" onclick="gobackpassword1()"></div>
+        <div class="mainchangepassword2">
+            <p class="changepasswordtitle2"><i class="fa fa-cogs"></i>TVT Shop</p>
+            <div class="changepasswordsuccess2" id="changepasswordsuccess3">
+                <p id="changepassstatus3" class="formxoa">
 
-<!-- sử lí hiện bảng thông báo ---->
-<%--<%--%>
-<%--    //lấy request loginStatus != null thì đăng nhập thất bại--%>
+                    Bạn có chắc muốn xóa tài khoản của bạn không, việc xóa tài khoản sẽ dẫn đến
+                    tài khoản của bạn sẽ bị xóa vĩnh viễn, mọi thông tin của bạn sẽ không được
+                    lưu lại, hãy suy nghĩ kĩ bạn nhé!!
 
-<%--    String status = (String) request.getAttribute("error");--%>
-
-<%--    if (status  != null) {--%>
-
-<%--        //truyển status vào để sử lí--%>
-<%--        ErrorEditAccountCustomer editError = new ErrorEditAccountCustomer(status);--%>
-<%--%>--%>
-
-<%--<script>--%>
-
-<%--    document.getElementById("doimatkhau").onclick="doimatkhau()";--%>
-
-<%--</script>--%>
-
-<%--<%request.setCharacterEncoding("utf-8");%>--%>
-<%--<jsp:include page="../notifyErrorLogin/AccountStatus.jsp">--%>
-<%--    <jsp:param name="title" value="<%=editError.getTitle()%>"/>--%>
-<%--    <jsp:param name="content" value="<%=editError.getContent()%>"/>--%>
-<%--</jsp:include>--%>
-<%--<%--%>
-<%--    }--%>
-<%--%>--%>
-
-
-<!--cart-->
-<div class="inforcart" id="inforcart">
-    <div class="hiddencart" onclick="trovetaikhoan()"></div>
-    <div class="informationinforcart">
-        <section class="contentcart" id="contentcart">
-            <div class="cart" id="loadDetailOrder" >
-
+                </p>
+                <button onclick="gobackpassword2()">Trở về
+                </button>
+                <button class="hienxoa" onclick="removeAccount()">Vâng tôi đã suy nghĩ kĩ
+                </button>
             </div>
-        </section>
+        </div>
     </div>
 </div>
-<!--End main-->
+
+<!--------- form hiển thị thông báo ----------->
 
 <input type="hidden" name="" id="checkchange" value="0">
 
@@ -180,6 +178,10 @@
 <!-- footer -->
 <jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
 <!-- / footer -->
+
+
+
+
 
 </body>
 
@@ -217,6 +219,70 @@
 https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 
+
+
+<script>
+
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyCNKrWfzyctIJeK4XgPlU5AKR1y2hY1zA0",
+        authDomain: "ecommerce-b6c08.firebaseapp.com",
+        databaseURL: "https://ecommerce-b6c08-default-rtdb.firebaseio.com",
+        projectId: "ecommerce-b6c08",
+        storageBucket: "ecommerce-b6c08.appspot.com",
+        messagingSenderId: "390576423583",
+        appId: "1:390576423583:web:efcf73909008a68dcd18aa",
+        measurementId: "G-LR0V7PWKZN"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+
+
+</script>
+
+
+<script>
+
+    function removeAvatarAccount() {
+
+
+
+
+    }
+
+    function removeAccount(){
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+        console.log("ddsdsd")
+        $.ajax({
+            url:'RemoveAccountController',
+            dataType:'json',
+            type:'post',
+            success:function (data){
+               if (!data){
+                       $("#changepassstatus").text("Xóa tài khoản thất bại, vui lòng thực hiện sau nhé");
+                       document.getElementById("addCartStatus2").style.display = "block";
+                       document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+               }else{
+                   window.location.href = "dang-nhap";
+               }
+            },
+            error:function (){
+                $("#changepassstatus").text("Xóa tài khoản thất bại, vui lòng thực hiện sau");
+                document.getElementById("addCartStatus2").style.display = "block";
+                document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+            }
+        });
+    }
+
+</script>
+
+
+
+
 <script>
 
     $(document).ready(function (){
@@ -232,7 +298,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                 $("#loadinfocustomer").html(data);
             },
             error:function (){
-                window.location.href = "dang-xuat";
+                window.location.href = "index.jsp";
             }
         });
     }
@@ -305,6 +371,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         }else{
         document.getElementById('changepassword2').style.transform = 'scaleY(0)';
         }
+    }
+    function gobackpassword2(){
+            document.getElementById('changepassword3').style.transform = 'scaleY(0)';
     }
 </script>
 

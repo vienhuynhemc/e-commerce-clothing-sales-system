@@ -3,6 +3,7 @@
 <%@ page import="beans.product.ProductImage" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="beans.encode.ConvertPrice" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!-------------load các danh sách------------>
 <%
@@ -22,20 +23,21 @@
 
         <!-------load sản phẩm -------------->
         <%
+            int j = 0;
             for ( Product p: listProduct ) {
+
 
         %>
         <li>
             <figure>
-                <a class="aa-product-img" href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(0).getMa_mau()%>&ma_size=<%=p.getListSize().get(0).getMa_size()%>&type=&page=1">
+<%--                <a class="aa-product-img" href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(j).getMa_mau()%>&ma_size=<%=p.getListSize().get(j).getMa_size()%>&type=&page=1">--%>
 
-
+                    <a class="aa-product-img" href="">
                     <!-------Load hình đầu tiên ------->
                     <img
                             src="<%=p.getListIMG().get(0).getLink_hinh()%>"
                             alt="polo shirt img">
                     <!-------Load hình đầu tiên ------->
-
 
                 </a>
 
@@ -251,8 +253,8 @@
                                             <a href="">( 14 người đánh giá )</a>
                                             <div class="istock">
                                                 <i class="fa fa-check-circle-o"></i>
-                                                <span><%
-                                                if(p.getSo_luong_con_lai() > 0){
+                                                <span>
+                                                    <%if(p.getSo_luong_con_lai() > 0){
                                                     %>
                                                     Còn hàng ( <%=p.getSo_luong_con_lai()%> )
                                                <% }else{%>
@@ -345,7 +347,7 @@
             </div>
             <!-- /.modal-dialog -->
         </div><!-- / Xem nhanh modal -->
-        <% }%>
+        <% j++; }%>
 
     </ul>
 

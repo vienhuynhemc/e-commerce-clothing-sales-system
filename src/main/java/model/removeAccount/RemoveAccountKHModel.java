@@ -15,12 +15,16 @@ public class RemoveAccountKHModel {
         }
         return removeAccountModel;
     }
-    public void removeAccount(ArrayList<String> list){
+    public int removeAccount(ArrayList<String> list){
 
         RemoveAccountKHDAO removeAccountDAO = RemoveAccountKHSource.getInstance().getRemoveAccount();
+        int result = 0;
         for (String acc: list ) {
-            removeAccountDAO.removeAccount(acc);
+            if (removeAccountDAO.removeAccount(acc)){
+                result++;
+            }
         }
         RemoveAccountKHSource.getInstance().releaseRemoveAccount(removeAccountDAO);
+        return result;
     }
 }

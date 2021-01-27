@@ -78,7 +78,6 @@
         <servlet-name>PageLoginController</servlet-name>
         <url-pattern>/dang-nhap</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>LogOutController</servlet-name>
         <servlet-class>controllerIndex.logOut.LogOutController</servlet-class>

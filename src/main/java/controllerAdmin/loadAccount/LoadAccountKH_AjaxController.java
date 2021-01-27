@@ -39,7 +39,6 @@ public class LoadAccountKH_AjaxController extends HttpServlet {
         //Laod số trang
         request.setAttribute("numberPage",numberPage);
 
-
         //load tổng sô khách hàng
         int sum = loadKHDAO.getSumCustomer();
         request.setAttribute("sumCustomer",sum);
@@ -47,9 +46,9 @@ public class LoadAccountKH_AjaxController extends HttpServlet {
         //load danh sách khách hàng
         request.setAttribute("listKH",listKH);
 
-        System.out.println(numberPage);
-        System.out.println(sum);
-        System.out.println(listKH);
+//        System.out.println(numberPage);
+//        System.out.println(sum);
+//        System.out.println(listKH);
 
         request.getRequestDispatcher("admin/ajax/LoadKHAjax.jsp").forward(request,response);
 

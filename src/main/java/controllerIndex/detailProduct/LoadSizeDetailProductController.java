@@ -35,7 +35,5 @@ public class LoadSizeDetailProductController extends HttpServlet {
         request.getRequestDispatcher("LoadDetailProductController?idProduct="+id+"&type="+type+"&page="+page).forward(request,response);
 
 
-
-
     }
 }

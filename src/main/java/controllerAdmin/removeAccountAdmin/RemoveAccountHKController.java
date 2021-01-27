@@ -1,6 +1,7 @@
 package controllerAdmin.removeAccountAdmin;
 
 import beans.account.ConvertArrayString;
+import com.google.gson.Gson;
 import model.removeAccount.RemoveAccountKHModel;
 import worksWithDatabase.removeAccount.RemoveAccountKHDAO;
 
@@ -19,15 +20,25 @@ public class RemoveAccountHKController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String list = request.getParameter("list");
 
         ArrayList<String> listRemove = new ArrayList<String>();
         listRemove = ConvertArrayString.convertString(list);
 
-       // System.out.println(listRemove);
+        System.out.println(listRemove);
 
         RemoveAccountKHModel removeAccountKHModel = RemoveAccountKHModel.getInstance();
 
-        removeAccountKHModel.removeAccount(listRemove);
+        int result = removeAccountKHModel.removeAccount(listRemove);
+
+        String json = new Gson().toJson(result);
+
+        System.out.println(json);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+
     }
 }

@@ -194,7 +194,7 @@
                         </section>
                         <!-- cart box -->
                         <div class="aa-cartbox" id="cart_hover">
-                            <a class="aa-cart-link" href="ChessSessionCartController">
+                            <a class="aa-cart-link" href="gio-hang">
                                 <span class="fa fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title"><%=lang.get("27")%></span>
                                 <span class="aa-cart-notify" id="soluonggiohang">0</span>

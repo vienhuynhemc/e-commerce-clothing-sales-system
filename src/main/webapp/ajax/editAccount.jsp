@@ -2,6 +2,7 @@
 <%@ page import="model.language.ChangInfoCustomerLanguageModel" %>
 <%@ page import="beans.account.AccountCustomer" %>
 <%@ page import="beans.DateTime" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
 <!-------------------------------------- lấy session chứa tài khoản ------------------------------>
@@ -94,7 +95,7 @@
                 <img name="avatar" id="avatar2" src="<%=accountCustomer.getAvatar()%>" alt="">
             </div>
             <button type="button" onclick="document.getElementById('fileInput').click()"><%=lang.get("2")%></button>
-            <button type="button" onclick="removeAvatar()"><%=lang.get("3")%></button>
+            <button type="button" onclick="removeAvatarAccount()"><%=lang.get("3")%></button>
         </div>
         <div class="linestatus"></div>
         <div class="statusdivinput">
@@ -186,7 +187,7 @@
                 <p><%=lang.get("23")%></p>
                 <p><%=lang.get("24")%></p>
             </div>
-            <p><%=lang.get("23")%>...</p>
+            <p onclick="xoataikhoan()"><%=lang.get("23")%>...</p>
         </div>
 
         <div class="linestatus"></div>
@@ -253,7 +254,6 @@
 
         var ten_day_du = $("#ten_day_du").val();
         var ten_hien_thi = $("#ten_hien_thi").val();
-        var hinh_anh = $("#hinhanh").val();
 
         $.ajax({
             url:'EditAccountController',
@@ -262,7 +262,6 @@
             data:{
                 displayName:ten_hien_thi,
                 fullName:ten_day_du,
-                avatar:hinh_anh
             },
             success:function (data){
                 if (!data){
