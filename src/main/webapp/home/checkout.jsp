@@ -327,7 +327,6 @@
             error: function (e) {
                 alert("loi load sp");
                 console.log(e);
-                // window.location.href = "index.jsp";
             }
         });
     }

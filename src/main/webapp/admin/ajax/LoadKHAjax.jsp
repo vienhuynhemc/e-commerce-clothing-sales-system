@@ -21,8 +21,9 @@
 </div>
 
 
- <%
+ <% int count = 0;
 for ( AccountCustomer k : list  ) {
+    count ++;
  %>
 
 <div class="item">
@@ -100,97 +101,116 @@ for ( AccountCustomer k : list  ) {
                 <i class="fa fa-trash"></i>
                 <input type="hidden" value="<%=k.getIdUser()%>">
                 Xóa
-
             </button>
         </div>
     </div>
 
 
-        <div class="div11">
-            <h3>Hồ sơ của bạn</h3>
-            <input id="fileInput1" type="file" style="display:none;"
-                   onchange="loadIMG(event)"/>
-            <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
-                <div>
-                    <img id="avataredit" src="<%=k.getAvatar()%>" alt="">
-                    <input id="loadAvatar" type="hidden" name="avatar" value="<%=k.getAvatar()%>" >
+
+            <form action="EditAccountKHController" type="post">
+                <div class="div11">
+
+                    <h3>Hồ sơ của bạn</h3>
+                    <input id="fileInput1" type="file" style="display:none;"
+                           onchange="loadIMG(event)"/>
+                    <div class="div11daidien" onclick="document.getElementById('fileInput1').click()">
+                        <div>
+                            <img id="avataredit" src="<%=k.getAvatar()%>" alt="">
+                            <input id="loadAvatar" type="hidden" name="avatar" value="<%=k.getAvatar()%>" >
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="document.getElementById('fileInput1').click()">Thay đổi
+                        ảnh đại diện
+                        mới
+                    </button>
+                    <button type="button" onclick="removeIMG2()">Xóa ảnh đại diện</button>
                 </div>
-            </div>
+                <div class="div12">
+                    <h3>Điền thông tin cá nhân</h3>
+                    <div class="linediv12"></div>
+                    <input type="hidden" name="userName" value="<%=k.getIdUser()%>">
+                    <div class="div12input">
+                        <label for="">* Họ và tên</label>
+                        <input id="editfullname_<%=count%>" name="fullName" type="text" placeholder="Nhập họ và tên ở đây"
+                               value="<%=k.getFullName()%>" >
+                    </div>
+                    <div class="div12input">
+                        <label for="">Tên hiển thị</label>
+                        <input id="editdisplayname_<%=count%>" name="displayName" type="text" placeholder="Nhập tên hiển thị ở đây"
+                               value="<%=k.getDisplayName()%>">
+                    </div>
+                    <div class="div12input">
+                        <label for="">* Email</label>
+                        <input name="" type="text" placeholder="Nhập email ở đây"
+                               value="<%=k.getEmail()%>" disabled>
+                    </div>
+                    <div class="div12input">
+                        <label for="">* Số điện thoại</label>
+                        <input name="phone2" type="text" placeholder="Nhập số điện thoại ở đây"
+                               value="<%=k.getPhone()%>"
+                               disabled>
+                    </div>
+                    <div class="linediv12"></div>
+                    <div class="trangthai">
+                        <div class="div12inputlv2">
+                            <label for="">Trạng thái kích hoạt</label>
+                            <select name="activeStatus" id="editttkh_<%=count%>">
 
-            <button type="button" onclick="document.getElementById('fileInput1').click()">Thay đổi
-                ảnh đại diện
-                mới
-            </button>
-            <button type="button" onclick="removeIMG2()">Xóa ảnh đại diện</button>
+                                <% if (k.getActiveStatus() == 1) {%>
 
-        <div class="div12">
-            <h3>Điền thông tin cá nhân</h3>
-            <div class="linediv12"></div>
-            <div class="div12input">
-                <label for="">* Họ và tên</label>
-                <input name="fullName" type="text" placeholder="Nhập họ và tên ở đây"
-                       value="<%=k.getFullName()%>">
-            </div>
-            <div class="div12input">
-                <label for="">Tên hiển thị</label>
-                <input name="displayName" type="text" placeholder="Nhập tên hiển thị ở đây"
-                       value="<%=k.getDisplayName()%>">
-            </div>
-            <div class="div12input">
-                <label for="">* Email</label>
-                <input name="email" type="text" placeholder="Nhập email ở đây"
-                       value="<%=k.getEmail()%>" disabled>
-            </div>
-            <div class="div12input">
-                <label for="">* Số điện thoại</label>
-                <input name="phone" type="text" placeholder="Nhập số điện thoại ở đây"
-                       value="<%=k.getPhone()%>"
-                       disabled>
-            </div>
-            <div class="linediv12"></div>
-            <div class="trangthai">
-                <div class="div12inputlv2">
-                    <label for="">Trạng thái kích hoạt</label>
-                    <select name="activeStatus" id="">
-                        <option value="1">Đã kích hoạt</option>
-                        <option value="0">Chưa kích hoạt</option>
-                    </select>
+                                <option value="1" selected>Đã kích hoạt</option>
+                                <option value="0" >Chưa kích hoạt</option>
+                                <%}else {%>
+                                <option value="0" selected>Chưa kích hoạt</option>
+                                <option value="1" >Đã kích hoạt</option>
+                                <%}%>
+
+                            </select>
+                        </div>
+                        <div class="div12inputlv2">
+                            <label for="">Trạng thái đánh giá</label>
+                            <select name="activeEvaluate" id="editttdg_<%=count%>">
+
+                                <% if (k.getActiveEvaluate() == 1) {%>
+                                <option value="1" selected>Cho phép đánh giá</option>
+                                <option value="0">Cấm đánh giá</option>
+                                <%}else {%>
+                                <option value="0" selected>Cấm đánh giá</option>
+                                <option value="1">Cho phép đánh giá</option>
+                                <%}%>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="linediv12"></div>
+                    <div class="div12input">
+                        <label for="">* Tài khoản</label>
+                        <input name="tk2" type="text" placeholder="Nhập tên tài khoản ở đây"
+                               value="<%=k.getUserName()%>"
+                               disabled>
+                    </div>
+                    <div class="div12input">
+                        <label for="">* Mật khẩu</label>
+                        <input name="passWord" id="editpass_<%=count%>" type="password" placeholder="Nhập mật khẩu ở đây"
+                        >
+                    </div>
+<%--                    <div class="div12input">--%>
+<%--                        <label for="editrepass_<%=count%>">* Xác nhận</label>--%>
+<%--                        <input name="editrepass_<%=count%>" id="editrepass_<%=count%>" type="password" placeholder="Xác nhận mật khẩu ở đây">--%>
+<%--                    </div>--%>
                 </div>
-                <div class="div12inputlv2">
-                    <label for="">Trạng thái đánh giá</label>
-                    <select name="activeEvaluate" id="">
-                        <option value="1">Cho phép đánh giá</option>
-                        <option value="0">Cấm đánh giá</option>
-                    </select>
+                <div class="div13">
+                    <button type="submit"  ><i class="fa fa-save"></i>Lưu</button>
+                    <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
+                        lý
+                    </button>
                 </div>
-            </div>
-            <div class="linediv12"></div>
-            <div class="div12input">
-                <label for="">* Tài khoản</label>
-                <input namei="userName" type="text" placeholder="Nhập tên tài khoản ở đây"
-                       value="<%=k.getUserName()%>"
-                       disabled>
-            </div>
-            <div class="div12input">
-                <label for="">* Mật khẩu</label>
-                <input name="passWord" type="password" placeholder="Nhập mật khẩu ở đây"
-                       value="">
-            </div>
-            <div class="div12input">
-                <label for="">* Xác nhận</label>
-                <input name="rePassWord" type="password" placeholder="Xác nhận mật khẩu ở đây"
-                       value="">
-            </div>
-        </div>
+            </form>
 
 
-        <div class="div13">
-            <button type="submit"><i class="fa fa-save"></i>Lưu</button>
-            <button type="button" onclick="trove()"><i class="fa fa-arrow-left"></i> Trở về quản
-                lý
-            </button>
-        </div>
-    </div>
+
 
 </div>
 
@@ -235,6 +255,3 @@ for ( AccountCustomer k : list  ) {
     <button type="button" id="<%=nowpage+1%>" onclick="changePage(this)" ><i class="fa fa-caret-right"></i></button>
         <%}%>
 </div>
-<script>
-
-</script>

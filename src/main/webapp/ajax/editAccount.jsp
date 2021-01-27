@@ -174,7 +174,7 @@
             <p><%=lang.get("19")%></p>
             <p><%=lang.get("20")%></p>
             <div>
-                <div><img src="../img/google.jpg" alt="">
+                <div><img src="img/google.jpg" alt="">
                     <p><%=lang.get("21")%></p>
                 </div>
                 <button><%=lang.get("22")%></button>

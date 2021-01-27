@@ -125,8 +125,8 @@
 
         <div class="historyright">
             <div class="historyrightheader">
-                <p>Đơn hàng #DH402</p>
-                <p><i class="fa fa-circle"></i>Đang xử lý 3/5</p>
+                <p>Đơn hàng của bạn </p>
+<%--                <p><i class="fa fa-circle"></i>Đang xử lý 3/5</p>--%>
             </div>
             <div class="divhinh">
                 <div class="listhinh" id="listhinh">
@@ -142,14 +142,6 @@
             <span class="fa fa-chevron-right scrollright" onclick="right()"></span>
 
             <div class="tongketright">
-<%--                <div>--%>
-<%--                    <p>Tổng tiền sản phẩm:</p>--%>
-<%--                    <p id="tongtien"></p>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <p>Phí vận chuyển:</p>--%>
-<%--                    <p >70,000 VND</p>--%>
-<%--                </div>--%>
                 <div class="line"></div>
                 <div>
                     <p>Tổng tiền:</p>

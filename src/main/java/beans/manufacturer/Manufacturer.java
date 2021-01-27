@@ -34,6 +34,9 @@ public class Manufacturer {
         this.numberOfProduct = numberOfProduct;
     }
 
+    public Manufacturer() {
+    }
+
     //  Getter and setter
     public String getManufacturerId() {
         return manufacturerId;
@@ -83,4 +86,11 @@ public class Manufacturer {
         this.numberOfProduct = numberOfProduct;
     }
 
+    @Override
+    public String toString() {
+        return "Manufacturer{" +
+                "manufacturerId='" + manufacturerId + '\'' +
+                ", manufacturerName='" + manufacturerName + "\n";
+
+    }
 }

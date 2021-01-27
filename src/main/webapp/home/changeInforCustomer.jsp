@@ -176,7 +176,9 @@
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 <!-- / footer -->
 
 
@@ -303,6 +305,7 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         });
     }
 
+
     function changePass(){
         var mat_khau_cu = $('#matkhaucu').val();
 
@@ -338,16 +341,17 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                 data:{
                     mat_khau_cu:mat_khau_cu,
                     mat_khau_moi:mat_khau_moi
+
                 },
                 success:function (data){
 
                     if(data){
-                        $("#changepassstatus").text("Thay đổi mật khẩu thành công!");
+                        $("#changepassstatus").text("Thay đổi thông tin thành công!");
                         document.getElementById("addCartStatus2").style.display = "block";
                         document.getElementById('changepassword2').style.transform = 'scaleY(1)';
                         $('#checkchange').prop("value",1);
                     }else{
-                        $("#changepassstatus").text("Mật khẩu cũ không đúng, vui lòng nhập lại!");
+                        $("#changepassstatus").text("Thay đổi thông tin thất bại!");
                         document.getElementById("addCartStatus2").style.display = "block";
                         document.getElementById('changepassword2').style.transform = 'scaleY(1)';
                     }
@@ -360,6 +364,9 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
             })
         }
     }
+
+
+
     function gobackpassword() {
 
             document.getElementById('changepassword').style.transform = 'scaleY(0)';

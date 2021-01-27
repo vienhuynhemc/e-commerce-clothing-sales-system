@@ -11,39 +11,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../js/Truong/bootstrap/bootstrap.css">
-    <script type="text/javascript" src="../js/Truong/jquery/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../js/Truong/bootstrap/bootstrap.js"></script>
-    <link rel="stylesheet" href="../css/detailsProduct.css">
-    <link rel="stylesheet" href="../js/Truong/fonta/css/all.css">
-    <script src="../js/detailsProduct.js"></script>
-    <link rel="stylesheet" href="../css/style-starter.css">
+    <link rel="stylesheet" type="text/css" href="js/Truong/bootstrap/bootstrap.css">
+    <script type="text/javascript" src="js/Truong/jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/Truong/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/detailsProduct.css">
+    <link rel="stylesheet" href="js/Truong/fonta/css/all.css">
+    <script src="js/detailsProduct.js"></script>
+    <link rel="stylesheet" href="css/style-starter.css">
     <title>TVTShop | Liên hệ</title>
 
 
     <!-- Font awesome -->
-    <link href="../css/font-awesome.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"> -->
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="../css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <link href="css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
-    <link rel="stylesheet" type="text/css" href="../css/jquery.simpleLens.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.simpleLens.css">
     <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="../css/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="../css/nouislider.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
     <!-- Theme color -->
-    <link id="switcher" href="../css/theme-color/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
     <!-- Top Slider CSS -->
-    <link href="../css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
 
     <!-- Main style sheet -->
-    <link href="../css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/banner.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/banner.css">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -72,13 +72,21 @@
 <body>
 
 <!-- wpf loader Two -->
-<jsp:include page="../WEB-INF/Share/_LayoutLoadAndScroll.jsp"></jsp:include>
+<%--<jsp:include page="../share/_LayoutLoadAndScroll.jsp"></jsp:include>--%>
+<!-- END SCROLL TOP BUTTON -->
 
-<jsp:include page="../WEB-INF/Share/_LayoutHeader.jsp"></jsp:include>
+<!-- Start header section -->
+<jsp:include page="../share/_LayoutHeader.jsp">
+    <jsp:param name="linkMainPage" value="ChangeInfoLanguageController"/>
+    <jsp:param name="levelPage" value=""/>
+    <jsp:param name="activeselect" value="index.jsp"/>
+</jsp:include>
+<!-- / header section -->
 
 <%request.setCharacterEncoding("utf-8");%>
-<jsp:include page="../WEB-INF/Share/_LayoutBanner.jsp">
-    <jsp:param name="title" value="Liên hệ"/>
+<jsp:include page="../share/_LayoutBanner.jsp">
+    <jsp:param name="titleVietnamese" value="Tương tác"/>
+    <jsp:param name="titleEnglish" value="Contact"/>
 </jsp:include>
 <!-- / catg header banner section -->
 
@@ -145,11 +153,11 @@
     </div>
 </section>
 
-<!-- footer -->
-<jsp:include page="../WEB-INF/Share/_LayoutChatBox.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
+<!-- / footer -->
 <!-- / footer -->
 <!-- / footer -->
 

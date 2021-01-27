@@ -407,7 +407,9 @@
 <jsp:include page="../share/_LayoutChatBox.jsp"></jsp:include>
 
 <!-- footer -->
-<jsp:include page="../share/_LayoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 <!-- / footer -->
 
 </body>

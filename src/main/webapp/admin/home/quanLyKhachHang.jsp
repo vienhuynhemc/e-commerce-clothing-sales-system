@@ -251,9 +251,6 @@
             </div>
         </div>
 
-
-
-<%--        <form action="them-tai-khoan-khach-hang" method="post">--%>
             <div id="div1">
                 <div>
                     <div class="div11">
@@ -329,51 +326,26 @@
                     </div>
                 </div>
             </div>
-<%--        </form>--%>
-
-
-
-<!---------------------------------------check--------------------------->
-<%--        <%--%>
-<%--        //lấy status ra--%>
-<%--            if (request.getAttribute("status") != null) {--%>
-
-<%--                String status = (String) request.getAttribute("status");--%>
-
-<%--                //truyển status vào để sử lí--%>
-<%--                ErrorAddAccount errorAccount = new ErrorAddAccount(status);--%>
-
-<%--        %>--%>
-<%--        <%request.setCharacterEncoding("utf-8");%>--%>
-
-<%--        <!--lúc request lại thì về lại cái form-->--%>
-<%--        <script>--%>
-<%--            document.getElementById("div1").style.display = "flex";--%>
-<%--        document.getElementById("div2").style.display = "none";--%>
-<%--        document.getElementById("div3").style.display = "none";--%>
-<%--        </script>--%>
-
-
-<%--        <jsp:include page="../NotifyErrorAccount/AccountStatus.jsp">--%>
-<%--            <jsp:param name="title" value="<%=errorAccount.getTitle()%>"/>--%>
-<%--            <jsp:param name="content" value="<%=errorAccount.getContent()%>"/>--%>
-<%--        </jsp:include>--%>
-
-<%--        <%--%>
-<%--            }--%>
-<%--        %>--%>
 
 
         <div id="div3">
+
         </div>
     </div>
 
     <!-- Quan tâm nhiêu đây thôi-->
 </div>
 
+<form>
+
+
+
+</form>
+
 <!-----thẻ input trung gian lấy và giữ giá trị------->
 <input type="hidden" name="" id="page" value="1">
 <input type="hidden" name="" id="addavatar" value="img/user.jpg">
+<input type="hidden" name="" id="thongbaoedit" value="<%=request.getAttribute("thongbao")%>" >
 
 <!--------form hiển thị thông báo-------->
 <div id="addCartStatus2" style="display:none; z-index: 100000;position: relative">
@@ -555,7 +527,6 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
                     phone:phone,
                     userName:username,
                     passWord:pass,
-                    rePassWord:repass,
                     avatar:avatar,
                     ttdg:ttdg,
                     ttkh:ttkh
@@ -594,6 +565,77 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
         }
 
 
+
+
+    }
+
+    function changeInfo(event,c){
+
+        var ma_kh = $(event).attr("id");
+        var ten_day_du = document.getElementById("editfullname_" + c).value;
+        //var ten_day_du = $("#editfullname_" + c).val();
+        var ten_hien_thi = $("#editdisplayname_" + c).val();
+        var ttdg = $("#editttdg_" + c).val();
+        var ttkh = $("#editttkh_" + c).val();
+        var pass = $("#editpass_" + c).val();
+        var repass = $("#editrepass_" + c).val();
+
+        // console.log(ma_kh);
+        // console.log(ten_day_du);
+        // console.log(ten_hien_thi);
+        // console.log(ttdg);
+        // console.log(ttkh);
+        // console.log(pass);
+        // console.log(repass);
+        // console.log(c)
+
+
+        document.getElementById("addCartStatus2").style.display = "none";
+        document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+
+        if (ten_day_du == "" || ten_hien_thi == "" || ttdg == "" || ttkh =="" ||
+            pass == "" || repass == ""){
+
+            $("#changepassstatus").text("Vui lòng nhập đầy đủ thông tin để thêm khách hàng mới");
+
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+
+        }else if (pass != repass) {
+            $("#changepassstatus").text("Mật khẩu xác nhận không khớp!");
+
+            document.getElementById("addCartStatus2").style.display = "block";
+            document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+        }else{
+            $.ajax({
+                url:'EditAccountController',
+                dataType:'json',
+                type:'post',
+                data:{
+                    userName:ma_kh,
+                    displayName:ten_hien_thi,
+                    fullName:ten_day_du,
+                    passWord:pass,
+                    activeStatus:ttkh,
+                    activeEvaluate:ttdg
+
+                },
+                success:function (data){
+                    if(data){
+                        $("#changepassstatus").text("Thay đổi thông tin khách hàng thành công!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                        $('#checkchange').prop("value",1);
+                    }else{
+                        $("#changepassstatus").text("Thay đổi thông tin khách hàng thất bại!");
+                        document.getElementById("addCartStatus2").style.display = "block";
+                        document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+                    }},
+                error:function (){
+                    window.location.href = "SendRedirectPageKH";
+                }
+            });
+        }
 
 
     }
@@ -707,6 +749,25 @@ https://firebase.google.com/docs/web/setup#available-libraries -->
 
   $(document).ready(function (){
       loadKH();
+
+      var check = $("#thongbaoedit").val();
+      console.log(check);
+      document.getElementById("addCartStatus2").style.display = "none";
+      document.getElementById('changepassword2').style.transform = 'scaleY(0)';
+      if (check != "null"){
+          if (check == "true"){
+              $("#changepassstatus").text("Thay đổi thông tin khách hàng thành công!");
+              document.getElementById("addCartStatus2").style.display = "block";
+              document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+          }else{
+              $("#changepassstatus").text("Thay đổi thông tin khách hàng thấp bại!");
+              document.getElementById("addCartStatus2").style.display = "block";
+              document.getElementById('changepassword2').style.transform = 'scaleY(1)';
+          }
+      }
+
+
+
   })
 
     function gobackpassword2(){

@@ -179,11 +179,11 @@
                                                 <li><a href="san-pham?type=Nu">
                                                     <%=lang.get("16")%></a>
                                                 </li>
-                                                <li><a href="home/contact.html"><%=lang.get("21")%>
+                                                <li><a href="<%=request.getParameter("levelPage")%>LinkContact"><%=lang.get("21")%>
                                                 </a></li>
-                                                <li><a href="home/about_US.html"><%=lang.get("22")%>
+                                                <li><a href="<%=request.getParameter("levelPage")%>LinkAbout"><%=lang.get("22")%>
                                                 </a></li>
-                                                <li><a href="admin/home/login.html"><%=lang.get("23")%>
+                                                <li><a href="<%=request.getParameter("levelPage")%>admin/home/login.jsp"><%=lang.get("23")%>
                                                 </a></li>
                                             </ul>
                                         </div>
