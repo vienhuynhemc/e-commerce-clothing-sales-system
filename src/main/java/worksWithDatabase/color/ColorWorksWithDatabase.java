@@ -3,6 +3,7 @@ package worksWithDatabase.color;
 import beans.productAdmin.ProductAdmin;
 import beans.productAdmin.ProductAdminColor;
 import beans.productAdmin.ProductAdminColorAdd;
+import beans.productAdmin.ProductAdminEditSingle;
 import connectionDatabase.DataSource;
 
 import javax.xml.crypto.Data;
@@ -133,6 +134,26 @@ public class ColorWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
         return productAdminColorAdd;
+
+    }
+
+    public void fillNameColorForProductAdminSingle(ProductAdminEditSingle productAdminEditSingle){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_mau FROM mau WHERE ma_mau = ?");
+            preparedStatement.setString(1,productAdminEditSingle.getMa_mau());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            productAdminEditSingle.setTen_mau(resultSet.getString("ten_mau"));
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
 
     }
 

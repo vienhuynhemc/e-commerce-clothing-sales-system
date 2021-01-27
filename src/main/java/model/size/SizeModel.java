@@ -2,6 +2,7 @@ package model.size;
 
 import beans.productAdmin.ProductAdmin;
 import beans.productAdmin.ProductAdminAdd;
+import beans.productAdmin.ProductAdminEditSingle;
 import beans.productAdmin.ProductAdminSizeAdd;
 import worksWithDatabase.size.SizeDataSource;
 import worksWithDatabase.size.SizeWorksWithDatabase;
@@ -36,6 +37,12 @@ public class SizeModel {
         ProductAdminSizeAdd productAdminAdd = sizeWorksWithDatabase.getProductAdminSizeAddById(id);
         SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
         return productAdminAdd;
+    }
+
+    public void fillNameSizeToProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
+        SizeWorksWithDatabase sizeWorksWithDatabase = SizeDataSource.getInstance().getSizeWorksWithDatabase();
+        sizeWorksWithDatabase.fillNameSizeToProductAdminEditSingle(productAdminEditSingle);
+        SizeDataSource.getInstance().releaseSizeWorksWithDatabase(sizeWorksWithDatabase);
     }
 
 }

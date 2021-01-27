@@ -4,6 +4,7 @@ import beans.ObjectPageAdmin;
 import beans.address.Commune;
 import beans.address.District;
 import beans.address.Provincial;
+import beans.jbCrypt.BCrypt;
 import beans.loginAdmin.*;
 import model.address.AddressModel;
 import model.commune.CommuneModel;

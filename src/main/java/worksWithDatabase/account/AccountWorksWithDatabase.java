@@ -2,6 +2,7 @@ package worksWithDatabase.account;
 
 import beans.DateTime;
 import beans.emailNotification.EmailNotification;
+import beans.jbCrypt.BCrypt;
 import beans.loginAdmin.AccountStaffAdmin;
 import beans.ringNotification.RingNotification;
 import connectionDatabase.DataSource;
@@ -64,14 +65,12 @@ public class AccountWorksWithDatabase {
 
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT mat_khau FROM tai_khoan WHERE tai_khoan = ? AND mat_khau = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT mat_khau FROM tai_khoan WHERE tai_khoan = ? ");
             preparedStatement.setString(1,tai_khoan);
-            preparedStatement.setString(2,mat_khau);
-
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) result = true;
-            else result = false;
-
+            resultSet.next();
+            String password = resultSet.getString("mat_khau");
+            result = BCrypt.checkpw(mat_khau,password);
             resultSet.close();
             preparedStatement.close();
 
@@ -111,7 +110,7 @@ public class AccountWorksWithDatabase {
             accountStaffAdmin.setFullName(resultset.getString("ten_day_du"));
             accountStaffAdmin.setEmail(resultset.getString("email"));
             accountStaffAdmin.setPhoneNumber(resultset.getString("so_dien_thoai"));
-            accountStaffAdmin.setPassword(resultset.getString("mat_khau"));
+            accountStaffAdmin.setPassword(resultset.getString("mat_khau_string"));
 
             resultset.close();
             preparedStatement.close();
@@ -202,6 +201,10 @@ public class AccountWorksWithDatabase {
         try {
 
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau = ? WHERE email = ?");
+            preparedStatement.setString(1,BCrypt.hashpw(mat_khau,BCrypt.gensalt()));
+            preparedStatement.setString(2,email);
+            preparedStatement.executeUpdate();
+           preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau_string = ? WHERE email = ?");
             preparedStatement.setString(1,mat_khau);
             preparedStatement.setString(2,email);
             preparedStatement.executeUpdate();
@@ -287,6 +290,10 @@ public class AccountWorksWithDatabase {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau = ? WHERE ma_tai_khoan = ?");
+            preparedStatement.setString(1,BCrypt.hashpw(mat_khau,BCrypt.gensalt()));
+            preparedStatement.setString(2,ma_tai_khoan);
+            preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement("UPDATE tai_khoan SET mat_khau_string = ? WHERE ma_tai_khoan = ?");
             preparedStatement.setString(1,mat_khau);
             preparedStatement.setString(2,ma_tai_khoan);
             preparedStatement.executeUpdate();

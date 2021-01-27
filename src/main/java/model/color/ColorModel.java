@@ -2,6 +2,7 @@ package model.color;
 
 import beans.productAdmin.ProductAdmin;
 import beans.productAdmin.ProductAdminColorAdd;
+import beans.productAdmin.ProductAdminEditSingle;
 import worksWithDatabase.color.ColorDataSource;
 import worksWithDatabase.color.ColorWorksWithDatabase;
 
@@ -44,12 +45,19 @@ public class ColorModel {
         ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
         return result;
     }
+
     //  Phuowng thuc tra ve productadmincoloradd
-    public ProductAdminColorAdd getProductAdminColorAddById(String ma_mau){
+    public ProductAdminColorAdd getProductAdminColorAddById(String ma_mau) {
         ColorWorksWithDatabase colorWorksWithDatabase = ColorDataSource.getInstance().getColorWorksWithDatabase();
         ProductAdminColorAdd result = colorWorksWithDatabase.getProductAdminColorAddById(ma_mau);
         ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
         return result;
+    }
+
+    public void fillNameColorForProductAdminSingle(ProductAdminEditSingle productAdminEditSingle) {
+        ColorWorksWithDatabase colorWorksWithDatabase = ColorDataSource.getInstance().getColorWorksWithDatabase();
+        colorWorksWithDatabase.fillNameColorForProductAdminSingle(productAdminEditSingle);
+        ColorDataSource.getInstance().releaseColorWorksWithDatabase(colorWorksWithDatabase);
     }
 
 

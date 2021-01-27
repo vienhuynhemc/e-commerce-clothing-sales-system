@@ -1,9 +1,6 @@
 package worksWithDatabase.size;
 
-import beans.productAdmin.ProductAdmin;
-import beans.productAdmin.ProductAdminColor;
-import beans.productAdmin.ProductAdminSize;
-import beans.productAdmin.ProductAdminSizeAdd;
+import beans.productAdmin.*;
 import connectionDatabase.DataSource;
 
 import javax.xml.crypto.Data;
@@ -95,6 +92,28 @@ public class SizeWorksWithDatabase {
 
         DataSource.getInstance().releaseConnection(connection);
         return productAdminSizeAdd;
+
+    }
+
+    public void fillNameSizeToProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
+
+        Connection connection = DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ten_size FROM size WHERE ma_size = ?");
+            for(ProductAdminSizeAdd productAdminSizeAdd : productAdminEditSingle.getList_size()){
+                preparedStatement.setString(1,productAdminSizeAdd.getId());
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                productAdminSizeAdd.setName(resultSet.getString("ten_size"));
+                resultSet.close();
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
 
     }
 
