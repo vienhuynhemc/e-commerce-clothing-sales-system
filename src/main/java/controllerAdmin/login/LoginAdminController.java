@@ -4,13 +4,13 @@ import beans.ObjectPageAdmin;
 import beans.address.Commune;
 import beans.address.District;
 import beans.address.Provincial;
-import beans.jbCrypt.BCrypt;
 import beans.loginAdmin.*;
 import model.address.AddressModel;
 import model.commune.CommuneModel;
 import model.district.DistrictModel;
 import model.loginAdmin.LoginAdminModel;
 import model.provincial.ProvincialModel;
+import model.reCAPTCHA.ReCAPTCHAModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,16 +58,24 @@ public class LoginAdminController extends HttpServlet {
                 loginAdminObject.setNotifyAccount(true);
                 loginAdminObject.setContent("Tài khoản của bạn đã bị vô hiệu hóa");
             } else {
-
-                //  Tới đây thì tài khoản của bạn đã oke rồi, kiểm tra mật khẩu thôi nào
-                boolean isValidPassword = LoginAdminModel.getInstance().isValidPassword(tai_khoan, mat_khau);
-
-                //  Nếu không đúng mật khẩu thì lưu lại tài khoản
-                if (!isValidPassword) {
+                String captcha = request.getParameter("g-recaptcha-response");
+                System.out.println(captcha);
+                if (!ReCAPTCHAModel.getInstance().verify(captcha)) {
                     notify = true;
                     loginAdminObject.setNotifyPassword(true);
                     loginAdminObject.setAccount(tai_khoan);
-                    loginAdminObject.setContent("Bạn nhập sai mật khẩu");
+                    loginAdminObject.setContent("Bạn nhập chưa check capcha");
+                } else {
+                    //  Tới đây thì tài khoản của bạn đã oke rồi, kiểm tra mật khẩu thôi nào
+                    boolean isValidPassword = LoginAdminModel.getInstance().isValidPassword(tai_khoan, mat_khau);
+
+                    //  Nếu không đúng mật khẩu thì lưu lại tài khoản
+                    if (!isValidPassword) {
+                        notify = true;
+                        loginAdminObject.setNotifyPassword(true);
+                        loginAdminObject.setAccount(tai_khoan);
+                        loginAdminObject.setContent("Bạn nhập sai mật khẩu");
+                    }
                 }
             }
         }
@@ -98,7 +106,7 @@ public class LoginAdminController extends HttpServlet {
             Provincial provincial = new Provincial();
             District district = new District();
             Commune commune = new Commune();
-            AddressModel.getInstance().fillIdToAddressFromId(accountStaffAdmin.getId(),provincial,district,commune);
+            AddressModel.getInstance().fillIdToAddressFromId(accountStaffAdmin.getId(), provincial, district, commune);
             ProvincialModel.getInstance().fillNameById(provincial);
             DistrictModel.getInstance().fillNameById(district);
             CommuneModel.getInstance().fillNameById(commune);
