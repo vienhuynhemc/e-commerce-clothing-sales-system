@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductDetailInformationWorksWithDatabase {
 
@@ -302,6 +303,7 @@ public class ProductDetailInformationWorksWithDatabase {
                     for (ProductAdminSizeAdd productAdminSizeAdd : listSize) {
                         if (listSizeMap.contains(productAdminSizeAdd.getId())) {
                             listSizeMap.remove(productAdminSizeAdd.getId());
+                            map.put(productAdminColorAddProduct.getMa_mau(),listSizeMap);
                             PreparedStatement p = connection.prepareStatement("UPDATE thong_tin_chi_tiet_sp SET hinh_anh_trong_firebase = ?,ton_tai = ? WHERE ma_sp = ? AND ma_mau = ? AND ma_size = ?");
                             p.setInt(1, productAdminColorAddProduct.getList_hinh_anh_sp().size());
                             p.setInt(2, 1);
@@ -351,6 +353,18 @@ public class ProductDetailInformationWorksWithDatabase {
                     preparedStatementt.close();
                 }
             }
+            PreparedStatement p = connection.prepareStatement("UPDATE thong_tin_chi_tiet_sp SET ton_tai = ? WHERE ma_sp = ? AND ma_mau = ? AND ma_size = ?");
+            for(Map.Entry<String,List<String>> entry : map.entrySet()){
+                List<String> sizes = entry.getValue();
+                for(String s: sizes){
+                    p.setInt(1,0);
+                    p.setString(2,ma_sp);
+                    p.setString(3, entry.getKey());
+                    p.setString(4,s);
+                    p.executeUpdate();
+                }
+            }
+            p.close();
             preparedStatement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

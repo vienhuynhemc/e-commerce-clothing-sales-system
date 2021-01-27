@@ -125,6 +125,7 @@ public class ProductEditGroupController extends HttpServlet {
             productAdminColorAddProduct.setMa_mau(productAdminColorAdd.getMa_mau());
             productAdminColorAddProduct.setTen_mau(productAdminColorAdd.getTen_mau());
             productAdminColorAddProduct.setLink_hinh_anh(productAdminColorAdd.getHinh_anh_mau());
+            ProductImageModel.getInstance().productAdminColorProductAdd(productAdminColorAddProduct,productAdminEditGroup.getMa_sp(),productAdminEditGroup.getList_size());
             productAdminEditGroup.getList_mau_kem_hinh_anh().add(productAdminColorAddProduct);
         } else if (action.equals("removeColor")) {
             String ma_mau = request.getParameter("id");

@@ -1807,7 +1807,7 @@ function luueditgroup() {
                             document.getElementById("erroredit5").classList.add("hidden");
                         }
 
-                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn thêm sản phẩm này không ?'
+                        document.getElementById("formYesNoTitle").innerText = 'Bạn có chắc chắn cập nhật sản phẩm này không ?'
                         document.getElementById("formYesNoTitle2").innerText = 'Việc thêm sẽ thay đổi dữ liệu của bạn ';
                         let item = document.createElement("i");
                         item.classList.add("fa");

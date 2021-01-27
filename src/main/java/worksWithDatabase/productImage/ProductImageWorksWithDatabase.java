@@ -58,7 +58,7 @@ public class ProductImageWorksWithDatabase {
                     preparedStatement.setString(1, ma_sp);
                     preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
                     preparedStatement.setString(3, s);
-                    preparedStatement.setInt(4,0);
+                    preparedStatement.setInt(4, 0);
                     preparedStatement.executeUpdate();
                 }
             }
@@ -76,16 +76,22 @@ public class ProductImageWorksWithDatabase {
         Connection connection = DataSource.getInstance().getConnection();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM hinh_anh_sp WHERE ma_sp = ?");
-            preparedStatement.setString(1,ma_sp);
-            preparedStatement.executeUpdate();
-             preparedStatement = connection.prepareStatement("INSERT INTO hinh_anh_sp VALUES(?,?,?,?)");
+
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO hinh_anh_sp VALUES(?,?,?,?)");
             for (ProductAdminColorAddProduct productAdminColorAddProduct : list) {
+
+                String ma_mau = productAdminColorAddProduct.getMa_mau();
+                PreparedStatement preparedStatementt = connection.prepareStatement("DELETE FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
+                preparedStatementt.setString(1, ma_sp);
+                preparedStatementt.setString(2, ma_mau);
+                preparedStatementt.executeUpdate();
+                preparedStatementt.close();
+
                 for (String s : productAdminColorAddProduct.getList_hinh_anh_sp()) {
                     preparedStatement.setString(1, ma_sp);
                     preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
                     preparedStatement.setString(3, s);
-                    preparedStatement.setInt(4,0);
+                    preparedStatement.setInt(4, 0);
                     preparedStatement.executeUpdate();
                 }
             }
@@ -98,16 +104,16 @@ public class ProductImageWorksWithDatabase {
 
     }
 
-    public void fillImageByProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle){
+    public void fillImageByProductAdminEditSingle(ProductAdminEditSingle productAdminEditSingle) {
 
         Connection connection = DataSource.getInstance().getConnection();
 
         try {
-            PreparedStatement preparedStatement =connection.prepareStatement("SELECT link_hinh_anh FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
-            preparedStatement.setString(1,productAdminEditSingle.getMa_sp());
-            preparedStatement.setString(2,productAdminEditSingle.getMa_mau());
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_anh FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
+            preparedStatement.setString(1, productAdminEditSingle.getMa_sp());
+            preparedStatement.setString(2, productAdminEditSingle.getMa_mau());
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 productAdminEditSingle.getList_hinh_anh_sp().add(resultSet.getString("link_hinh_anh"));
             }
             resultSet.close();
@@ -121,22 +127,22 @@ public class ProductImageWorksWithDatabase {
 
     }
 
-    public void updateImgProductSingleEdit(String ma_sp,String ma_mau,List<String> list_hinh_anh){
+    public void updateImgProductSingleEdit(String ma_sp, String ma_mau, List<String> list_hinh_anh) {
 
         Connection connection = DataSource.getInstance().getConnection();
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
-            preparedStatement.setString(1,ma_sp);
-            preparedStatement.setString(2,ma_mau);
+            preparedStatement.setString(1, ma_sp);
+            preparedStatement.setString(2, ma_mau);
             preparedStatement.executeUpdate();
 
             preparedStatement = connection.prepareStatement("INSERT INTO hinh_anh_sp VALUES(?,?,?,?)");
-            for(String s : list_hinh_anh){
-                preparedStatement.setString(1,ma_sp);
-                preparedStatement.setString(2,ma_mau);
-                preparedStatement.setString(3,s);
-                preparedStatement.setInt(4,0);
+            for (String s : list_hinh_anh) {
+                preparedStatement.setString(1, ma_sp);
+                preparedStatement.setString(2, ma_mau);
+                preparedStatement.setString(3, s);
+                preparedStatement.setInt(4, 0);
                 preparedStatement.executeUpdate();
             }
 
@@ -150,18 +156,18 @@ public class ProductImageWorksWithDatabase {
 
     }
 
-    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd){
+    public void fillDataProductAdminEditGroup(ProductAdminAdd productAdminAdd) {
 
         Connection connection = DataSource.getInstance().getConnection();
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_anh FROM hinh_anh_sp WHERE ma_sp = ? AND ma_mau = ?");
-            for(ProductAdminColorAddProduct productAdminColorAddProduct : productAdminAdd.getList_mau_kem_hinh_anh()){
+            for (ProductAdminColorAddProduct productAdminColorAddProduct : productAdminAdd.getList_mau_kem_hinh_anh()) {
                 List<String> list = new ArrayList<String>();
-                preparedStatement.setString(1,productAdminAdd.getMa_sp());
+                preparedStatement.setString(1, productAdminAdd.getMa_sp());
                 preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
                 ResultSet resultSet = preparedStatement.executeQuery();
-                while(resultSet.next()){
+                while (resultSet.next()) {
                     list.add(resultSet.getString("link_hinh_anh"));
                 }
                 resultSet.close();
@@ -175,4 +181,38 @@ public class ProductImageWorksWithDatabase {
         DataSource.getInstance().releaseConnection(connection);
 
     }
+
+    public void productAdminColorProductAdd(ProductAdminColorAddProduct productAdminColorAddProduct, String ma_sp, List<ProductAdminSizeAdd> listSize){
+
+        Connection connection =  DataSource.getInstance().getConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT link_hinh_anh FROM hinh_anh_sp WHERE ma_mau = ? AND ma_sp = ?");
+            preparedStatement.setString(1,productAdminColorAddProduct.getMa_mau());
+            preparedStatement.setString(2,ma_sp);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            boolean check = false;
+            while(resultSet.next()){
+                productAdminColorAddProduct.getList_hinh_anh_sp().add(resultSet.getString("link_hinh_anh"));
+                check = true;
+            }
+            resultSet.close();
+            if(check){
+                preparedStatement = connection.prepareStatement("UPDATE thong_tin_chi_tiet_sp SET ton_tai = 1 WHERE ma_sp = ? AND ma_mau = ? AND ma_size = ?");
+                for(ProductAdminSizeAdd size : listSize){
+                preparedStatement.setString(1,ma_sp);
+                preparedStatement.setString(2, productAdminColorAddProduct.getMa_mau());
+                preparedStatement.setString(3,size.getId());
+                preparedStatement.executeUpdate();
+                }
+            }
+            preparedStatement.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        DataSource.getInstance().releaseConnection(connection);
+
+    }
+
 }
