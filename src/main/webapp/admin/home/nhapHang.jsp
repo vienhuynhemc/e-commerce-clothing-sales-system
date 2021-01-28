@@ -12,12 +12,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TVTSHOP ADMIN | Nhập hàng</title>
-    <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../../css/indexAdmin.css">
-    <script src="../../js/indexAdmin.js"></script>
+    <link rel="stylesheet" href="css/indexAdmin.css">
+    <script src="js/indexAdmin.js"></script>
 
-    <link rel="stylesheet" href="../../css/nhapHangAdmin.css">
+    <link rel="stylesheet" href="css/nhapHangAdmin.css">
 
 
 </head>
@@ -31,7 +31,7 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="../index.html" class="indexleftselectitem  ">
+            <a href="index.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
@@ -319,7 +319,7 @@
             </div>
             <div class="div12inputlv2">
                 <label for="">Hãng sản xuất</label>
-                <select name="" id="">
+                <select name="" id="loadhangsanxuat">
                     <option value="" selected>Chọn hãng sản xuất</option>
                 </select>
             </div>
@@ -541,4 +541,35 @@
 
 </html>
 
-<script src="../../js/nhapHangAdmin.js"></script>
+<script src="js/nhapHangAdmin.js"></script>
+
+<script>
+
+    $(document).ready(function (){
+
+        loadHSX();
+
+
+    })
+    function loadHSX() {
+
+        $.ajax({
+            url: 'LoadManufactor',
+            dataType:'json',
+            type:'get',
+            success: function (data) {
+
+                for (let i = 0; i < data.length; i++) {
+
+                    $("#loadhangsanxuat").append("<option value=" + data[i].manufacturerId + ">" + data[i].manufacturerName + "</option>");
+
+                }
+            },
+            error: function (e) {
+                alert("loi load tinh");
+            }
+        });
+
+    }
+
+</script>

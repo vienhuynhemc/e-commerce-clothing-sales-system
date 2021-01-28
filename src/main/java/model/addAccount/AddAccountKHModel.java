@@ -13,7 +13,7 @@ public class AddAccountKHModel {
         return addAccountModel;
     }
 
-    public String addAccount(String userName,String passWord,String rePassWord,String email,String avatar,String phone,String displayName,String fullName,String ttdg,String ttkh){
+    public String addAccount(String userName,String passWord,String email,String avatar,String phone,String displayName,String fullName,String ttdg,String ttkh){
 
         AddAccountKHDAO addAccountKHDAO = AddAccountKHSource.getInstance().getAddAccount();
       // chess coi email có tồn tại trong databasae hay k??

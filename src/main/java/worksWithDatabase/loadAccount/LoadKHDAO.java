@@ -21,82 +21,6 @@ public class LoadKHDAO {
         //list = new HashMap<>();
         list = new ArrayList<>();
     }
-    public ArrayList< AccountCustomer> loadListKH(){
-
-        Connection con = null;
-        try {
-            // lay connection
-            //con = DataSource.getInstance().getConnection();
-
-            // test thôi
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
-
-
-            String sql = "WITH list as \n" +
-                    "(\n" +
-                    "SELECT ROW_NUMBER() Over(ORDER BY a.IDuser ASC) as n, a.IDUser, a.Type,a.UserName,a.`PassWord`,a.Email,a.Phone, a.Avatar, a.DisplayName,a.FullName,a.RegisDate ,c.ActiveStatus,c.ActiveEvaluate from account a , customer c WHERE a.IDUser = c.IDUser\n" +
-                    " )  \n" +
-                    "\n" +
-                    "SELECT * from list WHERE n BETWEEN 0 AND 10";
-
-
-            Statement sm = con.createStatement();
-
-            ResultSet rs = sm.executeQuery(sql);
-
-
-
-            //if(num*10 < end){
-                // lấy đủ 10 thằng thôi
-              //  int count = 0;
-                while (rs.next()) {
-                    //     if(count < 10){
-                    // lấy ra ngày để sử lí r cho nào class datetime
-                    String date = rs.getString("RegisDate");
-                    String[] split = date.split(" ");
-
-                    String[] dmy = split[0].split("-");
-                    String[] time = split[1].split(":");
-
-                    int year = Integer.parseInt(dmy[0]);
-                    int month = Integer.parseInt(dmy[1]);
-                    int day = Integer.parseInt(dmy[2]);
-                    int hour = Integer.parseInt(time[0]);
-                    int minute = Integer.parseInt(time[1]);
-
-                    double d = Double.parseDouble(time[2]);
-
-                    int second = (int) d;
-
-                    DateTime datetime = new DateTime(year, month, day, hour, minute, second);
-
-                        list.add(
-                                new AccountCustomer());
-                    }
-
-                    rs.close();
-                    sm.close();
-
-                    // DataSource.getInstance().releaseConnection(con);
-
-                    return list;
-
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }finally {
-            try {
-                con.close();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            // DataSource.getInstance().releaseConnection(con);
-        }
-
-        return list;
-
-    }
-
 
     public ArrayList<AccountCustomer> LoadKHAll(int page,String type,String search,String orderBy){
         Connection con = null;
@@ -106,7 +30,7 @@ public class LoadKHDAO {
             con = DataSource.getInstance().getConnection();
 
             String sql = "SELECT * from khach_hang k ,tai_khoan t WHERE k.ma_kh = t.ma_tai_khoan\n" +
-                    "and (t.ten_day_du LIKE ? \n" +
+                    "and k.ton_tai = 1 and (t.ten_day_du LIKE ? \n" +
                     "or t.email LIKE ? \n" +
                     "or t.so_dien_thoai LIKE ? \n" +
                     "or t.tai_khoan LIKE ? \n" +
@@ -117,7 +41,7 @@ public class LoadKHDAO {
                     "LIMIT ?,?";
 
            String sql1 = "SELECT * from khach_hang k ,tai_khoan t WHERE k.ma_kh = t.ma_tai_khoan\n" +
-                   "and (t.ten_day_du LIKE ? \n" +
+                   "and k.ton_tai = 1 and (t.ten_day_du LIKE ? \n" +
                    "or t.email LIKE ? \n" +
                    "or t.so_dien_thoai LIKE ? \n" +
                    "or t.tai_khoan LIKE ? \n" +

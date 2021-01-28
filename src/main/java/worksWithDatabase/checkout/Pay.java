@@ -156,7 +156,7 @@ public class Pay {
 
             // nếu trang thái vận chuyển là online thì thanh toán luôn
             if (trangthai == 1) {
-                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,70000,null,null,null,null,null,null,?,1,?,1,?)";
+                sqldh = "INSERT INTO don_hang VALUES (?,?,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,70000,null,null,null,null,null,null,?,0,?,1,?)";
 
             }else {
                 // nếu trạng thái vận chuyển là thanh toán khi nhận hàng

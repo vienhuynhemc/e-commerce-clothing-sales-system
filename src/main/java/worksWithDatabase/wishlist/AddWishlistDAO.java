@@ -22,7 +22,7 @@ public class AddWishlistDAO {
         Connection connection = DataSource.getInstance().getConnection();
         try{
             PreparedStatement s = connection.prepareStatement("" +
-                    "SELECT * FROM yeu_thich where ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND size = ?");
+                    "SELECT * FROM yeu_thich where ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND ma_size = ?");
             s.setString(1,idProduct);
             s.setString(2,idCustomer);
             s.setString(3,color);
@@ -74,7 +74,7 @@ public class AddWishlistDAO {
         Connection connection = DataSource.getInstance().getConnection();
         try{
             PreparedStatement s = connection.prepareStatement("UPDATE yeu_thich SET so_luong = so_luong + 1,ngay_them = ? WHERE" +
-                    " ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND size = ?");
+                    " ma_sp = ? AND ma_kh = ? AND ma_mau = ? AND ma_size = ?");
 
             DateTime now = new DateTime(LocalDate.now().getYear(),LocalDate.now().getMonthValue(),
                     LocalDate.now().getDayOfMonth(), LocalTime.now().getHour(),LocalTime.now().getMinute(),LocalTime.now().getSecond());

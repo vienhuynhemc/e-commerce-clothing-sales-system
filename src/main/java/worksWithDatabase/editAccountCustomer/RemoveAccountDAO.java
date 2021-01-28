@@ -20,17 +20,11 @@ public class RemoveAccountDAO {
 
             boolean check = false;
 
-            String sql1 = "DELETE FROM tai_khoan WHERE ma_tai_khoan = ?";
-            String sql2 = "DELETE FROM khach_hang WHERE ma_kh = ?";
+            String sql = "update khach_hang set ton_tai = 0 where ma_kh = ?";
 
-
-            PreparedStatement ps1 = con.prepareStatement(sql1);
+            PreparedStatement ps1 = con.prepareStatement(sql);
             ps1.setString(1,id);
             ps1.executeUpdate();
-
-            PreparedStatement ps2 = con.prepareStatement(sql2);
-            ps2.setString(1,id);
-            ps2.executeUpdate();
 
             DataSource.getInstance().releaseConnection(con);
             return true;

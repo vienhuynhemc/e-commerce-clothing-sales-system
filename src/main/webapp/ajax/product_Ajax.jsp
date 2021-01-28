@@ -32,7 +32,7 @@
             <figure>
 <%--                <a class="aa-product-img" href="LoadSizeDetailProductController?idProduct=<%=p.getMa_sp()%>&ma_mau=<%=p.getListColor().get(j).getMa_mau()%>&ma_size=<%=p.getListSize().get(j).getMa_size()%>&type=&page=1">--%>
 
-                    <a class="aa-product-img" href="">
+                    <a class="aa-product-img" href="sLoadDetailProductController?idProduct=<%=p.getMa_sp()%>">
                     <!-------Load hình đầu tiên ------->
                     <img
                             src="<%=p.getListIMG().get(0).getLink_hinh()%>"
@@ -97,7 +97,7 @@
                 </figcaption>
             </figure>
             <div class="aa-product-hvr-content">
-                <a href="wishlist.html" data-toggle="tooltip" data-placement="top"
+                <a href="#" data-toggle="tooltip" data-placement="top"
                    title="Thêm vào yêu thích"><span
                         class="fa fa-heart"></span></a>
                 <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a> -->

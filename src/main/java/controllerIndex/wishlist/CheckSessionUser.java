@@ -16,6 +16,7 @@ public class CheckSessionUser extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        System.out.println(session.getAttribute("user"));
 
         if(session.getAttribute("user") != null){
             request.getRequestDispatcher("home/wishlist.jsp").forward(request,response);

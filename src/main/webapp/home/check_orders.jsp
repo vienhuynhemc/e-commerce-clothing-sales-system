@@ -98,7 +98,9 @@
 
 <!-- Subscribe section -->
 <!-- footer -->
-<jsp:include page="../WEB-INF/Share/_layoutFooter.jsp"></jsp:include>
+<jsp:include page="../share/_LayoutFooter.jsp">
+    <jsp:param name="levelPage" value=""/>
+</jsp:include>
 <!-- / footer -->
 <!-- Login Modal -->
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

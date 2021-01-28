@@ -25,12 +25,11 @@ public class AddAccountKHController extends HttpServlet {
         String phone = request.getParameter("phone");
         String user = request.getParameter("userName");
         String pass = request.getParameter("passWord");
-        String rePass = request.getParameter("rePassWord");
         String avatar = request.getParameter("avatar");
         String ttdg =  request.getParameter("ttdg");
         String ttkh = request.getParameter("ttkh");
 
-        String exe = AddAccountKHModel.getInstance().addAccount( user, pass, rePass, email, avatar, phone, displayName, fullName, ttdg, ttkh);
+        String exe = AddAccountKHModel.getInstance().addAccount( user, pass, email, avatar, phone, displayName, fullName, ttdg, ttkh);
 
         String json = new Gson().toJson(exe);
 

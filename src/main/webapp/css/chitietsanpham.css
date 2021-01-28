@@ -307,6 +307,7 @@
 .selectsize {
     display: flex;
     margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .selectsize label {

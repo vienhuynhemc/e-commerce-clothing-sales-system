@@ -52,7 +52,7 @@ public class LoginUserDAO {
               con = DataSource.getInstance().getConnection();
 
             // type = 3 khach hang
-            String sql = "select * from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and a.kieu_tai_khoan = 3 and c.trang_thai_kich_hoat = 1 and a.tai_khoan = ? ";
+            String sql = "select * from tai_khoan a , khach_hang c WHERE a.ma_tai_khoan = c.ma_kh and a.kieu_tai_khoan = 3 and c.trang_thai_kich_hoat = 1 and c.ton_tai = 1 and a.tai_khoan = ? ";
 
             PreparedStatement ps = con.prepareStatement(sql);
 

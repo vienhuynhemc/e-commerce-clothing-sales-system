@@ -1,6 +1,7 @@
 package worksWithDatabase.editAccountAdmin;
 
 import beans.encode.MD5;
+import connectionDatabase.DataSource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,20 +12,15 @@ public class EditAccountKHDAO {
 
     public EditAccountKHDAO() {
     }
-    public void updateAccountKH(String userName,String fullName,String avatar,String displayName,String activeStatus,String activeEvaluate,String passWord){
+    public boolean updateAccountKH(String userName,String fullName,String displayName,String activeStatus,String activeEvaluate,String passWord){
         Connection con = null;
 
         try {
 
-            // sài tạm database khác khi nào có thì dùng cái này
-            // con = DataSource.getInstance().getConnection();
+             con = DataSource.getInstance().getConnection();
 
-            Class.forName("com.mysql.jdbc.Driver");
-
-
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tvtshop?useUnicode=true&characterEncoding=utf-8", "root", "");
-
-        String sql = "UPDATE account a , customer c SET a.displayName = ?, a.fullName = ?, a.PASSWORD = ?,a.avatar = ?, c.activeStatus = ?,c.activeEvaluate = ? WHERE a.Iduser = c.iduser and a.userName = ?";
+        String sql = "UPDATE tai_khoan a , khach_hang c SET a.ten_hien_thi = ?, a.ten_day_du = ?, a.mat_khau = ?, c.trang_thai_kich_hoat = ?," +
+                "c.trang_thai_danh_gia = ? WHERE a.ma_tai_khoan = c.ma_kh and a.ma_tai_khoan = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -33,27 +29,26 @@ public class EditAccountKHDAO {
             ps.setString(1,displayName);
             ps.setString(2,fullName);
             ps.setString(3,encode);
-            ps.setString(4,avatar);
-            ps.setInt(5,Integer.parseInt(activeStatus));
-            ps.setInt(6,Integer.parseInt(activeEvaluate));
-            ps.setString(7,userName);
+            ps.setInt(4,Integer.parseInt(activeStatus));
+            ps.setInt(5,Integer.parseInt(activeEvaluate));
+            ps.setString(6,userName);
 
             ps.executeUpdate();
 
             ps.close();
             con.close();
-           // DataSource.getInstance().releaseConnection(con);
+            DataSource.getInstance().releaseConnection(con);
+            return true;
 
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
+        }  catch (SQLException throwables) {
             throwables.printStackTrace();
+            DataSource.getInstance().releaseConnection(con);
+            return false;
         }
     }
 
     public static void main(String[] args) {
         EditAccountKHDAO editAccountKHDAO = new EditAccountKHDAO();
-        editAccountKHDAO.updateAccountKH("kh001","nguyen van an","detrailam","an no pro","1","0","1234");
+        System.out.println(editAccountKHDAO.updateAccountKH("kh218","nguyen van an","detrailam","an no pro","1","0"));
     }
 }

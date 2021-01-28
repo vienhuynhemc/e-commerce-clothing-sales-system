@@ -470,6 +470,11 @@ p.itemphone {
     display: none;
 }
 
+
+.item > form:nth-child(11) {
+    display: none;
+}
+
 .itemsubmit > div > button > i {
     color: #90a4ae;
     font-size: 17px;
@@ -712,6 +717,15 @@ p.itemphone {
 }
 
 #div3 > div {
+    width: 96%;
+    margin: auto;
+    display: flex;
+    margin-top: 70px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+}
+#div3 > form {
     width: 96%;
     margin: auto;
     display: flex;

@@ -15,25 +15,12 @@ public class EditAccountKHModel {
         return editAccountModel;
 
     }
-    public String editAccount(String userName,String fullName,String avatar,String displayName,String activeStatus,String activeEvaluate,String passWord,String rePass){
-        // lấy ra
+    public boolean editAccount(String userName,String fullName,String displayName,String activeStatus,String activeEvaluate,String passWord){
         EditAccountKHDAO editAccountDAO = EditAccountKHSource.getInstance().getEditAccount();
 
-        // chess repass vs pass trc nếu nhập sai thì trả về luôn
-        if(!passWord.equals(rePass)){
-            EditAccountKHSource.getInstance().releaseEditAccount(editAccountDAO);
-            return "error1";
-            // mật khẩu ít nhất 6 kí tự và có chũ và số
-        }else if (passWord.matches("\"^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$\"")){
-            EditAccountKHSource.getInstance().releaseEditAccount(editAccountDAO);
-            return "error2";
-        }
-
-        editAccountDAO.updateAccountKH(userName,fullName,avatar,displayName,activeStatus,activeEvaluate,passWord);
-
-        // sửa xog trả kết nối lại
+       boolean check = editAccountDAO.updateAccountKH(userName,fullName,displayName,activeStatus,activeEvaluate,passWord);
 
         EditAccountKHSource.getInstance().releaseEditAccount(editAccountDAO);
-        return "OK";
+        return check;
     }
 }
