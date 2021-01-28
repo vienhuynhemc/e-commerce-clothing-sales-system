@@ -133,7 +133,7 @@
 
                     <div class="divsubmit">
                         <button>Đăng nhập</button>
-                        <a onclick="toPublic()">Trở lại mua sắm</a>
+                        <a href="../../index.jsp">Trở lại mua sắm</a>
                     </div>
 
                     <div class="dkcsbm">

@@ -243,7 +243,7 @@
                                         <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 1 || quanLyDonHang.getTrang_thai_van_chuyen() == 2){%>
                                         class="vanchuyen"
                                         <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 3){%>
-                                        class=hoanthanh"
+                                        class="hoanthanh"
                                         <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 4){%>
                                         class="khonghoanthanh"
                                         <%}%>
@@ -259,7 +259,7 @@
                                         <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 3){%>
                                         Hoàn thành
                                         <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 4){%>
-                                        class="khonghoanthanh"
+                                        Bị hủy
                                         <%}%>
                                     </p>
                                 </div>

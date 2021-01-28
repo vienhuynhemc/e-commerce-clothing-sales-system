@@ -313,7 +313,7 @@ public class ColorWorksWithDatabase {
 
                     PreparedStatement cc = connection.prepareStatement("SELECT * FROM dia_chi WHERE ma_nv = ?");
                     cc.setString(1,quanLyDonHang.getNguoi_van_chuyen().getMa_kh());
-                    ResultSet r4 = dc.executeQuery();
+                    ResultSet r4 = cc.executeQuery();
                     r4.next();
                     Provincial pro = ProvincialModel.getInstance().getProvincialById(r4.getString("ma_tinh"));
                     District dis = DistrictModel.getInstance().getDistrictById(r4.getString("ma_huyen"));
@@ -686,7 +686,7 @@ public class ColorWorksWithDatabase {
 
                     PreparedStatement cc = connection.prepareStatement("SELECT * FROM dia_chi WHERE ma_nv = ?");
                     cc.setString(1,quanLyDonHang.getNguoi_van_chuyen().getMa_kh());
-                    ResultSet r4 = dc.executeQuery();
+                    ResultSet r4 = cc.executeQuery();
                     r4.next();
                     Provincial pro = ProvincialModel.getInstance().getProvincialById(r4.getString("ma_tinh"));
                     District dis = DistrictModel.getInstance().getDistrictById(r4.getString("ma_huyen"));

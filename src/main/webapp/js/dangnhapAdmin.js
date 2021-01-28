@@ -57,10 +57,6 @@ function gotochange() {
     document.getElementById('left3divpassword').classList.add("left3divpasswordshow");
 }
 
-function toPublic() {
-    window.location = "../index.html";
-}
-
 function showPassword() {
     let x = document.getElementById("matkhau");
     let icon = document.getElementById("iconshowpassword");
