@@ -21,109 +21,32 @@
 </head>
 
 <body>
+<%
 
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if (request.getSession().getAttribute("userAdmin") == null) {
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
-        <div>
-            <a href="indexNVK.html" class="indexleftselectitem  ">
-                <div class="active">
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="quanLyDonHangNVK.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <a href="thongTinTaiKhoanNVK.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage", "admin.indexNVK");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    } else {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+%>
+
+<jsp:include page="../share/_LayoutLeftNVK.jsp">
+    <jsp:param name="activeSelect" value="trangchu"/>
+</jsp:include>
 
 <div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar7.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1021
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar7.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1014
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar2.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Hữu Đa</h3>
-                    <p>Nhân viên kho</p>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="backgroundindexmain">
-    </div>
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Nhân viên kho"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 
@@ -530,3 +453,4 @@
 </body>
 
 </html>
+<%}%>

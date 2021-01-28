@@ -11,10 +11,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-
     UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
     List<RingNotification> ringNotificationList = HeaderAdminModel.getInstance().getListRingNotificationFromId(userAdmin.getAccount().getId());
-
 %>
 
 <div class="indextop">

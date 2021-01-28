@@ -1,4 +1,7 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.ringNotification.RingNotification" %>
+<%@ page import="model.headerAdmin.HeaderAdminModel" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
@@ -22,6 +25,24 @@
 
 <body>
 
+<%
+
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if (request.getSession().getAttribute("userAdmin") == null) {
+
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage", "admin.index");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    } else {
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        List<RingNotification> ringNotificationList = HeaderAdminModel.getInstance().getListRingNotificationFromId(userAdmin.getAccount().getId());
+
+%>
+
 
 <div class="indexleft">
     <div class="indexleftlogo">
@@ -29,13 +50,13 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="index.html" class="indexleftselectitem  ">
+            <a href="index.jsp" class="indexleftselectitem  ">
                 <div class="active">
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
                 </div>
             </a>
-            <a href="home/thuNhap.html" class="indexleftselectitem  ">
+            <a href="thuNhap.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-money"></i>
                     <p>Thu nhập</p>
@@ -51,20 +72,27 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="../LoadAccountNVVCController?page=1&type=RegisDate&search=&orderBy=DESC"> <i class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
-                    <li><a href="../LoadAccountNVKController?page=1&type=RegisDate&search=&orderBy=DESC"><i class="fa fa-cube"></i>Nhân viên kho</a></li>
-                    <li><a href="../SendRedirectPageKH"><i class="fa fa-users"></i>Khách hàng</a></li>
+                    <li><a href="LoadAccountNVVCController?page=1&type=RegisDate&search=&orderBy=DESC"> <i
+                            class="fa fa-truck"></i> Nhân viên giao hàng</a></li>
+                    <li><a href="LoadAccountNVKController?page=1&type=RegisDate&search=&orderBy=DESC"><i
+                            class="fa fa-cube"></i>Nhân viên kho</a></li>
+                    <li><a href="LoadAccountKHController?page=1&type=RegisDate&search=&orderBy=DESC"><i
+                            class="fa fa-users"></i>Khách hàng</a></li>
+                    </li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
-            <a href="home/quanLyBinhLuan.html" class="indexleftselectitem  ">
+            <a href="quanLyBinhLuan.html" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-comment-o"></i>
                     <p>Quản lý đánh giá</p>
                 </div>
             </a>
-            <a href="home/quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
+            <a href="home/quanLyDonHang.jsp" class="indexleftselectitem  ">
+                <div <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDonHang")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-file-text-o"></i>
                     <p>Quản lý đơn hàng</p>
                 </div>
@@ -79,13 +107,24 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="home/nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
-                    <li><a href="home/lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
+                    <li><a href="nhapHang.html"> <i class="fa fa-cart-arrow-down"></i>Nhập hàng</a></li>
+                    <li><a href="lichSuNhapHang.html"><i class="fa fa-history"></i>Lịch sử nhập hàng</a></li>
                 </ul>
                 <input type="checkbox" style="display: none;">
             </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
+            <div
+                    <%
+                        if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) ||
+                                (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham")) ||
+                                (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat"))
+                        ) {
+                    %>
+                    class="indexleftselectitemlv2"
+                    <%} else {%>
+                    class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                    <%}%>
+
+                    onclick="indexleftselectitemlv2(this)">
                 <div class="indexleftselectitem">
                     <div>
                         <i class="fa fa-wpforms"></i>
@@ -94,13 +133,57 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="home/quanLySanPham.html"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
-                    <li><a href="../CategoryController?vi-tri=1"><i class="fa fa-sticky-note-o"></i>Danh mục</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="home/quanLySanPham.jsp"> <i class="fa fa-copy"></i>Sản phẩm</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="../LoadCategoryController?page=1&search=&type=ngay_tao&orderBy=asc"><i
+                            class="fa fa-sticky-note-o"></i>Danh
+                        mục</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="home/quanLyHangSanXuat.jsp"><i class="fa fa-viadeo-square"></i>Hãng
+                        sản xuất</a></li>
                 </ul>
+                <%
+                    if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) ||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLySanPham")) ||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat"))
+                    ) {
+                %>
+                <input type="checkbox" style="display: none;" checked>
+                <%} else {%>
                 <input type="checkbox" style="display: none;">
+                <%}%>
             </div>
-            <div class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
-                 onclick="indexleftselectitemlv2(this)">
+            <a href="home/quanLyMaGiamGia.jsp" class="indexleftselectitem  ">
+                <div <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyMaGiamGia")) {%>
+                        class="active"
+                        <%}%>
+                >
+                    <i class="fa fa-balance-scale"></i>
+                    <p>Mã giảm giá</p>
+                </div>
+            </a>
+            <div
+                    <%
+                        if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) ||
+                                (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe"))
+                        ) {
+                    %>
+                    class="indexleftselectitemlv2"
+                    <%} else {%>
+                    class="indexleftselectitemlv2 dontactiveindexleftselectitemlv2"
+                    <%}%>
+
+                    onclick="indexleftselectitemlv2(this)">
                 <div class="indexleftselectitem">
                     <div>
                         <i class="fa fa-envelope-o"></i>
@@ -109,24 +192,44 @@
                     <i class="fa fa-angle-right"></i>
                 </div>
                 <ul>
-                    <li><a href="home/guiEmailThongBao.html"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
-                    <li><a href="home/phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="home/guiEmailThongBao.jsp"> <i class="fa fa-bullhorn"></i>Thông báo</a></li>
+                    <li
+                            <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe")) {%>
+                            class="activelv2"
+                            <%}%>
+                    ><a href="phanHoiLienHe.html"><i class="fa fa-reply-all"></i>Phản hồi</a></li>
                 </ul>
+                <%
+                    if ((request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("guiEmailThongBao")) ||
+                            (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("phanHoiLienHe"))
+                    ) {
+                %>
+                <input type="checkbox" style="display: none;" checked>
+                <%} else {%>
                 <input type="checkbox" style="display: none;">
+                <%}%>
             </div>
-            <a href="home/thongTinTaiKhoanAdmin.html" class="indexleftselectitem  ">
-                <div>
+            <a href="home/thongTinTaiKhoanAdmin.jsp" class="indexleftselectitem  ">
+                <div
+                        <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("thongTinTaiKhoanAdmin")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-user-circle-o"></i>
                     <p>Thông tin tài khoản</p>
                 </div>
             </a>
-            <a href="../index.html" class="indexleftselectitem  ">
+            <a href="../index.jsp" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-shopping-cart"></i>
                     <p>Trở về trang mua sắm</p>
                 </div>
             </a>
-            <a href="home/login.html" class="indexleftselectitem  ">
+            <a href="../LogOutAdminController" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-power-off"></i>
                     <p>Đăng xuất</p>
@@ -140,10 +243,6 @@
     <div class="indextop">
         <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
         <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
-            </div>
             <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
                 <i class="fa fa-bell-o"></i>
                 <div>
@@ -155,126 +254,31 @@
                         <h3>Thông báo</h3>
                         <div class="indextopbellinforcontent">
                             <div>
-                                <a class="indextopbellinforcontentitem">
+
+                                <%
+
+                                    for (RingNotification ringNotification : ringNotificationList) {
+
+
+                                %>
+
+                                <a class="indextopbellinforcontentitem" href="<%=ringNotification.getLink()%>">
                                     <div>
-                                        <img src="../img/product/avatar1.jpg" alt="">
+                                        <img src="<%=ringNotification.getLinkImgSender()%>" alt="">
                                     </div>
                                     <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
+                                        <p><strong><%=ringNotification.getNameSender()%>
+                                        </strong> <%=ringNotification.getContent()%>
+                                        </p>
+                                        <p><%=ringNotification.getDateCreated().toStrngRingNotification()%>
+                                        </p>
                                     </div>
                                 </a>
                                 <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar1.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Diệu Đặng</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar2.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hoàng Nguyễn</strong> đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar3.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Sơn</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Xinh Gái</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar5.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Lê Nguyễn</strong> vừa đánh giá trên trang của bạn</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../img/product/avatar6.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong>Hồng Nhan</strong> vừa thanh toán một đơn hàng</p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
+
+                                <%
+                                    }
+                                %>
                             </div>
                         </div>
                     </div>
@@ -283,10 +287,11 @@
             </div>
             <a class="indextopaccount">
                 <div>
-                    <img src="../img/product/avatar7.jpg" alt="">
+                    <img src="<%=userAdmin.getAccount().getAvatarLink()%>" alt="">
                 </div>
                 <div>
-                    <h3>Nguyễn Thị Hoa Hồng</h3>
+                    <h3><%=userAdmin.getAccount().getDisplayName()%>
+                    </h3>
                     <p>Admin</p>
                 </div>
             </a>
@@ -295,7 +300,6 @@
 
     <div class="backgroundindexmain">
     </div>
-
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
@@ -701,3 +705,4 @@
 </body>
 
 </html>
+<%}%>

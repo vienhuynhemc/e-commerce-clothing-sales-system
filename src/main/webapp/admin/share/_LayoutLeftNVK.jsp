@@ -13,14 +13,22 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="../index.html" class="indexleftselectitem  ">
-                <div>
+            <a href="../home/indexNVK.jsp" class="indexleftselectitem  ">
+                <div
+                        <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("trangchu")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
                 </div>
             </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
+            <a href="../home/quanLyDonHangNVK.jsp" class="indexleftselectitem  ">
+                <div
+                        <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDonHang")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-file-text-o"></i>
                     <p>Quản lý đơn hàng</p>
                 </div>

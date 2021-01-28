@@ -13,7 +13,7 @@
     </div>
     <div class="indexleftselect">
         <div>
-            <a href="../index.html" class="indexleftselectitem  ">
+            <a href="../index.jsp" class="indexleftselectitem  ">
                 <div>
                     <i class="fa fa-linode"></i>
                     <p>Trang chủ</p>
@@ -48,8 +48,11 @@
                     <p>Quản lý đánh giá</p>
                 </div>
             </a>
-            <a href="quanLyDonHang.html" class="indexleftselectitem  ">
-                <div>
+            <a href="../home/quanLyDonHang.jsp" class="indexleftselectitem  ">
+                <div <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDonHang")) {%>
+                        class="active"
+                        <%}%>
+                >
                     <i class="fa fa-file-text-o"></i>
                     <p>Quản lý đơn hàng</p>
                 </div>
@@ -97,7 +100,7 @@
                             <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyDanhMuc")) {%>
                             class="activelv2"
                             <%}%>
-                    ><a href="quanLyDanhMuc.html"><i class="fa fa-sticky-note-o"></i>Danh
+                    ><a href="../../LoadCategoryController?page=1&search=&type=ngay_tao&orderBy=asc"><i class="fa fa-sticky-note-o"></i>Danh
                         mục</a></li>
                     <li
                             <%if (request.getParameter("activeSelect") != null && request.getParameter("activeSelect").equals("quanLyHangSanXuat")) {%>

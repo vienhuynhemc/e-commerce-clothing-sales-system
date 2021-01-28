@@ -25,21 +25,41 @@ public class TrackPageController extends HttpServlet {
             } else if (trackPage.equals("admin.quanLyHangSanXuat")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/quanLyHangSanXuat.jsp");
-            }else if(trackPage.equals("admin.guiEmailThongBao")){
+            } else if (trackPage.equals("admin.guiEmailThongBao")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/guiEmailThongBao.jsp");
-            }else if(trackPage.equals("admin.thongTinTaiKhoanAdmin")){
+            } else if (trackPage.equals("admin.thongTinTaiKhoanAdmin")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/thongTinTaiKhoanAdmin.jsp");
-            }else if(trackPage.equals("admin.thongTinTaiKhoanNVK")){
+            } else if (trackPage.equals("admin.thongTinTaiKhoanNVK")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/thongTinTaiKhoanNVK.jsp");
-            }else if(trackPage.equals("admin.thongTinTaiKhoanNVGH")){
+            } else if (trackPage.equals("admin.thongTinTaiKhoanNVGH")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/thongTinTaiKhoanNVGH.jsp");
-            }else if(trackPage.equals("admin.quanLySanPham")){
+            } else if (trackPage.equals("admin.quanLySanPham")) {
                 request.getSession().removeAttribute("trackPage");
                 response.sendRedirect("admin/home/quanLySanPham.jsp");
+            }else if (trackPage.equals("admin.quanLyDonHangNVK")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/quanLyDonHangNVK.jsp");
+            }
+            else if (trackPage.equals("admin.quanLyDonHangNVGH")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/quanLyDonHangNVGH.jsp");
+            }
+            else if (trackPage.equals("admin.quanLyDonHang")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/quanLyDonHang.jsp");
+            } else if (trackPage.equals("admin.index")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/index.jsp");
+            } else if (trackPage.equals("admin.indexNVK")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/indexNVK.jsp");
+            } else if (trackPage.equals("admin.indexNVGH")) {
+                request.getSession().removeAttribute("trackPage");
+                response.sendRedirect("admin/home/indexNVGH.jsp");
             }
         } else {
             response.sendRedirect("AdminIndexNavigation");
@@ -49,6 +69,6 @@ public class TrackPageController extends HttpServlet {
         //  Chạy minimaxAlphabeta của m
         // to do
         //  Lấy thời gian đã sử dụng
-        long timeUsed = System.currentTimeMillis()- nowTime;
+        long timeUsed = System.currentTimeMillis() - nowTime;
     }
 }

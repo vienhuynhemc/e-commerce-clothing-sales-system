@@ -1,207 +1,311 @@
-<%--
+<%@ page import="beans.loginAdmin.UserAdmin" %>
+<%@ page import="beans.loginAdmin.AccountStaffAdmin" %>
+<%@ page import="beans.quanLyDonHang.QuanLyDonHangObjectNVK" %>
+<%@ page import="beans.nextPage.NextPageObject" %>
+<%@ page import="java.util.List" %>
+<%@ page import="beans.nextPage.NextPageConfiguration" %>
+<%@ page import="beans.quanLyDonHang.QuanLyDonHang" %>
+<%@ page import="model.salary.SalaryModel" %>
+<%@ page import="beans.quanLyDonHang.SanPhamDatHang" %>
+<%@ page import="beans.BeansConfiguration" %>
+<%@ page import="beans.quanLyDonHang.NguoiXuLyQuanLyDonHang" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 22/12/2020
-  Time: 9:01 CH
+  Time: 9:00 CH
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVTSHOP ADMIN | Quản lý đơn hàng - NVK</title>
+    <title>TVTSHOP ADMIN | Quản lý đơn hàng nhân viên kho</title>
     <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../../css/indexAdmin.css">
     <script src="../../js/indexAdmin.js"></script>
 
     <link rel="stylesheet" href="../../css/quanLyDonHangAdmin.css">
-    <script src="../../js/quanLyDonHangAdmin.js"></script>
 
 </head>
 
 <body>
 
+<%
+    //----------------------Kiểm tra thử đăng nhập hay chưa và có vai trò ở trang này hay không------------------------------------//
+    if(request.getSession().getAttribute("userAdmin") == null) {
 
-<div class="indexleft">
-    <div class="indexleftlogo">
-        <i class="fa fa-android"></i>
-    </div>
-    <div class="indexleftselect">
+        //  Lưu vô session biến trang chờ đợi là trang này để có gì đăng nhập thành công chuyển tới trang này
+        request.getSession().setAttribute("trackPage","admin.quanLyDonHangNVK");
+
+        //  Lưu trackpage xong thì sendredirect tới login
+        response.sendRedirect("login.jsp");
+
+    }else{
+
+        UserAdmin userAdmin = (UserAdmin) request.getSession().getAttribute("userAdmin");
+        AccountStaffAdmin accountStaffAdmin = userAdmin.getAccount();
+        if(accountStaffAdmin.accept("admin.quanLyDonHangNVK")){
+
+            QuanLyDonHangObjectNVK quanLyDonHangObject  = (QuanLyDonHangObjectNVK) userAdmin.getListOfFunction().get("QuanLyDonHangObjectNVK");
+            if(quanLyDonHangObject == null || !quanLyDonHangObject.isReady()){
+                response.sendRedirect("../../QuanLyDonHangControllerNVK");
+            }else {
+%>
+
+<div id="formYesNo">
+    <div class="formYesNoHidden" onclick="hiddenFormYesNo()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
         <div>
-            <a href="indexNVK.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-linode"></i>
-                    <p>Trang chủ</p>
-                </div>
-            </a>
-            <a href="quanLyDonHangNVK.html" class="indexleftselectitem  ">
-                <div class="active">
-                    <i class="fa fa-file-text-o"></i>
-                    <p>Quản lý đơn hàng</p>
-                </div>
-            </a>
-            <a href="thongTinTaiKhoanNVK.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-user-circle-o"></i>
-                    <p>Thông tin tài khoản</p>
-                </div>
-            </a>
-            <a href="../../index.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-shopping-cart"></i>
-                    <p>Trở về trang mua sắm</p>
-                </div>
-            </a>
-            <a href="login.html" class="indexleftselectitem  ">
-                <div>
-                    <i class="fa fa-power-off"></i>
-                    <p>Đăng xuất</p>
-                </div>
-            </a>
+            <p id="formYesNoTitle"></p>
+            <p id="formYesNoTitle2"></p>
+            <div>
+                <a id="formYesNoLink">Có, chắc chắn <i class="fa fa-check"></i> </a>
+                <p onclick="submitAdd()" id="pFormYesNo">Có, chắc chắn <i class="fa fa-check"></i></p>
+                <span onclick="hiddenFormYesNo()" id="buttonNoFormYesNo">Không, suy nghĩ thêm <i class="fa fa-close"></i></span>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="indexright">
-    <div class="indextop">
-        <h3>TVT<span style="color: #2a2935;">S</span>hop</h3>
-        <div class="indextopright">
-            <div class="indextopsearch">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Tìm kiếm">
+<form action="../../EmailNotificationAddController" method="post" style="display: none" id="fromSubmidAdd">
+    <input type="text" name="titleSend" id="titleSend">
+    <input type="text" name="dataSend" id="dataSend">
+</form>
+
+<%
+    //  Nếu như có thông báo thì hiển thị
+    if (quanLyDonHangObject.isNotify()) {
+
+        //  Thông báo xong thì để lại trạng thái ban đầu
+        quanLyDonHangObject.setNotify(false);
+
+%>
+<div id="notifiSuccess">
+    <div class="notifiSuccessHidden" onclick="hiddenNotifiSuccess()"></div>
+    <div>
+        <p>
+            <i class="fa fa-cogs"></i> TVT Shop
+        </p>
+        <div>
+            <p><%=quanLyDonHangObject.getTitle()%></p>
+            <p><%=quanLyDonHangObject.getConntent()%> <i class="fa fa-hand-grab-o"></i></p>
+            <div>
+                <span onclick="hiddenNotifiSuccess()">Trở về<i class="fa fa-close"></i></span>
             </div>
-            <div class="indextopbell  dontindextopbellinfor" onclick="indextopbellinfor(this)">
-                <i class="fa fa-bell-o"></i>
-                <div>
-                    <i class="fa fa-circle"></i>
-                </div>
-                <div class="indextopbellinfor">
-                    <i class="fa fa-caret-up"></i>
-                    <div>
-                        <h3>Thông báo</h3>
-                        <div class="indextopbellinforcontent">
-                            <div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar7.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1021
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                                <a class="indextopbellinforcontentitem">
-                                    <div>
-                                        <img src="../../img/product/avatar7.jpg" alt="">
-                                    </div>
-                                    <div>
-                                        <p><strong> Nguyễn Thị Hoa Hồng</strong> vừa duyệt cho bạn đơn hàng #DH1014
-                                        </p>
-                                        <p>14:32 - 12/10/2020</p>
-                                    </div>
-                                </a>
-                                <div class="lineindextopbellinforcontentitem"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <input type="checkbox" style="display: none;">
-            </div>
-            <a class="indextopaccount">
-                <div>
-                    <img src="../../img/product/avatar2.jpg" alt="">
-                </div>
-                <div>
-                    <h3>Nguyễn Hữu Đa</h3>
-                    <p>Nhân viên kho</p>
-                </div>
-            </a>
         </div>
     </div>
+</div>
+<%}%>
 
-    <div class="backgroundindexmain">
-    </div>
+<jsp:include page="../share/_LayoutLeftNVK.jsp">
+    <jsp:param name="activeSelect" value="quanLyDonHang"/>
+</jsp:include>
+<div class="indexright">
+    <jsp:include page="../share/_LayoutTop.jsp">
+        <jsp:param name="level" value="Nhân viên kho"/>
+    </jsp:include>
 
     <!-- Code trang ở đây-->
 
     <div class="indexmain">
         <div>
-            <div class="left">
+            <form class="left" method="post" action="../../QuanLyDonHangControllerNVK" id="mainForm" onsubmit="return false">
                 <div class="leftheader">
-                    <select name="" id="">
-                        <option value="" selected>Ngày tạo</option>
-                        <option value="">Giá</option>
-                        <option value="">Hoàn thành</option>
-                        <option value="">Chờ duyệt</option>
-                        <option value="">Đóng gói</option>
-                        <option value="">Vận chuyển</option>
-                        <option value="">Bị hủy</option>
+                    <select name="selectSearchAndSort" id="selectSearchAndSort" onchange="changeFilter()">
+                        <% String selectSearchAndSort = quanLyDonHangObject.getSelectSearchAndSort(); %>
+                        <option value="ngay_tao"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ngay_tao")) {%>
+                                selected
+                                <%}%>
+                        >Ngày tạo</option>
+                        <option value="ngay_giao_hang"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("ngay_giao_hang")) {%>
+                                selected
+                                <%}%>
+                        >Ngày giao hàng</option>
+                        <option value="tong_tien"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("tong_tien")) {%>
+                                selected
+                                <%}%>
+                        >Tổng tiền</option>
+                        <option value="3"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("3")) {%>
+                                selected
+                                <%}%>
+                        >Hoàng thành</option>
+                        <option value="0"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("0")) {%>
+                                selected
+                                <%}%>
+                        >Chờ duyệt</option>
+                        <option value="1"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("1")) {%>
+                                selected
+                                <%}%>
+                        >Chờ đóng gói</option>
+                        <option value="2"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("2")) {%>
+                                selected
+                                <%}%>
+                        >Chờ vận chuyển</option>
+                        <option value="4"
+                                <% if (selectSearchAndSort != null && selectSearchAndSort.equals("4")) {%>
+                                selected
+                                <%}%>
+                        >Bị hủy</option>
                     </select>
                     <div>
-                        <div class="leftheadersort" onclick="changesort(this)">
-                            <i class=" fa fa-sort-amount-desc" id="leftheadersort1"></i>
-                            <i class=" fa fa-sort-amount-asc" id="leftheadersort2"></i>
-                            <input type="checkbox" style="display: none;">
+                        <% String sort = quanLyDonHangObject.getSort(); %>
+
+                        <% if (sort.equals("DESC")) {%>
+                        <div class="leftheadersort" id="leftheadersort" onclick="changesort()">
+                            <i class=" fa fa-sort-amount-desc"></i>
                         </div>
-                        <div class="leftheadersearch" id="leftheadersearch">
-                            <i class="fa fa-search" onclick="showsearch()"></i>
+                        <%} else {%>
+                        <div class="leftheadersort" id="leftheadersort" onclick="changesort()"
+                             style="margin-top:4px">
+                            <i class=" fa fa-sort-amount-asc" style="margin-top: -10px"></i>
+                        </div>
+                        <%}%>
+
+                        <div class="leftheadersearch">
                             <div>
-                                <i class="fa fa-search" onclick="hiddensearch()"></i>
-                                <input type="text" placeholder="Tìm kiếm">
+                                <i class="fa fa-search" onclick="searchByClick()" ></i>
+                                <input type="text" placeholder="Tìm kiếm" name="search" class="searchsubmit"
+                                       value="<%=quanLyDonHangObject.getSearch()%>">
+                                <i class="fa fa-refresh loadPage" onclick="loadPage()"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="leftnextpage">
-                    <button><i class="fa fa-caret-left"></i></button>
+                <div class="leftnextpage" id="leftnextpage">
+                    <span onclick="prePage(<%=quanLyDonHangObject.getNowPage()%>)"><i
+                            class="fa fa-caret-left"></i></span>
                     <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li class="none">...</li>
-                        <li>11</li>
+
+                        <%
+                            //  Lấy list next page đổ next page ra
+                            List<NextPageObject> nextPages = quanLyDonHangObject.getNextPages();
+                            for (NextPageObject n : nextPages) {
+                        %>
+                        <li
+                                <% if (n.getType() == NextPageConfiguration.ACTIVE_LI) { %>
+                                class="activeli"
+                                <%} else if (n.getType() == NextPageConfiguration.NONE) {%>
+                                class="none"
+                                <%} else {%>
+                                onclick="pageNavigation(<%=n.getValue()%>)"
+                                <%}%>
+                        >
+                            <%if(n.getType() == NextPageConfiguration.NONE){%>
+                            <p onclick="showselectgopage(this)"><%=n.getValue()%></p>
+                            <%}else{%>
+                            <%=n.getValue()%>
+                            <%}%>
+                            <div class="gopage">
+                                <input type="checkbox" style="display: none;">
+                                <input type="text">
+                                <i class="fa fa-angle-right" onclick="gopagefast(this)"></i>
+                            </div>
+
+                        </li>
+                        <%
+                                //  Kết thúc đổ next page
+                            }
+                        %>
                     </ul>
-                    <button><i class="fa fa-caret-right"></i></button>
+                    <span onclick="nextPage(<%=quanLyDonHangObject.getNowPage()%>,<%=quanLyDonHangObject.getMaximumPage()%>)"><i
+                            class="fa fa-caret-right"></i></span>
+                    <input type="number" name="numberOfPage" id="numberOfPage" style="display: none"
+                           value="<%=quanLyDonHangObject.getNowPage()%>">
+                    <input type="number" name="maximunNumberOfPage" style="display: none" id="maximunNumberOfPage"
+                           value="<%=quanLyDonHangObject.getMaximumPage()%>">
                 </div>
                 <div>
                     <div id="listleftitem">
+                        <%
+                            for(QuanLyDonHang quanLyDonHang : quanLyDonHangObject.getList_don_hang()){
+                        %>
                         <div class="leftitem" onclick="changerightdonhang(this)">
+
                             <div>
-                                <img src="../../img/product/avatar3.jpg" alt="">
+                                <img src="<%=quanLyDonHang.getNguoi_dat().getLink_hinh()%>" alt="">
                             </div>
+
                             <div>
-                                <p>Lê Vy</p>
-                                <div class="vanchuyen">
+                                <p><%=quanLyDonHang.getNguoi_dat().getTen_kh()%></p>
+                                <div
+                                        <%if(quanLyDonHang.getTrang_thai_van_chuyen() == 0){%>
+                                        class="choxuly"
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 1 || quanLyDonHang.getTrang_thai_van_chuyen() == 2){%>
+                                        class="vanchuyen"
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 3){%>
+                                        class=hoanthanh"
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 4){%>
+                                        class="khonghoanthanh"
+                                        <%}%>
+                                >
                                     <i class="fa fa-circle"></i>
-                                    <p>Đóng gói</p>
+                                    <p>
+                                        <%if(quanLyDonHang.getTrang_thai_van_chuyen() == 0){%>
+                                        Chờ xử lý
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 1){%>
+                                        Đóng gói
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 2){%>
+                                        Vận chuyển
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 3){%>
+                                        Hoàn thành
+                                        <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 4){%>
+                                        class="khonghoanthanh"
+                                        <%}%>
+                                    </p>
                                 </div>
                             </div>
+
                             <div>
-                                <p>120,000 VND</p>
-                                <p>DH1021</p>
+                                <p> <%=SalaryModel.getInstance().coverSalaryToString(quanLyDonHang.getTong_tien())%></p>
+                                <p>#<%=quanLyDonHang.getMa_dh()%></p>
                             </div>
+
                             <div>
                                 <h3>Đơn Đặt Hàng</h3>
-                                <p>#DH1022</p>
-                                <p><i class="fa fa-circle"></i>Đang đóng gói</p>
+                                <p>#<%=quanLyDonHang.getMa_dh()%></p>
+                                <p><i class="fa fa-circle"></i> <%if(quanLyDonHang.getTrang_thai_van_chuyen() == 0){%>
+                                    Chờ xử lý
+                                    <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 1){%>
+                                    Đóng gói
+                                    <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 2){%>
+                                    Vận chuyển
+                                    <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 3){%>
+                                    Hoàn thành
+                                    <%}else if(quanLyDonHang.getTrang_thai_van_chuyen() == 4){%>
+                                    Không hoàn thành
+                                    <%}%></p>
                                 <div>
                                     <div class="dateright">
                                         <i class="fa fa-file-text"></i>
                                         <div>
                                             <p>Ngày đặt hàng</p>
-                                            <p>12 Tháng Tám 2020</p>
+                                            <p><%=quanLyDonHang.getNgay_dat().toStringDateTypeNumberStringNumber()%></p>
                                         </div>
                                     </div>
                                     <div class="dateright">
                                         <i class="fa fa-truck"></i>
                                         <div>
-                                            <p>Ngày giao hàng dự kiến</p>
-                                            <p>23 Tháng Tám 2020</p>
+                                            <p>Ngày giao hàng</p>
+                                            <p>
+                                                <%if(quanLyDonHang.getNgay_gui() == null){%>
+                                                Đơn hàng chưa được giao
+                                                <%}else{%>
+                                                <%=quanLyDonHang.getNgay_gui().toStringDateTypeNumberStringNumber()%>
+                                                <%}%>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -218,22 +322,23 @@
 
                                     <div>
                                         <div>
+                                            <%for(SanPhamDatHang sanPhamDatHang : quanLyDonHang.getList_sp()){%>
                                             <div class="tableitem">
                                                 <div class="tableitemimg">
                                                     <div>
-                                                        <img src="../../img/product/pro2.webp" alt="">
+                                                        <img src="<%=sanPhamDatHang.getHinh_anh()%>" alt="">
                                                     </div>
                                                     <div>
                                                         <div>
-                                                            <p>2</p>
+                                                            <p><%=sanPhamDatHang.getSo_luong()%></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="tablenitemame">
-                                                    <p>Áo Sweater Nam Stay Together Cánh Đồng MSW 1005</p>
-                                                    <p>Mã sản phẩm: SP1453419</p>
+                                                    <p><%=sanPhamDatHang.getTen_sp()%></p>
+                                                    <p>Mã sản phẩm: <%=sanPhamDatHang.getMa_sp()%></p>
                                                 </div>
-                                                <div class="tableitemicon hoanthanh">
+                                                <div class="tableitemicon <%if(quanLyDonHang.getNguoi_duyet() == null){%>choxuly<%}else{%>hoanthanh<%}%>  ">
                                                     <div>
                                                         <i class="fa fa-clock-o"></i>
                                                     </div>
@@ -244,7 +349,7 @@
                                                         <i class="fa fa-close"></i>
                                                     </div>
                                                 </div>
-                                                <div class="tableitemicon choxuly">
+                                                <div class="tableitemicon <%if(quanLyDonHang.getNguoi_dong_goi() == null){%>choxuly<%}else{%>hoanthanh<%}%> ">
                                                     <div>
                                                         <i class="fa fa-clock-o"></i>
                                                     </div>
@@ -255,7 +360,7 @@
                                                         <i class="fa fa-close"></i>
                                                     </div>
                                                 </div>
-                                                <div class="tableitemicon choxuly">
+                                                <div class="tableitemicon <%if(quanLyDonHang.getNguoi_van_chuyen() == null){%>choxuly<%}else if(quanLyDonHang.getTrang_thai_van_chuyen()==4) {%>khonghoanthanh<%}else{%>hoanthanh<%}%> ">
                                                     <div>
                                                         <i class="fa fa-clock-o"></i>
                                                     </div>
@@ -266,162 +371,10 @@
                                                         <i class="fa fa-close"></i>
                                                     </div>
                                                 </div>
-                                                <p>299,000 VND</p>
-                                                <p>598,000 VND</p>
+                                                <p><%=SalaryModel.getInstance().coverSalaryToString(sanPhamDatHang.getGia_le())%></p>
+                                                <p><%=SalaryModel.getInstance().coverSalaryToString(sanPhamDatHang.getTong_gia())%></p>
                                             </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro3.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>1</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Sweater Nam Basic MSW 1004</p>
-                                                    <p>Mã sản phẩm: SP2253419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>399,000 VND</p>
-                                                <p>399,000 VND</p>
-                                            </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro5.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>2</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Thun MTS 1011</p>
-                                                    <p>Mã sản phẩm: SP2353419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>199,000 VND</p>
-                                                <p>398,000 VND</p>
-                                            </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro4.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>1</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
-                                                    <p>Mã sản phẩm: SP2153419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>199,000 VND</p>
-                                                <p>199,000 VND</p>
-                                            </div>
+                                            <%}%>
                                         </div>
                                     </div>
 
@@ -430,388 +383,66 @@
                                 <div class="nguoimua">
                                     <h3>Người đặt</h3>
                                     <div>
-                                        <img src="../../img/product/avatar3.jpg" alt="">
+                                        <img src="<%=quanLyDonHang.getNguoi_dat().getLink_hinh()%>" alt="">
                                     </div>
-                                    <p>Lê Vy</p>
-                                    <p><strong>Email: </strong>levypro@gmail.com</p>
-                                    <p><strong>Số điện thoại: </strong>035312245</p>
-                                    <p><strong>Địa chỉ: </strong>KP6, Linh Trung, Thủ Đức, TP HCM</p>
+                                    <p><%=quanLyDonHang.getNguoi_dat().getTen_kh()%></p>
+                                    <p><strong>Email: </strong><%=quanLyDonHang.getNguoi_dat().getEmail()%></p>
+                                    <p><strong>Số điện thoại: </strong><%=quanLyDonHang.getNguoi_dat().getSo_dien_thoai()%></p>
+                                    <p><strong>Địa chỉ: </strong><%=quanLyDonHang.getNguoi_dat().getDia_chi()%></p>
                                 </div>
 
                                 <div class="nguoimua">
                                     <h3>Người đóng gói</h3>
                                     <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
+                                        <img src="<%if(quanLyDonHang.getNguoi_dong_goi() == null){%> <%=BeansConfiguration.LINK_AVATAR_DEFAULT%> <%}else{%><%=quanLyDonHang.getNguoi_dong_goi().getLink_hinh()%> <%}%>" alt="">
                                     </div>
-                                    <p>Nguyễn Văn Đa</p>
-                                    <p><strong>Email: </strong>danguyen@gmail.com</p>
-                                    <p><strong>Số điện thoại: </strong>0971134509</p>
-                                    <p><strong>Địa chỉ: </strong>KP6, Linh Trung, Thủ Đức, TP HCM</p>
+                                    <p><%if(quanLyDonHang.getNguoi_dong_goi() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_dong_goi().getTen_kh()%> <%}%></p>
+                                    <p><strong>Email: </strong><%if(quanLyDonHang.getNguoi_dong_goi() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_dong_goi().getEmail()%> <%}%></p>
+                                    <p><strong>Số điện thoại: </strong><%if(quanLyDonHang.getNguoi_dong_goi() == null){%>???<%}else{%> <%=quanLyDonHang.getNguoi_dong_goi().getSo_dien_thoai()%><%}%></p>
+                                    <p><strong>Địa chỉ: </strong><%if(quanLyDonHang.getNguoi_dong_goi() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_dong_goi().getDia_chi()%><%}%></p>
                                 </div>
 
                                 <div class="nguoimua">
                                     <h3>Người giao hàng</h3>
                                     <div>
-                                        <img src="../../img/user.jpg" alt="">
+                                        <img src="<%if(quanLyDonHang.getNguoi_van_chuyen() == null){%><%=BeansConfiguration.LINK_AVATAR_DEFAULT%><%}else{%><%=quanLyDonHang.getNguoi_van_chuyen().getLink_hinh()%><%}%>" alt="">
                                     </div>
-                                    <p>???</p>
-                                    <p><strong>Email: </strong>???</p>
-                                    <p><strong>Số điện thoại: </strong>???</p>
-                                    <p><strong>Địa chỉ: </strong>???</p>
+                                    <p><%if(quanLyDonHang.getNguoi_van_chuyen() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_van_chuyen().getTen_kh()%><%}%></p>
+                                    <p><strong>Email: </strong><%if(quanLyDonHang.getNguoi_van_chuyen() == null){%>???<%}else{%> <%=quanLyDonHang.getNguoi_van_chuyen().getEmail()%> <%}%></p>
+                                    <p><strong>Số điện thoại: </strong><%if(quanLyDonHang.getNguoi_van_chuyen() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_van_chuyen().getSo_dien_thoai()%><%}%></p>
+                                    <p><strong>Địa chỉ: </strong><%if(quanLyDonHang.getNguoi_van_chuyen() == null){%>???<%}else{%><%=quanLyDonHang.getNguoi_van_chuyen().getDia_chi()%> <%}%></p>
                                 </div>
 
-                                <div class="kiemduyet xulynvk">
+                                <%if(quanLyDonHang.getTrang_thai_van_chuyen() == 1){%>
+                                <div class="kiemduyet">
                                     <div>
-                                        <select name="" id="">
-                                            <option value="">NVK1001 Nguyễn Văn Đa</option>
-                                            <option value="">NVK1002 Nguyễn Văn A</option>
-                                            <option value="">NVK1003 Xuân Trường</option>
-                                            <option value="">NVK1004 Trọng Tấn</option>
+                                        <select name="ma_nv">
+                                            <%for(NguoiXuLyQuanLyDonHang n : quanLyDonHangObject.getList_nvgh()){%>
+                                            <option value="<%=n.getId()%>"><%=n.getName()%></option>
+                                            <%}%>
                                         </select>
-                                        <button>Duyệt</button>
-                                    </div>
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">NVGH1001 Nguyễn Văn Anh</option>
-                                            <option value="">NVGH1002 Nguyễn Văn B</option>
-                                            <option value="">NVGH1003 Từ Khuyết</option>
-                                            <option value="">NVGH1004 Mạc Phàm</option>
-                                        </select>
-                                        <button>Duyệt</button>
-                                    </div>
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">Hoàn thành</option>
-                                            <option value="">Không hoàn thành</option>
-                                        </select>
-                                        <button>Duyệt</button>
+                                        <button onclick="duyetHang2(this)">Duyệt</button>
+                                        <input type="text" name="ma_dh" value="<%=quanLyDonHang.getMa_dh()%>" style="display: none">
                                     </div>
                                 </div>
+                                <%}%>
                             </div>
+
+
                         </div>
-                        <div class="leftitem" onclick="changerightdonhang(this)">
-                            <div>
-                                <img src="../../img/user.jpg" alt="">
-                            </div>
-                            <div>
-                                <p>Mạc Phàm</p>
-                                <div class="vanchuyen">
-                                    <i class="fa fa-circle"></i>
-                                    <p>Đóng gói</p>
-                                </div>
-                            </div>
-                            <div>
-                                <p>788,000 VND</p>
-                                <p>DH1014</p>
-                            </div>
-                            <div>
-                                <h3>Đơn Đặt Hàng</h3>
-                                <p>#DH1022</p>
-                                <p><i class="fa fa-circle"></i>Đang đóng gói</p>
-                                <div>
-                                    <div class="dateright">
-                                        <i class="fa fa-file-text"></i>
-                                        <div>
-                                            <p>Ngày đặt hàng</p>
-                                            <p>12 Tháng Tám 2020</p>
-                                        </div>
-                                    </div>
-                                    <div class="dateright">
-                                        <i class="fa fa-truck"></i>
-                                        <div>
-                                            <p>Ngày giao hàng dự kiến</p>
-                                            <p>23 Tháng Tám 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table">
-
-                                    <div class="tableheader">
-                                        <p>Sản phẩm & mô tả</p>
-                                        <p>Duyệt</p>
-                                        <p>Đóng gói</p>
-                                        <p>Vận chuyển</p>
-                                        <p>Giá lẻ</p>
-                                        <p>Tổng giá</p>
-                                    </div>
-
-                                    <div>
-                                        <div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro2.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>2</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Sweater Nam Stay Together Cánh Đồng MSW 1005</p>
-                                                    <p>Mã sản phẩm: SP1453419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>299,000 VND</p>
-                                                <p>598,000 VND</p>
-                                            </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro3.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>1</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Sweater Nam Basic MSW 1004</p>
-                                                    <p>Mã sản phẩm: SP2253419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>399,000 VND</p>
-                                                <p>399,000 VND</p>
-                                            </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro5.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>2</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Thun MTS 1011</p>
-                                                    <p>Mã sản phẩm: SP2353419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>199,000 VND</p>
-                                                <p>398,000 VND</p>
-                                            </div>
-                                            <div class="tableitem">
-                                                <div class="tableitemimg">
-                                                    <div>
-                                                        <img src="../../img/product/pro4.webp" alt="">
-                                                    </div>
-                                                    <div>
-                                                        <div>
-                                                            <p>1</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tablenitemame">
-                                                    <p>Áo Sweater Logo Sài Gòn MSW 1003</p>
-                                                    <p>Mã sản phẩm: SP2153419</p>
-                                                </div>
-                                                <div class="tableitemicon hoanthanh">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="tableitemicon choxuly">
-                                                    <div>
-                                                        <i class="fa fa-clock-o"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-check-circle"></i>
-                                                    </div>
-                                                    <div>
-                                                        <i class="fa fa-close"></i>
-                                                    </div>
-                                                </div>
-                                                <p>199,000 VND</p>
-                                                <p>199,000 VND</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="nguoimua">
-                                    <h3>Người đặt</h3>
-                                    <div>
-                                        <img src="../../img/user.jpg" alt="">
-                                    </div>
-                                    <p>Mạc Phàm</p>
-                                    <p><strong>Email: </strong>levypro@gmail.com</p>
-                                    <p><strong>Số điện thoại: </strong>035312245</p>
-                                    <p><strong>Địa chỉ: </strong>KP6, Linh Trung, Thủ Đức, TP HCM</p>
-                                </div>
-
-                                <div class="nguoimua">
-                                    <h3>Người đóng gói</h3>
-                                    <div>
-                                        <img src="../../img/product/avatar4.jpg" alt="">
-                                    </div>
-                                    <p>Nguyễn Văn Đa</p>
-                                    <p><strong>Email: </strong>danguyen@gmail.com</p>
-                                    <p><strong>Số điện thoại: </strong>0971134509</p>
-                                    <p><strong>Địa chỉ: </strong>KP6, Linh Trung, Thủ Đức, TP HCM</p>
-                                </div>
-
-                                <div class="nguoimua">
-                                    <h3>Người giao hàng</h3>
-                                    <div>
-                                        <img src="../../img/user.jpg" alt="">
-                                    </div>
-                                    <p>???</p>
-                                    <p><strong>Email: </strong>???</p>
-                                    <p><strong>Số điện thoại: </strong>???</p>
-                                    <p><strong>Địa chỉ: </strong>???</p>
-                                </div>
-
-                                <div class="kiemduyet xulynvk">
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">NVK1001 Nguyễn Văn Đa</option>
-                                            <option value="">NVK1002 Nguyễn Văn A</option>
-                                            <option value="">NVK1003 Xuân Trường</option>
-                                            <option value="">NVK1004 Trọng Tấn</option>
-                                        </select>
-                                        <button>Duyệt</button>
-                                    </div>
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">NVGH1001 Nguyễn Văn Anh</option>
-                                            <option value="">NVGH1002 Nguyễn Văn B</option>
-                                            <option value="">NVGH1003 Từ Khuyết</option>
-                                            <option value="">NVGH1004 Mạc Phàm</option>
-                                        </select>
-                                        <button>Duyệt</button>
-                                    </div>
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">Hoàn thành</option>
-                                            <option value="">Không hoàn thành</option>
-                                        </select>
-                                        <button>Duyệt</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <%}%>
                     </div>
                 </div>
-            </div>
+                <!-- action -->
+                <input type="text" name="action" style="display: none" id="action" value="">
 
+                <!-- sort -->
+                <% if (sort.equals("DESC")) {%>
+                <input type="checkbox" style="display: none" name="sort" id="sort">
+                <% } else {%>
+                <input type="checkbox" style="display: none" name="sort" id="sort" checked>
+                <%}%>
+            </form>
             <div class="right" id="right">
             </div>
         </div>
@@ -823,3 +454,18 @@
 </body>
 
 </html>
+<script src="../../js/quanLyDonHangAdmin.js"></script>
+<%     }
+
+}else{
+
+    //  Tài khoản không có vai trò ở trang này thì ta tới controller điều hướng trang chủ để nó đến trang chủ tương ứng
+    response.sendRedirect("../../AdminIndexNavigation");
+
+}
+}
+
+    //------------------------------------------------------------------------------------------------------------------------------//
+
+%>
+
